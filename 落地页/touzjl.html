@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>活动页面</title>
+		<script type="text/javascript" 
+            src="js/jquery.js">
+    </script>
+	
+		
+		<style type="text/css">
+		.error{
+			color:red;
+			text-align:center;
+			font-size:14px;
+			display:block;
+			margin-top:10px;
+		}	
+		
+		*{margin:0 auto;padding:0;border: 0;}
+		a{text-decoration: none;}
+		img a{border: 0;}
+		.cont_01{width:100%;height:231px;background: url(images/20160518hd01.jpg) no-repeat center center;}
+		.cont_02{width:100%;height:275px;background: url(images/20160518hd02.jpg) no-repeat center center;}
+	    .cont_03{width:100%;height:197px;background: url(images/20160518hd03.jpg) no-repeat center center;}
+	    .cont_03 .cont_031{width: 1000px;height: 197px;margin: auto;}
+	    .cont_03 .cont_031 .cont_031a{width:200px;height:63px;background: url(images/20160518ljtb1.jpg) no-repeat;display: inline-block;margin-top: 80px;margin-left: 545px;}
+	    .cont_04{width:100%;height:277px;background: url(images/20160518hd04.jpg) no-repeat center center;}
+	    .cont_05{width:100%;height:506px;background: url(images/20160518hd05.jpg) no-repeat center center;overflow: hidden;}
+	   .cont_05 .cont_051{width: 995px;height: 430px;margin: auto;margin-top:50px;  }
+      .cont_05 .cont_051 #menu{list-style: none;display: inline-block;width: 208px;height: 310px;margin-top: 70px;float: left;}
+      .cont_05 .cont_051 #menu li{height: 44px;line-height: 44px;width: 169px;margin-left: 33px;cursor: pointer;margin-top: 20px;}
+      .cont_05 .cont_051 #menu li.kk1{background: url(images/20160518an11.jpg) no-repeat center center;width: 172px;height: 46px;}
+       .cont_05 .cont_051 #menu li.kk1:hover{background: url(images/20160518an11.jpg) no-repeat center center;width: 172px;height: 46px;}
+       .cont_05 .cont_051 #menu li.kk2{background: url(images/20160518an2.jpg) no-repeat center center;width: 172px;height: 46px;}
+       .cont_05 .cont_051 #menu li.kk2:hover{background: url(images/20160518an22.jpg) no-repeat center center;width: 172px;height: 46px;}
+       .cont_05 .cont_051 #menu li.kk3{background: url(images/20160518an3.jpg) no-repeat center center;width: 172px;height: 46px;}
+        .cont_05 .cont_051 #menu li.kk3:hover{background: url(images/20160518an33.jpg) no-repeat center center;width: 172px;height: 46px;}
+       .cont_05 .cont_051 #menu li.kk4{background: url(images/20160518an4.jpg) no-repeat center center;width: 172px;height: 46px;}
+       .cont_05 .cont_051 #menu li.kk4:hover{background: url(images/20160518an44.jpg) no-repeat center center;width: 172px;height: 46px;}
+       
+       .cont_05 .cont_051 #content{display: inline-block;list-style: none;width: 641px;height: 250px;margin-top: 70px;margin-left: 50px;}
+	    .cont_05 .cont_051 #content li{display: none;letter-spacing: 3px;height: 25px;line-height: 25px;margin-top: 60px;color:#fff;}
+	    .cont_05 .cont_051 #content li.conFocus{display: block;}
+	    .cont_06{width:100%;height:298px;background: url(images/20160518hd06.jpg) no-repeat center center;}
+	    .cont_06 .cont_061{width: 1000px;height:298px;margin: auto;}
+	    .cont_06 .cont_061 .cont_061a{width:356px;height:113px;background: url(images/20160518ljtb2.jpg) no-repeat;display: inline-block;margin-top:170px;margin-left:317px;}
+	    .cont_07{width:100%;height:593px;background: url(images/20160518hd07.jpg) no-repeat center center;}
+	    .cont_07 .cont_071{width: 1000px;height:593px;margin: auto;}
+	    .cont_07 .cont_071 .cont_071a{width:210px;height:51px;background: url(images/20160518ljtb3.jpg) no-repeat;display: inline-block;margin-top:454px;margin-left:53px;}
+	    .cont_07 .cont_071 .cont_072a{width:210px;height:51px;background: url(images/20160518ljtb3.jpg) no-repeat;display: inline-block;margin-top:454px;margin-left:140px;}
+	    .cont_07 .cont_071 .cont_073a{width:210px;height:51px;background: url(images/20160518ljtb3.jpg) no-repeat;display: inline-block;margin-top:454px;margin-left:140px;}
+	    .cont_08{width:100%;height:288px;background: url(images/20160518hd8.jpg) no-repeat center center;}
+	    .cont_09{width:100%;height:367px;background: url(images/20160518hd9.jpg) no-repeat center center;}
+		
+		
+		
+		
+		
+		.ggtzbj{width: 715px;height: 670px;background: url(images/20160523bj.png) no-repeat center center;overflow: hidden;position: relative;}
+			.ggtzbj .shat{position: absolute;right: 20px;top:70px;color: #fff;text-decoration: none;font-weight: bold;}
+			.ggtzbj .reg_table{margin-top:110px;margin-left:120px;font-size: 18px;color: #333;}
+			.ggtzbj .reg_table li{text-align:left;list-style: none;overflow: hidden;margin-bottom: 9px;position: relative;}
+			.ggtzbj .reg_table li.contract{padding-left: 130px;font-size: 16px;}
+			.ggtzbj .reg_table li.contract a{color:#fff;text-decoration: none;}
+			.ggtzbj .reg_table li .valicode_img{vertical-align: middle;border: 0;margin-left: 15px;position: absolute;top: 2px;}
+			.ggtzbj .reg_table li .reg_l_title{color:#fff;height: 50px;line-height: 50px;display: inline-block;width:90px;text-align: right;}
+			.ggtzbj .reg_table li input{outline:medium;font-size: 18px;color: #333;width: 460px;height: 47px;line-height: 47px;border: 0;border-radius: 25px;margin-left: 3px;}
+		    .ggtzbj .reg_table li input.inpbj01{background: url(images/20160523int01.jpg) no-repeat center center;padding-left: 10px;}
+		    .ggtzbj .reg_table li input.inpbj02{background: url(images/20160523int02.jpg) no-repeat center center;padding-left: 10px;}
+		    .ggtzbj .reg_table li input.inpbj03{background: url(images/20160523int03.jpg) no-repeat center center;padding-left: 10px;}
+		    .ggtzbj .reg_table li input.inpbj04{background: url(images/20160523int04.jpg) no-repeat center center;padding-left: 10px;}
+		    .ggtzbj .reg_table li input.inpbj05{background: url(images/20160523int05.jpg) no-repeat center center;padding-left: 10px;}
+		    .ggtzbj .reg_table li input.inbg1{width: 234px;background:url(images/20160523int06.jpg) no-repeat center center;padding-left: 10px;}
+		    .ggtzbj .reg_table li input.inbg2{width: 234px;background:url(images/20160523int07.jpg) no-repeat center center;padding-left: 10px;}
+		    .ggtzbj .reg_table .regli{padding-left: 128px;}
+		    .ggtzbj .reg_table #zhuce{width:326px;background: url(images/20160523an2.jpg) no-repeat center center;}
+		    .zcform label {
+    color: #f00;
+    display:inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    
+}
+.reg_btn2{cursor:pointer;}
+.succes{overflow:hidden;width: 600px;height: 400px;background: url(images/20160523bj2.png) no-repeat center center;display: none;position: relative;}
+.succes .zccgp{margin-top: 130px;margin-left:58px;color: #fff;font-size:26px;letter-spacing: 3px;font-weight: bold;}
+.succes .zccgp2{margin-top:20px;margin-left:58px;color: #fff;font-size: 20px;letter-spacing:2px;}
+.succes .zccgp2 a{color: #5f0103;}
+.succes .zccgp2 a:hover{color: #e3050b;}
+.yyaa{position: absolute;top: 50px;right: 20px;color: #fff;}
+/*.zcform label.error{margin-left: 100px;width: 460px;text-align: center;height: 25px;line-height: 25px;}		*/
+	
+		</style>
+		
+		
+		
+		
+		<script type="text/javascript">
+        $(function() {
+            $("#menu li").each(function(index) { //带参数遍历各个选项卡
+                $(this).mousemove(function() { //注册每个选卡的单击事件
+                    $("#menu li.tabFocus").removeClass("tabFocus"); //移除已选中的样式
+                    $(this).addClass("tabFocus"); //增加当前选中项的样式
+                    //显示选项卡对应的内容并隐藏未被选中的内容
+                    $("#content li:eq(" + index + ")").show()
+                    .siblings().hide();
+                });
+            });
+            
+       
+       
+       $('.cont_031a').on('click',function(){
+                 	$('#FlatLayer').show();
+                 });
+
+               $('.ggtzbj .shat').click(function(){
+               	$('.zhukuangzi').hide();
+               })     
+            
+            
+            
+            
+            
+        })
+    </script>
+		
+		
+	<script type="text/javascript">
+    	$(function(){
+			var message = [];
+			message["username"]="请输入用户名";
+			message["password"]="请输入密码";
+			message["checkpwd"]="请输入确认密码";
+			message["mobilePhone"]="请输入手机号";
+			var ruleMessage = [];
+			ruleMessage["username"]="4到16位,由英文字母、数字组成，且不能为纯数字";
+			ruleMessage["password"]="密码8-16位，需要包含数字和字母";
+			ruleMessage["checkpwd"]="密码8-16位，需要包含数字和字母";
+			ruleMessage["mobilePhone"]="请输入正确的手机号";
+			ruleMessage["diff"]="两次输入密码不一致";
+			
+    		$("#zhuce").on("click",function(){
+				$(this).parent().parent().find("span").remove();
+				var username = $("#username").val();
+				var password = $("#password").val();
+				var checkpwd = $("#checkpwd").val();
+				var mobilePhone = $("#mobilePhone").val()
+				if(username==""){
+					$(this).parent().parent().find("#username").parent().append("<span class='error'>"+message["username"]+"</span>");
+					return false;
+				}
+				else if(username.length<4 || username.length>16 || /^\d+$/.test(username) || /^[A-Za-z]+$/.test(username)){
+					$(this).parent().parent().find("#username").parent().append("<span class='error'>"+ruleMessage["username"]+"</span>");
+					return false;
+				}else if(password==""){
+					$(this).parent().parent().find("#password").parent().append("<span class='error'>"+message["password"]+"</span>");
+					return false;
+				}
+				else if(password.length<8 || password.length>16 || /^\d+$/.test(password) || /^[A-Za-z]+$/.test(password)){
+					$(this).parent().parent().find("#password").parent().append("<span class='error'>"+ruleMessage["password"]+"</span>");
+					return false;
+					
+				}else if(checkpwd==""){
+					$(this).parent().parent().find("#checkpwd").parent().append("<span class='error'>"+message["checkpwd"]+"</span>");
+					return false;
+				}else if(checkpwd.length<8 || checkpwd.length>16 || /^\d+$/.test(checkpwd) || /^[A-Za-z]+$/.test(checkpwd)){
+					$(this).parent().parent().find("#checkpwd").parent().append("<span class='error'>"+ruleMessage["checkpwd"]+"</span>");
+					return false;
+					
+				}else if(checkpwd!=password){
+					$(this).parent().parent().find("#checkpwd").parent().append("<span class='error'>"+ruleMessage["diff"]+"</span>");
+					return false;
+				}else if(mobilePhone==""){
+					$(this).parent().parent().find("#mobilePhone").parent().append("<span class='error'>"+message["mobilePhone"]+"</span>");
+					return false;
+				}else if(mobilePhone.length!=11 || !/^\d+$/.test(mobilePhone)){
+					$(this).parent().parent().find("#mobilePhone").parent().append("<span class='error'>"+ruleMessage["mobilePhone"]+"</span>");
+					return false;
+				}
+				//验证通过
+//				alert("验证通过");
+//				return false;
+
+                  
+                 	$('.succes').show();
+                 	$('.zhukuangzi').hide();	
+                 	 $('.yyaa').click(function(){
+               	$('.succes').hide();
+               	
+               })
+                 
+
+            
+            
+                  
+
+
+			});
+			
+    	});
+
+		
+    </script>	
+		
+		
+	
+		
+		
+		
+	</head>
+
+			<div class="cont_01"></div>	
+			<div class="cont_02"></div>	
+			<div class="cont_03">
+				<div class="cont_031">
+					<a href="#" class="cont_031a">
+						
+						
+						
+					</a>
+				</div>
+			</div>	
+			<div class="cont_04"></div>
+			<div class="cont_05">
+		 <div class="cont_051">
+				<ul id="menu">
+					<li class="tabFocus kk1"></li>
+					<li class="kk2"></li>
+					<li class="kk3"></li>
+					<li class="kk4"></li>
+				</ul>
+				
+				<ul id="content">
+					<li class="conFocus">用户持券码可登陆蜘蛛网：www.spider.com.cn或下载“蜘蛛电影票”客户端提前完成在线订票选座，凭手机密码到联和院线打票机或蜘蛛网打票机出票即可</li>
+					<li>用户持中航•生意贷发送的观影通兑券码在蜘蛛网上购买电影票，可以完全实现在线选择电影场次、在线自助选座、观影券在线支付、影院终端机自助取票等，全国千余家影院通用，省去了到影院排队买票的过程，更轻松、方便、快捷；</li>
+					<li>用户持中航•生意贷发送的观影通兑券码可在蜘蛛网上选购任意场次的电影票（包含电影首映礼、3D电影票；但零点首映、明星见面会、电影节、连映场、情人节、平安夜、圣诞节、元旦前夜、VIP厅等蜘蛛网特别声明的特殊场次及蜘蛛网标注为高价的场次不可使用）</li>
+					<li>一个券码仅限兑换一场电影，通兑券有效期为自券激活之日起一年，过期作废；</li>
+				</ul>
+			</div>	
+				
+				
+			</div>
+			<div class="cont_06">
+				<div class="cont_061">
+					<a href="#" class="cont_061a cont_031a"></a>
+				</div>
+			</div>
+			<div class="cont_07">
+				<div class="cont_071">
+					<a href="#" class="cont_071a cont_031a"></a>
+					<a href="#" class="cont_072a cont_031a"></a>
+					<a href="#" class="cont_073a cont_031a"></a>
+				</div>
+			</div>
+			<div class="cont_08"></div>
+			<div class="cont_09"></div>
+			
+			
+			
+		<div class="zhukuangzi" name="FlatLayer" id="FlatLayer" style=" display:none;position: fixed;top:0px;z-index: 999;margin: auto;width:100%;" align="center">	
+			<div class="ggtzbj">
+				<a href="#" class="shat">关闭</a>
+			<form id="signupForm" method="post" action="" class="zcform">
+			     <ul class="reg_table">
+			         <li>
+			         <label class="reg_l_title">用户名：</label>
+			         <input id="username" class="inpbj01 required" value name="useName" maxlength="16" placeholder="4到16位,由英文字母、数字组成，且不能为纯数字" />
+			         </li>
+			         <li>
+			         <label class="reg_l_title">密码：</label>
+			         <input id="password" class="inpbj02 required" name="pwd" type="password" maxlength="16" placeholder="密码8-16位，需要包含数字和字母" />
+			         </li>
+			         <li>
+			         <label class="reg_l_title">确认密码：</label>
+			         <input id="checkpwd" class="inpbj03 required" name="confirmPassword" type="password" placeholder="再次输入密码" />
+			         </li>
+			         <li>
+			         <label class="reg_l_title">邀请码：</label>
+			         <input id="invite_username" class="inpbj04" type="text" name="ui" placeholder="请输入邀请人的手机号码（选填）" />
+			         </li>
+			         <li>
+			         <label class="reg_l_title">手机号：</label>
+			         <input id="mobilePhone" class="inpbj05 required" name="mobilePhone" type="text" placeholder="请输入手机号码" />
+			         </li>
+			         <li>
+			         <label class="reg_l_title">验证码：</label>
+			         <input id="validRegisterPhonePicCode" class="inbg1" name="validRegisterPhonePicCode" placeholder="请输入图片验证码" />
+			         <img class="valicode_img" src="images/20160523an1.jpg" type="button" alt="点击刷新" align="absmiddle"/>
+			         </li>
+					<li>
+			         <label class="reg_l_title">手机码：</label>
+			         <input id="code" class="inbg2 required" name="useName" placeholder="请输入手机验证码" />
+			         <img class="valicode_img" src="images/20160523an1.jpg" type="button" alt="点击刷新" align="absmiddle"/>
+			         </li>
+			        <li class="contract">
+			         	<input id="dianji" type="checkbox" style="display:none" value="1" checked="" name="agree">
+                                         注册即视为同意
+                       <a id="service_contract" href="javascript:;">《中航·生意贷用户服务协议》 </a>
+			         </li>
+			         <li class="regli">
+			            <input id="zhuce" class="reg_btn2" type="button" value="">
+			         </li>
+			     </ul>
+			</form>
+			
+		</div>
+			
+			
+			<div class="succes" style="width: 500px;height: 300px;background: #333;display: none;position: fixed;top:100px">
+			<a href="#">立即登陆</a>
+			<a href="#" class="yyaa">关闭</a>
+			
+		</div>
+			
+    </div>
+  <div style="width: 100%;text-align: center;position: fixed;top:100px"> 
+    <div class="succes">
+			<a href="#" class="yyaa">关闭</a>
+			<p class="zccgp">恭喜您注册成功</p>
+			<p class="zccgp2"><a href="https://www.cnaviationloan.com/user/login.html" target="_blank">立即登陆</a></p>
+			
+			
+		</div>
+	</div> 
+	</body>
+</html>
