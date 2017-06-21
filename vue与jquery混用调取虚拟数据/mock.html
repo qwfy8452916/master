@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script src="js/mock.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/list.js"></script>
+	<!-- <script src="js/main.js"></script> -->
+</head>
+<body>
+<div id="app">
+	<div class="tt">qqq</div>
+	<div class="tt">qqq</div>
+	<div class="tt">qqq</div>
+	<div>{{kk.name}}</div>
+</div>
+
+<script>
+    
+
+    var yy=new Vue({
+        el: '#app',
+        data:{
+            kk:'',
+        }
+    })
+
+    $.ajax({
+    url: '/list',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+        // fetchUserList(data);
+        console.log(data);
+        $('.tt').html(data.text);
+        yy.kk=data;
+    }
+});
+
+        
+    </script>
+
+</body>
+</html>
