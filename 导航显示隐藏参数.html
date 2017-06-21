@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title>dh</title>
+		<style type="text/css">
+			ul li{list-style: none;float: left;width: 80px;height: 30px;text-align: center;line-height: 30px;position: relative;}
+			ul li #aa1{width: 60px;height: 60px;position: absolute;top: 30px;left: 0;display: inline-block;background: #fafafa;z-index: 99;display: none;}
+
+		</style>
+		
+		
+	</head>
+	<body>
+		<!--<ul>
+			<li class="fdh q" onclick="aa('yy01')">导航1
+				<ul id="aa1">
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+				</ul>
+			</li>
+			<li class="fdh w" onclick="aa('yy02')">导航2
+			<ul id="aa1">
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+				</ul></li>
+			<li class="fdh">导航3
+			<ul id="aa1">
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+				</ul></li>
+			<li class="fdh">导航4
+			<ul id="aa1">
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+				</ul></li>
+			<li class="fdh">导航5
+			<ul id="aa1">
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+					<li>子菜单</li>
+				</ul></li>
+		</ul>-->
+		<a onclick="aa('yy01')">按钮1</a>
+		<a onclick="aa('yy02')">按钮2</a>
+		<div id="xs01" style="width: 500px;height: 500px;background: #333;margin-top: 50px;display: none;"></div>
+		<div id="xs02" style="width: 500px;height: 500px;background: #f11e6e;margin-top: 50px;display: none;"></div>
+		<script>
+			
+				function aa(xx){
+					if(xx=='yy01'){
+						$('#xs02').hide();
+						$('#xs01').fadeIn();
+					}else if(xx=='yy02'){
+						$('#xs01').hide();
+						$('#xs02').fadeIn();
+					}
+					
+				}
+			
+	
+			
+			
+			
+//				function showSecondNav(flag){
+//		   
+//		if(flag=='ztcp'){
+//			
+//			$(".product-second-nav").parent().hide();
+//			$("#product-second-nav-1").fadeIn();
+//		}else if(flag=='zhcp'){
+//			$(".product-second-nav").parent().hide();
+//			$("#product-second-nav-2").fadeIn();
+//		}
+//	}
+//			
+		</script>
+		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+	</body>
+</html>

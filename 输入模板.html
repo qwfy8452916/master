@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入模板</title>
+	<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+     请输入:<input type="text" id="biaoti">
+     请输入:<input type="text" id="biaoti2">
+     <p>请输入:<textarea type="text" id="biaoti3" style="width: 200px;height: 200px;"></textarea></p>
+	<script>
+		
+
+		$('#biaoti').bind('input propertychange',
+		    function() {
+		    var datetime=new Date();
+		    var year=datetime.getFullYear();
+		    var x = $('#biaoti').val();
+		    $('#biaoti2').val(x);
+		    $('#biaoti3').val("齐装网装修效果图频道，提供" + year + "年" + x + "，定期更新上百套" + x + "，为您带来精彩的装修设计灵感。");
+		    if (x == "") {
+		        $('#biaoti3').val("");
+		    } else {
+		        return;
+		    }
+		})
+
+
+
+	</script>
+</body>
+</html>

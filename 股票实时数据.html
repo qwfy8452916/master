@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>接口数据qqqqqq</title>
+        <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    </head>
+    <body>
+
+    <div class="shujv" style="width: 200px;height: 50px;text-align: center;line-height: 50px;background: #f1eeee;color: #fff;"></div>
+    <div class="shujv2" style="width: 200px;height: 50px;text-align: center;line-height: 50px;background: #f1eeee;color: #fff;"></div>
+    <div class="shujv3" style="width: 200px;height: 50px;text-align: center;line-height: 50px;background: #f1eeee;color: #fff;"></div>
+        <script type="text/javascript">
+        
+        setInterval(function(){
+            $.ajax({ type : "GET",
+            url : "http://hq.sinajs.cn/list=sh600854,sh600241,sh603969",
+            // sh600241  002300
+          dataType : "script",
+            cache : "false",
+            timeout : 2000, 
+            success : function(data, textStatus, jqXHR) {
+            // console.log(hq_str_sh600241); 
+            var str = hq_str_sh600854.split(",");
+            var str2 = hq_str_sh600241.split(",");  
+            var str3 = hq_str_sh603969.split(","); 
+            // console.log(str);
+            // console.log(str2);
+            // console.log(str[3]);
+            var aa=6.50;
+            var aa2=13.26;
+            
+            if(aa>=str[3]){
+             // flash_titlejj()
+                $('.shujv').css({"background":"#129627"});
+            }else if(aa<str[3]){
+               // flash_titless()
+               $('.shujv').css({"background":"#f52424"});
+            }
+            if(aa2<=str2[3]){
+               $('.shujv2').css({"background":"#f52424"});
+            }else{
+               $('.shujv2').css({"background":"#129627"});
+            }
+            $('.shujv').html(str[0].substring(0,2)+':'+str[3]);
+            $('.shujv2').html(str2[0].substring(0,2)+':'+str2[3]);
+            $('.shujv3').html(str3[0].substring(0,2)+':'+str3[3]);
+            
+        },
+            // error : function() { alert("出错了！");}
+
+        });
+                     },2000)
+        
+        
+        //动态标题升
+            var step=0
+           function flash_titless()
+                {
+                  step++
+                  if (step==3) {step=1}
+                  if (step==1) {document.title='升升高高'}
+                  if (step==2) {document.title='高高升升'}
+                  setTimeout("flash_titless()",450);
+                }
+        //动态标题降
+        function flash_titlejj()
+                {
+                  step++
+                  if (step==3) {step=1}
+                  if (step==1) {document.title='降降低低'}
+                  if (step==2) {document.title='低低降降'}
+                  setTimeout("flash_titlejj()",450);
+                }
+            
+
+        </script>
+
+
+
+    </body>
+</html>
