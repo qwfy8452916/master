@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>我要付款</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+        <script src="js/jQuery-2.1.4.min.js"></script>
+        <script src="js/fastclick.js"></script>
+        <script src="js/layer.js"></script>
+      
+        <link rel="stylesheet" type="text/css" href="css/layer.css">
+    </head>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .copy_right {
+            font-size: 14px;
+            color: #949494;
+            width: 100%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+        }
+        
+        .mask_layer {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            opacity: 0.5;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            display: none;
+            z-index: 1000;
+        }
+
+    .layui-m-layercont{color: #d82b20;font-size:1em;font-weight: bold;padding: 50px 30px;}
+    .layui-m-layerbtn span[yes]{color:#ffffff;background: #01aaef;font-size:20px;height:50px;
+    line-height:50px;}
+    </style>
+
+     
+      <script>
+         
+
+
+   $(function(){
+
+       $(".oaac").on("click", function(){
+     
+       layer.open({
+    
+    content:'你还有未完成的订单，请继续支付',
+    btn: '继续支付',
+    yes: function(index){
+     window.location.href="https://www.baidu.com";
+     layer.close(index)
+    }  
+   });
+   });
+
+   })
+
+   
+
+
+     </script>
+
+
+    <script>
+
+
+
+
+        $(function() {
+            //定義底部鍵盤的高度為總高度的2/5
+            var bottom_ratio = 0.45;
+            //定义顶部的高度为总高度的1/4
+            var top_ratio = 1 / 5;
+            //屏幕的高度先獲取到.....
+            var window_height = $(window).height();
+            //顶部的高度
+            var top_height = window_height * top_ratio;
+            //底部的高度
+            var bottom_height = window_height * bottom_ratio;
+            //中部的高度
+            var center_height = window_height - top_height - bottom_height-15;
+            //设置顶部IV的高度
+            $("#container_t").height(top_height);
+            //设置底部DIV的高度
+            $("#container_b").height(bottom_height);
+            $("#container_b_table").height(bottom_height);
+            //设置中部DIV的高度
+            $("#container_m").height(center_height);
+            //中间顶部的DIV高度
+            var center_top_height = center_height / 3;
+            $("#container_m_t").height(center_top_height - 20);
+            $("#container_m_t").css('margin-top', 20 + 'px');
+            $("#container_m_m").height(center_top_height);
+            var center_bottom_height = center_height - center_top_height - center_top_height +8;
+            $("#container_m_b").height(center_bottom_height-10);
+            //定义container_m_b_hint的行高
+            $("#container_m_b_hint").css('height', center_bottom_height - 4 + 'px');
+            $("#container_m_b_hint").css('line-height', center_bottom_height - 4 + 'px');
+            //定义container_m_m_hint的行高
+            $("#container_m_m_hint").css('height', center_bottom_height - 4 + 'px');
+            $("#container_m_m_hint").css('line-height', center_bottom_height - 4 + 'px');
+            
+             $("#container_m_m_price").css('height', center_bottom_height - 4 + 'px');
+            $("#container_m_m_price").css('line-height', center_bottom_height - 4 + 'px');
+
+            $("#container_m_b_price").css('height', center_bottom_height - 4 + 'px');
+            $("#container_m_b_price").css('line-height', center_bottom_height - 4 + 'px');
+
+            //键盘的一行高度
+            var keyboard_height = bottom_height / 4;
+            $("#header1").height(keyboard_height);
+            $("#header2").height(keyboard_height);
+            $("#header3").height(keyboard_height);
+            $("#header4").height(bottom_height - $("#header1").height - $("#header2").height - $("#header3").height);
+
+            //计算loading
+            var loading_size = 64;
+            $("#loading").width(loading_size);
+            var loading_padding_top = window_height - 64;
+            loading_padding_top /= 2;
+            $("#loading").css('padding-top', loading_padding_top - 8 + 'px');
+
+            var contentHei = $("#content").outerHeight(true);
+            var margin =   window_height - contentHei;
+            $("#container_b").css('margin-top', margin + 'px');
+        })
+    </script>
+
+    <body style="background: #f4f4f4;padding: 0;margin: 0;">
+        <div class="mask_layer" id="mask_layer" style="text-align: center;">
+            <img id="loading" src="/static/img/loading.gif" />
+        </div>
+
+        <div class="content" id="content" style="width: 100%;">
+            <div id="container_t" style="background: #01aaef; width: 100%;">
+                <div class="col-xs-12" style="text-align: center;">
+                    <img src="/static/img/logo.png" style="margin-top: 10px;" />
+                    <p style="color: #fff;font-size: 18px; margin-top: 15px;">{{.name}}</p>
+                </div>
+            </div>
+
+            <div id="container_m" style="width: 100%;">     
+                <div id="container_m_m" style="background: #FFFFFF; width: 95%;margin-left: auto;margin-right: auto;margin-top: 8px;border: 2px solid #01aaef;">
+                    <div id="container_m_m_hint" style="font-size: 14px ;margin-left: 3%;width: 40%;float: left;">消费金额</div>
+                    <div align="right" id="container_m_m_price" style="font-size: 1.5em ;width: 50%;float: left;">
+                        <span style="font-size: 18px;margin-right: 2%;">¥</span>
+                        <span  id="finalPrice1"></span>
+                        <span id="cur1" class="cursor" style="font-weight: lighter;font-size: 1em; ">|</span>
+                    </div>
+                </div>
+                
+                <div id="container_m_b" style="background: rgba(202, 202, 202, 0.3); width: 95%; margin-top:6px;margin-left: auto;margin-right: auto;border: 2px solid #ccc; display:none">
+                    <!--<span id="container_m_b_hint" style="font-size: 16px ;margin-left: 15px;">不参与优惠金额:</span>
+                    <span id="container_m_b_price" style="font-size: 24px ;margin-left: 15px;"></span>-->
+                     <div id="container_m_b_hint" style="font-size: 14px ;margin-left: 3%;width: 40%;float: left;">不参与优惠金额</div>
+        
+                    <div align="right" id="container_m_b_price" style="font-size: 1.5em ;width: 50%;float: left;">
+                        <span style="font-size: 18px;margin-right: 2%;">¥</span>
+                        <span  id="finalPrice2"></span>
+                        <span id="cur2" class="" style="font-weight: lighter;font-size: 1em;visibility: hidden;">|</span>
+                    </div>
+                </div>
+                
+                  <div id="container_m_t" style="width: 100%;">
+                    <section class="copy_right">
+                        <span>由<span style="color: #01aaef;">秒富</span>信息科技提供支付宝支付服务</span>
+                    </section>
+                </div>
+                 
+                
+
+            </div>
+
+            <div id="container_b" style="background: #FFFFFF; width: 100%;">
+                <table id="container_b_table" style="font-size: 28px;width: 100%; text-align: center; color: #505050;" cellpadding="0" cellspacing="0">
+                    <tr id="header1">
+                        <td id="num1" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">1</td>
+                        <td id="num2" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">2</td>
+                        <td id="num3" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">3</td>
+                        <td id="numdel" style="border-bottom: 1px solid #f4f4f4;width: 25%;font-size: 18px;">删除</td>
+                    </tr>
+                    <tr id="header2">
+                        <td id="num4" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">4</td>
+                        <td id="num5" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">5</td>
+                        <td id="num6" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">6</td>
+                        <td id="submit" class="oaac" rowspan="3" style="background:#01aaef;border-bottom: 1px solid #f4f4f4;width: 25%;font-size: 14px; color: #FFFFFF;">
+                            <span><span id="fee" style="padding-right: 5px;">0.00</span>¥</span>
+                            <br>
+                            <span>立即支付</span>
+                        </td>
+                    </tr>
+                    <tr id="header3">
+                        <td id="num7" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">7</td>
+                        <td id="num8" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">8</td>
+                        <td id="num9" style="border-bottom: 1px solid #f4f4f4;border-right: 1px solid #f4f4f4; width: 25%;">9</td>
+                    </tr>
+                    <tr id="header4">
+                        <td id="num0" style="border-right: 1px solid #f4f4f4; width: 25%;" colspan="2">0</td>
+                        <td id="dot" style="border-right: 1px solid #f4f4f4;width: 25%">·</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        $(function() {
+            $("#num1").on("touchend", function(e) {
+                clickOne(1);
+                 e.preventDefault();
+            });
+            $("#num2").on("touchend", function(e) {
+                clickOne(2);
+                 e.preventDefault();
+            });
+            $("#num3").on("touchend", function(e) {
+                clickOne(3);
+                 e.preventDefault();
+            });
+            $("#num4").on("touchend", function(e) {
+                clickOne(4);
+                 e.preventDefault();
+            });
+            $("#num5").on("touchend", function(e) {
+                clickOne(5);
+                 e.preventDefault();
+            });
+            $("#num6").on("touchend", function(e) {
+                clickOne(6);
+                 e.preventDefault();
+            });
+            $("#num7").on("touchend", function(e) {
+                clickOne(7);
+                 e.preventDefault();
+            });
+            $("#num8").on("touchend", function(e) {
+                clickOne(8);
+                 e.preventDefault();
+            });
+            $("#num9").on("touchend", function(e) {
+                clickOne(9);
+                 e.preventDefault();
+            });
+            $("#num0").on("touchend", function(e) {
+                clickOne(0);
+                 e.preventDefault();
+            });
+            $("#dot").on("touchend", function(e) {
+                dot();
+                 e.preventDefault();
+            });
+                
+            $("#numdel").on("touchend", function(e) {
+                del();
+                 e.preventDefault();
+            });
+          
+            $("#container_m_m").on("touchend", function(e) {
+                changeInputSelect("1");
+                 e.preventDefault();
+            });
+            $("#container_m_b").on("touchend", function(e) {
+                changeInputSelect("2");
+                 e.preventDefault();
+            });
+            mask_layer = document.getElementById("mask_layer");
+            content_layer = document.getElementById("content");
+            changeInputSelect(1);
+        })
+
+        
+            
+        var select_input;
+        var select_input_idx = 0;
+        function changeInputSelect(idx){
+            select_input_idx = idx;
+            if(idx == 1){
+                select_input = $("#finalPrice1");
+                $("#cur1").addClass("cursor");
+                $("#cur2").removeClass("cursor");
+                $("#cur2").css("visibility","hidden");
+                $("#container_m_m_price").css("color","#01aaef");
+                $("#container_m_b_price").css("color","#000000");
+                $("#container_m_m_hint").css("color","#01aaef");
+                $("#container_m_b_hint").css("color","#000000");
+                
+                 $("#container_m_m").css("border","solid 2px #01aaef");
+                 $("#container_m_m").css("background","#FFFFFF");
+                 
+                $("#container_m_b").css("border","solid 2px #ccc");
+                 $("#container_m_b").css("background","rgba(202, 202, 202, 0.3)");
+                 
+            }else{
+                select_input = $("#finalPrice2");
+                 $("#cur2").addClass("cursor");
+                $("#cur1").removeClass("cursor");
+                $("#cur1").css("visibility","hidden");
+                $("#container_m_m_price").css("color","#000000");
+                $("#container_m_b_price").css("color","#01aaef");
+                $("#container_m_m_hint").css("color","#000000");
+                $("#container_m_b_hint").css("color","#01aaef");
+                 
+                 $("#container_m_b").css("border","solid 2px #01aaef");
+                 $("#container_m_b").css("background","#FFFFFF");
+                 
+                 $("#container_m_m").css("border"," solid 2px #ccc");
+                 $("#container_m_m").css("background","rgba(202, 202, 202, 0.3)");
+            
+            }
+        }
+
+        function time(){
+            var dis= $(".cursor").css("visibility");
+            if(dis == "hidden"){
+                $(".cursor").css("visibility","visible");
+            }else{
+                $(".cursor").css("visibility","hidden");
+            }
+        }
+        setInterval("time()", 600);
+
+        var mask_layer;
+        var content_layer;
+        var mUnifiedorderData;
+        
+        // $("#submit").click(function(event) {
+        //     doSpliteOrder();
+        // });
+
+
+        function isContains(str, substr) {
+            return str.indexOf(substr) >= 0;
+        }
+
+        function clickOne(num) {
+
+            var old_price = getCurValue();
+
+            //保证只有两位小数
+            if (isContains(old_price, ".")) {
+                var ps = old_price.split(".");
+                if (ps.length == 2 && ps[1].length >= 2) {
+                    return;
+                }
+            }
+
+            //保证小数点前面最多6位
+            if (!isContains(old_price, ".")) {
+                if (old_price.length >= 6) {
+                    return;
+                }
+            }
+
+            if (old_price == "0") {
+                old_price = "";
+            }
+            old_price = old_price + String(num); //给当前值追加字符
+            setValue(old_price); //刷新显示
+        }
+
+        function getCurValue2(idx) { //获取当前值
+            var ctrl;
+            if(idx == 1){
+                ctrl = $("#finalPrice1");
+            }else{
+                ctrl = $("#finalPrice2");
+            }
+            var old_price = ctrl.text();
+            var str = String(old_price); //获得当前显示数据
+            str = (str == "") ? "" : str;
+            return str;
+        }
+
+        function getCurValue() { //获取当前值
+            var old_price = select_input.text();
+            var str = String(old_price); //获得当前显示数据
+            str = (str == "") ? "" : str;
+            return str;
+        }
+
+        function setValue(str) {
+            select_input.html(str);
+            if (select_input_idx == 1){
+                $("#fee").html(str)
+            }
+        }
+
+        function del() { //退格
+            var old_price = getCurValue();
+            if (old_price.length > 0) {
+                old_price = old_price.substr(0, old_price.length - 1);
+            }
+            old_price = (!(old_price.length == 0) && (old_price != "0") && (old_price != "0.") && (old_price != "0.0")) ? old_price : "";
+            setValue(old_price);
+        }
+
+        function dot() {
+            var old_price = getCurValue();
+            if (isContains(old_price, ".")) {
+                return;
+            }
+            if (old_price.length == 0) {
+                old_price = "0";
+            }
+            old_price = old_price + ".";
+            setValue(old_price);
+        }
+
+        function checkPriceFormat(num) {
+            if (!isNaN(num) && num.length > 0) {
+                var dot = num.indexOf(".");
+                if (dot != -1) {
+                    var dotCnt = num.substring(dot + 1, num.length);
+                    if (dotCnt.length > 2) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+            return false;
+        }
+
+        function checkPriceFormat(num) {
+            if (!isNaN(num) && num.length > 0) {
+                var dot = num.indexOf(".");
+                if (dot != -1) {
+                    var dotCnt = num.substring(dot + 1, num.length);
+                    if (dotCnt.length > 2) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+
+
+  
+
+</html>
