@@ -1,0 +1,21 @@
+*{margin:0;padding:0;}
+body{margin:0;padding:0;font-size:12px;color:#000;}
+a{text-decoration:none;}
+a img{border:none;}
+
+.gundnb{width:192px;height:406px;margin:auto;margin-top:246px;overflow:hidden;}
+#gundnb2 a span{font-size:14px;color:#000;}
+.shengd01{width:100%;height:516px; background:url(../images/554xx01.jpg) no-repeat center center;}
+.shengd02{width:100%;height:546px; background:url(../images/554xx02.jpg) no-repeat center center;}
+.shengd03{width:100%;height:807px; background:url(../images/554xx03.jpg) no-repeat center center; position:relative; z-index:9;}
+<!--.zhongyinjx{width:1055px;height:230px;background:#0F0;position:absolute;top:184px;left:50%;margin-left:-510px;}-->
+.shengd04{width:100%;height:696px; background:url(../images/554xx04.jpg) no-repeat center center;position:relative;}
+.shengd05{width:100%;height:374px; background:url(../images/554xx05.jpg) no-repeat center center; position:relative;}
+.shengd06{width:100%;height:561px; background:url(../images/554xx06.jpg) no-repeat center center;}
+.gund{width:200px;height:656px; background:url(../images/sdlaor2.png) no-repeat;position:fixed;right:15px;top:80px; z-index:999;}
+.shengd03 .zhongjain{position:absolute;width:1010px;height:226px;left:50%;margin-left:-505px;top:184px;}
+.shengd04 .zhongjain2{position:absolute;width:1010px;height:117px;left:50%;margin-left:-505px;top:217px;}
+.shengd05 .zhongjain3{position:absolute;width:1010px;height:130px;left:50%;margin-left:-505px;top:204px;}
+.shengd03 p{height:35px;line-height:35px;font-size:16px;color:#c54542;font-weight:bold;}
+.shengd04 p{height:35px;line-height:35px;font-size:16px;color:#c54542;font-weight:bold;}
+.shengd05 p{height:35px;line-height:35px;font-size:16px;color:#c54542;font-weight:bold;}
