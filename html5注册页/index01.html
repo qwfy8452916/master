@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" src="js/rem.js"></script>
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/zepto-mvalidate.js"></script>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-mvalidate.js"></script>
+    <script src="js/jquery.cookie.js" ></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/validate.css">
+	<title>APP注册页</title>
+	<style type="text/css" media="screen">
+	     *{color: #fff;font-family: "平方";font-size:0.75rem;}
+	     section{width: 100%;height: 100%;overflow: hidden;}
+		.baologo{width: 100%;height: 9.15rem;background: #f15128;overflow: hidden;}
+		.baih{width:4.2rem;text-align: center;color: #fff;margin-top: 1.95rem;margin-left:4.5rem;display: inline-block;}
+		.baih img{width:4.2rem;}
+		.baih span{margin-top: 0.75rem;display: inline-block;}
+		.quanj{width:4.2rem;text-align: center;color: #fff;margin-top: 1.95rem;margin-left:1.225rem;display: inline-block;}
+		.quanj img{width:4.2rem;}
+		.quanj span{margin-top: 0.75rem;display: inline-block;}
+		
+		#dlbaok{position: relative;} 
+		#form1 .kuangz{height: 3.55rem;line-height: 3.55rem;vertical-align: middle;position: relative;}
+		#form1 .img01{width: 14.5px;vertical-align:middle;margin:0 0.7rem 0 1.05rem;vertical-align: middle;}
+		#form1 .img02{width:20px;margin:0 0.55rem 0 1.05rem;vertical-align: middle;}
+		#form1 .shuru1{outline: none;border: 0;width: 80%;color: #bebebe;vertical-align: middle;}
+		#form1 .shuru2{outline: none;border: 0;min-width: 50%;color: #bebebe;vertical-align: middle;}
+		#form1 .yzm{padding: 0.625rem 0.9rem;background: #fff;color: #e83b27;border: 1px solid #e83b27;border-radius: 5px;vertical-align: middle;position: absolute;right:1rem;top:50%;-webkit-transform: translate(0,-50%);transform: translate(0,-50%);outline:none;}
+		#form1 .xian{border-bottom: 1px solid #e6e6e6;width: 95%;margin: 
+			0 auto;}
+		.dee button{width:90%;height: 2.625rem;line-height:2.625rem;background: #e73828;margin:0 auto;text-align: center;display:block;outline: none;border:none;border-radius: 5px;margin-top: 1.925rem;margin-left: 5%;}
+		.dee .xuaz{margin-top: 1rem;text-align: center;vertical-align: middle;}
+		.dee .xuaz input{width:0.725rem;height:0.725rem;border-radius: 3px;vertical-align: middle;}
+		.dee .xuaz span{color: #303030;font-size:0.575rem;vertical-align: middle;}
+		.dee .xuaz span a{text-decoration: none;color: #095aee;}
+
+
+	</style>
+</head>
+<body>
+<section>
+		<div class="baologo">
+				<li class="baih">
+					<img src="images/log01.png" alt="">
+					<span>白花花</span>
+				</li>
+				<li class="quanj">
+					<img src="images/log02.png" alt="">
+					<span>全家</span>
+				</li>
+			</ul>
+		</div>
+		<div id="dlbaok">
+			<form id="form1">
+			<div class="kuangz">			
+			   <img class="img01" src="images/sjbj.png">
+			   <input class="shuru1 field-text" type="text" placeholder="请输入手机号" data-required="true" id="telphone" data-pattern="^0?1[3|4|5|8][0-9]\d{8}$" data-descriptions="telphone">
+			   <div class="xian"></div>
+			   </div>
+			   <div class="kuangz">	
+			   <img class="img02" src="images/youjian.png">
+			   <input class="shuru2 field-text" type="text" placeholder="请输入验证码" id="phoneyzm" data-required="true" data-descriptions="phoneyzm" data-conditional="phoneyzm">
+			   <input class="yzm" type="button" value="获取" id="btn-3"> 
+			   <div class="xian"></div>
+			   </div>
+		</div>
+		<div class="dee">
+			<button class="zbtn zbtn zbtn-primary zbtn-lg">登录</button>
+			<div class="xuaz">
+				<input type="checkbox" data-required="true" name="goux" data-descriptions="goux" class="field-radio  zicon">
+				<span>勾选即同意<a href="#">《xxxxxx服务协议》</a></span>
+			</div>
+		</div>
+		</form>
+		</section>
+
+	
+
+		 <script type="text/javascript">
+    $(function() {
+
+        var phoneYZM;
+        $("#btn-3").on("click", function() {
+            var phone = $.trim($("#telphone").val());
+            if (!phone) {
+               $.mvalidateTip("你输入的手机号！");
+                return;
+            } else if (!/^0?1[3|4|5|8]\d{9}$/.test(phone)) {
+                $.mvalidateTip("你输入的手机号码不正确！");
+                return;
+            }
+            $.ajax({
+                url: "js/phoneCode.php",
+                type: "post",
+                async: false,
+                data: {
+                    phonenumber: phone
+                },
+                success: function(data) {
+                    if (!!data) {
+                        phoneYZM = data;
+                        alert(phoneYZM)
+
+                      
+                    }
+                }
+            });
+
+        });
+        $("#form1").mvalidate({
+            type: 1,
+            onKeyup: true,
+            sendForm: false,
+            firstInvalidFocus: false,
+            valid: function(event, options) {
+                //点击提交按钮时,表单通过验证触发函数
+                alert("验证通过！接下来可以做你想做的事情啦！");
+                event.preventDefault();
+            },
+            conditional: {
+                phoneyzm: function() {
+                    return $("#phoneyzm").val() == phoneYZM;
+                }
+            },
+            descriptions: {
+                username: {
+                    required: '请输入用户名'
+                },
+                telphone: {
+                    required: '请输入手机号码',
+                    pattern: '你输入的手机格式不正确'
+                },
+                phoneyzm: {
+                    required: '请输入手机验证码',
+                    conditional: '您输入的手机短信验证码不正确'
+                },
+                goux: {
+                    required: '请阅读同意协议'
+                }
+            }
+        });
+    })
+    </script>
+
+
+
+
+
+</body>
+</html>
