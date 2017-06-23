@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script src="js/mock.js"></script>
+	<script src="js/list.js"></script>
+    <script src="js/axios.min.js"></script>  <!-- axios引用 -->
+    <script src="http://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.min.js"></script>  <!-- $http引用 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.4.4/babel.min.js"></script> <!-- es6引用 -->
+      <script src="js/vue.js"></script>
+	<!-- <script src="js/main.js"></script> -->
+</head>
+<body>
+<div id="app">
+	<div class="tt">qqq</div>
+	<div class="tt">qqq</div>
+	<div class="tt" @click="getcolor">qqq</div>
+	<div>{{kk}}</div>
+</div>
+
+<script>
+    
+
+    var yy=new Vue({
+        el: '#app',
+        data:{
+            kk:'',
+        },
+    
+       methods:{
+                getcolor:function(){
+                    axios.get('/list').then(res => {
+                        // var aa=JSON.parse(res);
+                        var aa=res
+                            console.log(aa);
+                            console.log(aa.data.name);
+                            this.kk=aa;
+
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                },
+
+            // getcolor:function(){
+            //         axios.get('/list').then(
+                      
+            //          function(res){
+            //                 // var yy=JSON.parse(res);
+            //                 var aa=JSON.parse(res.bodyText);
+            //                 console.log(aa);
+            //                 console.log(aa.message);
+            //                 this.kk=aa.message;
+            //             } 
+
+
+            //             ).catch(error => {
+            //             console.log(error);
+            //         });
+            //     },
+            
+
+
+
+               // ready: function() {
+               //      this.$http.get('/list').then(
+               //          function(res){
+               //              // var yy=JSON.parse(res);
+               //              var aa=JSON.parse(res.bodyText);
+               //              console.log(aa);
+               //              console.log(aa.message);
+               //              this.kk=aa.message;
+               //          } 
+               //          )
+               //  }
+
+
+     }
+
+    })
+
+
+//     $.ajax({
+//     url: '/list',
+//     type: 'GET',
+//     dataType: 'json',
+//     success: function(data) {
+//         // fetchUserList(data);
+//         console.log(data);
+//         $('.tt').html(data.text);
+//         yy.kk=data;
+//     }
+// });
+    yy.getcolor();
+
+        
+    </script>
+
+</body>
+</html>
