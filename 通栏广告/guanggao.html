@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>通栏广告</title>
+        <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+        <style>
+        /*广告banner*/
+        .luara-top { position: relative; padding: 0; overflow: hidden; }
+        .luara-top ul { position: relative; padding: inherit; margin: 0; }
+        .luara-top ul li { padding: inherit; margin: inherit; list-style: none; }
+        .luara-top ul li img { width: inherit; height: inherit; }
+        </style>
+    </head>
+    <body>  
+        <div class="wrap mt-50">
+            <div class="adbanner">
+                <ul>
+                    <li>
+                        <a rel="nofollow" href="http://sh.qizuang.com/company_home/311465" target="_blank">
+                            <img src="http://staticqn.qizuang.com/bigadv/20170629/59545b90c1b3a-b.jpg" width="1210" height="110" alt="上海红波装饰" />
+                        </a>
+                    </li><li>
+                    <a rel="nofollow" href="http://bengb.qizuang.com/zhaobiao/" target="_blank">
+                        <img src="http://staticqn.qizuang.com/bigadv/20160516/57397b4996338-b.jpg" width="1210" height="110" alt="齐装网 - 行业领先的装修平台" />
+                    </a>
+                </li>            
+                </ul> 
+            </div>
+        </div>
+        <script src="js/jquery.luara.min.js"></script>
+        <script type="text/javascript">
+            $(".adbanner").luara({
+            width: "1210",
+            height: "110",
+            interval: 2000,
+            selected: "seleted",
+            deriction: "top"
+            });
+            $(".adbanner2").luara({
+            width: "1210",
+            height: "110",
+            interval: 2000,
+            selected: "seleted",
+            deriction: "top"
+            });
+        
+        </script>
+    </body>
+</html>
