@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标识权限管理</title>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<style type="text/css" media="screen">
+		*{margin:0 auto;padding: 0;font-size: 14px;color: #333;font-family: "微软雅黑";box-sizing: border-box;}	
+      ul li{list-style: none;height:32px;line-height: 32px;text-align: left;cursor: pointer;padding-left: 20px;}
+      .wrap{margin-top: 50px;margin-left: 50px;}
+      .bsf_left{width: 227px;height:387px;border: 1px solid #c9c9c9;float: left;padding-top: 16px;box-sizing: border-box;display: inline-block;margin-right: 30px;}
+      .bsf_right{width: 1027px;height: 387px;box-sizing: border-box;}
+      .bsf_right .rt_top{width: 100%;height: 184px;border: 1px solid #c9c9c9;}
+       .bsf_right .rt_bottom{width: 100%;height: 184px;border: 1px solid #c9c9c9;margin-top: 20px;}
+       .jiaod{font-size: 18px;color: #000;font-weight: bolder;}
+       input[type="checkbox"]{vertical-align: middle;margin-right: 10px;cursor: pointer;}
+      .active{color: #fff;background: #169bd5;}
+      .anniu{width: 100%;height: auto;clear: both;margin-top: 20px;}
+      .anniu button{width: 103px;height: 32px;line-height: 32px;border: 0;background: #169bd5;color: #fff;border-radius: 5px;
+      	float: left;outline: none;}
+      	.anniu .btnan1{margin-right: 155px;}
+      	.modal-dialog{margin-top: 90px !important;width: 816px !important;height: 654px !important;}
+      	.modal-content{height: 100%;position: relative;}
+      	.modal-title span{display: inline-block;padding: 2px;}
+      	.modal-title .xinadd{margin-left: 60px;}
+      	.modal-content table .delsc{color:red;margin-right: 30px;display: inline-block;cursor: pointer;}
+      	.modal-content table .lwtis{color:red;margin-right: 30px;display: inline-block;cursor: pointer;}
+      	.modal-content table .edibj{color:#50a1d6;display: inline-block;cursor: pointer;}
+      	.modal-content .tanchuan2{width: 526px;height:300px;border: 1px solid #bcbcbc;position: absolute;z-index: 999;
+      		display: inline-block;margin:auto;left: 0;top: 0;right: 0;bottom: 0; 
+      		-webkit-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           -moz-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           box-shadow:0 0 10px rgba(66, 65, 65, .5);background: #fff; display: none;}
+           .modal-content .tanchuan2 h4{text-align: center;font-size: 16px;}
+           .tanchuan2 .form-horizontal{margin-top: 40px;}
+           .tanchuan2 .zuopian{margin-left: 15px;}
+           .tanchuan2 .aniubq{float: right !important;text-align: right;}
+           .tanchuan2 .quxiao{margin-right: 78px;margin-left: 26px;}
+           .modal-content .tanchuan3{width: 526px;height:300px;border: 1px solid #bcbcbc;position: absolute;z-index: 999;
+      		display: inline-block;margin:auto;left: 0;top: 0;right: 0;bottom: 0; 
+      		-webkit-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           -moz-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           box-shadow:0 0 10px rgba(66, 65, 65, .5);background: #fff; display: none;}
+           .modal-content .tanchuan3 h4{text-align: center;font-size: 16px;}
+           .tanchuan3 .form-horizontal{margin-top: 40px;}
+           .tanchuan3 .zuopian{margin-left: 15px;}
+           .tanchuan3 .aniubq{float: right !important;text-align: right;}
+           .tanchuan3 .quxiao{margin-right: 78px;margin-left: 26px;}
+           .dellts{width: 440px;height: 210px;margin:auto;position: absolute;top: 0;right: 0;bottom: 0;left: 0;border: 1px solid #bcbcbc;
+           z-index: 999;
+      		display: inline-block;margin:auto;left: 0;top: 0;right: 0;bottom: 0; 
+      		-webkit-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           -moz-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           box-shadow:0 0 10px rgba(66, 65, 65, .5);background: #fff;display: none;}
+           .dellts .tbhead{height: 30px;line-height: 30px;margin-top: 10px;}
+           .dellts .tbhead .shancts{float: left;margin-left: 20px;font-size: 18px;font-weight: border;color: #333;}
+           .dellts .tbhead .guanbix{float: right;margin-right: 20px;width: 35px;height: 30px;text-align: center;cursor: pointer;
+           	font-size: 18px;font-weight: border;color: #999;}
+           	.dellts .tishineir{width: 90%;margin-left:5%;display: inline-block;margin-top: 30px;}
+           	.dellts .aniubq{text-align: right;margin-top: 15px;}
+           	.dellts .aniubq .quxiao{margin-right: 20px;margin-left: 26px;}
+           	.dellts2{width: 440px;height: 210px;margin:auto;position: absolute;top: 0;right: 0;bottom: 0;left: 0;border: 1px solid #bcbcbc;
+           z-index: 999;
+      		display: inline-block;margin:auto;left: 0;top: 0;right: 0;bottom: 0; 
+      		-webkit-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           -moz-box-shadow:0 0 10px rgba(66, 65, 65, .5);  
+           box-shadow:0 0 10px rgba(66, 65, 65, .5);background: #fff;display: none;}
+           	.dellts2 .tbhead{height: 30px;line-height: 30px;margin-top: 10px;}
+           .dellts2 .tbhead .shancts{float: left;margin-left: 20px;font-size: 18px;font-weight: border;color: #333;}
+           .dellts2 .tbhead .guanbix{float: right;margin-right: 20px;width: 35px;height: 30px;text-align: center;cursor: pointer;
+           	font-size: 18px;font-weight: border;color: #999;}
+           	.dellts2 .tishineir{width: 90%;margin-left:5%;display: inline-block;margin-top: 30px;}
+           	.dellts2 .aniubq{text-align: right;margin-top: 15px;}
+           	.dellts2 .aniubq .quxiao{margin-right: 20px;margin-left: 26px;}
+	</style>
+	
+</head>
+<body>
+	<div class="wrap">
+		<ul class="bsf_left">
+			<li class="active">推广部</li>
+			<li>推广部自媒体组</li>
+			<li>推广部视频组</li>
+			<li>流量部</li>
+			<li>总裁办</li>
+			<li>产品部</li>
+			<li>渠道部</li>
+		</ul>
+			<div class="bsf_right">
+			   <ul class="rt_top">
+			    <li class="jiaod"><input name="ifAll" id="ifAll" class="chk" type="checkbox">流量部</li>
+			   	<li><input type="checkbox" name="selectFlag" />主站编辑</li>
+			   	<li><input type="checkbox" name="selectFlag"/>分站编辑</li>
+			   	<li><input type="checkbox" name="selectFlag"/>美图编辑</li>
+			   	<li><input type="checkbox" name="selectFlag"/>...</li>
+			   </ul>
+			   <ul class="rt_bottom">
+			    <li class="jiaod"><input id="ifAll2" type="checkbox"/>推广部</li>
+			   	<li><input type="checkbox" name="selectFlag2"/>推广主管</li>
+			   	<li><input type="checkbox" name="selectFlag2"/>媒介推广</li>
+			   	<li><input type="checkbox" name="selectFlag2"/>主持人</li>
+			   	<li><input type="checkbox" name="selectFlag2"/>...</li>
+			   </ul>
+		    </div>
+		    <div class="anniu">
+                <button  class="btnan1" data-toggle="modal" data-target="#myModal">部门管理</button>
+                <button>保存</button>
+            </div>
+	</div>
+
+
+         <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><span>标识部门列表</span><span class="btn btn-info xinadd">+新增标识部门</span></h4>
+      </div>
+        <table class="table">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>标识部门</th>
+          <th>所属部门</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>流量部</td>
+          <td>流量部</td>
+          <td><span class="delsc">删除</span><span class="edibj">编辑</span></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>推广部</td>
+          <td>推广部</td>
+           <td><span class="delsc">删除</span><span class="edibj">编辑</span></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>推广部自媒体组</td>
+          <td>推广部</td>
+           <td><span class="delsc">删除</span><span class="edibj">编辑</span></td>
+        </tr>
+         <tr>
+          <th scope="row">4</th>
+          <td>推广部自视频组</td>
+          <td>推广部</td>
+           <td><span class="delsc">删除</span><span class="edibj">编辑</span></td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>产品部</td>
+          <td>无</td>
+           <td><span class="lwtis">删除</span><span class="edibj">编辑</span></td>
+        </tr>
+      </tbody>
+    </table>
+        <div class="tanchuan2">
+         <h4>新增标识部门</h4>
+         <form class="form-horizontal">
+         <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label zuopian">输入名称：</label>
+    <div class="col-sm-7">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="输入标识部门名称">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label zuopian">所属部门：</label>
+    <div class="col-sm-7">
+      <select class="form-control">
+          <option>请选择</option>
+          <option>总裁办</option>
+          <option>流量部</option>
+          <option>推广部</option>
+</select>
+    </div>
+  </div>
+  <div class="form-group">
+     <div class="col-sm-7 aniubq">
+      <button type="button" class="btn btn-info baocun">保存</button>
+      <button type="button" class="btn btn-default quxiao">取消</button>
+       </div>
+  </div>
+  </form>
+     </div>
+
+     <div class="tanchuan3">
+         <h4>编辑标识部门</h4>
+         <form class="form-horizontal">
+         <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label zuopian">输入名称：</label>
+    <div class="col-sm-7">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="输入标识部门名称">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label zuopian">所属部门：</label>
+    <div class="col-sm-7">
+      <select class="form-control">
+          <option>请选择</option>
+          <option>总裁办</option>
+          <option>流量部</option>
+          <option>推广部</option>
+</select>
+    </div>
+  </div>
+  <div class="form-group">
+     <div class="col-sm-7 aniubq">
+      <button type="button" class="btn btn-info baocun">保存</button>
+      <button type="button" class="btn btn-default quxiao">取消</button>
+       </div>
+  </div>
+  </form>
+     </div>
+
+     <div class="dellts">
+         <div class="tbhead">
+            <span class="shancts">删除提示</span>
+            <span class="guanbix">X</span> 
+         </div>
+         <div class="tishineir">当前标识部门有标识来源渠道，删除后会影响到数据统计
+            请将当前部门的标识重新归类到新的标识部门后再进行删除操作！</div>
+
+     <div class="col-sm-12 aniubq">
+      <button type="button" class="btn btn-info baocun">保存</button>
+      <button type="button" class="btn btn-default quxiao">取消</button>
+       </div>
+
+     </div>
+      <div class="dellts2">
+         <div class="tbhead">
+            <span class="shancts">删除提示</span>
+            <span class="guanbix">X</span> 
+         </div>
+         <div class="tishineir">确定删除当前标识部门？</div>
+
+     <div class="col-sm-12 aniubq">
+      <button type="button" class="btn btn-info baocun">保存</button>
+      <button type="button" class="btn btn-default quxiao lwqx">取消</button>
+       </div>
+
+     </div>
+
+    </div><!-- /.modal-content -->
+
+    
+
+
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script>
+		$(function(){
+			$('.bsf_left li').click(function(){
+				if($(this).hasClass('active')){
+				
+				}else{
+					$(this).addClass('active');
+					$(this).siblings().removeClass('active');
+				}
+			});
+	
+          
+		$('#ifAll').click(function(){
+			for (var i = 0; i < document.getElementsByName("selectFlag").length; i++) {
+             document.getElementsByName("selectFlag")[i].checked = document.getElementById("ifAll").checked;
+                             }
+		})
+         
+         $('#ifAll2').click(function(){
+			for (var i = 0; i < document.getElementsByName("selectFlag2").length; i++) {
+             document.getElementsByName("selectFlag2")[i].checked = document.getElementById("ifAll2").checked;
+                             }
+		})
+
+         //  $('button').click(function(){
+         //     clearTimeout(iProgress);
+         // })
+
+
+         $('#myModal').on('shown.bs.modal', function () {
+           $('#myInput').focus()
+          })
+
+         $(".xinadd").click(function(){  
+            $('.tanchuan2').show();
+                   }); 
+         $(".tanchuan2 .quxiao").click(function(){  
+            $('.tanchuan2').hide();
+                   }); 
+         $(".tanchuan2 .baocun").click(function(){  
+            $('.tanchuan2').hide();
+                   }); 
+          $(".edibj").click(function(){  
+            $('.tanchuan3').show();
+                   }); 
+          $(".tanchuan3 .quxiao").click(function(){  
+            $('.tanchuan3').hide();
+                   }); 
+          $(".tanchuan3 .baocun").click(function(){  
+            $('.tanchuan3').hide();
+                   }); 
+          $(".delsc").click(function(){  
+            $('.dellts').show();
+                   }); 
+          $(".lwtis").click(function(){  
+            $('.dellts2').show();
+                   }); 
+          $(".dellts .guanbix").click(function(){  
+            $('.dellts').hide();
+                   }); 
+          $(".dellts .quxiao").click(function(){  
+            $('.dellts').hide();
+                   }); 
+          $(".dellts .baocun").click(function(){  
+            $('.dellts').hide();
+                   }); 
+           $(".dellts2 .lwqx").click(function(){  
+            $('.dellts2').hide();
+                   }); 
+            $(".dellts2 .guanbix").click(function(){  
+            $('.dellts2').hide();
+                   }); 
+            $(".dellts2 .baocun").click(function(){  
+            $('.dellts2').hide();
+                   }); 
+
+
+
+
+
+		})
+		// function checkAll() {
+  //            for (var i = 0; i < document.getElementsByName("selectFlag").length; i++) {
+  //            document.getElementsByName("selectFlag")[i].checked = document.getElementById("ifAll").checked;
+  //                            }
+  //                           }
+	</script>
+</body>
+</html>
