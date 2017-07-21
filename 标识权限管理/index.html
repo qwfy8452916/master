@@ -94,17 +94,17 @@
 			<div class="bsf_right">
 			   <ul class="rt_top">
 			    <li class="jiaod"><input name="ifAll" id="ifAll" class="chk" type="checkbox">流量部</li>
-			   	<li><input type="checkbox" name="selectFlag" />主站编辑</li>
-			   	<li><input type="checkbox" name="selectFlag"/>分站编辑</li>
-			   	<li><input type="checkbox" name="selectFlag"/>美图编辑</li>
-			   	<li><input type="checkbox" name="selectFlag"/>...</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag" />主站编辑</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag"/>分站编辑</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag"/>美图编辑</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag"/>...</li>
 			   </ul>
 			   <ul class="rt_bottom">
 			    <li class="jiaod"><input id="ifAll2" type="checkbox"/>推广部</li>
-			   	<li><input type="checkbox" name="selectFlag2"/>推广主管</li>
-			   	<li><input type="checkbox" name="selectFlag2"/>媒介推广</li>
-			   	<li><input type="checkbox" name="selectFlag2"/>主持人</li>
-			   	<li><input type="checkbox" name="selectFlag2"/>...</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag2"/>推广主管</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag2"/>媒介推广</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag2"/>主持人</li>
+			   	<li><input class="xuanze" type="checkbox" name="selectFlag2"/>...</li>
 			   </ul>
 		    </div>
 		    <div class="anniu">
@@ -263,6 +263,74 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script>
 		$(function(){
+
+
+
+ $(function () {
+            // 获取本地存储
+            if(localStorage.getItem('aId')){
+                $('.bsf_left').find('a').each(function(index, el) {
+                    if($(this).attr('id') == localStorage.getItem('aId')){
+                        $(this).find('li').addClass('active');
+                    }
+                });
+            }
+
+            $('.bsf_left').on('click','li',function () {
+                if ($(this).hasClass('active')) {
+
+                } else {
+                    $(this).addClass('active');
+                    $(this).siblings().removeClass('active');
+                }
+                // 设置本地浏览器存储
+                localStorage.aId=$(this).parent().attr('id');
+                
+            });
+
+            /* var xz=$('.a1 .xuanzhe');
+            $('.a1 #ifAll').click(function () {
+
+                for (var i = 0; i < xz.length; i++) {
+                   xz[i].checked = $('.a1 #ifAll').checked;
+                    console.log(0)
+                }
+            })*/
+
+
+        $('.a1').parent().find('ul').each(function(index, el) {
+
+            $(el).find('li').eq(0).find('input').on('click', function(){
+
+                if($(this).is(':checked')){
+
+                    $(this).parent().parent().find('li').each(function(index, el) {
+                        
+                        $(el).find('input').prop('checked',true)
+                    });
+                }else{
+
+                    $(this).parent().parent().find('li').each(function(index, el) {
+                        
+                        $(el).find('input').prop('checked',false)
+                    });
+                }
+            })
+        });
+            
+
+            // $('#ifAll2').click(function () {
+            //     for (var i = 0; i < document.getElementById("xuanzhe").length; i++) {
+            //          document.getElementById("xuanzhe")[i].checked = document.getElementById("ifAll2").checked;
+            //     }
+            // })
+
+
+
+
+
+
+      
 			$('.bsf_left li').click(function(){
 				if($(this).hasClass('active')){
 				
@@ -272,16 +340,17 @@
 				}
 			});
 	
-          
+          var xz=$('.rt_top .xuanze');
+          // var xz2=$('.xuanze2');
 		$('#ifAll').click(function(){
-			for (var i = 0; i < document.getElementsByName("selectFlag").length; i++) {
-             document.getElementsByName("selectFlag")[i].checked = document.getElementById("ifAll").checked;
+			for (var i = 0; i < xz.length; i++) {
+             xz[i].checked = document.getElementById("ifAll").checked;
                              }
 		})
          
          $('#ifAll2').click(function(){
-			for (var i = 0; i < document.getElementsByName("selectFlag2").length; i++) {
-             document.getElementsByName("selectFlag2")[i].checked = document.getElementById("ifAll2").checked;
+			for (var i = 0; i < xz.length; i++) {
+             xz[i].checked = document.getElementById("ifAll2").checked;
                              }
 		})
 

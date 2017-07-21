@@ -1,0 +1,11 @@
+        body{background: #f5f5f5 !important;}
+		.zhuagnxiuxg{width: 100%;height: auto;background: #fff;margin-top: 0.2rem;overflow: hidden;}
+		.zhuagnxiuxg ul{width: 96%;margin:0 auto;display: block;height: auto;overflow: hidden;margin-top: 0.2rem;}
+		.zhuagnxiuxg ul li{width: 49%;height: auto;float: left;}
+		.zhuagnxiuxg ul li.zxfgjj{margin-right: 2%;margin-bottom: 0.3rem;}
+		.zhuagnxiuxg ul li.zxfgjj02{margin-bottom: 0.3rem;}
+		.zhuagnxiuxg ul li p{width: 100%;position:relative;}
+		.zhuagnxiuxg ul li p .qishutime{position: absolute;font-size: 0.2rem;bottom: 0;right: 0;background: #000;opacity:0.6;color: #fff;display: inline-block;width: 1.6rem;height: 0.36rem;line-height: 0.36rem;text-align: center;}
+		.zhuagnxiuxg ul li p img{width: 100%;}
+		.zhuagnxiuxg ul li .xdjyfg{font-size: 0.26rem;margin-top: 0.16rem;margin-bottom: 0.12rem;overflow:hidden;height: 0.3rem;line-height: 0.3rem;color: #333;}
+		.zhuagnxiuxg ul li .xdjyfg_xq{font-size: 0.22rem;overflow:hidden;color: #999;height: 0.3rem;}
