@@ -1,0 +1,56 @@
+       *{font-size: 0.26rem;font-family: "PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
+	    body{background: #f5f5f5 !important;color: #333;}
+	    ::-moz-placeholder { color: #848486; }
+        ::-webkit-input-placeholder { color:#848486; }
+        :-ms-input-placeholder { color:#848486; }
+	    .gl-slide{margin-bottom: 0 !important;height:auto;margin-bottom:0.8em;}
+	    .swiper-slide img{width: 100%;}
+	    .active{color: #ff5659;border-bottom: 2px solid #ff5659 !important;}
+	    .option-tab{background: #fff;padding-bottom: 0.4rem;}
+		.tab-tit{margin-top: 0.3rem;overflow: hidden;width: 96%;margin: 0 auto;height: 0.65rem;}
+		.hidetab{display: none;}
+		/*.tab-tit ul{width: 95%;margin: 0 auto;display:block;}*/
+		.tab-tit ul li{float: left;font-size: 0.3rem;height: 0.65rem;line-height: 0.65rem;text-align: center;width: 33.3%;box-sizing: border-box;border-bottom: 1px solid #ebebeb;}
+		.tab-main{width: 100%;height:1.9rem;overflow: hidden; }
+		.tab-main ul{width: 96%;margin: 0 auto;height: 100%;}
+		.tab-main ul li{float: left;width: 25%;text-align: center;margin-top: 0.5rem;}
+		.tab-main ul li .bjtplogo{text-align:center;width: 0.7rem;height: 0.7rem;line-height:0.7rem;background: url(../images/bjlogo.png) no-repeat;background-size:100%;margin: 0 auto;vertical-align: middle;margin-bottom: 0.3rem;}
+		.tab-main ul li .tpimg{background-position:0 0;}
+		.tab-main ul li .tpimg2{background-position:0 -0.7rem;}
+		.tab-main ul li .tpimg3{background-position:0 -1.4rem;}
+		.tab-main ul li .tpimg4{background-position:0 -2.1rem;}
+		.tab-main ul li .tpimg5{background-position:0 -2.8rem;}
+		.tab-main ul li .tpimg6{background-position:0 -3.6rem;}
+		.tab-main ul li .tpimg7{background-position:0 -4.3rem;}
+		.tab-main ul li .tpimg8{background-position:0 -5rem;}
+		.tab-main ul li .tpimg9{background-position:0 -5.7rem;}
+		.tab-main ul li .tpimg10{background-position:0 -6.3rem;}
+		.tab-main ul li .tpimg11{background-position:0 -7rem;}
+		.tab-main ul li .tpimg12{background-position:0 -7.7rem;}
+		.option-tab .jrzxlc{text-align: center;margin-top: 0.3rem;font-size: 0.34rem;}
+		.option-tab .jrzxlc a{font-size:0.34rem;height:0.65rem;line-height: 0.65rem;}
+		.option-tab .jrzxlc a span{font-size: 0.5rem;color: red;vertical-align: middle;position: relative;top:-0.05rem;margin-left: 0.05rem;}
+		.tianxiezl{width: 100%;height: 6.5rem;background: #fff;margin-top: 0.2rem;}
+		.tianxiezl .cesjr{font-size: 0.4rem;text-align: center;height: 1rem;line-height: 1rem;}
+		.tianxiezl .biaodanxx{width: 96%;margin: 0 auto;height: auto;}
+		.tianxiezl ul li{overflow: hidden;}
+		.tianxiezl ul li .m-row-int1{text-indent:0.15rem;font-size: 0.3rem;color: #848486;width: 100%;height: 0.88rem;line-height: 0.88rem;box-sizing: border-box;border: 1px solid #dedee0;margin-bottom: 0.2rem;outline: none;}
+		.tianxiezl ul li .m-row-int1 option{font-size: 0.3rem;color: #848486;}
+		.tianxiezl ul li input{width: 100%;height: 0.88rem;line-height: 0.88rem;box-sizing: border-box;border: 1px solid #dedee0;margin-bottom: 0.2rem;outline: none;text-indent:0.2rem;font-size: 0.3rem;}
+		.c-zb-city {margin-bottom: 0.2rem;outline:none;box-sizing: border-box;height: 0.88rem;width: 100%;text-align: left;border: 1px solid #ddd;background: #fff;font-size: 0.3rem;color: #848486;}
+		.tianxiezl .anniu{width: 96%;margin-left:2%;height: 0.88rem;line-height: 0.88rem;box-sizing: border-box;border: 1px solid #dedee0;background: #ff5659;color: #fff;cursor: pointer;outline: none;font-size: 0.34rem;}
+		.tianxiezl .cesjr span{font-size: 0.3rem;color: #ff5659;}
+		.zhuagnxiuxg{width: 100%;height: auto;background: #fff;margin-top: 0.2rem;}
+		.zhuagnxiuxg .zxstyle{width: 96%;margin: 0 auto;height: 1rem;line-height: 1rem;}
+		.zhuagnxiuxg .zxstyle span{float: left;font-size: 0.34rem;}
+		.zhuagnxiuxg .zxstyle a{float: right;font-size: 0.26rem;}
+		.zhuagnxiuxg ul{width: 96%;margin:0 auto;display: block;height: auto;overflow: hidden;}
+		.zhuagnxiuxg ul li{width: 49%;height: auto;float: left;}
+		.zhuagnxiuxg ul li.zxfgjj{margin-right: 2%;margin-bottom: 0.3rem;}
+		.zhuagnxiuxg ul li.zxfgjj02{margin-bottom: 0.3rem;}
+		.zhuagnxiuxg ul li p{width: 100%;}
+		.zhuagnxiuxg ul li p img{width: 100%;}
+		.zhuagnxiuxg ul li .xdjyfg{font-size: 0.28rem;margin-top: 0.16rem;margin-bottom: 0.12rem;overflow:hidden;height: 0.3rem;line-height: 0.4rem;
+			color: #333;}
+		.zhuagnxiuxg ul li .xdjyfg_xq{font-size: 0.24rem;overflow:hidden;color: #999;height: 0.3rem;}
+	
