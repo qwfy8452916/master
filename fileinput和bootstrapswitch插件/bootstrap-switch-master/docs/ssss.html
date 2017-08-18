@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+<!--   <meta http-equiv="x-ua-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="author" content="Mattia Larentis, Emanuele Marchi and Peter Stein" />cription" content="Tu
+  <!-- <title>Bootstrap Switch &middot; Turn checkboxes and radio buttons into toggle switches</title> -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<!--   <link href="css/highlight.css" rel="stylesheet" /> -->
+  <link href="https://unpkg.com/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet" />
+<!--   <link href="https://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" /> -->
+ </head>
+ <body>
+  
+
+  <!--               <div class="col-sm-6 col-lg-4">
+      <h2 class="h4">Size</h2>
+      <p><input id="switch-size" type="checkbox" checked="checked" data-size="mini" /></p>
+      <div class="btn-group">
+       <button type="button" data-switch-set="size" data-switch-value="mini" class="btn btn-default">Mini</button>
+       <button type="button" data-switch-set="size" data-switch-value="small" class="btn btn-default">Small</button>
+       <button type="button" data-switch-set="size" data-switch-value="normal" class="btn btn-default">Normal</button>
+       <button type="button" data-switch-set="size" data-switch-value="large" class="btn btn-default">Large</button>
+       <button type="button" data-switch-get="size" class="btn btn-default">Get</button>
+      </div>
+     </div> -->
+
+
+
+<!-- <input id="push" type="checkbox"/>  -->
+
+<input  type="checkbox" name="my-checkbox" checked>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/highlight.js"></script>
+  <script src="https://unpkg.com/bootstrap-switch"></script>
+  <!-- <script src="js/main.js"></script> -->
+  <script>
+      $(document).ready(function(){  
+
+
+      $('input[name="my-checkbox"]').bootstrapSwitch('size', 'mini');
+
+     });  
+  </script>
+ </body>
+</html>
