@@ -1,0 +1,51 @@
+html{font-size: 100px;}
+body{font-size: 0.14rem /*实际相当于14px*/}
+
+/* iphone 6 */
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html{font-size: 117.1875px;}
+}
+/* iphone6 plus */
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html{font-size: 129.375px;}
+}
+
+*{margin:0px;padding:0px;}
+.body-box .imgbox{ width:100%; position: relative;height: auto;}
+.body-box div img{width:100%; display: block;}
+.form-box{position: absolute;z-index: 9;left:0px; width:100%;}
+.center-box{margin:0 auto;width:2.5rem;height: 100%;padding-top: 0.15rem;background: white;padding-bottom: 0.15rem;}
+
+.center-box .title{font-size: 1em; text-align: center;}
+.center-box p{font-size: 14px; text-align: center; line-height: 55px;}
+.input-container{width:90%;margin:0 auto;}
+.center-box input[type="text"],.center-box input[type="tel"]{
+    padding-left: 10px; font-size: 0.7em;
+    -webkit-appearance: none; width:95%; height: 100%; border:none;
+
+}
+.center-box  select{width:49%; height:0.25rem; margin-bottom: 0.12rem;  color:#757575; padding-left:8px; font-size: 0.9rem}
+.center-box  select:nth-child(1){float: left;}
+.center-box  select:nth-child(2){float: right;}
+.center-box input[type="submit"]{width:100%; height:0.255rem; background-color:#FF5151; border:none; color: white;border-radius:3px; -webkit-appearance: none;
+}
+.c-zb-city-qixi{ padding-left: 5px; box-sizing: border-box; height:0.276rem; width: 100%; text-align: left;  background: #fff; font-size:0.7em;color: #a9a9a9;margin-bottom: 1em;border:1px solid #A9A9A9;}
+
+@media (min-device-width : 375px) and (max-device-width : 413px){
+    .form-box{
+        top:1.75rem;
+    }
+}
+@media (min-device-width : 320px) and (max-device-width : 374px){
+    .form-box{
+        top:1.7rem;
+    }
+}
+@media (min-device-width : 414px) and (max-device-width : 750px){
+    .form-box{
+        top:1.8rem;
+    }
+}
+.input_box1{
+    width:99%; height:0.25rem; margin-bottom: 0.12rem; border:1px solid #A9A9A9;
+}
