@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css3动画</title>
+	</head>
+	<body>
+		css3中可以使用animation实现动画的效果，电影每秒播放16帧
+		
+		与动画相关的css属性：
+		animation-name:动画的名称，即某个@keyframe后声明的动画名
+		animation-duration:动画持续的时间
+		animation-timing-function:动画播放速度的函数linear/ease-in/ease-out/ease-in-out
+		animation-delay:播放的延迟时间
+		animation-iteration-count:动画播放次数如3、10、infinite
+		animation-direction:播放方向 normal(第二次播放时从第一针重新开始)alternate(第偶数次播放时从最后一帧倒序播放)
+		animation:集合属性，按顺序指定name duration timing-function delay count direction
+		animation-fill-mode:
+		    -backwards:动画尚未开始处于第一帧的状态
+		    -forwards:动画结束后处于最后一帧的状态
+		    -both：两者的效果都要
+		animation-play-state:paused(动画处于暂停状态)running(动画处于运行状态)
+		说明过渡（transition）可以看做一种特殊的动画（animation）__只有开始和结束两个关键帧。
+		
+		css Hack：由于浏览器对于css不同的理解和支持，为了实现统一的效果在编写css时，针对特定的浏览器使用特定的代码
+		1、Ie条件语句：只在IE9以下有效
+		  <!--[if IE]>小于Ie10会看到这句<![endif]-->
+		  <!--[if IE]>
+		  	<link rel="stylesheet" href="#">
+		  		<style type="text-css">
+		  			body{background:green;}
+		  		</style>
+		  <![endif]-->
+		  <!--[if IE 6]>IE6的浏览器会看到这句<![endif]-->
+		  <!--[if It IE 8]>小于IE8的浏览器会看到这句<![endif]-->
+		  <!--[if Ite IE 8]>小于等于IE8的浏览器会看到这句<![endif]-->
+		2、选择器前缀
+		   <style>
+		   	  .count{}    所有浏览器都能理解的选择器
+		   	  *html .count{}    只有ie6能理解的选择器
+		   	  *+html .count{}    只有ie7能理解的选择器
+		   </style>
+		
+		3、属性前缀
+		
+		
+		页面访问速度优化
+		1、硬件\网络优化
+		2、数据库优化
+		3、服务器优化
+		4、前端优化：html优化、css优化、js优化
+		  css优化方案
+		  优化原则：尽可能减少http请求数量；尽可能减少每次请求数据的大小
+		 优化方法：（1）css sprites:把很多的小背景图拼接为一副大图--百度“css sprites在线”可以找到很多类似工具
+		 （2）把css放到页面顶部多用<link href="x.css" />代替@import url（x.css）
+		 (3)避免使用css表达式
+		 (4)避免空的src和href值
+		 (5)巧用浏览器缓存，把css放在html外部
+		 (6)不要在html中缩放图像
+		 (7)对js文件和css文件进行压缩，可以使用类似YUI Compressor等工具
+		 
+		<style>
+			@keyframes name{
+				from{起始关键帧}
+				to{结束关键帧}
+			}
+			
+			@keyframes myAnim1{
+				0%{
+					
+				}
+				20%{
+					
+				}
+			}	
+		</style>
+		
+	<style type="text/css">
+		.kk01{width: 300px;height: 300px;background:#53d6de;animation:likui 1s;-moz-animation:likui 1s; /* Firefox */
+-webkit-animation:likui 1s; /* Safari and Chrome */
+-o-animation:likui 1s;animation-iteration-count:infinite;animation-direction:alternate;animation-timing-function:cubic-bezier(0.2);}
+       .kk02{width: 0;height: 0;  width: 0;margin-top: 70px;animation:likui02 2s;animation-iteration-count:infinite;
+       animation-timing-function:cubic-bezier(0.3);position: relative;animation-direction:alternate;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 100px solid #670ee1;
+    }
+         
+
+		@keyframes likui{
+			from{background: #53d6de;width: 300px;}
+			
+			to{background: #f10648;width: 600px;}
+			}
+			
+			@keyframes likui02{
+			from{transform: rotate(0deg);left: 0;border-bottom-color: #670ee1;}
+			
+			20%{border-bottom-color: #2b92f2;}
+			
+			50%{border-bottom-color: #01fc5f;}
+			
+			to{transform: rotate(3000deg);left: 700px;border-bottom-color: #fc0101;}
+			}
+			
+			@-moz-keyframes likui /* Firefox */
+{
+from {background:#53d6de;}
+to {background:#f10648;}
+}
+
+@-webkit-keyframes likui /* Safari and Chrome */
+{
+from {background:#53d6de;}
+to {background:#f10648;}
+}
+
+@-o-keyframes likui /* Opera */
+{
+from {background:#53d6de;}
+to {background:#f10648;}
+		}
+		
+		
+	</style>	
+		
+		
+		<div class="kk01"></div>
+		<div class="kk02"></div>
+		
+	</body>
+</html>

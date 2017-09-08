@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单</title>
+	<link rel="stylesheet" type="text/css" href="js/m-reset.css">
+	<link rel="stylesheet" type="text/css" href="js/animate.min.css">
+	<style>
+		
+		.g-msg {
+    position: fixed;
+    top: 1.2rem;
+    left: 0;
+    width: 100%;
+    height: .6rem;
+    z-index: 999;
+    font-size: .24rem;
+}
+
+.g-msg .msg {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    height: .6rem;
+    line-height: .6rem;
+    margin-left: 10px;
+    -moz-border-radius: .3rem;
+    border-radius: .3rem;
+    display: none;
+}
+
+.g-msg .msg img {
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    margin-left: .1rem;
+    -moz-border-radius: .25rem;
+    border-radius: .25rem;
+    margin-bottom: .05rem
+}
+
+.g-msg .msg span {
+    display: inline-block;
+    height: .4rem;
+    line-height: .4rem;
+    color: #fff;
+    margin-right: .2rem;
+}
+.animated{
+	display: none;
+}
+.sheji-icon {
+	width: .5rem;
+	height: .5rem;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	display: block;
+	float: left;
+	margin-left: 18%;
+	margin-right: 5%;
+	background: url(/assets/mobile/zb/images/sheji.png) no-repeat center;
+	background-size: 100%;
+}
+.hx-info{
+	animation: 
+}
+@keyframes infoA{
+	0%{
+		transform: scale(1);
+		-webkit-transform: scale(1);
+	}
+	100%{
+		transform: scale(1.5);
+		-webkit-transform: scale(1.5);
+	}
+}
+@-webkit-keyframes infoA{
+	0%{
+		transform: scale(1);
+		-webkit-transform: scale(1);
+	}
+	100%{
+		transform: scale(1.5);
+		-webkit-transform: scale(1.5);
+	}
+}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+	<script src="js/rem.js"></script>
+</head>
+<body>
+	   <div class="g-msg">
+                <div class="msg msg1">
+                    <img data-src="http://{:C('QINIU_DOMAIN')}/desLogo/201705/boy01.jpg" src="http://{:C('QINIU_DOMAIN')}/desLogo/201705/boy01.jpg">
+                    <span>来自南宁的陈先生发起了申请&nbsp;&nbsp;&nbsp;&nbsp;1秒前</span>
+                </div>
+            </div>
+
+
+   <script>
+   	
+
+var msgNum=0;
+            var setInval = setInterval(function(){
+                var msgImg = ['http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                    'http://staticqn.qizuang.com/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M']
+                var msgArry = ["来自盐城的陈先生发起了申请&nbsp;&nbsp;&nbsp;&nbsp;1秒前",
+                            "来自苏州的马女士发起了申请&nbsp;&nbsp;&nbsp;&nbsp;5秒前",
+                            "来自芜湖的朱先生发起了申请&nbsp;&nbsp;&nbsp;&nbsp;7秒前",
+                            "来自杭州的李先生发起了申请&nbsp;&nbsp;&nbsp;&nbsp;13秒前",
+                            "来自上海的赵先生发起了申请&nbsp;&nbsp;&nbsp;&nbsp;9秒前",
+                            "来自漯河的李小姐发起了申请&nbsp;&nbsp;&nbsp;&nbsp;11秒前",
+                            "来自信阳的曹小姐发起了申请&nbsp;&nbsp;&nbsp;&nbsp;3秒前",
+                            "来自贵阳的吴小姐发起了申请&nbsp;&nbsp;&nbsp;&nbsp;12秒前",
+                            "来自南宁的钱小姐发起了申请&nbsp;&nbsp;&nbsp;&nbsp;9秒前",
+                            "来自嘉兴的冯小姐发起了申请&nbsp;&nbsp;&nbsp;&nbsp;12秒前",
+                            "来自银川的杨先生发起了申请&nbsp;&nbsp;&nbsp;&nbsp;16秒前",
+                            "来自西安的周女士发起了申请&nbsp;&nbsp;&nbsp;&nbsp;25秒前"];
+
+                $('.msg span').html(msgArry[msgNum]);
+                $('.msg img').attr('src',msgImg[msgNum]);
+
+                msgNum++;
+                console.log(msgArry[msgNum]);
+                if (msgNum==6) {msgNum=0}
+                $('.msg').show();
+                $('.msg').addClass('animated fadeInUp');
+
+                var setTime=setTimeout(function(){
+                    $('.msg').removeClass('animated fadeInUp');
+                    $('.msg').addClass('animated fadeOutUp');
+                    clearTimeout(setTime);
+                },2000);
+                var setTime1=setTimeout(function(){
+                    $('.msg').removeClass('animated fadeOutUp');
+                    $('.msg').hide();
+                    clearTimeout(setTime1);
+                },4000);
+
+            },9000);
+
+   </script>
+
+
+</body>
+</html>

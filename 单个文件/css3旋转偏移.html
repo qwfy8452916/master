@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>css3 border-images</title>
+	</head>
+	<body>
+		<style type="text/css">
+		
+		/*变形:transform:2d-3d-func();
+		2d变形函数:
+		translate(x,y);
+		scale(x,y);
+		rotate(deg);
+		skew(deg,deg);
+		3d函数:
+		rotateX(deg)/rotateY()/rotateZ();
+		translateZ();
+		scaleZ();
+		
+		过渡由一个状态过渡到另一个状态*/
+		
+		transition:property duration timing-func delay;
+		
+		
+		
+			*{margin: 0 auto;padding: 0;}
+			body{height: 1000px;
+			background-image: radial-gradient(200px at 0 0,#6a1869 20%,#005823 60%,#e97b02 100%);
+			background-repeat: no-repeat;
+			
+			}
+			.likui{width:300px;height:300px;background:#db9ef4;
+			
+			margin-top: 20px;
+			-webkit-border-image:url(images/001.png) 40 40 round;
+			-o-border-image:url(images/001.png) 40 40 round;
+			border-image-;	
+			}
+			.kk{vertical-align: middle;transform-origin:center center;
+			transform: skew(30deg,30deg);
+			}
+			.kk1{vertical-align: middle;transform:rotateX(10deg);transform: rotateY(20deg);
+				transform: rotateZ(30deg);
+			}
+			.kk2{width: 300px;height: 300px;background-color: #f42d06;
+			
+			/*哪个属性运用过渡效果*/
+			transition-property:all;
+			/*过渡效果持续时间*/
+			transition-duration: 2000ms;
+			/*过渡进程速度函数*/
+			transition-timing-function: ease-in-out;
+			/*过渡效果延迟多久开始*/
+			transition-delay: 0;
+			}
+			.kk2:hover{background-color: #53d6de;transform: /*translate(0,400px)*/rotate(360deg);}
+			
+			
+		</style>
+		
+		<div class="likui"></div>
+		<img class="kk" src="images/rrr.jpg" />
+		<img class="kk1" src="images/rrr.jpg" />\
+		<div class="kk2"></div>
+	</body>
+</html>
