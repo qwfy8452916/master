@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.aa{width: 200px;height: 200px;background: #f7bbbb;}
+		.cc}{display:none;}
+	</style>
+</head>
+<body>
+<div class="aa"></div>
+	<button class="bb">点击</button>
+
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script>
+		
+   $('.bb').click(function(){
+   	  if($('.aa').hasClass('cc')){
+        $('aa').hide(3000);
+   	  }else{
+   	  	$('aa').show(3000)
+   	  }
+   });
+
+	</script>
+</body>
+</html>

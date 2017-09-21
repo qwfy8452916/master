@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>装修攻略</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link href="css/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+    <link href="css/m-reset.css" rel="stylesheet" type="text/css">
+    <link href="css/zuangxiu_gonglue.css" rel="stylesheet" type="text/css">
+    <link href="css/qzCitySelect.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <article>
+           <div class="dayinying">
+            
+        </div>
+    <div class="option-tab">
+            <div class="tab-tit">
+                <ul>
+                    <li>风格<span class="jiantou"></span></li>
+                    <li>户型<span class="jiantou"></span></li>
+                    <li>局部<span class="jiantou"></span></li>
+                </ul>
+            </div>
+
+            <div class="tab-main hidetab">
+                <ul class="hidetab zicaidan">
+                  <li class="active">现代简约</li>
+                  <li>欧式</li>
+                  <li>中式</li>
+                  <li>田园</li>
+                  <li>古典</li>
+                  <li>美式</li>
+                  <li>混搭</li>
+                  <li>地中海</li>
+                </ul>
+                <ul class="hidetab zicaidan">
+                 <li class="active">现代简约2</li>
+                  <li>欧式2</li>
+                  <li>中式2</li>
+                  <li>田园2</li>
+                  <li>古典2</li>
+                  <li>美式2</li>
+                  <li>混搭2</li>
+                  <li>地中海2</li>
+                </ul>
+                <ul class="hidetab zicaidan">
+                <li class="active">现代简约3</li>
+                  <li>欧式3</li>
+                  <li>中式3</li>
+                  <li>田园3</li>
+                  <li>古典3</li>
+                  <li>美式3</li>
+                  <li>混搭3</li>
+                  <li>地中海3</li>
+                </ul>
+            </div>
+        </div>
+
+ 
+
+   </article>
+</block>
+
+<block name="script">
+    <!--脚本-->
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/750rem.js"></script>
+    <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="js/jroll.js"></script>
+    <script type="text/javascript" src="js/qzCitySelect.js"></script>
+    <script type="text/javascript">
+            
+           
+    $(function(){
+
+        $(".tab-tit ul li").on('touchend',function() {
+          $(this).find('span').addClass('jiantou2');
+          $(this).siblings().find('span').removeClass('jiantou2')
+          $(this).addClass('active');
+          $(this).siblings().removeClass('active')
+          var liIndex=$(this).index();
+          var uull=$(".tab-main ul").eq(liIndex);
+          $('.tab-main').removeClass('hidetab');
+          // $('.tab-main').animate({height : "show" } , 300 )
+           if(uull.hasClass('hidetab')){
+              $(".tab-main ul").eq(liIndex).children('li').eq(0).addClass('active').siblings().removeClass('active');
+              uull.removeClass('hidetab')
+               $('.tab-main').removeClass('hidetab')
+              // $('.tab-main').animate({height : "show" } , 300 )
+              uull.siblings().addClass('hidetab')
+              $('.dayinying').show();
+           }else{
+              // uull.animate({height : "hide" } , 300 )
+              uull.addClass('hidetab')
+              uull.siblings().addClass('hidetab')
+              $('.tab-main').addClass('hidetab')
+               $(this).removeClass('active');
+               $(this).find('span').removeClass('jiantou2')
+              // $('.tab-main').animate({height : "hide" } , 300 )
+              $('.dayinying').hide();
+           }
+
+        });
+
+      $(".zicaidan li").click(function() {
+            if($(this).hasClass('active')){
+               return;
+            }else{$(this).addClass('active')};
+             $(this).siblings().removeClass('active')
+
+        });
+
+     $('.dayinying').on('touchend',function(){
+         $(this).hide();
+          $('.tab-main').addClass('hidetab')
+         // $('.tab-main').animate({height : "hide" } , 300 )
+         $('.tab-tit ul li').each(function(index, el) {
+             $(this).removeClass('active')
+             $(this).find('span').removeClass('jiantou2')
+         });
+          $('.tab-main ul').each(function(index, el) {
+             $(this).addClass('hidetab')
+         });
+     })
+
+
+
+
+
+    })
+
+
+        </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>装修案例</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link href="css/m-reset.css" rel="stylesheet" type="text/css">
+    <link href="css/zhuangxiuanli.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<article>
+<div class="dayinying"></div>
+    <div class="searchwr">
+    <div class="sousbj">
+        <div class="seacher">
+            <input type="text" class="shuruk" placeholder="请输入您想找的案例">
+            <a class="soso"></a>
+        </div>
+    </div>
+
+        <div class="option-tab">
+            <div class="tab-tit">
+                <ul>
+                    <li>风格<span class="jiantou"></span></li>
+                    <li>户型<span class="jiantou"></span></li>
+                    <li>造价<span class="jiantou"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tab-main">
+            <ul class="zicaidan hide">
+                <li class="active">现代简约</li>
+                <li>欧式</li>
+                <li>中式</li>
+                <li>田园</li>
+                <li>古典</li>
+                <li>美式</li>
+                <li>混搭</li>
+                <li>地中海</li>
+            </ul>
+            <ul class="zicaidan hide">
+                <li class="active">普通</li>
+                <li>跃层</li>
+                <li>复式</li>
+                <li>别墅</li>
+                <li>公装</li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul class="zicaidan hide">
+                <li class="active">4万以下</li>
+                <li>4-7万</li>
+                <li>7-10万</li>
+                <li>10-15万</li>
+                <li>15-20万</li>
+                <li>20-30万</li>
+                <li>30-50万</li>
+                <li>50-100万</li>
+                <li>100万以上</li>
+            </ul>
+    </div>
+    <div class="contentnr">
+        <ul class="contentnr_ul">
+          <li>
+             <div class="zhuynr">
+                <img class="tupdax" src="images/anlitupzs.png" alt="">
+                <div class="wenzi">名城湖左岸</div>
+                <div class="wenzi2"><span class="lfsp">苏州蓝狐装饰<span class="xian">|</span>120㎡<span class="xian">|</span>现代简约</span><span class="rtsp">4-7万</span></div>
+             </div>
+            
+          </li>
+          <li>
+             <div class="zhuynr">
+                <img class="tupdax" src="images/anlitupzs.png" alt="">
+                <div class="wenzi">名城湖左岸</div>
+                <div class="wenzi2"><span class="lfsp">苏州蓝狐装饰<span class="xian">|</span>120㎡<span class="xian">|</span>现代简约</span><span class="rtsp">4-7万</span></div>
+             </div>
+            
+          </li>
+        </ul>
+        <div class="wrapbt"><div class="spmore">没有更多了，看看别的吧..</div></div>
+    </div>
+
+</article>
+</block>
+
+<block name="script">
+    <!--脚本-->
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/750rem.js"></script>
+    <script type="text/javascript">
+            
+           
+    $(function(){
+        $(".tab-tit ul li").on('touchend',function() {
+            $(this).find('span').addClass('jiantou2');
+            $(this).siblings().find('span').removeClass('jiantou2')
+            $(this).find('span').addClass('fa-angle-down2 fa2')
+            $(this).siblings().find('span').removeClass('fa-angle-down2 fa2')
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+
+            var liIndex = $(this).index();
+
+            var uull = $(".tab-main ul").eq(liIndex);
+            $('.tab-main').removeClass('hide');
+
+            if ( uull.hasClass('hide') ) {
+                
+                uull.removeClass('hide');
+
+                uull.stop().animate({top: '1.9rem'},500,function() {
+                    uull.siblings().css({'top':'-1.9rem'})
+                });
+
+                uull.siblings().addClass('hide')
+                $('.dayinying').show();
+                $(this).find('span').addClass('fa-angle-down2 fa2')
+                $(this).siblings().find('span').removeClass('fa-angle-down2 fa2')
+            } else {
+                $(this).find('span').removeClass('fa-angle-down2')
+                $(this).siblings().find('span').removeClass('fa-angle-down2')
+                uull.siblings().addClass('hide')
+                
+                uull.stop().animate({top: '-1.9rem'},500,function(){
+                    $('.tab-main').addClass('hide');
+                    uull.addClass('hide');
+                });
+                $(this).removeClass('active');
+                $(this).find('span').removeClass('jiantou2')
+                $('.dayinying').hide();
+            }
+
+    });
+
+      $(".zicaidan li").click(function() {
+            if($(this).hasClass('active')){
+               return;
+            }else{$(this).addClass('active')};
+             $(this).siblings().removeClass('active')
+
+        });
+
+        $('.dayinying').on('touchend',function(){
+
+            $(this).hide();
+
+            $('.tab-main').animate({top:'-1.9rem'},500);
+
+            $('.tab-tit ul li').each(function(index, el) {
+                $(this).removeClass('active')
+                $(this).find('span').removeClass('jiantou2')
+                 $(this).find('span').removeClass('fa-angle-down2')
+                $(this).siblings().find('span').removeClass('fa-angle-down2')
+            });
+            $('.tab-main ul').each(function(index, el) {
+                $(this).stop().animate({top: '-1.9rem'},500,function () {
+                    $(this).addClass('hide')
+                })
+            });
+        })
+
+
+
+
+
+    })
+
+
+        </script>
+</body>
+</html>
+
+
+
+
