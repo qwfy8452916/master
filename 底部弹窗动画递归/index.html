@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>底部弹窗动画递归</title>
+	<link rel="stylesheet" type="text/css" href="css/dbtc.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body style="height: 1500px;">
+	
+   <div class="foottc">
+    <div class="cter">
+        <div class="toubu">
+            <div class="qzlogo"></div>
+            <div class="dbwzjs"></div>
+            <div class="jiantou01"></div>                  
+        </div>
+        <div class="nrkz">
+            <div class="biaodanqu">
+                <div class="btwz">今日已有<span>3692</span>位业主查找了装修公司</div>
+                <ul class="btul">
+                    <li>
+                        <span>所在城市：</span>
+                        <div class="shurudiv">
+                            <select id="cs" class="freesj_cs" name="cs"></select>
+                            <select id="qy" class="freesj_qx" name="qy"></select>
+                        </div>
+                        
+                    </li>
+                    <li>
+                        <span>房屋面积：</span>
+                        <div class="shurudiv"><input class="mianji" type="text" placeholder="输入您的房屋面积"><i>m²</i></div>
+                    </li>
+                    <li>
+                         <span>小区名称：</span>
+                        <div class="shurudiv"><input class="xiaoqu" type="text" placeholder="输入您的小区以便精准匹配"></div>
+                    </li>
+                    <li>
+                        <span>手机号码：</span>
+                        <div class="shurudiv"><input class="shouji" type="text" placeholder="输入手机号获取推荐结果"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="tijiao">
+                <a class="calc-btn" id="calc_btn" href="javascript:;">
+                <em>开始计算</em></a>
+                <span class="circle-animate"></span>
+            </div>
+            <div class="bjtu"></div>
+        </div>
+        <div class="nrkz2">
+            <div class="lef">
+                <div class="bt">您已申请成功</div>
+                <div class="chenggxus">
+                    <div class="btnr"><span>所在城市：</span>苏州市姑苏区</div>
+                    <div class="btnr"><span>房屋面积：</span>120m²</div>
+                    <div class="btnr"><span>小区名称：</span>双湾花园</div>
+                </div>
+            </div>
+            <div class="rtt">
+                <div class="wxss">微信扫一扫</div>
+                <div class="erwma"></div>
+                <div class="sjanli">获取<span>10000</span>套装修设计案例</div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+  
+  <script>
+
+  $(function(){
+
+    function up(){
+    $('.jiantou01').animate({top:5},550,function(){
+        $('.jiantou01').animate({top:25},600,function(){
+            up()
+        })
+    });
+}
+$('.jiantou01').animate({top:5},600,function(){
+    up()
+});
+
+var a=false;
+      $('.toubu').click(function(){
+        $(this).animate({top:5},550,function(){
+            up()
+        });
+         if(a==false){
+        $('.foottc').stop().animate({"bottom":"0"},500)
+        $('.jiantou01').removeClass('jiantou01').addClass('jiantou02')
+         a=true;
+   }else{
+        $('.foottc').stop().animate({"bottom":"-292px"},500)
+        $('.jiantou02').removeClass('jiantou02').addClass('jiantou01')
+        a=false;
+   }
+      })
+
+
+      
+      window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;  //离上方的距离
+    var h =window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; //可见宽度
+    if( t >= document.documentElement.scrollHeight -h ) {
+        $('.foottc').stop().animate({"height":"372px"},500)
+        $('.jiantou01').removeClass('jiantou01').addClass('jiantou02')
+             a=true;
+    }
+   }
+
+
+
+    
+     $(".tijiao").click(function(event) {
+          var options=$('.btul .freesj_cs option:selected');
+          console.log(options.text());
+          var cs = $('.freesj_cs');
+        if (cs.val() == '') {
+            alert("您还没有选择所在城市噢 ^_^!");
+            cs.focus();
+            return false;
+        }
+
+        var qy = $('.freesj_qx');
+        if (qy.val() == '') {
+            alert("您还没有选择所在区域噢 ^_^!");
+            qy.focus();
+            return false;
+        }
+
+          var mianji = $('.mianji');
+        if (mianji.val() == "") {
+            mianji.focus();
+            alert("亲,您还没有填写房屋面积!");
+            return false;
+        }
+        var re = /^[0-9]+(.[0-9]{1,2})?$/gi;
+        if (!re.test(mianji.val())) {
+            mianji.focus();
+            alert("亲,只能填写纯数字!");
+            return false;
+        }
+
+       
+
+        var xiaoqu = $('.xiaoqu');
+        if (xiaoqu.val() == "") {
+            xiaoqu.focus();
+            alert("亲,您还没有填写小区!");
+            return false;
+        }
+
+      
+
+        var tel = $('.shouji');
+        if (tel.val() == "" || tel.val().length == 0) {
+            tel.focus();
+            alert("亲,您还没有填写手机号码!");
+            return false;
+        } else {
+            var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+            if (!tel.val().match(reg)) {
+                tel.focus();
+                tel.val('');
+                alert("请填写正确的手机号码 ^_^!");
+                return false;
+            }
+        }
+
+       
+
+        var comid = $("#companyid").val();
+
+        var data = {
+            mianji:mianji.val(),
+            xiaoqu:xiaoqu.val(),
+            tel:tel.val(),
+            cs:cs.val(),
+            qx:qy.val(),
+            source: "159" || 30,
+            step:2
+        };
+
+        $.ajax({
+            type : "POST",
+            url : "/fb_order/",
+            dataType : "JSON",
+            data:data
+        })
+        .done(function(data) {
+            if (data.status == 1) {
+                // $('.pop-bj').fadeOut(300).find('.ten-bj').fadeOut(300).find('.free-bj').fadeOut(300);
+                // $("body").append(data.data.tmp);
+                $('.nrkz').hide();
+                $('.nrkz2').show();
+            }else{
+                alert("发生错误,请稍后重试！");
+            }
+        })
+        .fail(function(xhr) {
+            alert("网络发生错误,请稍后重试！");
+        });
+        return false;
+
+    });
+
+
+
+
+  })
+
+
+  	
+    
+
+
+  </script>
+
+</body>
+</html>
