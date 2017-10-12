@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抽奖活动</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link href="http://{:C('QZ_YUMINGWWW')}/" rel="canonical"/>
+	<link href="css/m-reset.css" rel="stylesheet" type="text/css"/>
+	<link href="/assets/mobile/common/css/qzCitySelect.css" rel="stylesheet" type="text/css"/>
+	<link href="css/mobile_xinyunqiang.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<article>
+         <div class="zhulihd_01"></div>
+         <div class="zhulihd_02"></div>
+         <div class="zhulihd_03">
+            <span id="daojis" class="daojis"></span>
+         	<button class="anniudj"></button>
+         </div>
+         <div class="zhulihd_04"></div>
+         <div class="zhulihd_05">
+         	<span class="yingguoq">迎中秋庆国庆100%赢取好礼</span>
+         	<a href="/act/guoqing" class="lijicany">立即参与</a>
+         </div>
+         <div class="bantoum"></div>
+         <div class="tanclingjaing">
+         	<div class="title">完善信息,领取奖品</div>
+         	<ul class="formbt">
+    		<li>
+    			<div>
+                    <button id="showCityPicker2" class="c-zb-city" type="button">
+                        <i class="fa fa-map-marker">
+                        </i>
+                        <empty name="info.cityarea">
+                        请选择您所在的区域
+                        <else />
+                        {$mapUseInfo.provincefull} {$mapUseInfo.name} {$info.cityarea.name}
+                        </empty>
+                    </button>
+                    <input type="hidden" name="province" data-id="{$mapUseInfo.pid}">
+                    <input type="hidden" name="city" data-id="{$mapUseInfo.id}">
+                    <input type="hidden" name="area" data-id="{$info.cityarea.id}">
+                </div>
+    		</li>
+    		<li class="jvli">
+    			<input type="text" placeholder="请输入手机号方便与您联系">
+    		</li>
+    		<li class="jvli">
+    			<input type="text" placeholder="怎么称呼您">
+    		</li>
+    		<li class="jvli">
+    			<button class="lijicanyu">提交信息</button>
+    		</li>
+    	</ul>
+         </div>
+         <div class="tanclingjaing2">
+         	 <div class="gongxtitle">恭喜您提交成功</div>
+         	 <div class="zhutnr">稍后会有客服联系您,确认您的联系信息,奖品将以邮</div>
+         	 <div class="zhutnr">寄的方式送到您的手中,请注意查收。</div>
+         	 <div class="otherhd">您还可以参加以下活动哦</div>
+         	 <a href="/act/guoqing" class="aniutijiao">点我参与“迎中秋庆国庆,100%赢取好礼”</a>
+         </div>
+         <div class="tanchaugnwzj">
+         	 <div class="titwzj">很遗憾,未中奖</div>
+         	 <a href="/act/guoqing" class="aniutijiao2">点我参与“迎中秋庆国庆,100%赢取好礼”</a>
+         </div>
+         <div class="tanchuangzhongj">
+         	<div class="gongxi">恭喜</div>
+         	<div class="jpjs">您获得6天5晚云南双人游奖品1份</div>
+         	<div class="shuagnanniu">
+         		<span class="getup">放弃</span>
+         		<span class="lingqujp">领取奖品</span>
+         	</div>
+         </div>
+         <div class="huodwkais">
+         	活动还没开始,等会再来吧！
+         	<!-- 活动已结束 -->
+         </div>
+    </article>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+	<script type="text/javascript" src="/assets/mobile/common/js/geolocation.js"></script>
+	<script type="text/javascript" src="/assets/mobile/js/jroll.js"></script>
+	<script type="text/javascript" src="/assets/mobile/common/js/qzCitySelect.js"></script>
+	<script>
+        // 城市选择插件
+        // selectQz.init({
+        //     province: $("input[name=province]").attr("data-id"),
+        //     city: $("input[name=city]").attr("data-id"),
+        //     area: $("input[name=area]").attr("data-id")
+        // });
+
+        $(function(){
+        	$('.zhulihd_02').click(function(){
+        	
+        		$('.bantoum').show();
+        	 	$('.huodwkais').show();
+                   setTimeout(function(){
+        	 	$('.bantoum').fadeOut();
+        	 	$('.huodwkais').fadeOut();
+        	 },3000);
+        	});
+               	  
+          
+        		
+      
+        	 
+        	$('.bantoum').click(function(){
+        		$('.bantoum').hide();
+        		$('.tanclingjaing').hide();
+        		$('.tanclingjaing2').hide();
+        		$('.tanchaugnwzj').hide();
+        		$('.tanchuangzhongj').hide();
+        	});
+        	$('.tanclingjaing .guanbi').click(function(){
+        		$('.bantoum').hide();
+        		$('.tanclingjaing').hide();
+        	});
+
+        	$('.formbt .lijicanyu').click(function(){
+        		// $('.bantoum').hide();
+        		$('.tanclingjaing').hide();
+        		$('.tanclingjaing2').show();
+        	});
+        	$('.fudongtis').click(function(){
+        		$('.bantoum').show();
+        		$('.tanclingjaing').show();
+        	});
+        	$('.shuagnanniu .getup').click(function(){
+        		$('.bantoum').hide();
+        		$('.tanchuangzhongj').hide();
+        	});
+        	$('.shuagnanniu .lingqujp').click(function(){
+        		$('.tanchuangzhongj').hide();
+        		$('.bantoum').show();
+        		$('.tanclingjaing').show();
+        	});
+
+
+          var clickNumber =0;
+
+          $('.zhulihd_03 .anniudj').click(function(){
+         if(clickNumber %2==0){
+            	$('.bantoum').show();
+        		$('.tanchuangzhongj').show();
+         }else{
+         	 $('.bantoum').show();
+             $('.tanchaugnwzj').show();
+
+          }
+    clickNumber ++;
+        })
+
+       var one=new Date(2017,09,01,10,00,00).getTime(),
+            two=new Date(2017,09,01,22,00,00).getTime(),
+            three=new Date(2017,09,04,10,00,00).getTime(),
+            four=new Date(2017,09,04,22,00,00).getTime();
+
+        function ShowCountDown(year,month,day,hour,min,mss,divname,timenow){
+            var endDate = new Date(year, month-1, day,hour,min,mss);
+            var weilaitime=endDate.getTime();
+            var leftTime=endDate.getTime()-timenow;
+            var dd = parseInt(leftTime / 1000 / 60 / 60 / 24, 10);//计算剩余的天数
+            var hh = parseInt(leftTime / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数
+            var mm = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟数
+            var ss = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+            dd = checkTime(dd);
+            hh = checkTime(hh);
+            mm = checkTime(mm);
+            ss = checkTime(ss);//小于10的话加0
+            var cc = document.getElementById(divname);
+             if(timenow<one){
+                cc.innerHTML = "活动开始倒计时"+ dd + "天" + hh + "小时" + mm + "分" + ss + "秒";
+             }else if(timenow>=one&&timenow<two){
+                cc.innerHTML = "活动结束倒计时"+ dd + "天" + hh + "小时" + mm + "分" + ss + "秒";
+             }else if(timenow>=two&&timenow<three){
+                cc.innerHTML = "活动开始倒计时"+ dd + "天" + hh + "小时" + mm + "分" + ss + "秒";
+             }else if(timenow>=three&&timenow<four){
+                cc.innerHTML = "活动结束倒计时"+ dd + "天" + hh + "小时" + mm + "分" + ss + "秒";
+            }else{
+                cc.innerHTML="抽奖活动结束"
+            }
+        }
+        function checkTime(i){
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+
+        function setEndtime(){
+            var now = new Date();
+            var timenow=now.getTime();
+            if(timenow<one){
+                ShowCountDown(2017,10,01,10,00,00,'daojis',timenow);
+             }else if(timenow>=one&&timenow<two){
+                ShowCountDown(2017,10,01,22,00,00,'daojis',timenow);
+             }else if(timenow>=two&&timenow<three){
+                ShowCountDown(2017,10,04,10,00,00,'daojis',timenow);
+             }else if(timenow>=three&&timenow<four){
+                ShowCountDown(2017,10,04,22,00,00,'daojis',timenow);
+            }else{
+                ShowCountDown(2017,10,04,22,00,00,'daojis',timenow);
+            }
+        }
+        setInterval(setEndtime,1000);
+
+
+        })
+       
+
+    </script>
+</body>
+</html>
