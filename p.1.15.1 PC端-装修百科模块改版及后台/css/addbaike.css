@@ -1,0 +1,23 @@
+.content-header{padding: 0;}
+.content-header > h1{margin-bottom: 7px;}
+.content-header > h1 > small{font-size: 18px;font-family: "微软雅黑";font-weight: 700;}
+.tabletb{padding: 17px 27px;box-sizing: border-box;}
+.tabletb .btdy{font-size: 14px;font-weight: bold;}
+.tabletb .wenbk1{margin-top: 15px;}
+.tabletb .wenbk1 input{width: 414px;height: 37px;border:1px solid #a9a9a9;outline: none;padding-left: 5px;}
+.tabletb .xzfenlei{font-size: 14px;font-weight: bold;margin-top: 24px;}
+.tabletb .xuanzxlakz{margin-top: 15px;}
+.tabletb .xuanzxlakz select{width: 155px;height: 30px;border:1px solid #aaa;}
+.tabletb .xuanzxlakz select.xiala1{margin-right: 25px;}
+.tabletb .tianjiatup{margin-top: 24px;font-size: 14px;font-weight: bold;}
+.tabletb .shangctp{margin-top: 15px;overflow: hidden;}
+.tabletb .shangctp .kv-main{padding: 0;width: 414px;}
+.tabletb .tianxiejianje{margin-top: 8px;font-size: 14px;font-weight: bold;display: block;clear: both;}
+.tabletb .wzshuruyuzh{margin-top: 15px;}
+.tabletb .wzshuruyuzh textarea{width: 873px;height: 117px;padding: 5px;box-sizing: border-box;}
+.tabletb .dibu{margin-top: 15px;width: 873px;box-sizing: border-box;}
+.tabletb .addanniu{margin-top: 40px;}
+.tabletb .addanniu .fanhui{color: #000;background: #f4f4f4;border: 1px solid #dddddd;padding: 9px 20px;border-radius: 5px;cursor: pointer;
+margin-right: 40px;}
+.tabletb .addanniu .fanhui .fa-mail-reply{margin-right: 5px;}
+.tabletb .addanniu .fabu{color: #fff;background: #169bd5;padding: 9px 40px;border-radius: 5px;cursor: pointer;}

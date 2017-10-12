@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>装修百科管理</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/baike.css">
+</head>
+<body>
+	
+     <section class="content">
+<div class="content-header hed">
+    <h1>
+    <span>装修百科管理</span>
+    </h1>
+</div>
+<div class="box tabletb">
+    <div class="box-header with-border">
+          <h3 class="box-title">条件查询</h3>
+          </div>
+          <div class="box-body">
+          <span class="pull-left lh-34">分类：</span>
+           <div class="col-xs-2">
+                      <select class="form-control" name="" id="">
+                        <option value="请选择分类">请选择分类</option>
+                        <option value="房产百科">房产百科</option>
+                        <option value="房产百科">房产百科</option>
+                        <option value="房产百科">房产百科</option>
+                      </select>
+            </div>
+             <div class="col-xs-2">
+                      <select class="form-control" name="" id="">
+                        <option value="请选择">请选择</option>
+                        <option value="房产知识">房产知识</option>
+                        <option value="经济适用房政策">经济适用房政策</option>
+                        <option value="地区经济适用房">地区经济适用房</option>
+                      </select>
+            </div>
+           
+            <div class="col-xs-2">
+                                <input type="text" id="keyword" class="form-control keyword" placeholder="输入标题/ID" value="">
+            </div>
+             <span class="pull-left lh-34">发布人：</span>
+           <div class="col-xs-1 xuanzkd">
+                      <select class="form-control" name="" id="">
+                        <option value="请选择">请选择</option>
+                        <option value="张三">张三</option>
+                        <option value="李四">李四</option>
+                        <option value="李四">李四</option>
+                      </select>
+            </div>
+            <span class="pull-left lh-34">状态：</span>
+           <div class="col-xs-1 xuanzkd">
+                      <select class="form-control" name="" id="">
+                        <option value="请选择">请选择</option>
+                        <option value="待审核">待审核</option>
+                        <option value="通过审核">通过审核</option>
+                        <option value="未通过审核">未通过审核</option>
+                      </select>
+            </div>
+                  <div class="col-xs-1 zuobjg">
+                      <button type="button" id="search" data-triger="#search" class="key-down-event btn btn-block btn-primary normal">
+                          <i class="fa fa-search"></i>查询
+                      </button>
+                  </div>
+                  <div class="from-item pull-right">
+                <a href="operate.html" target="_self" class="btn btn-primary daoru">
+                +新增百科
+                </a>
+            </div>
+           </div>
+</div>
+<div class="box zhuti">
+  <div class="box-header with-border">
+          <h3 class="box-title lhsjlb">数据列表</h3>
+          <div class="youbdyk pull-right">
+              <span class="lh-34">选择显示数量：</span>
+              <div class="col-xs-6 pull-right">
+                      <select class="form-control" name="" id="">
+                        <option value="10条">10条</option>
+                        <option value="20条">20条</option>
+                        <option value="30条">30条</option>
+                        <option value="40条">40条</option>
+                      </select>
+            </div>
+          </div>
+          
+   </div>
+   <div class="col-xs-12 no-padding">
+                <div class="box no-border">
+                    <div class="box-body no-padding">
+                        <table class="table table-hover table-bordered" id="tablelist">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>百科条目(标题)</th>
+                                    <th>分类</th>
+                                    <th>发布人</th>
+                                    <th>发布时间</th>
+                                    <th>审核状态</th>
+                                    <th>操作</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td>26395</td>
+                                        <td><a href="#">简欧风格大户型客厅墙装</a></td>
+                                        <td><a href="#">装修百科</a>><a href="">装修知识</a></td>
+                                        <td>张三</td>
+                                        <td>2017-05-11  09:23:03</td>
+                                        <td>待审核</td>
+                                        <td><span class="delsc logojg"></span><a class="bianji logojg" href="operate.html" target="_self"></a><span class="tuijian logojg" data-container="body" data-toggle="popover" data-placement="left" data-content=""></span><span class="yulan logojg"></span></td>
+                                        
+                                    </tr>
+                                     <tr>
+                                        <td>26395</td>
+                                        <td><a href="#">简欧风格大户型客厅墙装</a></td>
+                                        <td><a href="#">装修百科</a>><a href="">装修知识</a></td>
+                                        <td>李四</td>
+                                        <td>2017-05-11  09:23:03</td>
+                                        <td class="tgsh">通过审核</td>
+                                        <td><span class="delsc logojg"></span><a class="bianji logojg" href="operate.html" target="_self"></a><span class="tuijian logojg" data-container="body" data-toggle="popover" data-placement="left" data-content=""></span><span class="yulan logojg"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>26395</td>
+                                        <td><a href="#">简欧风格大户型客厅墙装</a></td>
+                                        <td><a href="#">装修百科</a>><a href="">装修知识</a></td>
+                                        <td>王二麻子</td>
+                                        <td>2017-05-11  09:23:03</td>
+                                        <td class="mytg">未通过审核</td>
+                                        <td><span class="delsc logojg"></span><a class="bianji logojg" href="operate.html" target="_self"></a><span class="tuijian logojg" data-container="body" data-toggle="popover" data-placement="left" data-content=""></span><span class="yulan logojg"></span></td>
+                                    </tr>
+                   
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="fenyewaik">
+                 <nav aria-label="...">
+                  <ul class="pagination">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">上一页</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">2 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">4 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">...<span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+                  </ul>
+              </nav>
+            </div>
+            
+        </div>
+<div class="yinying">
+  
+</div>
+<div class="tancleft">
+    <div class="zhunr">
+      <div class="jianyao">
+         <img class="tuplef" src="img/baikmstp.png" alt="">
+         <div class="turight">
+             <h4>生态免漆板,为全家健康保驾护航</h4>
+             <p>生态免漆板是把带有不同色彩或者纹路的纸张放进三聚氰胺树脂胶水中浸泡，再用干燥到一定的稳定程度，把它装在刨花板，防潮板，中密度纤维板，胶合板，细木工板或者其他实木板材的上面，经过热压而成的板材，所以也经常被称为三聚氰胺板.</p>
+             <div class="timerq">2017-08-23 15:34:31</div>
+         </div>
+      </div>
+
+      <div class="mulujs">
+          <div class="ximulu">
+             <h2>目录</h2>
+             <div class="ximulu_xx">
+                <ol>
+                  <li><a href="#">装修保养技巧</a></li>
+                  <li><a href="#">装修保养注意事项</a></li>
+                </ol>
+             </div>
+          </div>
+          <div class="para_title">
+             <div class="title_text">雨季施工增加费</div>
+             <div class="suxian_bj"></div>
+          </div>
+          <div class="fwbnr">
+             <h3>一、实木地板的保养</h3>
+             <p>装修中的各种费用总是让人觉得莫名其妙，什么直接费，什么又是直接工程费作为业主总是搞不明白，害怕被装修公司忽悠了。本篇百科就来为大家介绍直接工程费的定义、内容以及直接工程费和直接费的区别。装修中的各种费用总是让人觉得莫名其妙，什么直接费，什么又是直接工程费作为业主总是搞不明白，害怕被装修公司忽悠了。本篇百科就来为大家介绍直接工程费的定义、内容以及直接工程费和直接费的区别。</p>
+             <h3>一、实木地板的保养</h3>
+             <p>装修中的各种费用总是让人觉得莫名其妙，什么直接费，什么又是直接工程费作为业主总是搞不明白，害怕被装修公司忽悠了。本篇百科就来为大家介绍直接工程费的定义、内容以及直接工程费和直接费的区别。装修中的各种费用总是让人觉得莫名其妙，什么直接费，什么又是直接工程费作为业主总是搞不明白，害怕被装修公司忽悠了。本篇百科就来为大家介绍直接工程费的定义、内容以及直接工程费和直接费的区别。</p>
+             <h3>一、实木地板的保养</h3>
+             <p>装修中的各种费用总是让人觉得莫名其妙，什么直接费，什么又是直接工程费作为业主总是搞不明白，害怕被装修公司忽悠了。本篇百科就来为大家介绍直接工程费的定义、内容以及直接工程费和直接费的区别。装修中的各种费用总是让人觉得莫名其妙，什么直接费，什么又是直接工程费作为业主总是搞不明白，害怕被装修公司忽悠了。本篇百科就来为大家介绍直接工程费的定义、内容以及直接工程费和直接费的区别。</p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="tancright">
+      <div class="tcytitl">生态免漆板,为全家健康保驾护航</div>
+      <ul class="ybul">
+        <li>ID:564646</li>
+        <li>分类：<a href="#">装修百科</a>><a href="#">装修知识</a></li>
+        <li>发布人：李某某</li>
+      </ul>
+      <div class="yydb">当前状态：待审核</div>
+      <div class="zongk">
+            <div class="zuojt">
+           <div class="jtzb"></div>
+           <div>上一条</div>
+          </div>
+           <div class="youjt">
+             <div class="jtyb"></div>
+             <div>下一条</div>
+          </div>
+      </div>
+      <div class="anniukz">
+         <span class="butg" data-container="body" data-toggle="popover" data-placement="left" data-content="">审核不通过</span><span class="tongg">审核通过</span>
+      </div>
+      
+  </div>
+  <div class="guanbi">X</div>
+
+
+  
+</section>
+<script type="text/javascript" src="js/jquery-1.8.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+	 $(function(){
+
+
+    $(".tuijian").popover({
+    html: true,      //实现对html可写
+    title: keywords_title(),   //标题函数
+    content: function() {
+        return keywords_content();   //内容函数
+    }
+});
+//标题函数  
+function keywords_title() {
+    return '推荐位置选择';
+}
+
+//内容函数，同时对样式进行修改
+function keywords_content() {
+
+    return '<div class="yy"><div class="qibao"><input type="checkbox" />精选百科</div><div class="qibao"><input type="checkbox" />大家都在看(百科推荐)</div></div><button  class="anniu2"  type="" data-container="body" >保存</button>';
+
+
+}
+
+     $('.delsc').click(function(){
+
+         if(confirm("确认删除吗")){
+         }
+         else{
+         return;
+        } 
+
+     })
+
+     $(".anniukz .butg").popover({
+    html: true, 
+    // title: title(),   
+    content: function() {
+        return butgnr();   
+    }
+});
+
+  // function title() {
+  //   return '请输入审核不通过原因';
+  //      }
+
+function butgnr() {
+
+    return '<div class="zhunrk"><div class="titlesh">请输入审核不通过原因</div><textarea class="wenbenk" name=""></textarea><div class="lssrnr">历史输入</div><div class="lssrnrwbk"><ul><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li><li>1.存在广告嫌疑不符合发布要求</li></ul></div><div class="anniukz"><span class="quxiao">取消</span><span class="queding">确定</span></div></div>';
+
+
+}
+
+
+
+     
+   $(document).on('click','.anniu2',function(){
+    $('.popover').hide();
+   })
+
+   $(document).on('click','.zhunrk .anniukz .quxiao',function(){
+    $('.popover').hide();
+   })
+
+    $(document).on('click','.zhunrk .anniukz .queding',function(){
+    $('.popover').hide();
+   })
+
+   $('.guanbi').click(function(){
+     $('.yinying').hide();
+     $('.tancleft').hide()
+     $('.tancright').hide()
+     $('.guanbi').hide()
+     $('.popover').hide();
+   });
+
+     $('table .yulan').click(function(){
+     $('.yinying').show();
+     $('.tancleft').show()
+     $('.tancright').show()
+     $('.guanbi').show()
+    $('.popover').hide();
+
+   });
+
+   })
+</script>
+
+</body>
+</html>
