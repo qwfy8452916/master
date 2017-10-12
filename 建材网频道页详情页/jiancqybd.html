@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>建材资讯企业报道</title>
+	<link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+	<style>
+		*{margin: 0;padding: 0;}
+		a{text-decoration: none;color: #999;}
+		ul li{list-style: none;}
+		.baodao_content{width: 1210px;margin: 0 auto;height: auto;margin-top: 10px;}
+		.baodao_content .luyou{font-size: 12px;color: #333;}
+		.baodao_content .luyou a{text-decoration: none;color: #333;}
+		.baodao_content .luyou .zhishi{margin: 0 5px;}
+		.baodao_content .luyou .yanse{color: #ff5353;}
+         .bdshare-button-style0-16{float: right;}
+		.baodao_content .jiancai_left{float: left;width: 780px;height: auto;margin-top: 24px;}
+		.baodao_content .jiancai_left .tupxs{width: 100%;text-align: center;margin: 40px 0;}
+		.baodao_content .jiancai_left .tupxs img{width: 758px;height: 493px;margin: 0 auto;display: inline-block;}
+		.baodao_content .jiancai_left .biaot{text-align: center;font-size: 26px;margin-top: 25px;}
+		.baodao_content .jiancai_left .xiaoxin{overflow: hidden;font-size: 12px;color: #8d8d8d;line-height: 26px;vertical-align: middle;margin-top: 57px;margin-bottom: 40px;}
+		.jiancai_left .xiaoxin .laiyaun{margin-right:25px;}
+		.jiancai_left .xiaoxin .timesj{margin-right:25px;}
+        .baodao_content .jiancai_left .xiaoxin .zuofud{float: left;display: inline-block;width: auto;}
+        .baodao_content .jiancai_left .xiaoxin .youfud{float: right;display: inline-block;width: auto;}
+        .baodao_content .jiancai_left .xiaoxin .youfud .fenxiang{float: left;}
+        .baodao_content .neirong{font-size: 16px;color: #666;line-height: 28px;text-indent: 2em;}
+
+		.swiper-container{height:auto;}
+		.slider-box ul{height: 136px;position: relative;}
+		.slider-box ul li{height: 136px;list-style: none;padding: 20px 35px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+		.slider-box ul li .left_gd{float: left;margin-top: 5px;}
+		.slider-box ul li .left_gd a{display: inline-block;}
+		.slider-box ul li .left_gd .zuotu{float: left;margin:0 18px;}
+		.slider-box ul li .left_gd .topkuang{display: inline-block;overflow: hidden;}
+		.slider-box ul li .left_gd .topkuang .topwz{float: left;margin: 10px 0;font-size: 20px;color: #333;}
+		.slider-box ul li .left_gd .topkuang .topxiangx{font-size: 14px;color: #999;width: 150px;clear: both;line-height: 20px;height: 40px;overflow: hidden;}
+		.slider-box ul li .right_gd{float: right;margin-top: 5px;}
+		.slider-box ul li .right_gd a{display: inline-block;}
+		.slider-box ul li .right_gd .youtu{float: right;margin:0 18px;}
+		.slider-box ul li .right_gd .xiakuang{display: inline-block;overflow: hidden;}
+		.slider-box ul li .right_gd .xiakuang .xiawz{float: right;margin: 10px 0;font-size: 20px;color: #333;}
+		.slider-box ul li .right_gd .xiakuang .xiaxiangx{font-size: 14px;color: #999;width: 150px;clear: both;text-align: right;
+			line-height: 20px;height: 40px;overflow: hidden;}
+	    .jiancai_left .biaoqian{margin-top: 50px;padding: 0 35px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;margin-bottom: 60px;}
+	    .jiancai_left .biaoqian a{padding: 6px 12px;border:1px solid #cfcfcf;margin-right: 20px;}
+	    .jiancai_left .wenztuijian{overflow: hidden;}
+	    .jiancai_left .wenztuijian span{color: #ff5353;letter-spacing: 1px;}
+	    .jiancai_left .tuijwzk{width: 100%;height: auto;border:1px solid #ccc;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;margin-top: 14px;margin-bottom: 60px;}
+	    .tuijwzk ul li{padding: 25px 15px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+	     .tuijwzk ul li a{display: inline-block;color: #999;}
+	    .tuijwzk ul li img{margin-right: 33px;float: left;}
+	    .tuijwzk ul li .rightjsxq{display: inline-block;float: right;width: 465px;}
+	    .tuijwzk ul li .rightjsxq h3{font-size: 20px;float: left;margin-top: 7px;margin-bottom: 20px;color: #333;}
+	    .tuijwzk ul li .rightjsxq .zynr{display:block;clear: both;line-height: 25px;height: 50px;overflow: hidden;}
+	    .tuijwzk ul li .rightjsxq .yulanshij{margin-top: 25px;}
+	    .tuijwzk ul li .rightjsxq .yulanshij .left_duiqi{float: left;}
+	    .tuijwzk ul li .rightjsxq .yulanshij .right_duiqi{float: right;}
+	    .tuijwzk ul li .rightjsxq .yulanshij .right_duiqi i{width: 16px;height: 10px;background: url(images/yangjing.jpg) no-repeat center center;margin-right: 5px;display: inline-block;}
+
+		.baodao_content .jiancai_right{float: right;width: 390px;min-height: 500px;margin-top: 22px;}
+		.baodao_content .jiancai_right .fangtan{width: 100%;}
+		.baodao_content .jiancai_right .fangtan .toubu{height: 29px;}
+		.baodao_content .jiancai_right .fangtan .fangtan_left{padding: 5px 10px;background: #ff5353;color: #fff;float: left;}
+		.baodao_content .jiancai_right .fangtan .fangtan_right{float: right;font-size: 16px;color: #666;}
+		.baodao_content .jiancai_right .fangtan .tuwenjies{overflow: hidden;clear: both;margin-top: 16px;}
+		.baodao_content .jiancai_right .fangtan .tuwenjies img{float: left;}
+		.baodao_content .jiancai_right .fangtan .tuwenjies .tuwenjies_you{float: right;width: 220px;}
+		.jiancai_right .fangtan .tuwenjies .tuwenjies_you a{display: block;color: #333;overflow: hidden;}
+		.jiancai_right .fangtan .tuwenjies .tuwenjies_you a:hover{color: #ff7f7f;}
+		.jiancai_right .fangtan .tuwenjies .tuwenjies_you a.ajianjv{margin-top: 25px;}
+		.jiancai_right .fangtan .yihangwz{width: 100%;overflow: hidden;margin-top: 20px;}
+		.jiancai_right .fangtan .yihangwz ul li{line-height: 32px;}
+		.jiancai_right .fangtan .yihangwz ul li a{color: #666;display: block;overflow: hidden;vertical-align:middle;}
+		.jiancai_right .fangtan .yihangwz ul li a:hover{color: #ff7f7f;}
+		.jiancai_right .fangtan .yihangwz ul li a span{width: 18px;height: 14px;display: inline-block;
+			background: url(images/bofyudu.jpg) no-repeat center center;vertical-align:middle;margin-right: 12px;}
+		.jiancai_right .hotwenzhang{width: 100%;height: auto;overflow: hidden;margin-top: 40px;}
+		.baodao_content .jiancai_right .hotwenzhang .toubu{height: 29px;}
+		.baodao_content .jiancai_right .hotwenzhang .remen_left{padding: 5px 10px;background: #ff5353;color: #fff;float: left;}
+		.baodao_content .jiancai_right .hotwenzhang .remen_right{float: right;font-size: 16px;color: #666;cursor: pointer;}
+		.baodao_content .jiancai_right .hotwenzhang .remen_right .xianjianjv{display: inline-block;margin:0 5px;font-style: normal;}
+		.hotwenzhang .remenul{height: auto;margin-top: 20px;}
+		.hotwenzhang .remenul li{line-height: 42px;border-bottom: 1px solid #f5f5f5;}
+		.hotwenzhang .remenul li a{color: #666;display: block;overflow: hidden;}
+		.hotwenzhang .remenul li a:hover{color:#ff7f7f;}
+		.hotwenzhang .remenul li a span{width: 24px;height: 24px;border-radius: 50%;display: inline-block;background: #ccc;line-height: 24px;text-align: center;margin-right: 10px;color: #fff;}
+		.hotwenzhang .remenul li:nth-child(1) a span{background: #ff5353;}
+		.hotwenzhang .remenul li:nth-child(2) a span{background: #ff5353;}
+		.hotwenzhang .remenul li:nth-child(3) a span{background: #ff5353;}
+		.active{color: #ff5353;}
+		.baodao_content .jiancai_right .biaoqianku{height: auto;width: 100%;margin-top: 45px;}
+		.baodao_content .jiancai_right .biaoqianku .toubu{height: 29px;}
+		.baodao_content .jiancai_right .biaoqianku .biaoqian_left{padding: 5px 10px;background: #ff5353;color: #fff;float: left;}
+		.baodao_content .jiancai_right .biaoqianku .jvtbq{height: auto;margin-top: 10px;}
+		.baodao_content .jiancai_right .biaoqianku .jvtbq a{padding: 8px;border:1px solid #c9c9c9;font-size: 16px;
+			margin-right: 20px;margin-bottom: 20px;display: inline-block;}
+		.baodao_content .jiancai_right .biaoqianku .jvtbq a:hover{color:#ff7f7f;}
+		.baodao_content .jiancai_right .biaoqianku .jvtbq a.siwu{margin-right: 0;}
+	</style>
+</head>
+<body>
+	
+   <div class="baodao_content">
+   	   <div class="luyou">
+   	   	  <a href="#">首页</a><a class="zhishi">></a><a class="yanse" href="#">建材资讯</a>
+   	   </div>
+   	   <div class="jiancai_left">
+   	   	   <h2 class="biaot">建材报道</h2>
+   	   	   <div class="xiaoxin">
+   	   	       <div class="zuofud">
+   	   	       	<span class="laiyaun">来源：齐装网</span>
+   	   	   	    <span class="timesj">2017-08-23</span>
+   	   	   	    <span>浏览量: 1071</span>
+   	   	       </div>
+   	   	   	  
+   	   	   	  <div class="youfud">
+   	   	   	  <span class="fenxiang">分享:</span>
+   	   	   	      <div class="bdsharebuttonbox gl_fx bdshare-button-style0-16" data-bd-bind="1490146086907">
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"> </a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                  </div>
+   	   	   	  </div>
+   	   	   </div>
+   	   	   <p class="neirong">上下床极大的节省了空间，给了孩子们一个独立的私人的空间。一般的儿童床上下铺都是具有较为强大的收纳的功能，不仅能把它当做一张床睡眠的使用，还能将其作为一个小型的收纳柜来使用哦。所以它能够最大限度的收纳孩子的物品从而保证了房间的整洁，让儿童们拥有了一个最佳的成长的环境。上下床极大的节省了空间，给了孩子们一个独立的私人的空间。一般的儿童床上下铺都是具有较为强大的收纳的功能，不仅能把它当做一张床睡眠的使用，还能将其作为一个小型的收纳柜来使用哦。所以它能够最大限度的收纳孩子的物品从而保证了房间的整洁，让儿童们拥有了一个最佳的成长的环境。</p>
+   	   	   <div class="tupxs">
+   	   	   	  <img src="images/xiangqyetup.jpg" alt="">
+   	   	   </div>
+   	   	   <p class="neirong">上下床极大的节省了空间，给了孩子们一个独立的私人的空间。一般的儿童床上下铺都是具有较为强大的收纳的功能，不仅能把它当做一张床睡眠的使用，还能将其作为一个小型的收纳柜来使用哦。所以它能够最大限度的收纳孩子的物品从而保证了房间的整洁，让儿童们拥有了一个最佳的成长的环境。上下床极大的节省了空间，给了孩子们一个独立的私人的空间。一般的儿童床上下铺都是具有较为强大的收纳的功能，不仅能把它当做一张床睡眠的使用，还能将其作为一个小型的收纳柜来使用哦。所以它能够最大限度的收纳孩子的物品从而保证了房间的整洁，让儿童们拥有了一个最佳的成长的环境。</p>
+   	   	   
+
+            <div class="slider-box gl-slide" id="focus">
+
+            <div class="swiper-container swiper-container-horizontal">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <div class="left_gd">
+                            <a href="#" target="_blank">
+                            	<img class="zuotu" src="images/zuoygd.jpg" alt="">
+                        	<div class="topkuang">
+                        		<span class="topwz">上一篇</span>
+                        	<div class="topxiangx">部分内容部分内容部分内容部分内容</div>
+                        	</div>
+                            </a>
+                        </div>
+                        <div class="right_gd">
+                        <a href="#">
+                        	<img class="youtu" src="images/zuoygd.jpg" alt="">
+                        	<div class="xiakuang">
+                        		<span class="xiawz">下一篇</span>
+                        	<div class="xiaxiangx">部分内容部分内容部分内容部分内容</div>
+                        	</div>
+                        </a> 
+                        </div>
+                    </li>
+                     <li class="swiper-slide">
+                        <div class="left_gd">
+                            <a href="#" target="_blank">
+                            	<img class="zuotu" src="images/zuoygd.jpg" alt="">
+                        	<div class="topkuang">
+                        		<span class="topwz">上一篇</span>
+                        	<div class="topxiangx">部分内容部分内容部分内容部分内容</div>
+                        	</div>
+                            </a>
+                        </div>
+                        <div class="right_gd">
+                        <a href="#">
+                        	<img class="youtu" src="images/zuoygd.jpg" alt="">
+                        	<div class="xiakuang">
+                        		<span class="xiawz">下一篇</span>
+                        	<div class="xiaxiangx">部分内容部分内容部分内容部分内容</div>
+                        	</div>
+                        </a> 
+                        </div>
+                    </li>
+                     <li class="swiper-slide">
+                         <div class="left_gd">
+                            <a href="#" target="_blank">
+                            	<img class="zuotu" src="images/zuoygd.jpg" alt="">
+                        	<div class="topkuang">
+                        		<span class="topwz">上一篇</span>
+                        	<div class="topxiangx">部分内容部分内容部分内容部分内容</div>
+                        	</div>
+                            </a>
+                        </div>
+                        <div class="right_gd">
+                        <a href="#">
+                        	<img class="youtu" src="images/zuoygd.jpg" alt="">
+                        	<div class="xiakuang">
+                        		<span class="xiawz">下一篇</span>
+                        	<div class="xiaxiangx">部分内容部分内容部分内容部分内容</div>
+                        	</div>
+                        </a> 
+                        </div>
+                    </li>
+                </ul>
+                <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div class="biaoqian">
+        	<a href="#">标签1</a><a href="#">标签2</a><a href="#">标签3</a><a href="#">标签4</a>
+        </div>
+        <div class="wenztuijian"><span>90</span>%的人还看了</div>
+        <div class="tuijwzk">
+        	<ul>
+        		<li>
+        		<a href="#">
+        			<img src="images/tuijianwz.jpg" alt="">
+        			<div class="rightjsxq">
+        				<h3>2017世博会打折</h3>
+        				<div class="zynr">了一个最佳的成长的环境。上下床极大的节省了空间，给了孩子了一个最佳的成长的环境。上下床极大的节省了空间，给了孩子</div>
+        				<div class="yulanshij">
+	        			  <span class="left_duiqi">2017-08-23</span>
+	        			  <span class="right_duiqi"><i></i>10</span>
+        			</div>
+        			</div>
+        			
+        		</a>
+        			
+        		</li>
+        		<li>
+        			<a href="#">
+        			<img src="images/tuijianwz.jpg" alt="">
+        			<div class="rightjsxq">
+        				<h3>2017世博会打折</h3>
+        				<div class="zynr">了一个最佳的成长的环境。上下床极大的节省了空间，给了孩子了一个最佳的成长的环境。上下床极大的节省了空间，给了孩子</div>
+        				<div class="yulanshij">
+	        			  <span class="left_duiqi">2017-08-23</span>
+	        			  <span class="right_duiqi"><i></i>10</span>
+        			</div>
+        			</div>
+        			
+        		</a>
+        		</li>
+        	</ul>
+        </div>
+   </div>
+   <div class="jiancai_right">
+   	   	   <div class="fangtan">
+   	   	   <div class="toubu">
+   	   	   	  <span class="fangtan_left">高晓松访谈</span><a class="fangtan_right" href="#">更多+</a>
+   	   	   </div>
+   	   	   	  
+   	   	   	  <div class="tuwenjies">
+   	   	   	  	  <img src="images/tuwenright.jpg" alt="">
+   	   	   	  	  <div class="tuwenjies_you">
+   	   	   	  	  	 <a href="#">你们装修花多少钱?</a>
+   	   	   	  	  	 <a class="ajianjv" href="#">你们装修花多少钱?</a>
+   	   	   	  	  	 <a class="ajianjv" href="#">你们装修花多少钱?</a>
+   	   	   	  	  </div>
+   	   	   	  </div>
+   	   	   	  <div class="yihangwz">
+   	   	   	  	 <ul>
+   	   	   	  	 	<li><a href="#"><span></span>家装合同这几个地方要留意 随意签吃大亏</a></li>
+   	   	   	  	 	<li><a href="#"><span></span>家装合同这几个地方要留意 随意签吃大亏</a></li>
+   	   	   	  	 	<li><a href="#"><span></span>家装合同这几个地方要留意 随意签吃大亏</a></li>
+   	   	   	  	 	<li><a href="#"><span></span>家装合同这几个地方要留意 随意签吃大亏</a></li>
+   	   	   	  	 </ul>
+   	   	   	  </div>
+   	   	   </div>
+   	   	   <div class="hotwenzhang">
+   	   	   	   <div class="toubu">
+   	   	   	  <span class="remen_left">热门文章</span><div class="remen_right"><span class="active">周</span><i class="xianjianjv">/</i><span>月</span></div>
+   	   	      </div>
+   	   	      <ul class="remenul">
+   	   	      	<li><a href="#"><span>1</span>泉州我乐橱柜有限公司到底怎么样？</a></li>
+   	   	      	<li><a href="#"><span>2</span>泉州我乐橱柜有限公司到底怎么样？</a></li>
+   	   	      	<li><a href="#"><span>3</span>泉州我乐橱柜有限公司到底怎么样？</a></li>
+   	   	      	<li><a href="#"><span>4</span>泉州我乐橱柜有限公司到底怎么样？</a></li>
+   	   	      	<li><a href="#"><span>5</span>泉州我乐橱柜有限公司到底怎么样？</a></li>
+   	   	      	<li><a href="#"><span>6</span>泉州我乐橱柜有限公司到底怎么样？</a></li>
+   	   	      </ul>
+   	   	   </div>
+   	   	   <div class="biaoqianku">
+   	   	   	   <div class="toubu">
+   	   	   	  <span class="biaoqian_left">标签库</span>
+   	   	      </div>
+   	   	       <div class="jvtbq">
+   	   	   	  	<a href="#">我是标签</a><a href="#">我是标签</a><a href="#">我是标签</a><a href="#" class="siwu">我是标签</a>
+   	   	   	  	<a href="#">我是标签</a><a href="#">我是标签</a><a href="#">我是标签</a><a href="#" class="siwu">我是标签</a>
+   	   	   	  	<a href="#">我是标签</a><a href="#">我是标签</a><a href="#">我是标签</a><a href="#" class="siwu">我是标签</a>
+   	   	   	  </div>
+   	   	   </div>
+   	   </div>
+        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+        <script>
+        	 
+        </script>
+	<script type="text/javascript">
+		window._bd_share_config=
+    {"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+       var mySwiper = new Swiper('.swiper-container', {
+                //移动端轮播
+                pagination : '.swiper-pagination',
+                autoplayDisableOnInteraction : false,
+                loop : true,
+                // autoplay: 4000,//可选选项，自动滑动
+                initialSlide :0,
+                observer:true,//修改swiper自己或子元素时，自动初始化swiper
+                observeParents:true,//修改swiper的父元素时，自动初始化swiper
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+            });
+       $(function(){
+       	 $('.remen_right').on('click','span',function(){
+       	 	if($(this).hasClass('active')){
+               $(this).siblings().removeClass('active');
+       	 	}else{
+       	 		$(this).addClass('active')
+       	 		$(this).siblings().removeClass('active');
+       	 	}
+       	 })
+       })
+	</script>
+</body>
+</html>
