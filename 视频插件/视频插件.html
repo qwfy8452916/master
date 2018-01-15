@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视频插件</title>
+	<script src="../common/js/jquery-1.8.3.min.js"></script>
+	<script src="jwplayer/jwplayer.js"></script>
+	<script src="jwplayer/jwpsrv.js"></script>
+</head>
+<body>
+	<div class="shipinwz" id="company-video">
+               
+            </div>
+
+
+<script type="text/javascript">
+	
+  $(function(){
+
+
+  	 video=jwplayer("company-video");
+
+        // 视频播放
+               video.setup({
+                flashplayer: "jwplayer/jwplayer.flash.swf",
+                file:"js/shipin.mp4",
+                height: 388,
+                width: 690,
+                autostart:false,
+                image: "",
+                screencolor :"#000"
+            });
+
+
+  })
+
+
+</script>
+</body>
+</html>
