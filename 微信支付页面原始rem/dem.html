@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title></title>
+	<script type="text/javascript" src="js/rem.js"></script>
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="http://www.jb51.net/Public/js/jquery.min.js"></script>  
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<style type="text/css" media="screen">
+	   *{margin:0;padding: 0;font-size: 0.75rem;font-family: "宋体";}
+
+		.container{width:100%;position: relative;}
+		.til{width: 100%;height: 1.088rem;line-height:1.088rem;background: ;vertical-align:middle;position: relative;margin-top:1.621333333333333rem;}
+		.til .til01{height:1.088rem;width:0.768rem;float:left;background: url(images/jtou.gif) no-repeat;background-size: 90% 90%;margin-left: 3%;display: inline-block; }
+		.til .sp{width:1px;height:0.64rem;line-height:0.64rem;border-right: 1px solid #807d7d;margin-left: 0.5rem;}
+		.til .til02{height:1.088rem;line-height: 1.088rem;color:#000;font-size: 0.75rem;display: inline-block;position:absolute;top:-0.005rem;/*margin-left: 50%;webkit-transform: translate(-50%,0);transform: translate(-50%,0);*/ margin-left: 0.5rem;}
+		.til .til03{height:1.088rem;width:0.4266666666666667rem;background: url(images/fenx.gif) no-repeat;background-size: 90% 90%;float:right;margin-right: 4%;display: inline-block; }
+		.container .toub{width: 100%;height: 4.6rem;line-height:4.6rem;background: #00b735;position: relative;}
+		.container .toub .sp{display:block;width:2.581333333333333rem;height:2.581333333333333rem;background: url(images/logo.png) no-repeat;background-size: 100% 100%;text-align:center;position: absolute;top: 10%;left:50%;margin-left:-1.290666666666667rem;/*-webkit-transform: translate(-50%,0);*/}
+		.container .toub .sp2{position:absolute;bottom:0.1rem;text-align:center;color:#fff;display: block;width: 100%;height: 1.2rem;line-height: 1.2rem;font-weight: bold;}
+		.container .inp{width: 90%;height: 2.4rem;line-height:2.4rem;background: #f4f4f6;margin-top: 1rem;border-radius: 0.3rem;margin-left: 4%;padding: 0 0.2rem;}
+		.container .inp .inp01{float: left;}
+		.container .inp .inp02{float: right;}
+		.container .shul{width: 90%;height: 1.8rem;line-height: 1.8rem;margin-left: 4%;margin-top: 1rem;clear: both;padding: 0 0.2rem;}
+		.container .shul .sl01{display: inline-block;float: left;}
+		.container .shul .sl02{display: inline-block;float: right;margin-top: 0.4rem}
+		.container .shul .sl02 .sl02tt{border-right: 0;}
+		.container .shul .sl02 .sl02yy{border:1px solid #807d7d;width: 1.2rem;height: 1.2rem;line-height:1.2rem;display: inline-block;text-align: center;float: left;border-right: 0;}
+		.container .shul .sl02 span{border:1px solid #807d7d;width: 1.2rem;height: 1.2rem;line-height:1.2rem;display: inline-block;text-align: center;float: left;}
+		.container .cyyh{width: 90%;height: 1.8rem;line-height: 1.8rem;background: #f4f4f6;margin-top: 1rem;border-radius: 0.3rem;margin-left: 4%;padding: 0 0.2rem;}
+		.container .cyyh .cyyh01{float:left;}
+		.container .cyyh .cyyh02{float:right;}
+		.container .qrfk{width: 90%;height: 1.8rem;line-height: 1.8rem;text-align: center;background: #00b735;margin-left: 5%;margin-top: 1rem;border-radius: 0.3rem;color: #fff;font-size: 0.8rem;padding: 0 0.2rem;border:none;}
+		.container .tigon{width: 90%;margin-left: 5%;height: 1.5rem;line-height: 1.5rem;text-align: center;color: #919191;font-size: 0.55rem;}
+		.container .tigon i{font-style: normal;font-size: 0.55rem;color: #00b735;}
+		.container .yyk{
+			display: none;
+			position: fixed;
+			top:0;
+			bottom: 0;
+			right: 0;
+			left:0;
+			z-index: 999;
+			background:rgba(4, 4, 4, 0.5);
+		}
+		.container .yyk img{
+			position: absolute;
+            top:50%;
+            left:50%;
+            width:auto;
+            transform:translate(-50%,-50%);
+            text-align: center;
+            background-size: 100% 100%;
+		}
+	</style>
+</head>
+<body>
+
+   
+
+	<section class="container">
+		<!-- <div class="til">
+			<div class="til01">
+			</div>
+			<span class="sp"></span>
+			<div class="til02">
+			 时尚妈咪(松江店)	
+			</div>
+			<div class="til03"></div>
+			</div> -->
+			<div class="toub">
+				<span class="sp"></span>
+				<span class="sp2">乡都(曲阳路店)</span>
+			</div>
+			<div class="inp">
+			<span class="inp01">消费总金额(元)：</span>
+			<span class="inp02">100.25</span>
+		</div>
+		<div class="shul">
+			<span class="sl01">数量：</span>
+			<div class="sl02">
+				<span class="sl02tt" onClick="numDec()">-</span>
+				<input class="sl02yy" id="quantity" type="text" value="1">
+				<span id="panduan" onClick="numAdd()">+</span>
+			</div>
+		</div>
+	<!-- 	<div class="cyyh">
+		  <span class="cyyh01">不参与优惠金额(元)</span>	
+		  <span class="cyyh02">请询问服务员后输入</span>
+		</div> -->
+		<button  class="qrfk" type="button" onClick="duanji()">确认付款</button>
+		<div class="tigon">
+			由<i>秒富</i>信息科技提供支付服务
+		</div>
+			<div class="yyk">
+				
+			</div>
+		
+	</section>
+   
+   <script type="text/javascript"> 
+
+    // 判断value值是否满足条件
+
+    $( function(){
+    	var kk=$("#quantity").val();
+    	if(kk==0){
+          $('#panduan').removeAttr('onClick');
+    	}else{
+    		return;
+    	}
+    })
+   
+
+/*或者不用jquery*/  
+/*商品数量框输入*/  
+function keyup(){  
+    var quantity = document.getElementById("quantity").value;  
+    if(isNaN(quantity) ||  parseInt(quantity)!=quantity || parseInt(quantity)<1){  
+        quantity = 1;  
+        return;  
+    }  
+    if(quantity>=101){  
+        document.getElementById("quantity").value=quantity.substring(0,quantity.length-1);  
+        alert("商品数量不能大于100");  
+    }  
+}  
+  
+/*商品数量+1*/  
+function numAdd(){  
+    var quantity = document.getElementById("quantity").value;  
+    var num_add = parseInt(quantity)+1;  
+    
+    if(quantity==""){  
+        num_add = 1;  
+    }  
+    if(num_add>=101){  
+        document.getElementById("quantity").value=num_add-1;  
+        alert("商品数量不能大于100");  
+    }else{  
+
+        document.getElementById("quantity").value=num_add;
+        var likui = 100.25;
+        var likui = likui * num_add;
+        likui=likui.toFixed(2);
+        likui=parseFloat(likui);
+        // likui=parseFloat(likui.toFixed(2));
+        $('.inp02').text(likui);
+        
+        
+    }  
+}  
+/*商品数量-1*/  
+function numDec(){  
+    var quantity = document.getElementById("quantity").value;  
+    
+    var num_dec = parseInt(quantity)-1;  
+    if(num_dec>=1){  
+        document.getElementById("quantity").value=num_dec; 
+        var likui = 100.25;
+        var likui = likui*num_dec;
+        likui = likui.toFixed(2);
+        likui = parseFloat(likui);
+        // likui = parseFloat(likui.toFixed(2));
+        $('.inp02').text(likui);
+          
+          
+    }  
+}  
+
+function duanji(){  
+   $(".yyk").append('<img src="images/loading.gif" />');
+   $(".yyk").css("display","block");
+}  
+
+
+ // beforeSend:function(){
+ //           $(".yyk").append('<img src="images/loading.gif"  />');
+ //        },
+ //        complete: function() {$(".yyk").remove();
+ //        }
+
+
+
+</script>  
+</body>
+</html>
