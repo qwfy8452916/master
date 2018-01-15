@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>尊享装修2.0服务</title>
+	<link rel="stylesheet" href="css/m-reset.css">
+    <link rel="stylesheet" href="../common/font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/zxfwu.css">
+</head>
+<body>
+	<article>
+    <div class="qzwldy01">
+    	<img src="images/qzwldy01.jpg" alt="">
+    </div>
+    <div class="qzwldy02">
+    	<img src="images/qzwldy02.jpg" alt="">
+    </div>
+    <div class="qzwldy03">
+    	<img src="images/qzwldy03.jpg" alt="">
+    </div>
+    <div class="qzwldy04">
+    	<a class="youhuiq01"></a>
+    	<a class="youhuiq02"></a>
+    	<a class="youhuiq03"></a>
+    </div>
+    <div class="qzwldy05">
+    	<div class="toumbj">
+    		<div class="biaod01"><input type="text" name="name" placeholder="怎么称呼您"></div>
+    		<!-- <div class="tishi01">请输入您的称呼</div> -->
+    		<div class="biaod02"><input name="tel" type="text" maxlength="11" placeholder="请输入您的手机号"></div>
+    		<div class="tishi02">请输入正确的姓名或手机号码</div>
+			<input type="hidden" name="source" value="{$source}">
+    		<button class="tijiao">领取特权</button>
+    		<a class="fangwen" href="http://m.qizuang.com">访问齐装网，获取更多服务</a>
+    	</div>
+    </div>
+    <div class="qzwldy06">
+    	<p class="zxrexian01"><span>装修咨询热线：</span><a href="#"><span class="phone-box"><i class="fa fa-phone"></i></span>4008-659-600</a></p>
+    	<p class="zxrexian02">轻松装修乐无忧</p>
+    	<p class="zxrexian03">手机齐装网：m.qizuang.com&nbsp;&nbsp;苏ICP备12045334号</p>
+    </div>
+    <div class="yinying"></div>
+    <div class="successlingqu">
+    	<p class="cglq">您已成功领取</p>
+    	<p class="cglq2">稍后客服会电话联系您确认，请您注意接听电话。</p>
+    	<button class="sure">确定</button>
+    </div>
+ </article>
+ <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+ <script type="text/javascript" src="js/yanzhengx.js"></script>
+ <script>
+
+	 $(function(){
+        $('.tijiao').click(function(){
+		  var name = $("input[name=name]").val();
+		  var tel = $("input[name=tel]").val();
+		   if (name==""){
+             $('.tishi02').show();
+             return false;
+		   }else if(tel==""){
+             $('.tishi02').show();
+             return false;
+		   }else if(!App.validate.run(name,'name')){
+		   	 $('.tishi02').show();
+		   	 return false;
+		   }else if(!App.validate.run(tel,'tel')){
+		   	 $('.tishi02').show();
+		   	 return false;
+		   }else{
+		       //验证成功
+        //        window.order({
+        //            extra:{
+        //                name:name,
+        //                tel:tel,
+        //                source:$("input[name=source]").val(),
+        //            },
+        //            error:function(){
+        //                alert("发生了未知的错误,请稍后再试！");
+        //            },
+        //            success:function(data, status, xhr){
+        //                if(data.status == 1){
+        //                    $('.yinying').show();
+        //                    $('.successlingqu').show();
+					   // }
+
+        //            },
+        //            validate:function(item, value, method, info){
+        //                if (('cs' == item || 'qx' == item) && 'notempty' == method) {
+        //                    alert(info);
+        //                    return false;
+        //                };
+        //                if ('mianji' == item && '' != method) {
+        //                    alert(info);
+        //                    $(".m-bj-edit input[name=mianji]").val("");
+        //                    $(".m-bj-edit input[name=mianji]").focus();
+        //                    return false;
+        //                };
+        //                if ('tel' == item && '' != method) {
+        //                    alert(info);
+        //                    $(".m-bj-edit input[name=tel-number]").focus();
+        //                    return false;
+        //                };
+        //                return true;
+        //            }
+        //        });
+                    $('.yinying').show();
+                    $('.successlingqu').show();
+		            $('.sure').click(function(){
+					$('.yinying').hide();
+					$('.successlingqu').hide();
+					window.location.href = window.location.href;
+		});
+		   }
+		})
+
+		$('input').focus(function(){
+			$('.tishi02').hide();
+		});
+
+		
+
+	 })
+		
+
+
+	</script>
+</body>
+</html>
