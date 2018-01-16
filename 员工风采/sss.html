@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<video id="video1" controls="" width="320" height="240" name="media" onclick="ccc()" ondblclick="rrr(this)"><source src="http://staticqn.qizuang.com/video/qizuang/ertongjie-1.mp4" type="video/mp4"></video>
+
+
+	<script>
+
+	// 单机暂停播放
+     var aa=false;
+      var myVideo=document.getElementById("video1");
+      function ccc(){
+      	if(aa){
+      		playVid();
+      	}else{
+      		pauseVid();
+      	}
+      	aa=!aa;
+      }
+
+      function playVid()
+		  {
+		  	myVideo.play();
+
+		  }
+
+		function pauseVid()
+		  {
+
+		  	 myVideo.pause();
+
+		  }	
+
+
+      // 双击全屏
+      
+      var bb=true;
+      var myVideo=document.getElementById("video1");
+      function rrr(element){
+      	if(bb){
+      		 if(element.requestFullscreen) {
+		    element.requestFullscreen();
+		  } else if(element.mozRequestFullScreen) {
+		    element.mozRequestFullScreen();
+		  } else if(element.msRequestFullscreen){ 
+		    element.msRequestFullscreen();  
+		  } else if(element.webkitRequestFullscreen) {
+		    element.webkitRequestFullScreen();
+		  }
+      	}else{
+      		 if (document.exitFullscreen) {
+		      document.exitFullscreen();
+		    } else if (document.msExitFullscreen) {
+		      document.msExitFullscreen();
+		    } else if (document.mozCancelFullScreen) {
+		      document.mozCancelFullScreen();
+		    } else if (document.webkitExitFullscreen) {
+		      document.webkitExitFullscreen();
+		    }
+      	}
+      	bb=!bb;
+      }
+      
+
+		
+
+
+   </script>
+</body>
+</html>
