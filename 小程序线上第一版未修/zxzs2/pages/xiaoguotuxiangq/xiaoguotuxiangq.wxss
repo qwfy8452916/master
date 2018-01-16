@@ -1,0 +1,50 @@
+/* pages/xiaoguotuxiangq/xiaoguotuxiangq.wxss */
+
+page {
+    position: relative;
+}
+
+.video-info {
+    width: 100%;
+    height: 510rpx;
+    margin-top: 255rpx;
+}
+
+swiper {
+    height: 510rpx !important;
+}
+
+image {
+    width: 100%;
+    height: 510rpx;
+}
+
+.video-img {
+    margin-top: 255rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.img-box {
+    font-size: 30rpx;
+    display: inline-block;
+    float: left;
+}
+
+.shuzijiz {
+    display: inline-block;
+    float: right;
+}
+
+.zxaniu {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: #ff5353;
+    display: block;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 5rpx;
+}

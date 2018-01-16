@@ -1,0 +1,27 @@
+<scroll-view class="tuwenkuang" scroll-with-animation="true" bindscrolltolower="downLoad" scroll-y="true">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{true}}" duration="{{duration}}" indicator-dots="{{true}}" autoplay="{{true}}">
+        <block wx:for="{{bannerList}}" wx:key>
+            <swiper-item>
+                <image data-urlname="{{item.url}}" bindtap="toPage" src="{{imgUrl}}{{item.img_url}}" data-id="{{index}}" class="slide-image" width="355" height="150" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="sjbjmk">
+        <image bindtap="toSheji" class="zxsj" src="../../img/zxsjbj.png"></image>
+        <image bindtap="toBaojia" data-id="{{index}}" class="zxbj" src="../../img/zxbjbj.png"></image>
+    </view>
+
+    <view class="zxwztit">最新装修文章</view>
+    <block wx:for="{{articleList}}" wx:for-item="" wx:key>
+        <view class="tuwhunhe" bindtap="articleDet" data-id="{{item.id}}">
+            <image class="tuwh" src="{{imgUrl}}{{item.face}}"></image>
+            <view class="wenzikuang">
+                <view class="miaoshu">{{item.title}}</view>
+                <view class="riqi">{{item.addtime}}</view>
+                <view class="yuedul">
+                    <image class="yuedubj" src="../../img/yuedubj.png"></image>{{item.realview}}
+                </view>
+            </view>
+        </view>
+    </block>
+</scroll-view>

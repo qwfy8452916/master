@@ -1,0 +1,90 @@
+/**app.wxss**/
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+}
+
+page {
+    font-family: "PingFang SC",
+                 "Helvetica Neue",
+                 Helvetica,
+                 "Hiragino Sans GB",
+                 "Microsoft YaHei",
+                 "微软雅黑",
+                 Arial,
+                 sans-serif;
+}
+
+@keyframes handAnimate {
+    0% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+
+@-webkit-keyframes handAnimate {
+    0% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes handAnimate2 {
+    0% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+
+@-webkit-keyframes handAnimate2 {
+    0% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
