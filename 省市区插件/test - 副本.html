@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   		<meta name="format-detection" content="telephone=no" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="js/sy.js"></script>
+		<script type="text/javascript" src="js/allCity.js"></script>
+		<script type="text/javascript" src="js/jroll.js"></script>
+		<style>
+			body{
+				padding: 0px;
+				margin: 0px;
+				
+			}
+			.quanb{background: rgba(4, 4, 4, 0.5);position: fixed;top: 0;bottom: 0;left: 0;right: 0;background: rgba(4, 4, 4, 0.5);display: none;}
+			.Area{ width: 80%; overflow:hidden; background: #fff; height: 100%;position: fixed;top: 0;bottom: 0;right: -500px;display: none;z-index: 999;
+			}
+			ul{
+				list-style: none;
+				padding: 0px;
+				margin: 0px;
+			}
+			.left-div,.center-div,.right-div{
+				width:33%;
+				height: 100%;
+				text-align: left;
+				float: left;
+				overflow-y: auto;
+			}
+			.left-div li,.center-div li,.right-div li{
+				line-height: 3em;
+				cursor: pointer;
+				border-bottom: 1px solid #e5e5e5;
+				font-size: 14px;
+				margin-left: 8%;
+				box-sizing: border-box; 
+			}
+			.right-div{width: 34% !important;}
+			.left-div{
+				background-color: #fff;
+				
+			}
+			.center-div{
+				background-color: #f8f8f8;
+				
+			}
+			.right-div{
+				background-color: #fff;
+			}
+			.active{color:#ff5659;background: #f8f8f8;}
+			.active2{color:#ff5659;background: #fff;}
+			.active3{color:#ff5659;}
+		</style>
+	</head>
+	<body>
+	<input class="dianji2" readonly type="text" placeholder="请选择你所在的地区" style="width: 200px;outline: none;color: rgb(0, 0, 0);">
+	
+	
+	<div class="Area">
+		<div class="left-div">
+			
+		</div>
+		<div class="center-div">
+			
+		</div>
+		<div class="right-div">
+			
+		</div>
+		</div>
+		<div class="quanb">
+		</div>
+	
+	</body>
+</html>
+
+<script>
+
+$(function(){
+	// console.log(rlpca);
+
+    $('.dianji2').on('click',function(){         
+        $('.Area').show().stop().animate({right: 0}, 300);
+        $('.quanb').fadeIn(100);
+        jroll = new JRoll(".left-div", {id: "scroller"});
+		jroll1 = new JRoll(".center-div", {id: "scroller1"});
+		jroll2 = new JRoll(".right-div", {id: "scroller2"});             
+    });
+    $('.quanb').on('click',function(){
+    	$('.quanb').fadeOut(100);
+        $('.Area').stop().animate({right: "-800px"}, 300,function(){
+        	$('.Area').hide();
+        });                
+    });
+
+
+	
+	init(); //初始化省市三级联动
+
+	//绑定一级联动点击事件
+	$("body").on("click",".left-li",function(){
+		var id = $(this).data("id");
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+		createCenter(rlpca[id].children,id); //创建二级联动
+		createRight(rlpca[id].children[id].children,id,0); //创建三级联动
+		jroll1 = new JRoll(".center-div", {id: "scroller1"});
+		jrol2 = new JRoll(".right-div", {id: "scroller2"});
+	});
+	//绑定二级联动点击事件
+	$("body").on("click",".center-li",function(){
+		var parentid = $(this).data("parentid");
+		$(this).siblings().removeClass('active2');
+		$(this).addClass('active2');
+		var id = $(this).data("id");
+		createRight(rlpca[parentid].children[id].children,parentid,id); //创建三级联动
+		jrol2 = new JRoll(".right-div", {id: "scroller2"});
+		
+	});
+	//绑定三级联动点击事件
+	$("body").on("click",".right-li",function(){
+		var rootid = $(this).data("rootid");
+		$(this).siblings().removeClass('active3');
+		$(this).addClass('active3');
+		var parentid = $(this).data("parentid");
+		var id = $(this).data("id");
+
+		
+		$('.quanb').hide();
+        $('.Area').animate({right: "-800px"}, 800,function(){
+        	            
+                    	$('.Area').hide();
+                    	
+                    });  
+        console.log(rlpca[rootid].children[parentid].children[id])
+        $('.dianji2').val(""+rlpca[rootid].text+"-"+rlpca[rootid].children[parentid].text+"-"+rlpca[rootid].children[parentid].children[id].text);
+
+
+
+	});
+
+
+
+	function init(){
+		//一级
+		createLeft(rlpca);
+
+		//二级
+		createCenter(rlpca[0].children,0);
+		
+		//三级
+		createRight(rlpca[0].children[0].children,0,0);
+
+	}
+	// 创建一级联动
+	function createLeft(data){
+		var html = [];
+		html.push("<ul>");
+		$.each(data,function(index,obj){
+			// console.log(obj.text)
+			html.push('<li class="left-li" data-id="'+index+'">'+obj.text+'</li>');
+		});
+		html.push("</ul>");
+		html = html.join('');
+		$(".left-div").html(html);
+	}
+	//创建二级联动
+	function createCenter(data,parentid){
+		var html = [];
+		html.push("<ul>");
+		$.each(data,function(index,obj){
+			// console.log(obj.text)
+			html.push('<li class="center-li" data-parentid="'+parentid+'" data-id="'+index+'">'+obj.text+'</li>');
+		});
+		html.push("</ul>");
+		html = html.join('');
+		$(".center-div").html(html);
+	}
+	//创建三级联动
+	function createRight(data,rootid,parentid){
+		var html = [];
+		html.push("<ul>");
+		$.each(data,function(index,obj){
+			console.log(obj.text)
+			html.push('<li class="right-li" data-rootid="'+rootid+'" data-parentid="'+parentid+'" data-id="'+index+'">'+obj.text+'</li>');
+		});
+		html.push("</ul>");
+		html = html.join('');
+		$(".right-div").html(html);
+	}
+});
+</script>

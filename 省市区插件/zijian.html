@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		
+		<script type="text/javascript" src="js/allCity.js"></script>
+		<style>
+			 .left_div,.center_div,.right_div{width: 30%;height: 100%;float: left;}
+
+
+		</style>
+</head>
+<body>
+<div class="left_div"></div>
+<div class="center_div"></div>
+<div class="right_div"></div>
+
+<script>
+	$(function(){
+		rlpca.shift();
+	for(var i=0;i<rlpca.length;i++){
+       rlpca[i].children.shift();
+       for(var j=0;j<rlpca[i].children.length;j++){
+          rlpca[i].children[j].children.shift();
+       }
+
+	}
+
+   console.log(rlpca);
+
+
+init()
+
+function init(){
+		//一级
+		createLeft(rlpca);
+
+		//二级
+		createcenter(rlpca[0].children,0);
+		
+		//三级
+		createright(rlpca[0].children[0].children,0,0);
+
+
+	}
+
+
+//绑定一级联动
+$('body').on('click','.left_li',function(){
+	var id=$(this).data('id');
+	createcenter(rlpca[id].children,id);
+	createright(rlpca[id].children[0].children,id,0);
+})
+
+//绑定二级联动
+$('body').on('click','.center_li',function(){
+	var parentid=$(this).data('parentid');
+	var id=$(this).data('id');
+	createright(rlpca[parentid].children[id].children,parentid,id);
+})
+
+//绑定三级联动
+$('body').on('click','.right_li',function(){
+    var rootid=$(this).data('rootid');
+    var parentid=$(this).data('parentid');
+    var id=$(this).data('id');
+    $('.right_li').hide();
+})
+
+
+
+
+
+//一级
+ function createLeft(data){
+	var html=[];
+	html.push('<ul>');
+	$.each(data,function(index,obj){
+      html.push('<li class="left_li" data-id="'+index+'">'+obj.text+'</li>');
+	});
+	html.push('</ul>');
+	html=html.join('');
+	$('.left_div').html(html);
+}
+
+ 
+
+//二级
+function createcenter(data,parentid){
+	var html=[];
+	html.push('<ul>');
+	$.each(data,function(index,obj){
+		html.push('<li class="center_li" data-parentid="'+parentid+'" data-id="'+index+'">'+obj.text+'</li>');
+	});
+	html.push('</ul>');
+	html=html.join('');
+	$('.center_div').html(html);
+
+}
+
+
+
+//三级
+
+function createright(data,rootid,parentid){
+   var html=[];
+   html.push('<ul>');
+   $.each(data,function(index,obj){
+     html.push('<li class="right_li" data-rootid="'+rootid+'" data-id="'+index+'" data-parentid="'+parentid+'">'+obj.text+'</li>');
+   })
+   html.push('</ul>');
+   html=html.join('');
+   $('.right_div').html(html);
+}
+
+
+
+
+
+
+})
+</script>
+	
+</body>
+</html>
