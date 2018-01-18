@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>十一月活动</title>
+  <link rel="stylesheet" href="../common/css/m-reset.css">
+	<link rel="stylesheet" href="css/m-public.new.css">
+  <link rel="stylesheet" href="../common/font/font-awesome.min.css">
+  <link rel="stylesheet" href="../common/css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/huanxinjia.css">
+</head>
+<body>
+	<article>
+       <div class="hxj01">
+       	 <div class="time">2017年11月10日-11月30日</div>
+       </div>
+       <div class="hxj02">
+       </div>
+       <div class="hxj03">
+       </div>
+       <div class="hxj04">
+            <span class="anniu01">立即领取</span>
+       </div>
+       <div class="hxj05">
+       </div>
+       <div class="hxj06">
+       </div>
+       <div class="hxj07">
+       </div>
+       <div class="hxj08">
+       </div>
+       <div class="hxj09">
+       </div>
+       <div class="hxj10">
+          <div class="hdjs01">1、本次活动的奖品为实物，将通过邮寄的方式发到用户手中。</div>
+          <div>2、活动在法律的允许范围内齐装网有解释权。</div>
+       </div>
+       <div class="baoming">马上报名</div>
+       <div class="yinying"></div>
+        <div class="tanc">
+           <span class="fa fa-times closegb"></span>
+       	  <div class="titxt">11月焕新家 超值好礼拿不停</div>
+       	  <ul class="fadan">
+       	  	<li>
+       	  		<button id="showCityPicker2" class="c-zb-city" type="button">
+                    <i class="fa fa-map-marker">
+                    </i>
+                    <empty name="info.cityarea">
+                    请选择您所在的区域
+                    <else />
+                    {$mapUseInfo.provincefull} {$mapUseInfo.name} {$info.cityarea.name}
+                    </empty>
+                </button>
+       	  	</li>
+       	  	<li class="jianjv">
+       	  		<input class="yabngshi1" name="tel" maxlength="11" placeholder="请输入您的手机号以便与您联系">
+       	  	</li>
+       	  	<li class="jianjv">
+       	  		<input class="yabngshi2" name="name" type="text" placeholder="怎么称呼您">
+       	  	</li>
+       	  	<li>
+       	  		<div class="canyuti">立即参与</div>
+       	  	</li>
+       	  </ul>
+       </div>
+       
+       <div class="tijcg">
+          <span class="fa fa-times closegb2"></span>
+       	  <div class="titxt2">恭喜您报名成功！</div>
+       	  <div class="dizhi">
+       	  	<input class="address" type="text" placeholder="请输入收件地址，以便签收">
+       	  </div>
+       	  <div class="shaohou">稍后会有工作人员与您联系，请注意接听来电哦！</div>
+       	  <div class="lingqu">提交领取</div>
+       </div>
+    </article>
+    <script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="../common/js/yanzhengx.js"></script>
+    <script type="text/javascript" src="../common/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../common/js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="../common/js/jroll.js"></script>
+    <script type="text/javascript" src="../common/js/qzCitySelect.js"></script>
+    <script>
+        // 城市选择插件
+        selectQz.init({
+            province: $("input[name=province]").attr("data-id"),
+            city: $("input[name=city]").attr("data-id"),
+            area: $("input[name=area]").attr("data-id")
+        });
+
+
+        $(function(){
+        	$('.anniu01').click(function(){
+        		$("body").css("position","fixed")
+        		$('.yinying').show();
+            	$('.tanc').show();
+        	});
+        	$('.baoming').click(function(){
+        		$("body").css("position","fixed")
+            	$('.tanc').show();
+        	});
+        	// $('.tanc .canyuti').click(function(){
+        	// 	$('.tanc').hide();
+         //    	$('.tijcg').show();
+
+        	// });
+            $('.tanc .closegb').click(function(){
+            	$("body").css("position","relative")
+            	$('.yinying').hide();
+            	$('.tanc').hide();
+            });
+            $('.tijcg .closegb2').click(function(){
+            	$("body").css("position","relative")
+            	$('.yinying').hide();
+            	$('.tijcg').hide();
+            });
+
+            //点击提交
+            $('.fadan li .canyuti').click(function(){
+                var reg = new RegExp("^[\u4e00-\u9fa5a-zA-Z]+$");
+                var tel = $("input[name=tel]").val();
+                var name = $("input[name=name]").val();
+                var cs = $('input[name=city]').attr('data-id');
+                var qx = $('input[name=area]').attr('data-id');
+                if('' == cs || '' == qx){
+                alert('请选择您所在的区域 ≧▽≦')
+                return false;
+                }
+                //检查手机号
+                if(tel==""){
+                   alert("请输入您的手机号码 ^_^!");
+                   return false;
+                }
+                if(!App.validate.run(tel,'tel')){
+                 alert("请填写正确的手机号码 ^_^!");
+			   	 return false;
+			   }
+			   if(!App.validate.run(name,'name')){
+			   	 alert("请填写您的称呼 ^_^!");
+			   	 return false;
+		         }else if(!reg.test(name)){
+                        $("input[name=name]").focus();
+                        $("input[name=name]").val('');
+                        alert("请输入正确的名称，只支持中文和英文");
+                        return false;
+		         }else{
+              $('.tanc').hide();
+              $('.tijcg').show();
+             }
+            
+        })
+            $('input').focus();
+        })
+
+    </script>
+</body>
+</html>
