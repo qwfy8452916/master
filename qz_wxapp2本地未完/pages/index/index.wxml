@@ -1,0 +1,29 @@
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" circular="{{true}}" duration="{{duration}}" indicator-dots="{{true}}" autoplay="{{true}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image bindtap="{{item.lianj}}" src="{{item.iag}}" data-id="{{index}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="sjbjmk">
+  <image bindtap="zxsjym" class="zxsj" src="../../img/zxsjbj.png"></image>
+  <image bindtap="zxbjym" data-id="{{index}}" class="zxbj" src="../../img/zxbjbj.png"></image>
+</view>
+<view class="tuwenkuang">
+   <view class="zxwztit">最新装修文章</view>
+   <block wx:for="{{tuwen}}" wx:for-item="">
+   <view class="tuwhunhe" bindtap="{{item.zhixiang}}">
+      <image class="tuwh" src="{{item.image}}"></image>
+      <view class="wenzikuang">
+         <view class="miaoshu">{{item.text}}</view>
+         <view class="riqi">{{item.time}}</view>
+           <view class="yuedul">
+             <image class="yuedubj" src="{{item.image2}}"></image>{{item.shuliang}}
+           </view>
+      </view>  
+   </view>
+   </block>
+
+</view>
+

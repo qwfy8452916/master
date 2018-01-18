@@ -1,0 +1,43 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/zhuangxiusj/zhuangxiusj",
+    "pages/zhuangxiubj/zhuangxiubj",
+    "pages/shouyexq/shouyexq",
+    "pages/xiaoguotu/xiaoguotu",
+    "pages/zhuangxiugs/zhuangxiugs",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+    "tabBar": {
+      "color": "#ccc",
+      "selectedColor": "#ff5659",
+      "borderStyle": "white",
+      "backgroundColor": "#f9f9f9",
+      "list": [
+        {
+          "text": "首页",
+          "pagePath": "pages/index/index",
+            "iconPath": "img/aa1.png",
+            "selectedIconPath": "img/aa01.png"
+        },
+        {
+          "text": "效果图",
+          "pagePath": "pages/xiaoguotu/xiaoguotu",
+          "iconPath": "img/bb2.png",
+          "selectedIconPath": "img/bb02.png"
+        },
+        {
+          "text": "装修公司",
+          "pagePath": "pages/zhuangxiugs/zhuangxiugs",
+          "iconPath": "img/cc3.png",
+          "selectedIconPath": "img/cc03.png"
+        }
+      ]
+    }
+}

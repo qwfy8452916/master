@@ -1,0 +1,51 @@
+<!--pages/shouyexq/shouyexq.wxml-->
+<view class="xqtbwrap1">
+   <view class="title">
+     五种客厅墙面漆颜色 不知你喜欢的是？
+   </view>
+    <view class="titletime">
+     2017-03-03
+   </view>
+   <view class="zyneir1">
+      客厅墙面漆颜色选择不好会影响整个家的装修效果,其实如何选择墙面漆颜色要根据家居装修风格,和墙面漆所在的区域来决定
+      ,今天小编将给大家介绍五种客厅墙面漆颜色，看了不知道你会喜欢哪一种呢？
+    </view>
+   </view>
+   <view class="xqtbwrap2">
+   <view class="title">
+     一、客厅墙面漆颜色之蓝色
+   </view>
+   <view class="zyneir1">
+     蓝色的墙面漆墙面像海面一样宁静，空间似乎有些单调，选一种不太张扬的红色漆，用涂鸦的方式在墙上面画出
+     RELAX的图案，配上简洁的家具、配饰，如同海报一样的画面出现了，制造一个放松而有趣味的客厅就是这样的
+     简
+   </view>
+   <image class="nrtup1" src="../../img/wenzbj.png"></image>
+   <view class="title">
+     二、客厅墙面漆颜色之蓝色
+   </view>
+   <view class="zyneir1">
+     蓝色的墙面漆墙面像海面一样宁静，空间似乎有些单调，选一种不太张扬的红色漆，用涂鸦的方式在墙上面画出
+     RELAX的图案，配上简洁的家具、配饰，如同海报一样的画面出现了，制造一个放松而有趣味的客厅就是这样的
+     简
+   </view>
+    <image class="nrtup2" src="../../img/wenzbj.png"></image>
+    <view class="dianzan">
+       <image bindtap="dianjizan" class="zangn" src="../../img/zan.png"></image>{{dianzansl}}
+    </view>
+</view>
+
+<view class="tuwenkuang">
+   <view class="zxwztit"><view class="xian"></view>90%的用户还看了</view>
+   <block wx:for="{{tuwen}}" wx:for-item="">
+   <view class="tuwhunhe" bindtap="{{item.zhixiang}}">
+      <image class="tuwh" src="{{item.image}}"></image>
+      <view class="wenzikuang">
+         <view class="miaoshu">{{item.text}}</view>
+      </view>  
+   </view>
+   </block>
+</view>
+<view class="bantoum">
+   <view bindtap="zxsjym1" class="anniu">免费获取装修设计</view>
+</view>
