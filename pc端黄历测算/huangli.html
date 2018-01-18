@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>黄历</title>
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<style>
+   ::-moz-placeholder { color: #999; }
+        ::-webkit-input-placeholder { color:#999; }
+        :-ms-input-placeholder { color:#999; }
+  	.content{width: 100%;height: 700px;background: url(images/huanglibj.jpg) no-repeat;background-size: 100% 100%;}
+  	.content_midd{height: 700px;width: 60%;margin:0 auto;overflow: hidden;}
+  	.main:nth-child(1){margin-top: 190px;}
+  	.main:nth-child(2){margin-top: 190px;display: none;}
+  	.main:nth-child(3){margin-top: 190px;display: none;}
+  	.main:nth-child(4){margin-top: 190px;display: none;}
+  	.clear{width:100%;margin: 0 auto;}
+  	.main:nth-child(1) .clear .bj01{background:url(images/buzou1.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(1) .clear .bj02{background:url(images/buzou22.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(1) .clear .bj03{background:url(images/buzou33.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(1) .clear .bj04{background:url(images/buzou44.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj01{background:url(images/buzou11.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj02{background:url(images/buzou2.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj03{background:url(images/buzou33.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj04{background:url(images/buzou44.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj01{background:url(images/buzou11.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj02{background:url(images/buzou22.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj03{background:url(images/buzou3.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj04{background:url(images/buzou44.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj01{background:url(images/buzou11.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj02{background:url(images/buzou22.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj03{background:url(images/buzou33.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj04{background:url(images/buzou4.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.con:nth-child(1){height: 270px;width: 98%;}
+  	.con:nth-child(2){height: 270px;width: 98%;}
+  	.con:nth-child(3){height: 270px;width: 98%;}
+  	.con:nth-child(4){height: 270px;width: 98%;}
+  	.con:nth-child(5){height: 270px;width: 98%;}
+  	.title_1{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.title_2{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.title_3{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.title_4{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.nert_1{width: 98%;height:auto;margin:0 auto;text-align: center;margin-top: 95px;}
+  	.nert_2{margin-top: 45px !important;}
+  	.nert_1 label{margin-right: 105px;font-size: 16px;}
+  	.nert_1 label:last-child{margin-right:0;}
+  	.nert_1 label input{margin-right: 5px;}
+  	.active{color: #fb8a20 !important;}
+  	.curr{background: #fea24d !important;color: #fff !important;}
+  	.anniu{width: 98%;height: 70px;line-height: 70px;margin:0 auto;margin-top:40px;text-align: center;}
+  	.anniu .prev{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;margin-right: 10px;display: none;}
+  	.anniu .next{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;}
+  	.anniu .next2{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;display: none;}
+  	.chongxcs{display: block;text-align: center;margin-top: 30px;display: none;}
+  	.resend{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;}
+  	.ertu{width: 74px;height: 100px;display: inline-block;background: url(images/errw11.jpg) no-repeat;}
+  	.chaonan{display: inline-block;width: 11%;margin-right: 70px;}
+  	.chaonan:last-child{margin-right:0;}
+  	/*.chaonan:nth-child(2) .kt1{display: none;}
+  	.chaonan:nth-child(2) .kt11{display: block;}*/
+  	.chaonan .kt1{display: block;width: 118px;height: 110px;margin-bottom: 5px;}
+  	.chaonan .kt11{display: none;width: 118px;height: 110px;margin-bottom: 5px;}
+  	.jvzhong{text-align: center;margin-top: 25px;}
+  	.jvzhong .iptagename{width: 298px;height: 38px;border:1px solid #ccc;text-indent: 1em;margin:0 auto;}
+  	.namekuang{display: inline-block;width:16%;margin-right: 70px;}
+  	.namekuang:last-child{margin-right: 0;}
+/*  	.namekuang:nth-child(2) .renwu1{display: none;}
+  	.namekuang:nth-child(2) .renwu11{display: block;}*/
+  	.namekuang .renwu1{display: block;width: 125px;height: 117px;margin-bottom: 5px;}
+  	.namekuang .renwu11{display: none;width: 125px;height: 117px;margin-bottom: 5px;}
+  	.nert_1:nth-child(3){margin-top: 17px;}
+  	.areadiqu{height: auto;text-align: center;margin-top: 65px;}
+  	.areadiqu .freesj_cs{width: 138px;height: 38px;border:1px solid #ccc;margin-right: 20px;}
+  	.areadiqu .freesj_qx{width: 138px;height: 38px;border:1px solid #ccc;}
+  	.phonekz{text-align: center;margin-top: 30px;}
+  	.phonekz .phonename{width: 298px;height: 38px;border:1px solid #ccc;text-indent: 1em;}
+  	.jieguo{display: none;width: 100%;height: 550px;margin:0 auto;overflow: hidden;padding: 0 7%;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;background: #fff;}
+  	.jieguo .jiri{margin-top: 40px;margin-bottom: 40px;}
+  	.jieguo .jieguo_left{width: 48%;height: 400px;display: inline-block;border:2px solid #ffc684;float: left;margin-right: 20px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+  	.jieguo_left .time01{text-align: center;font-size: 24px;color: #333;margin-top: 50px;margin-bottom: 15px;}
+  	.jieguo_left .time02{text-align: center;font-size: 66px;color: #ff2a00;margin-bottom: 10px;}
+  	.jieguo_left .time03{text-align: center;font-size: 30px;color: #ff2a00;position: relative;
+  		top: -28px;}
+  	.jieguo_left .time04{text-align: center;font-size: 26px;color: #333;margin-bottom: 5px;}
+  	.jieguo_left .time04 span{color: #fb8920;}
+  	.jieguo_left .time05{text-align: center;font-size: 20px;color: #666;}
+  	.jieguo .jieguo_right{width: 48%;height: 400px;display: inline-block;float: left;}
+  	.jieguo_right .jgtop{width: 100%;height: 190px;border:2px solid #ffc684;margin-bottom: 20px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+  	.jieguo_right .jgtop .qifu01{width: 64%;height: 100%;border-right: 1px solid #ffc684;display: inline-block;float: left;}
+  	.jgtop .qifu01 .right_time01{text-align: center;color: #333;font-size: 16px;margin-bottom: 15px;margin-top: 20px;}
+  	.jgtop .qifu01 .right_time02{text-align: center;color: #ff2a00;font-size: 36px;}
+  	.jgtop .qifu01 .right_time03{text-align: center;color: #ff2a00;font-size: 20px;position: relative;top: -10px;}
+  	.jgtop .qifu01 .right_time04{text-align: center;color: #666;font-size: 14px;}
+  	.jieguo_right .jgtop .qifu02{width:35%;height: 100%;display: inline-block;float: left;}
+  	.jgtop .qifu02 .jiri_pf01{color:#333;font-size: 20px;text-align: center;margin-top: 62px;}
+  	.jgtop .qifu02 .jiri_pf02{color:#fb8920;font-size: 20px;text-align: center;}
+  	.jieguo_right .jgbottom{width: 100%;height: 190px;border:2px solid #ffc684;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+  	.jieguo_right .jgbottom .qifu01{width: 64%;height: 100%;border-right: 1px solid #ffc684;display: inline-block;float: left;}
+  	.jgbottom .qifu01 .right_time01{text-align: center;color: #333;font-size: 16px;margin-bottom: 15px;margin-top: 20px;}
+  	.jgbottom .qifu01 .right_time02{text-align: center;color: #ff2a00;font-size: 36px;}
+  	.jgbottom .qifu01 .right_time03{text-align: center;color: #ff2a00;font-size: 20px;position: relative;top: -10px;}
+  	.jgbottom .qifu01 .right_time04{text-align: center;color: #666;font-size: 14px;}
+  	.jieguo_right .jgbottom .qifu02{width:35%;height: 100%;display: inline-block;float: left;}
+  	.jgbottom .qifu02 .jiri_pf01{color:#333;font-size: 20px;text-align: center;margin-top: 62px;}
+  	.jgbottom .qifu02 .jiri_pf02{color:#fb8920;font-size: 20px;text-align: center;}
+  	.labll .xuanzhong{margin-right: 3px;}
+
+  </style>
+</head>
+<body>
+	<div class="content">
+
+	<div class="content_midd">
+		<div class="main">
+		 <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 <div class="con"> 
+             <h3 class="title_1">你家准备什么时候开始装修</h3>
+             <div class="nert_1">
+             	<label class="labll" data-id="1">
+             		<span class="xuanzhong fa fa-circle-o "></span>半个月内
+             	</label>
+             	<label class="labll" data-id="2">
+             		<span class="xuanzhong fa fa-circle-o"></span>1个月内
+             	</label>
+             	<label class="labll" data-id="3">
+             		<span class="xuanzhong fa fa-circle-o"></span>3个月内
+             	</label>
+             	<label class="labll" data-id="4">
+             		<span class="xuanzhong fa fa-circle-o"></span>3个月以上
+             	</label>
+             </div>
+		 </div>
+		 </div>
+
+		 <div class="main">
+		   <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 	 <div class="con">
+		 	<h3 class="title_2">您家的房屋朝向</h3>
+		 	<div class="nert_1 nert_2">
+		 	<div class="chaonan">
+		 	    <img class="kt1" src="images/keting1.jpg" alt="">
+		 	    <img class="kt11" src="images/keting11.jpg" alt="">
+		 		<label class="lab22" data-id="1">
+             		<span class="xuanzhong fa fa-circle-o "></span>朝南
+             	</label>
+		 	</div>
+             	
+             	<div class="chaonan">
+		 	    <img class="kt1" src="images/keting2.jpg" alt="">
+		 	    <img class="kt11" src="images/keting22.jpg" alt="">
+		 		<label class="lab22" data-id="2">
+             		<span class="xuanzhong fa fa-circle-o"></span>朝北
+             	</label>
+		 	    </div>
+             	<div class="chaonan">
+		 	    <img class="kt1" src="images/keting3.jpg" alt="">
+		 	    <img class="kt11" src="images/keting33.jpg" alt="">
+		 		<label class="lab22" data-id="3">
+             		<span class="xuanzhong fa fa-circle-o "></span>朝东
+             	</label>
+		 	    </div>
+             	<div class="chaonan">
+		 	    <img class="kt1" src="images/keting4.jpg" alt="">
+		 	    <img class="kt11" src="images/keting44.jpg" alt="">
+		 		<label class="lab22" data-id="4">
+             		<span class="xuanzhong fa fa-circle-o "></span>朝西
+             	</label>
+		 	   </div>
+		 	   <div class="chaonan">
+		 	    <img class="kt1" src="images/keting5.jpg" alt="">
+		 	    <img class="kt11" src="images/keting55.jpg" alt="">
+		 		<label class="lab22">
+             		<span class="xuanzhong fa fa-circle-o "></span>不清楚
+             	</label>
+		 	   </div>
+             </div>
+		   </div>
+		 </div>
+
+		  <div class="main">
+		   <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 	 <div class="con">
+		 	<h3 class="title_2">您的姓氏和年龄</h3>
+		 	<div class="jvzhong">
+		 		<input class="iptagename" name="name" type="text" placeholder="请输入您的姓氏">
+		 	</div>
+		 	
+		 	<div class="nert_1">
+		 	    <div class="namekuang">
+		 	    	<img class="renwu1" src="images/renwu1.jpg" alt="">
+			 	    <img class="renwu11" src="images/renwu11.jpg" alt="">
+	             <label class="lab33" data-id="1">
+             		<span class="xuanzhong fa fa-circle-o "></span>25岁以下
+             	</label>
+		 	    </div>
+		 	   
+             	<div class="namekuang">
+		 	    	<img class="renwu1" src="images/renwu2.jpg" alt="">
+			 	    <img class="renwu11" src="images/renwu22.jpg" alt="">
+	             <label class="lab33" data-id="2">
+             		<span class="xuanzhong fa"></span>25~35岁
+             	</label>
+		 	    </div>
+             	<div class="namekuang">
+		 	    	<img class="renwu1" src="images/renwu3.jpg" alt="">
+			 	    <img class="renwu11" src="images/renwu33.jpg" alt="">
+	             <label class="lab33" data-id="3">
+             		<span class="xuanzhong fa fa-circle-o "></span>35~45岁
+             	</label>
+		 	    </div>
+             	<div class="namekuang">
+		 	    	<img class="renwu1" src="images/renwu4.jpg" alt="">
+			 	    <img class="renwu11" src="images/renwu44.jpg" alt="">
+	             <label class="lab33" data-id="4">
+             		<span class="xuanzhong fa fa-circle-o "></span>45岁以上
+             	</label>
+		 	    </div>
+             </div>
+		   </div>
+		 </div>
+
+		  <div class="main">
+		   <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 	 <div class="con">
+		 	<h3 class="title_2">选择房屋所在的城市</h3>
+		 	<div class="areadiqu">
+		 		<select id="cs" class="freesj_cs" name="cs">
+		 			<option value="苏州">苏州</option>
+		 		</select>
+                <select id="qy" class="freesj_qx" name="qy">
+                	<option value="姑苏区">姑苏区</option>
+                </select>
+                <div class="phonekz">
+                	<input class="phonename" maxlength="11" name="tel" type="text" placeholder="输入手机号码，获取测算吉日">
+                </div>
+                <input type="hidden" name="xztime" value=""/>
+                <input type="hidden" name="fangwei" value=""/>
+                <input type="hidden" name="nianling" value=""/>
+                
+		 	</div>
+		   </div>
+		 </div>
+
+		 <div class="jieguo">
+		 	<h3 class="title_2 jiri">您的装修吉日</h3>
+		 	<div class="jieguo_left">
+		 		<div class="time01">2017年10月14日</div>
+		 		<div class="time02">14</div>
+		 		<div class="time03">八月 廿六</div>
+		 		<div class="time04">吉日评分：<span>98分</span></div>
+		 		<div class="time05">宜：纳采、订盟、祭祀、祈福、求嗣</div>
+		 	</div>
+		 	<div class="jieguo_right">
+		 	   <div class="jgtop">
+		 	   	   <div class="qifu01">
+		 	   	   	   <div class="right_time01">2017年10月14日</div>
+		 	   	   	   <div class="right_time02">14</div>
+		 	   	   	   <div class="right_time03">八月 廿六</div>
+		 	   	   	   <div class="right_time04">宜：纳采、订盟、祭祀、祈福、求嗣</div>
+		 	   	   </div>
+		 	   	   <div class="qifu02">
+		 	   	   	  <div class="jiri_pf01">吉日评分</div>
+		 	   	   	  <div class="jiri_pf02">98分</div>
+		 	   	   </div>
+		 	   </div>
+		 	   <div class="jgbottom">
+		 	   	   <div class="qifu01">
+		 	   	   	   <div class="right_time01">2017年10月14日</div>
+		 	   	   	   <div class="right_time02">14</div>
+		 	   	   	   <div class="right_time03">八月 廿六</div>
+		 	   	   	   <div class="right_time04">宜：纳采、订盟、祭祀、祈福、求嗣</div>
+		 	   	   </div>
+		 	   	   <div class="qifu02">
+		 	   	   	  <div class="jiri_pf01">吉日评分</div>
+		 	   	   	  <div class="jiri_pf02">98分</div>
+		 	   	   </div>
+		 	   </div>
+		    </div>
+		 	 
+		 </div>
+		
+		<div class="chongxcs">
+		 		<span class="resend curr">重新测算</span>
+		 	</div>
+	
+		<div class="anniu">
+		    <span class="prev"><上一页</span>
+			<span class="next curr">下一页></span>
+			<span class="next2 curr">立即测算></span>
+		</div>
+	</div>
+</div>
+ <script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+  
+
+	  var shuzi=0;
+      var kuai=$('.main');
+	  // $('.labll').click(function(){
+	  // 	$(this).addClass('active')
+	  // 	$(this).siblings().removeClass('active')
+	  // 	$(this).children('.xuanzhong').removeClass('fa-circle-o')
+	  // 	$(this).children('.xuanzhong').addClass('fa-check-circle')
+	  // 	$(this).siblings().children('.xuanzhong').removeClass('fa-check-circle')
+	  // 	$(this).siblings().children('.xuanzhong').addClass('fa-circle-o')
+	  // });
+
+	  // $('.lab22').click(function(){
+	  // 	$(this).addClass('active')
+	  // 	$(this).parent().siblings().children('.lab22').removeClass('active')
+	  // 	$(this).siblings(".kt11").css('display','block')
+	  // 	$(this).siblings(".kt1").css('display','none')
+	  // 	$(this).parent(".chaonan").siblings().children('.kt11').css('display','none')
+	  // 	$(this).parent(".chaonan").siblings().children('.kt1').css('display','block')
+	  // 	$(this).children('.xuanzhong').removeClass('fa-circle-o')
+	  // 	$(this).children('.xuanzhong').addClass('fa-check-circle')
+	  // 	$(this).parent().siblings().children('.lab22').children('.xuanzhong').removeClass('fa-check-circle')
+	  // 	$(this).parent().siblings().children('.lab22').children('.xuanzhong').addClass('fa-circle-o')
+	  // });
+
+	  // $('.lab33').click(function(){
+	  // 	$(this).addClass('active')
+	  // 	$(this).parent().siblings().children('.lab33').removeClass('active')
+	  // 	$(this).siblings(".renwu11").css('display','block')
+	  // 	$(this).siblings(".renwu1").css('display','none')
+	  // 	$(this).parent(".namekuang").siblings().children('.renwu11').css('display','none')
+	  // 	$(this).parent(".namekuang").siblings().children('.renwu1').css('display','block')
+	  // 	$(this).children('.xuanzhong').removeClass('fa-circle-o')
+	  // 	$(this).children('.xuanzhong').addClass('fa-check-circle')
+	  // 	$(this).parent().siblings().children('.lab33').children('.xuanzhong').removeClass('fa-check-circle')
+	  // 	$(this).parent().siblings().children('.lab33').children('.xuanzhong').addClass('fa-circle-o')
+	  // });
+
+$('.labll').click(function () {
+        $("input[name=xztime]").val($(this).attr('data-id'));
+        $(this).addClass('active')
+        $(this).siblings().removeClass('active')
+        $(this).children('.xuanzhong').removeClass('fa-circle-o')
+        $(this).children('.xuanzhong').addClass('fa-check-circle')
+        $(this).siblings().children('.xuanzhong').removeClass('fa-check-circle')
+        $(this).siblings().children('.xuanzhong').addClass('fa-circle-o')
+    });
+
+      $('.chaonan').click(function () {
+        $("input[name=fangwei]").val($(this).children('.lab22').attr('data-id'));
+        $(this).children('.lab22').addClass('active')
+        $(this).siblings().children('.lab22').removeClass('active')
+        $(this).children(".kt11").css('display', 'block')
+        $(this).children(".kt1").css('display', 'none')
+        $(this).siblings().children('.kt11').css('display', 'none')
+        $(this).siblings().children('.kt1').css('display', 'block')
+
+        $(this).children('.lab22').children('.xuanzhong').removeClass('fa-circle-o')
+        $(this).children('.lab22').children('.xuanzhong').addClass('fa-check-circle')
+        $(this).siblings().children('.lab22').children('.xuanzhong').removeClass('fa-check-circle')
+        $(this).siblings().children('.lab22').children('.xuanzhong').addClass('fa-circle-o')
+    });
+
+    $('.namekuang').click(function () {
+      $("input[name=nianling]").val($(this).children('.lab33').attr('data-id'));
+        $(this).children('.lab33').addClass('active')
+        $(this).siblings().children('.lab33').removeClass('active')
+        $(this).children(".renwu11").css('display', 'block')
+        $(this).children(".renwu1").css('display', 'none')
+        $(this).siblings().children('.renwu11').css('display', 'none')
+        $(this).siblings().children('.renwu1').css('display', 'block')
+
+        $(this).children('.lab33').children('.xuanzhong').removeClass('fa-circle-o')
+        $(this).children('.lab33').children('.xuanzhong').addClass('fa-check-circle')
+        $(this).siblings().children('.lab33').children('.xuanzhong').removeClass('fa-check-circle')
+        $(this).siblings().children('.lab33').children('.xuanzhong').addClass('fa-circle-o')
+    });
+
+
+
+	  $('.next').click(function(){
+       // if(shuzi==0){
+       //     console.log("dasfdadas")
+       //     // return false;
+       //     }
+       //      if(shuzi==1){
+       //      console.log("dasfdadas2")
+       //      // return false;
+       //     }
+       //      if(shuzi==2){
+       //       console.log("dasfdadas3")
+       //       $(this).css('display','none')
+       //       $('.next2').show();
+       //     }
+       //1.第一步
+        //判断是否选装修时间
+        if(!$("input[name=xztime]").val()){
+            alert("请选择装修时间！");
+            return;
+        }
+//2.第二步
+        if(shuzi == 1){
+            //判断是否选房屋朝向
+            if(!$("input[name=fangwei]").val()){
+                alert("请选择您家的房屋朝向！");
+                return;
+            }
+        }
+//3.第三步
+        if (shuzi == 2) {
+            //判断提交数据
+            var name = $("input[name=name]").val();
+            if (!name) {
+                alert("请输入您的姓氏！");
+                return;
+            }else {
+                var reg = new RegExp("^[\u4e00-\u9fa5a-zA-Z]+$");
+                if (!reg.test(name)) {
+                    alert("请输入正确的姓名，只支持中文和英文 ^_^!");
+                    return;
+                }
+            }
+            //判断是否选年龄
+            if(!$("input[name=nianling]").val()){
+                alert("请选择您的年龄！");
+                return;
+            }
+            $(this).css('display', 'none')
+            $('.next2').show();
+        }
+	  	 if(shuzi<3){
+           shuzi++;
+           kuai.eq([shuzi]).show();
+           kuai.eq([shuzi]).siblings().hide();
+           $('.anniu').show();
+           $('.next').addClass('curr');
+           $('.prev').removeClass('curr');
+           $('.prev').show();
+           if(shuzi==3){
+             $(this).css('display','none')
+             $('.next2').show();
+           }else{
+           	  $('.next').html("下一页>");
+           }
+
+	  	 }
+	  })
+
+	  $('.next2').click(function(){
+          $('.jieguo').show();
+          $('.jieguo').siblings().hide();
+          $('.chongxcs').show();
+	  });
+
+	  $('.resend').click(function(){
+           window.location.reload()
+	  });
+
+	  $('.prev').click(function(){
+	  	 if(shuzi>0){
+           shuzi--;
+           kuai.eq([shuzi]).show();
+           kuai.eq([shuzi]).siblings().hide();
+           $('.anniu').show();
+           $('.next').removeClass('curr');
+           $('.next').show();
+            $('.next2').hide();
+           $('.prev').addClass('curr');
+         
+	  	 }
+	  })
+</script>
+</body>
+</html>

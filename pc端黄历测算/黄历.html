@@ -1,0 +1,391 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>装修吉日_装修吉日查询-齐装网</title>
+<meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/huangli/" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<include file="Index:resource" />
+
+<link rel="stylesheet" href="{$static_host}/assets/home/huangli/hl.css" />
+<link rel="stylesheet" href="{$static_host}/assets/home/huangli/css/hl-result.css" />
+  <style>
+   ::-moz-placeholder { color: #999; }
+        ::-webkit-input-placeholder { color:#999; }
+        :-ms-input-placeholder { color:#999; }
+  	.content{width: 100%;height: 700px;background: url(/assets/home/huangli/images/huanglibj.jpg) no-repeat;background-size: 100% 100%;}
+  	.content_midd{height: 700px;width: 60%;margin:0 auto;overflow: hidden;}
+  	.main:nth-child(1){margin-top: 190px;}
+  	.main:nth-child(2){margin-top: 190px;display: none;}
+  	.main:nth-child(3){margin-top: 190px;display: none;}
+  	.main:nth-child(4){margin-top: 190px;display: none;}
+  	.clear{width:100%;margin: 0 auto;}
+  	.main:nth-child(1) .clear .bj01{background:url(/assets/home/huangli/images/buzou1.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(1) .clear .bj02{background:url(/assets/home/huangli/images/buzou22.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(1) .clear .bj03{background:url(/assets/home/huangli/images/buzou33.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(1) .clear .bj04{background:url(/assets/home/huangli/images/buzou44.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj01{background:url(/assets/home/huangli/images/buzou11.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj02{background:url(/assets/home/huangli/images/buzou2.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj03{background:url(/assets/home/huangli/images/buzou33.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(2) .clear .bj04{background:url(/assets/home/huangli/images/buzou44.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj01{background:url(/assets/home/huangli/images/buzou11.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj02{background:url(/assets/home/huangli/images/buzou22.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj03{background:url(/assets/home/huangli/images/buzou3.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(3) .clear .bj04{background:url(/assets/home/huangli/images/buzou44.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj01{background:url(/assets/home/huangli/images/buzou11.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj02{background:url(/assets/home/huangli/images/buzou22.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj03{background:url(/assets/home/huangli/images/buzou33.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.main:nth-child(4) .clear .bj04{background:url(/assets/home/huangli/images/buzou4.jpg) no-repeat;width: 25%;height: 40px;display: inline-block;background-size: 100% 100%;}
+  	.con:nth-child(1){height: 270px;width: 98%;}
+  	.con:nth-child(2){height: 270px;width: 98%;}
+  	.con:nth-child(3){height: 270px;width: 98%;}
+  	.con:nth-child(4){height: 270px;width: 98%;}
+  	.con:nth-child(5){height: 270px;width: 98%;}
+  	.title_1{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.title_2{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.title_3{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.title_4{text-align: center;font-size: 22px;color: #333;margin-top: 15px;}
+  	.nert_1{width: 98%;height:auto;margin:0 auto;text-align: center;margin-top: 95px;}
+  	.nert_2{margin-top: 45px !important;}
+  	.nert_1 label{margin-right: 105px;font-size: 16px;}
+  	.nert_1 label:last-child{margin-right:0;}
+  	.nert_1 label input{margin-right: 5px;}
+  	.active{color: #fb8a20 !important;}
+  	.curr{background: #fea24d !important;color: #fff !important;}
+  	.anniu{width: 98%;height: 70px;line-height: 70px;margin:0 auto;margin-top:40px;text-align: center;}
+  	.anniu .prev{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;margin-right: 10px;display: none;}
+  	.anniu .next{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;}
+  	.anniu .next2{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;display: none;}
+  	.chongxcs{display: block;text-align: center;margin-top: 30px;display: none;}
+  	.resend{font-size: 18px;color: #fea24d;padding: 10px 30px;border-radius: 15px;cursor: pointer;}
+  	.ertu{width: 74px;height: 100px;display: inline-block;background: url(/assets/home/huangli/images/errw11.jpg) no-repeat;}
+  	.chaonan{display: inline-block;width: 11%;margin-right: 70px;}
+  	.chaonan:last-child{margin-right:0;}
+  	.chaonan:nth-child(2) .kt1{display: none;}
+  	.chaonan:nth-child(2) .kt11{display: block;}
+  	.chaonan .kt1{display: block;width: 118px;height: 110px;margin-bottom: 5px;}
+  	.chaonan .kt11{display: none;width: 118px;height: 110px;margin-bottom: 5px;}
+  	.jvzhong{text-align: center;margin-top: 25px;}
+  	.jvzhong .iptagename{width: 298px;height: 38px;border:1px solid #ccc;text-indent: 1em;margin:0 auto;}
+  	.namekuang{display: inline-block;width:16%;margin-right: 70px;}
+  	.namekuang:last-child{margin-right: 0;}
+  	.namekuang:nth-child(2) .renwu1{display: none;}
+  	.namekuang:nth-child(2) .renwu11{display: block;}
+  	.namekuang .renwu1{display: block;width: 125px;height: 117px;margin-bottom: 5px;}
+  	.namekuang .renwu11{display: none;width: 125px;height: 117px;margin-bottom: 5px;}
+  	.nert_1:nth-child(3){margin-top: 17px;}
+  	.areadiqu{height: auto;text-align: center;margin-top: 65px;}
+  	.areadiqu .freesj_cs{width: 138px;height: 38px;border:1px solid #ccc;margin-right: 20px;}
+  	.areadiqu .freesj_qx{width: 138px;height: 38px;border:1px solid #ccc;}
+  	.phonekz{text-align: center;margin-top: 30px;}
+  	.phonekz .phonename{width: 298px;height: 38px;border:1px solid #ccc;text-indent: 1em;}
+  	.jieguo{display: none;width: 100%;height: 550px;margin:0 auto;overflow: hidden;padding: 0 7%;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;background: #fff;}
+  	.jieguo .jiri{margin-top: 40px;margin-bottom: 40px;}
+  	.jieguo .jieguo_left{width: 48%;height: 400px;display: inline-block;border:2px solid #ffc684;float: left;margin-right: 20px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+  	.jieguo_left .time01{text-align: center;font-size: 24px;color: #333;margin-top: 50px;margin-bottom: 15px;}
+  	.jieguo_left .time02{text-align: center;font-size: 66px;color: #ff2a00;margin-bottom: 10px;}
+  	.jieguo_left .time03{text-align: center;font-size: 30px;color: #ff2a00;position: relative;
+  		top: -28px;}
+  	.jieguo_left .time04{text-align: center;font-size: 26px;color: #333;margin-bottom: 5px;}
+  	.jieguo_left .time04 span{color: #fb8920;}
+  	.jieguo_left .time05{text-align: center;font-size: 20px;color: #666;}
+  	.jieguo .jieguo_right{width: 48%;height: 400px;display: inline-block;float: left;}
+  	.jieguo_right .jgtop{width: 100%;height: 190px;border:2px solid #ffc684;margin-bottom: 20px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+  	.jieguo_right .jgtop .qifu01{width: 64%;height: 100%;border-right: 1px solid #ffc684;display: inline-block;float: left;}
+  	.jgtop .qifu01 .right_time01{text-align: center;color: #333;font-size: 16px;margin-bottom: 15px;margin-top: 20px;}
+  	.jgtop .qifu01 .right_time02{text-align: center;color: #ff2a00;font-size: 36px;}
+  	.jgtop .qifu01 .right_time03{text-align: center;color: #ff2a00;font-size: 20px;position: relative;top: -10px;}
+  	.jgtop .qifu01 .right_time04{text-align: center;color: #666;font-size: 14px;}
+  	.jieguo_right .jgtop .qifu02{width:35%;height: 100%;display: inline-block;float: left;}
+  	.jgtop .qifu02 .jiri_pf01{color:#333;font-size: 20px;text-align: center;margin-top: 62px;}
+  	.jgtop .qifu02 .jiri_pf02{color:#fb8920;font-size: 20px;text-align: center;}
+  	.jieguo_right .jgbottom{width: 100%;height: 190px;border:2px solid #ffc684;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+  	.jieguo_right .jgbottom .qifu01{width: 64%;height: 100%;border-right: 1px solid #ffc684;display: inline-block;float: left;}
+  	.jgbottom .qifu01 .right_time01{text-align: center;color: #333;font-size: 16px;margin-bottom: 15px;margin-top: 20px;}
+  	.jgbottom .qifu01 .right_time02{text-align: center;color: #ff2a00;font-size: 36px;}
+  	.jgbottom .qifu01 .right_time03{text-align: center;color: #ff2a00;font-size: 20px;position: relative;top: -10px;}
+  	.jgbottom .qifu01 .right_time04{text-align: center;color: #666;font-size: 14px;}
+  	.jieguo_right .jgbottom .qifu02{width:35%;height: 100%;display: inline-block;float: left;}
+  	.jgbottom .qifu02 .jiri_pf01{color:#333;font-size: 20px;text-align: center;margin-top: 62px;}
+  	.jgbottom .qifu02 .jiri_pf02{color:#fb8920;font-size: 20px;text-align: center;}
+  	.labll .xuanzhong{margin-right: 3px;}
+
+
+  </style>
+
+</head>
+<body>
+{$headerTmp}
+
+<div class="content">
+
+	<div class="content_midd">
+		<div class="main">
+		 <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 <div class="con"> 
+             <h3 class="title_1">你家准备什么时候开始装修</h3>
+             <div class="nert_1">
+             	<label class="labll">
+             		<!-- <input  type="radio" name="inlineRadioOptions2" value="option1"> -->
+             		<span class="xuanzhong fa fa-circle-o "></span>半个月内
+             	</label>
+             	<label class="labll active">
+             		<!-- <input type="radio" checked="checked" name="inlineRadioOptions2" value="option2"> -->
+             		<span class="xuanzhong fa fa-circle-o">1个月内
+             	</label>
+             	<label class="labll">
+             		<!-- <input type="radio" name="inlineRadioOptions2" value="option3"> -->
+             		<span class="xuanzhong fa fa-circle-o">3个月内
+             	</label>
+             	<label class="labll">
+             		<!-- <input type="radio" name="inlineRadioOptions2" value="option4"> -->
+             		<span class="xuanzhong fa fa-circle-o">3个月以上
+             	</label>
+             </div>
+		 </div>
+		 </div>
+
+		 <div class="main">
+		   <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 	 <div class="con">
+		 	<h3 class="title_2">您家的房屋朝向</h3>
+		 	<div class="nert_1 nert_2">
+		 	<div class="chaonan">
+		 	    <img class="kt1" src="/assets/home/huangli/images/keting1.jpg" alt="">
+		 	    <img class="kt11" src="/assets/home/huangli/images/keting11.jpg" alt="">
+		 		<label class="lab22">
+             		<input type="radio" name="inlineRadioOptions3" value="option1">朝南
+             	</label>
+		 	</div>
+             	
+             	<div class="chaonan">
+		 	    <img class="kt1" src="/assets/home/huangli/images/keting2.jpg" alt="">
+		 	    <img class="kt11" src="/assets/home/huangli/images/keting22.jpg" alt="">
+		 		<label class="lab22 active">
+             		<input type="radio" checked="checked" name="inlineRadioOptions3" value="option1">朝北
+             	</label>
+		 	    </div>
+             	<div class="chaonan">
+		 	    <img class="kt1" src="/assets/home/huangli/images/keting3.jpg" alt="">
+		 	    <img class="kt11" src="/assets/home/huangli/images/keting33.jpg" alt="">
+		 		<label class="lab22">
+             		<input type="radio" name="inlineRadioOptions3" value="option2">朝东
+             	</label>
+		 	    </div>
+             	<div class="chaonan">
+		 	    <img class="kt1" src="/assets/home/huangli/images/keting4.jpg" alt="">
+		 	    <img class="kt11" src="/assets/home/huangli/images/keting44.jpg" alt="">
+		 		<label class="lab22">
+             		<input type="radio" name="inlineRadioOptions3" value="option3">朝西
+             	</label>
+		 	   </div>
+		 	   <div class="chaonan">
+		 	    <img class="kt1" src="/assets/home/huangli/images/keting5.jpg" alt="">
+		 	    <img class="kt11" src="/assets/home/huangli/images/keting55.jpg" alt="">
+		 		<label class="lab22">
+             		<input type="radio" name="inlineRadioOptions3" value="option4">不清楚
+             	</label>
+		 	   </div>
+             </div>
+		   </div>
+		 </div>
+
+		  <div class="main">
+		   <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 	 <div class="con">
+		 	<h3 class="title_2">您的姓氏和年龄</h3>
+		 	<div class="jvzhong">
+		 		<input class="iptagename" type="text" placeholder="请输入您的姓氏">
+		 	</div>
+		 	
+		 	<div class="nert_1">
+		 	    <div class="namekuang">
+		 	    	<img class="renwu1" src="/assets/home/huangli/images/renwu1.jpg" alt="">
+			 	    <img class="renwu11" src="/assets/home/huangli/images/renwu11.jpg" alt="">
+	             <label class="lab33">
+             		<input type="radio" name="inlineRadioOptions4" value="option1">25岁以下
+             	</label>
+		 	    </div>
+		 	   
+             	<div class="namekuang">
+		 	    	<img class="renwu1" src="/assets/home/huangli/images/renwu2.jpg" alt="">
+			 	    <img class="renwu11" src="/assets/home/huangli/images/renwu22.jpg" alt="">
+	             <label class="lab33 active">
+             		<input type="radio" checked="checked" name="inlineRadioOptions4" value="option1">25~35岁
+             	</label>
+		 	    </div>
+             	<div class="namekuang">
+		 	    	<img class="renwu1" src="/assets/home/huangli/images/renwu3.jpg" alt="">
+			 	    <img class="renwu11" src="/assets/home/huangli/images/renwu33.jpg" alt="">
+	             <label class="lab33">
+             		<input type="radio" name="inlineRadioOptions4" value="option1">35~45岁
+             	</label>
+		 	    </div>
+             	<div class="namekuang">
+		 	    	<img class="renwu1" src="/assets/home/huangli/images/renwu4.jpg" alt="">
+			 	    <img class="renwu11" src="/assets/home/huangli/images/renwu44.jpg" alt="">
+	             <label class="lab33">
+             		<input type="radio" name="inlineRadioOptions4" value="option1">45岁以上
+             	</label>
+		 	    </div>
+             </div>
+		   </div>
+		 </div>
+
+		  <div class="main">
+		   <div class="btn clear"><span class="bj01"></span><span class="bj02"></span><span class="bj03"></span><span class="bj04"></span></div>
+		 	 <div class="con">
+		 	<h3 class="title_2">选择房屋所在的城市</h3>
+		 	<div class="areadiqu">
+		 		<select id="cs" class="freesj_cs" name="cs">
+		 			<option value="苏州">苏州</option>
+		 		</select>
+                <select id="qy" class="freesj_qx" name="qy">
+                	<option value="姑苏区">姑苏区</option>
+                </select>
+                <div class="phonekz">
+                	<input class="phonename" type="text" placeholder="输入手机号码，获取测算吉日">
+                </div>
+                
+		 	</div>
+		   </div>
+		 </div>
+
+		 <div class="jieguo">
+		 	<h3 class="title_2 jiri">您的装修吉日</h3>
+		 	<div class="jieguo_left">
+		 		<div class="time01">2017年10月14日</div>
+		 		<div class="time02">14</div>
+		 		<div class="time03">八月 廿六</div>
+		 		<div class="time04">吉日评分：<span>98分</span></div>
+		 		<div class="time05">宜：纳采、订盟、祭祀、祈福、求嗣</div>
+		 	</div>
+		 	<div class="jieguo_right">
+		 	   <div class="jgtop">
+		 	   	   <div class="qifu01">
+		 	   	   	   <div class="right_time01">2017年10月14日</div>
+		 	   	   	   <div class="right_time02">14</div>
+		 	   	   	   <div class="right_time03">八月 廿六</div>
+		 	   	   	   <div class="right_time04">宜：纳采、订盟、祭祀、祈福、求嗣</div>
+		 	   	   </div>
+		 	   	   <div class="qifu02">
+		 	   	   	  <div class="jiri_pf01">吉日评分</div>
+		 	   	   	  <div class="jiri_pf02">98分</div>
+		 	   	   </div>
+		 	   </div>
+		 	   <div class="jgbottom">
+		 	   	   <div class="qifu01">
+		 	   	   	   <div class="right_time01">2017年10月14日</div>
+		 	   	   	   <div class="right_time02">14</div>
+		 	   	   	   <div class="right_time03">八月 廿六</div>
+		 	   	   	   <div class="right_time04">宜：纳采、订盟、祭祀、祈福、求嗣</div>
+		 	   	   </div>
+		 	   	   <div class="qifu02">
+		 	   	   	  <div class="jiri_pf01">吉日评分</div>
+		 	   	   	  <div class="jiri_pf02">98分</div>
+		 	   	   </div>
+		 	   </div>
+		    </div>
+		 	 
+		 </div>
+		
+		<div class="chongxcs">
+		 		<span class="resend curr">重新测算</span>
+		 	</div>
+		
+		<div class="anniu">
+		    <span class="prev"><上一页</span>
+			<span class="next curr">下一页></span>
+			<span class="next2 curr">立即测算></span>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<include file="Index:footer" />
+</body>
+<script type="text/javascript">
+
+
+	  var shuzi=0;
+      var kuai=$('.main');
+	  $('.labll').click(function(){
+	  	$(this).addClass('active')
+	  	$(this).siblings().removeClass('active')
+	  	$(this).children('.xuanzhong').removeClass('fa-circle-o')
+	  	$(this).children('.xuanzhong').addClass('fa-check-circle')
+	  	$(this).siblings().children('.xuanzhong').removeClass('fa-check-circle')
+	  	$(this).siblings().children('.xuanzhong').addClass('fa-circle-o')
+	  });
+
+	  $('.lab22').click(function(){
+	  	$(this).addClass('active')
+	  	$(this).parent().siblings().children('.lab22').removeClass('active')
+	  	$(this).siblings(".kt11").css('display','block')
+	  	$(this).siblings(".kt1").css('display','none')
+	  	$(this).parent(".chaonan").siblings().children('.kt11').css('display','none')
+	  	$(this).parent(".chaonan").siblings().children('.kt1').css('display','block')
+	  });
+
+	  $('.lab33').click(function(){
+	  	$(this).addClass('active')
+	  	$(this).parent().siblings().children('.lab33').removeClass('active')
+	  	$(this).siblings(".renwu11").css('display','block')
+	  	$(this).siblings(".renwu1").css('display','none')
+	  	$(this).parent(".namekuang").siblings().children('.renwu11').css('display','none')
+	  	$(this).parent(".namekuang").siblings().children('.renwu1').css('display','block')
+	  });
+
+
+
+
+
+	  $('.next').click(function(){
+	  	 if(shuzi<3){
+           shuzi++;
+           kuai.eq([shuzi]).show();
+           kuai.eq([shuzi]).siblings().hide();
+           $('.anniu').show();
+           $('.next').addClass('curr');
+           $('.prev').removeClass('curr');
+           $('.prev').show();
+           if(shuzi==3){
+             $(this).css('display','none')
+             $('.next2').show();
+           }else{
+           	  $('.next').html("下一页>");
+           }
+
+	  	 }
+	  })
+
+	  $('.next2').click(function(){
+          $('.jieguo').show();
+          $('.jieguo').siblings().hide();
+          $('.chongxcs').show();
+	  });
+
+	  $('.resend').click(function(){
+           window.location.reload()
+	  });
+
+	  $('.prev').click(function(){
+	  	 if(shuzi>0){
+           shuzi--;
+           kuai.eq([shuzi]).show();
+           kuai.eq([shuzi]).siblings().hide();
+           $('.anniu').show();
+           $('.next').removeClass('curr');
+           $('.next').show();
+            $('.next2').hide();
+           $('.prev').addClass('curr');
+         
+	  	 }
+	  })
+</script>
+</html>
