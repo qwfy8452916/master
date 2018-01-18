@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理后台新增文章</title>
+   <link rel="stylesheet" href="../common/css/m-reset.css">
+   <link rel="stylesheet" href="../common/css/m-public.new.css">
+   <link rel="stylesheet" href="../common/bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../common/bootstrap/css/bootstrap-datetimepicker.css">
+	 <link rel="stylesheet" href="/assets/home/robopost/css/automatic.css">
+</head>
+<body>
+	 <h1 class="titlebt">攻略文章板块发布管理</h1>
+   <section class="content">
+   	   <div class="box box1">
+   	     <div class="gonglue1">
+   	   	  <div class="mokuaititle">日常发布管理</div>
+   	   	  <div class="selecttime">
+   	   	  	 <span class="sptit">选择时间段：</span>
+   	   	  	 <select id="" class="titjvli hour">
+   	   	  	 	<option value="00">00</option>
+   	   	  	 </select>
+   	   	  	 <select id="" class="jianjv fenzxh">
+   	   	  	 	<option value="44">44</option>
+   	   	  	 </select>
+   	   	  	 <div class="xiankz">
+   	   	  	 	<span class="xian"></span>
+   	   	  	 </div>
+   	   	  	 
+   	   	  	 <select id="" class="titjvli hour">
+   	   	  	 	<option value="00">00</option>
+   	   	  	 </select>
+   	   	  	 <select id="" class="jianjv fenzxh">
+   	   	  	 	<option value="44">44</option>
+   	   	  	 </select>
+   	   	  	 <span class="fabzanbibt">发布占比：</span>
+   	   	  	 <input type="text" class="fabzanbi"><div class="baifb"><span>%</span></div>
+   	   	  	 <span class="addtj"></span>
+   	   	  </div>
+
+   	   	 </div>
+   	   <!-- 	  <div class="selecttime tianjia">
+   	   	  	 <span class="sptit">选择时间段：</span>
+   	   	  	 <select id="">
+   	   	  	 	<option value="00">00</option>
+   	   	  	 	<option value="22">22</option>
+   	   	  	 	<option value="33">33</option>
+   	   	  	 </select>
+   	   	  	 <select id="" class="jianjv">
+   	   	  	 	<option value="44">44</option>
+   	   	  	 	<option value="55">55</option>
+   	   	  	 	<option value="66">66</option>
+   	   	  	 </select>
+   	   	  	 <span class="xian"></span>
+   	   	  	 <select id="">
+   	   	  	 	<option value="00">00</option>
+   	   	  	 	<option value="22">22</option>
+   	   	  	 	<option value="33">33</option>
+   	   	  	 </select>
+   	   	  	 <select id="" class="jianjv">
+   	   	  	 	<option value="44">44</option>
+   	   	  	 	<option value="55">55</option>
+   	   	  	 	<option value="66">66</option>
+   	   	  	 </select>
+   	   	  	 <span class="fabzanbibt">发布占比：</span>
+   	   	  	 <input type="text" class="fabzanbi">%
+   	   	  	 <span class="addtj"></span>
+   	   	  	 <span class="removetj"></span>
+   	   	  </div> -->
+   	   	  <div class="queren"><span class="anniu">确认</span></div>
+   	   </div>
+
+         <div class="box box2">
+   	     <div class="gonglue2">
+   	   	  <div class="mokuaititle">特殊日期发布管理</div>
+   	   	  <div class="timecj">
+   	   	  	 <input type="text" class="xuanztime1 datepicker" placeholder="选择日期">
+   	   	  	 	<span class="xian02"></span>
+   	   	  	 <input type="text" class="xuanztime2 datepicker" placeholder="选择日期">
+   	   	  </div>
+   	   	  <div class="selecttime">
+   	   	  	 <span class="sptit">选择时间段：</span>
+   	   	  	 <select id="" class="titjvli hour">
+   	   	  	 	<option value="00">00</option>
+   	   	  	 </select>
+   	   	  	 <select id="" class="jianjv fenzxh">
+   	   	  	 	<option value="44">44</option>
+   	   	  	 </select>
+   	   	  	 <div class="xiankz">
+   	   	  	 	<span class="xian"></span>
+   	   	  	 </div>
+   	   	  	 
+   	   	  	 <select id="" class="titjvli hour">
+   	   	  	 	<option value="00">00</option>
+   	   	  	 </select>
+   	   	  	 <select id="" class="jianjv fenzxh">
+   	   	  	 	<option value="44">44</option>
+   	   	  	 </select>
+   	   	  	 <span class="fabzanbibt">发布占比：</span>
+   	   	  	 <input type="text" class="fabzanbi"><div class="baifb"><span>%</span></div>
+   	   	  	 <span class="addtj"></span>
+   	   	  </div>
+
+   	   	 </div>
+   	   	  <div class="queren"><span class="anniu">确认</span></div>
+   	   </div>
+
+   </section>
+   <script type="text/javascript" src="../common/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="../common/js/jquery-1.8.3.min.js"></script>
+   <script type="text/javascript" src='../common/bootstrap/js/bootstrap-datetimepicker.js'></script>
+
+   <script>
+   	 
+		$(function(){
+			   var hour=new Array(00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23);
+			   var minute=new Array(00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59);
+			   var aa=$('.gonglue1 .selecttime').length;
+			   var bb=$('.gonglue2 .selecttime').length;
+               var str = "";
+               var fenz = "";
+               
+               // 选择日期
+               $(".datepicker").datetimepicker({
+                startView:2,
+                minView:'decade',
+                format:"yyyy-mm-dd",
+                autoclose:true,
+                pickerPosition: "bottom-left"
+            });
+
+               // 循环数据
+
+               for(var i=0;i<hour.length;i++){
+				 str +='<option value="'+hour[i]+'">'+ hour[i] +'</option>'
+				}
+				$('.hour').html(str)
+				for(var x=0;x<minute.length;x++){
+					fenz +='<option value="'+minute[x]+'">'+ minute[x] +'</option>'
+				}
+				$('.fenzxh').html(fenz)
+                
+                // 获取选中
+                $("select").click(function() {
+			         $(this).find("option:selected").text()
+			         $(this).find("option:selected").attr('selected', 'selected');
+			         console.log($(this).find("option:selected").text())
+			        return
+
+			         })
+
+                 // 点击添加
+                   $('.gonglue1').on('click','.addtj',function(){
+                     if(aa<=1){
+                     aa=$('.gonglue1 .selecttime').length;
+
+                  $('.gonglue1').append('<div class="selecttime tianjia"><span class="sptit">选择时间段：</span><select class="titjvli hour">'+str+'</select><select id="" class="jianjv fenzxh">'+fenz+'</select><div class="xiankz"><span class="xian"></span></div><select id="" class="titjvli hour">'+str+'</select><select id="" class="jianjv fenzxh">'+fenz+'</select><span class="fabzanbibt">发布占比：</span><input type="text" class="fabzanbi"><div class="baifb"><span>%</span></div><span class="addtj"></span><span class="removetj"></span></div>')
+              }
+
+               });
+
+               // 点击删除
+			   $('.gonglue1').on('click','.removetj',function(){
+			   	
+			   	 	$(this).parent('.selecttime').remove();
+			   	    aa=$('.gonglue1 .selecttime').length -1;
+
+			   })
+
+               // 点击添加
+
+			   $('.gonglue2').on('click','.addtj',function(){
+                     if(bb<=1){
+                     bb=$('.gonglue2 .selecttime').length;
+                  $('.gonglue2').append('<div class="selecttime tianjia"><span class="sptit">选择时间段：</span><select class="titjvli hour">'+str+'</select><select id="" class="jianjv fenzxh">'+fenz+'</select><div class="xiankz"><span class="xian"></span></div><select id="" class="titjvli hour">'+str+'</select><select id="" class="jianjv fenzxh">'+fenz+'</select><span class="fabzanbibt">发布占比：</span><input type="text" class="fabzanbi"><div class="baifb"><span>%</span></div><span class="addtj"></span><span class="removetj"></span></div>')
+              }
+               });
+
+               // 点击删除
+
+			   $('.gonglue2').on('click','.removetj',function(){
+			   	
+			   	 	$(this).parent('.selecttime').remove();
+			   	    bb=$('.gonglue2 .selecttime').length -1;
+
+			   })
+               
+			
+		})
+
+
+   </script>
+
+</body>
+</html>
