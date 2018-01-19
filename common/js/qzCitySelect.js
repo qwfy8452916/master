@@ -13,19 +13,20 @@ var selectQz = {
         option.province = parseInt(option.province) || null;
         option.city = parseInt(option.city) || null;
         option.area = parseInt(option.area) || null;
-        /*插入DOM 
+        /*插入DOM
         *qz_Area         ----------- 三级城市父节点
         *qz_provinceArea ----------- 省份
         *qz_cityArea     ----------- 地级市
         *qz_currentArea  ----------- 区域
         */
+
         if(!$('.qz_Area')){
-            $('<div class="qz_Area"><div class="qz_provinceArea"></div><div class="qz_cityArea"></div><div class="qz_currentArea"></div></div>').appendTo($('article'));
+            $('<div class="qz_Area"><div class="qz_provinceArea"></div><div class="qz_cityArea"></div><div class="qz_currentArea"></div></div>').appendTo($('body'));
         }else{
             $('.qz_Area').each(function(index, el) {
                 $(this).remove();
             });
-            $('<div class="qz_Area"><div class="qz_provinceArea"></div><div class="qz_cityArea"></div><div class="qz_currentArea"></div></div>').appendTo($('article'));
+            $('<div class="qz_Area"><div class="qz_provinceArea"></div><div class="qz_cityArea"></div><div class="qz_currentArea"></div></div>').appendTo($('body'));
         }
         // 判断有没有获取到GEO定位省份ID、地级市ID、区域ID
         if(option.province && option.city && option.area){// 如果GEO定位到、就按照定位到的ID数据排序初始化
@@ -153,6 +154,7 @@ var selectQz = {
                     rlpca[rootid].text+" "+
                     rlpca[rootid].children[k].text+" "+
                     rlpca[rootid].children[k].children[id].text).css('color',"#666");
+
                 $('#showCityPicker3').html('<i class="fa fa-map-marker"></i> '+
                     rlpca[rootid].text+" "+
                     rlpca[rootid].children[k].text+" "+
@@ -160,13 +162,31 @@ var selectQz = {
                     $('input[name=province]').attr('data-id', rlpca[rootid].id);
                     $('input[name=city]').attr('data-id', rlpca[rootid].children[k].id);
                     $('input[name=area]').attr('data-id', rlpca[rootid].children[k].children[id].id);
+
+                $('#showCityPicker4').html('<i class="fa fa-map-marker"></i> '+
+                    rlpca[rootid].text+" "+
+                    rlpca[rootid].children[k].text+" "+
+                    rlpca[rootid].children[k].children[id].text).css('color',"#666");
+                    $('input[name=province]').attr('data-id', rlpca[rootid].id);
+                    $('input[name=city]').attr('data-id', rlpca[rootid].children[k].id);
+                    $('input[name=area]').attr('data-id', rlpca[rootid].children[k].children[id].id);
+
             }else{
                 if(!j && !k){
                     $('#showCityPicker2').html('<i class="fa fa-map-marker"></i> '+
                         rlpca[rootid].text+" "+
                         rlpca[rootid].children[parentid].text+" "+
                         rlpca[rootid].children[parentid].children[id].text).css('color',"#666");
+
                     $('#showCityPicker3').html('<i class="fa fa-map-marker"></i> '+
+                        rlpca[rootid].text+" "+
+                        rlpca[rootid].children[parentid].text+" "+
+                        rlpca[rootid].children[parentid].children[id].text).css('color',"#666");
+                        $('input[name=province]').attr('data-id', rlpca[rootid].id);
+                        $('input[name=city]').attr('data-id', rlpca[rootid].children[parentid].id);
+                        $('input[name=area]').attr('data-id', rlpca[rootid].children[parentid].children[id].id);
+
+                    $('#showCityPicker4').html('<i class="fa fa-map-marker"></i> '+
                         rlpca[rootid].text+" "+
                         rlpca[rootid].children[parentid].text+" "+
                         rlpca[rootid].children[parentid].children[id].text).css('color',"#666");
@@ -178,7 +198,16 @@ var selectQz = {
                         rlpca[j].text+" "+
                         rlpca[j].children[k].text+" "+
                         rlpca[j].children[k].children[id].text).css('color',"#666");
+
                     $('#showCityPicker3').html('<i class="fa fa-map-marker"></i> '+
+                        rlpca[j].text+" "+
+                        rlpca[j].children[k].text+" "+
+                        rlpca[j].children[k].children[id].text).css('color',"#666");
+                        $('input[name=province]').attr('data-id', rlpca[j].id);
+                        $('input[name=city]').attr('data-id', rlpca[j].children[k].id);
+                        $('input[name=area]').attr('data-id', rlpca[j].children[k].children[id].id);
+
+                    $('#showCityPicker4').html('<i class="fa fa-map-marker"></i> '+
                         rlpca[j].text+" "+
                         rlpca[j].children[k].text+" "+
                         rlpca[j].children[k].children[id].text).css('color',"#666");
@@ -188,6 +217,7 @@ var selectQz = {
                 }
             }
         });
+
         $('#showCityPicker2').on('click',function(){
             $('.qz_Area').show().stop().animate({right: 0}, 300);
             $('.qz_cityMask').fadeIn(100);
@@ -195,6 +225,7 @@ var selectQz = {
             jroll1 = new JRoll(".qz_cityArea", {id: "scroller1"});
             jroll2 = new JRoll(".qz_currentArea", {id: "scroller2"});
         });
+
         $('#showCityPicker3').on('click',function(){
             $('.qz_Area').show().stop().animate({right: 0}, 300);
             $('.qz_cityMask').fadeIn(100);
@@ -202,6 +233,15 @@ var selectQz = {
             jroll1 = new JRoll(".qz_cityArea", {id: "scroller1"});
             jroll2 = new JRoll(".qz_currentArea", {id: "scroller2"});
         });
+
+        $('body').on('click','#showCityPicker4',function(){
+            $('.qz_Area').show().stop().animate({right: 0}, 300);
+            $('.qz_cityMask').fadeIn(100);
+            jroll = new JRoll(".qz_provinceArea", {id: "scroller"});
+            jroll1 = new JRoll(".qz_cityArea", {id: "scroller1"});
+            jroll2 = new JRoll(".qz_currentArea", {id: "scroller2"});
+        });
+
         $('body').on('touchend','.qz_cityMask',function(){
             $(this).fadeOut(100).hide();
             $('.qz_Area').stop().animate({right: "-800px"}, 300,function(){
