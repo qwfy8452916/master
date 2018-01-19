@@ -1,0 +1,149 @@
+<!--库存删除-->
+<style>
+    .tishi_box{
+    width: 133px;
+    max-height: 150px;
+    border: 1px solid #DEDEDE;
+    background: #fff;
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0px 0px 4px 1px #DEDEDE;
+    overflow-y: auto;
+    }
+    .tishi_box ul{list-style: none;padding-left: 10px !important;}
+    .tishi_box ul li{list-style: none;text-align: left;}
+    .jvzhongxs .xuanzeop{width: 110px;height: 36px;vertical-align: middle;outline: none;margin-right: 10px;}
+    .jvzhongxs .xuanzeop2{width: 110px;height: 36px;vertical-align: middle;outline: none;margin-right: 10px;}
+    .jvzhongxs .qujiandg .qujian2{right: 16px;top: 8px;}
+    .jvzhongxs .qujiandg .dange2{left: 127px;top: 8px;}
+</style>
+<div class="step_item_box">
+    <div class="step_item_name">
+        <span class="pull-left">库存删除</span>
+    </div>
+    <div class="drag_handle">
+        <span class="center_line"></span>
+    </div>
+    <div class="step1 step-container kucunshanchu">
+        <div class="step_leftPart jvzhongxs">
+            <div class="input_box_line kcscbiaodan">
+                <div class="qujiandg">
+                    <span class="qujian qujian2">区间</span>
+                    <span class="dange dange2">单个</span>
+                </div>
+                <span class="pull-left label_name">
+                    输入合同编号：
+                </span>
+                <span class="pull-left">
+                    <select class="xuanzeop">
+                        <option value="">输入合同</option>
+                    </select>
+                </span>
+                <span class="pull-left">
+                    <input type="text" name="step1_hetong_inCode1" data-url='/salesetting/findusers/' value="">
+                </span>
+                <span class="pull-left middle_line">一</span>
+                <span class="pull-left">
+                    <input type="text" name="step1_hetong_inCode2" value="" data-url='/salesetting/findusers/'>
+                </span>
+                <span class="pull-left dangeshuru">
+                    <input type="text" name="step1_hetong_inCode2" value="" data-url='/salesetting/findusers/'>
+                </span>
+                <span class="pull-left">
+                    <button class="shanchuanniu">
+                        确认删除
+                    </button>
+                </span>
+            </div>
+            <div class="input_box_line kcscbiaodan">
+                <div class="qujiandg">
+                    <span class="qujian qujian2">区间</span>
+                    <span class="dange dange2">单个</span>
+                </div>
+                <span class="pull-left label_name">
+                    输入票据编号：
+                </span>
+                <span class="pull-left">
+                    <select class="xuanzeop2">
+                        <option value="">输入合同</option>
+                    </select>
+                </span>
+                <span class="pull-left">
+                    <input type="text" name="step1_hetong_inCode1" value="" data-url='/salesetting/findusers/'>
+                </span>
+                <span class="pull-left middle_line">一</span>
+                <span class="pull-left">
+                    <input type="text" name="step1_hetong_inCode2" value="" data-url='/salesetting/findusers/'>
+                </span>
+                <span class="pull-left dangeshuru">
+                    <input type="text" name="step1_hetong_inCode2" value="" data-url='/salesetting/findusers/'>
+                </span>
+                <span class="pull-left">
+                    <button class="shanchuanniu">
+                        确认删除
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ $(function(){
+
+        
+        $('input').on('keyup paste',function(){
+            var nextNode=$(this).next(".tishi_box").length;
+               if(nextNode==0){
+                    $(this).after("<div class='tishi_box'><ul></ul></div>");
+               }
+            var url=$(this).data("url");
+            var text=$(this).val();
+            var nextUl=$(this).next().children('ul');
+             $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    query:text
+                }
+            })
+            .done(function(data) {
+                $(nextUl).html('');
+                if (data.status == '1') {
+                    if(data.data != ''){
+                        
+                        for(var i in data.data){
+                            var contentStr = "<li data-id="+ data.data[i].id +">"+ data.data[i].user +"</li>";
+                            $(nextUl).append(contentStr);
+                        }  
+                    }else{
+                 
+                        $(nextUl).append('没有搜索到~');
+                    }
+                    
+                } else {
+                     
+                    $(nextUl).append('没有搜索到~');
+                }    
+            })
+            .fail(function(xhr) {
+                alert('发生未知错误，请联系技术部门~');
+                return false;
+            })
+        });
+
+
+
+
+     $("body").on("click","li",function(){
+        var value=$(this).text();
+        $(this).parent().parent().prev("input").val(value);
+         $(this).parent().remove();
+     });
+
+     $(document).click(function(event){
+        $(".tishi_box").remove();
+    })
+ });
+    
+</script>
