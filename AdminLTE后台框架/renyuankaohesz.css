@@ -1,0 +1,63 @@
+html,body{font-size: 14px;color: #333;}
+ul{padding: 0;margin: 0;}
+ul li{list-style: none;}
+/*.xiansyckz ul{display: none;}*/
+.dakuangzi{display: none;}
+/*.xiansyckz .yihang{display: none;}*/
+.daohang ul li{list-style: none;display:flex;text-align: center;
+float: left;}
+.fa-angle-right{margin: 0 5px;font-size: 25px;position: relative;top: -3px;}
+.daohang .gailan01{font-size: 18px;padding:15px 25px;}
+.padbotom{border-top: 3px solid #ccc !important;height: 1000px;}
+.padbotom .contleft{height: 800px;overflow-y: auto;}
+.contleft .title_xzrenyuan{font-size: 16px;text-align:left;}
+.contleft .showhidekz{margin-top: 25px;font-size: 16px;}
+.contleft .showhidekz .niutitle{overflow: hidden;vertical-align:middle;height: 30px;line-height: 30px;}
+.contleft .showhidekz .niutitle span{margin-left: 10px;float: left;}
+.contleft .showhidekz .niutitle .leftjt{float: right;margin-right: 15px;vertical-align:middle;margin-top: 6px;
+font-size: 18px;cursor: pointer;}
+
+.contleft .showhidekz ul{overflow: hidden;height: auto;display: none;}
+.contleft .showhidekz ul li{margin-left: 35px;list-style: none;font-size: 13px;height: 34px;line-height: 34px;}
+.footgaodu{height: 600px;}
+
+.padbotom .contright{height: 800px;overflow-y: auto;}
+.padbotom .contright label{font-weight: normal;float: left;text-align: left;}
+.padbotom .contright label .xznrong{display: inline-block;float: left;text-align: center;width: 76%;}
+.padbotom .contright input[type="checkbox"]{margin-right: 6px;width: 15px;height: 15px;float: left;}
+.contright .title_kaohexm{font-size: 16px;text-align: left;}
+.contright .xiansyckz{font-size: 16px;margin-top: 10px;clear: both;}
+.contright .xiansyckz dl{margin: 0;}
+.contright .xiansyckz dt,.contright .xiansyckz dd{height: 36px;line-height: 20px;margin: 15px 0;}
+.contright .xiansyckz .dianjibt{border-bottom:1px dashed #c9c9c9;overflow: hidden;}
+.contright .xiansyckz .dianjibt label input[type="radio"]{vertical-align: middle;margin-left: 30px;
+top: -2px;}
+.contright .xiansyckz .dianjibt label{float: left;margin: 10px 0;}
+.contright .xiansyckz .dianjibt label input{margin-right: 6px;width: 15px;height: 15px;
+	position: relative;top: -1px;}
+.contright .xiansyckz .dianjibt .rightjt{float: right;cursor: pointer;margin-top: 7px;}
+.contright .xiansyckz .quanxuan{background: #f2f9ff;height: 36px;line-height: 36px;margin: 5px 0;
+clear: both;}
+.contright .xiansyckz .quanxuan label{margin-left: 34px;font-size: 13px;}
+.contright .xiansyckz .quanxuan label input[type="checkbox"]{margin-top: 12px;}
+.contright .xiansyckz .quanziyuansyi{background: #fff;padding-left: 56px;box-sizing: border-box;-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;line-height: 20px;margin: 0;}
+.contright .xiansyckz .quanziyuansyi label{margin-right: 1%;width: 13%;text-align: left;font-size: 13px;
+margin-top: 7px;}
+/*.contright .xiansyckz .quanziyuansyi label input[type="checkbox"]{position: relative;top: 6px;}*/
+.contright .xiansyckz .quanziyuans{background: #fff;padding-left: 56px;box-sizing: border-box;-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;}
+.contright .xiansyckz .quanziyuans label{margin-right: 1%;width: 13%;text-align: left;font-size: 13px;}
+.contright .xiansyckz .quanziyuans .firstleft{float: left;}
+
+.contright .xiansyckz .yihang{padding-left: 34px;box-sizing: border-box;-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;height: 36px;line-height: 20px;font-size: 16px;}
+.contright .xiansyckz .yihang label{margin-top: 7px;margin-right: 76px;}
+
+.xiansyckz .anpindaokz{width: 100%;height:auto;display: none;margin-top: 10px;}
+.xiansyckz .anpindaokz li{padding-left: 34px;overflow: hidden;vertical-align: middle;height: 35px;line-height: 35px;
+	box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;background: #fff;
+clear: both;}
+.xiansyckz .anpindaokz li:nth-child(odd){background: #f2f9ff;}
+.xiansyckz .anpindaokz li label{text-align: left;display: inline-block;width: 14.285%;}
+.xiansyckz .anpindaokz label input[type="checkbox"]{margin-top: 11px;}
