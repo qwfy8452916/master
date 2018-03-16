@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>装修效果图首页改版</title>
+	 <link rel="stylesheet" href="css/m-reset.css">
+	<link rel="stylesheet" href="css/m-publicrem.new.css">
+	  <link rel="stylesheet" href="font/font-awesome.min.css">
+	  <link rel="stylesheet" href="css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/meitu_m.2.8.4.css">
+</head>
+<body>
+	<article>
+       <div class="banner">
+           <a href="#"><img src="img/bannermt.jpg" alt=""></a>
+       </div>
+       <div class="daohang">
+           <ul class="daohshang">
+           <li class="addborder">风格</li>
+           <li>布局</li>
+           <li>户型</li>
+           <li>颜色</li>
+       </ul>
+       <div class="region">
+           <ul class="quyu active">
+               <li><a href="#">简欧</a></li>
+               <li><a href="#">北欧</a></li>
+               <li><a href="#">欧式</a></li>
+               <li><a href="#">地中海</a></li>
+               <li><a href="#">巴洛克</a></li>
+               <li><a href="#">美式</a></li>
+               <li><a href="#">中式</a></li>
+               <li><a href="#">日式</a></li>
+               <li><a href="#">现代</a></li>
+               <li><a href="#">后现代</a></li>
+           </ul>
+           <ul class="quyu">
+               <li><a href="#">客厅</a></li>
+               <li><a href="#">厨房</a></li>
+               <li><a href="#">卧室</a></li>
+               <li><a href="#">卫生间</a></li>
+               <li><a href="#">阳台</a></li>
+               <li><a href="#">书房</a></li>
+               <li><a href="#">餐厅</a></li>
+               <li><a href="#">儿童房</a></li>
+               <li><a href="#">花园</a></li>
+               <li><a href="#">衣帽间</a></li>
+           </ul>
+           <ul class="quyu">
+               <li><a href="#">小户型</a></li>
+               <li><a href="#">一居</a></li>
+               <li><a href="#">二居</a></li>
+               <li><a href="#">三居</a></li>
+               <li><a href="#">大户型</a></li>
+               <li><a href="#">别墅</a></li>
+               <li><a href="#">复式楼</a></li>
+               <li><a href="#">跃层</a></li>
+               <li><a href="#"></a></li>
+               <li><a href="#"></a></li>
+           </ul>
+           <ul class="quyu silie">
+               <li><a href="#">纯情白色</a></li>
+               <li><a href="#">中性冷色</a></li>
+               <li><a href="#">明亮黄色</a></li>
+               <li><a href="#">温暖纯色</a></li>
+               <li><a href="#">浪漫粉红</a></li>
+               <li><a href="#">中性暖色</a></li>
+               <li><a href="#">动感绿色</a></li>
+               <li><a href="#">海洋蓝色</a></li>
+           </ul>
+       </div>
+       </div>
+       <div class="sanlies">
+           <a href="#" class="sanlietu1"></a>
+           <a href="#" class="sanlietu2"></a>
+           <a href="#" class="sanlietu3"></a>
+       </div>
+
+       <div class="downcontent">
+           <ul>
+               <li>
+                  <img src="img/contentbj.jpg" alt="">
+                  <div class="cont_title">现代简约风格精美客厅设计装修效果图</div>
+                  <div class="cont_titlekz">
+                     <div class="leftms">
+                         <span>客厅</span><span>现代</span><span>二居</span><span>恬淡浅色</span>
+                     </div>
+                     <div class="rightms">
+                         <i class="fa fa fa-thumbs-up"></i>
+                         <span>981</span>
+                     </div>
+                  </div>
+               </li>
+               <li>
+                  <img src="img/contentbj.jpg" alt="">
+                  <div class="cont_title">现代简约风格精美客厅设计装修效果图</div>
+                  <div class="cont_titlekz">
+                     <div class="leftms">
+                         <span>客厅</span><span>现代</span><span>二居</span><span>恬淡浅色</span>
+                     </div>
+                     <div class="rightms">
+                         <i class="fa fa fa-thumbs-up"></i>
+                         <span>981</span>
+                     </div>
+                  </div>
+               </li>
+           </ul>
+       </div>
+       
+    </article>
+
+
+
+    <script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="js/yanzhengx.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="js/jroll.js"></script>
+    <script type="text/javascript" src="js/qzCitySelect.js"></script>
+    <script>
+    	 (function(){
+            $('.daohang .daohshang li').click(function(){
+               var suoyin = $(this).index();
+               var quyubl = $('.region .quyu');
+               $(this).addClass('addborder');
+               $(this).siblings().removeClass('addborder');
+               $(quyubl[suoyin]).addClass('active');
+               $(quyubl[suoyin]).siblings().removeClass('active');
+            });
+
+           $('.cont_titlekz .rightms .fa-thumbs-up').click(function(){
+              var dianzanshu=parseInt($(this).next().text());
+              dianzanshu++;
+              $(this).css("color","#ff5353");
+              $(this).next().text(dianzanshu);
+           });
+
+
+        })()
+    </script>
+</body>
+</html>
