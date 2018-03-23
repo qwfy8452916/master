@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .close-sidebar,.show-sidebar{float:right;margin:-5px 0 0 10px;
+            padding:5px 10px;text-align: center;
+            text-shadow: 0 1px 1px #ccc;
+            background-image: -webkit-linear-gradient(top, #fbfbfb, #e66b4e);background-image: -moz-linear-gradient(top, #fbfbfb, #e6e6e6);background-image: -ms-linear-gradient(top, #fbfbfb, #e6e6e6);border: 1px solid #ccc;border-bottom-color: #bbb;border-radius: 1px;box-shadow: 0 2px 2px #ddd;}
+        .close-sidebar a,.show-sidebar a{color:#333;}
+        .close-sidebar:hover,.show-sidebar:hover{background:#f6f6f6;}
+        .close-sidebar:active,.show-sidebar:active{background:#f6f6f6;box-shadow: inset 0 2px 4px #ddd;}
+    </style>
+    <script src='js/jquery-1.11.1.min.js'></script>
+</head>
+<body>
+<div class="close-sidebar"><a href="#">关闭侧边栏</a></div>
+<div class="show-sidebar" style="display:none;"><a href="#">显示侧边栏</a></div>
+</body>
+</html>
+<script>
+    jQuery(document).ready(function($) {
+        $('.close-sidebar').click(function() {
+            $('.close-sidebar,.sidebar').hide();
+            $('.show-sidebar').show();
+            $('.content').animate({
+                        width: "1238px"
+                    },
+                    1000);
+        });
+        $('.show-sidebar').click(function() {
+            $('.show-sidebar').hide();
+            $('.close-sidebar,.sidebar').show();
+            $('.content').animate({
+                        width: "838px"
+                    },
+                    1000);
+        });
+    });
+</script>

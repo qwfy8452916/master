@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background-color:#ccc;
+        }
+        .box{
+            width: 600px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: #fff;
+            
+        }
+        .select{
+            width: 400px;
+            padding-top: 200px;
+            margin: 0 auto;
+            background-color: #fff;
+            position: relative;
+        }
+        .select:before,
+        .select:after{
+            content: '';
+            display: block;
+            width: 5px;
+            height: 25px;
+            display: block;
+            background-color: plum;
+            border-radius: 2.5px;
+            position: absolute;
+
+        }
+        .select:before{
+            left: 178px;
+            top: 170px;
+            transform: rotate(-26deg);
+        }
+        .select:after{
+            left: 217px;
+            top: 170px;
+            transform: rotate(25deg);
+        }
+        .head{
+            width: 100px;
+            height: 30px;
+            margin: 0px auto;
+            overflow: inherit;
+            border-radius: 120px 120px 0 0;
+            background-color: plum;
+            position: relative;
+        }
+        .head:before,
+        .head:after{
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            display: block;
+            background-color: #fff;
+            border-radius: 5px;
+            top: 9px;
+            position: absolute;
+        }
+        .head:before{
+            left: 20px;
+        }
+        .head:after{
+            left: 70px;
+        }
+        .body{
+            width: 100px;
+            height: 50px;
+            background-color: plum;
+            position: relative;
+            margin: 0 auto;
+            margin-top: 5px;
+            border-radius: 0 0 30px 30px;
+        }
+        .body:before,
+        .body:after{
+            content: '';
+            width: 10px;
+            height: 20px;
+            border-radius: 5px;
+            background-color: plum;
+            position: absolute;
+        }
+        .body:before{
+            margin-left: -15px;
+        }
+        .body:after{
+            margin-left: 105px;
+        }
+        .foot:before,
+        .foot:after{
+            content: '';
+            width: 10px;
+            height: 20px;
+            border-radius: 0 0 5px 5px;
+            background-color: plum;
+            position: absolute;
+        }
+        .foot:before{
+            margin-left: 180px;
+        }
+        .foot:after{
+            margin-left: 210px;
+        }
+
+    </style>
+</head>
+<body>
+ <div class="box">
+    <div class="select">
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="foot"></div>
+    </div>
+ </div>
+</body>
+</html>

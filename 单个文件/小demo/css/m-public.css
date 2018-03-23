@@ -1,0 +1,51 @@
+
+.m-wrap{
+	max-width: 640px;
+	min-width: 320px;
+	width: 100%;
+	margin: auto;
+	overflow:hidden;}
+header{ height:50px; line-height:50px; background:#fff; box-shadow:0 3px 5px rgba(0,0,0,.2); position:relative}
+header .m-header-left,header .m-header-right{ position:absolute;  top:0;width:50px; text-align:center; font-size:1.5em; color:#666}
+header .m-header-tit{ text-align:center}
+header .m-header-left{ display:block; height:50px; background:url(../images/logonew.png) no-repeat left; width:50%; background-size:auto 50px}
+header .m-header-right{ right:0; height:50px}
+header .m-header-city{ right:4em;position:absolute;  font-size:0.8em;  top:0;}
+header .m-header-city i.fa:before{ font-size:0.8em; margin-left:5px; vertical-align: 4px;}
+article{ background:#eee; overflow:hidden}
+.m-img-box-a img{ width:100%; height:auto; display:block}
+.m-b-btn{ height:50px; margin:10px; background:#ff5659; display:block; color:#fff; line-height:50px; text-align:center; font-size:1.2em;}
+.m-b-btn-f{font-size:1.2em; width:100%; margin:10px 0; color:#fff; background:#fb8486; height:50px; display:block; text-align: center; line-height:50px
+}
+footer{ text-align:center; width:100%; background:#eee; padding:1em 0; font-size:0.6em; line-height:2em; padding-bottom:100px;}
+footer .hot{ color:#FF5255}
+footer .links{ font-size:1.8em}
+
+
+/*报价表单*/
+.m-font-red{ color:#ff5659}
+.m-t1{ text-align:center; line-height:3em}
+.m-bj-edit{ margin:0 10px}
+.m-bj-edit li{ overflow:hidden; box-sizing: border-box; margin-bottom:10px; position: relative}
+.m-bj-edit li span.dw{ position:absolute; right:5px; top:0; line-height:48px;}
+.m-bj-edit li.noline{ border:0}
+.m-bj-edit li .m-bj-edit-list{appearance:none;
+-moz-appearance:none; /* Firefox */
+-webkit-appearance:none; /* Safari 和 Chrome */
+ border-radius:0; margin:0; display:block; height:48px; line-height:38px; box-sizing:border-box; padding:5px; background:#fff; border:1px solid #ddd;}
+.m-bj-edit li .m-row-int1{ width:100%; font-size:1em}
+.m-bj-edit li .m-row-int2{ width:48.5%; font-size:1em; box-sizing: border-box;}
+.m-bj-edit li .m-row-int2:first-of-type{ float:left;  }
+
+.m-bj-edit li .m-row-int2:last-of-type{ float:right;}
+.m-bj-edit li .m-row-int3{ width:32%; display:inline-block; text-align:center}
+.m-bj-edit li input[type=radio]{ margin-right:5px}
+.m-bj-edit li input[type=radio]::-webkit-check {
+    color: #ff5659;
+    background: #a0b3d6;
+    padding: .5em;
+}
+.c-zb-city{padding:5px; box-sizing: border-box;height:48px ; width:100%; text-align:left; border:1px solid #ddd; background:#fff; font-size:1em; color:#a9a9a9}
+.c-zb-city i.fa{ color:#ccc}
+.mui-btn{background:#D8D8D8; border:0}
+.mui-btn-blue{ background:#00CFA5; color:#fff}

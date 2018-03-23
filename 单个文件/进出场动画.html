@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            perspective: 500px;
+            height: 2000px;
+        }
+        .u{
+            position:absolute;
+            top:400px;
+            left:100px;
+            transition: all 1s ease 0s;
+        }
+        .u.so{
+            transform: rotateY(60deg) translateZ(10px);
+        }
+        .img{
+            width: 200px;
+            height: 200px;
+            background: url(image/m_1.jpg);
+            position: absolute;
+            left: 600px;
+            top:800px;
+            transition: all 1s ease 0s;
+        }
+        .img.no{
+            transform: rotateY(30deg) translateZ(700px);
+        }
+    </style>
+    <script src='js/jquery-1.11.2.min.js'></script>
+    <script>
+        window.onload = function(){
+            $(document).ready(function(){
+                $(window).scroll(function(){
+                    if($(document).scrollTop() >= 600){
+                        $('.img').removeClass('no');
+                    }else{
+                        $('.img').addClass('no')
+                    }
+                })
+            });
+            $(document).ready(function(){
+                $(window).scroll(function(){
+                    if($(document).scrollTop() >= 10){
+                        $('.u').removeClass('so');
+                    }else{
+                        $('.u').addClass('so')
+                    }
+                })
+            })
+
+        }
+
+    </script>
+</head>
+<body>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p class='u so'>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+     <p>我坐在须弥山巅，将万里浮云一眼看开</p>
+        <div class="img no"></div>
+
+</body>
+</html>

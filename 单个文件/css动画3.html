@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css动画效果</title>
+
+	<style>
+     .waikz{width: 300px;height: 300px;background: #fd8a8a;border:1px solid #999;
+       margin-top: 100px;margin-left: 200px;position: relative;
+     }
+     .donghua{position: absolute;left: 0;top: 0;right:0;bottom:0;margin:auto;width: 70px;height: 30px;
+     	background: rgba(0,0,0,0.6);border-radius: 30px;color: #fff;font-size: 14px;text-align: center;
+     	line-height: 30px;    transition: all 0.5s ease;}
+     .waikz:hover .donghua{width: 100%;height: 100%;border-radius: 0;left: 0;top: 0;line-height: 300px;font-size: 24px;}
+
+
+	</style>
+
+</head>
+<body>
+	
+  <div class="waikz">
+  	
+    <span class="donghua">你好哦</span>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+/*四个分类部分*/
+.s_hd{
+    height: 35px;
+    width: 100%;
+}
+.s_hd span{
+    height: 26px;
+    line-height: 26px;
+    font-size: 0.9em;
+    padding-left: 9px;
+    margin-top: 6px;
+    display: inline-block;
+    width: 23%;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+    white-space: nowrap;
+}
+#uls li{
+    border:none;
+}
+.m_bd ul li .sp{
+    vertical-align:super;
+    font-size:10px
+}

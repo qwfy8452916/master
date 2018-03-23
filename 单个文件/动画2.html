@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.aa{width: 500px;height: 500px;background:#fb9090;position: relative;text-align: center;color: #fff;}
+		.bb{position: absolute;bottom: 0;left: 0;height: 60px;background:#3e77cc;width: 100%;display: none;line-height: 60px;}
+		/*.aa:hover .bb{text-align: center;color: #fff;}*/
+
+
+	</style>
+</head>
+<body>
+	<div class="aa">
+		<div class="bb">大家好哦</div>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		
+        $('.aa').mousemove(function(){
+        	$(".bb").stop().animate({height:"show"}, 500)
+        });
+        $('.aa').mouseout(function(){
+        	 $(".bb").stop().animate({height:"hide"},500)
+        })
+
+
+	</script>
+</body>
+</html>

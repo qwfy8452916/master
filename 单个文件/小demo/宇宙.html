@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            background-color: #000;
+        }
+        ul{
+            width: 600px;
+            height: 600px;
+            margin: 50px auto;
+            list-style: none;
+            position: relative;
+            /*background-color: #fff;*/
+        }
+        ul li{
+            /*border: 2px solid #394057;*/
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-name: orbit;
+        }
+        ul li span{
+            display: block;
+            position: absolute;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        ul li:nth-child(1){
+            width: 60px;
+            height: 60px;
+            border:0;
+            z-index: 999;
+            box-shadow: 0 0 50px #c90;
+            background-color: #C90;
+            animation-duration: 5s;
+        }
+        ul li:nth-child(2){
+            width: 120px;
+            height: 120px;
+            z-index: 998;
+            animation-duration: 7s;
+        }
+        ul li:nth-child(2) span{
+            background-color: yellow;
+            left: 80px;
+            top: 0;
+        }
+        ul li:nth-child(3){
+            width: 150px;
+            height: 150px;
+            z-index: 997;
+            animation-duration: 9s;
+        }
+        ul li:nth-child(3) span{
+            background-color: deeppink;
+            left: 30px;
+            top: 0;
+        }
+        ul li:nth-child(4){
+            width: 190px;
+            height: 190px;
+            z-index: 996;
+            animation-duration: 11s;
+        }
+        ul li:nth-child(4) > span {
+            background-color: blue;
+            left: 122px;
+            top: 0;
+            animation: orbit 2s infinite linear;
+        }
+        ul li:nth-child(4) > span span {
+            width: 6px;
+            height: 6px;
+            left: 20px;
+            background-color: powderblue;
+        }
+        ul li:nth-child(5){
+            width: 240px;
+            height: 240px;
+            z-index: 995;
+            animation-duration: 13s;
+
+        }
+        ul li:nth-child(5) > span {
+            background-color: red;
+            left: 70px;
+            top: 0;
+        }
+        ul li:nth-child(6){
+            width: 280px;
+            height: 280px;
+            z-index: 994;
+            animation-duration: 19s;
+        }
+        ul li:nth-child(6) > span{
+            background-color: green;
+            left: 70px;
+            top: 256px;
+        }
+        ul li:nth-child(7){
+            width: 320px;
+            height: 320px;
+            z-index: 993;
+            animation-duration: 24s;
+        }
+        ul li:nth-child(7) > span{
+            background-color: yellow;
+            left: 310px;
+            top: 166px;
+        }
+        ul li:nth-child(7) > span span {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #CCC;
+            left: -3px;
+            z-index: -1;
+            top: -4px;
+            transform: skew(0, 45deg);
+        }
+        ul li:nth-child(8){
+            width: 370px;
+            height: 370px;
+            z-index: 992;
+            animation-duration: 29s;
+        }
+        ul li:nth-child(8) > span{
+            left: 360px;
+            top: 166px;
+            box-shadow: 0 0 10px #4185F3;
+            background-color: #4185F3;
+            animation-duration: 6s;
+        }
+        ul li:nth-child(8) > span span{
+            left: -43px;
+            top: 166px;
+            box-shadow: 0 0 10px pink;
+            background-color: plum;
+            animation-duration: 9s;
+        }
+        ul li:nth-child(9){
+            width: 420px;
+            height: 420px;
+            z-index: 991;
+            animation-duration: 32s;
+        }
+        ul li:nth-child(9) > span{
+            left: -5px;
+            top: 166px;
+            box-shadow: 0 0 10px lightskyblue;
+            background-color: lightskyblue;
+
+        }
+        ul li:nth-child(9) > span span {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #fff;
+            left: -3px;
+            z-index: -1;
+            top: -4px;
+            transform: skew(0, 45deg);
+        }
+        @keyframes orbit {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+   <ul>
+       <li>
+
+       </li>
+       <li>
+           <span></span>
+       </li>
+       <li>
+           <span></span>
+       </li>
+       <li>
+           <span>
+                <span></span>
+           </span>
+
+       </li>
+       <li>
+           <span></span>
+       </li>
+       <li>
+           <span></span>
+       </li>
+       <li>
+           <span>
+               <span></span>
+           </span>
+       </li>
+       <li>
+           <span>
+               <span></span>
+           </span>
+       </li>
+       <li>
+           <span>
+               <span></span>
+           </span>
+       </li>
+   </ul>
+</body>
+</html>
