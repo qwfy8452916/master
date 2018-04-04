@@ -1,0 +1,140 @@
+.welcome{
+	height: 115px;
+	line-height: 115px;
+	font-size: 18px;
+	font-family: 'Microsoft YaHei';
+	margin-left: 70px;
+	float: left;
+}
+.loginbg{
+	width: 100%;
+	height: 523px;
+	position: relative;
+    overflow: hidden;
+	background: url(../img/login-bg.jpg) no-repeat center;
+}
+.loginbox {
+    background: #FFF;
+    float: right;
+    font-family: "Microsoft YaHei";
+    width: 360px;
+    height: auto;
+    margin-top: 20px;
+    margin-right: 45px;
+    
+}
+#tab{
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 15px;
+}
+.loginbox .tab-nav {
+    overflow: hidden;
+}
+.loginbox .tab-nav a.current {
+    border-bottom: 2px #ee4040 solid;
+    color: #ee4040;
+}
+.loginbox .tab-nav a {
+    width: 100px;
+    float: left;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #3c3c3c;
+    border-bottom: 2px solid #f1f1f1;
+    border-radius: 0;
+}
+.loginbox .tab-con-item{
+    display: none;
+    margin-bottom: 35px;
+}
+.loginbox .loginput {
+    height: 34px;
+    width: 300px;
+    position: relative;
+    margin-top: 22px;
+}
+.loginbox .logintit {
+    margin-top: 18px;
+}
+.loginbox .logininfo{
+    margin-top: 15px;
+}
+.loginbox .logininfo a{
+    margin-left: 25px;
+    text-decoration: underline;
+}
+.loginbox .logintit input[type="checkbox"]{
+    margin-right: 10px;
+}
+.loginbox .loginput input[name="mobile-code"]{
+    width: 90px !important;
+    float: left;
+}
+.loginbox .loginput .send-code{
+    width: 180px;
+    height: 34px;
+    background: #eee;
+    line-height: 34px;
+    float: right;
+    text-align: center;
+    cursor: pointer;
+}
+.loginbox .loginselect{
+    width: 300px;
+    height: 34px;
+    margin-top: 22px;
+}
+.loginbox .loginselect select{
+    width: 143px;
+    height: 32px;
+    padding-left: 12px;
+    border: 1px solid #ccc;
+}
+.loginselect select:first-child{
+    float: left;
+}
+.loginselect select:last-child{
+    float: right;
+}
+.loginbox .logintit .gray-color{
+	color: #666;
+}
+.loginbox .logintit .dev-color{
+	color: #484848;
+}
+.loginbox .login-info {
+    float: right;
+}
+.loginbox .btn {
+    line-height: 34px;
+    height: 34px;
+    font-size: 14px;
+    margin-top: 18px;
+}
+.loginbox .loginput input {
+    border: 1px solid #ccc;
+    height: 32px;
+    line-height: 40px\0;
+    width: 282px;
+    padding-left: 16px;
+}
+.loginbox a {
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #f24b4b;
+}
+.loginbox .btn a.logbtn {
+    width: 100%;
+    height: 34px;
+    background: #ff565d;
+    color: #fff;
+    text-decoration: none;
+    line-height: 34px;
+}
+

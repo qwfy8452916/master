@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高度隐藏显示</title>
+	<style>
+		.aa{height: 30px;line-height: 30px;text-align: center;background: #f9aaf6;}
+		ul{overflow: hidden;background: #7ebff7;height: 0;}
+		ul li{list-style: none;}
+	</style>
+</head>
+<body>
+	<div class="aa">点击事件</div>
+	<ul class="bb cc">
+		<li>点击1</li>
+		<li>点击2</li>
+		<li>点击3</li>
+		<li>点击4</li>
+	</ul>
+
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script>
+		 
+		 $('.aa').click(function(){
+          if($('.bb').hasClass('cc')){
+             $('.bb').animate({height:"200px"},400)
+             $('.bb').removeClass('cc')
+
+          }else{
+          	$('.bb').animate({height:"0"},400)
+          	$('.bb').addClass('cc')
+          }
+          
+
+
+		 });
+
+
+	</script>
+</body>
+</html>

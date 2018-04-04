@@ -1,0 +1,62 @@
+article{ background:#fff}
+
+.m-header-city{ left:35%}
+.focus{ position:relative; margin-bottom:10px}
+.focus .hd{ z-index:1;position:absolute; bottom:10px; font-size:0; left:50%; box-sizing:border-box;}
+.focus .hd li{ border-radius:50px; width:10px; height:10px; background:#ccc;}
+.focus .bd{position:relative; z-index:0}
+.focus .bd li img{ width:100%;  height:auto;}
+.focus .hd ul { width:auto;margin-left:-50%; overflow:hidden}
+.focus .hd li{ float:left; margin-right:5px}
+.focus .hd ul .on{ background-color:#f75454;}
+
+
+.xgt-list{ background:#fff; padding:4vw;}
+.xgt-list-tit{ text-align:center; height:1px; border-bottom:1px solid #ddd; margin:20px 0 30px 0}
+.xgt-list-tit section{ background:#fff; display:block; margin:0 auto; position: relative; width:40%; top:-20px; height:40px; line-height:40px; font-size:1.2em}
+.xgt-list-tit section i{ position:absolute; width:3vw; height:3vw; }
+.xgt-list-tit section i:first-of-type{ background:#ff5659; left:5px; bottom:5px}
+.xgt-list-tit section i:first-of-type:before{ content:"";position:absolute; width:2vw; height:2vw; background:#ff8e90; right:-1vw; top:-5px}
+.xgt-list-tit section i:last-of-type:after{ content:"";position:absolute; width:2vw; height:2vw; background:#ff5659; right:-1vw; top:-5px}
+.xgt-list-tit section i:last-of-type{ background:#ff8e90; right:2vw; top:10px}
+
+
+[class*="xgt-list-row"] a{ display:block; overflow:hidden; position:relative}
+[class*="xgt-list-row"] a span{ position:absolute; background:rgba(0,0,0,.5); display:block; left:0; bottom:0; color:#fff; font-size:.8em; line-height:1.5em; padding:0 .2em}
+[class*="xgt-list-row"] a img{width:100%; height:100%}
+.xgt-list-row1 a.xgt-list-big{ width:60vw; height:40vw; float:left; margin-bottom:4vw}
+.xgt-list-row1 a.xgt-list-small{ width:28vw; height:18vw; float:right; margin-bottom:4vw}
+.xgt-list-row2 a.xgt-list-small{ width:28vw; height:18vw; float:left; margin-left:4vw}
+.xgt-list-row2 a.xgt-list-small:first-of-type{ margin-left:0}
+
+@media (min-width:640px) {
+.xgt-list{ background:#fff; padding:25px;}
+[class*="xgt-list-row"] { overflow:hidden}
+[class*="xgt-list-row"] a{ display:block; overflow:hidden; position:relative}
+[class*="xgt-list-row"] a span{ position:absolute; background:rgba(0,0,0,.5); display:block; left:0; bottom:0; color:#fff; font-size:.8em; line-height:1.5em; padding:0 .2em}
+[class*="xgt-list-row"] a img{width:100%; height:100%}
+.xgt-list-row1 a.xgt-list-big{ width:384px; height:256px; float:left; margin-bottom:25px}
+.xgt-list-row1 a.xgt-list-small{ width:180px; height:115px; float:right; margin-bottom:25px}
+.xgt-list-row2 a.xgt-list-small{ width:180px; height:115px; float:left; margin-left:25px}
+.xgt-list-row2 a.xgt-list-small:first-of-type{ margin-left:0}
+
+	}
+.xgt-gz-list,.xgt-list-tag,[class*="xgt-list-row"] { overflow:hidden}
+.xgt-gz-list li{ width:20%; margin:0 2.5%; float:left; text-align:center; font-size:.8em; line-height:3em; margin-bottom:10px}
+.xgt-gz-list li img{  width:100%; height:auto; display:block}
+.xgt-list-tag li{ margin-right:10px; margin-bottom:10px; float: left; font-size:0.8em; line-height:2.4em}
+.xgt-list-tag li a{ border:1px solid #ddd; color:#ff5659; display:block; padding:0 1em}
+
+#xgt-info{ position: absolute; top:-50px; bottom:0; left:0; right:0; z-index:-1}
+#xgt-info .bd{ width:100%; overflow:hidden}
+#xgt-info .bd>*{ display:inline-block;vertical-align:middle}
+#xgt-info .bd ul{width:100%; height:100vh}
+#xgt-info .bd li{ width:100%; height:100vh; vertical-align:middle !important; background:#f7f7f7}
+#xgt-info .bd li img{ width:100%; height:auto;vertical-align:middle}
+#xgt-info .pageState{ position:absolute; bottom:60px; height:40px; width:100vw; z-index:888; background:rgba(255,255,255,.7); line-height:40px; text-align:right; padding:0 10px; box-sizing:border-box}
+#xgt-info .pageState p{ text-align:left;float:left; font-size:0.8em; width:80%; white-space:nowrap; overflow:hidden; text-overflow: ellipsis}
+#xgt-info .btn{ position:absolute; bottom:0; height:50px; background:#fff;z-index:888; width:100vw }
+#xgt-info .btn a{ display:block; height:40px; line-height:40px; margin-top:5px; float:left; text-align:center; background:#ff5659; border-radius:3px; width:47%; color:#fff}
+#xgt-info .btn a img{ display:inline-block; width:1em; height:1em; vertical-align:-2px; margin-right:.5em}
+#xgt-info .btn a:first-of-type{ margin-left:2%; margin-right:1%}
+#xgt-info .btn a:last-of-type{ margin-left:1%; margin-right:2%}

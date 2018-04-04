@@ -1,0 +1,59 @@
+html,body{font-size: 14px;color: #333;}
+ul{padding: 0;margin: 0;}
+.daohang ul li{list-style: none;display:flex;text-align: center;border-right: 1px solid #e4e4e4;
+float: left;}
+.daohang .gailan01{font-size: 18px;padding:15px 25px;}
+.daohang .dhdianj{cursor: pointer;}
+.daohang .dhdianj a{color: #333;padding:15px 45px;}
+.active{background: #f2f2f2;}
+.padbotom{padding-bottom: 50px;}
+.box-title{font-size: 16px !important;}
+.xuanzzu{margin-right: 25px;}
+.xuanzzu2{margin-right: 5px !important;}
+.xzziyuans{display: none;}
+.xuanzzu select{width: 96%;height: 30px;outline: none;}
+.xuanzzu input{width: 96%;height: 30px;outline: none;position: relative;}
+.xuanzzu input:after{content:'';width: 0;
+	height: 0;
+	position: absolute;
+	right: 5px;top: 5px;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 100px solid #666;}
+.xuanzzu .leibie{color: #666;margin-bottom: 10px;}
+.duibikz{vertical-align:middle;position: relative;top: 34px;display: inline-block;float: left;
+margin-right: 14px;}
+.duibikz input{vertical-align:middle;position:relative;top: -3px;margin-right: 2px;}
+.shagnxpand{padding:20px 10px;}
+.xiamarg{margin-bottom: 10px;}
+.chaxun1 {
+    padding: 0 !important;
+    width: 5%;
+    position: relative;
+    top: 6px;
+}
+.uvpv li{
+	width: 150px;height: 120px;
+	display: inline-block;
+	float: left;
+	border: 1px solid #e4e4e4;
+}
+.uvpv li.qupadding{border-left: 0;border-right: 0;}
+.uvpv .wenzjs{text-align: center;color:#347ba4;margin-top: 16px;font-weight: 600;}
+.uvpv .wenzjs .fa-info-circle{color: #333;margin-left: 5px;cursor: pointer;font-size: 16px;}
+.uvpv .countpv{text-align: center;font-size: 18px;font-weight: 700px;color: #00cccc;margin-top: 35px;}
+.popover-title{color: #fff;background: #8f949a;}
+.popover-content{color: #4a4a4a;padding-top: 5px;}
+.popover-content .yy{font-weight: bold;}
+
+.basicskz{margin-left: 35px;}
+.topjvli{margin-top: 5px;}
+.basicskz span{display: inline-block;width: 60px;text-align: right;}
+.basicskz label{vertical-align: middle;width: 140px;font-weight: normal;}
+.basicskz label input{position: relative;top: 1.2px;margin-right: 2px;}
+
+.daochukz{text-align: right;}
+.biaogekz{background: #fff;overflow-x: auto;margin-top: 10px;}
+.biaogekz table{width: 1500px;}
+.biaogekz table th,table td{text-align: center !important;vertical-align: middle !important;}
+.bgts01{color: #333;font-size:16px;margin-left: 3px; }

@@ -1,0 +1,114 @@
+.zxwd{
+	overflow: hidden;
+}
+.zxwd .wd-top{
+	width: 870px;
+	height: 55px;
+}
+.zxwd .wd-top div{
+	width: 404px;
+	height: 54px;
+	text-align: center;
+	line-height: 54px;
+	border: 1px dashed #eee;
+	color: #ff565d;
+	font-size: 16px;
+	float: left;
+	cursor: pointer;
+}
+.zxwd .wd-top div i,
+.wd-content .clickbox i{
+	margin-right: 5px;
+}
+.zxwd .wd-top div.answer{
+	float: right;
+}
+.current{
+	border: 1px solid #ff565d!important;
+	background: #ff565d!important;
+	color: #fff !important;
+}
+.green{
+	color: #3ab47b;
+}
+.gray{
+	color: #999;
+}
+.gray:hover{
+	color: #999; 
+}
+.wd-content{
+	width: 870px;
+	height: auto;
+	overflow: hidden;
+	margin-top: 20px;
+}
+.wd-content .clickbox{
+	width: 866px;
+	height: 84px;
+	border:2px dashed #ccc;
+	text-align: center;
+	line-height: 88px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fd8a20;
+	cursor: pointer;
+}
+.question-list{
+	margin-top: 20px;
+}
+.question-list ul:first-child li {
+    font-size: 14px;
+}
+.question-list ul li {
+    width: 143.8px;
+    height: 33px;
+    float: left;
+    text-align: center;
+    line-height: 32px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    overflow: hidden;
+}
+.question-list ul:last-child {
+    border-bottom: 1px solid #ccc;
+}
+.question-list ul li:last-child {
+    border-right: 1px solid #ccc;
+}
+.question-list ul {
+    height: 34px;
+    width: 870px;
+}
+
+.answer-list{
+	margin-top: 20px;
+}
+.answer-list ul:first-child li {
+    font-size: 14px;
+}
+.answer-list ul li:nth-child(1),
+.answer-list ul li:nth-child(2),
+.answer-list ul li:nth-child(7){
+	width: 144px;
+}
+.answer-list ul li {
+    width: 107.5px;
+    height: 33px;
+    float: left;
+    text-align: center;
+    line-height: 32px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    overflow: hidden;
+}
+.answer-list ul:last-child {
+    border-bottom: 1px solid #ccc;
+}
+.answer-list ul li:last-child {
+    border-right: 1px solid #ccc;
+}
+.answer-list ul {
+    height: 34px;
+    width: 870px;
+}

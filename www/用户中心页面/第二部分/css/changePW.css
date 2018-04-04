@@ -1,0 +1,25 @@
+.chaneg-password{
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+
+}
+
+.tip{
+  background: #f16262;
+  border-radius: 50%;
+  color:white;
+}
+//密码错误展示
+.error-info{
+  width:240px;
+  text-align: center;
+  margin-top: 5px;
+  color:red;
+  opacity:0;
+}
+.error-input{
+  border:1px solid red !important;
+}
+

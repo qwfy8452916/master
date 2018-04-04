@@ -1,0 +1,254 @@
+*{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+    -ms-box-sizing: border-box; /* IE */
+    -o-box-sizing: border-box; /* opera */
+}
+html,body{
+	height: 100%;
+}
+.font-family-STHeiti{
+	font-family:"STHeiti Light [STXihei]";
+}
+.df-top-line{
+	width: 100%;
+	border-top: .02rem solid #b8b9ba;
+}
+.df-header{
+	height: .88rem;
+    line-height: .88rem;
+    background: #fff;
+    box-shadow:none;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+.df-title{
+	font-size: .21rem;
+	position: absolute;
+	left: 2rem;
+	height: .88rem;
+	line-height: .88rem;
+	
+}
+.df-header-left{
+    height: .88rem;
+    line-height: .88rem;
+    color: #666666;
+    font-size: .7rem;
+    position: absolute;
+    left: .18rem;
+    top: 0;
+}
+.df-header-middfe{
+	width: 1.5rem;
+	height: .88rem;
+    line-height: .88rem;
+    color: #333333;
+    font-size: .36rem;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -.75rem;
+    text-align: center;
+}
+.df-header-right{
+	
+	height: .88rem;
+	line-height: .88rem;
+	color: #666666;
+	font-size: .5rem;
+	position: absolute;
+	right:.18rem;
+	top:0;
+}
+article{
+	background-color: #efefef;
+	overflow: hidden;
+	position: relative;
+}
+.df-select-wrap{
+	width: 100%;
+	height: .8rem;
+	line-height: .2rem;
+	background-color: #fff;
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	padding-left: .3rem;
+	text-align: left;
+	position: absolute;
+	top:0;
+	z-index: 1;
+}
+.df-diary-wrap{
+	width: 100%;
+	height: 1.5rem;
+	background-color: white;
+	padding: 0 .26rem 0 .26rem;
+	position: relative;
+}
+.df-head-img-s{
+	width: .6rem;
+	height: .6rem;
+	border-radius: 50%;
+	position: absolute;
+	top:.15rem;
+	background-image: url(../img/hearImg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.df-diary-header{
+	width: 5.1rem;
+	height: .5rem;
+	line-height: .5rem;
+	position: absolute;
+	right: .26rem;
+	top:.15rem;
+	text-align: left;
+	font-size: .24rem;
+	color:#333333
+}
+.df-diary-header span:nth-child(2){
+	float:right;
+	color:#999999;
+	font-size: .2rem;
+}
+.df-head-title{
+	font-size: .3rem;
+	color: #333333;
+	position: absolute;
+	top:.9rem;
+	width: 3.4rem;
+	height: .4rem;
+	line-height: .4rem;
+	overflow: hidden;
+}
+.df-diary-status{
+	width: 1.05rem;
+	height: .35rem;
+	line-height: .35rem;
+	text-align: center;
+	background: #ff6161;
+	border-radius: 5px;
+	position: absolute;
+	top:.93rem;
+	right:1.7rem;
+	color:#fff;
+	font-size: .2rem;
+}
+.df-diary-article{
+	width: 100%;
+	padding: 0 .26rem 0 .26rem;
+	font-size: .21rem;
+	color: #666666;
+	line-height: .35rem;
+	background: #fff;
+	margin-bottom: .1rem;
+}
+.df-diary-article img{
+	width: 100%;
+	margin-top: .1rem;
+}
+.df-diary-article p{
+	text-indent:2em
+} 
+.df-related-diary-title{
+	width: 100%;
+	height: .6rem;
+	line-height: .6rem;
+	font-size: .266rem;
+	color:#333333;
+	background: #fff;
+}
+.df-related-diary-title span{
+	margin-left: .15rem;
+}
+.df-related-diary-adorn{
+	width: .1rem;
+	height: .6rem;
+	background: #ff5353;
+	float: left;
+}
+.df-related-diary-wrap{
+	width: 100%;
+	background:#fff;
+	padding: .2rem 0 .2rem .25rem;
+}
+.df-related-diary-list{
+	width: 100%;
+	font-size: .266rem;
+	color:#333333;
+	margin:  0 0 .1rem 0;
+}
+.df-related-diary-list img{
+	width: .3rem;
+}
+.df-related-diary-list a{
+	margin-left: .1rem;
+}
+footer{
+    font-size: .21rem;
+    text-align: center;
+    width: 100%;
+    background: #eee;
+    padding: .4rem 0;
+    line-height: 2em;
+    padding-bottom: .5rem;
+
+}
+.call-tel{
+	font-size: .21rem;
+}
+.call-tel i.fa{
+	width: .3rem !important;
+    height: .3rem !important;
+   
+}
+footer .links {
+    font-size: .266rem;
+}
+#gotop {
+    position: fixed;
+    background: rgba(255,255,255,.8);
+    color: #999;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    bottom: 70px;
+    right: 10px;
+    font-size: .25rem;
+    line-height: 18px;
+    padding-top: 3px;
+    box-sizing: border-box;
+}
+.full-nav{
+	font-size: .24rem;
+	display: none;
+}
+.fa-angle-up{
+	font-size: .3rem;
+}
+.zb-link-bottom .tit {
+    color: #f0d190;
+    margin-top: 8px;
+    font-size: .32rem;
+}
+.zb-link-bottom p {
+    font-size: .23rem;
+}
+.zb-link-bottom a {
+    display: block;
+    position: absolute;
+    height: 30px;
+    color: #fff;
+    border-radius: 3px;
+    padding: 0 .5em;
+    background: #ff5659;
+    right: .36rem;
+    line-height: 30px;
+    top: .25rem;
+    font-size: .266rem;
+}

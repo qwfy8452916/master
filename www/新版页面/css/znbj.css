@@ -1,0 +1,53 @@
+.znbj-bg{ padding-top:140px; background-repeat:no-repeat; background-position:top center}
+.znbj-box{ width:1208px; border:1px solid #ddd; margin:0 auto; background:#fff;}
+.znbj-box .znbj-box-tit{ text-align:center; font-size:24px;font-family: "Microsoft Yahei"; padding:40px 0; border-bottom:1px dashed #ddd; margin:0 40px; margin-bottom:30px}
+.znbj-box .znbj-edit{ width:363px; margin:0 auto; position:relative; padding-left:87px}
+.znbj-box .znbj-edit li{ line-height:34px; height:auto; min-height:54px}
+.znbj-box .znbj-edit li button{ background:#ff5659; width:252px;font-family: "Microsoft Yahei"; font-size:16px; color:#fff; border-radius:3px; height:36px; text-align:center; border:0; margin-top:20px; cursor:pointer; margin-bottom:40px}
+.znbj-box .znbj-edit span.edit-list{font-family: "Microsoft Yahei"; font-size:16px; width:87px; display:block; position:absolute; left:0;}
+.znbj-box .znbj-edit .znbj-edit-int1{ height:32px; border:1px solid #ddd; width:122px}
+.znbj-box .znbj-edit .znbj-edit-int2{ height:32px; border:1px solid #ddd; width:250px}
+
+.znbj-box .znbj-edit .znbj-edit-sel{ height:25px; width:80px}
+.znbj-box .znbj-edit span i{font-style:normal; color:#ff5659;}
+.znbj-box .znbj-edit p{ line-height:20px; color:#ff5659}
+.rdo,.fuxuan { margin-top:3px}
+.rdolist, .chklist { display: none; }
+.rdobox, .chkbox { text-align:center; display: inline-block; padding:5px 5px 5px 5px; width:64px; height: 22px; line-height: 20px; color: #666; cursor: pointer; margin-right:5px; margin-bottom:10px}
+.unchecked {  color: #666; border:1px solid #ddd; transition-property: background; transition-delay: 0s; transition-duration: .1s; transition-timing-function: linear;}
+
+.checked { background: #ff5659; color: #fff;border:1px solid #ff5659;  }
+
+.znbj-down-tit{ height:50px; line-height:50px; text-align:center; background:#E9E9E9;font-family: "Microsoft Yahei"; font-size:26px; }
+
+.znbj-down-list{ width:700px; margin:0 auto}
+.znbj-down-list li{ height:52px; border-bottom:1px dotted #ddd; line-height:52px; box-sizing:border-box; padding-left:200px;font-family: "Microsoft Yahei"; font-size:16px; }
+.org{ color:#FB7305; margin-right:20px}
+.znbj-down-money{ text-align:center;font-family: "Microsoft Yahei"; font-size:24px; padding:40px 0;}
+.znbj-return{ width:202px; height:36px; line-height:36px; text-align:center; border-radius:3px; background:#FB7305; display:block; color:#fff;font-family: "Microsoft Yahei"; font-size:18px; margin:0 auto; margin-bottom:40px}
+.znbj-tab-box{ width:1210px; margin:0 auto; position:relative}
+.znbj-tab-box .znbj-nav{ top:0;width:120px; height:40px; position:absolute}
+.znbj-tab-box .znbj-nav a{ background:#ff6634;border-radius:50px; width:15px; height:25px; line-height:25px; color:#fff; display:block; overflow:hidden; text-align:center; float:right; clear:both;padding:0 10px; margin-bottom:5px}
+.znbj-tab-box .znbj-nav a.active{width:auto; }
+.znbj-tab-box .fxd{ top:0; }
+.znbj-tab{margin-top:20px; width:1210px; border:1px solid #e1e1e1}
+.znbj-tab thead{ color:#FB7305; height:50px; line-height:50px;font-family: "Microsoft Yahei"; font-size:20px;}
+.znbj-tab thead td{ padding-left:20px}
+.znbj-tab tbody .tab-tit{font-family: "Microsoft Yahei"; font-size:16px; height:20px; line-height:20px;text-align:center; background:#e9e9e9}
+.znbj-tab tbody { text-align:center; vertical-align:middle}
+.znbj-tab tbody td{ padding:15px}
+.znbj-tab tbody td.tab1{ width:100px}
+.znbj-tab tbody td.tab2{ width:120px}
+.znbj-tab tbody td.tab3{ width:140px}
+.znbj-tab tfoot{ text-align:right; height:50px; line-height:50px;font-family: "Microsoft Yahei"; font-size:16px;}
+
+.znbj-order{ padding:0 30px}
+
+
+.znbj-order .znbj-order-list{ margin-top:20px}
+.znbj-order .znbj-order-list li{ position:relative; line-height:34px; height:54px; overflow:hidden}
+.znbj-order .znbj-order-list li input[type=text]{ height:32px; border:1px solid #ddd; float:left; width:198px }
+.znbj-order .znbj-order-list li span{ display: block; float:left; width:70px; }
+.znbj-order .znbj-order-list li em{ color:#ff5659; line-height:20px; display:block; margin-left:70px}
+.znbj-order .znbj-order-list li button{ margin-top:10px}
+.znbj-order img{ width:150px; height:auto;}

@@ -1,0 +1,334 @@
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+/*面包分类*/
+.bread{
+	font-size: 12px;
+	margin: 6px auto;
+}
+/*主体内容*/
+.dy-top{
+	width: 100%;
+	height: 234px;
+}
+.dy-classify{
+	width: 919px;
+	height: 232px;
+	border: 1px solid #e5e5e5;
+	margin-right: 20px;
+	overflow: hidden;
+}
+.dy-classify-lists{ 
+	width: 748px;
+	height: 60px;
+	margin: 0 5px;
+	border-bottom: 1px dashed #ccc;
+	padding: 8px 0;
+}
+.dy-classify-lists:last-child{
+	border-bottom:0;
+}
+.dy-classify-lists li{
+	width: 73px;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	float: left;
+}
+.dy-classify-lists li:first-child{
+	width: 90px;
+	height: 60px;
+	font-size: 16px;
+	font-family: 'Microsoft YaHei';
+	border-right: 1px solid #ccc;
+}
+.dy-write{
+	width: 267px;
+	height: 232px;
+	border: 1px solid #e5e5e5;
+}
+.dy-write .write-img{
+	width: 100%;
+	height: 193px;
+	display: block;
+}
+.dy-write .write-img img{
+	width: 100%;
+	height: 100%;
+}
+.dy-write .write-now {
+    width: 100%;
+    height: 38px;
+    display: block;
+    text-align: center;
+    line-height: 38px;
+    font-size: 18px;
+    color: #fff;
+    background: #f9b552;
+    border-top:1px solid #e5e5e5;
+}
+.dy-write .write-now i {
+    font-size: 30px;
+    margin-left: 70px;
+    margin-right: 5px;
+    float: left;
+    line-height: 42px;
+}
+.dy-main{
+	width: 100%;
+	height: auto;
+	margin-top: 20px;
+	overflow: hidden;
+}
+/*left-bar*/
+.dy-main .left-bar{
+	width: 240px;
+	height: auto;
+}
+.sort-box {
+    width: 100%;
+    height: auto;
+}
+.sort-box .sort-box-tit {
+    width: 240px;
+    height: 36px;
+    background-color: #ff5353;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    line-height: 36px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+    color: #fff;
+}
+.sort-box .sort-box-list {
+    width: 238px;
+    height: auto;
+    border: 1px solid #eee;
+}
+.sort-box .sort-box-tit p {
+    margin-left: 20px;
+}
+.sort-box .sort-box-list .list-mod {
+    width: 100%;
+    height: 32px;
+    background: #eee;
+    line-height: 32px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+}
+.sort-box .sort-box-list ul {
+    margin-left: 20px;
+}
+.sort-box .sort-box-list .list-mod p {
+    margin-left: 20px;
+}
+.sort-box .sort-box-list ul li {
+    margin: 8px auto;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+.sort-box .sort-box-list ul li a i {
+    margin-right: 5px;
+}
+/*right-bar*/
+.dy-main .right-bar{
+	width: 950px;
+	height: auto;
+}
+.right-bar .dy-top{
+	width: 100%;
+	height: 50px;
+	overflow: hidden;
+}
+.dy-top .dy-top-tab{
+	width: 260px;
+	height: 48px;
+}
+.dy-top .dy-top-tab div{
+	width: 129px;
+	height: 48px;
+	text-align: center;
+	line-height: 48px;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	border-right: 0;
+	cursor: pointer;
+	font-family: 'sunsim';
+}
+.dy-top .dy-top-tab div.current{
+	color: #ff565d;
+	border-top: 2px solid #ff565d;
+	line-height: 46px;
+}
+.dy-top-search{
+	width: 688px;
+	height: 48px;
+	border: 1px solid #e5e5e5;
+}
+.top-search-box{
+	width: 258px;
+	height: 32px;
+	border: 1px solid #e5e5e5;
+	border-radius: 9px;
+	overflow: hidden;
+	margin-right: 25px;
+	margin-top: 7px;
+	position: relative;
+}
+.top-search-box input{
+	width: 184px;
+	height: 32px;
+	padding-left: 10px
+}
+.top-search-box button{
+	width: 60px;
+	height: 32px;
+	text-align: center;
+	line-height: 32px;
+	cursor: pointer;
+	outline: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+.top-search-box button i{
+	font-size: 14px;
+	margin-right: 3px;
+}
+
+.dy-main{
+	font-family: 'Microsoft YaHei';
+}
+.user-list{
+	width: 100%;
+	height: 180px;
+	padding: 25px 0;
+	border-top:1px solid #e5e5e5;
+}
+.user-list:last-child{
+	border-bottom:1px solid #e5e5e5;
+	margin-bottom: 30px;
+}
+.user-list .user-info {
+    width: 212px;
+    height: 180px;
+    border-right: 1px solid #e5e5e5;
+}
+.user-diary {
+    margin-top: 5px;
+    padding: 0 30px;
+}
+.user-info .user-info-img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 7px;
+}
+.user-info .user-info-name {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+.user-info .user-info-theme {
+    font-size: 16px;
+    text-align: center;
+}
+.user-info .user-info-area {
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+}
+.user-diary .user-diary-img {
+    width: 222px;
+    height: 172px;
+}
+.user-diary-img p {
+    font-size: 14px;
+    line-height: 14px;
+}
+.user-diary-img a {
+    width: 224px;
+    height: 144px;
+    margin-top: 10px;
+    display: block;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.user-diary-img a img {
+    width: 224px;
+    height: 144px;
+}
+.user-diary .user-diary-con {
+    width: 434px;
+    height: 174px;
+    margin-left: 20px;
+    position: relative;
+}
+.user-diary-con .diary-con-topic {
+    width: 100%;
+    height: 20px;
+}
+.user-diary-con .diary-con-topic a {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: bold;
+    color: #ff565d;
+    display: block;
+    float: left;
+}
+.user-diary-con .diary-con-topic span {
+    width: 64px;
+    height: 18px;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    font-family: 'Microsoft sunsim';
+    color: #fff;
+    background: #ff565d;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.user-diary-con .diary-con-main {
+    margin-top: 15px;
+    text-indent: 2em;
+    line-height: 20px;
+}
+.diary-con-main a {
+    color: #ff5353;
+}
+.user-diary-con .read-all{
+	margin-top: 20px;
+}
+.user-diary-con .diary-con-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.user-diary-con .diary-con-info i {
+    font-size: 14px;
+    margin-left: 15px;
+    margin-right: 5px;
+    color: #999;
+    cursor: pointer;
+}
+.user-diary-con .diary-con-info span {
+    color: #999;
+}
+.page a{
+	border: 1px solid #d8d8d8;
+}
+.page a:hover{
+	border-left: 1px solid #ff565d;
+}

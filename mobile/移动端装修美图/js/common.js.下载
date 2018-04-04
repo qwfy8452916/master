@@ -1,0 +1,93 @@
+function fulnav() {
+    var fullNav = document.getElementById("full-nav"),
+    navBtn = document.getElementById("m-nav"),
+    fullNavshut = document.getElementById("full-nav-shut");
+    navBtn.addEventListener("touchend",
+    function() {
+        addClass(fullNav, "shut-buff");
+        fullNavshut.addEventListener("touchend",
+        function() {
+            removeClass(fullNav, "shut-buff")
+        });
+    });
+}
+function gotop() {
+    var obj = document.getElementById('gotop') || false;
+    if (obj != false) {
+        obj.addEventListener("touchend",
+        function() {
+            var timer = setInterval(function() {
+                var a = document.body.scrollTop;
+                a = a - 50;
+                document.body.scrollTop = a;
+                if (a <= 0) {
+                    clearInterval(timer);
+                }
+            },
+            1);
+        });
+    }
+}
+function hasClass(elements, cName) {
+    return !! elements.className.match(new RegExp("(\\s|^)" + cName + "(\\s|$)"));
+};
+function addClass(ele, className) {
+    if (!ele || !className || (ele.className && ele.className.search(new RegExp("\\b" + className + "\\b")) != -1)) return;
+    ele.className += (ele.className ? " ": "") + className;
+};
+function removeClass(elements, cName) {
+    if (hasClass(elements, cName)) {
+        elements.className = elements.className.replace(new RegExp("(\\s|^)" + cName + "(\\s|$)"), " ");
+    };
+};
+function tab(id) {
+    var mask = document.getElementById('mask');
+    var eleId = document.getElementById(id) || false;
+    if (eleId != false) {
+        var span = eleId.getElementsByTagName("span");
+        var ul = eleId.getElementsByTagName("ul");
+        var li = eleId.getElementsByTagName('li');
+        for (var i = 0; i < span.length; i++) {
+            span[i].index = i;
+            span[i].onclick = function() {
+                if (this.className == 'active') {
+                    this.className = "";
+                    ul[this.index].className = "";
+                } else {
+                    for (var j = 0; j < ul.length; j++) {
+                        span[j].className = "";
+                        ul[j].className = "";
+                    }
+                    this.className = "active";
+                    ul[this.index].className = "show";
+                }
+            }
+            mask.onclick = function() {
+                for (var i = 0; i < span.length; i++) {
+                    span[i].className = ''
+                }
+            }
+        }
+    }
+}
+if (document.getElementById('full-nav')) {
+    fulnav();
+}
+if (document.getElementById('gotop')) {
+    gotop();
+}
+function udpage(obj) {
+    var oChange = document.querySelectorAll(obj);
+    for (var i = 0; i < oChange.length; i++) {
+        oChange[i].onclick = function() {
+            for (var i = 0; i < oChange.length; i++) {
+                oChange[i].className = "page-change";
+            }
+            if (this.className == "page-change") {
+                this.className = "page-change ph";
+            } else {
+                this.className = "page-change";
+            }
+        }
+    }
+}

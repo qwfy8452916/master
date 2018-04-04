@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手风琴动画</title>
+	<style>
+		*{margin:0;padding: 0;}
+        body{background: #f7c6f3;}
+        .kz{overflow: hidden;}
+        .kz ul{width: 1210px;height: 400px;background: #f7f6c6;margin:0 auto;margin-top: 200px;position: relative;}
+        .kz ul li{list-style:none;width: 284px;height: 100%;background: #c9b5f1;position: absolute;float: left;
+        	transition: all 0.6s;}
+        .kz ul li.aa01{left: 0;}
+        .kz ul li.aa02{right: 482px;}
+        .kz ul li.aa03{right: 49px;}
+        .kz ul li.aa01 .bb01{width: 280px;height: 100%;float: left;overflow: hidden;background: #ccf1b5;}
+        .kz ul li.aa01 .bb02{width: 860px;height: 100%;float: left;overflow: hidden;background: #e8ab53;position: absolute;right: 0;}
+        .kz ul li.aa02 .bb01{width: 280px;height: 100%;float: left;overflow: hidden;background: #ccf1b5;}
+        .kz ul li.aa02 .bb02{width: 860px;height: 100%;float: left;overflow: hidden;background: #e8ab53;position: absolute;right: 0;}
+        .kz ul li.aa03 .bb01{width: 280px;height: 100%;float: left;overflow: hidden;background: #ccf1b5;}
+        .kz ul li.aa03 .bb02{width: 860px;height: 100%;float: left;overflow: hidden;background: #e8ab53;position: absolute;right: 0;}
+        
+        .art_active{position: absolute; z-index:999;left: 0px; margin-right:0px !important;width:1153px !important; border:1px solid #FB8920;}
+        .top_out{opacity: 0; }
+
+
+
+	</style>
+</head>
+<body>
+	<div class="kz">
+		<ul>
+			<li class="aa01">
+				<div class="bb01"></div>
+				<div class="bb02"></div>
+			</li>
+			<li class="aa02">
+				<div class="bb01"></div>
+				<div class="bb02"></div>
+			</li>
+			<li class="aa03">
+				<div class="bb01"></div>
+				<div class="bb02"></div>
+			</li>
+		</ul>
+	</div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+      $(" .kz ul li").mouseenter(function(event) {
+                $(this).siblings().addClass("top_out");
+                var that=$(this);
+                that.addClass("art_active");
+                flag=$(this).index();
+            });
+
+          $(".kz ul").on("mouseleave",function(){
+                var that=$(this).children('li')[flag];
+                $(that).siblings().removeClass("top_out");
+                $(that).removeClass("art_active");
+           });
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+header{z-index: 3;}
+footer {
+	border-top:1px solid #ccc;
+	padding-bottom:10px;
+	background:#fff;
+}
+.m-bj-edit{
+	margin-top: .8em;
+}
+.m-bj-items {
+	border:1px solid #e2e2e2;
+	background:#efefef;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-ms-border-radius:4px;
+	padding:10px 10px;
+	margin:0 10px 60px 10px;
+	margin-top: 30%;
+	position: relative;
+}
+.dw{color: #ff5659;}
+.model-box{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+	z-index: 10;
+}
+.close-btn{
+	width: 1.8em;
+	height: 1.8em;
+	background: url(../img/close.png) no-repeat 0 0;
+	background-size: 100%;
+	position: absolute;
+	right: -.3em;top: -2em;
+}
+.items-all-money {
+	text-align:center;
+	padding-bottom:10px;
+}
+.items-all-money p{
+	font-size: 1.1em;
+}
+.items-all-money p>i{
+	color: #ff5659;
+}
+.items-all-details .tel-box{
+	width: 90%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.items-all-details .tel-input{
+	width: 90%;
+	height: 2.5em;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+.items-all-details .tel-box input{
+	width: 100%;
+    height: 2em;
+    padding: 0.5em;
+    margin-top: .65em;
+    border: 0;
+    outline: none;
+    line-height: 2em;
+    font-size: .8em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.tel-box a.items-check-more{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	display: block;
+	margin-top: 1em;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	background: #ff5659;
+	color: #fff;
+}
+.items-all-details p.tel-danger{
+	font-size: .9em;
+	color: #ff5659;
+	margin-left: 6%;
+	margin-top: .5em;
+}
+.items-all-details p.tel-count{
+	font-size: .9em;
+	text-align: center;
+	margin-top: 0.6em;
+}
+.items-all-details p.tel-count i{
+	color: #ff5659;
+}
+.items-check-more {
+	margin-top:10px;
+	color:#929292;
+	display:block;
+}
+.kefu-back-info {
+	font-size:13px;
+	margin:10px 10px;
+}
+.kefu-back-info p {
+	margin-top:5px;
+}
+.model {
+	width: 96%;
+	border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	-ms-border-radius:6px;
+	background:#fff;
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:9999;
+	margin:0 2%;
+	margin-top:45%;
+	box-sizing: border-box;
+}
+.model-btn {
+	width: 80%;
+	margin: 0 auto;
+	color:#fff;
+	margin:0 auto;
+	margin-top: 1.5em; 
+	padding-bottom: 1.5em;
+	overflow: hidden;
+}
+.model-btn div{
+	width: 40%;
+	height: 2.2em;
+	float: left;
+	line-height: 2.2em;
+	text-align: center;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+}
+.leave-btn{margin-right: 18%;border: 1px solid #ff5659;color: #ff5659;}
+.get-btn{border: 1px solid #ff5659;background: #ff5659;}
+.model-info {
+	font-size:1.1em;
+	line-height:1.5em;
+	text-align: center;
+	margin-top: 1em; 
+	padding-bottom: 1em;
+	border-bottom: 1px solid #ccc;
+}
+.hide {
+	display:none;
+}
+.save-submit{
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+}
+.kefu-box{
+	border-top: 0.5em solid #f5f5f5;
+	border-bottom: 0.5em solid #f5f5f5;
+	padding: 1em 0;
+	overflow: hidden;
+}
+.kefu-tit{margin: 0 auto;
+	font-size: 1.1em;
+	text-align: center;
+}
+.kefu-info{
+	width: 96%;
+	margin-top: 1em;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 1em;
+}
+.fa-angle-right{
+	font-size: 2em;
+	font-weight: normal;
+}
+.kefu-img, .kefu-btn{
+	width:32%;
+	float: left;
+}
+ .kefu-img{
+	margin-left: 8%;
+	position: relative;
+} 
+ .kefu-img:before{
+ 	content:'金牌客服:小齐';
+ 	width: 100%;
+ 	display: block;
+ 	position: absolute;
+ 	left: 0;
+ 	bottom: 3%;
+ 	color: #fff;
+ 	font-size: .9em;
+ 	line-height: 0.9em;
+ 	text-align: center;
+ }
+.kefu-arrow{width: 20%;line-height: 6em;text-align: center;float: left;}
+.kefu-arrow i:first-child{color: #eee;}
+.kefu-arrow i:nth-child(2){color: #ccc;}
+.kefu-arrow i:last-child{color: #999;}
+.kefu-btn a{
+	width: 90%;
+	height: 2.2em;
+	display: block;
+	border: 1px solid #f79c33;
+	color: #f79c33;
+	margin-top: 1.6em;
+	margin-left: 5%;
+	text-align: center;
+	line-height: 2em;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+}
+.kefu-img img{width: 100%;}
+.kefu-shows{width: 94%;margin: 0 auto;padding: 1em 0; }
+.kefu-shows img{width: 100%;}
+/*滚动信息*/
+.g-msg {
+	width: 100%;
+    position: fixed;
+    top: 6em;
+    left: 0;
+    height: 3em;
+    z-index: 2;
+    font-size: .8em;
+}
+.g-msg .msg {
+	width: 85%;
+    position: absolute;
+    top: 3em;
+    background-color: rgba(0,0,0,.5);
+    height: 3em;
+    line-height: 3em;
+    margin-left: 10px;
+    border-radius: 1.5em;
+    -webkit-border-radius: 1.5em;
+    -moz-border-radius: 1.5em;
+    -ms-border-radius: 1.5em;
+    color: #fff;
+    display: none;
+}
+.msg img{
+	width: 2.6em;
+	height: 2.6em;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	overflow: hidden;
+	margin:0 1.2%;
+	margin-top: .9%;
+	float: left;
+}
+/*报价结果页*/
+.baojia-list ul li{height: 2.9em;border-bottom: 1px solid #ccc;line-height: 2.9em;font-size: .95em;overflow: hidden;}
+.baojia-list ul li:first-child{font-size: 1.3em;color: #f3b023;}
+.baojia-list ul li:first-child span{color: #f3b023;}
+.baojia-list ul li:last-child{border: 0;}
+.baojia-list ul li div:first-child{float: left;margin-left: 5%;}
+.baojia-list ul li div:last-child{float: right;margin-right: 5%;color: #ff5659;}
+.baojia-list ul li div:last-child i{margin-left: 0.5em;color: #000;}
+.recount a{width: 100%;height: 2.8em;display:block;line-height: 2.8em;text-align: center;background: #ff5659;color: #fff;font-size: 1.1em;}
+
+
+/*城市*/
+.chengshi-box{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	background: rgba(0,0,0,.6);
+}
+#box{
+	width: 80%;
+	height: 100%;
+	background: #fff;
+	float: right;
+	position: relative;
+}

@@ -1,0 +1,46 @@
+.new-box-l { width: 932px; float:left }
+.new-bread { line-height: 35px; }
+/**/
+.comp-chouse { border: 1px solid #d8d8d8; position: relative; margin-bottom: 30px; }
+.comp-chouse dl:last-of-type { border-bottom: 0 }
+.comp-chouse-list { overflow: hidden }
+.comp-chouse-list dl { overflow: hidden; line-height: 40px; padding: 0 20px; border-bottom: 1px solid #d8d8d8; position: relative }
+.comp-chouse-list dl dd, .comp-chouse-list dl dt { float: left; }
+.comp-chouse-list dl dt { font-weight: bold; }
+.comp-chouse-list dl dd { font-family: "Microsoft Yahei"; font-size: 14px; padding: 0 10px }
+
+.designer-info{ overflow:hidden}
+.designer-list-ul{ border:1px solid #d8d8d8; padding:32px;font-family: "Microsoft Yahei";overflow:hidden; margin-bottom:20px}
+.designer-list-ul .designer-head{ border-radius:50%; width:172px; height:172px; overflow:hidden; float:left}
+.designer-list-ul .designer-head img{ width:172px; height:172px;}
+.designer-info-main{ float:left; margin-left:20px}
+.designer-list-ul .de-name{ ; font-size: 18px; line-height:25px;}
+.designer-list-ul .de-name span{font-size: 12px; background:#FB960A; color:#fff; display:inline-block; padding:0 10px; vertical-align:3px; margin-left:20px}
+.designer-list-ul .de-year{ font-size:14px; margin-top:20px; margin-bottom:50px}
+.designer-list-ul .de-year span{ font-weight:bold}
+.designer-list-ul .de-year i{ margin:0 10px; font-style:normal; color:#aaa}
+.designer-list-ul .de-more{ line-height:25px; color:#666}
+.designer-list-ul .de-more span{ font-weight:bold; color:#333}
+.designer-list-ul .de-more a{ margin-left:10px; color:#ff5659}
+.designer-list-ul .designer-info .de-button{ height:36px; display:block; float:right; background:#ff5659; color:#fff; line-height:36px; padding:0 30px;font-family: "Microsoft Yahei"; font-size:14px; margin-top:50px}
+.designer-list-ul p{ margin-top:30px; line-height:25px}
+.designer-list-ul p a{ float:right}
+.designer-list-ul .de-img { overflow:hidden; width:932px}
+.designer-list-ul .de-img li{ width:280px; height:188px; float:left; margin-right:12px}
+.designer-list-ul .de-img li img{ width:280px; height:188px}
+/**/
+.page-link { border-left:1px solid #d8d8d8; overflow:hidden; margin:50px auto; width:435px}
+.page-link li{ float:left; border:1px solid #d8d8d8; border-left:0; line-height:38px; text-align:center; min-width:38px;}
+.page-link li:hover{ background:#ff5659;}
+.page-link li:hover a{ background:#ff5659; color:#fff; display:block}
+.page-link li.active{ background:#ff5659; color:#fff}
+.page-link li.page-ud{ padding:0 20px} 
+
+.new-box-r{float: right;width: 260px;}
+.new-favo{ border:1px solid #d8d8d8; padding:10px; padding-bottom:0}
+.new-favo h4{ border-bottom:1px solid #d8d8d8; font-weight:100; font-family: "Microsoft Yahei"; font-size: 16px; text-align:center; padding-bottom:10px}
+.new-favo ul li{ border-bottom:1px dashed #d8d8d8; padding:15px 10px;}
+.new-favo ul li span{ width:20px; height:20px; display:inline-block; background:#ff5659; line-height:20px; text-align:center; margin-right:10px; font-weight:bold; color:#fff}
+.new-favo ul li a{ float:right ;border:1px solid #ff5659; color:#ff5659; padding:0 5px}
+.new-favo ul li p{ margin-left:30px; color:#999}
+.new-favo ul li:last-of-type { border-bottom: 0 }

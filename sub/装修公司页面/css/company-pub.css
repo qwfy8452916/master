@@ -1,0 +1,159 @@
+/*
+理念：
+1. reset 的目的不是清除浏览器的默认样式，这仅是部分工作。清除和重置是紧密不可分的。
+2. reset 的目的不是让默认样式在所有浏览器下一致，而是减少默认样式有可能带来的问题。
+3. reset 期望提供一套普适通用的基础样式。但没有银弹，推荐根据具体需求，裁剪和修改后再使用。
+特色：1. 适应中文；2. 基于最新主流浏览器。
+ */
+
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+  margin: 0;
+  padding: 0;
+}
+
+/** 设置默认字体 **/
+body,
+button, input, select, textarea /* for ie */ {
+  font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+
+/** 重置列表元素 **/
+ul, ol { list-style: none; }
+
+/** 重置文本格式元素 **/
+a { text-decoration: none; }
+
+
+
+/** 重置表单元素 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
+/* 注：optgroup 无法扶正 */
+/*这个公司没有年终奖*/
+/** 重置表格元素 **/
+table { border-collapse: collapse; border-spacing: 0; }
+
+/*一些全局默认样式*/
+
+::-moz-selection{ background:#b7b59b; color:#fff; text-shadow: none; }
+::selection { background:#b7b59b; color:#fff; text-shadow: none; }
+body{ font-family: Tahoma, Arial, sans-serif; color:#3c3c3c; background:#fff}
+a{ color:#333;}
+a:hover{ color:#dc4146;text-decoration: none;}
+
+
+/*IE 下 html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}
+
+/*公共*/
+.mr-10{ margin-right:10px !important}
+.mt-50{ margin-top:50px !important}
+.c-wrap{ width:980px; margin:0 auto}
+.ofw{ overflow:hidden}
+/*头部*/
+.c-top{ height:40px; border-bottom:1px solid #999; line-height:40px;}
+.c-logo{ background:url(../images/logo.png) no-repeat center center; height:40px; width:89px; display:block; float:left}
+.c-top-city{float:left; margin-left:20px; color:#666}
+.c-top-city a{ color:#df4249}
+.c-top-nav{ margin-left:50px; float:left}
+.c-top-nav li{ float:left; margin-right:25px;}
+
+.c-top .c-login{ float:right; margin-top:12px; line-height:12px}
+.c-top .c-login li{ float:left; padding:0 15px; border-right:1px solid #ccc}
+.c-top .c-login li:last-of-type{ border:0}
+.c-top .c-login li a{ color:#666}
+.c-top .c-login li a:hover{ color:#dd4248}
+.c-head{ background:url(../images/bg.jpg) 0 0 fixed; height:199px; min-width:980px;}
+
+.c-head .c-mark{ width:167px; height:111px; background:url(../images/frame.png); box-sizing:border-box; padding:18px 18px 20px 22px; margin:50px 0 0 20px; float:left}
+.c-head .c-mark img{ width:100%; height:auto; border:1px solid #aaa}
+.c-head .c-info-box{ width:501px; float:left; margin-left:46px;margin-top:10px;font-family: "Microsoft Yahei";}
+.c-head .c-info-box .com-tit{ line-height:40px; font-size:20px}
+.c-head .c-info-box .com-tit i{ background:url(../images/icon1.png) no-repeat; width:20px; height:18px; display:inline-block; margin-left:10px; vertical-align:-2px}
+.c-head .c-info-box .com-tit2{ line-height:30px; font-size:16px; color:#666}
+.c-head .c-info-box .com-info{ border-top:1px dashed #999; margin-top:10px}
+.c-head .c-info-box .com-star { margin-top:15px; overflow:hidden}
+.c-head .c-info-box .com-star li{ font-size:14px; width:167px; float:left}
+.c-head .c-info-box .com-star li span{ margin-right:10px; display:inline-block}
+.c-head .c-info-box .com-star li i{ background:url(../images/star-on.png) center; width: 12px; height:16px;display:inline-block; vertical-align:-2px}
+.c-head .c-info-box .com-btn{ width:130px; height:34px; border:1px solid #f15256; background:#ff5659; color:#fff;  font-size:14px; text-align:center;line-height:34px; display:block; margin-top:15px}
+
+.c-nav-box{
+	background:#fff;
+   height:40px;
+   box-shadow:0 3px 5px rgba(0,0,0,.15);
+   min-width:980px;
+   }
+  
+.c-nav-box .c-nav {height:40px; margin:0 auto; width:747px;position:relative; padding-left:233px}
+.c-nav-box .c-nav li{ height:40px; float:left; position:relative}
+.c-nav-box .c-nav li:hover{ background:#ff5659;}
+.c-nav-box .c-nav li a{ line-height:40px; width:140px;font-family: "Microsoft Yahei"; font-size:14px; display:block; text-align:center;}
+.c-nav-box .c-nav li.active{ background:#ff5659; }
+.c-nav-box .c-nav li.active a,.c-nav-box .c-nav li:hover a{color:#fff}
+.c-nav-box .c-nav li.active:before{display:none}
+.c-nav-box .c-nav li.c-top-step{ background:url(../images/515.jpg); position:absolute; bottom:0; left:0; width:198px; height:48px}
+.c-nav-box .c-nav li.c-top-step a{ width:100%}
+.c-nav-box .c-nav li.c-top-step:after{
+	content: "";
+	position:absolute;
+	top:8px;
+	right:-8px;
+	border-top: 0;
+	border-bottom: 39px dashed transparent;
+	border-left: 8px solid #ccc;
+	border-right: 0;}
+.c-nav-box .c-nav li.c-top-step:before{
+	content: "";
+	position:absolute;
+	top:0;
+	right:-8px;
+	border-top: 4px dashed transparent;
+	border-bottom: 4px solid #d95a15;
+	border-left: 4px solid #d95a15;
+	border-right: 4px dashed transparent;}
+
+/*面包屑导航*/
+.c-bread{ line-height:40px;}
+
+/*分页*/
+.page-link { border-left:1px solid #d8d8d8; overflow:hidden; margin:50px auto; width:435px}
+.page-link li{ float:left; border:1px solid #d8d8d8; border-left:0; line-height:38px; text-align:center; min-width:38px;}
+.page-link li:hover{ background:#ff5659;}
+.page-link li:hover a{ background:#ff5659; color:#fff; display:block}
+.page-link li.active{ background:#ff5659; color:#fff}
+.page-link li.page-ud a{ padding:0 20px} 
+.page-link li:not(a):hover{ background:none}
+
+/*左侧*/
+.c-left-nav{ border:1px solid #ddd; border-top:5px solid #ff5659; padding:0 20px 20px 20px; margin-bottom:20px}
+.c-left-nav li{ border-bottom:1px dashed #ddd;font-family: "Microsoft Yahei";  line-height:30px; white-space:nowrap; text-overflow:ellipsis}
+.c-left-nav li a{ display:block}
+.c-left-nav li b{font-size:14px;line-height:40px;}
+.c-left-nav li a.active{ color:#ff5659;}
+.c-left-nav li:last-of-type{ border-bottom:0}
+
+/*小不点招标窗*/
+
+.c-zb{ background:#3b4d63; padding:20px}
+.c-zb .c-zb-tit{font-size:14px;font-family: "Microsoft Yahei"; color:#fff; text-align:center}
+.c-zb input{ line-height:30px; height:30px; padding:0 5px; width:100%; box-sizing:border-box; border:0; margin-top:10px;}
+.c-zb button{ margin-top:15px; background:#ff5659; color:#fff; border:0; width:100%; height:30px;font-family: "Microsoft Yahei"; cursor:pointer}
+
+/*横幅招标窗*/
+.c-long-zb{color:#fff; background:#3b4d63 url(../images/zbbg1.png) no-repeat 8px bottom ; padding:33px 33px 0 33px; line-height:34px; margin-bottom:20px}
+.c-long-zb p.form{ text-align:right;}
+.c-long-zb p.form *{ margin-left:22px}
+.c-long-zb p.form span{font-family: "Microsoft Yahei"; font-size:18px}
+.c-long-zb p.form input{ height:34px; border:0; width:146px; padding:0 10px}
+.c-long-zb p.form button{height:34px; border:0; width:156px; color:#fff; background:#ff5659; font-family: "Microsoft Yahei"; cursor:pointer; font-size:14px}
+.c-long-zb p.bottom-tip{ text-align:right; }

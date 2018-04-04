@@ -1,0 +1,10 @@
+html,body{font-size: 14px;color: #333;}
+ul{padding: 0;margin: 0;}
+.daohang ul li{list-style: none;display:flex;text-align: center;border-right: 1px solid #e4e4e4;
+float: left;}
+.daohang .gailan01{font-size: 18px;padding:15px 25px;}
+.daohang .dhdianj{cursor: pointer;}
+.daohang .dhdianj a{color: #333;padding:15px 45px;}
+.active{background: #f2f2f2;}
+table,table tr th, table tr td { border:1px solid #000 !important;background: #fff;}
+table {text-align: center; border-collapse: collapse;}

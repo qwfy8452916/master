@@ -1,0 +1,62 @@
+
+.plan_box{
+    background-color: #fff;
+    padding-top: 0.1%;
+    padding-bottom: 0.1%;
+}
+.plan_img{
+    width: 95%;
+    position: relative;
+    margin: 2.5%;
+}
+.plan_img img{
+    width: 100%;
+}
+
+.dase{
+    position: absolute;
+    width: 100%;
+    top: 105.5%;
+    border-bottom: 1px solid #E2E2E2;
+}
+.mask_box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0,0,0,0.4);
+    left: 0;
+}
+.mask_box a{
+    position: absolute;
+    left: 35%;
+    top: 43%;
+    display: block;
+    text-align: center;
+    color: #fff;
+    width: 28%;
+    height: 22px;
+    word-spacing: 8px;
+    letter-spacing: 3px;
+    border: 1px solid #fff;
+    line-height: 22px;
+}
+.mask_box .head{
+    width: 12%;
+    bottom: 5%;
+    left: 3%;
+    position: absolute;
+}
+.mask_box .head img{
+    width: 100%;
+}
+.mask_box .pre{
+    position: absolute;
+    left: 17%;
+    color: #fff;
+    bottom: 4%;
+    font-size: 0.9em;
+}
+.mask_box .pre em{
+    font-size: 0.8em;
+}

@@ -1,0 +1,143 @@
+.c-neck{ border:1px solid #e5e5e5; height:310px; margin:30px auto 0 auto; padding:20px; width:980px; box-sizing:border-box}
+.c-vedio{ width:335px; float:left; height:270px; background:#eee}
+.c-neck-info{ width:350px;height:270px; float:left; border-right:1px dashed #ccc; padding:0 20px; margin-left:20px}
+.c-neck-info .c-tit{ font-weight:600; font-size:14px}
+.c-neck-info .c-content{ font-family: "Microsoft Yahei";text-indent:24px; line-height:25px; margin-top:10px; overflow:hidden; max-height:200px}
+.c-neck-info .c-content a{ white-space:nowrap}
+.c-neck-info dl{ clear:both; line-height:25px; margin-top:10px;overflow:hidden;font-family: "Microsoft Yahei";}
+.c-neck-info dt{font-size:14px; float:left; width:70px}
+.c-neck-info dd{ color:#666; float:right;width:280px}
+.c-neck-info .tab-nav{ height:30px;  font-weight:bold; font-size:14px}
+.c-neck-info .tab-nav a{ padding:0 10px;line-height:28px; display:block; float:left}
+.c-neck-info .tab-nav a.current{ border-bottom:2px solid #ff5659; color:#ff5659}
+.c-neck-info .tab-con-item{ display:none}
+.c-tab{ float:right; width:170px}
+.c-tab .tab-nav{line-height:25px; height:25px; margin-left:5px}
+
+.c-tab .tab-nav .current{ display:block; float:left; padding:0 10px;background:#ff5659; color:#fff; font-weight:700; }
+.c-tab .tab-nav a#more-shop{ margin-left:20px; color:#ff5659}
+.tab-con-item{ display:none}
+.c-tab-send{ overflow:hidden}
+.c-tab-send li{ overflow:hidden; line-height:20px; margin-top:15px; padding-left:25px; position:relative}
+.c-tab-send li i{ position:absolute; width:20px; height:20px; display:block; left:0}
+.c-tab-send .tel i{ background:url(../images/c-sp.png) -50px -40px no-repeat; }
+.c-tab-send .mob i{ background:url(../images/c-sp.png) -23px -39px no-repeat; }
+.c-tab-send .att i{ background:url(../images/c-sp.png) 2px -39px no-repeat;}
+.c-tab-qq{ margin-top:20px; margin-left:25px}
+.c-tab-qq a{ background:url(../images/c-sp.png) 0 0; width:120px; height:28px; display:block; box-sizing:border-box; line-height:28px;margin-bottom:10px; padding-left:35px; text-align:center;font-family: "Microsoft Yahei"; color:#ff5659;float:left}
+.c-tab-qq a:first-of-type{ margin-right:50px}
+
+.c-hd{ margin-top:40px; line-height:40px}
+.c-hd .hd-tozb{ background:#ff5659; color:#fff; padding:0 5px; display:inline-block; margin-left:10px; line-height:20px; margin-bottom:20px}
+.c-hd .hd-more{ float:right}
+.c-hd span{font-family: "Microsoft Yahei"; font-size:20px}
+
+
+.scroll-list{ width:710px; float:left; position:relative}
+.zb-scroll-box{ border:1px solid #ddd; overflow:hidden; height:250px;}
+.tlist1{ width:20%}
+.maquee{ height:200px; overflow:hidden;}
+.maquee li{ line-height:40px; height:40px; text-align:center; }
+.maquee li:hover{ background:#f1f1f1}
+.maquee li span{ display:block; float:left}
+.newser { background:#fff; font-family: "Microsoft Yahei"; font-size:14px;display:block; height:50px; text-align:center; line-height:50px; border-bottom:1px solid #ddd;}
+.newser li{ float:left}
+
+
+.c-zb-box{float:right; width:250px;}
+.c-zb-box .c-zb {height:212px;}
+.c-zb-box .c-zb .c-zb-tit{ font-size:18px}
+.c-zb-box .c-zb p{font-family: "Microsoft Yahei"; text-align:center; color:#fff; font-size:14px; margin-top:15px}
+.c-anli{ width:1002px}
+.c-anli li{ position:relative; width:316px; height:242px; margin-right:18px; margin-top:18px; overflow:hidden;float:left}
+.c-anli li>a img{ width:100%; height:100%}
+.c-anli li .c-anli-list{ position:absolute; bottom:-60px; background:rgba(0,0,0,.5); color:#fff; left:0; right:0; padding:0 20px; padding-bottom:10px;transition:all 0.2s;
+-moz-transition:all 0.2s; /* Firefox 4 */
+-webkit-transition:all 0.2s; /* Safari and Chrome */
+}
+.c-anli li .c-anli-list img{ float:left; width: 50px; height:50px; border-radius:50px; overflow:hidden; margin-right:20px}
+.c-anli li .c-anli-list p{ margin-top:22px}
+.c-anli li:hover .c-anli-list{ bottom:0;transition:all 0.2s;
+-moz-transition:all 0.2s; /* Firefox 4 */
+-webkit-transition:all 0.2s; /* Safari and Chrome */
+}
+.c-anli li .c-anli-list h3 a{font-family: "Microsoft Yahei"; font-size:14px; line-height:45px; height:45px; font-weight:100; color:#fff}
+.c-des-list{ border:1px solid #ddd; overflow:hidden}
+.c-des-list li{width:151px; float:left; margin:22px; text-align:center;line-height:20px;}
+.c-des-list li span{ background:#000; width:151px; display:block; height:151px; border-radius:50%; overflow:hidden; position:relative; margin-bottom:10px}
+.c-des-list li span img{ width:100%; height:100%;}
+.c-des-list li:hover img{ opacity:0.6;}
+.c-des-list li span a{ position:absolute; display:none; background:#ff5659; line-height:30px; height:30px; padding:0 20px; color:#fff; z-index:99; top:65px; left:33px}
+.c-des-list li span:hover a{ display:block;}
+.c-des-list li .c-des-name{font-family: "Microsoft Yahei";font-size:14px;}
+.c-comment{border:1px solid #ddd; padding:20px;}
+.c-comment-box{ border-bottom:1px dashed #ddd; padding-bottom:20px; margin-bottom:20px}
+.c-user-head{ width:74px; float:left; margin-right:20px; text-align:center}
+.c-user-head img{ border-radius:50%; margin-bottom:10px; width:74px; height:74px;}
+.c-user-head p{font-family: "Microsoft Yahei";font-size:14px;
+width:74px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
+.c-user-detail { margin-left:94px; min-height:109px}
+.c-user-detail .c-user-info{ line-height:30px; height:30px;}
+.c-user-detail .c-user-info span{font-family: "Microsoft Yahei";font-size:14px; margin-right:20px; float:left}
+.c-user-detail .c-user-info em{ float:right; color:#aaa}
+.c-user-detail .c-user-info ul{ float:left; margin-top:7px}
+.c-user-detail .c-user-info ul li{ float:left; background:url(../images/star-on.png); width:16px; height:16px}
+.c-user-detail .c-user-info ul li.star-empty{ background:url(../images/star-off.png) !important}
+.c-user-detail .c-user-mes{ line-height:20px}
+.c-user-detail .c-user-reply{ position: relative; border:1px solid #e8e8e8; background:#f1f1f1; padding:10px; margin-top:20px; line-height:20px}
+.c-user-detail .c-user-reply p{ color:#999; margin-bottom:5px}
+.c-user-detail .c-user-reply:before{ content:""; position:absolute; z-index:9; top:-12px;left:28px; border-bottom: 12px solid #e8e8e8; border-left: 12px dashed transparent; border-right: 12px dashed transparent;}
+.c-user-detail .c-user-reply:after{ content:"";position:absolute; z-index:10;top:-10px;left:30px;border-top:0;border-bottom: 10px solid #f1f1f1; border-left: 10px dashed transparent; border-right: 10px dashed transparent;}
+.c-comment-edit{ margin-left:94px}
+.c-comment-text{ resize:none; border:1px solid #ddd; padding:5px; width:100%; box-sizing:border-box; height:110px}
+.c-comment-text:focus{ outline:1px solid #87BDFF}
+.c-comment-info{ margin-top:10px;overflow:hidden}
+.c-comment-star {float:left}
+.c-comment-star dl{ width:150px; overflow:hidden}
+.c-comment-star dt{ height:25px; float:left;margin-right:10px; line-height:24px}
+.c-comment-star dd { height:25px; float:left; width:90px}
+.c-comment-star dd ul{  margin-top:5px}
+.c-comment-star dd ul li{ float:left; background:url(../images/star-on.png); width:16px; height:16px}
+.c-comment-star dd ul li.star-empty{ background:url(../images/star-off.png) !important}
+
+.c-comment-floor{ float:left; margin-left:100px}
+.c-comment-stage{ float:right}
+.c-comment-edit button{ padding:0 10px; color:#fff; background:#ff5659; width:50px; border:0; line-height:25px ;cursor:pointer}
+.c-comment-bottom { overflow:hidden;height:25px; margin-top:10px}
+.c-comment-bottom input[type=text]{ height:25px; box-sizing:border-box;padding:0; width:80px}
+.c-comment-bottom *{ float:left; margin-right:10px}
+
+.zxal .tab-nav { background:#f7f7f7; border-bottom:2px solid #f1f1f1}
+.zxal .tab-nav a{ text-align:center; height:50px; line-height:50px; width:200px; display:inline-block; font-size:16px;font-family: "Microsoft YaHei"; }
+.zxal .tab-nav a.current{border-bottom:#ea3d3d 2px solid; margin-bottom:-2px; color:#ea3d3d; background:#f1f1f1}
+.zxal .tab-con{ overflow:hidden}
+.zxal .tab-con .tab-con-item{ display:none;}
+
+.c-wend{ border:1px solid #ddd; padding:15px; line-height:25px}
+.c-wend p{ text-overflow:ellipsis; color:#666; max-height:50px; overflow:hidden;}
+.c-wend li{ border-bottom:1px dashed #ddd; margin-bottom:15px; padding-bottom:15px}
+.c-wend li a{ color:#ff5659}
+.c-wend li em{ float:right; color:#aaa}
+.c-wend li:last-of-type{ border-bottom:0; margin-bottom:0; padding-bottom:0}
+
+.getwindowbg{ position:fixed; background:rgba(0,0,0,.5); bottom:0; top:0; left:0; right:0}
+.getwindowbox{ margin:0 auto; width:363px; height:325px; background:#fff; border:1px solid #eee; box-shadow:3px 0 5px rgba(0,0,0,.2); position:relative; top:120px; }
+.getwindowbox .shutdown{ background:url(../images/c-sp.png) -87px 34px; width:28px; height:28px; position:absolute; right:-35px; top:0; cursor:pointer;
+transition: all 0.2s;
+-moz-transition: all 0.2s; /* Firefox 4 */
+-webkit-transition: all 0.2s; /* Safari and Chrome */ }
+.getwindowbox .shutdown:hover{transform:rotate(270deg);
+-ms-transform:rotate(270deg); /* IE 9 */
+-moz-transform:rotate(270deg); /* Firefox */
+-webkit-transform:rotate(270deg); /* Safari and Chrome */
+transition: all 0.2s;
+-moz-transition: all 0.2s; /* Firefox 4 */
+-webkit-transition: all 0.2s; /* Safari and Chrome */ }
+.getwindowbox dl{overflow-y:auto; padding:15px; height:325px; box-sizing:border-box}
+.getwindowbox dl::-webkit-scrollbar-track{ background:#ddd; position:absolute }
+.getwindowbox dl::-webkit-scrollbar{ height:10px; width:10px;}
+.getwindowbox dl::-webkit-scrollbar-thumb { background:#fff; border-radius:50px; border:1px solid #bbb }
+.getwindowbox dt{font-family: "Microsoft YaHei";font-size:14px;}
+.getwindowbox dd{ overflow:hidden; margin-bottom:20px}
+.getwindowbox dl li.tel,.getwindowbox dl li.mob{padding-bottom:20px; box-sizing:border-box;float:left; width:50%;}
+.getwindowbox dl li.att{ clear:both; }

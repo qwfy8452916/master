@@ -1,0 +1,235 @@
+/*--- 搜索框 ---*/
+.m-ask-search{
+	background: #fff;
+    height: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    border-top: 1px dotted #eee;
+    width: 100%;
+}
+.m-ask-search input[type=text] {
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    width: 80%;
+    border: 1px solid #df4346;
+    border-radius: 0;
+    border-right: 0;
+    padding-left: 10px;
+    background: #fff;
+    display: block;
+    outline: none;
+}
+.m-ask-search button {
+    box-sizing: border-box;
+    width: 20%;
+    height: 40px;
+    background: #df4346;
+    display: block;
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    font-size: 1em;
+    font-family: "Microsoft YaHei";
+}
+
+/*--- tab切换 ---*/
+.show{display:block!important;}
+.redColor{color:#ff5353;}
+.whiteColor{color:#fff;}
+.bgColor{background:#ff5353;}
+.ask-tab{
+    width: 100%;
+    height: 2em;
+    background: #fff;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    position: relative;
+}
+.ask-tab .tab-list{
+    float: left;
+    width: 50%;
+    padding: 0.8em auto;
+}
+.ask-tab .tab-list p{
+    line-height: 2em;
+    text-align: center;
+}
+.ask-tab .newAsk::after{
+    content: "";
+    width: 1px;
+    height: 1.2em;
+    background: #ccc;
+    position: absolute;
+    top: 0.4em;
+    left: 50%;
+}
+.ask-tab .tab-list .tab-list-items{
+    width: 100%;
+    height: 7em;
+    margin-top: 0.1em;
+    background: #fff;
+    overflow: hidden;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 1.95em;
+    z-index: 1;
+}
+.ask-tab .tab-list i.pointer{
+    width: 0.45em;
+    height: 0.45em;
+    display: none;
+    position: absolute;
+    left: 23%;
+    bottom:-0.25em;
+    background: #fff;
+    border-left: 1px solid #ccc;
+    border-top:1px solid #ccc;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.ask-tab .newAsk i.pointer{
+    left: 23%
+}
+.ask-tab .designAsk i.pointer{
+    left: 73%
+}
+.ask-tab .tab-list .tab-list-items .items-all{
+    margin-top:0.4em;
+}
+.ask-tab .tab-list .tab-list-items .items-all a{
+    width: 25%;
+    line-height: 2.1em;
+    display:inline-block;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin-top: 1em;
+    margin-left: 5.3%;
+    font-size: 0.8em;
+}
+.ask-tab .tab-list span{
+    margin-right: 0.5em;
+}
+/*--- 遮罩层 ---*/
+.mask{
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.6);
+    position: fixed;
+    left: 0;
+    top:170px;
+    display: none;
+}
+/*--- 问答列表 ---*/
+.clearfix::after{
+    content: "";
+    width: 0;
+    height: 0;
+    clear: both;
+}
+.ask-main{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 0.5em;
+}
+.ask-main .question-box{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    margin-bottom: 0.3em;
+}
+.ask-main .question-box .qst-list{
+    width: 92%;
+    margin: 0 auto;
+    padding: 0.4em 0;
+}
+.qst-top{
+    width: 100%;
+    height: 3em;
+}
+.qst-top .qst-img{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+}
+.qst-top .qst-img img{
+    width: 100%;
+}
+.qst-top .qst-user{
+    width: 80%;
+    margin-left: 0.4em;
+    line-height: 2em;
+    float: right;
+    border-bottom: 1px solid #ccc;
+}
+.qst-top .qst-user span{
+    display:inline-block;
+    font-size: 0.9em;
+}
+.qst-top .qst-user span:last-child{
+    float: right;
+    color: #999;
+}
+.qst-topic{
+    display: block;
+    margin: 0.3em auto;
+    width: 100%;
+    font-size: 1.1em;
+}
+.qst-flw{
+    font-size: 0.8em;
+    color: #999;
+}
+.qst-flw span:first-child{
+    margin-right: 0.3em;
+}
+.qst-flw span:last-child{
+    margin-left: 0.3em;
+}
+
+/*--- 装修报价悬浮2 ---*/
+.zb-link-fixed{
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.9);
+}
+.zb-link-fixed a{
+    width: 45%;
+    height: 38px;
+    color: #fff;
+    text-align: center;
+    line-height: 38px;
+    display: inline-block;
+    background: #ff565d;
+    border-radius:4px;
+    margin-left: 3%;
+    margin-top: 3.6%;
+}
+.zb-link-fixed a i{
+    margin-right: 0.2em;
+    font-weight: normal;
+}
+.zb-link-fixed a:last-child i{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    line-height: 20px;
+}
+
+/*修改电话模块*/
+.call-tel{margin-top: 0;}

@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!---->
+<meta name="full-screen" content="yes">
+<meta name="browsermode" content="application">
+
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+
+<link href="css/m-reset.css" rel="stylesheet" type="text/css" />
+<link href="css/m-public.css" rel="stylesheet" type="text/css" />
+<link href="css/m-hxsj.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://www.qizuang.com/assets/common/js/jquery.min.js"></script>
+<script type="text/javascript" src="js/mui.min.js"></script>
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+	<link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
+<link rel="stylesheet" href="fonts/font-awesome.min.css">
+<title>无标题文档</title>
+</head>
+<body>
+<div class="m-wrap">
+  <header>
+    <a class="m-header-left" href="http://m.qizuang.com"></a>
+    <div class="m-header-tit">户型设计</div>
+    <div class="m-header-city"><a href="#">苏州<i class="fa fa-sort-desc"></i></a></div>
+    <div class="m-header-right m-nav"><i class="fa fa-bars"></i>   
+    
+    </div>
+  </header>
+  <article>
+  <div class="m-img-box-a"><img src="images/hxsj_02.png" alt=""/></div>
+  <div class="m-t1">今日已有<span class="m-font-red">250</span>人获取报价</div>
+  <ul class="m-bj-edit">
+
+    <li><input class="m-row-int1 m-bj-edit-list" type="text" maxlength="13" placeholder="请输入您的称呼"></li>
+
+    <li><input class="m-row-int1 m-bj-edit-list" type="tel" maxlength="13" placeholder="请输入您的手机号"></li>
+ <!--  <li>
+  <select class="m-row-int2 m-bj-edit-list">
+    <option value="1">城市</option>
+    <option value="1">苏州</option>
+     </select>
+     <select class="m-row-int2 m-bj-edit-list">
+    <option value="1">城市</option>
+    <option value="1">苏州</option>
+     </select>
+  </li>
+  -->
+  <li><button id="showCityPicker3" class="c-zb-city" type="button">请选择城市...</button></li>
+  </ul>
+  <a class="m-b-btn">10秒估算报价</a>
+    <div class="m-img-box-a"><img src="images/hxsj_04.png" width="720" height="1187" alt=""/></div>
+  <a class="m-b-btn-f" href="#uptop">10秒估算报价</a>
+  </article>
+  <footer>
+    <p class="links"><a href="http://m.qizuang.com" class="hot">触屏版</a>&nbsp;|&nbsp;<a href="http://m.qizuang.com/action/bm/">电脑版</a></p>
+  <p>手机齐装网：m.qizuang.com&nbsp;&nbsp;苏ICP备12045334号</p>
+  </footer>
+</div>
+<script src="js/mui.picker.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+			(function(mui, doc) {
+				mui.init();
+				mui.ready(function() {
+		         
+					//-----------------------------------------
+							//二级联示例
+					/*var cityPicker = new mui.PopPicker({
+						layer: 2
+					});
+					cityPicker.setData(cityData);
+					var showCityPickerButton = doc.getElementById('showCityPicker2');
+					var cityResult = doc.getElementById('cityResult');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							showCityPickerButton.innerHTML = '<i class="fa fa-map-marker"></i>'+ " "  + items[0].text + " " + items[1].text;
+							showCityPickerButton.style.border="1px solid #ff5659";
+							showCityPickerButton.style.color="#ff5659";
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);*/
+					//-----------------------------------------
+					//三级联动
+			       var cityPicker3 = new mui.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = doc.getElementById('showCityPicker3');
+					var cityResult = doc.getElementById('cityResult');
+					var cityID = 320202;	
+				        showCityPickerButton.style.border="1px solid #ff5659";
+						showCityPickerButton.style.color="#ff5659";
+						for(var i=0; i<cityData3.length; i++)
+						{
+				           	
+							 for(var j=0; j<cityData3[i].children.length; j++)
+							{
+							    	 for(var k=0; k<cityData3[i].children[j].children.length; k++)
+									 {
+							              if(cityID == cityData3[i].children[j].children[k].value )
+							              {
+								  
+								
+							  showCityPickerButton.innerHTML = '<i class="fa fa-map-marker"></i>'+ " " + cityData3[i].text + " " +  cityData3[i].children[0].text + " " + cityData3[i].children[0].children[j].text;
+							  
+							                }
+							          }
+							}
+						}
+					
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							showCityPickerButton.innerHTML = '<i class="fa fa-map-marker"></i>'+ " "  + (items[0] || {}).text + " " + (items[1] || {}).text+ " " + (items[2] || {}).text;
+							
+					
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				
+				});
+			})(mui, document);
+		</script>
+
+</body>
+
+</html>

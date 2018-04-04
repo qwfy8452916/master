@@ -1,0 +1,142 @@
+.scroll-wrapper {
+	position: relative
+}
+
+.zxlc-list-hd-wrap {
+	background-color: #fff;
+	position: relative;
+	border-bottom:1px solid #eee;
+}
+
+.zxlc-list-hd {
+	position: relative;
+	background:#fff;
+	z-index: 1;
+
+}
+.zxlc-list-hd h2 {
+	font-size: 16px;
+	font-weight: normal;
+	color: #666;
+	height: 44px;
+	line-height: 44px;
+	margin-right: 95px;
+	padding: 0 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap
+}
+
+.zxlc-list-hd .zxlc-btn {
+	position: absolute;
+	right: 15px;
+	top: 10px;
+	float: right;
+	font-size: 0.8em;
+	width: 5.3em;
+	height: 2.25em;
+	line-height: 2.25em;
+	background-color: #FF5659;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	font-weight: 100;
+}
+.zxlc-list-bd{
+	width: 100%;
+	position: absolute;
+	right: 0;
+	top:44px;
+	background: #666;
+	z-index: 1;
+	display: none;
+}
+.scroll-wrapper{
+	width: 75%;
+	position: absolute;right: 0;
+	top: 0;
+	background: #fff;
+}
+.zxlc-list-topic{
+	float: left;
+	height: auto;
+	width: 38%;
+}
+.zxlc-list-topic ul li{
+	height: 2.5em;
+	line-height: 2.5em;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	font-size: 0.9em;
+}
+.gray{background: #eee;color: #ff565d;}
+.zxlc-list-main{
+	float: left;
+	height: auto;
+	width: 62%;
+	background: #eee;
+	z-index: 1;
+}
+.zxlc-list-items {
+	display: none;
+}
+.show{
+	display: block !important;
+}
+.zxlc-list-items ul li{
+	height: 2.5em;
+	line-height: 2.5em;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	font-size: 0.9em;
+}
+
+/*--- 装修报价悬浮2 ---*/
+.zb-link-fixed{
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.9);
+    z-index: 1;
+}
+.zb-link-fixed a{
+    width: 45%;
+    height: 38px;
+    color: #fff;
+    text-align: center;
+    line-height: 38px;
+    display: inline-block;
+    background: #ff565d;
+    border-radius:4px;
+    margin-left: 3%;
+    margin-top: 3.6%;
+}
+.zb-link-fixed a i{
+    margin-right: 0.2em;
+    font-weight: normal;
+}
+.zb-link-fixed a:last-child i{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    line-height: 20px;
+}
+
+/*遮罩层*/
+.mask{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.6);
+	position: fixed;
+	top: 0px;
+	left: 0;
+	z-index: 0;
+	display: none;
+}
+#gotop{
+	z-index: 1;
+}

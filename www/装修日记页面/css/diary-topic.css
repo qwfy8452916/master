@@ -1,0 +1,232 @@
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+/*面包分类*/
+.bread{
+	font-size: 12px;
+	margin: 6px auto;
+}
+/*主体内容*/
+.dy-top{
+	width: 100%;
+	height: 235px;
+	background: url(../img/1.jpg) no-repeat;
+	font-family: 'Microsoft YaHei';
+}
+.top-user {
+	width: 200px;
+	height: 100%;
+	background: rgba(255,255,255,.5);
+	margin:0 auto;
+	overflow: hidden;
+}
+.top-user .user-pic{
+	width: 104px;
+	height: 104px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin:0 auto;
+	margin-top: 40px;
+}
+.top-user .user-pic img{
+	width: 100%;
+	height: 100%;
+}
+.top-user .user-name{
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+	margin:0 auto;
+	margin-top: 18px;
+}
+.top-user .user-place{
+	font-size: 14px;
+	line-height: 14px;
+	color: #666;
+	text-align: center;
+	margin:0 auto;
+	margin-top: 10px;
+}
+.dy-main{
+	width: 100%;
+	height: auto;
+	margin-top: 20px;
+	font-family: 'Microsoft YaHei';
+}
+.topic-item .l-bar{
+	width: 336px;
+	height: 100%;
+	border-right: 1px solid #e5e5e5;
+	/*background: #ece9e4;/*换图*/
+	background: url(../img/2.jpg) no-repeat;
+}
+.dy-main .topic-item{
+	width: 100%;
+	height: 122px;
+	padding: 30px 0;
+	border-bottom: 1px dashed #e5e5e5;
+}
+.l-bar-msg{
+	margin-left: 92px;
+}
+.l-bar-msg .house-tit{
+	margin-top: 24px;
+}
+.l-bar-msg .house-tit span{
+	font-size: 14px;
+	font-weight: bold;
+	margin-right: 10px;
+}
+.l-bar-msg .house-tit a {
+	font-size: 12px;
+	color: #999;
+}
+.l-bar-msg .house-tit:hover span,
+.l-bar-msg .house-tit:hover a{
+	color: #ff565d;
+}
+.l-bar-msg .house-info,
+.l-bar-msg .house-place,
+.l-bar-msg .house-company {
+	font-size: 12px;
+	line-height: 12px;
+	margin-top: 6px;
+	color: #656565;
+}
+.l-bar-msg .house-info{
+	margin-top: 6px;
+}
+.topic-item .r-bar{
+	width: 840px;
+	height: 100%;
+}
+.r-bar .user-diary-img p{
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.r-bar .user-diary-img p:hover a{
+	color: #ff565d;
+}
+.r-bar .user-diary-img .diary-img-pic{
+	width: 140px;
+	height: 94px;
+	margin-left: 10px;
+	border:1px solid #e5e5e5;
+	display: block;
+}
+.r-bar .user-diary-img .diary-img-pic img{
+	width: 100%;
+	height: 100%;
+}
+.r-bar .user-diary-con{
+	width: 654px;
+	padding-left: 10px;
+	height: 100%;
+	position: relative;
+}
+.user-diary-con .diary-con-topic{
+	height: 20px;
+}
+.user-diary-con .diary-con-topic span{
+	width: 64px;
+    height: 18px;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    font-family: 'Microsoft sunsim';
+    color: #fff;
+    background: #ff565d;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.user-diary-con .diary-con-topic i{
+	float: right;
+}
+.user-diary-con .diary-con-main{
+	text-indent: 2em;
+	line-height: 22px;
+	margin-top: 8px;
+}
+.user-diary-con .diary-con-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.user-diary-con .diary-con-info i {
+    font-size: 14px;
+    margin-left: 15px;
+    margin-right: 5px;
+    color: #999;
+    cursor: pointer;
+}
+.user-diary-con .diary-con-info span {
+    color: #999;
+}
+/*日记主题展开页面*/
+.dy-user {
+	width: 100%;
+	font-family: 'Microsoft YaHei';
+}
+.dy-user .dy-user-tit{
+	font-size: 24px;
+	line-height: 24px;
+	margin-top: 40px;
+	text-align: center;
+}
+.dy-user .dy-user-msg{
+	text-align: center;
+	margin:0 auto;
+	font-size: 12px;
+	line-height: 12px;
+	color: #999;
+	margin-top: 10px;
+}
+.dy-user .dy-user-msg span{
+	font-weight: bold;
+}
+.dy-user .dy-user-msg i{
+	margin-right: 10px;
+}
+.topic-item .l-step-bar{
+	width: 336px;
+	height: 100%;
+	border-right: 1px solid #e5e5e5;
+	background: #fff;
+}
+.l-bar-step .step-time{
+	font-size: 12px;
+	line-height: 12px;
+	margin-left: 12px;
+}
+.l-bar-step .step-item{
+	margin-top:24px;
+	margin-left: 94px;
+}
+.l-bar-step .step-item .step-num{
+	width: 46px;
+	height: 46px;
+	display: inline-block;
+	text-align: center;
+	line-height: 46px;
+	font-size: 24px;
+	color: #ff565d;
+	border:1px solid #ff565d;
+	border-radius:50%;
+	margin-right: 5px;
+}
+.l-bar-step .step-item .step-text{
+	font-size: 18px;
+}
+.l-bar-step .step-item .step-text i{
+	font-size: 12px;
+	margin-left: 5px;
+}

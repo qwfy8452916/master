@@ -1,0 +1,174 @@
+.welcome{
+	height: 115px;
+	line-height: 115px;
+	font-size: 18px;
+	font-family: 'Microsoft YaHei';
+	margin-left: 70px;
+	float: left;
+}
+.loginbg{
+	width: 100%;
+	height: 523px;
+	position: relative;
+	background: url(../img/login-bg.jpg)no-repeat center;
+}
+.loginbox {
+    background: #FFF;
+    float: right;
+    font-family: "Microsoft YaHei";
+    width: 320px;
+    height: 360px;
+    margin-top: 51px;
+    margin-right: 70px;
+    
+}
+#tab{
+	width: 260px;
+	margin: 0 auto;
+	margin-top: 15px;
+}
+.loginbox .tab-nav {
+    overflow: hidden;
+}
+.loginbox .tab-nav a.current {
+    border-bottom: 2px #ee4040 solid;
+    color: #ee4040;
+}
+.loginbox .tab-nav a {
+    width: 130px;
+    float: left;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #3c3c3c;
+    border-bottom: 2px solid #f1f1f1;
+    border-radius: 0;
+}
+
+.loginbox .tab-con-item .reg-company {
+    display: none;
+}
+.loginbox .loginput {
+    position: relative;
+    margin-top: 22px;
+}
+.loginbox .loginmsg {
+	height: 16px;
+	margin-top: 10px;
+	font-family: 'simsun';
+}
+.loginbox .loginmsg .logintit {
+    float: left;
+}
+.loginbox .loginmsg .logintit input[type="checkbox"]{
+    margin-right: 10px;
+}
+.loginbox .loginmsg .logintit .gray-color{
+	color: #666;
+}
+.loginbox .loginmsg .logintit .dev-color{
+	color: #484848;
+}
+.loginbox .loginmsg .login-info {
+    float: right;
+}
+.loginbox .btn {
+    line-height: 34px;
+    height: 34px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+.loginbox .other {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dotted #f1f1f1;
+    overflow: hidden;
+    line-height: 35px;
+	font-family: 'simsun';
+}
+.loginbox .loginput input {
+    border: 1px solid #ccc;
+    height: 32px;
+    line-height: 40px\0;
+    width: 242px;
+    padding-left: 16px;
+}
+.loginbox a {
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #f24b4b;
+}
+.loginbox .btn a.logbtn {
+    width: 100%;
+    height: 34px;
+    background: #ff565d;
+    color: #fff;
+    text-decoration: none;
+    line-height: 34px;
+}
+.loginbox .other i {
+    float: left;
+    margin-right: 34px;
+}
+.loginbox .other a{
+	width:35px;
+	height: 35px;
+	border-radius: 50%;
+}
+.loginbox .other a.qqlogin {
+    background: url(../img/otherlogin.png) no-repeat 2px -6px #3bc9f7;
+    float: left;
+    margin-right: 10px;
+}
+.loginbox .other a.weibologin {
+    background: url(../img/otherlogin.png) no-repeat 2px -58px #e15050;
+    float: left;
+    margin-right: 10px;
+}
+.loginbox .other a.tblogin {
+    background: url(../img/otherlogin.png) no-repeat 3px -156px #08BE77;
+    float: left;
+    margin-right: 10px;
+}
+/* .reg-company .weixin-login{
+    width: 132px;
+    height: 132px;
+    margin: 0 auto;
+    margin-top: 60px;
+    text-align: center;
+}
+.reg-company .weixin-login a{
+    text-decoration: underline;
+    margin-top: 36px;
+} */
+/*修改*/
+
+.reg-company .weixin-login{
+    width: 222px;
+    height: 178px;
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+}
+.reg-company .weixin-login .wechat_help{
+    display: none;
+    margin-left: 20px;
+}
+.reg-company .weixin-login .wechat_ma{
+    margin-top: 30px;
+}
+.reg-company .use-info {
+    text-align: center;
+    margin-top: 20px;
+}
+.reg-company .use-info span{
+    cursor: pointer;
+    color: #ff565d;
+}
+.use-info:hover .use-info~.weixin-login .wechat_help{
+    display: block!important;
+}

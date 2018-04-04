@@ -1,0 +1,329 @@
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+/*面包分类*/
+.bread{
+	font-size: 12px;
+	margin: 6px auto;
+}
+.dy-tg{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	font-family: 'Microsoft YaHei';
+}
+.dy-tg .l-bar{
+	width: 932px;
+	height: auto;
+}
+.l-bar .l-bar-msg{
+	width: 100%;
+	height: 104px;
+	margin-top: 10px;
+}
+.l-bar .l-bar-msg .user-pic{
+	width: 104px;
+	height: 104px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 30px;
+}
+.l-bar .l-bar-msg .user-pic img{
+	width: 100%;
+	height: 100%;
+}
+.user-house{
+	margin-top: 10px;
+}
+.user-house .house-tit span{
+	font-size: 16px;
+	font-weight: bold;
+	color: #000;
+	margin-right: 10px;
+}
+.user-house .house-tit i{
+	font-size: 12px;
+	color: #666;
+}
+.house-info span,
+.house-place span,
+.house-company span{
+	font-size: 12px;
+	color: #666;
+	margin-top: 10px;
+}
+.l-bar-main{
+	width: 900px;
+	height: auto;
+	padding: 15px;
+	border: 1px solid #e5e5e5;
+}
+.l-bar-main .diary-tit{
+	width: 100%;
+	height: 24px;
+}
+.l-bar-main .diary-tit span{
+	font-size: 24px;
+	line-height: 24px;
+	margin-right: 20px;
+	float: left;
+}
+.l-bar-main .diary-tit i{
+	width: 84px;
+	height: 24px;
+	display: inline-block;
+	text-align: center;
+	line-height: 24px;
+	border-radius: 6px;
+	background: #ff5d56;
+	margin-right: 10px;
+	color: #fff;
+	float: left;
+	font-family: 'sunsim';
+	font-size: 14px;
+}
+.diary-icon{
+	margin-top: 10px;
+	line-height: 14px;
+}
+.diary-icon i {
+    font-size: 14px;
+    
+    margin-right: 5px;
+    color: #999;
+    cursor: pointer;
+}
+.diary-icon span {
+    color: #999;
+    margin-right: 15px;
+}
+.diary-text p{
+	margin: 20px auto;
+	text-indent: 2em;
+	color: #656565;
+	line-height: 24px;
+}
+.diary-text .img-box{
+	max-width: 620px;
+	height: auto;
+	margin: 0 auto;
+}
+.diary-text .img-box img{
+	width: 100%;
+}
+.diary-comment .com-num{
+	width: 100%;
+	height: 30px;
+	margin-top: 30px;
+	font-size: 20px;
+	line-height: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.com-list .com-item{
+	width: 100%;
+	height: 124px;
+	border-bottom: 1px dashed #e5e5e5;
+}
+.com-item .com-item-hd{
+	width: 100%;
+	height: 50px;
+	margin-top: 20px;
+}
+.com-item-hd .user-img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+	float: left;
+}
+.user-img img{
+	width: 100%;
+	/*height: 100%;*/
+}
+.com-item-hd .user-name{
+	float: left;
+	font-size: 18px;
+	line-height: 50px;
+	color: #000;
+	margin-left: 10px;
+}
+.com-item-hd .user-stime{
+	float: right;
+	font-size: 12px;
+	color: #999;
+	line-height: 50px;
+}
+.com-item-bd{
+	padding-left: 60px;
+	text-indent: 2em;
+	color: #666;
+}
+.send-com{
+	overflow: hidden;
+}
+.send-com .send-tit{
+	width: 100%;
+	height: 20px;
+	font-size: 20px;
+	color: #999;
+	line-height: 20px;
+	margin-top: 30px;
+}
+.send-com .send-box{
+	width: 100%;
+	height: 80px;
+	margin-top: 20px;
+	position: relative;
+}
+.send-com .send-box textarea{
+	width: 100%;
+	height: 80px;
+	border: 1px solid #e5e5e5;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	outline: none;
+	resize: none;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+.send-com .send-box span{
+	width: 100%;
+	height: 80px;
+	display: block;
+	font-size: 20px;
+	text-align: center;
+	line-height: 80px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #666;
+}
+.send-com .send-box span i{
+	color: #ff565d;
+	cursor: pointer;
+}
+.send-num{
+	width: 100%;
+	height: 12px;
+}
+.send-num span{
+	float: right;
+}
+.send-btn{
+	width: 100%;
+	height: 36px;
+	margin-top: 20px;
+}
+.send-btn button{
+	float: right;
+	width: 120px;
+	height: 36px;
+	background: #ff565d;
+	text-align: center;
+	line-height: 36px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+	outline: none;
+}
+/*设计报价*/
+.ht-banner {
+    font-family: "Microsoft YaHei";
+    margin-top: 50px;
+    background: #f9e4af;
+    text-align: center;
+    line-height: 30px;
+    width: 100%;
+    height: 104px;
+}
+.ht-banner .ht-tit {
+    color: #a94100;
+    font-size: 20px;
+    font-weight: 600;
+    float: left;
+    line-height: 20px;
+    margin-top: 42px;
+    margin-left: 20px;
+}
+.ht-banner .ht-tit i{
+	color: #ff565d;
+}
+.ht-banner .ht-msg {
+    width: 504px;
+    height: 100%;
+    float: left;
+    margin-left: 20px;
+}
+.ht-banner ul{
+	margin-top: 20px;
+}
+.ht-banner ul li{
+	float: left;
+	margin-right: 20px;
+}
+.ht-banner ul li input {
+    width: 220px;
+    height: 28px;
+    padding-left: 5px;
+    border: 1px solid #dcd8d7;
+}
+.ht-banner ul li select {
+    border: 1px solid #dcd8d9;
+    margin-top: 10px;
+}
+.ht-banner ul li .sle-time {
+    width: 227px;
+    height: 28px;
+}
+.ht-banner ul li .sle {
+    width: 108px;
+    height: 28px;
+    margin-right: 7px;
+}
+.ht-banner button {
+    display: block;
+    float: left;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 40px;
+    border-radius: 4px;
+    background: #FF7A01;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-family: "Microsoft YaHei";
+}
+/*相关日记*/
+.diary-other{
+	width: 100%;
+	height: 150px;
+	margin-top: 20px;
+	border: 1px solid #e5e5e5;
+	padding: 10px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.diary-other p{
+	font-size: 14px;
+	font-weight: bold;
+}
+.diary-other ul li{
+	width: 236px;
+	height:22px;
+	overflow: hidden;
+}
+.diary-other ul li a{
+	line-height: 22px;
+	color: #656565;
+}
+.diary-other ul li a:hover{
+	color: #ff565d;
+}

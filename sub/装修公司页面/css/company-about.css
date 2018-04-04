@@ -1,0 +1,12 @@
+.c-about-box{ border:1px solid #ddd; padding:20px; overflow:hidden}
+.c-about-info{ float:left; height:233px; width:537px; position:relative}
+.c-about-info li{ position:relative; color:#666; padding-left:70px; line-height:20px; margin-bottom:10px; max-height:40px; overflow:hidden}
+.c-about-info li span{ position:absolute; top:0; left:0; color:#333}
+.c-titimg{ float:left; margin-right:20px; width:311px; height:233px; background:#eee}
+
+.c-about-main{ clear:both}
+.c-about-main dt{font-size:18px; padding-top:20px; padding-bottom:10px;font-family: "Microsoft Yahei";}
+.c-about-main dd{ color:#666}
+.c-about-main dd p{ text-indent:24px; line-height:20px}
+.c-about-main dd img{ float:left; display:block; width:298px; height:226px; margin-right:20px;}
+.c-about-main dd img:last-of-type{ margin-right:0}

@@ -198,6 +198,7 @@
             $(".chose-list").on("click","li",function(){
                 var nowLi=$(this).parent();
                 var index=nowLi.index();
+                console.log(index)
                 var span="";
                 var choselist=nowLi.children('li');
                 choselist.css("color","#3c3c3c")

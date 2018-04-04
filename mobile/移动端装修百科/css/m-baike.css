@@ -1,0 +1,186 @@
+header .m-header-city{
+	left: 9em;
+}
+.baike-intro-list {
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: 1em;
+	border-top: 1px solid #eee;
+}
+
+.baike-intro-tit {
+    width: 100%;
+    height: 2.2em;
+    background: #fff;
+    box-shadow: 0px 1px 5px #ccc;
+    line-height: 2.2em;
+   
+}
+.baike-intro-tit i {
+    width: 2%;
+    height: 100%;
+    background: #ff565d;
+    display: block;
+    float: left;
+}
+.baike-intro-tit span {
+    margin-left: 0.5em;
+}
+.step-list-more {
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #efefef;
+    text-align: center;
+    line-height: 2.6em;
+    letter-spacing: 0.1em;
+}
+.step-list-more a{color: #ff565d;}
+
+.MsoNormal{font-size: 0.9em;}
+
+
+.baike-content {
+	width: 96%;
+	margin: 0 auto;
+	margin-top: 1em
+}
+
+.baike-content h1 {
+	font-size: 1.5em;
+	font-weight: 100;
+	border-top: 1px dotted #abacae;
+	padding-top: 0.5em
+}
+
+.baike-content-img {
+	width: left;
+	width: 40%;
+	float: left;
+	border: 1px solid #eee;
+	padding: 0.5em;
+	box-sizing: border-box;
+	margin: 0.3em;
+	text-indent: 0
+}
+
+.baike-content-img img {
+	width: 100%
+}
+
+.baike-content-main h2 {
+	font-size: 1.1em;
+	text-indent: 0;
+	margin: 0.5em 0
+}
+
+.baike-content-main {
+	margin-top: 0.5em;
+	text-indent: 2em;
+	line-height: 1.5em
+}
+
+.baike-more-list {
+	width: 92%;
+	margin: 0 4%
+}
+.fg-list-box:last-child {
+    margin-bottom: 0;
+}
+.baike-intro-main{
+	margin-bottom: 20px;
+}
+.about-art {
+	height: 70px;
+	max-width: 640px;
+	min-width: 320px;
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.about-art span {
+	font-size: 18px;
+}
+
+.baike-top {
+	background-color: #fff;
+	margin-top: 5px;
+}
+
+.baike-top-fa {
+	position: absolute;
+	top: 15px;
+	width: 50px;
+	text-align: center;
+	font-size: 1.5em;
+	color: #666;
+	right: 0;
+	height: 50px;
+}
+
+.baike-content-icon {
+	margin-top: 2em;
+}
+
+.baike-list-icon {
+	margin-left: 0.8em;
+	width: 70px;
+	height: 80px;
+	display: inline-block;
+	margin-bottom: 1em;
+}
+
+.baike-content-icon span {
+	display: block;
+	text-align: center;
+}
+
+
+.home-nav {
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    padding: 0em .5em;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+.home-nav ul li {
+    width: 25%;
+    position: relative;
+    float: left;
+    text-align: center;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+}
+
+.home-nav ul li img {
+    width: 38%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.m-ask-search {
+    background: #fff;
+    height: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    border-top: 1px dotted #eee;
+    width: 100%;
+}
+.m-ask-search input[type=text] {
+    border: 1px solid #da4848;
+    border-radius: 0;
+}
+.m-ask-search button {
+	font-family: "微软雅黑";
+    background: #da4848;
+    display: block;
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    outline: none;
+}

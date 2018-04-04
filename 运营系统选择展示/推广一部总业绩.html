@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>运营系统推广展示</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+  <link rel="stylesheet" href="css/daterangepicker.css">
+  <link rel="stylesheet" href="css/daterangepicker-bs3.css">
+	<link rel="stylesheet" href="css/tuiguang1.css">
+</head>
+<body>
+	
+	<section class="content">
+       <div class="row">
+         <div class="col-xs-12">
+          <div class="box box-default">
+            <div class="box-body no-padding">
+              <div class="row daohang">
+                <ul>
+                  <li class="gailan01">推广一部业绩</li>
+                  <li class="dhdianj active"><a href="index.html">总业绩</a></li>
+                  <li class="dhdianj"><a href="shipinzuyi.html">视频一部业绩</a></li>
+                  <li class="dhdianj"><a href="shipinzuer.html">视频二部业绩</a></li>
+                  <li class="dhdianj"><a href="zimeitizu.html">自媒体部业绩</a></li>
+                  <li class="dhdianj"><a href="weixinzu.html">微信部业绩</a></li>
+                  <li class="dhdianj"><a href="meijiezu.html">媒介部业绩</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="box box-header with-border no-margin">
+            <h3 class="box-title">条件查询</h3>
+          </div>
+          <div class="box box-body no-border padbotom">
+            <div class="col-xs-12 no-padding">
+              <div class="col-xs-2 no-padding xuanzzu">
+                <div class="leibie">组名：</div>
+                <div class="col-xs-12 no-padding">
+                  <select name="" id="">
+                    <option value="请选择">请选择</option>
+                    <option value="请选择">视频一组</option>
+                    <option value="请选择">视频二组</option>
+                    <option value="请选择">自媒体组</option>
+                    <option value="请选择">微信组</option>
+                    <option value="请选择">媒介组</option>
+                  </select>
+                </div>
+              </div>
+                    
+                    <div class="col-xs-2 no-padding xuanzzu xuanzzu2">
+                <div class="leibie">日期：</div>
+                <div class="col-xs-12 no-padding">
+                  <input type="text" id="reservationtime" placeholder="点击选取">
+                </div>
+              </div>
+              <div class="duibikz">
+                <input class="duibxz" type="checkbox" name="checkbox"><span>对比</span>
+              </div>
+              <div class="col-xs-2 no-padding xuanzzu">
+                 <div class="xzziyuans">
+                     <div class="leibie">&nbsp</div>
+                <div class="col-xs-12 no-padding">
+                  <input type="text" id="reservationtime2" placeholder="点击选取">
+                </div>
+                 </div>
+              </div>
+
+              <div class="col-xs-1 chaxun1">
+                        <br>
+                        <button type="button" class="btn btn-block btn-primary normal">
+                            <i class="fa fa-search"></i> 查询
+                        </button>
+                    </div>
+
+            </div>
+          </div>
+          <div class="box">
+            <div class="box box-header with-border no-margin">
+            <h3 class="box-title">总业绩</h3>
+              </div>
+              <div class="box box-body no-border shagnxpand">
+                <ul class="uvpv">
+                  <li>
+                    <div class="wenzjs">媒介实际分单量<a class="fa fa-info-circle tishi01" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="媒介实际分单量" data-content="" data-placement="top"></a></div>
+                    <div class="countpv">658</div>
+                  </li>
+                  <li class="qupadding">
+                    <div class="wenzjs">免费实际分单量<a class="fa fa-info-circle tishi02" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="免费实际分单量" data-content="" data-placement="top"></a></div>
+                    <div class="countpv">658</div>
+                  </li>
+                  <li>
+                    <div class="wenzjs">UV<a class="fa fa-info-circle tishi03" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="UV" data-content="" data-placement="top"></a></div>
+                    <div class="countpv">22,658</div>
+                  </li>
+                </ul>
+              </div>
+          </div>
+          <div class="box xiamarg">
+            <div class="box box-header with-border no-margin">
+            <h3 class="box-title">自定义项</h3>
+              </div>
+              <div class="box-body no-border">
+                <div class="basicskz">
+                    <span>基础项：</span>
+                  <label>
+                    <input type="checkbox" checked="checked">媒介实际分单量
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">免费实际分单量
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">总实际分单量
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">UV
+                  </label>
+                </div>
+
+                <div class="basicskz topjvli">
+                    <span>微信：</span>
+                  <label>
+                    <input type="checkbox" checked="checked">新增粉丝
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">取关粉丝
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">净增粉丝
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">总粉丝量
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">阅读量
+                  </label>
+                </div>
+
+                <div class="basicskz topjvli">
+                    <span>其他：</span>
+                  <label>
+                    <input type="checkbox" checked="checked">发单量
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">媒介分单量
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">免费分单量
+                  </label>
+                  <label>
+                    <input type="checkbox" checked="checked">总分单量
+                  </label>
+                </div>
+              </div>
+          </div>
+          <div class="daochukz">
+            <button class="btn btn-info">导出</button>
+          </div>
+
+          <div class="biaogekz">
+            <table class="table table-hover table-bordered" id="tablelist">
+                            <thead>
+                                <tr>
+                                    <th>组名</th>
+                                    <th>媒介实际分单量<a class="fa fa-info-circle bgts01" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="媒介实际分单量" data-content="媒介实际分单量：自行设置的收费渠道中，客服实际产生的分单量；如需设置请前往运营中心人员考核项设置界面。" data-placement="top"></a></th>
+                                    <th>免费实际分单量<a class="fa fa-info-circle bgts01" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="免费实际分单量" data-content="免费实际分单量：自行设置的免费渠道中，客服实际产生的分单量；如需设置请前往运营中心人员考核项设置界面。" data-placement="top"></a></th>
+                                    <th>总实际分单量</th>
+                                    <th>UV<a class="fa fa-info-circle bgts01" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="UV" data-content="UV：指访问某个站点或点击某个网页的人数。在同一天内，UV只记录第一次进入网站的访问者，在同一天内(0点到24点)再次访问该网站则不计数。" data-placement="top"></a></th>
+                                    <th>新增粉丝</th>
+                                    <th>取关粉丝</th>
+                                    <th>净增粉丝</th>
+                                    <th>总粉丝量</th>
+                                    <th>阅读量</th>
+                                    <th>发单量<a class="fa fa-info-circle bgts01" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="发单量" data-content="发单量：某一时间段内，用户提交需求单数量之和" data-placement="top"></a></th>
+                                    <th>媒介分单量<a class="fa fa-info-circle bgts01" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="媒介分单量" data-content="媒介分单量：自行设置的收费渠道中，发单量中成功转化为分单的数量；如需设置请前往运营中心人员考核项设置界面。" data-placement="top"></a></th>
+                                    <th>免费分单量<a class="fa fa-info-circle bgts01" data-trigger="focus" tabindex="0" role="button" data-toggle="popover"  title="免费分单量" data-content="免费分单量：自行设置的免费渠道中，发单量中成功转化为分单的数量；如需设置请前往运营中心人员考核项设置界面。" data-placement="top"></a></th>
+                                    <th>总分单量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td>视频一组</td>
+                                        <td>400</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                    </tr>
+                   
+                            </tbody>
+                        </table>
+          </div>
+
+         </div>
+      </div>
+  </section>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/moment.js"></script>
+  <script src="js/daterangepicker.js"></script>
+
+   <script>
+   	
+
+ 
+
+            $(document).ready(function() {
+
+
+
+          $( ".tishi01" ).on("mouseover" , function () {  
+         var obj=$(this); 
+           obj.popover( 'show');  
+        }); 
+
+        $( ".tishi01" ).on("mouseleave" , function () {  
+         var obj=$(this); 
+           obj.popover( 'hide');  
+        }); 
+
+          $('.tishi01').popover({
+            html: true, 
+            content: function() {
+                return keywords_content();   //内容函数
+               }
+          })
+
+           function keywords_content() {
+ 
+     return '<div class="yy">说明</div>媒介实际分单量：自行设置的收费渠道中，客服实际产生的分单量；如需设置请前往运营中心人员考核项设置界面。';
+     }
+
+     $( ".tishi02" ).on("mouseover" , function () {  
+         var obj=$(this); 
+           obj.popover( 'show');  
+        }); 
+
+        $( ".tishi02" ).on("mouseleave" , function () {  
+         var obj=$(this); 
+           obj.popover( 'hide');  
+        }); 
+
+     $('.tishi02').popover({
+            html: true, 
+            content: function() {
+                return keywords_content2();   //内容函数
+               }
+          })
+
+           function keywords_content2() {
+ 
+     return '<div class="yy">说明</div>免费实际分单量：自行设置的免费渠道中，客服实际产生的分单量；如需设置请前往运营中心人员考核项设置界面。';
+     }
+
+     // $('.bgts01').popover()
+
+     $( ".bgts01" ).on("mouseover" , function () {  
+         var obj=$(this); 
+           obj.popover( 'show');  
+        }); 
+
+        $( ".bgts01" ).on("mouseleave" , function () {  
+         var obj=$(this); 
+           obj.popover( 'hide');  
+        });
+
+     $( ".tishi03" ).on("mouseover" , function () {  
+         var obj=$(this); 
+           obj.popover( 'show');  
+        }); 
+
+        $( ".tishi03" ).on("mouseleave" , function () {  
+         var obj=$(this); 
+           obj.popover( 'hide');  
+        });   
+
+     $('.tishi03').popover({
+            html: true, 
+            content: function() {
+                return keywords_content3();   //内容函数
+               }
+          })
+
+           function keywords_content3() {
+ 
+     return '<div class="yy">说明</div>UV：指访问某个站点或点击某个网页的人数。在同一天内，UV只记录第一次进入网站的访问者，在同一天内(0点到24点)再次访问该网站则不计数。';
+     }
+
+           $('#reservationtime').daterangepicker({
+                timePicker: false,
+                timePickerIncrement: 30,
+                format: 'YYYY/MM/DD',
+                timePicker12Hour: false
+            })
+
+           $('#reservationtime2').daterangepicker({
+                timePicker: false,
+                timePickerIncrement: 30,
+                format: 'YYYY/MM/DD',
+                timePicker12Hour: false
+            })
+
+           $('.duibxz').click(function(){
+              if($("input[name='checkbox']").is(":checked")){
+                $('.xzziyuans').show();
+              }else{
+                $('.xzziyuans').hide();
+              }
+           });
+
+        })
+
+
+   </script>
+
+
+</body>
+</html>
