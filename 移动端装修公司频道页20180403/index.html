@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>移动端装修公司频道页</title>
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/m-reset.css">
+	<link rel="stylesheet" href="css/m-publicrem.new.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/company.css">
+	<link rel="stylesheet" href="css/company_2815.css">
+</head>
+<body>
+	<article>
+<!-- 装修公司搜索 -->
+    <div class="box">
+        <div class="form_control">
+            <input type="text" name="keyword" value="{$Think.get.keyword}" placeholder="请输入您想了解的装修公司">
+            <button id="btnSearch" type="button"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+
+    <div class="companybanner">
+        <img class="anniutc" src="img/lijimfsq.png">
+    </div>
+   <div class="beijingtm"></div>
+
+   <div class="fixguding">
+       <ul class="daohangquyu">
+        <li><span>服务区域</span><i class="fa fa fa-angle-down"></i></li>
+        <li><span>公司规模</span><i class="fa fa fa-angle-down"></i></li>
+        <li><span>服务保障</span><i class="fa fa fa-angle-down"></i></li>
+        <li class="noborder"><span>热门排序</span><i class="fa fa fa-angle-down"></i></li>
+    </ul>
+   
+    <div class="xialakz">
+        <ul class="choseul" style="display: none">
+            <li class="xuanze">不限</li>
+            <li>姑苏区</li>
+            <li>工业园区</li>
+            <li>相城区</li>
+            <li>吴中区</li>
+            <li>虎丘区</li>
+            <li>高新区</li>
+            <li>吴江区</li>
+            <li>昆山市</li>
+            <li>张家港市</li>
+            <li>常熟市</li>
+            <li>太仓市</li>
+        </ul>
+        <ul class="choseul" style="display: none">
+            <li class="xuanze">不限</li>
+            <li>全国连锁</li>
+            <li>装修工作室</li>
+            <li>中大型</li>
+            <li>中小型</li>
+        </ul>
+        <ul class="choseul" style="display: none">
+            <li class="xuanze">不限</li>
+            <li>保修服务</li>
+            <li>施工保养服务</li>
+            <li>上门服务</li>
+            <li>优质保洁</li>
+            <li>隐蔽工程质保</li>
+            <li>整体质保</li>
+        </ul>
+        <ul class="choseul" style="display: none">
+            <li class="xuanze">默认排序</li>
+            <li>口碑</li>
+            <li>综合实力</li>
+            <li>优惠</li>
+        </ul>
+    </div>
+   </div>
+    
+
+    <div class="liebiaodkz">
+        <div class="liebiaozj">
+            <ul class="liebiaoul">
+                <li>
+                   <a href="#">
+                    <div class="tupiankz"><img src="img/liebtu.jpg"></div>
+                    <div class="wenzims">
+                        <div class="title_bt">联邦创意装饰</div>
+                        <div class="anlipl">
+                            <div class="anlipl_left">案例数：<span>135</span></div>
+                            <div class="anlipl_right">评论数：<span>123</span></div>
+                        </div>
+                        <div class="addressdz"><span class="ditulogo"></span>苏州市东环路1400号综艺开元大厦10层C</div>
+                        <div class="zhekou"><span class="youhui">惠</span>半包打9折，免设计费</div>
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <div class="tupiankz"><img src="img/liebtu.jpg"></div>
+                    <div class="wenzims">
+                        <div class="title_bt">联邦创意装饰</div>
+                        <div class="anlipl">
+                            <div class="anlipl_left">案例数：<span>135</span></div>
+                            <div class="anlipl_right">评论数：<span>123</span></div>
+                        </div>
+                        <div class="addressdz"><span class="ditulogo"></span>苏州市东环路1400号综艺开元大厦10层C</div>
+                        <div class="zhekou"><span class="youhui">惠</span>半包打9折，免设计费</div>
+                    </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <div class="tupiankz"><img src="img/liebtu.jpg"></div>
+                    <div class="wenzims">
+                        <div class="title_bt">联邦创意装饰</div>
+                        <div class="anlipl">
+                            <div class="anlipl_left">案例数：<span>135</span></div>
+                            <div class="anlipl_right">评论数：<span>123</span></div>
+                        </div>
+                        <div class="addressdz"><span class="ditulogo"></span>苏州市东环路1400号综艺开元大厦10层C</div>
+                        <div class="zhekou"><span class="youhui">惠</span>半包打9折，免设计费</div>
+                    </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        {$info.page}
+        <!--找不到合适的咋办-->
+            <div class="get-recommend">
+                <p class="howtodo">找不到合适的装修公司？怎么办</p>
+                <form id="myForm">
+                    <div class="input-box">
+                        <gt name="mapUseInfo.vipcount" value="0">
+                        <button id="showCityPicker2" class="c-zb-city" type="button">
+                            <i class="fa fa-map-marker"></i>
+                            <empty name="info.cityarea">
+                            请选择您所在的区域
+                            <else />
+                            {$mapUseInfo.provincefull} {$mapUseInfo.name} {$info.cityarea.name}
+                            </empty>
+                        </button>
+                        <input type="hidden" name="province" data-id="{$mapUseInfo.pid}">
+                        <input type="hidden" name="city" data-id="{$mapUseInfo.id}">
+                        <input type="hidden" name="area" data-id="{$info.cityarea.id}">
+                    <else />
+                        <button id="showCityPicker2" class="c-zb-city" type="button">
+                            <i class="fa fa-map-marker"></i>
+                            请选择您所在的区域
+                        </button>
+                        <input type="hidden" name="province" data-id="">
+                        <input type="hidden" name="city" data-id="">
+                        <input type="hidden" name="area" data-id="">
+                    </gt>
+
+                    </div>
+                    <div class="input-box">
+                        <input type="text" name="name" placeholder="请输入您的名称">
+                    </div>
+                    <div class="input-box">
+                        <input type="text" name="tel" maxlength="11" placeholder="请输入您的手机号码">
+                    </div>
+                    <div class="input-box submit">
+                        <input id="btnSave" type='button' value="获取推荐（1-4家星级装修公司）"/>
+                    </div>
+                </form>
+            </div>
+
+
+            <!--发单弹窗-->
+   <div class="free_get_window"></div>
+        <div class="fadan_area" style="display: none;">
+            <div class="closed"><i id="calculator-closed" class="fa fa-times"></i></div>
+            <div class="calculator-item">
+                <div class="calculator-title">
+                    获取4家靠谱装修公司
+                </div>
+            </div>
+            <div class="calculator-item">
+                <div class="input-box">
+                    <button id="showCityPicker4" class="c-zb-city" type="button">
+                        <i class="fa fa-map-marker">
+                        </i>
+                        <empty name="info.cityarea">
+                            请选择您所在的区域
+                            <else />
+                            {$mapUseInfo.provincefull} {$mapUseInfo.name} {$info.cityarea.name}
+                        </empty>
+                    </button>
+                    <input type="hidden" name="province" data-id="{$mapUseInfo.pid}">
+                    <input type="hidden" name="city" data-id="{$mapUseInfo.id}">
+                    <input type="hidden" name="area" data-id="{$info.cityarea.id}">
+                </div>
+            </div>
+            <div class="calculator-item">
+                <div class="input-box">
+                    <input type="text" placeholder="怎么称呼您" name="size" class="mianji"><div class="danwei">㎡</div>
+                </div>
+            </div>
+
+            <div class="calculator-item">
+                <div class="input-box">
+                    <input type="text" minlength="11" maxlength="11" placeholder="请输入手机号码获取结果" name="phone">
+                </div>
+            </div>
+            <div class="calculator-item">
+                <div class="input-box border-none">
+                     <div id="btnSave2">立即免费申请</div>
+                </div>
+            </div>
+        </div>
+         <!--发单弹窗-->
+         
+         <!--发单成功弹窗-->
+         <div class="tjsuccess">
+        <div class="tjcgbt">
+            <span class="chengglogo"></span>
+            恭喜您提交成功
+        </div>
+        <div class="tjcgbt2">
+            <span>*</span>
+            稍后会有专业人员联系您，请注意接听
+        </div>
+        <div class="erweima">
+            <div class="erweimatw">
+                <img src="img/erweimabj.jpg" alt="">
+                <!-- <img src="{$img}" alt="二维码"> -->
+            </div>
+        </div>
+        <div class="guanbiniu"></div>
+    </div>
+    <!--发单成功弹窗-->
+
+    </div>
+
+</article>
+    <script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="js/yanzhengx.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="js/jroll.js"></script>
+    <script type="text/javascript" src="js/qzCitySelect.js"></script>
+    <script type="text/javascript">
+        
+             // 城市选择插件
+    selectQz.init({
+        province:$("input[name=province]").attr("data-id"),
+        city:$("input[name=city]").attr("data-id"),
+        area:$("input[name=area]").attr("data-id")
+    });
+
+         $(function(){
+
+            var searchList=["服务区域","公司规模","服务保障","热门排序"];
+
+            $('.daohangquyu li').click(function(){
+                // $('.xialakz').animate({height:0,padding:0},500)
+                var panduan=$(".xialakz .choseul")[$(this).index()].style.display;
+                if(panduan=="none"){
+                    $(".beijingtm").fadeIn();
+                  $($(".daohangquyu li i")[$(this).index()]).addClass('yansexz')
+                  $($(".daohangquyu li i")[$(this).index()]).parents().siblings().children('i').removeClass('yansexz')
+                  $(this).addClass('yanse')
+                  $(this).siblings().removeClass('yanse')
+                  $($(".xialakz .choseul")[$(this).index()]).css("display","block")
+                  $($(".xialakz .choseul")[$(this).index()]).siblings().css("display","none")
+                  $($(".xialakz .choseul")[$(this).index()]).siblings().animate({"margin-top":"-1000px"}, 300)
+                  $($(".xialakz .choseul")[$(this).index()]).stop().animate({"margin-top":"0px"},500)
+                }else{
+                  $(".beijingtm").fadeOut();
+                  $(this).removeClass('yanse')
+                  $($(".xialakz .choseul")[$(this).index()]).css("display","none")
+                  $($(".xialakz .choseul")[$(this).index()]).stop().animate({"margin-top":"-1000px"},300)
+
+                  $($(".daohangquyu li i")[$(this).index()]).parents().siblings().children('i').removeClass('yansexz')
+                  $($(".daohangquyu li i")[$(this).index()]).removeClass('yansexz')
+                }
+            });
+
+            $(".choseul").on('click','li',function(){
+                var wenzith=$(this).parent();
+                var index=wenzith.index();
+                var daohanghuan=$($('.daohangquyu li')[index]).children('span')[0];
+                $(this).addClass('xuanze');
+                $(this).siblings().removeClass('xuanze')
+
+                 $(".beijingtm").fadeOut();
+                 $(".xialakz .choseul").css("display","none")
+                 $(".xialakz .choseul").stop().animate({"margin-top":"-1000px"},300)
+                if($(this).text()!="不限"){
+                   $(daohanghuan).text($(this).text())
+                }else{
+                    $(daohanghuan).text(searchList[index])
+                }
+            })
+
+             $(".beijingtm").click(function(){
+                $(this).fadeOut();
+                $(".xialakz .choseul").css("display","none")
+                $(".xialakz .choseul").stop().animate({"margin-top":"-1000px"},300)
+                $(".daohangquyu li").removeClass('yanse')
+                $(".daohangquyu li i").removeClass('yansexz')
+             });
+
+             $(".companybanner .anniutc").click(function(event) {
+
+                if(navigator.userAgent.indexOf('UCBrowser') > -1) {
+                    $(window).scrollTop(0);
+                    $(".free_get_window").css("position","absolute");
+                    // $(".free_get_window").css("height",$("body").height());
+                    $(".fadan_area").css({"top":"100px"});
+                    $(".footfd").css("position","absolute");
+                }else{
+                    $("html,body").css({"height":$(window).height(),"overflow":"hidden"})
+                    $(".free_get_window").css("position","fixed");
+                    $(".fadan_area").css({"position":"fixed","bottom":"0px"});
+
+                }
+
+
+
+                $(".free_get_window").fadeIn();
+                $(".fadan_area").fadeIn();
+
+                });
+
+                 $("#calculator-closed").click(function(){
+                     $("body,html").css({"overflow":"auto","height":"auto"});
+                     $(".free_get_window").fadeOut();
+                     $(".fadan_area").fadeOut();
+                });
+
+                 $("#btnSave").click(function(event) {
+                var container = $(this).parents("#myForm");
+
+                var name = $("input[name=name]",container).val();
+                var tel = $("input[name=tel]",container).val();
+
+                var cs = $('input[name=city]',container).attr('data-id');
+                var qx = $('input[name=area]',container).attr('data-id');
+
+                if (!App.validate.run(name)) {
+                    $("input[name=name]",container).focus();
+                    alert("请输入您的称呼");
+                    return false;
+                }else{
+                    var reg = new RegExp("^[\u4e00-\u9fa5a-zA-Z]+$");
+                    if(!reg.test(name)){
+                        $("input[name=name]",container).focus();
+                        alert("请输入正确的名称，只支持中文和英文");
+                        return false;
+                    }
+                }
+
+                if (!App.validate.run(tel)) {
+                    $("input[name=tel]",container).focus();
+                    $("input[name=tel]",container).val('');
+                    alert("请填写正确的手机号码 ^_^!");
+                    return false;
+                }else{
+                    var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+                    if(!reg.test(tel)){
+                        $("input[name=tel]",container).focus();
+                        $("input[name=tel]",container).val('');
+                        alert("请填写正确的手机号码 ^_^!");
+                        return false;
+                    }
+                }
+
+                if('' == cs || '' == qx){
+                    alert('请选择您所在的区域 ≧▽≦')
+                    return false;
+                }
+
+                window.order({
+                    extra:{
+                        cs: cs,
+                        qx: qx,
+                        name:name,
+                        tel:tel,
+                        source: '329'
+                    },
+                    error:function(){},
+                    success:function(data, status, xhr){
+                        if(data.status == 1){
+                            window.location.href = "/baojiawanshan/";
+                        }else{
+                            alert(data.info);
+                        }
+                    },
+                    validate:function(item, value, method, info){
+                        return true;
+                    }
+                });
+            });
+
+
+                $("#btnSave2").click(function(){
+
+                var xingming = $("input[name=size]");
+                var tel = $("[name='phone']").val();
+                if(xingming.val()=="" || xingming.val().length==0){
+                    xingming.focus();
+                    alert("请输入您的称呼");
+                    return false;
+                  }else{
+                    var reg= new RegExp("^[\u4e00-\u9fa5a-zA-Z]+$");
+                    if(!reg.test(xingming.val())){
+                        xingming.focus();
+                        alert("请输入正确的称呼，只支持中文和英文 ^_^!");
+                        return false;
+                    }
+                  }
+
+                if (!App.validate.run(tel,'phone')) {
+                    $("[name='phone']").focus();
+                    alert("请输入您的手机号码 ^_^!");
+                    return false;
+                }else{
+                    var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+                    if(!reg.test(tel)){
+                        $("[name='phone']").focus();
+                        alert("请填写正确的手机号码 ^_^!");
+                        App.pop.run($("[name='phone']"),"请填写正确的手机号码1 ^_^!");
+                        return false;
+                    }
+                }
+                window.order({
+                    extra:{
+                        cs:$("[name=city]").attr('data-id'),
+                        qy:$("[name=area]").attr('data-id'),
+                        mianji:$("[name=size]").val(),
+                        tel:$("[name=phone]").val(),
+                        source: '18032143'
+                    },
+                    error:function(){
+                        alert("发生了未知的错误,请稍后再试！");
+                    },
+                    success:function(data, status, xhr){
+
+                        if(data.status == 1){
+                            
+                            $(".fadan_area").fadeOut();
+                            $(".tjsuccess,.free_get_window").fadeIn();
+                            $(".footfd").css("position","fixed");
+                        }else{
+                            alert(data.info);
+                        }
+                    },
+                    validate:function(item, value, method, info){
+                        return true;
+                    }
+                });
+
+             });
+
+        $('.tjsuccess .guanbiniu').click(function() {
+                $("body,html").css({"overflow":"auto","height":"auto"});
+                $(".free_get_window").fadeOut();
+                $('.tjsuccess').hide();
+            });
+
+         /*导航栏固定*/
+            window.onscroll=function(){
+                var top=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+                if(top>270){
+                    $(".fixguding").addClass('tofixed')
+                }else{
+                    $(".fixguding").removeClass('tofixed')
+                }
+            }
+                var dayin=$('#page-count #current-page');
+                var zongpage=$('#page-count #page-num')
+                var nowpage=parseInt(dayin.text())
+                var zongpagenumber=parseInt(zongpage.text())
+                if(nowpage>1){
+                   $('#prev-page a').addClass('yanse')
+                }else if(nowpage==1){
+                   $('#prev-page a').removeClass('yanse')
+                }
+                if(nowpage==zongpagenumber){
+                   $('#next-page a').removeClass('yanse')
+                }else{
+                    $('#next-page a').addClass('yanse')
+                }
+                console.log(typeof(zongpagenumber))
+                console.log(zongpagenumber)
+
+         })
+    </script>
+</body>
+</html>

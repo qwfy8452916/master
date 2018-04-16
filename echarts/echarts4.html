@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单个选择</title>
+	<link rel="stylesheet" type="text/css" href="css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="css/datepicker.css" />
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/select2.full.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="js/echarts.min.js"></script>
+
+	<style>
+		ul{overflow: hidden;}
+		ul li{display: inline-block;float: left;margin-left: 20px;padding: 15px;background: #ff5353;color: #fff;cursor: pointer;border-radius: 5px;}
+
+	</style>
+</head>
+<body>
+   <ul>
+   	<li class="aa">aa</li>
+   	<li class="bb">bb</li>
+   </ul>
+	<div id="canvas" class="col-xs-12 no-padding" style="height: 600px;">
+                            
+    </div>
+
+
+
+<script>
+    
+    var Dom = document.querySelector("#canvas");
+    var myChart = echarts.init(Dom);
+	var option = {
+	tooltip: {
+
+	     show: true
+	     
+       },
+    legend: {
+            // left: 'left',
+            show:false,
+            data: ['本月发单量平均值1', '上月发单量平均值2',]
+        },
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+    	name: '本月发单量平均值1',
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        smooth: true
+    },
+    {
+    	name: '上月发单量平均值2',
+        data: [720, 832, 801, 634, 790, 830, 720],
+        type: 'line',
+        smooth: true
+    }]
+};
+
+    option.legend.selected ={'本月发单量平均值1':true,'上月发单量平均值2':false};
+
+    myChart.setOption(option);
+
+    window.onresize=function(){
+        var myChart = echarts.init(Dom);
+        myChart.setOption(option);
+    }
+
+
+    
+
+    $('.aa').click(function(){
+    	option.legend.selected ={'本月发单量平均值1':true,'上月发单量平均值2':false};
+
+    	myChart.setOption(option);
+    })
+
+    $('.bb').click(function(){
+    	option.legend.selected ={'本月发单量平均值1':false,'上月发单量平均值2':true};
+
+    	myChart.setOption(option);
+    })
+
+    
+
+
+</script>
+
+</body>
+</html>
