@@ -1,0 +1,53 @@
+<!--pages/jsq.wxml-->
+ <view class="container">
+  <view class="jsjgbj">
+    <image class="jsjgbj_img" src="http://m.qizuang.com/assets/mobile/baojia/img/baojia-banner.jpg"></image>
+  </view>
+  <view class="jisuanqi">
+    <view class="jisuanqi-hd">
+        <view class="num"><text class="num-gray">{{lingNum}}</text>{{num}} <text class="num-unit">元</text></view>
+    </view>
+    <view class="jisuanqi-bd">
+        <text>客厅：?元</text>
+        <text>厨房：?元</text>
+        <text>卧室：?元</text>
+        <text>卫生间：?元</text>
+        <text>水电：?元</text>
+        <text>其他：?元</text>
+    </view>
+  </view>
+  <view class="biaodan">
+    <view class="formbd">
+      <view id="showCityPicker2" class="c-zb-city" type="button">
+        <view class="select-con">
+          <view class="select-text iconfont icon-location {{colorCont[0]?'isColor':''}}" style='color:#999;' bindtap="selectHandle" >{{selectTextDefault}}{{selectText}}</view>
+        </view>
+      </view>
+      <view class="mianjizk">
+        <input placeholder-style="color:#a9a9a9" bindinput="Mianji" type="number" class="mianji" placeholder="请输入您的房屋面积" value="" /><span class="pingf">㎡</span>
+      </view>
+      <input placeholder-style="color:#a9a9a9" bindinput="Phone" type="text" class="jzbj" placeholder="请输入您的手机号获取报价结果" value="" />
+      <view class="ljjsbj" bindtap="ljjsbjff" data-mianji="{{mji}}" data-tel="{{tel}}" >立即计算报价</view>
+    </view>
+  </view>
+  <!--城市选择  -->
+  <view class="select-box {{isHide?'transtion-off':'transtion-on'}}">
+    <view class="select-top">
+      <view class="close" bindtap="closebtn">取消</view>
+      <view class="ok" bindtap="okbtn">确定</view>
+    </view>
+    <picker-view indicator-style="height: 72rpx;" value="{{valuecity}}" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{prev}}" wx:key>{{item.text}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{city}}" wx:key>{{item.text}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{area}}" wx:key>{{item.text}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <import src="../common/bottombar.wxml"/>
+  <template is="bottombar" data="{{navList}}"/>
+</view>
