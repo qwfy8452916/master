@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渠道商后台系统</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="daterangepicker/daterangepicker-bs3.css">
+	<link rel="stylesheet" href="css/moban.css">
+
+	<link rel="stylesheet" href="css/statistics.css">
+</head>
+<body>
+<header class="main-header">
+    <!-- <a href="/" class="logo">
+        <span class="logo-mini">合</span>
+        <span class="logo-lg">齐装网合作伙伴后台系统</span>
+    </a> -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- <a href="javascript:void(0)" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only"></span>
+        </a> -->
+
+            <div class="logokz">
+             <img src="img/hoto.png">
+             <div class="titlems">后台管理界面</div>
+            </div>
+
+        <div class="navbar-custom-menu">
+            <div class="huanyci">你好，欢迎您么么哒</div>
+            <div class="touxtuic">
+                <img src="img/touxiang.png">
+                <div class="tuichu">退出</div>
+            </div>
+
+
+
+
+        </div>
+    </nav>
+</header>	
+   
+<aside class="main-sidebar">
+    <section class="sidebar">
+       <!--  <a href="/">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{$Think.session.uc_userinfo.logo|default='img/default_logo.gif'}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>测试员</p>
+                    <i class="fa fa-circle text-success"></i>&nbsp;测试测试测试身份
+                </div>
+            </div>
+        </a> -->
+        <ul class="sidebar-menu">
+
+                <li class="treeview single">
+                    <a class="fugaodu"  href="javascript:void(0)">
+                        <div class="outtop">
+                           <img src="img/homelog.png">
+                        </div>
+                        <div class="outbot">首页</div>
+                    </a>
+                 </li>
+                <li class="treeview manydg">
+                    <a class="fugaodu" href="javascript:void(0)">
+                        <div class="outtop">
+                           <img src="img/shujvtj.png">
+                        </div>
+                        <div class="outbot">数据统计</div>
+                    </a>
+
+                    <ul class="treeview-menu zikuang">
+                            <li>
+                                <a class="childgaodu" href="javascript:void(0)">
+                                    <div class="topp"></div>
+                                     <div class="bott"></div>
+                                     <div class="zineir">整体数据趋势</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="childgaodu" href="javascript:void(0)">
+                                    <div class="topp"></div>
+                                     <div class="bott"></div>
+                                     <div class="zineir">渠道数据统计</div>
+                                </a>
+                            </li>
+                    </ul>
+
+                 </li>
+            <li class="treeview manydg">
+                <a class="fugaodu" href="javascript:void(0)">
+                        <div class="outtop">
+                           <img src="img/gerenshez.png">
+                        </div>
+                        <div class="outbot">个人设置</div>
+                </a>
+                <ul class="treeview-menu zikuang">
+                    <li>
+                        <a class="childgaodu" href="javascript:void(0)">
+                             <div class="topp"></div>
+                             <div class="bott"></div>
+                             <div class="zineir">基本信息</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="childgaodu" href="javascript:void(0)">
+                             <div class="topp"></div>
+                             <div class="bott"></div>
+                             <div class="zineir">更改密码</div>
+                            <!-- <i class="fa fa-circle-o" style></i> 更改密码 &nbsp;&nbsp; -->
+                        </a>
+                    </li>
+                    <li>
+                        <a class="childgaodu" href="javascript:void(0)">
+                            <div class="topp"></div>
+                             <div class="bott"></div>
+                             <div class="zineir">联系齐装</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+</aside>
+
+<div class="content-wrapper" style="min-height: 916px;">
+    <!-- Content Header (Page header) -->
+    <!-- <section class="content-header"></section> -->
+   <section class="content-header">
+        <div class="row">
+            <div class="box-head">
+                <div class="box" >
+                    <div class="box-body act-box" style="padding:0">
+                        <nav class="box-nav">
+                            <span>渠道数据统计</span>
+                        </nav>
+                        <div class="tiaojian-sel">条件查询</div>
+                        <form action="" method="get" id="tiaojian">
+                                <div class="qudaonkz">
+                                    <span class="qudaoname">渠道名称：</span>
+                                        <select class="sel-name" name="" id="">
+                                            <option value="选择渠道">选择渠道</option>
+                                            <option value="百度">百度</option>
+                                        </select>
+                                </div>
+                                <div class="sel">
+                                    
+                                    <span class="fl">日期：</span>
+                                    <input type="text" class="form-control pull-left sel-time fl" id="add-time" placeholder="添加日期" value="" name="">
+                                    <input type="hidden" name="start" value="" />
+                                    <input type="hidden" name="end" value="" />
+                                    <i class="triangle"></i>
+                                </div>
+                                <button type="submit" class="s-btn">查询</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="heji col-xs-11">
+              <div class="sj col-xs-12">数据合计</div>
+                  <div class="group col-sm-12" style="padding:0">
+                    <div class="sj-group col-sm-2">
+                        <p class="style style1">UV</p>
+                        <p class="num">2132</p>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="sj-group col-sm-2">
+                        <p class="style style2">IP</p>
+                        <p class="num">2132</p>
+                    </div>
+                    <div class="col-sm-1"></div>
+
+                    <div class="sj-group col-sm-2">
+                        <p class="style style3">注册量</p>
+                        <p class="num">2132</p>
+                    </div>
+                    <div class="col-sm-1"></div>
+
+                    <div class="sj-group col-sm-2">
+                        <p class="style style4">有效注册量</p>
+                        <p class="num">2132</p>
+                    </div>
+                </div>
+           </div>
+        </div>
+       
+          
+        <div class="row">
+            <div class="shuju-biao  col-xs-11">
+                <div class="box">
+                    <div class="box-body act-box"  style="padding:0">
+                        <table class="col-xs-12">
+                            <tbody>
+                                <tr class="biao-head">
+                                    <th>渠道名称</th>
+                                    <th class="bgjiantou">UV<i class="fa fa-angle-down jiantbj"></i></th>
+                                    <th class="bgjiantou">IP<i class="fa fa-angle-down jiantbj"></i></th>
+                                    <th class="bgjiantou">注册量<i class="fa fa-angle-down jiantbj"></i></th>
+                                    <th class="bgjiantou">有效注册量<i class="fa fa-angle-down jiantbj"></i></th>
+                                </tr>
+                            <?php
+                                       for ($i = 0; $i < 5; $i++) {?>
+                                <tr>
+                                    <td>百度<a class="day_sj" href="/partner/day.html">日数据</a></td>
+                                    <td>123</td>
+                                    <td>123</td>
+                                    <td>------</td>
+                                    <td>------</td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="dist/js/app.min.js"></script>
+  <script type="text/javascript" src="daterangepicker/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="daterangepicker/moment.js"></script>
+  <script type="text/javascript" src="daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="js/moban.js"></script>
+  <script type="text/javascript" src="js/echarts.min.js"></script>
+
+  <script>
+  $('#add-time').daterangepicker({
+        format: 'YYYY/MM/DD',
+        "alwaysShowCalendars": true,
+        locale : {
+            applyLabel : '确定',
+            cancelLabel : '取消',
+            fromLabel : '起始时间',
+            toLabel : '结束时间',
+            customRangeLabel : '自定义',
+            daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+            monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                    '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+            firstDay : 1
+        },
+        // startDate: "{$substart|default=''}",
+        // endDate: "{$subend|default=''}"
+    },
+    function(start, end, label) {
+        var hb = $("#addHuanBi").attr("checked") == "checked"?1:0;
+        var tb = $("#addTongBi").attr("checked") == "checked"?1:0;
+        $("input[name=start]").val(start.format('MM/DD/YY'));
+        $("input[name=end]").val(end.format('MM/DD/YY'));
+    });
+
+     $('.tbswitch').on('click','li',function(){
+             $(this).addClass('switchxg');
+             $(this).siblings().removeClass('switchxg');
+    });
+
+    $('.biao-head').on('click','.bgjiantou',function(){
+        if($(this).children('.jiantbj').hasClass('jiaodu')){
+           $(this).children('.jiantbj').removeClass('jiaodu')     
+        }else{
+            $(this).children('.jiantbj').addClass('jiaodu');
+           
+        }
+    })
+
+
+  </script>
+
+</body>
+</html>

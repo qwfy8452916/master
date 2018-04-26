@@ -1,0 +1,87 @@
+.main-sidebar a{color: #fff;}
+.single a:hover{background: rgba(55,55,55,0) !important;}
+.manydg a:hover{background: rgba(55,55,55,0) !important;}
+.sidebar-menu li{text-align: center;}
+.skin-blue .sidebar-menu > li > .treeview-menu{margin: 0 !important;background: #373737;}
+/*.sidebar-menu li a:hover{border-left: 0 !important;background: #2C343F !important;}*/
+.sidebar-menu li a{border-left: 0 !important;}
+.shouyebj{background: url(/assets/common/img/shouyebj.png) no-repeat center center;background-size: 100% 100%;}
+
+
+li.treeview a.fugaodu{position: relative;height: 90px;}
+li.treeview a.fugaodu .outtop{line-height: 54px;position: absolute;top: 0;left: 0;height: 50%;width: 100%;}
+li.treeview a.fugaodu .outbot{line-height: 45px;position: absolute;bottom: 0;left: 0;height: 50%;width: 100%;}
+li.treeview a.fugaodu .outtop img{text-align: center;display: inline-block;width: 30px;height: 30px;vertical-align: middle;}
+.topyuanj{background: #3d3d3d;border-bottom-right-radius: 10px;vertical-align: middle;}
+.bottyuanj{background: #3d3d3d;border-top-right-radius: 10px;vertical-align: middle;}
+
+.topziys{position: absolute;top: 0;left: 0;height: 50%;background: #3d3d3d;border-bottom-right-radius: 10px;width: 100%;}
+.bottomzys{position: absolute;bottom: 0;left: 0;height: 50%;background: #3d3d3d;border-top-right-radius: 10px;width: 100%;}
+.zineir{position: absolute;top: 0;left: 0;width: 100%;height: 100%;text-align: center;color: #fff;}
+.treeview-menu li a.childgaodu{height: 40px;line-height: 40px;position: relative;}
+.treeview-menu li a:hover {background: none !important;}
+.sidebar-menu .treeview-menu{padding: 0 !important;}
+
+.skin-blue .sidebar-menu > li.active > a {
+  color: #ffffff;
+  background:#373737;
+  border-left-color: #ECF0F5;
+}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side{
+	background: #373737 !important;
+}
+
+.baisebj{background: #fff !important;}
+.huisebj{background: #3d3d3d !important;}
+.zhengtibj{background: #373737 !important}
+.fontyanse{color: #fb8920 !important;}
+
+
+  /*头部*/
+   .skin-blue .main-header .navbar{background: #2c2c2c !important;}
+   .main-header > .navbar {
+    background: #000;
+  -webkit-transition: margin-left 0.3s ease-in-out;
+  -o-transition: margin-left 0.3s ease-in-out;
+  transition: margin-left 0.3s ease-in-out;
+  margin-bottom: 0;
+  margin-left:0 !important;
+  border: none;
+  min-height: 60px !important;
+  border-radius: 0;
+}
+
+.main-sidebar,
+.left-side {
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 60px;
+  padding-top: 137px;
+  min-height: 200%;
+  width: 230px;
+  z-index: 810;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.logokz{float: left;height:60px;width: auto;vertical-align: middle;line-height:60px; }
+.logokz img{display: inline-block;width: 105px;height: 39px;vertical-align: middle;float: left;margin-top: 10px;
+margin-left: 20px;}
+.logokz .titlems{display: inline-block;float: left;height: 25px;border-left:2px solid #6f6f6f;line-height: 25px;
+	font-size: 18px;color: #808080;padding-left: 22px;margin-top: 18px;margin-left: 23px;
+}
+.navbar-custom-menu .huanyci{display: inline-block;color: #fff;float: left;
+     height:60px;line-height: 60px;color: #808080;font-size: 14px;}
+.navbar-custom-menu .touxtuic{height: 60px;line-height: 60px;display: inline-block;margin-left: 20px;vertical-align: middle;
+margin-right: 28px;}
+.navbar-custom-menu .touxtuic img{width: 36px;height: 36px;line-height: 36px;display: inline-block;vertical-align: middle;
+position: relative;}
+.navbar-custom-menu .touxtuic .tuichu{font-size: 14px;color: #808080;display: inline-block;background: #363636;height: 30px;
+line-height: 30px;width: 75px;border-radius: 10px;text-align: center;margin-left: -22px;text-indent: 0.9em;cursor: pointer;}
+
+  /*头部*/
+

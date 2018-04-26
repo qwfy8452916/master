@@ -1,0 +1,239 @@
+/*
+* @Author: qz_php3
+* @Date:   2018-04-11 13:37:11
+* @Last Modified by:   qz_php3
+* @Last Modified time: 2018-04-13 12:00:17
+*/
+.fl {
+    float: left;
+}
+.content-wrapper {
+    background: #fff;
+}
+.box-head {
+    margin-left: 60px;
+    margin-top: 20px;
+    padding-left: 15px;
+    width: 70%;
+}
+
+@media screen and (min-width: 960px) and (max-width: 1300px) {
+    .box-head {
+
+    width: 75%;
+}
+}
+@media screen and (min-width: 1600px) and (max-width: 1700px) {
+    .box-head {
+
+    width: 55%;
+}
+}
+@media screen and (min-width: 1900px){
+    .box-head {
+
+    width: 46%;
+}
+}
+.box {
+    box-shadow: 0 23px 45px #f0efef;
+    border-top: none;
+    border-radius: 20px;
+}
+.box-nav {
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+    margin-left: 10px;
+}
+.tiaojian-sel {
+    height: 24px;
+    line-height: 24px;
+    margin-left: 10px;
+    font-size: 24px;
+    color: #000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#tiaojian {
+    margin-left: 10px;
+    height: 50px;
+}
+
+.shuju-heji{margin-left: 60px;}
+.qudaonkz{float: left;}
+.qudaonkz .qudaoname{height: 34px;line-height: 34px;}
+.qudaonkz .sel-name{padding: 6px 12px;width: 230px;border:1px solid #fdc897;
+outline: none;border-radius: 10px;
+appearance:none;
+-moz-appearance:none;
+-webkit-appearance:none;
+background: url(../img/downzhis.png) no-repeat center right 5px;}
+
+.sel {
+    position: relative;
+    padding-left: 30px;
+    display: inline-block;
+    width: 342px;
+    float: left;
+}
+.sel i {
+
+    position: absolute;
+    top: 10px;
+    left: 289px;
+    width: 15px;height: 15px;
+    display: inline-block;
+    background: url(../img/downzhis.png) no-repeat center center;
+
+}
+.sel-time {
+    width: 230px;
+    border: 1px solid #fdc897;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 30px;
+    position: absolute;
+    top: 0;
+    left: 70px;
+    z-index: 10;
+    background: transparent;
+    cursor: pointer;
+}
+#tiaojian .s-btn {
+    width: 62px;
+    color: #fdc9a8;
+    background: #fff;
+    border: 1px solid #fdc897;
+    border-radius: 15px;
+    outline: none;
+    float: left;
+    height: 34px;
+}
+.content .heji{
+    margin-left: 60px;
+    padding: 0 15px;
+}
+.sj {
+    height: 40px;
+    line-height: 40px;
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.group {
+    height: 180px;
+    margin-left:50px;
+}
+.sj-group {
+    /*width: 308px;*/
+    height: 180px;
+    float: left;
+    background: #2d2d2e;
+    border-radius: 15px;
+}
+.sj-group:first-child {
+    margin-left: 0;
+}
+.sj-group:last-child {
+    margin-right: 0;
+}
+.sj-group .style {
+    text-align: center;
+    height: 90px;
+    line-height: 90px;
+    font-size: 30px;
+    margin-top: 15px;
+}
+.sj-group .style1 {
+    color: #33a1ff;
+}
+.sj-group .style2 {
+    color: #9b5dff;
+}
+.sj-group .style3 {
+    color: #efb722;
+}
+.sj-group .style4 {
+    color: #3ab285;
+}
+.sj-group .num {
+    color: #979797;
+    text-align: center;
+    font-size: 36px;
+}
+
+.sel .btn:focus {
+    outline: none;
+}
+
+.shuju-heji {
+    /*width: 1422px;*/
+    margin-left: 60px;
+}
+
+.style-list .qudaoname{display: inline-block;float: left;font-size: 24px;color: #373737;
+padding: 8px 20px;}
+
+.style-list {
+    width: 100%;
+    margin-top: 75px;
+    height: auto;
+    overflow: hidden;
+}
+.style-list ul {
+    float: right;
+    display: inline-block;
+    margin-right: 80px;
+}
+.style-list ul li {
+    display: inline-block;
+    list-style: none;
+    float: left;
+    font-size: 22px;
+    color: #808080;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+.switchxg {
+    color: #fb8920 !important;
+    border-bottom: 3px solid #fb8920;
+}
+.cur {
+    color: #fb8920;
+    border-bottom: 3px solid #fb8920;
+}
+.shuju-biao {
+    /*width: 1422px;*/
+    margin-left: 60px;
+    margin-top: 35px;
+}
+.shuju-biao  table {
+    width: 100%;
+}
+.shuju-biao  table th,td {
+    text-align: center;
+    height: 40px;
+}
+.day_sj{color: #fb8920 !important;margin-left: 30px;}
+.biao-head  {
+    border-bottom: 1px solid #f2f2f2;
+}
+.biao-head .bgjiantou{cursor: pointer;}
+.biao-head .bgjiantou i{
+    margin-left: 20px;
+    transition: all 0.2s;
+
+}
+.jiaodu{transform: rotate(-180deg);}
+.jiaodu2{transform: rotate(0deg);}
+.tubiaozs {
+    height: 400px;
+    margin-top: 55px;
+    /*width: 1400px;*/
+    margin: 0 auto;
+}
+
+

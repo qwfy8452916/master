@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渠道商后台系统</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="css/moban.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<header class="main-header">
+    <!-- <a href="/" class="logo">
+        <span class="logo-mini">合</span>
+        <span class="logo-lg">齐装网合作伙伴后台系统</span>
+    </a> -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- <a href="javascript:void(0)" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only"></span>
+        </a> -->
+
+            <div class="logokz">
+             <img src="img/hoto.png">
+             <div class="titlems">后台管理界面</div>
+            </div>
+
+        <div class="navbar-custom-menu">
+            <div class="huanyci">你好，欢迎您么么哒</div>
+            <div class="touxtuic">
+                <img src="img/touxiang.png">
+                <div class="tuichu">退出</div>
+            </div>
+
+
+
+
+        </div>
+    </nav>
+</header>	
+   
+<aside class="main-sidebar">
+    <section class="sidebar">
+       <!--  <a href="/">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{$Think.session.uc_userinfo.logo|default='img/default_logo.gif'}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>测试员</p>
+                    <i class="fa fa-circle text-success"></i>&nbsp;测试测试测试身份
+                </div>
+            </div>
+        </a> -->
+        <ul class="sidebar-menu">
+
+                <li class="treeview single">
+                    <a class="fugaodu"  href="javascript:void(0)">
+                        <div class="outtop">
+                           <img src="img/homelog.png">
+                        </div>
+                        <div class="outbot">首页</div>
+                    </a>
+                 </li>
+                <li class="treeview manydg">
+                    <a class="fugaodu" href="javascript:void(0)">
+                        <div class="outtop">
+                           <img src="img/shujvtj.png">
+                        </div>
+                        <div class="outbot">数据统计</div>
+                    </a>
+
+                    <ul class="treeview-menu zikuang">
+                            <li>
+                                <a class="childgaodu" href="whole.html">
+                                    <div class="topp"></div>
+                                     <div class="bott"></div>
+                                     <div class="zineir">整体数据趋势</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="childgaodu" href="day.html">
+                                    <div class="topp"></div>
+                                     <div class="bott"></div>
+                                     <div class="zineir">渠道数据统计</div>
+                                </a>
+                            </li>
+                    </ul>
+
+                 </li>
+            <li class="treeview manydg">
+                <a class="fugaodu" href="login.html">
+                        <div class="outtop">
+                           <img src="img/gerenshez.png">
+                        </div>
+                        <div class="outbot">个人设置</div>
+                </a>
+                <ul class="treeview-menu zikuang">
+                    <li>
+                        <a class="childgaodu" href="javascript:void(0)">
+                             <div class="topp"></div>
+                             <div class="bott"></div>
+                             <div class="zineir">基本信息</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="childgaodu" href="javascript:void(0)">
+                             <div class="topp"></div>
+                             <div class="bott"></div>
+                             <div class="zineir">更改密码</div>
+                            <!-- <i class="fa fa-circle-o" style></i> 更改密码 &nbsp;&nbsp; -->
+                        </a>
+                    </li>
+                    <li>
+                        <a class="childgaodu" href="javascript:void(0)">
+                            <div class="topp"></div>
+                             <div class="bott"></div>
+                             <div class="zineir">联系齐装</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+</aside>
+
+<div class="content-wrapper" style="min-height: 916px;">
+    <!-- Content Header (Page header) -->
+    <!-- <section class="content-header"></section> -->
+    <section class="content">
+         <div class="row">
+         	<div class="box">
+         		<div class="box-body no-padding">
+         			   <div class="col-xs-11">
+
+    			    <div class="layerone col-xs-12 no-padding">
+    			    	<div class="welcomems no-padding">您好，欢迎使用齐装网合作伙伴后台系统</div>
+    			    	<div class="hezuotime no-padding no-margin">
+    			    		<div class="heztimekz">
+    			    			<span>合作时间：</span>
+    			    			<span class="chengse">2018-01-02</span>
+    			    			<span class="jianjv">至</span>
+    			    			<span class="chengse">2018-02-28</span>
+    			    		</div>
+    			    		<div class="hezuoqudao">
+    			    			<span>当前合作渠道数：</span>
+    			    			<span class="qudaocount">5</span>
+    			    		</div>
+    			    	</div>
+    			    </div>
+
+    			    <ul class="siboxkz col-xs-12">
+    			    	<li>
+    			    		<div class="gonggsj uvcolor">UV</div>
+    			    		<div class="shujvcount">2132</div>
+    			    	</li>
+    			    	<li>
+    			    		<div class="gonggsj ipcolor">IP</div>
+    			    		<div class="shujvcount">2132</div>
+    			    	</li>
+    			    	<li>
+    			    		<div class="gonggsj zhucecolor">注册量</div>
+    			    		<div class="shujvcount">2132</div>
+    			    	</li>
+    			    	<li class="nomargin">
+    			    		<div class="gonggsj youxcolor">有效注册量</div>
+    			    		<div class="shujvcount">2132</div>
+    			    	</li>
+    			    </ul>
+            </div>
+         		</div>
+
+
+         		<div class="box-body padding">
+         			   <div class="col-xs-11">
+
+    			    <div class="chartstb">
+    			    	<div class="tubiaotop">
+    			    		<div class="leftms">总体趋势</div>
+
+    			    		 <ul class="tbswitch">
+    			    		 	<li class="uvqiehuan switchxg">UV</li>
+    			    		 	<li class="ipqiehuan">IP</li>
+    			    		 	<li class="zclqiehuan">注册量</li>
+    			    		 	<li class="youxqiehuan">有效注册量</li>
+    			    		 </ul>
+    			    	</div>
+
+                        <div class="tubiaozs" id="canvas"></div>
+
+    			    </div>
+
+            </div>
+         		</div>
+
+
+         	</div>
+         </div>
+
+    	        
+    </section>
+  </div>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="dist/js/app.min.js"></script>
+  <script type="text/javascript" src="js/moban.js"></script>
+  <script type="text/javascript" src="js/echarts.min.js"></script>
+
+  <script>
+  	
+  	$(function(){
+
+          $('.tbswitch').on('click','li',function(){
+          	 $(this).addClass('switchxg');
+          	 $(this).siblings().removeClass('switchxg')
+          })
+
+
+    var Dom = document.querySelector("#canvas");
+    var myChart = echarts.init(Dom);
+	var option = {
+			tooltip: {
+
+			     show: true,
+			     textStyle:{
+			     	color:'#8b8b8b',
+			     },
+			     backgroundColor:'rgba(233,233,233,1)',
+		  },
+		    legend: {
+		            show:false,
+		            data: ['UV', 'IP','注册量','有效注册量',]
+		        },
+		    xAxis: {
+		        type: 'category',
+		        data: ['2018-01', '2018-02', '2018-03', '2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10']
+		    },
+		    yAxis: {
+		        type: 'value',
+		        name: 'y',
+	            splitNumber:4,
+	            min: 3000,
+	            max: 12000
+		    },
+		    series: [{
+		    	name: 'UV',
+		        data: [3500, 4500, 5500, 8000, 6000, 10000, 9000,6900,9600,78000],
+		        type: 'line',
+		        smooth: true,
+		        itemStyle : {
+                              normal : {
+
+                                        color:'#8b8b8b',
+                                        lineStyle:{
+                                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+				                            offset: 0,
+				                            color: 'rgba(122, 90, 231, 1)'
+				                        }, {
+				                            offset: 1,
+				                            color: 'rgba(25, 175, 255, 1)'
+				                        }]),
+                                          width: 3,
+				                        shadowColor: 'rgba(0,0,0,0.4)',
+				                        shadowBlur: 10,
+				                        shadowOffsetX: 10
+				                         }
+
+                                       }
+                            }
+
+
+
+		    },
+		    {
+		    	name: 'IP',
+		        data: [7200, 8320, 8010, 6340, 7900, 8300, 7200,10000,8000,6800],
+		        type: 'line',
+		        smooth: true,
+		        itemStyle : {
+                              normal : {
+                                        color:'#8b8b8b',
+                                        lineStyle:{
+                                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+				                            offset: 0,
+				                            color: 'rgba(122, 90, 231, 1)'
+				                        }, {
+				                            offset: 1,
+				                            color: 'rgba(25, 175, 255, 1)'
+				                        }]),
+				                         width: 3,
+				                        shadowColor: 'rgba(0,0,0,0.4)',
+				                        shadowBlur: 10,
+				                        shadowOffsetX: 10
+				                          }
+                                       }
+                            }
+		    },
+		    {
+		    	name: '注册量',
+		        data: [5200, 3320, 4010, 8340, 9900, 11300, 7200,5600,8900,11000],
+		        type: 'line',
+		        smooth: true,
+		        itemStyle : {
+                              normal : {
+                                        color:'#8b8b8b',
+                                        lineStyle:{
+                                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+				                            offset: 0,
+				                            color: 'rgba(122, 90, 231, 1)'
+				                        }, {
+				                            offset: 1,
+				                            color: 'rgba(25, 175, 255, 1)'
+				                        }]),
+                                        width: 3,
+				                        shadowColor: 'rgba(0,0,0,0.4)',
+				                        shadowBlur: 10,
+				                        shadowOffsetX: 10
+				                    }
+                                       }
+                            }
+		    },
+		    {
+		    	name: '有效注册量',
+		        data: [10200, 8320, 6010, 7340, 10900, 10300, 7200,11000,8000,9000],
+		        type: 'line',
+		        smooth: true,
+		        itemStyle : {
+                              normal : {
+                                        color:'#8b8b8b',
+                                        lineStyle:{
+                                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+				                            offset: 0,
+				                            color: 'rgba(122, 90, 231, 1)'
+				                        }, {
+				                            offset: 1,
+				                            color: 'rgba(25, 175, 255, 1)'
+				                        }]),
+                                        width: 3,
+				                        shadowColor: 'rgba(0,0,0,0.4)',
+				                        shadowBlur: 10,
+				                        shadowOffsetX: 10}
+                                       }
+                            }
+		    }]
+		};
+
+
+    option.legend.selected ={'UV':true,'IP':false,'注册量':false,'有效注册量':false};
+
+    myChart.setOption(option);
+
+
+    $('.uvqiehuan').click(function(){
+    	option.legend.selected ={'UV':true,'IP':false,'注册量':false,'有效注册量':false};
+    	myChart.setOption(option);
+
+    })
+
+    $('.ipqiehuan').click(function(){
+    	option.legend.selected ={'UV':false,'IP':true,'注册量':false,'有效注册量':false};
+    	myChart.setOption(option);
+    })
+
+    $('.zclqiehuan').click(function(){
+    	option.legend.selected ={'UV':false,'IP':false,'注册量':true,'有效注册量':false};
+    	myChart.setOption(option);
+    })
+
+    $('.youxqiehuan').click(function(){
+    	option.legend.selected ={'UV':false,'IP':false,'注册量':false,'有效注册量':true};
+    	myChart.setOption(option);
+    })
+
+
+
+
+ })
+
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+.box{box-shadow:none !important;border-top: 0 !important;}
+
+
+.content-wrapper, .right-side{background: #fff !important;}
+.content{padding-left: 75px;padding-top: 35px;}
+.boxkuangzi{width: 100%;overflow: hidden;}
+
+.layerone{height: auto;}
+.layerone .welcomems{font-size: 24px;color: #373737;display: inline-block;height: 40px;line-height: 40px;float: left;width: auto;margin-right: 15px;}
+.layerone .hezuotime{height: 40px;box-shadow:0 16px 45px #f0efef;font-size: 14px;color: #808080;display: inline-block;margin-left: 25px;
+	padding: 0 25px;line-height: 40px;width: auto;border-radius: 10px;}
+.layerone .hezuotime .heztimekz{display: inline-block;line-height: 40px;float: left;margin-left: 15px;}
+.layerone .hezuotime .heztimekz .chengse{color: #fb8920;}
+.layerone .hezuotime .heztimekz  .jianjv{margin: 0 5px;}
+.layerone .hezuotime  .hezuoqudao{display: inline-block;margin-left:15px;float: left;margin-right: 15px;}
+.layerone .hezuotime  .hezuoqudao .qudaocount{font-size: 18px;color: #fb8920;}
+
+.siboxkz{overflow: hidden;height: auto;display: block;margin-top: 50px;padding: 0;}
+.siboxkz li{display: inline-block;float: left;width:22%;height: 180px;background: #323332;
+border-radius: 15px;margin-right: 4%;}
+.siboxkz li.nomargin{margin-right: 0 !important;}
+.siboxkz li .gonggsj{text-align: center;font-size: 30px;margin-top: 50px;}
+.siboxkz li .shujvcount{text-align: center;font-size: 36px;margin-top: 25px;color: #fff;}
+.siboxkz li .uvcolor{color: #33a1ff;}
+.siboxkz li .ipcolor{color: #9b5dff;}
+.siboxkz li .zhucecolor{color: #efb722;}
+.siboxkz li .youxcolor{color: #3ff5b3;}
+
+.chartstb{height: 569px;box-shadow:0 23px 45px #f0efef;margin-top: 60px;border-radius: 15px;
+overflow: hidden;}
+.chartstb .tubiaotop{width: 100%;margin-top: 40px;height: auto;overflow: hidden;}
+.chartstb .tubiaotop .leftms{float: left;margin-left: 20px;font-size: 24px;color: #373737;display: inline-block;margin-top: 7px;}
+.chartstb .tubiaotop .tbswitch{float: right;display: inline-block;margin-right: 80px;}
+.chartstb .tubiaotop .tbswitch li{display: inline-block;float: left;list-style: none;font-size: 22px;color: #808080;
+padding: 8px 20px;cursor: pointer;}
+.switchxg{color: #fb8920 !important;border-bottom: 3px solid #fb8920;}
+
+.tubiaozs{height: 400px;margin-top: 55px;width: 100%;margin:0 auto;}
