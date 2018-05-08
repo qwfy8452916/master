@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择展示</title>
+	<style>
+		
+.leftnav{width: 100%;border: 1px solid #e6e6e6;border-top:0;box-sizing: border-box;-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;height: auto;}
+.leftnav .onenav .oneli{border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;height: 50px;
+	line-height: 50px;font-size: 16px;color: #333;box-sizing: border-box;-webkit-box-sizing:border-box;}
+.leftnav .onenav .oneli span.onespan{height: 100%;padding: 0 25px;display: inline-block;margin-left: 20px;
+background: url(/assets/home/zixun/img/zhunavbj.png) no-repeat center bottom;position: relative;bottom: -1px;}
+.zhanshikz .zsdianji{height: 44px;line-height: 44px;font-size: 14px;background: #fff;color: #666;
+cursor: pointer;padding-left: 29px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+}
+.zhanshikz .zsdianji i{position: relative;margin-right: 5px;font-size:14px;color: #666;}
+.zhanshikz .zsdianji i.fa-sort-desc{top: -2px;}
+.zhanshikz .zsdianji i.fa-sort-asc{top: 2px}
+.zhanshikz ul.showzshid{background: #f5f5f5;padding: 5px 0;display: none;}
+.zhanshikz ul.xianshi{display: block;}
+.zhanshikz ul.showzshid li{padding: 5px 0;padding-left: 40px;box-sizing: border-box;-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;font-size: 14px;color: #999;}
+.yincang{display: none;}
+
+	</style>
+</head>
+<body>
+	<div class="leftnav">
+            <ul class="onenav">
+                <li class="oneli"><span class="onespan">建材</span></li>
+                 <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-asc" aria-hidden="true"></i>地板</div>
+                     <ul class="showzshid panduan xianshi">
+                         <li><a href="#">竹地板</a></li>
+                         <li><a href="#">强化地板</a></li>
+                         <li><a href="#">塑胶地板</a></li>
+                     </ul>
+                 </div>
+                 <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-desc" aria-hidden="true"></i>地板</div>
+                     <ul class="showzshid">
+                         <li><a href="#">竹地板</a></li>
+                         <li><a href="#">强化地板</a></li>
+                         <li><a href="#">塑胶地板</a></li>
+                     </ul>
+                 </div>
+                <li class="oneli"><span class="onespan">软装</span></li>
+                <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-asc" aria-hidden="true"></i>床上用品</div>
+                     <ul class="showzshid panduan xianshi">
+                         <li><a href="#">床上用品</a></li>
+                         <li><a href="#">装饰画</a></li>
+                         <li><a href="#">十字绣</a></li>
+                     </ul>
+                 </div>
+                 <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-desc" aria-hidden="true"></i>地板</div>
+                     <ul class="showzshid">
+                         <li><a href="#">竹地板</a></li>
+                         <li><a href="#">强化地板</a></li>
+                         <li><a href="#">塑胶地板</a></li>
+                     </ul>
+                 </div>
+                <li class="oneli"><span class="onespan">电器</span></li>
+                <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-asc" aria-hidden="true"></i>地板</div>
+                     <ul class="showzshid panduan xianshi">
+                         <li><a href="#">竹地板</a></li>
+                         <li><a href="#">强化地板</a></li>
+                         <li><a href="#">塑胶地板</a></li>
+                     </ul>
+                 </div>
+                 <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-desc" aria-hidden="true"></i>地板</div>
+                     <ul class="showzshid">
+                         <li><a href="#">竹地板</a></li>
+                         <li><a href="#">强化地板</a></li>
+                         <li><a href="#">塑胶地板</a></li>
+                     </ul>
+                 </div>
+                <li class="oneli"><span class="onespan">家具</span></li>
+                <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-asc" aria-hidden="true"></i>地板</div>
+                     <ul class="showzshid panduan xianshi">
+                         <li><a href="#">竹地板</a></li>
+                         <li><a href="#">强化地板</a></li>
+                         <li><a href="#">塑胶地板</a></li>
+                     </ul>
+                 </div>
+                 <div class="zhanshikz">
+                     <div class="zsdianji"><i class="fa fa-sort-desc" aria-hidden="true"></i>地板</div>
+                     <ul class="showzshid">
+                         <li><a href="#">竹地板</a></li>
+                         <li><a href="#">强化地板</a></li>
+                         <li><a href="#">塑胶地板</a></li>
+                     </ul>
+                 </div>
+            </ul>
+        </div>
+
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+   $(function(){
+
+
+       $('.zhanshikz .zsdianji').on('click',function(){
+        var contentnr=$(this).siblings('.showzshid');
+        if(contentnr.hasClass('panduan')){
+           contentnr.removeClass('panduan')
+           contentnr.animate({height:"hide"},400)
+
+           $(this).children('i').addClass('fa-sort-desc')
+           $(this).children('i').removeClass('fa-sort-asc')   
+           
+
+        }else{
+           contentnr.addClass('panduan')
+           contentnr.animate({height:"show"},400)
+
+           $(this).children('i').addClass('fa-sort-asc')
+           $(this).children('i').removeClass('fa-sort-desc')
+        }
+       })
+
+
+
+
+
+
+    });
+        </script>
+</body>
+</html>

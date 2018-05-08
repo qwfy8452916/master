@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>依次动画</title>
+	<style>
+		.llkk{width: 1500px;height: 500px;background: #ff5353;position: fixed;bottom: 0;left: 0;
+			transition:all 0.2;}
+	    .anniu{display: inline-block;padding: 10px;background: #ff5353;color: #fff;cursor: pointer;}
+
+	    .heightchange{height: 200px !important;}
+	    .widchange{width: 300px !important;}
+	</style>
+</head>
+<body>
+	 <div class="anniu01 anniu">缩按钮</div>
+	 <div class="anniu02 anniu">展按钮</div>
+	<div class="llkk"></div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		
+     $(function(){
+        
+        $(".anniu01").click(function(){
+
+            $(".llkk").animate({"height":"200px"}, 500,function(){
+            	$(".llkk").animate({"width":"300px"},500)
+            })
+
+        });
+
+
+       $('.anniu02').click(function(){
+       	  $(".llkk").animate({"width":"1500px"},500,function(){
+       	  	$(".llkk").animate({"height":"500px"},500)
+       	  })
+       });
+
+          
+
+     })
+
+	</script>
+</body>
+</html>

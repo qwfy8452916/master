@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	      *{margin:0;padding:0;}
+        ul,ol{list-style:none;}
+        #box{width:420px;height:630px;margin:100px auto;position:relative;overflow:hidden;}
+        #box li{height:630px;width:420px;background: #ff5353;}
+        #box ol{position:absolute;z-index:99;right:10px;bottom:10px;}
+        #box ol li{width:20px;height:20px;border-radius:20px;background:#ccc;float:right;margin-left:15px;float:left;}
+        #box ol li.current{background:#ff0;}
+	</style>
+</head>
+<body>
+	
+<div id="box">
+        <ul>
+            <li>
+                <!-- <img src="1.png" alt=""  width="420"/> -->
+                <p>11111111111</p>
+                <p>22222222222</p>
+                <p>33333333333</p>
+            </li>
+            <li>
+                <!-- <img src="2.png" alt=""  width="420"/> -->
+                <p>44444444444</p>
+                <p>55555555555</p>
+                <p>66666666666</p>                
+            </li>
+            <li>
+                <!-- <img src="3.png" alt=""  width="420"/>     -->
+                <p>77777777777</p>
+                <p>88888888888</p>
+                <p>99999999999</p>                
+            </li>
+        </ul>
+        <ol>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+	$(function(){
+
+     $(function(){
+            var index =0;
+            var timer = setInterval(function(){
+                index = (index == 2) ? 0 : index + 1;          
+                $("#box ul li").hide().eq(index).show();
+                $('#box ol li').eq(index).addClass('current').siblings().removeClass('current');
+            }, 3000);
+            $("#box ol li").hover(function(){
+                var index = $(this).index();
+                $("#box ul li").eq(index).show().siblings().hide();
+                $(this).addClass('current').siblings().removeClass('current');
+            })
+        })
+
+	})
+
+
+</script>
+
+
+</body>
+</html>

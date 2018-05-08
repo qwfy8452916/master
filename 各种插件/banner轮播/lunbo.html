@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	    .lun_box{height: 340px; position: relative; overflow: hidden;}
+.lun_box li{
+	position: absolute;
+	color: #fff;
+	 font-size: 50px;
+	 display: none;
+
+}
+.prev_banner,.next_banner,.curr_banner{
+	transition:1s;
+	 -moz-transition:1s;
+	 -o-transition:1s;
+	 -webkit-transition:1s;
+	 display: block!important;
+}
+.lun_box .prev_banner{height: 300px; width:320px; left:0px; z-index: 9; top:20px;background:blue;}
+.lun_box .next_banner{height: 300px; width:320px; right:0px; z-index: 9; top:20px; background:blue;}
+.lun_box .curr_banner{height: 340px;width:930px; top:0px; background: black; left:50%; margin-left: -465px;z-index: 10}
+
+	</style>
+</head>
+<body>
+	
+<div class="lun_banner wrap">
+    <button id="aa">变换</button>
+    <ul class="lun_box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+	$(function(){
+
+     var curr=0;
+function lun_slider(box){
+    curr++;
+    var banner_list=$(box).children("li");
+    var num=banner_list.length;
+    var curr_ele=curr%num;
+    console.log(curr+" 变量值")
+    console.log(num+"总")
+    console.log(curr_ele+" 取模值")
+
+        for(var i=0; i<num; i++){
+        if(i!=curr_ele&&i!=curr_ele+1&i!=curr_ele-1){
+             banner_list.eq(i).removeClass('curr_banner').removeClass('next_banner').removeClass('prev_banner');
+        }
+    }
+    if(curr_ele==0){//最后一个
+        banner_list.eq(0).addClass('curr_banner').removeClass('next_banner').removeClass('prev_banner');
+        banner_list.eq(curr_ele+1).addClass('next_banner').removeClass('prev_banner').removeClass('curr_banner');
+        banner_list.eq(num-1).addClass('prev_banner').removeClass('next_banner').removeClass('curr_banner') ;
+    }else{
+        if(curr_ele==num-1){
+            console.log("最后一个")
+            console.log(banner_list.eq(0).text())
+            banner_list.eq(0).addClass('next_banner').removeClass('prev_banner').removeClass('curr_banner');
+        }else{
+            banner_list.eq(curr_ele+1).addClass('next_banner').removeClass('prev_banner').removeClass('curr_banner');
+        }
+        banner_list.eq(curr_ele).addClass('curr_banner').removeClass('next_banner').removeClass('prev_banner');
+        banner_list.eq(curr_ele-1).addClass('prev_banner').removeClass('curr_banner').removeClass('next_banner');
+    }
+
+console.log("----------------结束-----------------------")
+
+}
+  $(".lun_box li").eq(0).addClass('curr_banner');
+  $(".lun_box li").eq(1).addClass('next_banner');
+  $(".lun_box li").eq($(".lun_box li").length-1).addClass('prev_banner');
+$("#aa").click(function() {
+
+
+
+   lun_slider(".lun_box");
+});
+
+
+	})
+
+
+</script>
+
+
+</body>
+</html>
