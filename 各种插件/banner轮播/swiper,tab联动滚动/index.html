@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>移动端本地模板</title>
+	<link rel="stylesheet" href="css/m-reset.css">
+	<link rel="stylesheet" href="css/m-publicrem.new.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/m-version.two.css">
+
+    <style>
+        
+        html,body{display: block;visibility: visible;}
+    </style>
+</head>
+<body>
+
+    <article>
+        <div class="m-wrap">
+	<!-- 装修流程 -->
+        <div class="zx-process pb3" id="zx-process">
+            <h2 class="common-title">装修流程</h2>
+            <div class="tab">
+                <div><span class="active">装修准备</span></div>
+                <div><span>装修施工</span></div>
+                <div><span>收尾入住</span></div>
+            </div>
+            <div class="swiper-container swiper-container-horizontal swiper-process">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-process-zb clearfix">
+                        <a href="/gonglue/shoufang">
+                            <img src="img/fangchan.png" alt="">
+                            <span>验房</span>
+                        </a>
+                        <a href="/gonglue/gongsi">
+                            <img src="img/zxgongsi.png" alt="">
+                            <span>选公司</span>
+                        </a>
+                        <a href="/gonglue/shejiyusuan">
+                            <img src="img/yusuan.png" alt="">
+                            <span>设计预算</span>
+                        </a>
+                        <a href="/gonglue/kanfengshui">
+                            <img src="img/fengshui.png" alt="">
+                            <span>看风水</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide swiper-process-sg clearfix">
+                        <a href="/gonglue/xuancai">
+                            <img src="img/fangchan.png" alt="">
+                            <span>选材</span>
+                        </a>
+                        <a href="/gonglue/chagai">
+                            <img src="img/fangchan.png" alt="">
+                            <span>拆改</span>
+                        </a>
+                        <a href="/gonglue/shuidian">
+                            <img src="img/zxgongsi.png" alt="">
+                            <span>水电</span>
+                        </a>
+                        <a href="/gonglue/fangshui">
+                            <img src="img/yusuan.png" alt="">
+                            <span>防水</span>
+                        </a>
+                        <a href="/gonglue/niwa">
+                            <img src="img/sheji.png" alt="">
+                            <span>泥瓦</span>
+                        </a>
+                        <a href="/gonglue/mugong">
+                            <img src="img/fengshui.png" alt="">
+                            <span>木工</span>
+                        </a>
+                        <a href="/gonglue/youqi">
+                            <img src="img/fengshui.png" alt="">
+                            <span>油漆</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide swiper-process-rz clearfix">
+                        <a href="/gonglue/jianche">
+                            <img src="img/fangchan.png" alt="">
+                            <span>验收</span>
+                        </a>
+                        <a href="/gonglue/baoyang">
+                            <img src="img/fangchan.png" alt="">
+                            <span>保养</span>
+                        </a>
+                        <a href="/gonglue/peishi">
+                            <img src="img/zxgongsi.png" alt="">
+                            <span>配饰</span>
+                        </a>
+                        <a href="/gonglue/jjsh">
+                            <img src="img/yusuan.png" alt="">
+                            <span>家居</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination" style="opacity: 0"></div>
+            </div>
+        </div>
+        
+        </div>
+    </article>
+
+
+	<script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="js/yanzhengx.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="js/jroll.js"></script>
+    <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/qzCitySelect.js"></script>
+    <script type="text/javascript" src="js/750rem.js"></script>
+    <script type="text/javascript">
+    	 // 城市选择插件
+
+      $(function(){
+
+       // 装修流程轮播效果
+            +function ($) {
+                var $zxprocess = $("#zx-process");
+                var $tab = $zxprocess.find(".tab>div");
+                var switchTab = function (index) {
+                    index = index ? index - 1 : 0;
+                    $tab.find("span").removeClass("active");
+                    $tab.eq(index).find("span").addClass('active');
+                }
+                var mySwiper = new Swiper('.swiper-container', {
+                    //移动端轮播
+                    pagination: '.swiper-pagination',
+                    autoplay: 3000,//可选选项，自动滑动
+                    initialSlide: 0,
+                    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                    observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                    paginationType: 'custom',
+                    paginationCustomRender: function (swiper, current, total) {
+                        switchTab(current);
+                        return current + ' of ' + total;
+                    }
+                });
+                $tab.on("click", function () {
+                    var index = $(this).index();
+                    $tab.find("span").removeClass("active");
+                    $(this).find("span").addClass('active');
+                    mySwiper.slideTo(index, 1000, false);
+                });
+            }(jQuery)
+   
+
+      })
+
+    </script>
+</body>
+</html>

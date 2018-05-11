@@ -46,7 +46,8 @@
         "pages/user_mark/user_mark",
         "pages/user_set/user_set",
         "component/line/line",
-        "pages/zxgonglue_list/zxgonglue_list"
+        "pages/zxgonglue_list/zxgonglue_list",
+        "pages/zhaobiao/zhaobiao"
     ],
     "window": {
         "backgroundTextStyle": "light",

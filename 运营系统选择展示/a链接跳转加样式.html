@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>地址栏解析</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/renyuankaohesz.css">
+</head>
+<body>
+	<section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-default">
+                    <div class="box-body no-padding">
+                        <div class="row daohang">
+                            <ul>
+                                <li class="gailan01">人员考核项目设置</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box box-body no-border padbotom">
+                    <div class="col-xs-12 no-padding">
+                        <div class="col-xs-2 contleft no-padding">
+                            <div class="title_xzrenyuan">选择人员</div>
+                            <div class="showhidekz yyzx">
+                                <div class="niutitle"><span>运营中心</span><i class="fa fa-chevron-circle-down leftjt" aria-hidden="true"></i></div>
+
+								  <ul class="panduan" id="dept1" style="display: block;"> 
+								   <li> <a class="85" href="a链接跳转加样式.html?uid=85&amp;udept=1&navType=yyzx">黄亮</a> </li>
+								   <li> <a class="860" href="a链接跳转加样式.html?uid=860&amp;udept=1&navType=yyzx">李赛凤</a> </li>
+								   <li> <a class="775" href="a链接跳转加样式.html?uid=775&amp;udept=1&navType=yyzx">刘雯</a> </li>
+								   <li> <a class="832" href="a链接跳转加样式.html?uid=832&amp;udept=1&navType=yyzx">刘燕</a> </li>
+								   <li> <a class="841" href="a链接跳转加样式.html?uid=841&amp;udept=1&navType=yyzx">刘金慧</a> </li> 
+								  </ul>
+
+                            </div>
+                            <div class="showhidekz tgyb">
+                                <div class="niutitle"><span>推广一部</span><i class="fa fa-chevron-circle-down leftjt" aria-hidden="true"></i></div>
+
+									  <ul class="panduan" style="display: block;"> 
+									   <li> <a class="540" href="a链接跳转加样式.html?uid=540&amp;udept=2&amp;navType=tgyb">刘响中</a> </li> 
+									   <li><span>视频一组</span><i class="fa fa-chevron-circle-down jianjvlef" aria-hidden="true"></i></li> 
+									   <ul class="ulyincang" style="display: none;"> 
+									    <li> <a class="296" href="a链接跳转加样式.html?uid=296&amp;udept=2&amp;navType=tgyb">刘杨梅</a> </li> 
+									   </ul>
+									   <li><span>视频二组</span><i class="fa fa-chevron-circle-down jianjvlef" aria-hidden="true"></i></li> 
+									   <ul class="ulyincang" style="display: none;"> 
+									   </ul>
+									   <li><span>微信一组</span><i class="fa fa-chevron-circle-down jianjvlef" aria-hidden="true"></i></li> 
+									   <ul class="ulyincang" style="display: none;"> 
+									   </ul> 
+									  </ul>
+
+                            </div>
+                            <div class="showhidekz tgeb">
+                                <div class="niutitle"><span>推广二部</span><i class="fa fa-chevron-circle-down leftjt" aria-hidden="true"></i></div>
+
+									  <ul class="panduan" style="display: block;"> 
+									   <li> <a class="4" href="a链接跳转加样式.html?uid=4&amp;udept=3&amp;navType=tgeb">齐装网</a> </li>
+									   <li> <a class="494" href="a链接跳转加样式.html?uid=494&amp;udept=3&amp;navType=tgeb">刘巧娣</a> </li> 
+									   <li><span>渠道部</span><i class="fa fa-chevron-circle-down jianjvlef" aria-hidden="true"></i></li> 
+									   <ul class="ulyincang" style="display: none;"> 
+									    <li> <a class="37" href="a链接跳转加样式.html?uid=37&amp;udept=3&amp;navType=tgeb">陈锦</a> </li>
+									    <li> <a class="90" href="a链接跳转加样式.html?uid=90&amp;udept=3&amp;navType=tgeb">鲁政</a> </li> 
+									   </ul>
+									   <li><span>美图编辑</span><i class="fa fa-chevron-circle-down jianjvlef" aria-hidden="true"></i></li> 
+									   <ul class="ulyincang" style="display: none;"> 
+									   </ul>
+									   <li><span>SEO一组</span><i class="fa fa-chevron-circle-down jianjvlef" aria-hidden="true"></i></li> 
+									   <ul class="ulyincang" style="display: none;"> 
+									    <li> <a class="114" href="a链接跳转加样式.html?uid=114&amp;udept=3&amp;navType=tgeb">许金莹</a> </li> 
+									   </ul> 
+									  </ul>
+
+                            </div>
+                            <div class="showhidekz cpb">
+                                <div class="niutitle"><span>产品部</span><i class="fa fa-chevron-circle-down leftjt" aria-hidden="true"></i></div>
+
+								  <ul class="panduan" style="display: block;"> 
+								   <li> <a class="316" href="a链接跳转加样式.html?uid=316&amp;udept=4&amp;navType=cpb">刘璐璐</a> </li> 
+								  </ul>
+
+                            </div>
+                            <div class="footgaodu"></div>
+
+                        </div>
+                        <div class="col-xs-10 contright">
+                            <if condition="$noinfo neq 1">
+                            <div class="title_kaohexm">选择考核项目</div>
+
+                                <volist name="optionList" id="vo">
+                                    <div class="xiansyckz">
+                                        <div class="dianjibt">
+                                            <label>
+                                                <if condition="$vo['checked'] eq 1">
+                                                    <input type="checkbox"  value="{$vo.did}" checked>{$vo.name}
+                                                    <else/>
+                                                    <input type="checkbox" value="{$vo.did}">{$vo.name}
+                                                </if>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </volist>
+
+                            <div class="col-xs-10 title_kaohexm">
+                                <button class="btn btn-primary" id="btn_save">保存</button>
+                            </div>
+                            <else/>
+                                <div class="title_kaohexm">请先选择考核人员</div>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+  <script>
+  	
+  	$(function(){
+
+
+       // 左侧展示
+            $('.showhidekz>ul').hide();
+            $('.showhidekz .leftjt').click(function () {
+                var neirong = $(this).parent().siblings();
+                if (neirong.is(":hidden")) {
+                    neirong.animate({
+                        height: "show"
+                    }, 400);
+                    $(this).removeClass('fa-chevron-circle-down');
+                    $(this).addClass('fa-chevron-circle-up');
+                } else {
+                    neirong.animate({
+                        height: "hide"
+                    }, 400);
+                    $(this).removeClass('fa-chevron-circle-up');
+                    $(this).addClass('fa-chevron-circle-down');
+                }
+            });
+
+
+            $('.panduan>ul.ulyincang').hide();
+            $('.showhidekz .jianjvlef').on('click',function(){
+              var sanneirong= $(this).parent().next('ul');
+              if(sanneirong.is(":hidden")){
+                 sanneirong.animate({
+                    height:"show"
+                 },400);
+                 $(this).removeClass('fa-chevron-circle-down')
+                 $(this).addClass('fa-chevron-circle-up');
+              }else{
+                 sanneirong.animate({
+                        height: "hide"
+                    }, 400);
+                    $(this).removeClass('fa-chevron-circle-up');
+                    $(this).addClass('fa-chevron-circle-down');
+              }
+
+            })
+
+
+
+
+             // urljiexi  url解析
+            var url=location.href;
+
+            parseUrl(url);
+            function parseUrl(url){
+              var result = [];
+              var query = url.split("?")[1];
+              if(query){
+                var queryArr = query.split("&");
+                console.log(queryArr)
+                   
+                  queryArr.forEach(function(item){
+                    var obj = {};
+                    var value = item.split("=")[1];
+
+                    var key = item.split("=")[0];
+
+                    obj[key] = value;
+                    result.push(obj);
+                    console.log(obj)
+                  });
+                  console.log(result);
+                  var idClass=result[0].uid;
+                  console.log(idClass)
+                  var navName=result[result.length-1];
+                  var currClassName=navName.navType;
+                  $("."+currClassName).children(".panduan").fadeIn();
+                  $("."+currClassName).children(".niutitle").children('i').attr("class","fa fa-chevron-circle-up leftjt")
+                  $("."+idClass).parent().parent(".ulyincang").fadeIn();
+                  $("."+idClass).parent().parent(".ulyincang").prev("li").children('i').attr("class","fa fa-chevron-circle-up jianjvlef");
+                  $("."+idClass).css("color","#ff5353")
+              }
+              
+              
+            }
+
+
+
+
+  	})
+
+
+
+  </script>
+</body>
+</html>
