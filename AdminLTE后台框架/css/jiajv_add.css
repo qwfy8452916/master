@@ -1,0 +1,87 @@
+.content > h1{font-size: 20px;}
+.padbotom{height: 100%;min-height: 890px;}
+.add_title{font-size: 18px;font-weight: bold;margin-bottom: 8px;overflow:hidden;}
+.bottombjv{margin-bottom:20px; }
+.inputtext{width: 100%;height: 35px;line-height: 35px;outline:none;color: #333;}
+.labelbq{width: 100%;height: 35px;line-height: 35px;outline:none;color: #333;border: 1px solid #a9a9a9;
+list-style: none;padding: 0;}
+.labelbq li{display: inline-block;float: left;font-size: 12px;color: #fff;width: 93px;height: 29px;line-height: 29px;
+background: #3c8dbc;margin-left: 5px;text-align: center;margin-top: 2px;border-radius: 5px;}
+.labelbq li .rightbj{padding: 4px;}
+
+.addlabel{width: 500px;height: 280px;position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin:auto;
+z-index: 999;background: #fff;border:1px solid #7f7f7f;font-size: 16px;display: none;}
+.addlabel .caozbiaoq{height: 35px;line-height: 35px;border-bottom: 1px solid #f6f6f6;padding: 0 10px;
+margin-bottom: 15px;}
+.addlabel .fa-close{display: inline-block;position: absolute;top: 5px;right: 10px;color: #d5d5d5;
+padding: 5px;cursor: pointer;}
+
+.addlabel .biaoqwaik{margin-bottom: 10px;padding: 0 10px;}
+.addlabel .biaoqwaik .biaoqname_title{margin-bottom: 5px;}
+.addlabel .biaoqwaik input{width: 185px;height: 35px;line-height: 35px;outline: none;
+color: #333;font-size: 14px;}
+.addlabel .biaoqwaik .tuijianxz{width: 100%;height: 35px;line-height: 35px;outline: none;font-size: 14px;}
+.footwaik{margin-top: 25px;border-top:1px solid #f7f7f7;padding:10px;text-align: right;}
+
+.fileinput-remove-button{background: #dd4b39;color: #fff;}
+.fileinput-remove-button:hover{background: #dd4b39;color: #fff;}
+.fileinput-upload-button{background: #00c0ef;color: #fff;padding: 6px 29px;}
+.fileinput-upload-button:hover{background: #00c0ef;color: #fff;}
+.kv-has-ellipsis{display: none !important;}
+.input-group .file-caption-name{display: none !important;}
+
+.picfile input{width: 100%;height: 35px;line-height: 35px;outline: none;}
+
+.fuwenbwaik{margin-top: 30px;}
+
+.selectcomdity{margin-top: 46px;}
+.selectcomdity .picarray{width: 100%;height: 250px;overflow: hidden;}
+.selectcomdity .aboutms{float: left;line-height: 34px;}
+.selectcomdity .selectniu{float: right;}
+
+.picarray .detailpic{list-style: none;padding: 0;overflow: hidden;}
+.picarray .detailpic li{display: inline-block;float: left;height: auto;
+}
+.picarray .detailpic li img{width: 100%;height: 207px;}
+.picarray .detailpic li .tuwenms{font-size: 14px;color: #666;margin-top: 10px;
+overflow:hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:2;
+-webkit-box-orient:vertical;}
+
+.selectcomdity .switchniu{width: 100%;overflow: hidden;margin-top: 45px;}
+.selectcomdity .switchniu .qiyong{font-weight: bold;font-size: 18px;vertical-align:middle;
+margin-right: 28px;}
+
+.selectcomdity .savecancel{width: 100%;overflow: hidden;margin-top: 30px;}
+.selectcomdity .savecancel .save{padding: 6px 22px;margin-right: 20px;}
+.selectcomdity .savecancel .cancel{padding: 6px 22px;}
+
+
+
+.zzc{width:100%; height:100%; background: rgba(0,0,0,0.8);position: fixed; left:0px;top:0px;  z-index: 99999; display: none;}
+.win-box{width:98%; height:calc(100% - 40px); background: #fff; margin:20px auto;}
+.win-head{overflow: hidden; border-bottom: 1px solid #DEDEDE; font-size:16px; padding:10px 0px; }
+.win-head span{padding:3px 10px;display: inline-block; cursor: pointer;}
+.win-body{padding:5px 10px; height:calc(100% - 105px); overflow: auto}
+.chose-box{margin-bottom: 20px; display: none;}
+/* .image-table{width:100%; }
+.image-table th{height: 35px;}
+.image-table tr{height: 40px;}
+.image-table tr td{border-bottom: 1px solid #999999;} */
+
+
+.tishi_box{
+    width:calc(100% - 30px);
+    max-height: 150px;
+    border: 1px solid #DEDEDE;
+    background: #fff;
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0px 0px 4px 1px #DEDEDE;
+    overflow-y: auto;
+}
+.tishi_box ul{list-style: none;padding-left: 10px !important;}
+.tishi_box ul li{list-style: none;text-align: left;line-height: 25px;}
+.jvzhongxs .xuanzeop{width: 110px;height: 36px;vertical-align: middle;outline: none;margin-right: 10px;}
+.jvzhongxs .xuanzeop2{width: 110px;height: 36px;vertical-align: middle;outline: none;margin-right: 10px;}
+.jvzhongxs .qujiandg .qujian2{right: 16px;top: 8px;}
+.jvzhongxs .qujiandg .dange2{left: 127px;top: 8px;}

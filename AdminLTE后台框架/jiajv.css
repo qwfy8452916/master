@@ -1,0 +1,20 @@
+.content > h1{font-size: 20px;}
+.padbotom{height: 600px;}
+.inputitle{font-size: 18px;font-weight: bold;margin-bottom: 5px;}
+.shuruk{height: 35px;line-height: 35px;outline: none;width: 95%;}
+.shuruk input.datepicker{width: 100%;height: 100%;}
+
+table{border: 0 !important;margin-top: 30px;}
+table tr{border-bottom: 1px solid #999;}
+table th,table td{text-align: center !important;width: 1%;vertical-align: middle !important;border: 0 !important;}
+table .edit{color: #2b398f;margin-right: 5px;cursor: pointer;}
+table .delete{color: #ff5353;cursor: pointer;}
+
+
+.dibufenye{text-align: center;}
+.dibufenye li .suoyoujil{margin-left: 20px;}
+.dibufenye .tiaozhuanyes{position: relative;top: 1px;margin-left: 5px;}
+.dibufenye .tiaozhuanyes input{width: 40px;height: 30px;outline: none;margin: 0 5px;}
+.dibufenye .surequed{float: right;margin-left: 5px;display: inline-block}
+.dibufenye .surequed a{border-radius: 5px;background: #00cccc;color: #fff;}
+.dibufenye .surequed a:hover{background: #00cccc;color: #fff;cursor: pointer;}
