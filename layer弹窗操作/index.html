@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>layer弹窗</title>
+	<link rel="stylesheet" href="layer/theme/default/layer.css">
+	<style>
+		
+       ul{list-style: none;}
+       ul li{list-style: none;padding:5px 10px;text-align: center;height: 25px;color: #fff;display: inline-block;float: left;
+       	background: #375f69;margin-right: 5px;}
+
+	</style>
+
+</head>
+<body>
+	<ul>
+		<li>msg提示</li>
+		<li>alert提示</li>
+		<li>confirm提示</li>
+		<li>小tips</li>
+		<li>加载层</li>
+		<li>还有很多...</li>
+	</ul>
+   
+   	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
+
+	<script>
+		
+      $(function(){
+
+        $('ul li').eq(0).click(function(){
+        	layer.msg('我是msg提示',{time: 1300},function(){
+        		layer.msg('提示后再执行')
+        	})
+        })
+
+        $('ul li').eq(1).click(function(){
+        	layer.alert('我是alert提示',{icon: 1,
+           skin: 'layer-ext-moon'},function(){
+           	 layer.msg("确定后执行")
+           })
+        })
+
+        $('ul li').eq(2).click(function(){
+        	layer.confirm('您是如何看待前端开发？', {
+			  btn: ['重要','奇葩'] //按钮
+			}, function(){
+			  layer.msg('的确很重要', {icon: 1});
+			}, function(){
+			  layer.msg('也可以这样', {
+			    time: 20000, //20s后自动关闭
+			    btn: ['明白了', '知道了']
+			  });
+			});
+        })
+
+
+        $('ul li').eq(3).click(function(){
+           
+             layer.tips('我是另外一个tips，只不过我长得跟之前那位稍有些不一样。',  $('ul li').eq(3), {
+			  tips: [1, '#3595CC'],
+			  time: 4000
+			});
+
+        })
+
+        $('ul li').eq(4).click(function(){         //少图片估计
+           
+            var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+			//loading层
+			var index = layer.load(1, {
+			  shade: [0.1,'#fff'], //0.1透明度的白色背景
+			  time: 2000,
+			});
+
+        })
+        
+
+      	
+
+
+
+
+      })
+
+
+	</script>
+
+</body>
+</html>
