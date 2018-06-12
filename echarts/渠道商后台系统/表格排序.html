@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格排序</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<style>
+
+table,table tr th, table tr td {border:1px solid #000 !important;background: #fff;width: 1%;text-align: center;
+height: 35px;line-height: 35px;}
+table {text-align: center; border-collapse: collapse;width: 100%;margin-top: 100px;}
+
+.sort{display: inline-block;margin-left: 30px;vertical-align: bottom;width: 14px;font-size: 0;vertical-align: middle;
+	line-height: 0 !important;}
+.sort i{font-size: 16px !important;line-height: 7px;}
+
+	</style>
+
+</head>
+<body>
+
+<!-- 	<span class="btn btn-more">
+   <i class="fa fa-angle-down"></i>
+   <i class="fa fa-angle-up hidden"></i>
+</span> -->
+
+<table>
+<tbody>
+
+    <tr class="biao-head">
+        <th>日期<div class="sort">
+                        	<a href="#">
+                        		<i class="fa fa-caret-up"></i>
+                        	</a>
+                        	<a href="#">
+                        		<i class="fa fa-caret-down"></i>
+                        	</a>
+                        	
+                        </div></th>
+        <th>UV<div class="sort">
+                        	<a href="#">
+                        		<i class="fa fa-caret-up"></i>
+                        	</a>
+                        	<a href="#">
+                        		<i class="fa fa-caret-down"></i>
+                        	</a>
+                        	
+                        </div></th>
+        <th>IP<div class="sort">
+                        	<a href="#">
+                        		<i class="fa fa-caret-up"></i>
+                        	</a>
+                        	<a href="#">
+                        		<i class="fa fa-caret-down"></i>
+                        	</a>
+                        	
+                        </div></th>
+        <th>注册量<div class="sort">
+                        	<a href="#">
+                        		<i class="fa fa-caret-up"></i>
+                        	</a>
+                        	<a href="#">
+                        		<i class="fa fa-caret-down"></i>
+                        	</a>
+                        	
+                        </div></th>
+        <th>有效注册量<div class="sort">
+                        	<a href="#">
+                        		<i class="fa fa-caret-up"></i>
+                        	</a>
+                        	<a href="#">
+                        		<i class="fa fa-caret-down"></i>
+                        	</a>
+                        	
+                        </div></th>
+    </tr>
+
+    <tr>
+        <td>2018-01-31</td>
+        <td>123</td>
+        <td>123</td>
+        <td>------</td>
+        <td>------</td>
+    </tr>
+
+</tbody>
+</table>
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+
+	$(function(){
+
+    //       $('.btn-more').click(function(ev){
+    
+    //     $(this).children('.fa-angle-down').toggleClass('hidden');
+    //     $(this).children('.fa-angle-up').toggleClass('hidden');
+    // })
+
+
+	})
+
+</script>
+</body>
+</html>

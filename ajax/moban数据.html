@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax调取数据</title>
+</head>
+<body>
+
+    <div id="sub_cate"></div>	
+
+<script type="text/javascript" src="../common/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/template.js"></script>
+
+<script type="text/x-handlebars-template" id="fenlei-tpl">
+    {{each items as value index}}
+        <option value="{{value.val}}">{{value.name}}</option>
+    {{/each}}
+</script>
+
+ <script>
+
+    $(function(){
+
+
+
+
+		  var data={
+    "items":[{'name':'名字一','val':'数据一'},
+    {'name':'名字二','val':'数据二'},
+    {'name':'名字三','val':'数据三'},
+    {'name':'名字四','val':'数据四'}
+    ]
+}
+		var tplStr = template('fenlei-tpl',data);
+		            console.log(tplStr);
+		            $('#sub_cate').html(tplStr);
+
+
+
+        // $("#top_cate").change(function(event) {
+        //     // if($("#top_cate").val() == 1){
+        //         $.ajax({
+        //             url: 'http://168jjdg.ziquang.com/admin/cate/getchild?pid=4&level=2',
+        //             type: 'GET',
+        //             dataType: 'JSON',
+        //             data: {},
+        //         })
+        //         .done(function(data) {
+        //             if (data.status == 1) {
+        //                 console.log(data);
+        //                 var tplStr = template('fenlei-tpl',data);
+        //                 console.log(tplStr);
+        //                 $('#sub_cate').html(tplStr);
+        //             }
+        //         })
+        //         .fail(function() {
+        //             console.log("error");
+        //         })
+        //     // }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格排序</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<style>
+
+.fa-sort-down:before {
+  content: "\f0dd"; /* 下 */
+}
+.fa-sort-up:before {
+  content: "\f0de"; /* 上 */
+}
+
+.sort{
+    position: relative;
+    padding-right: 15px;
+}
+.sort:before,
+.sort:after{
+    position: absolute;
+    right: 5px;
+    z-index: 1;
+    font-size: 12px;
+}
+.sort:before{
+    top:2px;
+    content: "\f0de";
+}
+.sort:after{
+    bottom:2px;
+    content: "\f0dd";
+}
+.sort.up:before,
+.sort.down:after{
+    color: #f00;
+}
+
+
+	</style>
+</head>
+<body>
+<!-- 	<span class="btn btn-more">
+   <i class="fa fa-angle-down"></i>
+   <i class="fa fa-angle-up hidden"></i>
+</span> -->
+
+
+<p>
+    <a class="fa sort">文字</a>
+    <a class="fa sort up">文字</a>
+    <a class="fa sort down">文字</a>
+</p>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+
+	$(function(){
+
+    //       $('.btn-more').click(function(ev){
+    
+    //     $(this).children('.fa-angle-down').toggleClass('hidden');
+    //     $(this).children('.fa-angle-up').toggleClass('hidden');
+    // })
+
+
+	})
+
+</script>
+</body>
+</html>
