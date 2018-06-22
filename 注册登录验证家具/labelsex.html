@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>label性别选择</title>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_693032_yxwxw14uut9.css">
+	<style>
+		.waikuang{width: 400px;height: 500px;margin: 0 auto;background: #f6bbbb;}
+		.sexman{border-bottom: 1px solid #f2f2f2;}
+		label{display: block;padding: 10px 15px; background: #fff;cursor: pointer; 
+			display: -webkit-box;
+		    display: -webkit-flex;
+		    display: flex;
+		    -webkit-box-align: center;
+		    -webkit-align-items: center;
+		    align-items: center;
+		}
+		label input{outline: none;border: 0;-webkit-appearance: none;}
+		.lab_left{float: left;-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;}
+		.lab_rigth{float: right;}
+		.icon-xuanze{color: #09bb07;font-weight: bold;}
+		.iconhidden{display: none;}
+	</style>
+</head>
+<body>
+
+	<div class="waikuang">
+		<label for="x11" class="sexman sexselect11">
+			<div class="lab_left">先生</div>
+			<div class="lab_rigth">
+				<input type="radio" name="sex" id="x11" value="先生">
+				<i class="iconfont icon-xuanze iconhidden nanshi"></i>
+			</div>
+		</label>
+		<label for="x12" class="sexselect12">
+			<div class="lab_left">女士</div>
+			<div class="lab_rigth">
+				<input type="radio" name="sex" id="x12" value="女士">
+				<i class="iconfont icon-xuanze iconhidden nvshi"></i>
+			</div>
+		</label>
+	</div>
+	
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+         $(function(){
+
+           $(document).on('click','.sexselect11',function(){
+           	  if($('#x11').is(":checked")){
+           	  	$('.sexselect11 .nanshi').removeClass('iconhidden');
+           	  	$('.sexselect12 .nvshi').addClass('iconhidden')
+           	  }
+           })
+
+           $(document).on('click','.sexselect12',function(){
+           	  if($('#x12').is(":checked")){
+           	  	$('.sexselect11 .nanshi').addClass('iconhidden');
+           	  	$('.sexselect12 .nvshi').removeClass('iconhidden');
+           	  }
+           })
+
+
+         })
+
+
+	</script>
+</body>
+</html>

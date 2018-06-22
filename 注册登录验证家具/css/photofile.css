@@ -1,0 +1,20 @@
+html,body{height: 100%;}
+.wrappic{overflow: hidden;width: 100%;height: 100%;background:#1c1c1c !important; }
+.phototitle{width: 100%;height:0.38rem;line-height: 0.38rem;background: #323436;
+	padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.phototitle .fanback{height: 0.38rem;width: 0.38rem;display: inline-block;float: left;}
+.phototitle .icon-fanhui1{float: left;color: #fff;}
+.phototitle .photoms{color: #fff;display: inline-block;float: left;height: 0.25rem;line-height: 0.25rem;margin-top:0.065rem;
+border-left: 1px solid #262626;padding-left: 0.25rem;}
+.phototitle .morewaik{float: right;height: 0.38rem;width: 0.25rem;display: inline-block;
+text-align: right;position: relative;overflow: hidden;}
+.phototitle .filepic{width: 100%;height:0.25rem;display: inline-block;position: absolute;left: 0;top: 0.065rem;
+opacity: 0;}
+.phototitle .icon-gengduo{ color: #fff;font-size:20px; }
+.picarea{width: 100%;height: 3rem;background: #383838;}
+.suregh{width: 100%;height:0.38rem;line-height: 0.38rem;
+	padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.suregh .genghuan{height: 100%;width: 100%;background: #009bdb;color: #fff;border: 0;outline: none;
+font-size: 0.126rem;}
+
+.okview{width: 1.25rem;height: 1.25rem;margin:0 auto;background: #fff;margin-top:0.2rem; }

@@ -1,0 +1,41 @@
+
+html,body{background: #f5f5f5 !important;height: 100%;}
+.collection_title{text-align: center;height: 0.5rem;line-height: 0.5rem;font-size: 0.17rem;
+padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+border: 1px solid #e6e6e6;width: 100%;background: #fff;}
+.icon-fanhui{float: left;}
+.icon-fanhui:before{content: "\e600";}
+.icon-gerenzhongxin:before {
+    content: "\e606";
+}
+.icon-xin:before{content: "\e635";}
+.icon-gerenzhongxin{float: right;font-size: 0.15rem;}
+.collectionwaik{width: 100%;padding: 0.2rem 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: auto;background: #fff;text-align: justify;padding-bottom: 0;overflow:hidden;}
+.collectionwaik ul li{width: 100%;height: auto;overflow:hidden;margin-bottom: 0.2rem;}
+.collectionwaik ul li a{display:block;overflow:hidden;}
+.collectionwaik ul li .sclist_lef{display: inline-block;float: left;width: 1.1rem;height: 1.1rem;overflow:hidden;
+}
+.collectionwaik ul li .sclist_lef img{width: 100%;}
+.sclist_rig{display: inline-block;float:left;margin-left: 0.1rem;width: calc(100% - 1.2rem);}
+.sclist_rig .mstitle{color: #333;font-size: 0.14rem;font-weight: 700;}
+.sclist_rig .neirongms{color: #999;font-size:0.12rem;margin:0.1rem 0;}
+.pricesl .pricesl_jiage{display: inline-block;color: #333;font-size:0.14rem;float: left;}
+.pricesl .pricesl_xiaol{display: inline-block;color: #999;font-size:0.12rem;margin-left: 0.1rem;float: left;}
+.pricesl .djshouc{display: inline-block;float: right;font-size: 0.12rem;color: #f21855;}
+.pricesl .djshouc .icon-xin{margin-right:0.025rem;}
+
+.collguess{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: auto;background: #fff;text-align: justify;padding-bottom: 0;overflow:hidden;margin-top: 0.1rem;}
+.caiyicai{text-align: center;font-size: 0.17rem;color: #333;padding: 0.17rem 0;}
+.caiyicai span{position: relative;}
+.caiyicai span:before{content: "";height: 1px;width: 60px;background: #333;position: absolute;left: -68px;top: 13px;}
+.caiyicai span:after{content: "";height: 1px;width: 60px;background: #333;position: absolute;right: -68px;top: 13px;}
+
+.loveul{overflow: hidden;width: 100%;}
+.loveul li{width: 48.3%;display: inline-block;float: left;height: auto;margin-bottom: 0.2rem;}
+.loveul li:nth-child(odd){margin-right: 3.4%;}
+.loveul li .pictop{width: 100%;height: 1.3rem;}
+.loveul li .pictop img{width: 100%;height: 100%;}
+.loveul li .pictitle{text-align: center;margin-top: 0.07rem;}
+.loveul li .price_jine{text-align: center;color: #f21855;margin-top: 0.02rem;font-weight: 700;}

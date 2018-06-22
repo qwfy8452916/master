@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回车事件</title>
+
+	<style>
+		.quyu01{width: 200px;height: 200px;background: #f7bbe1;}
+		.quyu02{width: 200px;height: 200px;background: #f7f6bb;}
+
+	</style>
+</head>
+<body>
+	<button onkeydown="zhixing()" class="huichesj">回车事件</button>
+
+    <div id="oneniu" class="quyu01" tabIndex=-1 style="outline: none;"></div>
+    <div id="likui" class="quyu02" tabIndex=-1 style="outline: none;"></div>
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		function zhixing(){
+			if(event.keyCode==13){
+          	alert("您按下了回车键1");
+             }
+		}
+
+		function zhixing2(){
+			if(event.keyCode==13){
+          	alert("您按下了回车键2");
+             }
+		}
+
+		function zhixing3(){
+			if(event.keyCode==13){
+          	alert("您按下了回车键3");
+             }
+		}
+
+
+		document.getElementById('likui').onkeydown=function(){
+			zhixing2();
+		}
+
+		$("#oneniu").bind("keypress",zhixing3);
+        
+   //      document.getElementById('likui').onkeydown=function(e){
+   //        var e = e||event;              //判断兼容
+			// if(e.keyCode==13){         //判断按钮
+			//         alert(1);
+			// }
+   //      }
+
+	</script>
+</body>
+</html>

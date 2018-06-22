@@ -1,0 +1,59 @@
+
+html,body{background: #f5f5f5 !important;position: relative;height: 100%;}
+.personal_title{text-align: center;height: 0.5rem;line-height: 0.5rem;font-size: 0.17rem;
+padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+border: 1px solid #e6e6e6;width: 100%;background: #fff;}
+.icon-fanhui{float: left;}
+.photo{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.8rem;line-height: 0.8rem;overflow: hidden;background: #fff;margin-bottom: 0.1rem;}
+.photo .mingcheng{float: left;}
+.photo .touxiang{width:0.55rem;height: 0.55rem;line-height: 0.55rem;overflow: hidden;vertical-align: middle;display: inline-block;float: right;
+	position: relative;top: 50%;transform: translate(0,-50%);-webkit-transform:translate(0,-50%);-moz-transform:translate(0,-50%);}
+.photo .touxiang img{width: 100%;vertical-align:middle;float: left;}
+
+
+
+.nicheng{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.445rem;line-height: 0.445rem;background: #fff;color: #333;border-bottom: 1px solid #e6e6e6;}
+.xinxi_right{float: left;}
+.xinxi_right{float: right;color: #999;}
+.icon-more{float: right;font-size: 20px;}
+.sexxb{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.445rem;line-height: 0.445rem;background: #fff;border-bottom: 1px solid #e6e6e6;color: #333;}
+.icon-phone{float: right;color: #f21a56;font-size: 20px;}
+.phone{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.445rem;line-height: 0.445rem;background: #fff;color: #333;border-bottom: 1px solid #e6e6e6;color: #333;}
+.birthday{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.445rem;line-height: 0.445rem;background: #fff;color: #333;border-bottom: 1px solid #e6e6e6;color: #333;}
+.region{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.44rem;line-height: 0.44rem;background: #fff;color: #333;}
+.modify{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.44rem;line-height: 0.44rem;background: #fff;color: #333;margin-top: 0.1rem;}
+
+
+/*头像样式修改*/
+
+
+.wrappic{overflow: hidden;width: 100%;height: 100%;background:#1c1c1c !important;display: none;position: fixed;top: 0;left: 0;}
+.phototitle{width: 100%;height:0.38rem;line-height: 0.38rem;background: #323436;
+	padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.phototitle .fanback{height: 0.38rem;width: 0.38rem;display: inline-block;float: left;}
+.phototitle .icon-fanhui1{float: left;color: #fff;}
+.phototitle .photoms{color: #fff;display: inline-block;float: left;height: 0.25rem;line-height: 0.25rem;margin-top:0.065rem;
+border-left: 1px solid #262626;padding-left: 0.25rem;}
+.phototitle .morewaik{float: right;height: 0.38rem;width: 0.25rem;display: inline-block;
+text-align: right;position: relative;overflow: hidden;}
+.phototitle .filepic{width: 100%;height:0.25rem;display: inline-block;position: absolute;left: 0;top: 0.065rem;
+opacity: 0;}
+.phototitle .icon-gengduo{ color: #fff;font-size:20px; }
+.picarea{width: 100%;height: 3rem;background: #383838;}
+.suregh{width: 100%;height:0.38rem;line-height: 0.38rem;
+	padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.suregh .genghuan{height: 100%;width: 100%;background: #009bdb;color: #fff;border: 0;outline: none;
+font-size: 0.126rem;}
+
+.okview{width: 1.25rem;height: 1.25rem;margin:0 auto;background: #fff;margin-top:0.2rem; }
+
+
+
+/*头像样式修改*/

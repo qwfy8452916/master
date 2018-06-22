@@ -1,0 +1,49 @@
+
+html,body{background: #f5f5f5 !important;position: relative;height: 100%;position: relative;}
+.login_title{text-align: center;height: 0.5rem;line-height: 0.5rem;font-size: 0.17rem;
+padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+border: 1px solid #e6e6e6;width: 100%;background: #fff;color: #333;}
+.icon-fanhui{float: left;}
+.loginwaik{width: 100%;
+	padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.loginwaik .logintx{width: 100%;height: 1.4rem;line-height: 1.4rem;text-align: center;}
+.icon-geren2{font-size:0.8rem;color: #dbdbdb;}
+.loginwaik .dlphonewk{width: 100%;height: 0.44rem;position: relative;}
+.loginwaik .dlphonewk .icon-shouji-copy{position: absolute;left:0.1rem;top: 50%;font-size:0.15rem;
+transform:translate(0,-50%);-webkit-transform:translate(0,-50%);-moz-transform:translate(0,-50%);}
+.loginwaik .dlphonewk input{width: 100%;height: 100%;outline: none;padding: 0.1rem 0.25rem;font-size:0.15rem;
+box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;color: #333;}
+
+.loginwaik .dlpass{width: 100%;height: 0.44rem;position: relative;margin-top: 0.1rem;}
+.icon-suo{position: absolute;left:0.1rem;top: 50%;font-size:0.15rem;
+transform:translate(0,-50%);-webkit-transform:translate(0,-50%);-moz-transform:translate(0,-50%);}
+.loginwaik .dlpass input{width: 100%;height: 100%;outline: none;padding: 0.1rem 0.25rem;font-size:0.15rem;
+box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;color: #333;}
+
+.loginwaik .tihsims{color: #f21855;font-size:0.12rem;height: 0.23rem;line-height: 0.23rem;}
+
+
+.tijiaoniu{width: 100%;font-size:0.12rem;color: #666;line-height: 0.21rem;height: auto;overflow: hidden;
+	padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.tijiaoniu .tijiao{width: 100%;background: #f21a56;color: #fff;outline: none;border: 0;
+font-size: 0.17rem;height:0.44rem;line-height:0.44rem;}
+.tijiaoniu .zhucpass{font-size: 0.13rem;margin-top:0.1rem;}
+.tijiaoniu .zhucpass .register_user{float: left;color: #f21855;}
+.tijiaoniu .zhucpass .back_password{float: right;color: #333;}
+
+.otherlogin{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+overflow: hidden;height: auto;text-align: center;margin-top: 0.7rem;}
+.otherlogin .other_ms{width: 100%;color: #808080;font-size: 0.12rem;}
+.otherlogin .other_ms span{position: relative;display: inline-block;}
+.otherlogin .other_ms span:before{content:"";width:50px;height: 1px;background: #999;position: absolute;
+left: -60px;top: 10px;}
+.otherlogin .other_ms span:after{content:"";width:50px;height: 1px;background: #999;position: absolute;
+right: -60px;top: 10px;}
+.otherlogin .otherwaik{overflow: hidden;margin-top: 0.25rem;}
+.otherlogin .otherwaik a{margin-right: 0.4rem;}
+.otherlogin .otherwaik .qqlogin{display: inline-block;width: 0.4rem;height: 0.4rem;background: url(../img/qqloginbj.png) no-repeat;
+background-size: 100%;}
+.otherlogin .otherwaik .wxlogin{display: inline-block;width: 0.4rem;height: 0.4rem;background: url(../img/wxloginbj.png) no-repeat;
+background-size: 100%;}
+.otherlogin .otherwaik .wblogin{display: inline-block;width: 0.4rem;height: 0.4rem;background: url(../img/wbloginbj.png) no-repeat;
+background-size: 100%;margin-right: 0 !important;}

@@ -1,0 +1,28 @@
+
+html,body{background: #f5f5f5 !important;position: relative;height: 100%;}
+.personal_title{text-align: center;height: 0.5rem;line-height: 0.5rem;font-size: 0.17rem;
+padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+border: 1px solid #e6e6e6;width: 100%;background: #fff;}
+.icon-fanhui{float: left;}
+.photo{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.8rem;line-height: 0.8rem;overflow: hidden;background: #fff;}
+.photo .touxiang{width:0.55rem;height: 0.55rem;overflow: hidden;vertical-align: middle;display: inline-block;float: left;
+	position: relative;top: 50%;transform: translate(0,-50%);-webkit-transform:translate(0,-50%);-moz-transform:translate(0,-50%);}
+.photo .touxiang img{width: 100%;vertical-align:middle;float: left;}
+.photo .namephone{display: inline-block;line-height:30px;position: relative;top: 50%;
+	transform: translate(0,-50%);-webkit-transform:translate(0,-50%);-moz-transform:translate(0,-50%);
+margin-left: 0.075rem;background: #fff;}
+.namephone .name{font-size: 0.15rem;color: #333;}
+.namephone .phone{font-size: 0.12rem;color: #808080;}
+.icon-more{float: right;font-size: 20px;}
+.collect{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.44rem;line-height: 0.44rem;margin: 0.1rem 0;background: #fff;color: #333;}
+.contact{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.445rem;line-height: 0.445rem;background: #fff;border-bottom: 1px solid #e6e6e6;color: #333;}
+.icon-phone{float: right;color: #f21a56;font-size: 20px;}
+.opinion{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.44rem;line-height: 0.44rem;background: #fff;color: #333;}
+.exitlogin{width: 100%;padding: 0 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+height: 0.44rem;line-height: 0.44rem;position: absolute;bottom: 0.5rem;}
+.exitlogin a{height: 100%;width: 100%;text-align:center;display: block;color: #fff;font-size: 0.17rem;
+background: #f21a56;}

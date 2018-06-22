@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>登录</title>
+	<link rel="stylesheet" href="css/m-reset.css">
+	<link rel="stylesheet" href="css/m-publicrem.new.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_693032_pwdzkfkuf03sor.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+	
+
+   	    <div class="login_title"><i class="iconfont icon-fanhui"></i>登录</div>
+        <div class="loginwaik">
+            <div class="logintx"><i class="iconfont icon-geren2"></i></div>
+            <div class="dlphonewk">
+                <i class="iconfont icon-shouji-copy"></i>
+                <input type="text" maxlength=11 placeholder="请输入新的手机号码">
+            </div>
+
+            <div class="dlpass">
+                <i class="iconfont icon-suo"></i>
+                <input type="text" maxlength=11 placeholder="请设置6-20位密码">
+            </div>
+            <div class="tihsims"></div>
+        </div>
+        <div class="tijiaoniu">
+            <button class="tijiao">登录</button>
+            <div class="zhucpass">
+              <a class="register_user" href="#">注册新用户</a>
+              <a class="back_password" href="#">找回密码</a>
+            </div>
+        </div>
+        <div class="otherlogin">
+            <div class="other_ms">
+               <span>第三方账号登录</span>
+            </div>
+            <div class="otherwaik">
+                <a href="#" class="qqlogin"></a> 
+                <a href="#" class="wxlogin"></a>
+                <a href="#" class="wblogin"></a>
+            </div>
+        </div>
+
+
+
+
+
+
+	<script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="js/yanzhengx.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="js/jroll.js"></script>
+    <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/qzCitySelect.js"></script>
+    <script type="text/javascript" src="js/layer.js"></script>
+
+    <script type="text/javascript">
+
+      $(function(){
+
+      
+
+        $('.tijiaoniu .tijiao').click(function() {
+            var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$"),
+                reg2 = new RegExp("^174|175[0-9]{8}$"),
+                reg3 = /^[\s\S*]{6,20}$/,
+                shoujival = $('.loginwaik .dlphonewk input').val(),
+                passval = $('.loginwaik .dlpass input').val();
+                if(shoujival==''){
+                  $('.loginwaik .dlphonewk input').focus();
+                  $('.loginwaik .tihsims').html("手机号码不能为空");
+                  return false;
+                }else if(!reg.test(shoujival)){
+                   $('.loginwaik .dlphonewk input').focus();
+                   $('.loginwaik .tihsims').html("请填写正确的手机号1");
+                   return false;
+                }else if(reg2.test(shoujival)){
+                   $('.loginwaik .dlphonewk input').focus();
+                   $('.loginwaik .tihsims').html("请填写正确的手机号2");
+                   return false;
+                }
+                if(passval==''){
+                  $('.loginwaik .dlpass input').focus();
+                  $('.loginwaik .tihsims').html('密码不能为空');
+                  return false
+               }else if(!reg3.test(passval)){
+                 $('.loginwaik .dlpass input').focus();
+                  $('.loginwaik .tihsims').html('密码为6-20位数');
+                  return false
+               }else{
+                   layer.msg('登录',{time:1300})
+                   $('.loginwaik .tihsims').html('');
+               }
+            })
+           
+      })
+
+
+    </script>
+</body>
+</html>

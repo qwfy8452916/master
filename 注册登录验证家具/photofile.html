@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>个人头像</title>
+	<link rel="stylesheet" href="css/m-reset.css">
+	<link rel="stylesheet" href="css/m-publicrem.new.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_693032_ggu1igddfi4cmcxr.css">
+    <link rel="stylesheet" href="css/photofile.css">
+</head>
+<body>
+<div class="wrappic">
+     <div class="phototitle">
+        <a class="fanback" href="javascript:history.go(-1);">
+            <i class="iconfont icon-fanhui1"></i>
+        </a>
+         <span class="photoms">个人头像</span>
+         <div class="morewaik">
+             <i class="iconfont icon-gengduo"></i>
+             <input id="file" class="filepic" type="file">
+         </div>
+         
+     </div>
+     <div id="clipArea" class="picarea"></div>
+     <div class="suregh">
+         <button id="clipBtn" class="genghuan">确认更换</button>
+     </div>
+     <div id="view" class="okview"></div>
+</div>  
+
+	<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="chajian/iscroll-zoom.js"></script>
+    <script src="chajian/hammer.js"></script>
+    <script src="chajian/lrz.all.bundle.js"></script>
+    <script src="chajian/jquery.photoClip.js"></script>
+    <script type="text/javascript">
+      
+
+      var clipArea = new bjj.PhotoClip("#clipArea", {
+        size: [260, 260],
+        outputSize: [640, 640],
+        file: "#file",
+        view: "#view",
+        ok: "#clipBtn",
+        loadStart: function() {
+            
+        },
+        loadComplete: function() {
+          
+        },
+        clipFinish: function(dataURL) {
+            console.log(base64ToBlob(dataURL))
+          var formdata = new FormData();
+          formdata.append('file',base64ToBlob(dataURL));
+        //   $.ajax({
+        //     url: "",
+        //     type: "post",
+        //     data: formdata,
+        //     processData: false,
+        //     contentType: false,
+        //     success: function (data) {
+                 
+        //     }
+        // });
+        }
+    });
+
+ 
+    
+
+      function base64ToBlob(urlData) {
+        var arr = urlData.split(',');
+        var mime = arr[0].match(/:(.*?);/)[1] || 'image/png';
+        // 去掉url的头，并转化为byte
+        var bytes = window.atob(arr[1]);
+        // 处理异常,将ascii码小于0的转换为大于0
+        var ab = new ArrayBuffer(bytes.length);
+        // 生成视图（直接针对内存）：8位无符号整数，长度1个字节
+        var ia = new Uint8Array(ab);
+        
+        for (var i = 0; i < bytes.length; i++) {
+            ia[i] = bytes.charCodeAt(i);
+        }
+
+        return new Blob([ab], {
+            type: mime
+        });
+   
+    }
+
+    </script>
+</body>
+</html>

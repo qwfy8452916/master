@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>修改昵称</title>
+	<link rel="stylesheet" href="css/m-reset.css">
+	<link rel="stylesheet" href="css/m-publicrem.new.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_693032_iorumao3vv0ftj4i.css">
+    <link rel="stylesheet" href="css/nicheng.css">
+</head>
+<body>
+	
+    <!-- <article> -->
+   	    <div class="nicheng_title"><i class="iconfont icon-fanhui"></i>修改昵称</div>
+        <div class="newname">
+            <input class="nameinput" type="text" placeholder="请输入新的昵称" maxlength=10>
+        </div>
+        <div class="nichengms">
+            <div><i class="iconfont icon-08tishifill"></i>昵称由4-10位汉字/字母/符号组成，首位不能是符号</div>
+            <div class="redtishi">昵称不能为空</div>
+        </div>
+        <div class="tijiaoniu">
+            <button class="tijiao">提交</button>
+        </div>
+
+
+
+   <!-- </article> -->
+
+
+	<script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="js/yanzhengx.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="js/jroll.js"></script>
+    <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/qzCitySelect.js"></script>
+    <script type="text/javascript">
+
+      $(function(){
+        
+
+        $('.tijiaoniu .tijiao').click(function() {
+            var reg =/^[^\d#\$\*\+@!%\^&-=]{1,}[\u4E00-\u9FA5\uf900-\ufa2d\w]{3,9}/;
+            var nichengval=$('.newname .nameinput').val();
+
+            if(nichengval!=""){
+
+                   if(reg.test(nichengval)){
+                     $('.nichengms .redtishi').hide();
+                    console.log("验证通过");
+                 }else{
+                    $('.nichengms .redtishi').html("请输入正确的昵称").show();
+                 }
+           }else{
+             $('.nichengms .redtishi').html("昵称不能为空").show(); 
+           }
+
+        
+        });
+
+
+      })
+
+
+    </script>
+</body>
+</html>

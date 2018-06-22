@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>个人信息</title>
+	<link rel="stylesheet" href="css/m-reset.css">
+	<link rel="stylesheet" href="css/m-publicrem.new.css">
+	<link rel="stylesheet" href="font/font-awesome.min.css">
+	<link rel="stylesheet" href="css/qzCitySelect.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/information.css">
+</head>
+<body>
+	
+
+   	    <div class="personal_title"><i class="iconfont icon-fanhui"></i>个人信息</div>
+        <div class="photo">
+            
+            <div class="mingcheng">
+                头像
+            </div>
+            <i class="iconfont icon-more"></i>
+            <div class="touxiang">
+                <img src="img/toux.png" alt="头像">
+            </div>
+            
+        </div>
+        <div class="nicheng"><span class="xinxi_left">昵称</span><i class="iconfont icon-more"></i><span class="xinxi_right">昵称</span></div>
+        <div class="sexxb"><span class="xinxi_left">性别</span><i class="iconfont icon-more"></i><span class="xinxi_right">未填写</span></div>
+        <div class="phone"><span class="xinxi_left">手机号</span><i class="iconfont icon-more"></i><span class="xinxi_right">18555555555</span></div>
+        <div class="birthday"><span class="xinxi_left">生日</span><i class="iconfont icon-more"></i><span class="xinxi_right shengri">未填写</span></div>
+        <div class="region"><span class="xinxi_left">地区</span><i class="iconfont icon-more"></i><span class="xinxi_right">未填写</span></div>
+        <div class="modify"><span class="xinxi_left">修改密码</span><i class="iconfont icon-more"></i></div>
+
+        
+    <div class="wrappic">
+         <div class="phototitle">
+            <a class="fanback" href="javascript:history.go(-1);">
+                <i class="iconfont icon-fanhui1"></i>
+            </a>
+             <span class="photoms">个人头像</span>
+             <div class="morewaik">
+                 <i class="iconfont icon-gengduo"></i>
+                 <input id="file" class="filepic" type="file">
+             </div>
+             
+         </div>
+         <div id="clipArea" class="picarea"></div>
+         <div class="suregh">
+             <button id="clipBtn" class="genghuan">确认更换</button>
+         </div>
+         <div id="view" class="okview"></div>
+    </div>  
+
+
+    <div class="birthdaytanc">
+      <div class="closave">
+         <span class="closeqx">关闭</span>
+         <span class="savewanc">完成</span>
+      </div>
+      <div class="datetime">
+        <input id="datepicker" type="text" >
+      </div>
+       
+    </div>
+
+
+
+	<script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="js/yanzhengx.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="js/jroll.js"></script>
+    <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/qzCitySelect.js"></script>
+    <script src="chajian/iscroll-zoom.js"></script>
+    <script src="chajian/hammer.js"></script>
+    <script src="chajian/lrz.all.bundle.js"></script>
+    <script src="chajian/jquery.photoClip.js"></script>
+    <script type="text/javascript">
+   
+
+  var clipArea = new bjj.PhotoClip("#clipArea", {
+        size: [260, 260],
+        outputSize: [640, 640],
+        file: "#file",
+        view: "#view",
+        ok: "#clipBtn",
+        loadStart: function() {
+            
+        },
+        loadComplete: function() {
+          
+        },
+        clipFinish: function(dataURL) {
+         $('.wrappic').hide();
+
+          var formdata = new FormData();
+          formdata.append('file',base64ToBlob(dataURL));
+        //   $.ajax({
+        //     url: "",
+        //     type: "post",
+        //     data: formdata,
+        //     processData: false,
+        //     contentType: false,
+        //     success: function (data) {
+                 
+        //     }
+        // });
+
+        }
+    });
+
+ 
+    
+
+      function base64ToBlob(urlData) {
+        var arr = urlData.split(',');
+        var mime = arr[0].match(/:(.*?);/)[1] || 'image/png';
+        // 去掉url的头，并转化为byte
+        var bytes = window.atob(arr[1]);
+        // 处理异常,将ascii码小于0的转换为大于0
+        var ab = new ArrayBuffer(bytes.length);
+        // 生成视图（直接针对内存）：8位无符号整数，长度1个字节
+        var ia = new Uint8Array(ab);
+        
+        for (var i = 0; i < bytes.length; i++) {
+            ia[i] = bytes.charCodeAt(i);
+        }
+
+        return new Blob([ab], {
+            type: mime
+        });
+   
+    }
+    </script>
+
+    <script type="text/javascript">
+        
+         $(function(){
+
+             $( "#datepicker" ).datepicker({
+              "dateFormat":"yy-mm-dd",
+              showOtherMonths: true,
+              selectOtherMonths: true,
+              showButtonPanel: false,
+              changeMonth: true,
+              changeYear: true,
+
+              });
+
+        $.datepicker.regional['zh-CN'] = { 
+        clearText: '清除', 
+        clearStatus: '清除已选日期', 
+        closeText: '关闭', 
+        closeStatus: '不改变当前选择', 
+        prevText: '< 上月', 
+        prevStatus: '显示上月', 
+        prevBigText: '<<', 
+        prevBigStatus: '显示上一年', 
+        nextText: '下月>', 
+        nextStatus: '显示下月', 
+        nextBigText: '>>', 
+        nextBigStatus: '显示下一年', 
+        currentText: '今天', 
+        currentStatus: '显示本月', 
+        monthNames: ['一月','二月','三月','四月','五月','六月', '七月','八月','九月','十月','十一月','十二月'], 
+        monthNamesShort: ['一','二','三','四','五','六', '七','八','九','十','十一','十二'], 
+        monthStatus: '选择月份', 
+        yearStatus: '选择年份', 
+        weekHeader: '周', 
+        weekStatus: '年内周次', 
+        dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'], 
+        dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'], 
+        dayNamesMin: ['日','一','二','三','四','五','六'], 
+        dayStatus: '设置 DD 为一周起始', 
+        dateStatus: '选择 m月 d日, DD', 
+        dateFormat: 'yy-mm-dd', 
+        firstDay: 1, 
+        initStatus: '请选择日期', 
+        isRTL: false}; 
+        $.datepicker.setDefaults($.datepicker.regional['zh-CN']); 
+
+
+    
+            
+             $('.photo .touxiang').click(function(event) {
+                 $('.wrappic').fadeIn();
+             });
+
+
+             $('.shengri').click(function(){
+                $('.birthdaytanc').animate({height:"show"}, 200)
+             });
+
+             $('.birthdaytanc .closeqx').click(function(){
+                $('.birthdaytanc').animate({height:"hide"}, 200)
+             });
+
+             $('.birthdaytanc .closave .savewanc').click(function(){
+                $('.birthdaytanc').animate({height:"hide"}, 200)
+             });
+
+
+         })
+
+    </script>
+</body>
+</html>

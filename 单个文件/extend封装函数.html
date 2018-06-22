@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>extend函数封装</title>
+</head>
+<body>
+	<div class="dianji">点击触发</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+       // 封装的函数一般单独写在js中  可以引用外部调用里面定义的变量，函数 事件一般封装在这里
+
+        !(function ($) {
+        $.fn.extend({
+        	drop:function(xx){
+        	  var dingyi01="内部定义变量";
+        	  var yinyong=xx.yy;
+        	  var chuanzhi=12345;
+              $('.dianji').click(function(event) {
+              	 console.log("成功触发事件");
+              	 console.log(dingyi01);
+              	 console.log(yinyong)
+              	 xx.hanshu(chuanzhi)
+              }); 
+            
+        	}
+        })
+        })(jQuery);
+
+        // 封装的函数一般单独写在js中  可以引用外部调用里面定义的变量，函数  事件一般封装在这里
+
+
+
+       //外部写的引用js封装函数一般要绑定当前需要执行事件的标签  可以将封装js里的变量当做参数传递过来
+
+        $('.dianji').drop({
+            yy:"外部引用",
+            hanshu:function(chuanzhi){               
+            	alert("外部封装函数")
+            	console.log(chuanzhi)
+            }
+        })
+
+
+         //外部写的引用js封装函数一般要绑定当前需要执行事件的标签  可以将封装js里的变量当做参数传递过来
+
+
+
+	</script>
+</body>
+</html>
