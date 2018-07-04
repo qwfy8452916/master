@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.dianji{width: 100px;height: 30px;line-height: 30px;text-align: center;color: #fff;background: #ff5353;}
+		.exitqp{width: 100px;height: 30px;line-height: 30px;text-align: center;color: #fff;background: #ff5353;
+			margin-top: 50px;}
+		.neirong{margin-top: 30px;}
+
+
+
+        /*在浏览器全屏的使用我们还可以进行样式设置 */
+
+		html:-moz-full-screen
+		{
+		background: red;
+
+		}
+		html:-webkit-full-screen
+		{
+		background: red;
+
+		}
+		html:fullscreen {
+
+		background: red;
+
+		}
+	</style>
+</head>
+<body>
+	
+
+    <div class="dianji">点击全屏事件</div>
+    <div class="exitqp">点击退出全屏</div>
+    <div class="doubleniu">双按钮</div>
+    <div class="neirong"></div>
+	<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		 
+		 +function(){
+
+         var docElm = document.documentElement;
+         // var fullscreenState=$('.neirong');
+
+               //事件监听
+               document.addEventListener("fullscreenchange",function() {
+                   console.log(11)
+				  // fullscreenState.innerHTML = (document.fullscreen) ? "": "not";
+				},false);
+
+				document.addEventListener("mozfullscreenchange",function() {
+                    console.log(22)
+				    // fullscreenState.innerHTML = (document.mozFullScreen) ? "": "not";
+				},false);
+
+				document.addEventListener("webkitfullscreenchange",function() {
+                    console.log(33)
+				    // fullscreenState.innerHTML = (document.webkitIsFullScreen) ? "": "not";
+				},false);
+
+				document.addEventListener("msfullscreenchange",function() {
+                     console.log(44)
+				    // fullscreenState.innerHTML = (document.msFullscreenElement) ? "": "not";
+				},false);
+
+
+         //全屏模式
+           
+           $('.dianji').click(function(event) {
+           	if(docElm.requestFullscreen) {
+				  docElm.requestFullscreen();
+				}
+				//FireFox
+				else
+				if(docElm.mozRequestFullScreen) {
+				  docElm.mozRequestFullScreen();
+				}
+				//Chrome等
+				else
+				if(docElm.webkitRequestFullScreen) {
+				  docElm.webkitRequestFullScreen();
+				}
+				//IE11
+				else
+				if(elem.msRequestFullscreen) {
+				 elem.msRequestFullscreen();
+				}
+           });
+
+
+         //退出全屏模式
+
+           $('.exitqp').click(function(event) {
+           	 
+             //退出全屏
+				if(document.exitFullscreen) {
+
+				document.exitFullscreen();
+
+				}
+
+				else if(document.mozCancelFullScreen) {
+
+				document.mozCancelFullScreen();
+
+				}
+
+				else if(document.webkitCancelFullScreen) {
+
+				document.webkitCancelFullScreen();
+
+				}
+
+				else if(document.msExitFullscreen) {
+
+				document.msExitFullscreen();
+
+				}
+           });
+
+		 }(jQuery)
+
+
+	</script>
+</body>
+</html>

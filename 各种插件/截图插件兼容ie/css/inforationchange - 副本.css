@@ -1,0 +1,50 @@
+html,body{background: #f5f5f5;}
+.wrap{width: 1210px;margin:0 auto;overflow: hidden;}
+.wrap .bannerbj{width: 100%;height: 250px;overflow: hidden;}
+.bannerbj img{width: 100%;height: 100%;}
+.wrap .xinxquyu{width: 100%;height: 608px;background: #fff;position: relative;
+padding: 25px 320px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.xinxquyu .touxiang{width: 100px;height: 100px;position: absolute;left: 167px;top: -38px;
+border-radius: 50%;overflow: hidden;}
+.xinxquyu .touxiang img{width: 100%;height: 100%;}
+.xinxquyu .nicheng{width: 100%;margin-top: 15px;overflow: hidden;height: 42px;line-height: 40px;}
+.leftbianji{font-size: 20px;color: #333;font-weight: bold;display: inline-block;float: left;height: 40px;line-height: 40px;}
+.smallfont{font-size: 14px;}
+.middlebianji{display: inline-block;float: right;display: none;}
+.middlebianji .localdiqu{display: inline-block;height: 40px;line-height: 40px;padding: 0 10px;
+font-size: 14px;color: #666;float: left;}
+.middlebianji input{height: 40px;width: 120px;outline: none;border-radius: 5px;border: 1px solid #e6e6e6;
+padding: 5px 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.rightbianji{display: inline-block;float: right;font-size: 14px;}
+.rightbianji .bianjicunqu{display: inline-block;overflow: hidden;}
+.yincang{display: none !important;}
+.rightbianji .xiugai{display: inline-block;overflow: hidden;color: #45b0e5;line-height: 40px;
+cursor: pointer;padding:0 10px;}
+.rightbianji span{display: inline-block;height: 40px;line-height: 40px;padding: 0 10px;
+cursor: pointer;color: #666;}
+.rightbianji span.savebc{color: #45b0e5;}
+.xinxquyu .sexxb{width: 100%;margin-top: 20px;overflow: hidden;}
+.sexxb select{height: 40px;width: 120px;outline: none;border-radius: 5px;border: 1px solid #e6e6e6;
+padding: 5px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;float: left;}
+.sexxb .xingbie{display: inline-block;height: 40px;line-height: 40px;padding: 0 10px;
+font-size: 14px;color: #666;float: left;}
+.areadq{width: 100%;margin-top: 20px;overflow: hidden;}
+.areadq select{height: 40px;width: 120px;outline: none;border-radius: 5px;border: 1px solid #e6e6e6;
+padding: 5px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;float: left;
+}
+.province{margin-right: 10px;display: inline-block;overflow: hidden;float: right;position: relative;}
+.province span{position: absolute;right: 18px;top:0;display: inline-block;height: 40px;line-height: 40px;
+z-index: 1;}
+.citydiv{margin-right: 10px;display: inline-block;overflow: hidden;float: right;position: relative;}
+.citydiv span{position: absolute;right: 18px;top:0;display: inline-block;height: 40px;line-height: 40px;
+z-index: 1;}
+.areadiv{overflow: hidden;display: inline-block;float: right;position: relative;}
+.areadiv span{position: absolute;right: 18px;top:0;display: inline-block;height: 40px;line-height: 40px;
+z-index: 1;}
+.areadq select.diqu{margin-right: 0;position: relative;}
+.areadq select.diqu span{position: absolute;top: 10px;right: 5px;}
+
+.phonesj{width: 100%;margin-top: 20px;overflow: hidden;}
+.passwordmm{width: 100%;margin-top: 20px;overflow: hidden;}
+.passwordmm .chongse{color: #45b0e5;}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>本地缓存</title>
+    <style>
+        ul{padding: 0;}
+        ul li{list-style: none;display: inline-block;width: 100px;height: 30px;
+            background: #ccf0e4;text-align: center;line-height: 30px;cursor: pointer;}
+    </style>
+</head>
+<body>
+	
+<ul>
+    <li data-num="1">点击1</li>
+    <li data-num="2">点击2</li>
+    <li data-num="3">点击3</li>
+    <li data-num="4">点击4</li>
+    <li data-num="5">点击5</li>
+    <li data-num="6">点击6</li>
+</ul>
+
+
+ <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script type="text/javascript">
+  	
+  $(function(){
+
+        var shuzu =  JSON.parse(sessionStorage.getItem("sessionStoragekey")) || [];
+
+        $('ul li').click(function(event) {
+
+           var number = $(this).attr('data-num');
+           console.log(number);
+           console.log(shuzu.length);
+
+                 if(shuzu.indexOf(number) == -1){
+                   shuzu.push(number);
+                 }
+   
+           sessionStorage.setItem("sessionStoragekey",JSON.stringify(shuzu));
+           console.log(JSON.parse(sessionStorage.getItem("sessionStoragekey")));
+        });   
+        
+
+        // function getLocalStorage(sessionkeyname){
+        //    if(!sessionkeyname || typeof sessionkeyname !== "string"){
+        //       return;
+        //    }
+        //    return JSON.parse(sessionStorage.getItem(sessionkeyname));
+        // }
+
+
+
+        //获取循环缓存
+
+        var gethuanc=JSON.parse(sessionStorage.getItem("sessionStoragekey"));
+
+        for(var i=0;i<gethuanc.length;i++){
+           if(gethuanc[i]==3){
+             console.log("缓存里有3")
+             return false;
+           }else{
+            console.log("缓存里没有3")
+           }
+        }
+
+
+  })
+
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+.wrapyinying{width: 100%;height: 100%;position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+background: rgba(0,0,0,0.7);}
+.guidetanc2{width: 420px;height: 387px;background: #fff;border-radius: 5px;position: fixed;top: 0;bottom: 0;left: 0;right: 0;
+margin: auto;padding: 37px 46px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.guidetanc2 .guanbi{position: absolute;width: 15px;height: 15px;top: 5px;right: 5px;background: url(../img/closegb.png) no-repeat center center;
+display: inline-block;padding:10px;cursor: pointer;}
+.guidetanc2 .titleone{text-align: center;font-size: 30px;font-family: "微软雅黑","Microsoft YaHei";margin-bottom: 20px;}
+.guidetanc2 .buzouwaik{width: 250px;height: 30px;margin: 0 auto;overflow: hidden;position: relative;margin-bottom: 40px;}
+.guidetanc2 .jiantoubj01,.jiantoubj02{display: inline-block;color: #999;}
+.guidetanc2 .jiantoubj01{width:130px;height:30px;background:url(../img/jiantouzs01.png) no-repeat center center;float: left;
+position: relative;top: 0;left: 0;line-height: 30px;font-size:12px;;text-align: center;}
+.guidetanc2 .jiantoubj02{width:130px;height:30px;background:url(../img/jiantouzs02.png) no-repeat center center;float: left;
+position: absolute;top: 0;right: 0;line-height: 30px;font-size: 12px;text-align: center;color: #fff}
+.guidetanc2 .newpassword{width: 100%;height: 35px;border-bottom: 1px solid #e6e6e6;display: flex;font-size: 14px;}
+.guidetanc2 .newpassword input{height: 32px;outline: none;flex: 1;border: 0;font-size: 14px;}
+.guidetanc2 .newpassword span{margin-right: 4px;display: inline-block;width: 60px;height: 35px;line-height: 35px;text-align: left;}
+.guidetanc2 .surepassword{width: 100%;height: 35px;border-bottom: 1px solid #e6e6e6;display: flex;font-size: 14px;margin-top: 28px;}
+.guidetanc2 .surepassword input{height: 32px;outline: none;flex: 1;border: 0;font-size: 14px;}
+.guidetanc2 .surepassword span{margin-right: 4px;display: inline-block;width: 60px;height: 35px;line-height: 35px;text-align: left;}
+/*.guidetanc2 .surepassword .btnyzm{background: #fff;color: #45b0e5;}*/
+.guidetanc2 .tjtishi02{font-size: 14px;color: #f21855;margin: 10px 0;height: 16px;}
+.guidetanc2 .surewk{margin-top: 10px;height: 40px;line-height: 40px;}
+.guidetanc2 .surewk .sureqr2{width: 100%;height: 100%;background: #f21855;border-radius: 5px;text-align: center;color: #fff;
+border: 0;outline:none;cursor:pointer;}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模块化js</title>
+	<style>
+		ul{padding: 0;}
+		ul li{list-style: none;display: inline-block;width: 100px;height: 30px;line-height: 30px;
+			text-align: center;margin-right: 10px;background: #ccf0e4;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>001</li>
+		<li>002</li>
+		<li>003</li>
+		<li>004</li>
+		<li>005</li>
+	</ul>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="common.js"></script> -->
+<script type="text/javascript">
+	
+	$(function(){
+		
+       function a(){
+
+            }
+            a.prototype = {
+                constructor:a,
+                x:function() {
+                    let i = 0 ;
+                    console.log(i);
+                }
+            };
+            var b = new a()
+            b.x();
+
+	})
+
+
+
+// var aa=function(){
+//     defaule:true;
+// }
+// aa.prototype={
+// 	likui:11,
+// 	 x:function() {
+//                     let i = 0 ;
+//                     console.log(i);
+//                 }
+// }
+// var bb=new aa();
+// console.log(bb)
+</script>
+
+
+</body>
+</html>
