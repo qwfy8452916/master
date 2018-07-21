@@ -1,0 +1,67 @@
+<view class="top-line"></view>
+<scroll-view class="scroll-view-box" scroll-y="true" scroll-with-animation="true" onScrollToLower="loadMore">
+<view class="head">
+    <image class="big-img" src="../../images/bg-img.jpg" mode="aspectFit"></image>
+    <view class="head-main">
+        <view class="headd-info">
+            <view class="logo-box">
+                <image class="bg-img" src="../../images/frame.png"></image>
+                <image class="logo-img" src="{{details.logo}}"></image>
+            </view>
+            <view class="company-name">{{details.qc}}</view>
+            <view class="company-info">
+                <view class="item-info good">
+                    <text class="">案例数：</text><text class="red">{{anlicount}}</text>
+                </view>
+                <view class="item-info trust">
+                    <text class="">信赖度：</text>
+                    <view a:if="{{details.star >= 1}}" class="star"><image src="../../images/star.png" mode="aspectFill"></image></view>
+                    <view a:if="{{details.star >= 2}}" class="star"><image src="../../images/star.png" mode="aspectFill"></image></view>
+                    <view a:if="{{details.star >= 3}}" class="star"><image src="../../images/star.png" mode="aspectFill"></image></view>
+                    <view a:if="{{details.star >= 4}}" class="star"><image src="../../images/star.png" mode="aspectFill"></image></view>
+                    <view a:if="{{details.star >= 5}}" class="star"><image src="../../images/star.png" mode="aspectFill"></image></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="introduce wrap">
+    <view class="wrap-main">
+        <view class="head-company">
+            <view class="img-icon"><image src="../../images/home-icon.png" mode="aspectFill"></image></view> 
+            <view class="com-title"><text>公司简介</text></view>
+        </view>
+        <view class="com-info">{{details.jianjie}}</view>
+    </view>
+</view>
+<view class="server wrap">
+    <view class="wrap-main">
+        <view class="head-company">
+            <view class="img-icon"><image src="../../images/adress-icon.png" mode="aspectFill"></image></view> 
+            <view class="com-title"><text>服务区域</text></view>
+        </view>
+        <view class="com-info">{{details.dz}}</view>
+    </view>
+</view>
+<view class="zxanli wrap">
+    <view class="wrap-main">
+        <view class="head-company">
+            <view class="img-icon"><image src="../../images/anli-icon.png" mode="aspectFill"></image></view> 
+            <view class="com-title"><text>装修案例</text></view>
+        </view>
+    </view>
+</view>
+<block a:for="{{caseList}}" a:key>
+    <view class="anli-item">
+        <view class="anli-box">
+            <view class="anli-img">
+                <image src="{{imgUrl}}{{item.img_path}}" mode="aspectFill"></image>
+            </view>
+            <view class="anli-info">
+                <view class="fl"><text>{{item.title}}</text></view>
+                <view class="fr"><text>{{item.fg}}</text><text>{{item.mianji}}m²</text><text>预估价{{item.jiage}}</text></view>
+            </view>
+        </view>
+    </view>
+</block>
+</scroll-view>

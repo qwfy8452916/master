@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+  
+<head>  
+  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+  
+<title>验证码</title>  
+  
+<script type="text/javascript">  
+  
+function check(){  
+  
+if(event.keyCode==13){alert("您按下了回车键");}}  
+  
+</script>  
+  
+</head>  
+  
+   
+  
+<body onload="check()">
+  
+<input type="text" id="t1" onkeydown="if(event.keyCode==13){document.getElementById('bt').click();return false;}" /><button id="bt" onclick="alert('回车单击了按钮!!')">确  认</button>
+
+</body>
+  
+</html>  

@@ -1,0 +1,257 @@
+{extend name="common:basic" /}
+{block name="title"}
+    <title>个人中心</title>
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/jiaju/css/cropper.css">
+<link rel="stylesheet" href="/assets/jiaju/css/inforationchange.css">
+<!--[if lte IE 8]>
+<link rel="stylesheet" type="text/css" href="/assets/jiaju/css/inforationchangeie8.css"/> <![endif]-->
+<!--[if lte IE 9]>
+<link rel="stylesheet" type="text/css" href="/assets/jiaju/css/inforationchangeie9.css"/> <![endif]-->
+{/block}
+{block name="content"}
+<div class="wrap">
+    <div class="bannerbj">
+        <img src="/assets/jiaju/images/information01.jpg" alt="">
+    </div>
+    <div class="xinxquyu">
+        <div class="touxiang">
+            <img src="/assets/jiaju/images/touxiang.png" alt="">
+        </div>
+        <div class="nicheng fujixz">
+            <div class="leftbianji">{$user.name|default=$user.tel_safe}</div>
+            <div class="rightbianji">
+                <div class="bianjicunqu yincang">
+                    <span class="savebc namesave">保存</span>
+                    <span class="cancelqx" data-cancel="namecancel">取消</span>
+                </div>
+                <div class="xiugai" data-ji="namegai"><span>修改</span></div>
+            </div>
+            <div class="middlebianji">
+                <input class="nameinput" type="text">
+            </div>
+        </div>
+        <div class="sexxb fujixz">
+            <div class="leftbianji smallfont">性别</div>
+            <div class="rightbianji">
+                <div class="bianjicunqu yincang">
+                    <span class="savebc sexsave">保存</span>
+                    <span class="cancelqx sexquxiao" data-cancel="sexcancel">取消</span>
+                </div>
+                <div class="xiugai" data-ji="sexgai"><span>填写</span></div>
+            </div>
+            <div class="middlebianji">
+                <span class="xingbie xianshiquyu">{$user.sex}</span>
+                <select class="sexselect" name="" id="">
+                    <option value="请选择">请选择</option>
+                    <option value="先生">先生</option>
+                    <option value="女士">女士</option>
+                </select>
+            </div>
+        </div>
+        <div class="areadq fujixz">
+            <div class="leftbianji smallfont">地区</div>
+            <div class="rightbianji">
+                <div class="bianjicunqu yincang">
+                    <span class="savebc areasave">保存</span>
+                    <span class="cancelqx" data-cancel="areacancel">取消</span>
+                </div>
+                <div class="xiugai" data-ji="areagai"><span>填写</span></div>
+            </div>
+            <div class="middlebianji">
+                <span class="localdiqu xianshiquyu"></span>
+                <div class="areadiv">
+                    <span>区</span>
+                    <select class="diqu" id="qx" name="qx">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <div class="citydiv">
+                    <span>市</span>
+                    <select class="areacity" id="cs" name="cs">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="phonesj">
+            <div class="leftbianji smallfont">手机</div>
+            <div class="rightbianji">
+                <span class="rightjvli">18366667325</span>
+            </div>
+        </div>
+        <div class="passwordmm">
+            <div class="leftbianji smallfont">密码</div>
+            <div class="rightbianji">
+                <span class="chongse">重设</span>
+            </div>
+        </div>
+    </div>
+    <div class="clipyinying"></div>
+    <div class="clipwaik">
+        <form id="myform" action="">
+            <div id="imgPreview" class="container clipArea"></div>
+            <input type="hidden" name="x" id="x" value="0"/>
+            <input type="hidden" name="y" id="y" value="0"/>
+            <input type="hidden" name="w" id="w" value="720"/>
+            <input type="hidden" name="h" id="h" value="425"/>
+        </form>
+        <div class="anxiuwk">
+            <div class="selectpic">
+                <span class="mspic">选择图片</span>
+                <input id="file" class="filepic" type="file">
+            </div>
+            <div id="clipBtn" class="xuanqupic"><span class="jiequ">截取</span></div>
+            <div class="closequx"><span>取消</span></div>
+        </div>
+        <div id="viewok" class="viewok"></div>
+    </div>
+
+    <div class="guidetanc">
+        <span class="guanbi"></span>
+        <div class="titleone">重设密码</div>
+        <div class="buzouwaik">
+            <div class="jiantoubj011">1、验证手机号</div>
+            <div class="jiantoubj022">2、设置新密码</div>
+        </div>
+        <div class="phonewk">
+            <span>手机号</span>
+            <input type="text" maxlength="11">
+        </div>
+        <div class="yanzengmwk">
+            <span>验证码</span>
+            <input class="inputtext" type="text" disabled="disabled">
+            <input class="btnyzm" type="button" value="获取验证码">
+        </div>
+        <div class="tjtishi"></div>
+        <div class="surewk">
+            <button class="sureqr discolor" disabled="disabled">确认</button>
+        </div>
+    </div>
+
+    <div class="guidetanc2">
+        <span class="guanbi"></span>
+        <div class="titleone">重设密码</div>
+        <div class="buzouwaik">
+            <div class="jiantoubj01">1、验证手机号</div>
+            <div class="jiantoubj02">2、设置新密码</div>
+        </div>
+        <div class="newpassword">
+            <span>新密码</span>
+            <input type="password" maxlength=20>
+        </div>
+        <div class="surepassword">
+            <span>确认密码</span>
+            <input type="password" maxlength=20>
+        </div>
+        <div class="tjtishi02"></div>
+        <div class="surewk">
+            <button class="sureqr2" disabled="disabled">确认</button>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<!--当前页面独有js-->
+<script type="text/javascript" src="/assets/jiaju/js/cropper.js"></script>
+<script type="text/javascript" src="/assets/jiaju/js/allcity201804131445.js"></script>
+<script type="text/javascript" src="/assets/jiaju/js/App.js"></script>
+<script type="text/javascript" src="/assets/jiaju/js/inforationchange.js"></script>
+
+<script type="text/javascript">
+    var Img_upload = "{:url('jiaju/Upload/ueditorUpload',[],'')}";  //图片上传
+    var change_nickname = "{:url('jiaju/user/changeNick',[],'')}";  //修改昵称
+    var check_code = "{:url('jiaju/user/checkcode',[],'')}";        //修改昵称
+    var change_pwd = "{:url('jiaju/user/changePwd',[],'')}";        //修改密码
+    var change_area = "{:url('jiaju/user/changeArea',[],'')}";      //修改地区
+    var change_sex = "{:url('jiaju/user/changeSex',[],'')}";        //修改性别
+    var send_msg = "{:url('jiaju/sms/sendsms',[],'')}";             //发送短信
+    var change_mobile = "{:url('jiaju/user/changeMobile',[],'')}";  //修改手机
+
+   var shen = null,
+        shi = null;
+    shen = citys["shen"];
+    shi = citys["shi"];
+
+
+    $(function () {
+
+
+      App.citys.init("#cs","#qx",shen,shi,"",'');
+
+
+
+
+        function PreviewImage(imgFile) {
+            var filextension = imgFile.value.substring(imgFile.value.lastIndexOf("."), imgFile.value.length);
+            filextension = filextension.toLowerCase();
+            if ((filextension != '.jpg') && (filextension != '.gif') && (filextension != '.jpeg') && (filextension != '.png') && (filextension != '.bmp')) {
+                layer.msg('对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !',{time:1300},function () {
+                    imgFile.focus();
+                });
+            } else {
+                var path;
+                if (document.all){      //IE
+                    imgFile.select();
+                    path = document.selection.createRange().text;
+                    document.getElementById("imgPreview").innerHTML = "";
+                    document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果
+                    document.getElementById("imgPreview").innerHTML = "<img id='img1' src='" + path + "'/>";
+                } else {                //FF
+                    path = window.URL.createObjectURL(imgFile.files[0]);// FF 7.0以上
+                    //path = imgFile.files[0].getAsDataURL();// FF 3.0
+                    document.getElementById("imgPreview").innerHTML = "<img id='img1' src='" + path + "'/>";
+                    //document.getElementById("img1").src = path;
+                }
+            }
+            caijian();
+        }
+
+        function caijian() {
+
+            $('.container > img').cropper( //这里是给img 即被裁剪的图片进行参数配置
+                {   aspectRatio: 1,             //裁剪框的比例
+                    preview: $('#viewok'),      //预览的容器
+                    minContainerWidth: 500,     //容器最小宽度
+                    minContainerHeight: 500,    //容器最小高度
+                    autoCropArea: 0.8,          //初始化裁剪框大小（相对于图片大小做比例）
+                    movable: false,//是否能移动裁剪框（这里是可以移动图片 裁剪框处于不动的状态 按你的需求设置）
+                    dragCrop: false,//不允许重新开裁剪框
+                    resizable: false,//不允许改变裁剪框大小
+                    crop: function (data) {
+                        console.log(data);
+                        //data是 x,y width, height rotate scaleX scaleY裁剪框的坐标，以及裁剪出来的图片长宽 旋转角度 缩放等
+                        $('#x').val(data.x);
+                        $('#y').val(data.y);
+                        $('#w').val(data.width);
+                        $('#h').val(data.height);
+                    },
+                    //这几个回调函数
+                    build: function (e) { //是图片绘制到cropper自动生成的canvas的开始   加载开始
+                        //过渡效果
+                    },
+                    built: function (e) { //加载完成  绘制完成 获取到相应的data
+
+                    }
+                });
+        }
+        $(document).on('change', '#file', function () {
+            PreviewImage(this);
+        });
+        $('.anxiuwk .xuanqupic .jiequ').click(function () {
+            // var params = $('#myform').serialize();
+            // var arrstr = params.split("&");
+            // var arr=[];
+            // var map = new Map();
+            // for(var i=0;i<arrstr.length;i++){
+            //      arr.push(arrstr[i].split('='));
+            //      map[arr[i][0]]=arr[i][1];
+            // }
+            // console.log(map.h)
+
+        });
+    });
+</script>
+{/block}

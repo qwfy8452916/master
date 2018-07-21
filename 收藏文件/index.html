@@ -1,0 +1,322 @@
+{block name="style"}
+<link rel="stylesheet" href="/assets/common/css/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/common/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/common/css/AdminLTE.css">
+<link rel="stylesheet" href="/assets/common/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="/assets/common/css/global.css?v=201801091529">
+<link rel="stylesheet" href="/assets/common/js/plugins/fileinput/fileinput.min.css" />
+<link rel="stylesheet" href="/assets/common/js/plugins/datetimepicker/datetimepicker.css" />
+<link rel="stylesheet" href="/assets/common/js/plugins/fileinput/fileinput.min.css" />
+<link rel="stylesheet" href="/assets/common/plugins/bootstrap-switch/bootstrap-switch.min.css">
+<link rel="stylesheet" href="/assets/admin/relegoods/css/index.css">
+{/block}
+{block name="content"}
+    <!-- <section class="content"> -->
+        <!-- <h3>选取相关商品</h3> -->
+        <div class="row">
+            <div class="col-xs-12 head">
+                <form action="" id="form">
+                    <div class="group col-xs-2">
+                        <div>空间</div>
+                        <select name="top_cate" id="top_cate">
+                            <option value="0">请选择</option>
+                            {volist name="top_cate" id="vo"}
+                            <option value="{$vo.id}">{$vo.name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                    <div class="group col-xs-2">
+                        <div>分类</div>
+                        <select name="sub_cate" id="sub_cate">
+                            <option value="0">请选择</option>
+                        </select>
+                    </div>
+                    <div class="group col-xs-2">
+                        <div>规格</div>
+                        <select name="spec" id="spec">
+                            <option value="0">请选择</option>
+                        </select>
+                    </div>
+                    <div class="group col-xs-2">
+                        <div>参数</div>
+                        <select name="spec_val" id="spec_val">
+                            <option value="0">请选择</option>
+                        </select>
+                    </div>
+                    <div class="group col-xs-2">
+                        <div>选取状态</div>
+                        <select name="status" id="status">
+                            <option value="0" {if condition="input('get.status') == 0"}selected{/if}>请选择</option>
+                            <option value="1" {if condition="input('get.status') == 1"}selected{/if}>已选中</option>
+                            <option value="2" {if condition="input('get.status') == 2"}selected{/if}>未选中</option>
+                        </select>
+                        <input type="hidden" name="ids" value="">
+                    </div>
+                    <div class="group col-xs-2">
+                        <button type="button" class="search">查询</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="product clearfix">
+                {volist name="list" id="vo"}
+                <li class="w20" >
+                    <div class="img">
+                        <img src="{$vo['goods_imgs'][0]['img_url']}" alt="{$vo.title}">
+                    </div>
+                    <div class="info">
+                        <div class="title">{$vo.title}</div>
+                    </div>
+                    <div class="choose">
+                        <span>选取</span>
+                        <input type="checkbox" class="mySwitch" data-id="{$vo.code}">
+                    </div>
+                </li>
+                {/volist}
+            </ul>
+            {$page}
+        </div>
+    <!-- </section> -->
+{/block}
+{block name="script"}
+<script src="/assets/common/js/jquery.min.js"></script>
+<script src="/assets/common/css/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/common/js/plugins/fileinput/fileinput.js"></script>
+<script src="/assets/common/js/plugins/fileinput/fileinput_locale_zh.js"></script>
+<script src="/assets/common/js/plugins/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="/assets/common/js/app.min.js"></script>
+<script src="/assets/common/js/global.js?v=201711221343"></script>
+<script type="text/javascript" src="/assets/common/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+<script>
+    //为了方便维护，分页的跳转到第几页js逻辑 从PHP 中抽离出来 author:mcj
+    $("#jump").click(function(){
+        var skip = $('#skipPage').val();
+        var url = $(this).val();
+        if ('' == skip) {
+            alert('请输入要跳转的页码');
+        } else {
+            window.location.href = url+'p=' + skip;
+        }
+    });
+    //select请求接口
+    var selecturl = "{:url('cate/getchild',[],'')}";
+    //查询地址
+    var select_url = "{:url('admin/relegoods/index',[],'')}";
+</script>
+
+<script>
+    //设置选择框属性
+    function setItem(url,data,elem,nextval,isset) {
+        $.ajax({
+            url:url,
+            type:'GET',
+            dataType:'JSON',
+            data:data,
+            success:function (data) {
+                 var str='<option value="0">请选择</option>';
+                if(data.status==1){
+                    var data=data.data;
+                    for(var i=0;i<data.length;i++){
+                        str+='<option value='+data[i].id+'>'+data[i].name+'</option>'
+                    }
+                    $(elem).html(str)
+                }else if(data.status==0){
+                    $(elem).html(str)
+                }
+                if (isset == true){
+                    $(elem).val(nextval);
+                }
+            }
+        })
+    }
+    $(function(){
+
+        var xzinputval01 = sessionStorage.top_cate,
+            xzinputval02 = sessionStorage.sub_cate,
+            xzinputval03 = sessionStorage.spec,
+            xzinputval04 = sessionStorage.spec_val;
+
+        if (xzinputval01 != undefined) {
+            $('#top_cate').val(xzinputval01);
+        } else {
+            $('#top_cate').val(0);
+        }
+
+        if (xzinputval02 != undefined) {
+            setItem(selecturl, {pid: xzinputval01, level: 2}, '#sub_cate', xzinputval02,true);
+        } else {
+            $('#sub_cate').val(0);
+        }
+
+        if (xzinputval03 != undefined) {
+            setItem(selecturl, {pid: xzinputval02, level: 3}, '#spec', xzinputval03,true);
+        } else {
+            $('#spec').val(0);
+        }
+
+
+        if (xzinputval04 != undefined) {
+            setItem(selecturl, {pid: xzinputval03, level: 4}, '#spec_val', xzinputval04,true);
+        } else {
+            $('#spec_val').val(0);
+        }
+
+
+        // var storage = window.sessionStorage;
+        // var arr = [];
+        // for (var i = 0, len = storage.length; i < len; i++) {
+        //     var key = storage.key(i);
+        //     var value = storage.getItem(key);
+
+        //     $('.mySwitch').each(function () {
+        //         if ($(this).attr('data-id') == key) {
+        //             if (value == "true") {
+        //                 $(this).attr('checked', 'checked')
+        //             } else {
+        //                 $(this).attr('checked', false)
+        //             }
+        //         }
+        //     })
+        // }
+
+         
+         var storageSubjectCodeList = sessionStorage.getItem("subjectCodeList") ? JSON.parse(sessionStorage.getItem("subjectCodeList")) : [];
+         // console.log(storageSubjectCodeList);
+
+     
+
+        for(var i = 0, len = storageSubjectCodeList.length; i < len; i++){
+            $('.mySwitch').each(function (index, item) {
+                if ($(item).attr('data-id') == storageSubjectCodeList[i]) {
+                    $(this).attr('checked', 'checked')
+                }
+            })
+          }
+
+
+
+
+        $('.mySwitch').bootstrapSwitch({
+            onText: "on",
+            offText: "off",
+            onColor: "success",
+            offColor: "danger",
+            onSwitchChange: function (e, data) {
+                var $el = $(e.target);
+                var num = $(this).attr('data-id');
+                var codeArr = getLocalStorage("subjectCodeList") || [];
+                if ($el.attr("checked") == "checked") {
+                    $el.attr("checked", false);
+                    // sessionStorage.removeItem(num);
+                    for(var i=0,len=codeArr.length;i<len;i++){
+                        if( codeArr[i] == num ){
+                            codeArr.splice(i,1);
+                        }
+                    }
+                } else {
+                    $el.attr("checked", "checked");
+                    // sessionStorage.setItem(num, $(this).prop('checked'))
+                    codeArr.push(num);
+                }
+                sessionStorage.setItem("subjectCodeList",JSON.stringify(codeArr));
+            }
+        });
+
+
+        // 获取指定名称的本地缓存
+        function getLocalStorage(storageName){
+            if( !storageName || typeof storageName !== "string" ){
+                return;
+            }
+            return sessionStorage.getItem(storageName) ? JSON.parse(sessionStorage.getItem(storageName)) : [];
+        }
+
+
+        $('select').change(function () {
+            var nowvalue = $(this).val();
+            var selectId = $(this).attr("id");
+            switch (selectId) {
+                case 'top_cate':
+                    if (nowvalue == 0) {
+                        $('#sub_cate').html('<option value="0">请选择</option>');
+                        $('#sub_cate').val(0);
+                        $('#spec').val(0);
+                        $('#spec_val').val(0);
+                    }
+
+                    $('#spec,#spec_val').html('<option value="0">请选择</option>');
+                    setItem(selecturl, {pid: nowvalue, level: 2}, '#sub_cate', 0,false);
+                    break;
+                case 'sub_cate':
+
+                    if (nowvalue == 0) {
+                        $('#spec').html('<option value="0">请选择</option>');
+
+                        $('#spec').val(0);
+                        $('#spec_val').val(0);
+                    }
+
+                    $('#spec_val').html('<option value="0">请选择</option>');
+                    setItem(selecturl, {pid: nowvalue, level: 3}, '#spec', 0,false);
+                    break;
+                case 'spec':
+                    console.log(nowvalue)
+                    if (nowvalue == 0) {
+                        $('#spec_val').html('<option value="0">请选择</option>');
+                        $('#spec_val').val(0);
+                    }
+                    setItem(selecturl, {pid: nowvalue, level: 4}, '#spec_val', 0,false);
+                    break;
+
+            }
+        });
+
+        $('.search').click(function () {
+
+            var status = $('#status').val();
+            // var arr = [];
+            // for (var i = 0, len = storage.length; i < len; i++) {
+            //     var key = storage.key(i);
+            //     if (key !=='spec'&&key!=='spec_val'&&key!=='sub_cate'&&key!=='top_cate'){
+            //         arr.push(key);
+            //     }
+            // }
+            // var sessionstr2 = arr.join('|');
+
+            var sessionstr2 = sessionStorage.getItem("subjectCodeList") ? JSON.parse(sessionStorage.getItem("subjectCodeList")).join("|") : [];
+            console.log(sessionstr2)
+
+            if (status == 1) {
+                if (sessionstr2 == "") {
+                    alert("没有已选中");
+                    return;
+                } else {
+                    $('input[name="ids"]').val(sessionstr2);
+                }
+            } else if (status == 2) {
+                $('input[name="ids"]').val(sessionstr2);
+            }
+            var data = $('#form').serialize();
+
+            if (data == '' || data == undefined) {
+                window.location.href = select_url;
+            } else {
+                window.location.href = select_url+"?" + data;
+
+                var arr = [];
+                var str = data.split("&");
+                var map = {};
+                for (var i = 0; i < str.length; i++) {
+                    arr.push(str[i].split("="));
+                    map[arr[i][0]] = arr[i][1];
+                }
+                sessionStorage.top_cate = map.top_cate;
+                sessionStorage.sub_cate = map.sub_cate;
+                sessionStorage.spec = map.spec;
+                sessionStorage.spec_val = map.spec_val;
+            }
+        });
+    })
+</script>
+{/block}

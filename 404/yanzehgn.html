@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证</title>
+	<style>
+		.dianji{width: 100px;height: 40px;text-align: center;line-height: 40px;background: blue;color: #fff;
+			margin-top: 50px;}
+	</style>
+</head>
+<body>
+	<input type="text" class="nameinput">
+	<div class="dianji">点击执行</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+          $('.dianji').click(function(event) {
+          
+          // var reg =/^[^\s\d\$\*\+@!！，,.。：:'"？?`~!@#/%\^&-=][^\s\d]{1,}[\u4E00-\u9FA5\uf900-\ufa2d\a-z\A-Z]{2,10}/;
+          var reg=/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*?]+)$)^[\w~!@#$%\^&*?]{1,20}$/;
+ 
+          var nichengval=$('.nameinput').val();          
+
+           if(reg.test(nichengval)){
+              console.log('通过')
+           }else{
+           	 console.log('不通过')
+           }
+            
+
+
+          });
+
+          
+    
+
+		})
+	</script>
+</body>
+</html>
