@@ -1,0 +1,103 @@
+<!-- 登录注册忘记密码 -->
+<div class="user-mask" data-type="user-mask"></div>
+<!-- 登录 -->
+<div class="user-container signin-container" data-type="signin-container"> 
+	<span class="user-container-close" data-type="user-container-close">×</span>
+	<h4 class="user-caption">登录</h4>
+	<div class="user-process">
+		<div class="active-left">1、验证手机</div>
+		<div class="">2、设置新密码</div>
+	</div>
+	<div class="user-input">
+        <span>手机号</span>
+        <input type="text" maxlength="11" data-type="phone">
+    </div>
+    <div class="user-input">
+        <span>密码</span>
+        <input type="password" data-type="sign-password">
+    </div>
+    <div class="user-tips">手机号或密码错误</div>
+    <button class="user-btn" disabled="disabled" data-type="sign-btn">登录</button>
+    <div class="register-tips">没有账号，<a href="javascript:void(0);" data-type="register-now">立即注册</a></div>
+    <div class="other-way-login">
+    	<div class="other-way">
+    		<span>第三方登录</span>
+    		<i class="iconfont icon-qq"></i>
+    		<i class="iconfont icon-wx"></i>
+    		<i class="iconfont icon-weibo"></i>
+    	</div>
+    	<div class="forget-tips"><span data-type="forget-password-btn">忘记密码？</span></div>
+    </div>
+</div>
+<!-- 注册 验证手机 -->
+<div class="user-container register-container" data-type="register-container"> 
+	<span class="user-container-close" data-type="user-container-close">×</span>
+	<h4 class="user-caption">注册</h4>
+	<div class="user-process">
+		<div class="active-left">1、验证手机</div>
+		<div class="">2、设置新密码</div>
+	</div>
+	<div class="user-input">
+        <span>手机号</span>
+        <input type="text" maxlength="11" data-type="phone">
+    </div>
+    <div class="user-input">
+        <span>验证码</span>
+        <input type="text" maxlength="11" data-type="token" disabled="disabled">
+        <span class="get-check-code" data-type="get-token">获取验证码</span>
+    </div>
+    <div class="user-tips">输入正确的手机号/验证码错误</div>
+    <button class="user-btn" data-type="register-next-btn" disabled="disabled">下一步</button>
+    <div class="register-tips"><a href="javascript:void(0);">注册即代表你同意《××协议》</a></div>
+</div>
+<!-- 注册 设置密码 -->
+<div class="user-container set-password-container" data-type="set-password-container">
+	<span class="user-container-close" data-type="user-container-close">×</span>
+	<h4 class="user-caption">注册</h4>
+	<div class="user-process">
+		<div class="">1、验证手机</div>
+		<div class="active-right">2、设置新密码</div>
+	</div>
+	<div class="user-input">
+        <span>昵称</span>
+        <input type="text" data-type="nickname">
+    </div>
+    <div class="user-input">
+        <span>密码</span>
+        <input type="password" data-type="password">
+    </div>
+    <div class="user-input">
+        <span>确认密码</span>
+        <input type="password" data-type="confirm-password">
+    </div>
+    <div class="user-tips">密码最少8位/两次密码不一致</div>
+    <button class="user-btn" data-type="register-btn" disabled="disabled">注册</button>
+    <div class="register-tips"><a href="javascript:void(0);">注册即代表你同意《××协议》</a></div>
+    <input type="hidden" data-type="phone">
+    <input type="hidden" data-type="token">
+</div>
+<!-- 忘记密码 -->
+<div class="user-container forget-password-container" data-type="forget-password-container">
+	<span class="user-container-close" data-type="user-container-close">×</span>
+	<h4 class="user-caption">忘记密码</h4>
+	<div class="user-process">
+		<div class="">1、验证手机</div>
+		<div class="active-right">2、设置新密码</div>
+	</div>
+    <div class="user-input">
+        <span>密码</span>
+        <input type="password" data-type="password">
+    </div>
+    <div class="user-input">
+        <span>确认密码</span>
+        <input type="password" data-type="confirm-password">
+    </div>
+    <div class="user-tips">密码最少8位/两次密码不一致</div>
+    <button class="user-btn" data-type="change-password-btn" disabled="disabled">确认</button>
+    <div class="login-or-register">
+    	<div class="sign" data-type="sign"><span>登录</span></div>
+    	<div class="reg" data-type="reg"><span>注册</span></div>
+    </div>
+    <input type="hidden" data-type="phone">
+    <input type="hidden" data-type="token">
+</div>

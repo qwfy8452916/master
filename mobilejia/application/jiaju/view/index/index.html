@@ -1,0 +1,340 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+<title>齐装家具网上商城_中国专业网上家具导购平台_买家具就上齐装家居网</title>
+<meta name="keywords" content="网上买家具,家具导购平台,家具网上商城,齐装家具网">
+<meta name="description"
+      content="齐装家具网上商城,中国专业家具网购平台,2018网上买家具一站式服务。为您提供客厅、卧室、卫浴、厨房、餐厅的全屋家具网购全程服务，国内外品牌家具任您挑选，网上买家具首选齐装家具网上商城。">
+{/block}
+
+{block name="style"}
+<!--当前页面独有css-->
+<link rel="stylesheet" href="/assets/pc/js/swiper-2.6.7/idangerous.swiper.css" type="text/css">
+<link rel="stylesheet" href="/assets/pc/css/swiper-3.3.1.min.css" type="text/css">
+<link rel="stylesheet" href="/assets/pc/css/zwl.css" type="text/css"/>
+{/block}
+
+
+{block name="content"}
+<!-- 首页baner -->
+<div class="ibanner">
+    <div class="ieswiper-container" id="ibanner">
+        <div class="ieswiper-wrapper">
+            {volist name="banners" id="vo" length='8'}
+            <div class="ieswiper-slide">
+                <a href="{$vo.pcurl}" target="_blank"><img src="{$vo.pcimg}" alt=""></a>
+            </div>
+            {/volist}
+        </div>
+        <div class="pagination"></div>
+        <div class="swiper-button-prev ibanner-prev"></div>
+        <div class="swiper-button-next ibanner-next"></div>
+    </div>
+</div>
+<!-- 品类楼层 -->
+<div class="container icate-container">
+    <ul class="icate-hot-list clearfix">
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/chuang/" target="_blank"><img src="/assets/pc/images/bed.png"
+                                                                                   alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">床</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/shafa/" target="_blank"><img src="/assets/pc/images/sofa.png"
+                                                                                  alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">沙发</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/canzuo/" target="_blank"><img
+                        src="/assets/pc/images/dining-table.png" alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">餐桌</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/shuzuo/" target="_blank"><img src="/assets/pc/images/booktable.png"
+                                                                                   alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">书桌</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/ertongchuang/" target="_blank"><img
+                        src="/assets/pc/images/childbed.png" alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">儿童床</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/chuangdian/" target="_blank"><img
+                        src="/assets/pc/images/mattress.png" alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">床垫</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/xiegui/" target="_blank"><img
+                        src="/assets/pc/images/shoecabinet.png" alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">鞋柜</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/jiugui/" target="_blank"><img
+                        src="/assets/pc/images/winecabinet.png" alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">酒柜</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/shugui/" target="_blank"><img
+                        src="/assets/pc/images/bookcabinet.png" alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">书柜</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/bangongzuo/" target="_blank"><img src="/assets/pc/images/desk.png"
+                                                                                       alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">办公桌</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/chaji/" target="_blank"><img src="/assets/pc/images/sidetable.png"
+                                                                                  alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">茶几</a></span></div>
+        </li>
+        <li>
+            <div class="player">
+                <a href="http://{:config('pc_host')}/all/" target="_blank"><img src="/assets/pc/images/all-cate.png"
+                                                                                alt=""></a>
+                <span><a href="http://{:config('pc_host')}/chuang/" target="_blank">全部</a></span></div>
+        </li>
+    </ul>
+</div>
+<!-- 今日特价楼层 -->
+<div class="container isuper-cheap-container">
+    <div class="ipublic-layer-title">
+        <span class="caption">今日特价</span>
+        <span class="sub">今日特价天天有，边逛边买边剁手</span>
+    </div>
+    <ul class="icheap-price-today clearfix">
+        {foreach $discount_goods as $vo}
+        <li>
+            <div class="inner">
+                <div class="thumb"><a href="http://{:config('pc_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html" target="_blank"><img
+                        src="{$vo.goods_imgs.0.img_url|default=''}" alt=""></a></div>
+                <p class="title"><a href="http://{:config('pc_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html"
+                                    target="_blank">{$vo.title}</a></p>
+                <div class="public-price-compare"><span>￥{$vo.zk_final_price}</span><span>￥{$vo.custom_price}</span>
+                </div>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+<!-- 使用场景楼层 -->
+<div class="container iscene-container">
+    <div class="ipublic-layer-title">
+        <span class="caption">使用场景</span>
+        <span class="sub">根据功能属性，按空间分类</span>
+    </div>
+    <ul class="iscene-use clearfix">
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/keting/" target="_blank"><img
+                            src="/assets/pc/images/living-s.png" alt=""></a>
+                    <span class="point point-o" id="living-t1" title="电视柜">
+                        <span class="text living-t1-text"><a href="/dianshigui/" target="_blank">电视柜</a></span>
+                    </span>
+                    <span class="point point-o" id="living-t2" title="沙发">
+                        <span class="text living-t2-text"><a href="/shafa/" target="_blank">沙发</a></span>
+                    </span>
+                    <span class="point point-o" id="living-t3" title="茶几">
+                        <span class="text living-t3-text"><a href="/chaji/" target="_blank">茶几</a></span>
+                    </span>
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/keting/" target="_blank">客厅</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/woshi/" target="_blank"><img
+                            src="/assets/pc/images/bedroom-s.png" alt=""></a>
+                    <span class="point point-o" id="bedroom-t1" title="床垫">
+                        <span class="text bedroom-t1-text"><a href="/chuangdian/" target="_blank">床垫</a></span>
+                    </span>
+                    <span class="point point-o" id="bedroom-t2" title="床">
+                        <span class="text bedroom-t2-text"><a href="/chuang/" target="_blank">床</a></span>
+                    </span>
+                    <span class="point point-o" id="bedroom-t3" title="床尾凳">
+                        <span class="text bedroom-t3-text"><a href="/chuangweideng/" target="_blank">床尾凳</a></span>
+                    </span>
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/woshi/" target="_blank">卧室</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/canting/" target="_blank"><img
+                            src="/assets/pc/images/dining-s.png" alt=""></a>
+                    <span class="point point-o" id="dining-t1" title="餐桌">
+                        <span class="text dining-t1-text"><a href="/canzuo/" target="_blank">餐桌</a></span>
+                    </span>
+                    <span class="point point-o" id="dining-t2" title="餐椅">
+                        <span class="text dining-t2-text"><a href="/canyi/" target="_blank">餐椅</a></span>
+                    </span>
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/canting/" target="_blank">餐厅</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/shufang/" target="_blank"><img
+                            src="/assets/pc/images/bookshouse-s.png" alt=""></a>
+                    <span class="point point-o" id="bookshouse-t1" title="书柜">
+                        <span class="text bookshouse-t1-text"><a href="/shugui/" target="_blank">书柜</a></span>
+                    </span>
+                    <span class="point point-o" id="bookshouse-t2" title="书椅">
+                        <span class="text bookshouse-t2-text"><a href="/shuyi" target="_blank">书椅</a></span>
+                    </span>
+                    <span class="point point-o" id="bookshouse-t3" title="书桌">
+                        <span class="text bookshouse-t3-text"><a href="/shuzuo/" target="_blank">书桌</a></span>
+                    </span>
+
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/shufang/" target="_blank">书房</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/ertongfang/" target="_blank"><img
+                            src="/assets/pc/images/children-s.png" alt=""></a>
+                    <span class="point point-o" id="children-t1" title="儿童床">
+                        <span class="text children-t1-text"><a href="/ertongchuang/" target="_blank">儿童床</a></span>
+                    </span>
+                    <span class="point point-o" id="children-t2" title="儿童床垫">
+                        <span class="text children-t2-text"><a href="/ertongdian/" target="_blank">儿童床垫</a></span>
+                    </span>
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/ertongfang/" target="_blank">儿童房</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/bangong/" target="_blank"><img
+                            src="/assets/pc/images/office-s.png" alt=""></a>
+                    <span class="point point-o" id="office-t1" title="办公桌">
+                        <span class="text office-t1-text"><a href="/bangongzuo/" target="_blank">办公桌</a></span>
+                    </span>
+                    <span class="point point-o" id="office-t2" title="办公椅">
+                        <span class="text office-t2-text"><a href="/bangongyi/" target="_blank">办公椅</a></span>
+                    </span>
+
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/bangong/" target="_blank">办公</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/dengshi/" target="_blank"><img
+                            src="/assets/pc/images/lighting-s.png" alt=""></a>
+                    <span class="point point-o" id="lighting-t1" title="吸顶灯">
+                        <span class="text lighting-t1-text"><a href="/xidingdeng/" target="_blank">吸顶灯</a></span>
+                    </span>
+                    <span class="point point-o" id="lighting-t2" title="LED灯">
+                        <span class="text lighting-t2-text"><a href="/leddeng/" target="_blank">LED灯</a></span>
+                    </span>
+
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/dengshi/" target="_blank">灯饰</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/weiyu/" target="_blank"><img
+                            src="/assets/pc/images/bathroom-s.png" alt=""></a>
+                    <span class="point point-o" id="bathroom-t1" title="浴缸">
+                        <span class="text bathroom-t1-text">
+                            <a href="/yugang/">浴缸</a>
+                        </span>
+                    </span>
+                    <span class="point point-o" id="bathroom-t2" title="坐便器">
+                        <span class="text bathroom-t2-text"><a href="/zuobianqi/" target="_blank">坐便器</a></span>
+                        </span>
+                    <span class="point point-o" id="bathroom-t3" title="浴室镜">
+                        <span class="text bathroom-t3-text"><a href="/wushijin/" target="_blank">浴室镜</a></span>
+                    </span>
+
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/weiyu/" target="_blank">卫浴</a></p>
+            </div>
+        </li>
+        <li>
+            <div class="inner">
+                <div class="thumb">
+                    <a href="http://{:config('pc_host')}/weiyu/" target="_blank"><img
+                            src="/assets/pc/images/outer-s.png" alt=""></a>
+                    <span class="point point-o" id="outer-t1" title="园艺">
+                        <span class="text outer-t1-text"><a href="/yuanyi/" target="_blank">园艺</a></span>
+                    </span>
+                    <span class="point point-o" id="outer-t2" title="阳台桌椅">
+                        <span class="text outer-t2-text"><a href="/yangtaizuoyi/" target="_blank">阳台桌椅</a></span>
+                    </span>
+
+                </div>
+                <p class="title"><a href="http://{:config('pc_host')}/weiyu/" target="_blank">户外</a></p>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- 畅销榜楼层 -->
+<div class="container isale-list-container">
+    <div class="ipublic-layer-title">
+        <span class="caption">畅销榜</span>
+        <span class="sub">全民偏爱，流行前沿</span>
+    </div>
+    <ul class="isale-list clearfix">
+        {volist name="best_selling" id="vo" length='7' key="k"}
+        <li>
+            <div class="rank r{$k}"><span>{$k}</span></div>
+            <div class="thumb"><a href="http://{:config('pc_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html" target="_blank"><img
+                    src="{$vo.goods_imgs.0.img_url|default=''}" alt=""></a></div>
+            <p class="title"><a href="http://{:config('pc_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html"
+                                target="_blank">{$k}{$vo.title}</a></p>
+            <div class="price-and-sales">
+                <span>￥{$vo.zk_final_price}</span>
+                <span>销量：{$vo.volume}</span>
+            </div>
+        </li>
+
+        {/volist}
+    </ul>
+</div>
+<!-- 精选专题楼层 -->
+<div class="container ispecial-list-container">
+    <div class="ipublic-layer-title">
+        <span class="caption">精选专题</span>
+        <span class="sub">设计老司机揭秘搭配秘笈</span>
+    </div>
+    <ul class="ispecial-list clearfix">
+        {foreach $subject as $vo}
+        <li>
+            <div class="thumb"><a href="http://{:config('pc_host')}/zt/{$vo.id}.html" target="_blank"><img
+                    src="{$vo.headimg|default=''}" alt=""></a></div>
+            <p class="title"><a href="http://{:config('pc_host')}/zt/{$vo.id}.html" target="_blank">{$vo.title}</a></p>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/assets/pc/js/swiper-2.6.7/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/assets/pc/js/index.js"></script>
+{/block}
+

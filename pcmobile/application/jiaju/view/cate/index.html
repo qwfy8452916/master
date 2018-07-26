@@ -1,0 +1,236 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+<title>{$head['title']}</title>
+<meta name="keywords" content="{$head['keywords']}">
+<meta name="description" content="{$head['description']}">
+{/block}
+{block name="style"}
+<!--当前页面独有css-->
+<link href="/assets/pc/css/zwl.css" rel="stylesheet" type="text/css"/>
+{/block}
+
+
+{block name="content"}
+<!-- 筛选条件展示部分 -->
+{notempty name="search_content"}
+<div class="container">
+    <div class="search-ret-tips">
+        全部搜索结果：{$search_content}
+    </div>
+</div>
+{if condition="(isset($search_empty))"}
+<div class="container">
+    <div class="search-no-ret">
+        没找到与<span>“{$search_content}”</span>相关的商品
+    </div>
+</div>
+{/if}
+{/notempty}
+{notempty name="crumbs"}
+<div class="container">
+    <div class="filter-condition-container">
+        {foreach $crumbs as $vo}
+        <a href="http://{:config('pc_host')}/{$vo.url}">
+            <span>
+                {$vo.key_name}：{$vo.value_name}
+                <i>×</i>
+            </span>
+        </a>
+        {/foreach}
+    </div>
+</div>
+{/notempty}
+
+<!-- 所有筛选条件部分 -->
+<div class="container" style="margin-top: 12px;">
+    <div class="all-filter-container">
+        <div class="classify-box">
+            <div class="classify-title">
+                <span>场景：</span>
+            </div>
+            <div class="classify-list">
+                <div class="reset-with clearfix">
+                    {empty name="select_top_cate_id"}
+                    <span class="active"><a rel="nofollow" href="/all/">不限</a></span>
+                    {else /}
+                    <span><a rel="nofollow" href="/all/">不限</a></span>
+                    {/empty}
+                    {foreach $all_top_cate as $vo}
+                    {if condition="(!empty($select_top_cate_id)) AND ($select_top_cate_id == $vo.id) "}
+                    <span class="active"><a href="http://{:config('pc_host')}/{$vo.short_name}/">{$vo.name}</a></span>
+                    {else /}
+                    <span><a href="http://{:config('pc_host')}/{$vo.short_name}/">{$vo.name}</a></span>
+                    {/if}
+                    {/foreach}
+                </div>
+            </div>
+            <div class="classify-operate" data-status="close"><span>展开</span><i class="iconfont icon-angle-down"></i>
+            </div>
+        </div>
+        {notempty name="all_sub_cate"}
+        <div class="classify-box">
+            <div class="classify-title"><span>品类：</span></div>
+            <div class="classify-list" list-state="2">
+                <div class="reset-with clearfix">
+                    {empty name="select_sub_cate_id"}
+                    <span class="active"><a rel="nofollow" href="/{$top_cate.short_name}/">不限</a></span>
+                    {else /}
+                    <span><a rel="nofollow" href="/{$top_cate.short_name}/">不限</a></span>
+                    {/empty}
+                    {foreach $all_sub_cate as $vo}
+                    {if condition="(!empty($select_sub_cate_id)) AND ($select_sub_cate_id == $vo.id) "}
+                    <span class="active"><a href="http://{:config('pc_host')}/{$vo.short_name}/">{$vo.name}</a></span>
+                    {else /}
+                    <span><a href="http://{:config('pc_host')}/{$vo.short_name}/">{$vo.name}</a></span>
+                    {/if}
+                    {/foreach}
+                </div>
+            </div>
+            <div class="classify-operate" data-status="close"><span>展开</span><i class="iconfont icon-angle-down"></i>
+            </div>
+        </div>
+        {/notempty}
+        {notempty name="all_specification_url"}
+
+        {foreach $all_specification_url as $vo}
+        <div class="classify-box">
+            <div class="classify-title"><span>{$vo.name}：</span></div>
+            <div class="classify-list" list-state="2">
+                <div class="reset-with clearfix">
+                    {foreach $vo.children as $vovo}
+                    {if condition="(!empty($vovo['selected']))"}
+                    <span class="active">
+                        <a href="http://{:config('pc_host')}/{$select_sub_cate_short_name}/{$vovo.url}/">{$vovo.name}</a>
+                    </span>
+                    {else /}
+                    <span>
+                        <a href="http://{:config('pc_host')}/{$select_sub_cate_short_name}/{$vovo.url}/">{$vovo.name}</a>
+                    </span>
+                    {/if}
+                    {/foreach}
+
+                </div>
+            </div>
+            <div class="classify-operate" data-status="close"><span>展开</span><i class="iconfont icon-angle-down"></i>
+            </div>
+        </div>
+        {/foreach}
+        {/notempty}
+
+    </div>
+</div>
+<!-- 排序部分 -->
+<div class="container">
+    <div class="sort-container">
+        {if condition="($sort == 5)"}
+        <span class="text active"><a href="http://{:config('pc_host')}/{$sort_url}5">综合</a></span>
+        {else /}
+        <span class="text"><a href="http://{:config('pc_host')}/{$sort_url}5">综合</a></span>
+        {/if}
+
+        {if condition="($sort == 1)"}
+        <span class="text active"><a href="http://{:config('pc_host')}/{$sort_url}1">销量</a></span>
+        {else /}
+        <span class="text"><a href="http://{:config('pc_host')}/{$sort_url}1">销量</a></span>
+        {/if}
+        <span class="text">
+{if condition="($sort == 2)"}
+                    <a href="http://{:config('pc_host')}/{$sort_url}3" class="active">
+                        价格
+                    </a>
+                    {else /}
+                    <a href="http://{:config('pc_host')}/{$sort_url}2">
+                        价格
+                    </a>
+                    {/if}
+
+				<span class="sort">
+                    {if condition="($sort == 2)"}
+                    <a href="http://{:config('pc_host')}/{$sort_url}2" class="active">
+                        <i class="iconfont icon-angle-hollow-up"></i>
+                    </a>
+                    {else /}
+                    <a href="http://{:config('pc_host')}/{$sort_url}2">
+                        <i class="iconfont icon-angle-hollow-up"></i>
+                    </a>
+                    {/if}
+                    {if condition="($sort == 3)"}
+                    <a href="http://{:config('pc_host')}/{$sort_url}3" class="active">
+                        <i class="iconfont icon-angle-hollow-down"></i>
+                    </a>
+                    {else /}
+                    <a href="http://{:config('pc_host')}/{$sort_url}3">
+                        <i class="iconfont icon-angle-hollow-down"></i>
+                    </a>
+                    {/if}
+				</span>
+        </span>
+    </div>
+</div>
+<!-- 商品展示列表部分 -->
+{notempty name="goods"}
+<div class="container" id="all-product-box">
+    <ul class="public-goods-list-container clearfix">
+        {foreach $goods as $vo}
+        <li>
+            <div class="thumb">
+                {if condition="($vo.collect_button_status==3)"}
+                <span class="collect collected" data-type="collect" data-code="{$vo.code}"
+                      data-collect-status="{$vo.collect_button_status}">已收藏</span>
+                {else /}
+                <span class="collect" data-type="collect" data-code="{$vo.code}"
+                      data-collect-status="{$vo.collect_button_status}">收藏</span>
+                {/if}
+                <a href="http://{:config('pc_host')}/{$vo.sub_cate.short_name}/{$vo.code}.html" target="_blank">
+                    <img data-original="{$vo.img_url}-wh300.jpg" alt="" class="lazy">
+                </a>
+            </div>
+            <p class="title"><a href="http://{:config('pc_host')}/{$vo.sub_cate.short_name}/{$vo.code}.html"
+                                target="_blank">{$vo.title}</a></p>
+            <p class="price">￥{$vo.zk_final_price}</p>
+            <p class="desc"><a href="http://{:config('pc_host')}/{$vo.sub_cate.short_name}/{$vo.code}.html"
+                               target="_blank">{$vo.describtion}</a></p>
+            <div class="info">
+                <span>
+                    销量 : 
+                    <i>
+                      {if condition="($vo.volume>99999)"}
+                        10w+
+                        {else /}
+                        {$vo.volume}
+                        {/if}
+                    </i>
+                </span>
+                <span>评分 : <i>{$vo.score}</i></span>
+                <span data-type="collect-count">
+                    收藏数 :
+                    <i>
+                        {if condition="($vo.collect_num>99999)"}
+                        10w+
+                        {else /}
+                        {$vo.collect_num}
+                        {/if}
+                    </i>
+                </span>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{else /}
+<div class="no-search-ret">
+    <img src="/assets/pc/images/no-ret.png" alt="">
+    <p>啊哦，没有找到主人喜欢的内容～～～</p>
+</div>
+{/notempty}
+
+
+<div id="page" class="clearfix">{$page}</div>
+
+{/block}
+
+{block name="script"}
+<script type = "text/javascript" src = "/assets/pc/js/jquery.lazyload.min.js"></script>
+<script type = "text/javascript" src = "/assets/pc/js/procuctlist.js"></script>
+{/block}

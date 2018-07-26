@@ -1,0 +1,173 @@
+html {
+    -webkit-text-size-adjust: none;
+}
+html{font-size: 100px;min-height: 100%;display: block;}/*iphone 4/5*/
+body{font-size: 0.126rem; /*实际相当于14px*/ min-height: 100%;display: block;}
+/*Galaxy S5*/
+@media (min-device-width : 360px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html{font-size: 112.5px;}
+}
+/*iphone 6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){
+    html{font-size: 117.1875px; }
+}
+/*iphone6 plus*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html{font-size: 129.375px;}
+}
+/*Nexus 5X Nexus 6P*/
+@media (min-device-width : 412px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+    html{font-size: 128.75px;}
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #a9a9a9;
+    font-size: 0.13rem;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #a9a9a9;
+    font-size: 0.13rem;
+}
+
+input:-ms-input-placeholder{
+    color: #a9a9a9;
+    font-size: 0.13rem;
+}
+
+input::-webkit-input-placeholder{
+    color: #a9a9a9;
+    font-size: 0.13rem;
+}
+
+.m-wrap{
+	max-width: 640px;
+	min-width: 320px;
+	width: 100%;
+	margin: auto;
+	overflow:hidden;
+}
+
+/* 公共头部样式 */
+
+header{
+    height:0.5rem;
+    border-bottom:1px solid #e6e6e6;
+    position: relative;
+    text-align:center;
+    background:#fff;
+}
+.public-head-left{position: absolute; left:0px; height: 100%; width:0.35rem;top:0px; }
+.public-head-right{position: absolute; right:0px; height: 100%; width:0.35rem;top:0px;}
+.public-head-center{margin:0px 0.35rem; height: 100%; line-height: 0.5rem}
+.head-content{display: table-cell; vertical-align: middle;}
+.go-back,.user{
+    display: block;
+    width:100%;
+    height: 100%;
+    text-align:center;
+    line-height: 0.5rem;
+}
+.search_input_box {
+    background: #F0F0F0;
+    margin: 0px auto;
+    height: 0.3rem;
+    position: relative;
+    border-radius: 5px;
+    width: 100%;
+    top:0.1rem;
+}
+.serch_icon {
+    position: absolute;
+    font-size: 18px;
+    left: 0.05rem;
+    color: #999;
+    top:-0.09rem;
+}
+
+.search_input_box form {
+    height: 100%;
+}
+.search_input_box input {
+    border: none;
+    background: none;
+    color:#333;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-indent: 0.22rem;
+    position: absolute;
+    top:1px;
+    left:0px;
+    font-size: 0.13rem;
+}
+.giveup {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    height: 100%;
+    line-height: 0.5rem;
+    font-size: 13px;
+    color: #333;
+}
+.remove_text {
+    position: absolute;
+    right: 0.05rem;
+    top: -0.09rem;
+    color: #CCCCCC;
+    display: none;
+}
+.head-title-text{font-size: 0.13rem; color:#333;}
+input::-webkit-search-decoration, input::-webkit-search-cancel-button {
+    display: none;
+}
+.no-more{padding:0.25rem 0px; text-align: center; color:#999; }
+
+/*底部公共*/
+footer{ text-align:center; width:100%; background:#eee; padding:0.1rem 0; font-size: 0.11rem }
+footer .hot{ color:#FF5255;vertical-align: middle;}
+footer .footer-tel{
+    font-size: 16px;
+    vertical-align: middle;
+}
+footer .footer-tel .phone-box{
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    border: 1.5px solid #ff5353;
+    text-align: center;
+    line-height: 21px;
+    border-radius: 50%;
+    margin:0 6px;
+    margin-right: 5px;
+
+}
+footer .footer-tel .phone-box .icon-phone{
+    font-size: 0.13rem;
+}
+footer .footer-title{
+    font-size: 14px;
+    margin-top: 10px;
+}
+footer .footer-webadress{
+    font-size: 12px; padding:5px 0px;
+}
+/* iconfont */
+.iconfont {
+    font-family: "iconfont" !important;
+
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*下拉加载等待*/
+.loading-container{background: url("../images/loading.gif") no-repeat center center; text-align: center; height: 0.3rem; line-height:0.3rem; display: none;}
+
+.user {
+    right: -0.3rem !important;
+
+    top: 0.06rem !important;
+}
+.user .iconfont{font-size: 0.17rem}

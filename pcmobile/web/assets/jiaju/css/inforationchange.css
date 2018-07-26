@@ -1,0 +1,130 @@
+html,body{background: #f5f5f5;}
+.wrap{width: 1210px;margin:0 auto;overflow: hidden;position: relative;}
+.wrap .bannerbj{width: 100%;height: 250px;overflow: hidden;}
+.bannerbj img{width: 100%;height: 100%;}
+.wrap .xinxquyu{width: 100%;height: 608px;background: #fff;position: relative;
+padding: 25px 320px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.xinxquyu .touxiang{width: 100px;height: 100px;position: absolute;left: 167px;top: -38px;
+border-radius: 50%;overflow: hidden;cursor: pointer;}
+.xinxquyu .touxiang .toux_tishi{position: absolute;top: 0;left: 0;width: 100%;height: 100%;line-height: 100px;
+text-align: center;color: #999;display: none;font-size: 14px;}
+.xinxquyu .touxiang img{width: 100%;height: 100%;}
+.xinxquyu .nicheng{width: 100%;margin-top: 15px;overflow: hidden;height: 42px;line-height: 40px;}
+.leftbianji{font-size: 20px;color: #333;font-weight: bold;display: inline-block;float: left;height: 40px;line-height: 40px;}
+.smallfont{font-size: 14px;}
+.middlebianji{display: inline-block;float: right;}
+.xiugnicheng{float: left !important;}
+.middlebianji .localdiqu{display: inline-block;height: 40px;line-height: 40px;padding: 0 10px;
+font-size: 14px;color: #666;float: left;}
+.middlebianji input{height: 40px;width: 120px;outline: none;border-radius: 5px;border: 1px solid #e6e6e6;
+padding: 5px 10px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;
+vertical-align: middle;}
+.middlebianji .nameinput{display: none;width: 160px !important;}
+.rightbianji{display: inline-block;float: right;font-size: 14px;}
+.rightbianji .bianjicunqu{display: inline-block;overflow: hidden;}
+.yincang{display: none !important;}
+.rightbianji .xiugai{display: inline-block;overflow: hidden;color: #45b0e5;width:50px;text-align:center;line-height: 40px;
+height: 40px;}
+.rightbianji .xiugai span{display: inline-block;overflow: hidden;color: #45b0e5;line-height: 40px;
+cursor: pointer;padding:0 10px;}
+.rightbianji span{display: inline-block;height: 40px;line-height: 40px;padding: 0 10px;
+cursor: pointer;color: #666;}
+.rightbianji span.rightjvli{margin-right: 40px;}
+.rightbianji span.chongse{margin-right: 40px;}
+.rightbianji span.savebc{color: #45b0e5;}
+.xinxquyu .sexxb{width: 100%;margin-top: 20px;overflow: hidden;}
+.sexxb select{height: 40px;line-height:40px;width: 120px;outline: none;border-radius: 5px;border: 1px solid #e6e6e6;
+padding: 5px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;float: left;
+display: none;}
+.sexxb .xingbie{display: inline-block;height: 40px;line-height: 40px;padding: 0 10px;
+font-size: 14px;color: #666;float: left;}
+.areadq{width: 100%;margin-top: 20px;overflow: hidden;}
+.areadq select{height: 40px;line-height:40px;vertical-align:middle;width: 120px;outline: none;border-radius: 5px;border: 1px solid #e6e6e6;
+padding: 5px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;float: left;
+}
+.province{margin-right: 10px;display: inline-block;overflow: hidden;float: right;position: relative;}
+.province span{position: absolute;right: 18px;top:0;display: inline-block;height: 40px;line-height: 40px;
+z-index: 1;}
+.citydiv{margin-right: 10px;display: inline-block;overflow: hidden;float: right;position: relative;
+display: none;}
+.citydiv span{position: absolute;right: 18px;top:0;display: inline-block;height: 40px;line-height: 40px;
+z-index: 1;}
+.areadiv{overflow: hidden;display: inline-block;float: right;position: relative;display: none;}
+.areadiv span{position: absolute;right: 18px;top:0;display: inline-block;height: 40px;line-height: 40px;
+z-index: 1;}
+.areadq select.diqu{margin-right: 0;position: relative;}
+.areadq select.diqu span{position: absolute;top: 10px;right: 5px;}
+
+.phonesj{width: 100%;margin-top: 20px;overflow: hidden;}
+/*.phonesj .rightjvli{margin-right: 48px;}*/
+.passwordmm{width: 100%;margin-top: 20px;overflow: hidden;}
+.passwordmm .chongse{color: #45b0e5;}
+
+.clipyinying{width: 100%;height: 100%;position: fixed;top: 0;bottom: 0;left: 0;right: 0;
+margin:auto;background: rgba(0,0,0,0.7);display: none;z-index: 99;}
+.touxiangkz{width: 630px;height: 480px;position: fixed;left: 0;right: 0;top: 0;bottom: 0;margin: auto;
+	background: #fff;display: none;padding-top: 20px;z-index: 100;
+}
+.closequx{width: 15px;height: 15px;display: inline-block;
+position: absolute;top: 5px;right: 5px;padding: 10px;cursor: pointer;
+background: url(../images/closegb.png) no-repeat center center;}
+
+
+/*手机验证弹窗*/
+.guidetanc{width: 420px;height: 387px;background: #fff;border-radius: 5px;position: fixed;top: 0;bottom: 0;left: 0;right: 0;
+margin: auto;padding: 37px 46px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;display: none;z-index: 99;
+outline: none;}
+.guidetanc .guanbi{position: absolute;width: 15px;height: 15px;top: 5px;right: 5px;background: url(../images/closegb.png) no-repeat center center;
+display: inline-block;padding:10px;cursor: pointer;}
+.guidetanc .titleone{text-align: center;font-size: 30px;font-family: "微软雅黑","Microsoft YaHei";margin-bottom: 20px;}
+.guidetanc .buzouwaik{width: 250px;height: 30px;margin: 0 auto;overflow: hidden;position: relative;margin-bottom: 40px;}
+.guidetanc .jiantoubj01,.jiantoubj02{display: inline-block;color: #999;}
+.guidetanc .jiantoubj011{width:130px;height:30px;background:url(../images/jiantouzs011.png) no-repeat center center;float: left;
+position: relative;top: 0;left: 0;line-height: 30px;font-size:12px;;text-align: center;color: #fff;}
+.guidetanc .jiantoubj022{width:130px;height:30px;background:url(../images/jiantouzs022.png) no-repeat center center;float: left;
+position: absolute;top: 0;right: 0;line-height: 30px;font-size: 12px;text-align: center;color: #999;}
+.guidetanc .phonewk{width: 100%;height: 35px;border-bottom: 1px solid #e6e6e6;display: flex;font-size: 14px;}
+.guidetanc .phonewk input{height: 32px;outline: none;flex: 1;border: 0;font-size: 14px;}
+.guidetanc .phonewk span{margin-right: 4px;display: inline-block;width: 60px;height: 35px;line-height: 35px;text-align: left;
+float: left;}
+.guidetanc .yanzengmwk{width: 100%;height: 35px;border-bottom: 1px solid #e6e6e6;display: flex;font-size: 14px;margin-top: 28px;}
+.guidetanc .yanzengmwk input{height: 32px;outline: none;flex: 1;border: 0;font-size: 14px;
+float: left;}
+.guidetanc .yanzengmwk span{margin-right: 4px;display: inline-block;width: 60px;height: 35px;line-height: 35px;text-align: left;
+float: left;}
+.guidetanc .yanzengmwk .btnyzm{background: #fff;color: #45B0E6;}
+.guidetanc .yanzengmwk input[disabled="disabled"]{color: #999 !important;}
+.guidetanc .tjtishi{font-size: 14px;color: #f21855;margin: 10px 0;height: 16px;}
+.guidetanc .surewk{margin-top: 10px;height: 40px;line-height: 40px;}
+.guidetanc .surewk .sureqr{width: 100%;height: 100%;background: #f21855;border-radius: 5px;text-align: center;color: #fff;
+border: 0;outline:none;cursor:pointer;}
+/*手机验证弹窗*/
+
+/*修改密码*/
+.guidetanc2{width: 420px;height: 387px;background: #fff;border-radius: 5px;position: fixed;top: 0;bottom: 0;left: 0;right: 0;
+margin: auto;padding: 37px 46px;box-sizing: border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;display: none;z-index: 99;
+outline: none;}
+.guidetanc2 .guanbi{position: absolute;width: 15px;height: 15px;top: 5px;right: 5px;background: url(../images/closegb.png) no-repeat center center;
+display: inline-block;padding:10px;cursor: pointer;}
+.guidetanc2 .titleone{text-align: center;font-size: 30px;font-family: "微软雅黑","Microsoft YaHei";margin-bottom: 20px;}
+.guidetanc2 .buzouwaik{width: 250px;height: 30px;margin: 0 auto;overflow: hidden;position: relative;margin-bottom: 40px;}
+.guidetanc2 .jiantoubj01,.jiantoubj02{display: inline-block;color: #999;}
+.guidetanc2 .jiantoubj01{width:130px;height:30px;background:url(../images/jiantouzs01.png) no-repeat center center;float: left;
+position: relative;top: 0;left: 0;line-height: 30px;font-size:12px;;text-align: center;}
+.guidetanc2 .jiantoubj02{width:130px;height:30px;background:url(../images/jiantouzs02.png) no-repeat center center;float: left;
+position: absolute;top: 0;right: 0;line-height: 30px;font-size: 12px;text-align: center;color: #fff}
+.guidetanc2 .newpassword{width: 100%;height: 35px;border-bottom: 1px solid #e6e6e6;display: flex;font-size: 14px;}
+.guidetanc2 .newpassword input{height: 32px;outline: none;flex: 1;border: 0;font-size: 14px;}
+.guidetanc2 .newpassword span{margin-right: 4px;display: inline-block;width: 60px;height: 35px;line-height: 35px;text-align: left;
+float: left;}
+.guidetanc2 .surepassword{width: 100%;height: 35px;border-bottom: 1px solid #e6e6e6;display: flex;font-size: 14px;margin-top: 28px;}
+.guidetanc2 .surepassword input{height: 32px;outline: none;flex: 1;border: 0;font-size: 14px;}
+.guidetanc2 .surepassword span{margin-right: 4px;display: inline-block;width: 60px;height: 35px;line-height: 35px;text-align: left;
+float: left;}
+/*.guidetanc2 .surepassword .btnyzm{background: #fff;color: #45b0e5;}*/
+.guidetanc2 .tjtishi02{font-size: 14px;color: #f21855;margin: 10px 0;height: 16px;}
+.guidetanc2 .surewk{margin-top: 10px;height: 40px;line-height: 40px;}
+.guidetanc2 .surewk .sureqr2{width: 100%;height: 100%;background: #f21855;border-radius: 5px;text-align: center;color: #fff;
+border: 0;outline:none;cursor:pointer;}
+
+/*修改密码*/

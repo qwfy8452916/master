@@ -1,0 +1,74 @@
+{extend name="common:basic" /}
+
+{block name="style"}
+<link href="/assets/index/css/m-zwl.css" rel="stylesheet" type="text/css"/>
+{/block}
+
+{block name="title"}
+<title>{$head}</title>
+{/block}
+{block name="headLeft"}
+<a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+<div class="head-title-text">专题</div>
+{/block}
+{block name="headRight"}
+<a class="user" href="{:url('jiajum/user/index')}"><i class="iconfont">&#xe62d;</i></a>
+{/block}
+
+{block name="content"}
+<div class="m-wrap">
+    <div class="special-list">
+        {include file="subject/list_content"/}
+    </div>
+    <div class="loading-container"></div>
+</div>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/assets/index/js/m.zwl.js"></script>
+<script type="text/javascript" src="/assets/common/js/swiper-3.3.1.min.js"></script>
+<script>
+    // 下拉加载逻辑demo
+    var Global_Subject_Url = "{:url('jiajum/subject/indexAjaxList',[],'')}";
+    var $specialList = $('.special-list');
+    var flag = false;
+    var loadingFlag = $(".loading-container");
+    var clientHeight = $(window).height();
+    var page = 2;
+    // 滚动加载
+    $(window).on("scroll", function (event) {
+        var scrollHeight = $("body").height(),
+            scrollTop = $(window).scrollTop();
+        if (scrollHeight - (clientHeight + scrollTop) < 100 && !flag) {
+            // loadingFlag.text("").css("background","");
+            loadingFlag.css("display", "block");
+            flag = !flag;
+            ajaxAction({
+                url: Global_Subject_Url,
+                method: "post",
+                data: {
+                    p: page
+                },
+                successCallback: function (res) {
+                    console.log(res);
+                    if(res.status == 1 && res.data){
+                        page++;
+                        $specialList.append(res.data);
+                        flag = !flag;
+                        loadingFlag.css("display", "none");
+                    }else{
+                        // loadingFlag.text("已无数据").css("background","none");
+                        loadingFlag.css("display", "none");
+                    }
+                },
+                failCallback: function (res) {
+                    flag = !flag;
+                    loadingFlag.text("加载失败，请稍后重试");
+                }
+            });
+        }
+    });
+</script>
+{/block}

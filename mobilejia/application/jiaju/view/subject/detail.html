@@ -1,0 +1,59 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+<title>{$subject['title']}-齐装家具网上商城</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+{/block}
+{block name="style"}
+<!--当前页面独有css-->
+<link href="/assets/pc/css/public-new.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/pc/css/zwl.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="/assets/pc/css/font-awesome.min.css" type="text/css">
+{/block}
+
+
+{block name="content"}
+<body style="background-color: white;">
+	<div class="container clearfix">
+	    <div class="special-left-container">
+	        <h1 class="caption">{$subject['title']}</h1>
+	        <p class="date">{$subject['create_time']}</p>
+	        <div class="detail">
+	            {$subject['content']}
+	        </div>
+	        <div class="other-special">
+	            <h3>其他专题</h3>
+	            <ul class="other-special-list clearfix">
+	                {foreach $recommend as $vo}
+	                    <li>
+	                        <div class="thumb"><a href="http://{:config('pc_host')}/zt/{$vo.id}.html" target="_blank"><img src="{$vo.headimg}" alt=""></a></div>
+	                        <p class="title"><a href="http://{:config('pc_host')}/zt/{$vo.id}.html" target="_blank">{$vo.title}</a></p>
+	                    </li>
+	                {/foreach}
+	            </ul>
+	        </div>
+	    </div>
+	    <div class="special-right-container">
+	        <div class="special-relation-goods">
+	            <h3>相关搭配</h3>
+	            <ul class="relation-goods-list">
+	                {foreach $subject.relatedGoods as $vo}
+	                    <li class="clearfix">
+	                        <div class="thumb"><a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank"><img src="{$vo.goodsImgs[0]['img_url']}" alt=""></a></div>
+	                        <div class="desc">
+	                            <p class="title"><a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank">{$vo.title}</a></p>
+	                            <p class="price">￥{$vo.custom_price}</p>
+	                        </div>
+	                    </li>
+	                {/foreach}
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+</body>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/assets/pc/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/pc/js/common.js"></script>
+{/block}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    {block name="title"}{/block}
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="applicable-device" content="mobile"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+    {include file="common/css" /}
+
+    {block name="style"}
+    <!--当前页面独有css-->
+    {/block}
+    {include file="common@tongjithree/baidu" /}
+</head>
+<body>
+<div id="body-wrap">
+    <header>
+        <div class="public-head-left">
+            {block name="headLeft"}{/block}
+        </div>
+        <div class="public-head-center">
+            {block name="headCenter"}{/block}
+        </div>
+        <div class="public-head-right">
+            {block name="headRight"}{/block}
+        </div>
+    </header>
+    {block name="content"}
+    <!--当前页面body-->
+    {/block}
+    {include file="common/script" /}
+    {block name="script"}
+    <!--当前页面独有js-->
+    {/block}
+</div>
+
+<footer id="footer">
+    <p class="footer-tel">
+        <span>装修咨询热线:</span>
+        <a href="tel:4008-659-600" class="hot"><span class="phone-box"><i class="iconfont icon-phone"></i></span>4008-659-600</a>
+    </p>
+    <p class="footer-title">轻松装修乐无忧</p>
+    <p class="footer-webadress">
+        手机齐装网：m.qizuang.com  苏ICP备12045334号
+    </p>
+    <p>苏州云网通信息科技有限公司</p>
+ <script>
+    window.onload=function(){
+        if($("body").height()<$("html").height()){
+            $("#body-wrap").height($("html").height() - $("#footer").outerHeight())
+        }
+    }
+</script>
+</footer>
+</body>
+{:OP('yycollect','yes')}
+</html>

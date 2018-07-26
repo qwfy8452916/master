@@ -1,0 +1,15 @@
+{foreach $recommend as $vo}
+<div class="item">
+    <div class="thumb-pic">
+        <a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+        <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" alt="" onerror="this.src='/assets/common/images/default.png'">
+    </a>
+    </div>
+    <p class="title">
+        <a href="http://{:config('m_host')}/goods/{$vo.code}.html">
+            {$vo.title|mbstr=###,0,10}
+        </a>
+    </p>
+    <p class="price">￥{$vo.zk_final_price}</p>
+</div>
+{/foreach}

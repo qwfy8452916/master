@@ -1,0 +1,69 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+<title>{$subject['title']}-齐装家具网上商城</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+{/block}
+{block name="style"}
+<!--当前页面独有css-->
+<link href="/assets/pc/css/public-new.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/pc/css/zwl.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="/assets/pc/css/font-awesome.min.css" type="text/css">
+{/block}
+
+
+{block name="content"}
+<body style="background-color: white;">
+	<div class="container clearfix">
+	    <div class="special-left-container">
+	        <h1 class="caption">{$subject['title']}</h1>
+	        <p class="date">{$subject['create_time']}</p>
+	        <div class="detail">
+	            {$subject['content']}
+	        </div>
+			{notempty name="recommend"}
+			<div class="other-special">
+	            <h3>其他专题</h3>
+	            <ul class="other-special-list clearfix">
+	                {foreach $recommend as $vo}
+	                    <li>
+	                        <div class="thumb">
+                                <a href="http://{:config('pc_host')}/zt/{$vo.id}.html" target="_blank">
+								    <img src="{$vo.headimg}-w375h210.jpg" alt="">
+							    </a>
+							</div>
+	                        <p class="title"><a href="http://{:config('pc_host')}/zt/{$vo.id}.html" target="_blank">{$vo.title}</a></p>
+	                    </li>
+	                {/foreach}
+	            </ul>
+	        </div>
+			{/notempty}
+		</div>
+		{notempty name="$subject->related_goods"}
+	    <div class="special-right-container">
+	        <div class="special-relation-goods">
+	            <h3>相关商品</h3>
+	            <ul class="relation-goods-list">
+	                {foreach $subject.related_goods as $vo}
+	                    <li class="clearfix">
+	                        <div class="thumb">
+                                <a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank">
+                                    <img src="{$vo.goodsImgs[0]['img_url']}-wh300.jpg" alt="">
+                                 </a>
+                            </div>
+	                        <div class="desc">
+	                            <p class="title"><a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank">{$vo.title}</a></p>
+	                            <p class="price">￥{$vo.zk_final_price}</p>
+	                        </div>
+	                    </li>
+	                {/foreach}
+	            </ul>
+	        </div>
+	    </div>
+		{/notempty}
+	</div>
+</body>
+{/block}
+{block name="script"}
+{/block}

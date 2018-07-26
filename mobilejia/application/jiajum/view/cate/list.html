@@ -1,0 +1,3 @@
+{foreach $list as $key=>$vo}
+<li><a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html"><div class="goods_img"><img src="{$vo.goods_imgs.0.img_url|default=''}" alt="{$vo.title}" onerror="this.src='/assets/common/images/default.png'"></div><div class="goods_text"><div class="goods_title">{$vo.title}</div><div class="goods_detail">{$vo.describtion}</div><div class="bottom_info"><div class="bottom_price"><span>￥</span>{$vo.zk_final_price}</div><div class="bottom_salenum"><span>销量</span>{$vo.volume}</div></div></div></a></li>
+{/foreach}

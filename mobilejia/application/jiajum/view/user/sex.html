@@ -1,0 +1,45 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+    <title>选择性别</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">选择性别</div>
+{/block}
+{block name="headRight"}
+
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/user_sex.css">
+{/block}
+{block name="content"}
+       <label for="x11" class="sexman sexselect11">
+            <div class="lab_left">先生</div>
+            <div class="lab_rigth">
+                <input type="radio" name="sex" id="x11" value="先生" {$user.sex=="先生"?'checked="checked"':''}>
+                <i class="iconfont icon-xuanze {$user.sex=="先生"?'nanshi':'iconhidden nanshi'}"></i>
+            </div>
+        </label>
+        <label for="x12" class="sexselect12">
+            <div class="lab_left">女士</div>
+            <div class="lab_rigth">
+                <input type="radio" name="sex" id="x12" value="女士" {$user.sex=="女士"?'checked="checked"':''}>
+                <i class="iconfont icon-xuanze {$user.sex=="女士"?'nvshi':'iconhidden nvshi'}"></i>
+            </div>
+        </label>
+        <div class="tijiaoniu">
+            <button class="tijiao">提交</button>
+        </div>
+{/block}
+
+{block name="script"}
+<script>
+    var change_sex = "{:url('jiajum/user/changeSex',[],'')}";
+    var location_url = "{:url('jiajum/user/info',[],'')}";
+</script>
+<script type="text/javascript" src="/assets/index/js/user_sex.js"></script>
+{/block}

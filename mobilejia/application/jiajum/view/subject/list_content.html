@@ -1,0 +1,6 @@
+{foreach $subject as $vo}
+<div class="item">
+    <div class="thumb-pic"><a href="http://{:config('m_host')}/zt/{$vo.id}.html"><img src="{$vo.headimg|default=''}" alt=""></a></div>
+    <p class="title"><a href="http://{:config('m_host')}/zt/{$vo.id}.html">{$vo.title|mbstr=###,0,10}</a></p>
+</div>
+{/foreach}

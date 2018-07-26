@@ -1,0 +1,148 @@
+html, body {
+    background: #f5f5f5 !important;
+    position: relative;
+    position: relative;
+}
+input{-webkit-appearance: none !important;box-shadow:none;
+    border: 1px solid #e6e6e6;}
+.phone_title {
+    text-align: center;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    font-size: 0.17rem;
+    padding: 0 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+    width: 100%;
+    background: #fff;
+    color: #333;
+}
+
+.icon-fanhui {
+    float: left;
+}
+
+.phonewaik {
+    width: 100%;
+    margin-top: 0.2rem;
+    padding: 0 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin-bottom: 1.8rem;
+}
+
+.phonewaik .newphonewk {
+    width: 100%;
+    height: 0.44rem;
+    position: relative;
+}
+
+.phonewaik .newphonewk .icon-shouji-copy {
+    position: absolute;
+    left: 0.1rem;
+    top: 50%;
+    font-weight: bold;
+    font-size: 0.15rem;
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+}
+
+.phonewaik .newphonewk input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0.1rem 0.25rem;
+    font-size: 0.15rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #333;
+    line-height: 0.19rem;
+}
+
+.phonewaik .yanhengmawk {
+    width: 100%;
+    height: 0.44rem;
+    margin-top: 0.1rem;
+    position: relative;
+}
+
+.phonewaik .yanhengmawk .giveyzm {
+    width: 0.8rem;
+    height: 0.3rem;
+    background: #f21a56;
+    color: #fff;
+    font-size: 0.12rem;
+    border: 0;
+    outline: none;
+    position: absolute;
+    right: 0.1rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.phonewaik .yanhengmawk .icon-email {
+    position: absolute;
+    left: 0.1rem;
+    top: 50%;
+    font-weight: bold;
+    font-size: 0.15rem;
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+}
+
+.phonewaik .yanhengmawk input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0.1rem 0.25rem;
+    font-size: 0.15rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #333;
+    line-height: 0.19rem;
+}
+
+.phonewaik .tihsims {
+    color: #f21855;
+    font-size: 0.12rem;
+    margin-top: 3px;
+    display: none;
+}
+
+.tijiaoniu {
+    width: 100%;
+    height: 0.44rem;
+    line-height: 0.44rem;
+    margin-top: 0.075rem;
+    font-size: 0.12rem;
+    color: #666;
+    line-height: 0.21rem;
+    padding: 0 10px;
+    margin-bottom: 0.2rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+}
+
+.tijiaoniu .tijiao {
+    width: 100%;
+    height: 100%;
+    background: #f21a56;
+    color: #fff;
+    outline: none;
+    border: 0;
+    font-size: 0.17rem;
+}

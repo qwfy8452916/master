@@ -1,0 +1,169 @@
+{extend name="common:basic" /}
+
+{block name="style"}
+<link rel="canonical" href=""/>
+<link href="/assets/index/css/m-zwl.css?v201806280931" rel="stylesheet" type="text/css"/>
+<link href="/assets/common/css/swiper-3.3.1.min.css" rel="stylesheet" type="text/css"/>
+{/block}
+
+{block name="title"}
+<title>场景导购</title>
+<meta name="keywords" content="场景导购" />
+<meta name="description" content="场景导购" />
+{/block}
+{block name="headLeft"}
+<a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+<div class="head-title-text">场景导购</div>
+{/block}
+{block name="headRight"}
+<a class="user" href="{:url('jiajum/user/index',[],'')}"><i class="iconfont">&#xe62d;</i></a>
+{/block}
+
+
+{block name="content"}
+<div class="m-wrap">
+    <!-- 搜索框 -->
+    <div class="search">
+        <i class="iconfont icon-magnifier"></i>
+        <input type="search" placeholder="搜索商品名称、类型" data-type="index-search">
+    </div>
+    <!-- 场景 共9个场景 -->
+    <div class="scene-container clearfix" id="scene-container">
+        <div class="scene-scroll">
+            <ul class="clearfix">
+                <li class="item">
+                    <img src="/assets/index/images/bedroom.png" alt="">
+                    <span class="point point-o" id="bedroom-t1" title="床垫"><span
+                            class="text bedroom-t1-text"><a href="/chuangdian/">床垫</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="bedroom-t2" title="床"><span
+                            class="text bedroom-t2-text"><a href="/chuang/">床</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="bedroom-t3" title="床尾凳"><span
+                            class="text bedroom-t3-text"><a href="/chuangweideng/">床尾凳</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/bathroom.png" alt="">
+                    <span class="point point-o" id="bathroom-t1" title="浴缸">
+                        <span class="text bathroom-t1-text">
+                            <a href="/yugang/">浴缸</a>
+                        </span>
+                        <span class="point point-m">
+                            <span class="point point-i">
+                            </span>
+                        </span>
+                    </span>
+                    <span class="point point-o" id="bathroom-t2" title="坐便器"><span class="text bathroom-t2-text"><a
+                            href="/zuobq/">坐便器</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="bathroom-t3" title="浴室镜"><span
+                            class="text bathroom-t3-text"><a href="/yusj/">浴室镜</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/lighting.png" alt="">
+                    <span class="point point-o" id="lighting-t1" title="吸顶灯"><span
+                            class="text lighting-t1-text"><a href="/xidingdeng/">吸顶灯</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="lighting-t2" title="LED灯"><span
+                            class="text lighting-t2-text"><a href="/leddeng/">LED灯</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/bookshouse.png" alt="">
+                    <span class="point point-o" id="bookshouse-t1" title="书柜"><span
+                            class="text bookshouse-t1-text"><a href="/shugui/">书柜</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="bookshouse-t2" title="书椅"><span
+                            class="text bookshouse-t2-text"><a href="/shuyi">书椅</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="bookshouse-t3" title="书桌"><span
+                            class="text bookshouse-t3-text"><a href="/shuzhuo/">书桌</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/dining.png" alt="">
+                    <span class="point point-o" id="dining-t1" title="餐桌"><span
+                            class="text dining-t1-text"><a href="/canzhuo/">餐桌</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="dining-t2" title="餐椅"><span
+                            class="text dining-t2-text"><a href="/canyi/">餐椅</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/living.png" alt="">
+                    <span class="point point-o" id="living-t1" title="电视柜"><span
+                            class="text living-t1-text"><a href="/dianshigui/">电视柜</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="living-t2" title="沙发"><span
+                            class="text living-t2-text"><a href="/shafa/">沙发</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="living-t3" title="茶几"><span
+                            class="text living-t3-text"><a href="/chaji/">茶几</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/outer.png" alt="">
+                    <span class="point point-o" id="outer-t1" title="园艺"><span class="text outer-t1-text"><a
+                            href="/yuanyi/">园艺</a></span><span
+                            class="point point-m"><span class="point point-i"></span></span></span>
+                    <span class="point point-o" id="outer-t2" title="阳台桌椅"><span
+                            class="text outer-t2-text"><a href="/ytzhuoyi/">阳台桌椅</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/office.png" alt="">
+                    <span class="point point-o" id="office-t1" title="办公桌"><span
+                            class="text office-t1-text"><a href="/bangongz/">办公桌</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="office-t2" title="办公椅"><span
+                            class="text office-t2-text"><a href="/bangongy/">办公椅</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+                <li class="item">
+                    <img src="/assets/index/images/children.png" alt="">
+                    <span class="point point-o" id="children-t1" title="儿童床"><span
+                            class="text children-t1-text"><a href="/ertongchuang/">儿童床</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                    <span class="point point-o" id="children-t2" title="儿童床垫"><span
+                            class="text children-t2-text"><a href="/ertongcd/">儿童床垫</a></span><span class="point point-m"><span
+                            class="point point-i"></span></span></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="indexs" style="display: none;"></div>
+    <!-- 场景分类 -->
+    {foreach $scene as $key=>$vo}
+    <div class="furniture-container clearfix">
+        <div class="furniture-name">{$vo.name}</div>
+        <div class="furniture-main clearfix" id="furniture-container-{$key}">
+            <div class="furniture-main-scroll">
+                <ul class="clearfix">
+                    {foreach $vo.children as $v}
+                    <li class="item">
+                        <div class="thumb-pic"><a href="/{$v.short_name}/"><img src="{$v.image}" alt=""></a></div>
+                        <p class="name">{$v.name}</p>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {/foreach}
+</div>
+
+{/block}
+
+{block name="script"}
+<!-- javascript 部分 -->
+<script type="text/javascript" src="/assets/common/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/common/js/swiper-3.3.1.min.js"></script>
+<script type="text/javascript" src="/assets/common/js/jroll-scroll.js"></script>
+<script type="text/javascript" src="/assets/index/js/m.zwl.js?v201806281018"></script>
+
+{/block}

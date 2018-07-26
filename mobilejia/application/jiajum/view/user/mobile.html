@@ -1,0 +1,44 @@
+ {extend name="common:basic" /}
+
+ {block name="title"}
+    <title>修改手机号</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">修改手机号</div>
+{/block}
+{block name="headRight"}
+
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/user_mobile.css">
+{/block}
+
+{block name="content"}
+<div class="phonewaik">
+    <div class="newphonewk">
+        <i class="iconfont icon-shouji-copy"></i>
+        <input type="tel" maxlength=11 placeholder="请输入新的手机号码">
+    </div>
+    <div class="yanhengmawk">
+        <i class="iconfont icon-email"></i>
+        <input type="text" maxlength="6" disabled="disabled" placeholder="请输入您的验证码">
+        <input class="giveyzm" type="button" value="获取验证码" />
+    </div>
+    <div class="tihsims">手机号不能为空</div>
+</div>
+<div class="tijiaoniu">
+    <button class="tijiao">提交</button>
+</div>
+{/block}
+{block name="script"}
+ <script>
+     var send_msg = "{:url('jiajum/sms/sendsms',[],'')}";
+     var change_mobile = "{:url('jiajum/user/changeMobile',[],'')}";
+     var location_url = "{:url('jiajum/user/info',[],'')}";
+ </script>
+<script type="text/javascript" src="/assets/index/js/user_mobile.js"></script>
+{/block}

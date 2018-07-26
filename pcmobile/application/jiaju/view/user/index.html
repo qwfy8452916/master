@@ -1,0 +1,223 @@
+{extend name="common:basic" /}
+{block name="title"}
+    <title>个人中心</title>
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/jiaju/css/inforationchange.css">
+<!--[if lte IE 8]>
+<link rel="stylesheet" type="text/css" href="/assets/jiaju/css/inforationchangeie8.css"/> <![endif]-->
+<!--[if lte IE 9]>
+<link rel="stylesheet" type="text/css" href="/assets/jiaju/css/inforationchangeie9.css"/> <![endif]-->
+{/block}
+{block name="content"}
+<div class="wrap">
+    <div class="bannerbj">
+        <img src="/assets/jiaju/images/information01.jpg" alt="">
+    </div>
+    <div class="xinxquyu">
+        <div class="touxiang">
+            <span class="toux_tishi">修改</span>
+            <img src="{$user.logo|default='/assets/index/images/default_logo.png'}" alt="{$user.name|default="请修改头像"}">
+        </div>
+        <div class="nicheng fujixz">
+            <div class="leftbianji">{$user.name|default=$user.tel_safe}</div>
+            <div class="rightbianji">
+                <div class="bianjicunqu yincang">
+                    <span class="savebc namesave">保存</span>
+                    <span class="cancelqx" data-cancel="namecancel">取消</span>
+                </div>
+                <div class="xiugai" data-ji="namegai"><span>修改</span></div>
+            </div>
+            <div class="middlebianji xiugnicheng">
+                <input class="nameinput" type="text" value="{$user.name|default=$user.tel_safe}">
+            </div>
+        </div>
+        <div class="sexxb fujixz">
+            <div class="leftbianji smallfont">性别</div>
+            <div class="rightbianji">
+                <div class="bianjicunqu yincang">
+                    <span class="savebc sexsave">保存</span>
+                    <span class="cancelqx sexquxiao" data-cancel="sexcancel">取消</span>
+                </div>
+                <div class="xiugai" data-ji="sexgai"><span class="modifytext">填写</span></div>
+            </div>
+            <div class="middlebianji">
+                <span class="xingbie xianshiquyu">{$user.sex}</span>
+                <select class="sexselect" name="" id="">
+                    <option value="请选择">请选择</option>
+                    <option value="先生">先生</option>
+                    <option value="女士">女士</option>
+                </select>
+            </div>
+        </div>
+        <div class="areadq fujixz">
+            <div class="leftbianji smallfont">地区</div>
+            <div class="rightbianji">
+                <div class="bianjicunqu yincang">
+                    <span class="savebc areasave">保存</span>
+                    <span class="cancelqx" data-cancel="areacancel">取消</span>
+                </div>
+                <div class="xiugai" data-ji="areagai"><span>填写</span></div>
+            </div>
+            <div class="middlebianji">
+                <span class="localdiqu xianshiquyu">{empty name="user.city_area"}未选择地区{else /}{$user.city_area.city} {$user.city_area.area}{/empty}</span>
+                <div class="areadiv">
+                   
+                    <select class="diqu" id="qx" name="qx">
+                        
+                    </select>
+                </div>
+                <div class="citydiv">
+                  
+                    <select class="areacity" id="cs" name="cs">
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="phonesj">
+            <div class="leftbianji smallfont">手机</div>
+            <div class="rightbianji">
+                <span class="rightjvli">{$user.tel}</span>
+            </div>
+        </div>
+        <div class="passwordmm">
+            <div class="leftbianji smallfont">密码</div>
+            <div class="rightbianji">
+                <span class="chongse">重设</span>
+            </div>
+        </div>
+    </div>
+    <div class="clipyinying"></div>
+
+    <div class="touxiangkz">
+        <span class="closequx"></span>
+            <div>
+                <p id="swfContainer">
+                    本组件需要安装Flash Player后才可使用，请从
+                    <a href="http://www.adobe.com/go/getflashplayer">这里</a>
+                    下载安装。
+                </p>
+            </div>
+    </div>
+
+    <div class="guidetanc" tabIndex=-1>
+        <span class="guanbi"></span>
+        <div class="titleone">重设密码</div>
+        <div class="buzouwaik">
+            <div class="jiantoubj011">1、验证手机号</div>
+            <div class="jiantoubj022">2、设置新密码</div>
+        </div>
+        <div class="phonewk">
+            <input type="text" maxlength="11" placeholder="手机号">
+        </div>
+        <div class="yanzengmwk">
+            <input class="inputtext" maxlength="6" type="text" disabled="disabled" placeholder="验证码">
+            <input class="btnyzm" type="button" disabled="disabled" tabindex=-1 value="获取验证码">
+        </div>
+        <div class="tjtishi"></div>
+        <div class="surewk">
+            <button class="sureqr discolor" disabled="disabled">下一步</button>
+        </div>
+    </div>
+
+    <div class="guidetanc2" tabIndex=-2>
+        <span class="guanbi"></span>
+        <div class="titleone">重设密码</div>
+        <div class="buzouwaik">
+            <div class="jiantoubj01">1、验证手机号</div>
+            <div class="jiantoubj02">2、设置新密码</div>
+        </div>
+        <div class="newpassword">
+            <input type="password" maxlength=20 placeholder="新密码">
+        </div>
+        <div class="surepassword">
+            <input type="password" maxlength=20 placeholder="确认密码">
+        </div>
+        <div class="tjtishi02"></div>
+        <div class="surewk">
+            <button class="sureqr2" disabled="disabled">确认</button>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<!--当前页面独有js-->
+<script type="text/javascript" src="/assets/jiaju/js/allcity201804131445.js"></script>
+<script type="text/javascript" src="/assets/jiaju/js/App.js"></script>
+<script type="text/javascript" src="/assets/jiaju/js/inforationchange.js"></script>
+<script type="text/javascript" src="/assets/jiaju/js/fullAvatarEditor.js"></script>
+<script type="text/javascript" src="/assets/jiaju/js/swfobject.js"></script>
+
+<script type="text/javascript">
+    var Img_upload = "{:url('jiaju/Upload/ueditorUpload',[],'')}";  //图片上传
+    var change_nickname = "{:url('jiaju/user/changeNick',[],'')}";  //修改昵称
+    var check_code = "{:url('jiaju/user/checkcode',[],'')}";        //修改昵称
+    var change_pwd = "{:url('jiaju/user/changePwd',[],'')}";        //修改密码
+    var change_area = "{:url('jiaju/user/changeArea',[],'')}";      //修改地区
+    var change_sex = "{:url('jiaju/user/changeSex',[],'')}";        //修改性别
+    var send_msg = "{:url('jiaju/sms/sendsms',[],'')}";             //发送短信
+    var change_mobile = "{:url('jiaju/user/changeMobile',[],'')}";  //修改手机
+
+   var shen = null,
+       shi = null;
+shen = citys["shen"];
+shi = citys["shi"];
+    /**
+     * 头像上传控件
+     */
+    swfobject.addDomLoadEvent(function () {
+        var swf = new fullAvatarEditor("swfContainer", {
+                id: 'swf',
+                upload_url: Img_upload, //上传路径
+                src_upload: 0,//默认为0；是否上传原图片的选项，有以下值：0:不上传；1:上传；2 :显示复选框由用户选择
+                isShowUploadResultIcon: false,//在上传完成时（无论成功和失败），是否显示表示上传结果的图标
+                src_size: "2MB",//选择的本地图片文件所允许的最大值，必须带单位，如888Byte，88KB，8MB
+                src_size_over_limit: "文件大小超出2MB，请重新选择图片。",//当选择的原图片文件的大小超出指定最大值时的提示文本。可使用占位符{0}表示选择的原图片文件的大小。
+                //src_box_width: "300",//原图编辑框的宽度
+                //src_box_height: "300",//原图编辑框的高度
+                //tab_visible: false,//是否显示选项卡*
+                //browse_box_width: "300",//图片选择框的宽度
+                //browse_box_height: "300",//图片选择框的高度
+                avatar_sizes:"180*180"  //生成的头像大小
+            }, function (msg) {
+            console.log(msg);
+                switch(msg.code)
+                {
+                    case 3 :
+                        if(msg.type == 0) {
+                            layer.msg("摄像头已准备就绪且用户已允许使用。",{time:1300});
+                        } else if(msg.type == 1) {
+                            layer.msg("摄像头已准备就绪但用户未允许使用!",{time:1300});
+                        } else {
+                            layer.msg("摄像头被占用!",{time:1300});
+                        }
+                        break;
+                    case 5 :
+                        if(msg.type == 0) {
+                            //关闭头像控件
+                            $('.touxiangkz').hide();
+                            $('.clipyinying').hide();
+                            if (msg.content.state == 'SUCCESS') {
+                                //替换头像地址
+                                $(".touxiang img").attr("src", msg.content.url);
+                                $(".avatar-container img").attr("src", msg.content.url);
+                            }
+                        }
+                        break;
+                }
+            }
+        );
+        $("#upload").click(function(){
+            //启用上传
+            swf.call("upload");
+        });
+    });
+
+
+    $(function () {
+      App.citys.init("#cs","#qx",shen,shi,"",'');
+    });
+</script>
+{/block}

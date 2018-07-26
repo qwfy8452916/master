@@ -1,0 +1,41 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+    <title>意见反馈</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">意见反馈</div>
+{/block}
+{block name="headRight"}
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/user_feedback.css">
+{/block}
+
+
+{block name="content"}
+<div class="yijianwaik">
+    <div class="yijianare">
+        <textarea class="yijianms"  cols="30" rows="10" maxlength="500" placeholder="欢迎留下您宝贵的意见或建议（500个字以内）"></textarea>
+    </div>
+    <div class="telawk">
+
+        <input type="url" maxlength="20" placeholder="请留下联系方式(可选)">
+
+    </div>
+    <div class="tihsims">请填写意见</div>
+</div>
+<div class="tijiaoniu">
+    <button class="tijiao">提交</button>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    var location_url = "{:url('jiajum/user/index',[],'')}";
+</script>
+<script type="text/javascript" src="/assets/index/js/user_feedback.js"></script>
+{/block}

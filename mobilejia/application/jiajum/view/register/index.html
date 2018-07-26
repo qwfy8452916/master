@@ -1,0 +1,57 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+    <title>注册</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">注册</div>
+{/block}
+{block name="headRight"}
+
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/register_index.css">
+{/block}
+
+{block name="content"}
+<div class="registerwaik">
+    <div class="registertx"><i class="iconfont icon-geren2"></i></div>
+    <div class="newphonewk">
+        <i class="iconfont icon-shouji-copy"></i>
+        <input type="tel" maxlength=11 autocomplete="off" placeholder="请输入您的手机号码">
+    </div>
+    <div class="yanhengmawk">
+        <i class="iconfont icon-email"></i>
+        <input type="text" maxlength="6" id="code" autocomplete="off"  disabled="disabled" placeholder="请输入您的验证码">
+        <input class="giveyzm" type="button" value="获取验证码" />
+    </div>
+    <div class="newpass">
+        <i class="iconfont icon-suo"></i>
+        <input type="password" maxlength=20 autocomplete="off" placeholder="请设置6-20位密码">
+    </div>
+    <div class="surepasswk">
+        <i class="iconfont icon-suo"></i>
+        <input type="password" maxlength=20 autocomplete="off" placeholder="请确认密码">
+
+    </div>
+    <div class="tihsims"></div>
+</div>
+<div class="tijiaoniu">
+    <button class="tijiao">注册</button>
+    <div class="lookagree"><label class="iconfont icon-fuxuankuang-" for="selectbox"></label><input id="selectbox" class="selectbox" type="checkbox" checked="checked" >我已阅读并接受《<a href="{:url('jiajum/register/agreement')}">齐装网用户服务协议</a>》</div>
+    <div class="signin"><a href="{:url('jiajum/login/index',[],'')}">已有账号,立即登录</a></div>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    var send_msg = "{:url('jiajum/sms/sendsms',[],'')}";
+    var register_url = "{:url('jiajum/register/register',[],'')}";
+    var location_url = "{:url('jiajum/login/index',[],'')}";
+</script>
+<script type="text/javascript" src="/assets/index/js/register_index.js"></script>
+{/block}

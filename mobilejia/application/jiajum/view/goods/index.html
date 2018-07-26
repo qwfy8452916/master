@@ -1,0 +1,289 @@
+{extend name="common:basic" /}
+
+{block name="style"}
+<link href="/assets/index/css/m-zwl.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/common/css/swiper-3.3.1.min.css" rel="stylesheet" type="text/css"/>
+<style>
+    #footer{margin-bottom: 0.6rem;display: none !important;}
+</style>
+{/block}
+
+{block name="title"}
+<title>{$head.title}</title>
+<meta name="description" content="{$head.description}">
+{/block}
+{block name="headLeft"}
+<a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+<div class="head-title-text">商品详情</div>
+{/block}
+{block name="headRight"}
+<a class="user" href="{:url('jiajum/user/index')}"><i class="iconfont">&#xe62d;</i></a>
+{/block}
+
+{block name="content"}
+<div class="m-wrap">
+    <!-- 商品轮播图 -->
+    <div class="swiper-container good-pics">
+        <div class="swiper-wrapper">
+            {foreach $goods->goods_imgs as $vo}
+            <div class="swiper-slide"><img src="{$vo.img_url}" alt=""></div>
+            {/foreach}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- 商品简介 -->
+    <div class="brief">
+        <div class="title">{$goods.title}</div>
+        <div class="price clearfix">
+            <div class="main">￥{$goods.zk_final_price}</div>
+            <div class="sub">销量{$goods.volume}</div>
+        </div>
+        <div class="desc">
+            {$goods.describtion}
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence" id="brief-fence"></div>
+    <!-- 商品详细参数 -->
+    {notempty name="$specifications" }
+    <div class="container">
+        <div class="detail-property">
+            <div class="public-detail-title">商品参数</div>
+            <table class="goods-properties-table">
+            {foreach $specifications as $vo}
+            <tr>
+                <td style="width: 30%;color: #999;word-break:break-all">{$vo.name}</td>
+                <td style="width: 70%; color: #333;">
+                    {foreach $vo.children as $v}
+                    <p>{$v.name}</p>
+                    {/foreach}
+                </td>
+            </tr>
+            {/foreach}
+            </table>
+        </div>
+    </div>
+    {/notempty}
+    <!-- 分割条 -->
+    <div class="fence" id="detail-fence"></div>
+    <!-- 商品描述 -->
+    <div class="container goods-detail">
+        <div>
+            {$goods.detail}
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 相关搭配 -->
+    {notempty name="$goods->same_goods_info"}
+    <div class="container">
+        <div class="relation-goods">
+            <div class="public-detail-title">相关搭配</div>
+        </div>
+        <div class="relation-lsit clearfix" id="relation-lsit-container">
+            <div class="relation-list-scroll">
+                <ul class="clearfix">
+                    {volist name=":array_reverse($goods->same_goods_info)" id="vo"  }
+                    <li class="item">
+                        <div class="thumb-pic"><a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html"><img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" alt=""></a></div>
+                        <p class="title text-nowarp"><a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">{$vo.title}</a></p>
+                        <p class="price">￥{$vo.zk_final_price}</p>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {/notempty}
+    <!-- 分割条 -->
+    <div class="fence"></div>
+
+    {notempty name="$same_goods" }
+    <div class="container">
+        <div class="relation-recommend">
+            <div class="public-detail-title">相似推荐</div>
+        </div>
+        <div class="relation-recommend-list" id="relation-recommend-list-container">
+            <!-- <div class="relation-recommend-list-scroll"> -->
+                <ul class="clearfix">
+                    {foreach $same_goods as $vo}
+                    <li class="item">
+                        <div class="thumb-pic"><a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html"><img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" alt=""></a></div>
+                        <p class="title"><a href="/goods/{$vo.code}.html">{$vo.title}</a></p>
+                        <p class="price">￥{$vo.zk_final_price}</p>
+                    </li>
+                    {/foreach}
+                </ul>
+            <!-- </div> -->
+        </div>
+    </div>
+    {/notempty}
+
+    <div class="action-container-fixed">
+        <div class="top">
+            <i class="iconfont icon-star-solid" data-type="score"></i>
+            <i class="iconfont icon-star-solid" data-type="score"></i>
+            <i class="iconfont icon-star-solid" data-type="score"></i>
+            <i class="iconfont icon-star-solid" data-type="score"></i>
+            <i class="iconfont icon-star-solid" data-type="score" style="margin-right:0.14rem;"></i>
+            <button class="action-btn" data-type="action-sure" disabled="disabled">确定</button>
+            <button class="action-btn" data-type="action-cancel">取消</button>
+        </div>
+        <div class="bottom clearfix">
+            <div class="action-score-collect black">
+                <p class="action-score-container"><i class="iconfont icon-star-hollow black" data-status="{$score_status}" data-type="action-score" data-code="{$goods.code}"></i> <span style="margin-right: 0.15rem;">评分( {$avg_score} )</span></p>
+                <p class="action-collect-container"><i class="iconfont icon-collect black" data-type="action-collect" data-status="{$collect_status}"></i> <span>收藏</span></p>
+            </div>
+            <a href="/goods/buy/{$goods.code}.html">
+            <button class="buy-btn">去购买</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" name="__token__" id="token" value="{$Request.token}" />
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/assets/common/js/jroll-scroll.js"></script>
+<script type="text/javascript" src="/assets/index/js/m.zwl.js"></script>
+<script type="text/javascript" src="/assets/common/js/swiper-3.3.1.min.js"></script>
+<script>
+    var Global_Score_Url = "/user/score";
+    var Global_Collect_Url = "/user/collect";
+    $(function() {
+        // 页面加载立即执行
+        if( $("i[data-type='action-score']").attr("data-status") == 3){
+            $("i[data-type='action-score']").removeClass("icon-star-hollow").addClass("cf21855 icon-star-solid");
+        };
+        if( $("i[data-type='action-collect']").attr("data-status") == 3){
+            $("i[data-type='action-collect']").removeClass("icon-collect").addClass("cf21855 icon-has-collect");
+        };
+    });
+    +function($) {
+        var $actionScoreContainer = $(".action-score-container"),
+            $actionCollectContainer = $(".action-collect-container"),
+            $actionScore = $("i[data-type='action-score']"),
+            $actionCollect = $("i[data-type='action-collect']"),
+            $score = $("i[data-type='score']"),
+            $actionSureBtn = $("button[data-type='action-sure']"),
+            $actionCancelBtn = $("button[data-type='action-cancel']"),
+            $actionTopContainer = $(".action-container-fixed .top");
+        // 点击评分按钮事件
+        $actionScoreContainer.on('click',function() {
+            var status = $actionScore.attr("data-status");
+            if( status == 1 ){
+                if(confirm("您还未登陆，请先登陆")){
+                    localStorage.setItem("parentUrl",location.href);
+                    location.href = "/login/";
+                };
+                return;
+            }else if( status == 2 ){
+                $actionTopContainer.toggle();
+            }else if( status == 3 ){
+                alert("您已评分");
+                return;
+            }            
+        });
+        // 评分心形点击事件
+        $score.on('click',function() {
+            var end = $(this).index();
+            $score.removeClass("cf21855");
+            for(var i=0; i<end+1; i++){
+                $score.eq(i).addClass("cf21855");
+            }
+            $actionSureBtn.removeAttr("disabled");
+        });
+        // 点击评分确定按钮事件
+        $actionSureBtn.on("click",function() {
+            var score = 0, code = $actionScore.attr("data-code"), token = $("#token").val();
+            $score.each(function(index,item) {
+                if( $(item).hasClass("cf21855") ){
+                    score++;
+                }
+            });
+            ajaxAction({
+                url : Global_Score_Url,
+                method : "post",
+                data : {
+                    __token__ : token,
+                    code : code,
+                    score : score
+                },
+                successCallback : function(res){
+                    layer.msg(res.info,{time:2000});
+                    if(res.status==1){
+                        $(".action-container-fixed").find('.top').css("display",'none');
+                        $actionScore.attr("data-status",3).addClass("cf21855 icon-star-solid");
+                    }
+                }
+            });
+        });
+        // 取消评分按钮事件
+        $actionCancelBtn.on("click",function() {
+            $actionTopContainer.toggle();
+        });
+        // 收藏按钮
+        $actionCollectContainer.on('click',function() {
+            var status = $actionCollect.attr("data-status"),
+                _this = this,
+                cfn = null;
+            if( status == 1 ){
+                if(confirm("您还未登陆，请先登陆")){
+                    localStorage.setItem("parentUrl",location.href);
+                    location.href = "/login/";
+                };
+                return;
+            }else if( status == 2 || status == 3 ){
+                // 发送请求添加到数据库
+                cfn = function(res) {
+                    if( res.status == 9){
+                        layer.msg("收藏成功",{time:2000});
+                        $actionCollect.removeClass("icon-collect").addClass('icon-has-collect cf21855');
+                    }
+                    if( res.status == 10){
+                        layer.msg("取消收藏成功",{time:2000});
+                        $actionCollect.removeClass("icon-has-collect cf21855").addClass("icon-collect");
+                    }
+                }
+            }
+            ajaxAction({
+                url : Global_Collect_Url,
+                method : "post",
+                data : {
+                    __token__ : $("#token").val(),
+                    code : $actionScore.attr("data-code")
+                },
+                successCallback : function(res) {
+                    cfn.call(_this,res);
+                }
+            });
+        });
+    }(jQuery)
+
+    // 动态增加底部外边距，解决相关推荐不存在的情况下，相关搭配价格不显示的问题
+    +function($){
+        var $relationLsit = $(".relation-lsit"),
+            $relationRecommendList = $(".relation-recommend-list"),
+            $goodsDetail = $(".goods-detail");
+        if( $relationRecommendList.length == 0 ){
+            $relationLsit.css("margin-bottom","0.4rem")
+        }
+        if( $relationRecommendList.length == 0 && $relationRecommendList.length == 0 ){
+            $(".goods-detail>div").css("margin-bottom","0.2rem");
+        }
+    }(jQuery)
+
+    // 解决模块不存在情况下分隔条显示问题
+    +function($){
+        if( $(".brief").length == 0 ){
+            $("#brief-fence").css("display","none");
+        }
+        if( $(".detail-property").length == 0 ){
+            $("#detail-fence").css("display","none");
+        }
+    }(jQuery)
+</script>
+{/block}

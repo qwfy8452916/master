@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    {block name="title"}
+    <title>齐装家具网上商城_中国专业网上家具导购平台_买家具就上齐装家居网</title>
+    <meta name="keywords" content="网上买家具,家具导购平台,家具网上商城,齐装家具网">
+    <meta name="description" content="齐装家具网上商城,中国专业家具网购平台,2018网上买家具一站式服务。为您提供客厅、卧室、卫浴、厨房、餐厅的全屋家具网购全程服务，国内外品牌家具任您挑选，网上买家具首选齐装家具网上商城。">
+    {/block}
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="applicable-device" content="mobile"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="x5-page-mode" content="app"/>
+    {include file="common/css" /}
+
+    {block name="style"}
+    <!--当前页面独有css-->
+    {/block}
+    {include file="common@tongjithree/baidu" /}
+</head>
+<body>
+
+{block name="head"}
+<div class="header">
+    <div class="container clearfix">
+        <div class="logo-and-brand clearfix">
+            <div class="logo"><a href="http://www.qizuang.com/"><img src="/assets/pc/images/logo.png" alt=""></a></div>
+            <span><a href="http://jiaju.qizuang.com/" style="color: #F21855;">家居商城</a></span>
+        </div>
+        <div class="search-frame">
+            <input type="text" class="search-input" placeholder="找任何你想要的家具" value="{$search_content|default=''}">
+            <button type="button" class="search-btn"><i class="iconfont icon-magnifier"></i></button>
+            <ul class="search-history-container">
+            </ul>
+        </div>
+        {empty name="user"}
+        <div class="login-and-register">
+            <span class="load" data-type="signin-btn">登录</span>
+            <span class="register" data-type="register-btn">注册</span>
+        </div>
+        {else /}
+        <div class="login-and-register">
+            <div class="avatar">
+                <div class="avatar-container"><i class="iconfont icon-user" style="display: none;"></i><img src="{$user.logo}" alt=""></div>
+                <span class="header-user-container">
+                    <span class="shadow">
+                        <a href="http://{:config('pc_host')}/user/" class="user-info"><i class="iconfont icon-sample-user"></i>个人信息</a>
+                        <a href="http://{:config('pc_host')}/user/store/" class="user-collect"><i class="iconfont icon-star"></i>我的收藏</a>
+                        <a href="javascript:void(0);" data-type="sign-out" class="user-out"><i class="iconfont icon-out"></i>退出登录</a>
+                        <div class="rectangle-rotate"></div>
+                        <div class="cover"></div>
+                    </span>
+                    <div class="ieShadow"></div>
+                </span>
+            </div>
+        </div>
+        {/empty}
+
+    </div>
+</div>
+<div class="header-fence"></div>
+{/block}
+
+{block name="content"}
+<!--当前页面body-->
+{/block}
+{include file="common/footer" /}
+{include file="common/pupup" /}
+{include file="common/script" /}
+{block name="script"}
+<!--当前页面独有js-->
+{/block}
+</body>
+{:OP('yycollect','yes')}
+</html>

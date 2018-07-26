@@ -1,0 +1,103 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+<title>齐装网-家居商城-商品详情页</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+{/block}
+
+{block name="style"}
+<!--当前页面独有css-->
+<link href="/assets/pc/css/public-new.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/pc/css/zwl.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="/assets/pc/css/font-awesome.min.css" type="text/css">
+{/block}
+
+{block name="content"}
+<!-- 上半部分 -->
+<body style="background-color: white;">
+    <div class="container goods-brief-container clearfix" style="padding-top: 20px;">
+        <div class="goods-focus-pic"><img src="/assets/pc/images/1.jpg" alt=""></div>
+        <div class="goods-brief-info">
+            <div class="goods-caption">{$goods.title}</div>
+            <div class="goods-brief-desc"><div class="cut">{$goods.describtion}</div></div>
+            <div class="goods-price">价格<span>￥{$goods.zk_final_price}</span></div>
+            <div class="goods-evaluate">
+                <span>销量<i>{$goods.volume}</i></span>
+                <span data="{$score_status}">评分<i>{$avg_score}</i></span>
+                <span data-collect-status="{$collect_status}">收藏数<i id="collects">{$goods.collection_count}</i></span>
+            </div>
+            <div class="goods-action">
+                {if condition="($score_status==3)"}
+                <div class="evaluate-text" data-type="evaluate" data-status="{$score_status}">已评分</div>
+                {else /}
+                <div class="evaluate-text" data-type="evaluate" data-status="{$score_status}">点评</div>
+                {/if}
+                <div class="evaluate-star" data-type="evaluate-star">
+                    <i class="iconfont icon-star-radius"></i>
+                    <i class="iconfont icon-star-radius"></i>
+                    <i class="iconfont icon-star-radius"></i>
+                    <i class="iconfont icon-star-radius"></i>
+                    <i class="iconfont icon-star-radius"></i>
+                </div>
+                <div class="evaluate-submit" data-type="evaluate-submit" data-code="{$goods.code}">提交</div>
+            </div>
+            <div class="goods-buy-collect">
+                <button><a href="http://{:config('pc_host')}/goods/buy/{$goods.code}.html" class="white" target="_blank">去购买</a></button>
+                {if condition="($collect_status==3)"}
+                    <button data-collect-status="{$collect_status}" data-type="collect" data-code="{$goods.code}" type="button">已收藏</button>
+                {else /}
+                    <button data-collect-status="{$collect_status}" data-type="collect" data-code="{$goods.code}" type="button">收藏</button>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 下半部分 -->
+<div style="background-color: white; padding-top: 20px;">
+    <div class="container clearfix">
+        {notempty name="$goods->same_goods_info"}
+        <div class="relation-goods">
+            <h3>相关搭配</h3>
+            <ul class="relation-goods-list">
+                {volist name=":array_reverse($goods->same_goods_info)" id="vo"}
+                    <li class="clearfix">
+                        <div class="thumb"><a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank"><img src="{$vo.goods_imgs.0.img_url|default=''}" alt=""></a></div>
+                        <div class="desc">
+                            <p class="title"><a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank">{$vo.title}</a></p>
+                            <p class="price">￥{$vo.zk_final_price}</p>
+                        </div>
+                    </li>
+                {/volist}
+            </ul>
+        </div>
+        {/notempty}
+        <div class="goods-detail">
+            <h3>商品详情</h3>
+            <div class="goods-content">
+                {$goods.detail}
+            </div>
+            {notempty name="$same_goods" }
+            <div class="relation-recommend">
+                <h3>相关推荐</h3>
+                <ul class="relation-recommend-list clearfix">
+                    {foreach $same_goods as $vo}
+                        <li>
+                            <div class="thumb"><a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank"><img src="{$vo.goods_imgs.0.img_url|default=''}" alt=""></a></div>
+                            <p class="title"><a href="http://{:config('pc_host')}/goods/{$vo.code}.html" target="_blank">{$vo.title}</a></p>
+                            <p class="price">￥{$vo.zk_final_price}</p>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+            {/notempty}
+        </div>
+    </div>
+</body>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/assets/pc/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/pc/js/common.js"></script>
+<script type="text/javascript" src="/assets/pc/js/product.js"></script>
+{/block}

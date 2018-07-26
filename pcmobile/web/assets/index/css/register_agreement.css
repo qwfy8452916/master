@@ -1,0 +1,58 @@
+html, body {
+    height: 100%;
+}
+input{-webkit-appearance: none !important;box-shadow:none;
+    border: 1px solid #e6e6e6;}
+.agreement_title {
+    text-align: center;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    font-size: 0.17rem;
+    padding: 0 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+    width: 100%;
+    background: #fff;
+}
+
+.icon-fanhui {
+    float: left;
+}
+
+.icon-fanhui:before {
+    content: "\e600";
+}
+
+.agreementwaik {
+    width: 1210px;
+    margin: 0 auto;
+    padding: 0.2rem 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: auto;
+    background: #fff;
+    text-align: justify;
+}
+.agreementwaik p{text-indent: 2em;}
+
+.agreementwaik .xieyi_title {
+    text-align: center;
+    font-size: 0.13rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0.14rem;
+}
+.abouttit {
+    border-bottom: 1px solid #eee;
+    color: #ccc;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.abouttit span {
+    font-size: 16px;
+}

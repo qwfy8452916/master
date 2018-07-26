@@ -1,0 +1,92 @@
+{extend name="common:basic" /}
+
+
+{block name="title"}
+    <title>个人信息</title>
+{/block}
+{block name="headLeft"}
+    <a href="/user/" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">个人信息</div>
+{/block}
+{block name="headRight"}
+
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/user_info.css">
+{/block}
+
+{block name="content"}
+<div class="photo">
+    <div class="mingcheng">头像</div>
+    <i class="iconfont icon-more"></i>
+    <div class="touxiang">
+        <img src="{$user.logo|default='/assets/index/images/default_logo.png'}" alt="{$user.name|default="请修改头像"}">
+    </div>
+</div>
+<a href="{:url('jiajum/user/nickname',[],'')}" >
+<div class="nicheng">
+    <span class="xinxi_left">昵称</span>
+    <i class="iconfont icon-more"></i>
+    <span class="xinxi_right">{$user.name|default=$user.tel_safe}</span>
+</div>
+</a>
+<a href="{:url('jiajum/user/sex',[],'')}" >
+<div class="sexxb">
+    <span class="xinxi_left">性别</span>
+    <i class="iconfont icon-more"></i>
+    <span class="xinxi_right">{empty name="user.sex"}请选择{else/}{$user.sex}{/empty}</span>
+</div>
+</a>
+<a href="{:url('jiajum/user/mobile',[],'')}" >
+<div class="phone">
+    <span class="xinxi_left">手机号</span>
+    <i class="iconfont icon-more"></i>
+    <span class="xinxi_right">{$user.tel_safe}</span>
+</div>
+</a>
+<a href="{:url('jiajum/user/area',[],'')}" >
+<div class="region">
+    <span class="xinxi_left">地区</span>
+    <i class="iconfont icon-more"></i>
+    <span class="xinxi_right" >{empty name="user.city_area"}请选择{else /}{$user.city_area.city} {$user.city_area.area}{/empty}</span>
+</div>
+</a>
+<a href="{:url('jiajum/user/pwd',[],'')}" >
+<div class="modify">
+    <span class="xinxi_left">修改密码</span>
+    <i class="iconfont icon-more"></i>
+</div>
+</a>
+<div class="wrappic">
+    <div class="phototitle">
+        <a class="fanback" href="javascript:history.go(-1);">
+            <i class="iconfont icon-fanhui1"></i>
+        </a>
+        <span class="photoms">个人头像</span>
+        <div class="morewaik">
+            <i class="iconfont icon-gengduo"></i>
+            <input id="file" class="filepic" type="file">
+        </div>
+
+    </div>
+    <div id="clipArea" class="picarea"></div>
+    <div class="suregh">
+        <button id="clipBtn" class="genghuan">确认</button>
+        <button id="head-img-cacel" class="genghuan">取消</button>
+    </div>
+    <div id="view" class="okview"></div>
+</div>
+{/block}
+{block name="script"}
+<script src="/assets/plugins/jqueryphotoClip/iscroll-zoom.js"></script>
+<script src="/assets/plugins/jqueryphotoClip/hammer.js"></script>
+<script src="/assets/plugins/jqueryphotoClip/lrz.all.bundle.js"></script>
+<script src="/assets/plugins/jqueryphotoClip/jquery.photoClip.js"></script>
+<script>
+    var Img_upload = "{:url('jiajum/Upload/ueditorUpload',[],'')}";
+</script>
+<script type="text/javascript" src="/assets/index/js/user_info.js"></script>
+{/block}

@@ -1,0 +1,59 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+    <title>{$head}</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">登录</div>
+{/block}
+{block name="headRight"}
+
+{/block}
+
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/login.css">
+{/block}
+
+{block name="content"}
+<div class="loginwaik">
+    <div class="logintx"><i class="iconfont icon-geren2"></i></div>
+    <div class="dlphonewk">
+        <i class="iconfont icon-shouji-copy"></i>
+        <input type="tel" maxlength=11 autocomplete="off" placeholder="请输入手机号码">
+    </div>
+
+    <div class="dlpass">
+        <i class="iconfont icon-suo"></i>
+        <input type="password" maxlength=20 autocomplete="off" placeholder="请输入密码">
+    </div>
+    <div class="tihsims"></div>
+</div>
+<div class="tijiaoniu">
+    <button class="tijiao">登录</button>
+    <div class="zhucpass">
+        <a class="register_user" href="{:url('jiajum/register/index',[],'')}">注册新用户</a>
+        <a class="back_password" href="{:url('jiajum/getpassword/index',[],'')}">找回密码</a>
+    </div>
+</div>
+<div class="otherlogin">
+    <div class="other_ms">
+        <span>第三方账号登录</span>
+    </div>
+    <div class="otherwaik">
+        <a href="{:config('oauth.qq')}" class="qqlogin"></a>
+        <a href="{:config('oauth.wechat')}" class="wxlogin"></a>
+        <a href="{:config('oauth.sina')}" class="wblogin"></a>
+    </div>
+</div>
+
+{/block}
+{block name="script"}
+<script>
+    var login_url = "{:url('jiajum/login/login',[],'')}";
+</script>
+<script type="text/javascript" src="/assets/index/js/login.js"></script>
+{/block}

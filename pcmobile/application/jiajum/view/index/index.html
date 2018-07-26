@@ -1,0 +1,261 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+<title>{$head}</title>
+<meta name="keywords" content="{$keywords}" />
+<meta name="description" content="{$description}" />
+{/block}
+{block name="headLeft"}
+<a href="/">
+    <div class="logo"></div>
+</a>
+{/block}
+{block name="headCenter"}
+<div class="head-title-text">家居商城</div>
+{/block}
+{block name="headRight"}
+<a class="user" href="/user/"><i class="iconfont">&#xe62d;</i></a>
+{/block}
+
+
+{block name="style"}
+<!--当前页面独有css-->
+<link href="/assets/common/css/swiper-3.3.1.min.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/index/css/m-zwl.css?v201806231440" rel="stylesheet" type="text/css"/>
+{/block}
+
+
+{block name="content"}
+<!--当前页面body-->
+<div class="m-wrap">
+    <!-- 搜索框 -->
+    <div class="search">
+        <i class="iconfont icon-magnifier"></i>
+        <input type="search" placeholder="搜索商品名称、类型" data-type="index-search">
+    </div>
+    <!-- banner -->
+    <div class="banner">
+        <div class="swiper-container ibanner">
+            <div class="swiper-wrapper">
+                {volist name="banners" id="vo" length='8'}
+                <div class="swiper-slide"><a href="{$vo.url}"><img src="{$vo.img}" alt=""></a></div>
+                {/volist}
+            </div>
+            <!-- <div class="swiper-button-next"></div> -->
+            <!-- <div class="swiper-button-prev"></div> -->
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- banner下的导航 -->
+    <div class="cate-nav clearfix">
+        <div>
+            <a href="/chuang/">
+                <div class="cate-block-center">
+                    <div class="circle"><img src="/assets/index/images/bed.png" alt=""></div>
+                </div>
+                <span>床</span>
+            </a>
+        </div>
+        <div>
+            <a href="/xiegui/">
+                <div class="cate-block-center">
+                    <div class="circle"><img src="/assets/index/images/shoe-cabinet.png" alt=""></div>
+                </div>
+                <span>鞋柜</span>
+            </a>
+        </div>
+        <div>
+            <a href="/shafa/">
+                <div class="cate-block-center">
+                    <div class="circle"><img src="/assets/index/images/sofa.png" alt=""></div>
+                </div>
+                <span>沙发</span>
+            </a>
+        </div>
+        <div>
+            <a href="/yigui/">
+                <div class="cate-block-center">
+                    <div class="circle"><img src="/assets/index/images/wardrobe.png" alt=""></div>
+                </div>
+                <span>衣柜</span>
+            </a>
+        </div>
+        <div>
+            <a href="/all/">
+                <div class="cate-block-center">
+                    <div class="circle"><img src="/assets/index/images/all.png" alt=""></div>
+                </div>
+                <span>全部</span>
+            </a>
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 今日特价 -->
+    <div class="container">
+        <div class="public-title">
+            <span class="main">今日特价</span>
+            <span class="sub">今日特价天天有，边逛边买边剁手</span>
+        </div>
+        <div id="cheap-goods-container">
+            <div class="cheap-goods clearfix">
+                <ul class="clearfix">
+                    {foreach $discount_goods as $vo}
+                    <li class="item">
+                        <div class="thumb-pic"><a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+                            <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" alt=""
+                                onerror="this.src='/assets/common/images/default.png'"><span>直降{$vo.custom_price-$vo.zk_final_price}</span></a>
+                        </div>
+                        <div class="title"><a href="http://{:config('m_host')}/goods/{$vo.code}.html">{$vo.title|mbstr=###,0,20}</a></div>
+                        <div class="price"><span class="main">￥{$vo.zk_final_price}</span></div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 使用场景 -->
+    <div class="container">
+        <div class="scene">
+            <a href="/changjing/" style="display: block;height: 100%;"><img src="/assets/index/images/scene.png" alt=""></a>
+            <div class="caption">
+                    <div class="text">
+                        <h4><a href="/changjing/">使用场景</a></h4>
+                        <p><a href="/changjing/">DEPARTMENT</a></p>
+                        <a href="/changjing/"><img src="/assets/index/images/angle-right.png" alt=""></a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="scene-list clearfix" id="scene-list-container">
+            <div class="scene-list-scroll">
+                <ul>
+                    {foreach scene_info as $k => $vo}
+                        <li class="item">
+                            <div class="thumb-pic"><a href="/changjing/#{$k+1}/"><img src="{$vo.image}" alt=""></a></div>
+                            <p class="title"><a href="/changjing/#{$k+1}/">{$vo.name}</a></p>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 热销排行榜 -->
+    <div class="container">
+        <div class="public-title hot-sale-caption clearfix">
+            <span class="main">热销排行</span>
+            <span class="sub">全民偏爱，流行前沿</span>
+            <!--<a href="" class="more">更多 ></a>-->
+        </div>
+        <div class="hot-sale-list">
+            {foreach $best_selling as $k => $vo}
+            <div class="item clearfix">
+                <div class="serial"><span class="rank">{$k+1}</span></div>
+                <div class="thumb-pic">
+                    <a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+                        <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" alt="" onerror="this.src='/assets/common/images/default.png'">
+                    </a>
+                </div>
+                <div class="desc">
+                    <h4 class="title">
+                        <a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+                            {$vo.title|mbstr=###,0,23}
+                        </a>
+                    </h4>
+                    <div class="price clearfix">
+                        <div class="main">￥{$vo.zk_final_price}</div>
+                        <div class="sub">已售{$vo.volume}</div>
+                    </div>
+                </div>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 精选专题 -->
+    <div class="container">
+        <div class="public-title select-special-caption clearfix">
+            <span class="main">精选专题</span>
+            <span class="sub">设计老司机揭秘搭配秘笈</span>
+            <a href="http://{:config('m_host')}/zt/" class="more">全部 > </a>
+        </div>
+        <div class="ispecial-list clearfix" id="ispecial-list-container">
+            <div class="ispecial-list-scroll">
+                <ul class="clearfix">
+                    {foreach $subject as $vo}
+                        <li class="item">
+                            <div class="ispecial-img"><a href="http://{:config('m_host')}/zt/{$vo.id}.html"><img src="{$vo.headimg|default=''}-w375h210.jpg" alt=""></a></div>
+                            <p class="title"><a href="http://{:config('m_host')}/zt/{$vo.id}.html">{$vo.title|mbstr=###,0,18}</a></p>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 猜你喜欢 -->
+    <div class="container favorite">
+        <div class="caption"><span class="text">猜你喜欢</span><span class="cross-line"></span></div>
+        <div class="favorite-list clearfix">
+            {include file="index/list_content"/}
+        </div>
+        <div class="loading-container"></div>
+    </div>
+
+</div>
+{/block}
+
+{block name="script"}
+<!--当前页面独有js-->
+<script type="text/javascript" src="/assets/common/js/jroll-scroll.js"></script>
+<script type="text/javascript" src="/assets/common/js/iscroll.js"></script>
+<script type="text/javascript" src="/assets/index/js/m.zwl.js?v201806281415"></script>
+<script>
+    var Global_Goods_Url = "{:url('jiajum/index/indexAjaxList',[],'')}";
+    var $favoriteList = $(".favorite-list");
+    var flag = false;
+    var loadingFlag = $(".loading-container");
+    var clientHeight = $(window).height();
+    var page = 2;
+    // 滚动加载
+    $(window).on("scroll", function (event) {
+        var scrollHeight = $("body").height(),
+            scrollTop = $(window).scrollTop();
+        if (scrollHeight - (clientHeight + scrollTop) < 100 && !flag) {
+            // loadingFlag.text("").css("background","");
+            loadingFlag.css("display", "block");
+            flag = !flag;
+            ajaxAction({
+                url: Global_Goods_Url,
+                method: "get",
+                data: {
+                    p: page
+                },
+                successCallback: function (res) {
+                    console.log(res);
+                    if(res.data){
+                        page++;
+                        $favoriteList.append(res.data);
+                        flag = !flag;
+                        loadingFlag.css("display", "none");
+                    }else{
+                        // loadingFlag.text("已无数据").css("background","none");
+                        loadingFlag.css("display", "none");
+                    }
+                },
+                failCallback: function (res) {
+                    flag = !flag;
+                    loadingFlag.text("加载失败，请稍后重试");
+                }
+            });
+        }
+    });
+</script>
+{/block}

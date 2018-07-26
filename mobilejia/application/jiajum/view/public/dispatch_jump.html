@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>跳转提示 - Message</title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="/assets/common/css/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/admin/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/admin/css/AdminLTE.min.css">
+<link rel="stylesheet" href="/assets/admin/css/skins/_all-skins.min.css">
+</head>
+<body style="background: #d2d6de;">
+<div class="wrapper" style="margin:100px auto;width:800px;min-width:800px;">
+
+    <div class="lockscreen-logo"><b>QI</b>ZUANG</div> 
+
+    <div class="row">
+        <div class="col-md-12">
+          <div class="box box-widget widget-user">
+            <?php switch ($code) {?>
+                <?php case 1:?>
+                <div class="widget-user-header success" style="background:#00a65a"></div>
+                <?php break;?>
+                <?php case 0:?>
+                <div class="widget-user-header error" style="background:#dd4b39"></div>
+                <?php break;?>
+            <?php } ?>
+            
+            <div class="widget-user-image">
+                <img class="img-circle" src="/assets/admin/img/logo1.png">
+            </div>
+            <div class="content">
+                <div style="margin-top: 100px;text-align: center">
+                    <h1><?php echo($msg);?></h1>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="help-block text-center">
+        页面将在 <b id="wait">1</b> 秒后自动<a id="href" href="<?php echo($url);?>">跳转</a>
+    </div>
+
+    <div class="lockscreen-footer text-center">
+        Copyright &copy; 2017 <b><a href="http://jiancai.qizuang.com" class="text-black">QiZuang</a></b> All rights reserved
+    </div>
+</div>
+<script type="text/javascript">
+(function(){
+    var wait = document.getElementById('wait'),
+        href = document.getElementById('href').href;
+    var interval = setInterval(function(){
+        var time = --wait.innerHTML;
+        if(time <= 0) {
+            location.href = href;
+            clearInterval(interval);
+        };
+    }, 2000);
+})();
+</script>
+</body>
+</html>

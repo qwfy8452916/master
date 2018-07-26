@@ -1,0 +1,43 @@
+{extend name="common:basic" /}
+{block name="title"}
+<title>{$head}</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="search_input_box">
+        <i class="iconfont serch_icon">&#xe6e4;</i>
+        <form action="all" method="get" id="search_form" onsubmit="return false;">
+            <input  name="keyword" id="search_input" type="search" placeholder="搜索商品名称、类型">
+        </form>
+        <i class="iconfont remove_text">&#xe737;</i>
+    </div>
+{/block}
+{block name="headRight"}
+    <span class="giveup"><a href="javascript:history.go(-1)">取消</a></span>
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/cate.css">
+{/block}
+
+{block name="content"}
+<div class="hot_search">
+    <h3>热门搜索</h3>
+    <div class="hot_search_list">
+        <a href="/all?keyword=实木书桌实木书桌">实木书桌实木书桌</a>
+        <a href="/all?keyword=布">布</a>
+        <a href="/all?keyword=实木床头柜床头柜床头柜床头柜">实木床头柜床头柜床头柜床头柜</a>
+        <a href="/all?keyword=真皮沙发">真皮沙发</a>
+        <a href="/all?keyword=实木书桌">实木书桌</a>
+        <a href="/all?keyword=布艺沙发布艺沙发布艺沙发">布艺沙发布艺沙发布艺沙发</a>
+        <a href="/all?keyword=实木床头柜">实木床头柜</a>
+    </div>
+</div>
+
+{/block}
+
+{block name="script"}
+    <script src="/assets/index/js/cate_index.js?v201806090918" type="text/javascript"></script>
+{/block}

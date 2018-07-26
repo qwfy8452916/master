@@ -1,0 +1,39 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+    <title>修改昵称</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">修改昵称</div>
+{/block}
+{block name="headRight"}
+
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/user_nickname.css">
+{/block}
+
+{block name="content"}
+<div class="newname">
+    <input class="nameinput" type="text" placeholder="请输入新的昵称" maxlength=10>
+</div>
+<div class="nichengms">
+    <div><i class="iconfont icon-08tishifill"></i>昵称由4-10位汉字/字母/符号组成，首位不能是符号</div>
+    <div class="redtishi">昵称不能为空</div>
+</div>
+<div class="tijiaoniu">
+    <button class="tijiao">提交</button>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    var change_nickname = "{:url('jiajum/user/changeNick',[],'')}";
+    var location_url = "{:url('jiajum/user/info',[],'')}";
+</script>
+<script type="text/javascript" src="/assets/index/js/user_nickname.js"></script>
+{/block}

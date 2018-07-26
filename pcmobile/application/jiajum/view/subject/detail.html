@@ -1,0 +1,81 @@
+{extend name="common:basic" /}
+
+{block name="style"}
+<link href="/assets/index/css/m-zwl.css" rel="stylesheet" type="text/css"/>
+{/block}
+
+{block name="title"}
+<title>{$head}</title>
+{/block}
+{block name="headLeft"}
+<a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+<div class="head-title-text text-nowarp">{$subject.title}</div>
+{/block}
+{block name="headRight"}
+<a class="user" href="{:url('jiajum/user/index')}"><i class="iconfont">&#xe62d;</i></a>
+{/block}
+
+{block name="content"}
+<div class="m-wrap">
+    <!-- 专题详情 -->
+    <div class="special-detail">
+        <div class="special-face"><img src="{$subject.headimg}" alt=""></div>
+        <div class="special-main">
+            <p class="title">{$subject.title}</p>
+            <div class="detail">{$subject.content}</div>
+        </div>
+    </div>
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 相关商品 -->
+    {notempty name="$subject->related_goods" }
+    <div class="container">
+        <div class="special-relation-goods">
+            <div class="public-detail-title">相关商品</div>
+            {volist name="$subject->related_goods" id="vo" }
+            <div class="item clearfix">
+                <div class="thumb-pic">
+                    <a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+                        <img src="{$vo.goods_imgs.0.img_url}-wh300.jpg" alt="">
+                    </a>
+                </div>
+                <div class="desc">
+                    <h4 class="title"><a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">{$vo.title|mbstr=###,0,27}</a></h4>
+                    <div class="price clearfix">
+                        <div class="main">￥{$vo.zk_final_price}</div>
+                        <div class="sub">已售{$vo.volume}</div>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+    {/notempty}
+    <!-- 分割条 -->
+    <div class="fence"></div>
+    <!-- 单品推荐 -->
+    <div class="container single-recommend">
+        <div class="caption"><span class="text">单品推荐</span><span class="cross-line"></span></div>
+        <div class="single-recommend-list clearfix">
+            {foreach $recommend as $vo}
+            <div class="item">
+                <div class="thumb-pic">
+                    <a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+                        <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" alt="">
+                    </a>
+                </div>
+                <p class="title text-nowarp"><a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">{$vo.title}</a></p>
+                <p class="price">￥{$vo.zk_final_price}</p>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/assets/index/js/m.zwl.js"></script>
+<script type="text/javascript" src="/assets/common/js/swiper-3.3.1.min.js"></script>
+{/block}

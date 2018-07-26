@@ -1,0 +1,483 @@
+{extend name="common:basic" /}
+{block name="title"}
+    <title>{$head}</title>
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="search_input_box">
+        <i class="iconfont serch_icon">&#xe6e4;</i>
+        <form action="" id="search_form" onsubmit="return false;">
+            <input id="search_input" type="search" placeholder="搜索商品名称、类型" name="search">
+        </form>
+        <i class="iconfont remove_text">&#xe737;</i>
+    </div>
+{/block}
+{block name="headRight"}
+    <span class="giveup"><a href="javascript:history.go(-1)">取消</a></span>
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/cate.css">
+{/block}
+{block name="content"}
+<div class="m-wrap">
+         <div class="chose_box">
+              <table class="chose_table">
+                  <tr>
+                      <td><span id="comprehensive" >综合<i class="iconfont">&#xe601;</i></span></td>
+                      <td><span id="sale_num" class="normal_chose">销量<i class="iconfont">&#xe601;</i></span></td>
+                      <td><span id="price">价格<i class="iconfont">&#xe631;</i></span></td>
+                      <td><span id="screen" >筛选<i class="iconfont">&#xe6d8;</i></span></td>
+                  </tr>
+              </table>
+          </div>
+          <div class="screen_list">
+              <div class="screen_box">
+                  <ul class="select_item_box">
+                      <li data-type="caizhi">
+                          <h3>材质</h3>
+                          <div class="select_content">
+                              <span data-id="0" data-checked="false">实木床</span>
+                              <span data-id="1" data-checked="false">板式床</span>
+                              <span data-id="2" data-checked="false">藤艺床</span>
+                              <span data-id="3" data-checked="false">金属床</span>
+                              <span data-id="4" data-checked="false">金属床</span>
+                              <span data-id="5" data-checked="false">金属床</span>
+                              <span data-id="6" data-checked="false">金属床</span>
+                          </div>
+                      </li>
+                      <li data-type="zaoxing">
+                          <h3>造型</h3>
+                          <div class="select_content">
+                              <span data-id="0" data-checked="false">四柱床</span>
+                              <span data-id="1" data-checked="false">罗汉床</span>
+                              <span data-id="2" data-checked="false">高低屏床</span>
+                              <span data-id="3" data-checked="false">圆形床</span>
+                          </div>
+                      </li>
+                      <li data-type="chicun">
+                          <h3>尺寸</h3>
+                          <div class="select_content">
+                              <span data-id="0" data-checked="false">单人床</span>
+                              <span data-id="1" data-checked="false">双人床</span>
+                              <span data-id="2" data-checked="false">儿童床</span>
+                          </div>
+                      </li>
+                  </ul>
+                  <div class="btn_box">
+                     <span class="reset">重置</span>
+                     <span class="okbtn">确定</span>
+                  </div>
+
+              </div>
+          </div>
+          <div class="search_result">
+              <ul class="result_container">
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                   <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                   <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                   <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                   <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+                  <li class="result_item">
+                   <a href="">
+                     <div class="goods_img">
+                         <img src="/assets/search/images/goods.png" alt="">
+                     </div>
+                     <div class="goods_text">
+                         <div class="goods_title">林氏木业1.5m现代真皮床</div>
+                         <div class="goods_detail">一款床头,三种床身,更多选择,给你所需要的;三种美感,融入床头,每一处...</div>
+                         <div class="bottom_info">
+                               <div class="bottom_price">
+                                  <span>￥</span>5000
+                               </div>
+                               <div class="bottom_salenum">
+                                  <span>销量</span>8800
+                              </div>
+                          </div>
+                     </div>
+                    </a>
+                  </li>
+              </ul>
+              <div class="under_line"></div>
+          </div>
+</div>
+
+{/block}
+
+{block name="script"}
+
+    <script src="/assets/index/js/cate_index.js?v201806090918"></script>
+    <script src="/assets/index/js/cate_search.js?v201806090918"></script>
+
+    <!--下拉加载更多-->
+    <script src="/assets/plugins/dropDownLoad/dropDownLoad.js?v201806091357"></script>
+    <script src="/assets/plugins/layer/layer.js"></script>
+    <script>
+        $(function(){
+          $(".result_container").dropLoadMore({
+            loadItem:".result_item",
+            loadNum:20
+          });
+        });
+    </script>
+{/block}

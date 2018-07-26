@@ -1,0 +1,125 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+    <title>我的收藏</title>
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="/assets/jiaju/css/public-new.css">
+<link rel="stylesheet" href="/assets/jiaju/css/collection.css">
+
+<!--[if lte IE 8]> <link rel="stylesheet" type="text/css" href="/assets/jiaju/css/collectionie.css"/> <![endif]-->
+
+{/block}
+
+{block name="content"}
+<div class="wrap">
+    <div class="mycollection">
+        <div class="collection_title">我的收藏</div>
+        <div class="collection_nerrong">
+            {if condition="!empty($list)"}
+            <ul class="neirongul">
+                {foreach $list as $key=>$vo}
+                <li class="code{$vo.code}">
+                    <a href="/goods/{$vo.code}.html" target="_blank">
+                        <img src="{:empty($vo.goods_imgs)?'':$vo['goods_imgs'][0]['img_url']}" alt="{$vo.title}">
+                    </a>
+                    <div class="souctitle"><a target="_blank" href="/goods/{$vo.code}.html">{$vo.title}</a></div>
+                    <div class="pricescwk">
+                        <div class="jiage">￥<span>{$vo.zk_final_price}</span></div>
+                        <div class="quxiaosc" data-code="{$vo.code}">取消收藏</div>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+            {else/}
+            <div class="nocollection">
+                <img src="/assets/jiaju/images/nocollection.png" alt="">
+                <div class="norecord">暂无收藏记录</div>
+            </div>
+            {/if}
+        </div>
+        <div>{$page}</div>
+    </div>
+    {notempty name="recom_goods"}
+    <div class="guesslike">
+        <div class="guesslike_title">猜你喜欢</div>
+        <div class="caineirong">
+            <ul class="caiul">
+                {foreach $recom_goods as $key=>$vo}
+                <li>
+                    <a href="/goods/{$vo.code}.html" target="_blank"><img src="{:empty($vo.goods_imgs)?'':$vo['goods_imgs'][0]['img_url']}" alt="{$vo.title}"></a>
+                    <div class="caimsneir">
+                        <div class="caimsneir_title"><a target="_blank" href="/goods/{$vo.code}.html">{$vo.title}</a></div>
+                        <div class="cai_price">￥<span>{$vo.zk_final_price}</span></div>
+                        <div class="caimsneir_title2">{$vo.describtion}</div>
+                    </div>
+                    <div class="sanblock">
+                        <div class="sales_liang">销量：<span>{if condition="($vo.volume>99999)"}10w+{else /}{$vo.volume}{/if}</span></div><div class="score">评分：<span>{$vo.custom_score}</span></div><div class="comment">收藏数：<span>{if condition="($vo.collect_num>99999)"}10w+{else /}{$vo.collect_num}{/if}</span></div>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+
+        </div>
+    </div>
+    {/notempty}
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/assets/plugins/dropDownLoad/dropDownLoad.js?v201806201125"></script>
+<script>
+    //取消收藏接口
+    var cancelCollect = "{:url('jiaju/user/cancelCollect',[],'')}";
+    $(function(){
+
+
+     $("#jump").on("click",function(){
+        if( !$.trim($("#skipPage").val()) ){
+            alert('请输入页码');
+            return;
+        }
+        var totalPage = $(this).attr("data-total-page"),
+            currentPage = $.trim($("#skipPage").val());
+        if( parseInt(currentPage) > parseInt(totalPage)){
+            currentPage = totalPage;
+        }
+        if( currentPage <= 0){
+            currentPage = 1;
+        }
+        link = $("#jump").val().replace(/p1/, "p"+currentPage);
+        $("#jump").val(link);
+        location.href = link;
+    });
+    $("#skipPage").on("keyup",function(){
+        $(this).val($(this).val().replace(/\D/g,""));
+    });
+ 
+
+
+    
+      $('body').on('click','.pricescwk .quxiaosc',function(){
+        var code=$(this).attr('data-code');
+        $.ajax({
+            url:cancelCollect,
+            dataType:'JSON',
+            data:{code:code},
+            type:'POST',
+            success:function(data){
+                if(data.status==1){
+                   layer.msg(data.info,{time:1300},function(){
+                       window.location.reload();
+                   });
+                }
+            },
+            error:function(){
+                layer.msg('不知道哪里出错了',{time:1300});
+            }
+
+        })
+
+      })
+        
+
+    })
+</script>
+{/block}

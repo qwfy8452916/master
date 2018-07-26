@@ -1,0 +1,93 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+    <title>我的收藏</title>
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/user_store.css">
+{/block}
+{block name="headLeft"}
+    <a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">我的收藏</div>
+{/block}
+{block name="headRight"}
+    <a class="user" href="{:url('jiajum/user/index',[],'')}"><i class="iconfont">&#xe62d;</i></a>
+{/block}
+
+
+{block name="content"}
+<div class="collectionwaik">
+    {if condition="isset($recom_goods)"}
+
+     <div class="noresult">
+         <img src="/assets/index/images/cry.png">
+         <div class="nojilums">没有收藏记录</div>
+     </div>
+
+    {/if}
+
+    <ul {if condition="!isset($recom_goods)"} class="dropdown" {/if} >
+        {foreach $list as $key=>$vo}
+
+        <li class="code{$vo['code']} result_item">
+            <a href="/{$vo.goods_sub_cate.short_name}/{$vo['code']}.html" target="_blank">
+                <div class="sclist_lef">
+                    <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" onerror="this.src='/assets/common/images/default.png'" alt="{$vo.title}">
+                </div>
+            </a>
+            <div class="sclist_rig">
+                <div class="mstitle"><a href="/{$vo.goods_sub_cate.short_name}/{$vo['code']}.html" target="_blank" >{$vo.title}</a></div>
+                <div class="neirongms">{$vo.describtion}</div>
+                <div class="pricesl">
+                    <div class="pricesl_jiage"><span>￥</span>{$vo.zk_final_price}</div>
+                    <div class="pricesl_xiaol"><span>销量</span>{$vo.volume}</div>
+                    <div class="djshouc" data-code="{$vo.code}"><i class="iconfont icon-xin"></i>取消收藏</div>
+                </div>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{if condition="isset($recom_goods)"}
+<div class="collguess">
+    <div class="caiyicai"><span>猜你喜欢</span></div>
+    <ul class="loveul">
+        {foreach $recom_goods as $key=>$vo}
+        <li >
+            <a href="/{$vo.goods_sub_cate.short_name}/{$vo['code']}.html" target="_blank" >
+                <div class="pictop">
+                    <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg"  onerror="this.src='/assets/common/images/default.png'" alt="{$vo.title}">
+                </div>
+                <div class="pictitle">{$vo.title}</div>
+                <div class="price_jine">￥<span>{$vo.zk_final_price}</span></div>
+            </a>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/if}
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/assets/index/js/user_store.js"></script>
+<script type="text/javascript" src="/assets/plugins/dropDownLoad/dropDownLoad.js?v201806201125"></script>
+<script>
+    var cancelCollect = "{:url('jiajum/user/cancelCollect',[],'')}";
+    var loadMoreUrl = "{:url('jiajum/user/store',[],'')}";
+    var location_url = "{:url('jiajum/user/info',[],'')}";
+    $(".dropdown").dropLoadMore({
+        ajaxUrl:loadMoreUrl,
+        parms:{"page":2,"pageSize":20},
+        appendEle:function(data,_this,index){
+            if(data.status==1){
+                 var html="";
+                 for(var i=0; i<data.data.length;i++){
+                    html+='<li class="code'+data.data[i].code+' result_item"><a href="/'+data.data[i].goods_sub_cate.short_name+'/'+data.data[i].code+'.html" target="_blank"><div class="sclist_lef"><img src="'+data.data[i].goods_imgs[0].img_url+'-300.jpg" alt="'+data.data[i].title+'"></div></a><div class="sclist_rig"><div class="mstitle"><a href="/'+data.data[i].goods_sub_cate.short_name+'/'+data.data[i].code+'.html" target="_blank">'+data.data[i].title+'</a></div><div class="neirongms">'+data.data[i].describtion+'</div><div class="pricesl"><div class="pricesl_jiage"><span>￥</span>'+data.data[i].zk_final_price+'</div><div class="pricesl_xiaol"><span>销量</span>'+data.data[i].buy_num+'</div><div class="djshouc" data-code="code'+data.data[i].code+'"><i class="iconfont icon-xin"></i>取消收藏</div></div></div></li>';
+                }
+                 _this.append(html);
+             }
+        }
+    });
+</script>
+{/block}

@@ -1,0 +1,156 @@
+{extend name="common:basic" /}
+
+{block name="title"}
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+{/block}
+
+{block name="headLeft"}
+<a href="javascript:history.go(-1)" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+<div class="search_input_box">
+    <i class="iconfont serch_icon">&#xe6e4;</i>
+    <form action="" id="search_form" onsubmit="return false;">
+        <input id="search_input" type="search" placeholder="搜索商品名称、类型" name="search" value="{$search|default=''}">
+    </form>
+    <i class="iconfont remove_text">&#xe737;</i>
+</div>
+{/block}
+{block name="headRight"}
+<a class="user" href="/user/"><i class="iconfont">&#xe62d;</i></a>
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/cate.css?v=201807061116">
+{/block}
+
+{block name="content"}
+<input type="hidden" id="shortName" value="{$parent->short_name}">
+<div class="chose_box">
+
+    <table class="chose_table">
+        <tr>
+            <td {if condition="$selected==0" } class="search_active" {/if}><a href="?{:getUrlQuery(convertUrlQuery($query),'o',0)}"><span id="comprehensive">综合<i class="iconfont">&#xe601;</i></span></a></td>
+            <td {if condition="$selected==1" } class="search_active" {/if}><a href="?{:getUrlQuery(convertUrlQuery($query),'o',1)}"><span id="sale_num" class="normal_chose">销量<i class="iconfont">&#xe601;</i></span></a></td>
+            <td {if condition="$selected==2||$selected==3" } class="search_active" {/if}><a href="?{:getUrlQuery(convertUrlQuery($query),'o',$priceType)}" id="price-order"><span id="price">价格<i class="iconfont xz_{$priceType}">&#xe601;</i></span></a></td>
+            <td><span id="screen">筛选<i class="iconfont">&#xe6d8;</i></span></td>
+        </tr>
+    </table>
+</div>
+<div class="screen_list">
+    <div class="screen_box">
+        {notempty name="spec"}
+        <ul class="select_item_box">
+            {foreach $spec as $k1=>$v1}
+            {if condition="!empty($v1['specifications_value'])"}
+            <li class="parentLevel">
+                <h3>{$v1.name}</h3>
+                <div class="select_content parms-box">
+                    {foreach $v1['specifications_value'] as $k2=>$v2}
+                    <span {if condition="in_array($v2['id'],$canshuArray)" }data-checked="true" class="selected" {else/}data-checked="false"{/if}
+                    data-id="{$v1.sign}{$v2['id']}">{$v2['name']}</span>
+                    {/foreach}
+                </div>
+            </li>
+            {/if}
+            {/foreach}
+        </ul>
+        {/notempty}
+        <div class="btn_box">
+            <span class="okbtn">确定</span><span class="reset">重置</span>
+        </div>
+    </div>
+</div>
+{empty name="list"}
+<div class="m-wrap">
+    <div class="empty_box">
+        <div class="cry_box">
+            <img src="/assets/search/images/cry.png" alt="">
+            <p>啊哦，没有找到主人喜欢的内容~~~</p>
+        </div>
+    </div>
+    <div class="recommd_list">
+        <div class="recommd_title">
+            <span>为您推荐</span>
+        </div>
+        <ul class="recommend">
+            {foreach $recommend as $vo}
+            <li>
+                <div class="item_content">
+                    <a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+                        <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" alt="" onerror="this.src='/assets/common/images/default.png'">
+                        <p class="rec_tit">{$vo.title}</p>
+                        <div class="bottom_info">
+                            <div class="bottom_price">
+                                <span>￥</span>{$vo.zk_final_price}
+                            </div>
+                            <div class="bottom_salenum">
+                                <span>销量</span>{$vo.volume}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+{else /}
+<div class="search_result">
+    <ul class="dropdown">
+        {foreach $list as $key=>$vo}
+        <li>
+            <a href="http://{:config('m_host')}/{$vo.goods_sub_cate.short_name}/{$vo.code}.html">
+                <div class="goods_img">
+                    <img src="{$vo.goods_imgs.0.img_url|default=''}-wh300.jpg" onerror="this.src='/assets/common/images/default.png'" alt="{$vo.title}">
+                </div>
+                <div class="goods_text">
+                    <div class="goods_title">{$vo.title}</div>
+                    <div class="goods_detail">{$vo.describtion}</div>
+                    <div class="bottom_info">
+                        <div class="bottom_price">
+                            <span>￥</span>{$vo.zk_final_price}
+                        </div>
+                        <div class="bottom_salenum">
+                            <span>销量</span>{$vo.volume}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/empty}
+{/block}
+{block name="script"}
+<script src="/assets/index/js/cate_index.js?v=201807061104"></script>
+<!--筛选相关方法-->
+<script src="/assets/index/js/cate_search.js?v=201807061104"></script>
+<!--下拉加载-->
+<script type="text/javascript" src="/assets/plugins/dropDownLoad/dropDownLoad.js?v201806201125"></script>
+<script>
+    var ajaxUrl = "{:url('jiajum/cate/getlist',[],'')}";
+    var canshu = $(".parms-box .selected").data("id");
+    $(".dropdown").dropLoadMore({
+        ajaxUrl: ajaxUrl,
+        parms: {
+            "pageSize": 20,
+            "page": 2,
+            "cate": "{$catePinYin}",
+            "par": canshu,
+            "keyword": $("#search_input").val().trim(),
+            "o": "{$selected}"
+        },
+        appendEle: function (data, _this) {
+            var html = "";
+            for (var i = 0; i < data.data.length; i++) {
+                html += ' <li><a href="/' + data.data[i].goods_sub_cate.short_name + '/' + data.data[i].code + '.html"><div class="goods_img"><img src="' + data.data[i].goods_imgs[0].img_url + '-wh300.jpg" alt=""></div><div class="goods_text"><div class="goods_title">' + data.data[i].title + '</div><div class="goods_detail">' + data.data[i].describtion + '</div><div class="bottom_info"><div class="bottom_price"><span>￥' + data.data[i].zk_final_price + '</span></div><div class="bottom_salenum"><span>销量' + data.data[i].on_sale + '</span></div></div></div></a></li>';
+            }
+            _this.append(html);
+        }
+    });
+</script>
+{/block}

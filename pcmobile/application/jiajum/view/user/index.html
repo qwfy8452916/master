@@ -1,0 +1,57 @@
+{extend name="common:basic" /}
+{block name="title"}
+    <title>个人中心</title>
+{/block}
+
+{block name="style"}
+<link rel="stylesheet" href="/assets/index/css/user_index.css">
+{/block}
+{block name="headLeft"}
+    <a href="/" class="go-back"><i class="iconfont">&#xe600;</i></a>
+{/block}
+{block name="headCenter"}
+    <div class="head-title-text">个人中心</div>
+{/block}
+{block name="headRight"}
+
+{/block}
+{block name="content"}
+<a href="{:url('jiajum/user/info',[],'')}" >
+    <div class="photo">
+        <div class="touxiang">
+            <img src="{$user.logo|default='/assets/index/images/default_logo.png'}" alt="{$user.name|default=$user.tel_safe}">
+        </div>
+        <div class="namephone">
+            <div class="name">{$user.name|default=$user.tel_safe}</div>
+            <div class="phone">{$user.tel}</div>
+        </div>
+        <i class="iconfont icon-more"></i>
+    </div>
+</a>
+<a href="{:url('jiajum/user/store',[],'')}" ><div class="collect">我的收藏<i class="iconfont icon-more"></i></div></a>
+<div class="contact">联系客服（400-865-9600）<a href="tel:4008-659-600" class="iconfont icon-phone dianhuaicon"></a></div>
+<a href="{:url('jiajum/user/feedback',[],'')}" ><div class="opinion">意见反馈 <i class="iconfont icon-more"></i></div></a>
+<div class="exitlogin">
+    <a href="javascript:void(0)">退出登录</a>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    var Logout_url = "{:url('jiajum/login/loginout',[],'')}";
+</script>
+<script type="text/javascript" src="/assets/index/js/user_index.js"></script>
+<script type="text/javascript">
+    
+    $(function(){
+        var phonehtml=$('.namephone .phone').text();
+        console.log(phonehtml)
+        if(phonehtml==''){
+          $('.photo .namephone').css("line-height","0.8rem");
+        }else{
+          $('.photo .namephone').css("line-height","30px");
+        }
+    })
+
+</script>
+{/block}
