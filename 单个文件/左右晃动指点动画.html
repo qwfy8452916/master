@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左右晃动</title>
+	<style>
+		.shou{width: 100px;height: 30px;line-height: 30px;text-align: center;background: blue;color: #fff;
+			font-size: 14px;position: relative;}
+		.shou2{width: 100px;height: 30px;line-height: 30px;text-align: center;background: blue;color: #fff;
+			font-size: 14px;position: relative;margin-top: 50px;}
+	</style>
+</head>
+<body>
+	<div class="shou">动画展示</div>
+	<div class="shou2">点击打印</div>
+
+
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+           function rightyd(){
+           	 $('.shou').animate({right:5},550,function(){
+	           	 $('.shou').animate({right:25},600,function(){
+	           	 	rightyd();
+	           	 })
+              });
+             }
+
+          $('.shou').animate({right:5},600,function(){
+          	rightyd();
+          })
+
+
+          $('.shou2').click(function(event) {
+          	console.log(event)
+          	console.log(event.bubbles)
+          });
+           
+
+
+		})
+         
+
+
+
+	</script>
+</body>
+</html>

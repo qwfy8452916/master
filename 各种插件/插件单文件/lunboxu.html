@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lunbo</title>
+	<style>
+		.midd{width: 1210px;margin:auto;position: relative;margin-top: 50px;}
+		.midd .lefjianwk{width: 140px;height: 300px;position: absolute;left: 0;top: 20px;background: rgba(0,0,0,0.6);
+			text-align: center;line-height: 300px;color: #fff;cursor: pointer;z-index: 10;}
+		.midd .rigjianwk{width: 140px;height: 300px;position: absolute;right: 0;top: 20px;background: rgba(0,0,0,0.6);
+		text-align: center;line-height: 300px;color: #fff;cursor: pointer;z-index: 10;}
+        .midd .content{position: relative;height: 340px;overflow: hidden;}
+        .midd .content li{list-style: none;position: absolute;overflow: hidden;}
+        .midd .content li img{height: 100%;}
+        .curr{z-index: 9;}
+        .prev,.next{z-index: 3;}
+
+
+	</style>
+</head>
+<body>
+	
+   <div class="midd">
+   	  <div class="lefjianwk">pre</div>
+   	  <ul class="content">
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180529/2_gaitubao_com_930x340-580241" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180614/banner3-955490" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180529/3_gaitubao_com_930x340-579916" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180529/2_gaitubao_com_930x340-580241" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180614/banner3-955490" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180529/3_gaitubao_com_930x340-579916" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180529/2_gaitubao_com_930x340-580241" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180614/banner3-955490" alt="">
+   	  	</li>
+   	  	<li>
+   	  		<img src="http://staticqn.qizuang.com/meitubanner/20180529/3_gaitubao_com_930x340-579916" alt="">
+   	  	</li>
+   	  </ul>
+   	  <div class="rigjianwk">next</div>
+   </div>
+
+   <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+   <script type="text/javascript">
+   	
+      $(function(){
+
+         var length=$('.content li').length;
+         
+
+         set_pre($('.content li').eq(length-1))
+         set_curr($('.content li').eq(0))
+         set_next($('.content li').eq(1))
+
+
+         //中间banner
+
+         function set_curr(ele){
+           ele.stop().animate({
+             height:"340px",
+             width:"930px",
+             top:"0px",
+             background:"#000",
+             left:"50%",
+             marginLeft:"-465px",
+         },100).fadeIn(100).attr("class","curr")
+         }
+
+         //上一张banner
+
+         function set_pre(ele){
+           ele.stop().animate({
+           	height:"300px",
+           	width:"320px",
+           	top:"20px",
+           	left:"0px",
+           	marginLeft:"0px",
+           },100).fadeIn(100).attr("class","prev")
+         }
+
+         //下一张banner
+
+         function set_next(ele){
+           ele.stop().animate({
+           	height:"300px",
+           	width:"320px",
+           	top:"20px",
+           	left:"890px",
+           	marginLeft:"0px",
+           },100).fadeIn(100).attr("class","next")
+         }
+
+console.log(length)
+
+            //向前
+
+         function lunbo_pre(box){
+           
+           var curr=$('.curr');
+           var bannerlist=$(box).children("li");
+           bannerlist.attr("class","");
+           set_pre(curr);
+           if(curr.next().html()){
+              set_curr(curr.next())
+              if(curr.next().next().html()){
+                 set_next(curr.next().next())
+              }else{
+              	 set_next(bannerlist.eq(0))
+              }
+           }else{
+           	  set_curr(bannerlist.eq(0))
+           	  set_next(bannerlist.eq(1))
+           }
+
+           for(var i=0;i<length;i++){
+           	 var classname=bannerlist.eq(i).attr("class")
+           	 if(classname==""){
+                 bannerlist.eq(i).attr("style","")
+           	 }
+           }
+
+         }
+        
+        //向后
+
+        function lunbo_next(box){
+        	var curr=$('.curr');
+        	var bannerlist=$(box).children('li');
+        	bannerlist.attr("class","");
+        	set_next(curr);
+        	if(curr.prev().html()){
+              set_curr(curr.prev())
+              if(curr.prev().prev().html()){
+                set_pre(curr.prev().prev())
+              }else{
+              	set_pre(bannerlist.eq(length-1))
+              }
+        	}else{
+        		set_curr(bannerlist.eq(length-1))
+        		set_pre(bannerlist.eq(length-1).prev())
+        	}
+
+        	for(var i=0;i<length;i++){
+           	 var classname=bannerlist.eq(i).attr("class")
+           	 if(classname==""){
+                 bannerlist.eq(i).attr("style","")
+           	 }
+           }
+
+        }
+         
+         //定时器默认向前
+
+         var zidonglunbo=setInterval(function(){
+         	lunbo_pre(".content");
+         },3000)
+
+         // 鼠标移上清除定时器停止
+
+         $('.midd').hover(function(){
+
+         	clearInterval(zidonglunbo);
+
+         },function(){
+         	zidonglunbo=setInterval(function(){
+
+	          lunbo_pre(".content");
+	           },3000)
+         })
+
+         //手动点击轮播
+
+         $('.midd .lefjianwk').click(function(event) {
+         	lunbo_pre(".content");
+         });
+
+         $('.midd .rigjianwk').click(function(event) {
+         	lunbo_next(".content");
+         });
+
+
+      })
+
+
+
+   </script>
+
+</body>
+</html>

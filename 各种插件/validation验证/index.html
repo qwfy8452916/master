@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>validation</title>
+	<style>
+		.error{color: #ff5353;}
+	</style>
+</head>
+<body>
+	
+	   <form id="demoForm">
+		  <fieldset>
+		   <legend>用户登录</legend>
+		   <p>
+		    <label for="username">用户名</label>
+		    <input type="text" id="username"  name="username">
+		   </p>
+		   <p>
+		    <label for="password">密码</label>
+		    <input type="text" id="password"  name="password">
+		   </p>
+		   <input class="submit" type="submit" value="Submit">
+		  </fieldset>
+	 </form>
+
+
+
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<script type="text/javascript">
+
+
+
+	 	
+         $(document).ready(function(){
+
+
+			 $("#demoForm").validate({
+			 	debug:true,
+			  rules:{
+			   username:{
+			    required:true,// 是否必填
+			    minlength:2, // 最小长度
+			    maxlength:10 // 最大长度
+			   },
+			   password:{
+			    required:true,
+			    minlength:2,
+			    maxlength:16
+			   },
+			    messages: {
+				      username: {
+				        required: "请输入用户名",
+				        minlength: "用户名必需由两个字母组成"
+				      },
+				      password: {
+				        required: "请输入密码",
+				        minlength: "密码长度不能小于 16个字母"
+				      }
+
+                 }
+                            }
+                        })
+
+
+			});
+
+
+	 </script>
+
+</body>
+</html>

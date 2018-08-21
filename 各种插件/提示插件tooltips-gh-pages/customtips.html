@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义提示</title>
+	<link href="css/tooltips.css" rel="stylesheet" id="skin">
+	<style>
+		.tishiwk{width: 150px;height: 35px;line-height: 35px;text-align: center;
+			background: blue;color: #fff;font-size: 16px;margin-top: 150px;cursor: pointer;}
+	</style>
+</head>
+<body>
+	
+     <div class="tishiwk">点击提示</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap-tooltip.js"></script>
+	<script src="js/jquery.pure.tooltips.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+          $('.tishiwk').click(function(event) {
+          	var self=this;
+          	 
+          	 $.pt({
+		        target: self,
+		        content: '好雨知时节， 当春乃发生。随风潜入夜， 润物细无声。。。'
+		    });
+
+          });
+
+
+
+		})
+	</script>
+</body>
+</html>
