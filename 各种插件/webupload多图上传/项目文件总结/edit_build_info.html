@@ -1,0 +1,74 @@
+{extend name="common:basic" /}
+{block name="link"}
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/erpswiper/erpswiper.css?v={:config('static_version')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/webuploader.css?v={:config('static_version')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/upload.css?v={:config('static_version')}">
+	  <link rel="stylesheet" href="/assets/pc/css/Private/detailorder.css?v={:config('static_version')}">
+
+{/block}
+{block name="bread_title"}
+<span>跟单管理/编辑</span>
+<ul class="tabbiaot">
+	<li><a href="http://{:config('pc_host')}/order/edit?order_no={$order_no}">跟单信息</a></li>
+	<li class="active" ><a href="#">施工信息</a></li>
+</ul>
+{/block}
+{block name="content"}
+    <div class="p-panel">
+      <div class="yezhu-title">施工信息</div>
+        <div class="p-form-box b-owf firstpicwk">
+          <div class="orderhang">
+              <div class="p-form-column wrapinput">
+                  <span class="hang-title">施工状态：</span>
+                  <select class="p-input quchupad shigongstatus" name="" id="">
+                      <option value="">请选择</option>
+                      {foreach $build_status as $k=>$vo}
+                      <option value="{$k}">{$vo}</option>
+                      {/foreach}
+                  </select>
+                  <div class="tishi shigongstatus-tishi"></div>
+              </div>
+             </div>
+             <div class="orderhang">
+                  <span class="hang-title">添加描述：</span>
+                  <textarea class="p-input quchupad boxmoxing" maxlength="100" placeholder="请输入备注,字数不超过100个字。" cols="30" rows="10"></textarea>
+                  <div class="tishi boxmoxing-tishi"></div>
+             </div>
+             <div class="chuan-title uoloadpad"><span class="spantitle">上传图片：</span>单张图片大小不能超过6MB,支持jpg、png、bmp格式。<span class="shili"><i class="fa fa-question-circle" aria-hidden="true"></i>查看示例</span></div>
+
+         <div class="uploadpicwk topaddpic">
+           <div class="uploader-demo" class="controls">
+            <div class="uploader-list fileList"></div>
+            <div class="filePicker">
+              <span class="hengxian"></span>
+              <span class="suxian"></span>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" class="ordernumber" value="{$order_no}">
+        <div class="zhangshuxz">共<span class="canupload">0</span>张,还能上传<span class="yuupload">9</span>张</div>
+         <div class="savecanwk"><span class="p-btn p-primary saveniu">保存</span><a href="/order" class="p-btn p-white cancelniu">取消</a></div>
+        </div>
+    </div>
+    <div class="p-panel">
+       <div class="yezhu-title">施工历史</div>
+       <div class="shigonghistory">
+          {include file="order/edit_build_list" /}
+       </div>
+        <div class="loadmorewk">
+        <span class="moreload" data-page="2">加载更多</span>
+      </div>
+    </div>
+     
+    <div class="bottom-btn">
+      <span class="p-btn p-primary" id="save-btn">保存</span>
+        <a href="/order" class="p-btn p-white">取消</a>
+    </div>
+{/block}
+
+{block name='script'}
+    <script type="text/javascript" src="/assets/pc/js/Plugin/erpswiper/erpswiper.js?v={:config('static_version')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/webuploader.js?v={:config('static_version')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/upload.js?v={:config('static_version')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Private/detailorder.js?v={:config('static_version')}"></script>
+{/block}

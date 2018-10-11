@@ -1,0 +1,100 @@
+{foreach $list as $vo}
+{if($vo['check_state'] == 1) }
+<div class="shigongwk kbj">
+    <input class="shigongjilid" type="hidden" value="{$vo.id}">
+    <span class="yuanwk noyanshou-border">
+              <i class="smallyuan noyanshou-back"></i>
+          </span>
+    <div class="anniiuwk">
+        <div class="editcheck">编辑</div>
+        <div class="savecancelwk"><span class="savebaocun">保存</span><span class="cancelniu">取消</span></div>
+    </div>
+    <div class="shigongwk-title">
+        <span>{$vo.add_time}</span>
+        <div class="chenghu">
+            <span>设计师：</span>
+            <span class="namech">{$vo.designerAccount.contact_name|default=''}</span>
+        </div>
+    </div>
+    <div class="shigongwk-title2">
+        <!--todo mcj-->
+        <span class="miaos-tit">施工状态：</span><span class="shuidainzg">水电整改</span>
+        {switch $vo.check_state }
+        {case 1 }
+        <span class="jianjvlef noyanshou">未验收</span>
+        {/case}
+        {case 2}
+        <span class="jianjvlef nohege">不合格</span>
+        {/case}
+        {case 3}
+        <span class="jianjvlef yiyanshou">合格</span>
+        {/case}
+        {default /}
+        {/switch}
+    </div>
+    <div class="hangwk">
+        <span class="miaos-tit">描&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp述：</span>
+        <!-- <textarea class="remarkms" cols="30" rows="10" placeholder="请输入备注,字数不超过100字。">{$vo.remark}</textarea> -->
+        <div class="newms remarkms divnoedit">{$vo.remark}</div>
+    </div>
+    <div class="chuan-title">单张图片大小不能超过6MB,支持jpg、png、bmp格式</div>
+    <input class="getdata" type="hidden" value="{$vo.buildDesign|json_encode}">
+    <div class="uploadpicwk">
+        <div class="uploader-demo" class="controls">
+            <div class="uploader-list fileList-{$vo.id}">
+                
+            </div>
+            <div class="filePicker-{$vo.id} defalutaddpic " data-index='{$vo.id}'>
+                <span class="hengxian"></span>
+                <span class="suxian"></span>
+            </div>
+        </div>
+    </div>
+    <div class="zhangshuxz">共<span class="canupload">0</span>张,还能上传<span class="yuupload">9</span>张</div>
+</div>
+
+{else/}
+<div class="shigongwk">
+    <input type="hidden" value="{$vo.id}">
+    <span class="yuanwk nohege-border">
+              <i class="smallyuan nohege-back"></i>
+          </span>
+    <div class="shigongwk-title2">
+        <span>{$vo.add_time}</span>
+
+    </div>
+    <div class="hangwk">
+        <span class="miaos-tit2">施工状态：</span><span class="shuidainzg">{$vo.designerAccount.contact_name|default=''}</span>
+        {switch $vo.check_state }
+        {case 1 }
+        <span class="jianjvlef noyanshou">未验收</span>
+        {/case}
+        {case 2}
+        <span class="jianjvlef nohege">不合格</span>
+        {/case}
+        {case 3}
+        <span class="jianjvlef yiyanshou">合格</span>
+        {/case}
+        {default /}
+        {/switch}    </div>
+    <div class="hangwk">
+        <span class="miaos-tit2">设计师：</span>
+        <span class="shuidainzg">{$vo.designerAccount.contact_name|default=''}</span>
+    </div>
+    <div class="hangwk">
+        <span class="miaos-tit2">描&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp述：</span>
+        <div class="remarkms2">{$vo.remark}</div>
+    </div>
+    <ul class="shejituwk">
+        {foreach $vo.buildDesign as $vo}
+        <li>
+            <img src="http://{$vo.img}" alt="设计图">
+            <span class="footbiaot">{$vo.title|default=''}</span>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/if}
+
+
+{/foreach}

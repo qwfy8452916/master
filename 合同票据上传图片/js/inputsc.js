@@ -1,6 +1,7 @@
  /*上传图片*/
 $("#upload_hetong").change(function(e){
     var file = e.target.files[0];
+    console.log(file)
     preview(file,"#hetong_img_list");
 });
 $("#upload_piaoju").change(function(e){
