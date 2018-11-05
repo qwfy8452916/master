@@ -1,0 +1,36 @@
+<!--pages/yanshou/yanshou.wxml-->
+<view class='yanshoutitle'><i class="iconfont icon-fanhui" bindtap=""></i>验收<view class='tijiao'>提交</view></view>
+<view class='xuanztou'>请选择是否合格</view>
+<view class='yanshouwaik'>
+   <view class='yabnsselect'>
+       <radio-group class="group" bindchange="radioChange">
+        <view class='yanshouxzwk' wx:for="{{radioItems}}">
+            <view class='yanshouxz' >
+                <radio id="{{item.name}}" value="{{item.value}}"></radio>
+                <label class="label-2-text" for="{{item.name}}"><text>{{item.value}}</text></label>
+            </view>
+        </view>
+        </radio-group>
+   </view>
+   <view class='yijianuploadwk' hidden='{{selecthide}}'>
+      <textarea class='remarkms' placeholder='请输入您的反馈意见' placeholder-style='color:#b8b8b8'></textarea>
+      <view class='uploadpicwk'>
+         <view class='picitemwk'>
+            <image src='../../img/remove10.jpg'></image>
+         </view>
+         <view class='picitemwk'>
+            <image src='../../img/remove10.jpg'></image>
+         </view>
+         <view class='picitemwk'>
+            <image src='../../img/remove10.jpg'></image>
+         </view>
+         <view class='picitemwk'>
+            <image src='../../img/remove10.jpg'></image>
+         </view>
+         <view class='addpicniu picitemwk' bindtap='uploadsctp'>
+            <icon class='iconfont icon-jia'></icon>
+         </view>
+      </view>
+      <view class='uploadtishi'>提示：最多上传9张图，每张不超过500K</view>
+   </view>
+</view>

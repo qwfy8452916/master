@@ -1,0 +1,27 @@
+/* pages/companynoqy/companynoqy.wxss */
+.headinfo{width: 100%;height: 240rpx;background: url(http://staticqn.qizuang.com/custom/20181016/Fgn9xkWL4BnOs3fTDQLtjdwrWneN) no-repeat;
+background-size: 100% 100%;overflow: hidden;}
+.headinfo .companylogobj{width: 167rpx;height: 111rpx;margin: 0 auto;background: url(http://staticqn.qizuang.com/custom/20181016/Fo7Q4AVc3Pg6MFyEdVcUvTonRvoX) no-repeat;
+background-size:100% 100%;overflow: hidden;position: relative;z-index: 99;margin-top: 40rpx;}
+.companylogobj image{width: 126rpx;height: 62rpx;margin-top: 21rpx;margin-left: 23rpx;}
+.company_title{color: #333;font-size: 26rpx;text-align: center;margin-top: 5rpx;font-weight: bold;}
+.tishiquyu{width: 100%;height: 380rpx;border-bottom: 20rpx solid #f5f5f5;}
+.tishiquyu-bj{width: 294rpx;height: 141rpx;background: url(http://staticqn.qizuang.com/custom/20181016/Fi9ZwbDG1BGUVjVm8MaG0OSmA7cV) no-repeat;background-size: 100% 100%;margin: 0 auto;margin-top: 90rpx;}
+
+.tishiquyu-ms{font-size:32rpx;color: #999;text-align: center;margin-top: 25rpx;}
+.companyxgtwk{overflow: hidden;padding: 30rpx 20rpx;box-sizing: border-box;}
+.companyxgtwk .companyxgt-item{overflow: hidden;}
+.companyxgt-item .companyimg{width: 100%;height: 400rpx;}
+.companyimg image{width: 100%;height: 100%;}
+
+
+.tishiquyu-ms{font-size:32rpx;color: #999;text-align: center;margin-top: 25rpx;}
+.companyxgtwk{overflow: hidden;padding: 30rpx 20rpx 0 20rpx;box-sizing: border-box;}
+.companyxgtwk:last-child{margin-bottom: 20rpx;}
+.companyxgtwk .companyxgt-item{overflow: hidden;}
+.companyxgt-item .companyimg{width: 100%;height: 400rpx;}
+.companyimg image{width: 100%;height: 100%;}
+.companyxgt-item .companyms{overflow: hidden;margin-top: 20rpx;}
+.companyms_left{float: left;font-size: 24rpx;color:#333;}
+.companyms_right{float: right;font-size: 24rpx;color:#333;}
+.icon-buoumaotubiao23{color: #ff5353;font-size: 22rpx;}

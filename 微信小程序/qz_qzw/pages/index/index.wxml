@@ -1,0 +1,433 @@
+<view style='position:fixed;top:0px;width:100%;'>
+  <scroll-view scroll-y="true" id="scroll_down" style='height:{{scrollHeight}}rpx; width:100%' bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+      <view class='search sticky'>
+        <navigator url='../unified-search/index?type=0'>
+          <view class='input-container'>
+                <text class='iconfont icon-magnifier'></text>
+                <view class='input' >搜索您想知道的内容</view>
+          </view>
+        </navigator>
+      </view>
+        <swiper indicator-dots="true"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiper-banner' indicator-active-color="#ff5353" circular="true" indicator-color="#999">
+          <block wx:for="{{imgUrls}}">
+            <swiper-item bindtap="tocompany" data-url="{{bannerUrl[index]}}">
+              <navigator url="{{bannerUrl[index]}}">
+                <image src="{{getImgUrl}}/{{item.img_url}}" class="slide-image"/>
+              </navigator>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class='nav-icon'>
+          <view class='icon-item'>
+            <navigator url='../zhuangxiusj/zhuangxiusj'>
+              <image src='../../img/free_design.png'></image>
+              <text>免费设计</text>
+            </navigator>
+          </view>
+          <view class='icon-item'>
+              <navigator url='../jsq/jsq'>
+                <image src='../../img/zhineng_price.png'></image>
+                <text>智能报价</text>
+              </navigator>
+          </view>
+          <view class='icon-item'>
+              <navigator url='../dec-knowledge/knowledge'>
+                <image src='../../img/zx_gonglue.png'></image>
+                <text>装修攻略</text>
+              </navigator>
+          </view>
+          <view class='icon-item'>
+              <navigator url='../decoration-style/index'>
+                <image src='../../img/xiaoguotu.png'></image>
+                <text>效果图</text>
+              </navigator>
+          </view>
+          <view class='icon-item'>
+              <navigator url='../six_baozhang/index'>
+                <image src='../../img/six_bz.png'></image>
+                <text>六大保障</text>
+              </navigator>
+          </view>
+        </view>
+        <view class="free_getDesign">
+          <navigator url='../zhuangxiusj/zhuangxiusj'>
+            <image src='../../img/free_yuyue.png'></image>
+          </navigator>
+        </view>
+        <view class='part'>
+          <view class='part-title'>
+            <view class='title-content'>
+                挑选装修风格
+              <navigator url='../decoration-style/index'>
+                <image src='../../img/more.png'></image>
+              </navigator>
+            </view> 
+            </view>
+            <view class='part-body'>
+              <swiper autoplay="false" interval="3000" class='style-list' indicator-dots="true" indicator-active-color="#ff5353" indicator-color="#999">
+                  <swiper-item>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=20'>
+                        <view>
+                          <text>宜家</text>
+                          <image src='http://staticqn.qizuang.com/jjdg/2018062514410187afe1713.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=5'>
+                        <view>
+                            <text>现代</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625144041357685578.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=11'>
+                        <view>
+                          <text>乡村</text>
+                          <image src='http://staticqn.qizuang.com/jjdg/201806251440120297d4213.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=6'>
+                        <view>
+                            <text>地中海</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625143401a566e9657.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=21'>
+                        <view>
+                          <text>北欧</text>
+                          <image src='http://staticqn.qizuang.com/jjdg/2018062514330478af38591.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=16'>
+                        <view>
+                            <text>东南亚</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625143320fad267597.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                  </swiper-item>
+                  <swiper-item >
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=33'>
+                        <view>
+                            <text>巴洛克</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625143239826f72246.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=15'>
+                        <view>
+                            <text>简欧</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625143847264f85430.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=12'>
+                        <view>
+                            <text>简约</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625143910be5f1111.png'></image>
+                        </view>
+                       </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=24'>
+                        <view>
+                            <text>古典</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/201806251437037f6205300.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=31'>
+                        <view>
+                            <text>复古</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/201806251436146860b6506.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=7'>
+                        <view>
+                            <text>美式</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625143929cffa0127.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                  </swiper-item>
+                  <swiper-item >
+                    <view class='style-item'>
+                       <navigator url='../decoration-style/index?id=23'>
+                        <view>
+                          <text>后现代</text>
+                          <image src='http://staticqn.qizuang.com/jjdg/2018062514382579b0d4967.png'></image>
+                        </view>
+                       </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=32'>
+                        <view>
+                            <text>法式</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625143639d80773963.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=4'>
+                        <view>
+                            <text>中式</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/20180625144134108121961.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                    <view class='style-item'>
+                      <navigator url='../decoration-style/index?id=10'>
+                        <view>
+                            <text>日式</text>
+                            <image src='http://staticqn.qizuang.com/jjdg/201806251439497cccd4859.png'></image>
+                        </view>
+                      </navigator>
+                    </view>
+                      <view class='style-item'>
+                        <navigator url='../decoration-style/index?id=18'>
+                          <view>
+                              <text>韩式</text>
+                              <image src='http://staticqn.qizuang.com/jjdg/20180625143801154c97037.png'></image>
+                          </view>
+                        </navigator>
+                      </view>
+                      <view class='style-item'>
+                        <navigator url='../decoration-style/index?id=17'>
+                          <view>
+                              <text>混搭</text>
+                              <image src='http://staticqn.qizuang.com/jjdg/20180625143735d930f7749.png'></image>
+                          </view>
+                        </navigator>
+                      </view>
+                  </swiper-item>
+              </swiper>
+            </view>
+        </view>
+        <view class='part-bottom'></view>
+        <view class='part'>
+          <view class='part-title'>
+            <view class='title-content'>
+                了解装修流程  
+            </view> 
+          </view>
+          <view class='part-body lc'>
+            <view class='table'>
+              <view class='tr'>
+                <view class='td'>
+                  <image src='../../img/lc_1.png'></image>
+                  <text>在线咨询</text>
+                </view>
+                <view class='td lc-arrrow'>
+                  <image src='../../img/arrow-right.png'></image>
+                </view>
+                <view class='td'>
+                  <image src='../../img/lc_2.png'></image>
+                  <text>免费量房</text>
+                </view>
+                <view class='td lc-arrrow'>
+                <image src='../../img/arrow-right.png'></image>
+                </view>
+                <view class='td'>
+                  <image src='../../img/lc_3.png'></image>
+                  <text>方案预算</text>
+                </view>
+                <view class='td lc-arrrow'>
+                <image src='../../img/arrow-right.png'></image>
+                </view>
+                <view class='td'>
+                  <image src='../../img/lc_4.png'></image>
+                  <text>签订合同</text>
+                </view>
+              </view>
+              <view class='tr small-tr'>
+                <view class='td'>
+                  <image src='../../img/lc_5.png'></image>
+                  <text>装修施工</text>
+                </view>
+                <view class='td lc-arrrow'>
+                <image src='../../img/arrow-right.png'></image>
+                </view>
+                <view class='td'>
+                  <image src='../../img/lc_6.png'></image>
+                  <text>装修验收</text>
+                </view>
+                <view class='td lc-arrrow'>
+                <image src='../../img/arrow-right.png'></image>
+                </view>
+                <view class='td'>
+                  <image src='../../img/lc_7.png'></image>
+                  <text>售后服务</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='part-bottom'></view>
+        <view class="part zs">
+          <view class='part-title'>
+            <view class='title-content'>
+                学习装修知识
+                <navigator url='../dec-knowledge/knowledge'>
+                  <image src='../../img/more.png'></image>
+                </navigator>
+              
+            </view>
+          </view>
+          <view class='part-body'>
+            <view class='table'>
+              <view class='tr'>
+                <view class='td'>
+                  <navigator url='../knowledge-list/knowledge-list'>
+                  <image src='{{getImgUrl}}/jjdg/2018/07/10163945975ce8753'></image>
+                  </navigator>
+                </view>
+                <view class='td'>
+                  <navigator url='../jubu/jubu?position=106&p=1'>
+                  <image src='{{getImgUrl}}/jjdg/2018/07/10163813fae618562'></image>
+                  </navigator>
+                </view>
+                <view class='td' >
+                  <navigator url='../fengge/fengge?style=122&p=1'>
+                  <image src='{{getImgUrl}}/jjdg/2018/07/1016370704eef660'></image>
+                  </navigator>
+                </view>
+              </view>
+              <view class='tr no-margin'>
+                <view class='td'>
+                  <navigator url='../jiaju/jiaju?jj=145&p=1'>
+                  <image src='{{getImgUrl}}/jjdg/2018/07/10163927454ad5317'></image>
+                  </navigator>
+                </view>
+                <view class='td'>
+                  <navigator url='../jiadian/jiadian?jd=162&p=1'>
+                  <image src='{{getImgUrl}}/jjdg/2018/07/10163843383ec2475'></image>
+                  </navigator>
+                </view>
+                <view class='td'>
+                  <navigator url='../fengshui/fengshui?fs=115&p=1'>
+                  <image src='{{getImgUrl}}/jjdg/2018/07/101639048c1512683'></image>
+                  </navigator>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='part-bottom'></view>
+        <view class='part'>
+          <view class='part-title'>
+            <view class='title-content'>
+                  猜你想看
+            </view>
+          </view>
+          <view class='part-body guess-like'>
+            <block wx:for="{{indexDataList}}" wx:key="item">
+                <block wx:if="{{item.type==10}}">
+                    <view class='img-type'>
+                      <navigator url="../article-detail/index?id={{item.id}}">
+                          <view class='left-part'>
+                              <view class='text-title'>
+                              {{item.title}}
+                              </view>
+                              <view class='bottom-info'>
+                                <view class='lebel-box'>
+                                攻略
+                                </view>
+                                <view class='look-num'>
+                                  <text class='iconfont icon-eye'></text>{{item.pv}}
+                                </view>
+                              </view>
+                            </view>
+                            <view class='right-part'>
+                              <image src='{{getImgUrl}}/{{item.face}}'></image>
+                            </view>
+                        </navigator>
+                      </view>
+                </block>
+                <block wx:if="{{item.type==11}}">
+                    <view class='video-type'>
+                      <navigator url='../play_detail/play_detail?id={{item.id}}'>
+                        <view class='video-box'>
+                          <image src='{{getImgUrl}}/{{item.cover_img}}'></image>
+                          <view class='play-icon'>
+                            <image src='../../img/playbig.png'></image>
+                          </view>
+                        </view>
+                        <view class='video-title'>
+                          {{item.title}}
+                        </view>
+                        <view class='bottom-info'>
+                            <view class='lebel-box'>
+                            视频
+                            </view>
+                            <view class='look-num'>
+                              <text class='iconfont icon-eye'></text>{{item.pv}}
+                             
+                            </view>
+                             <text class='tamp-text'>{{item.time}}</text>
+                        </view>
+                      </navigator>
+                    </view>
+                </block>
+                <block wx:if="{{item.type==4}}">
+                  <view class='img-type'>
+                    <navigator url='../xgt-detail/index?id={{item.id}}&type=4'>
+                        <view class='left-part'>
+                            <view class='text-title'>
+                              {{item.title}}
+                            </view>
+                            <view class='bottom-info'>
+                              <view class='lebel-box'>
+                              效果图
+                              </view>
+                              <view class='look-num'>
+                                <text class='iconfont icon-eye'></text>{{item.pv}}
+                              </view>
+                            </view>
+                          </view>
+                          <view class='right-part'>
+                            <image src='{{getImgUrl}}/{{item.img_path}}'></image>
+                          </view>
+                      </navigator>
+                    </view>
+                </block>
+                <block wx:if="{{index%4==3}}">
+                  <view class='free-fadan-line'>
+                    <view class='free-fadan' bindtap='openWin'>
+                        <view class='top-text'>10秒免费申请4份设计与报价</view>
+                        <view class='bottom-text'>真实、优惠、透明、省心、让您装修0烦恼</view>
+                        <image src='../../img/zhinengbaojia.gif'></image>
+                      </view>
+                    </view>
+                </block>
+            </block>
+          </view>
+        </view>
+        <view wx:if="{{underLine}}" class='limit-line'>我也是有底线的</view>
+        <view class='bottom-space'></view>
+  </scroll-view>
+</view>
+
+<navigator url='../jsq/jsq'>
+  <view class='float-icon' >
+    <image src="../../img/eight-second.png"></image>
+  </view>
+</navigator>
+
+<import src="../company_fadan/company_fadan.wxml"/>
+<template is="com_fadan" wx:if="{{fd.closed}}" data="{{fd}}"/>

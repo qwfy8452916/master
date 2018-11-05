@@ -1,0 +1,38 @@
+<!--pages/feedback/feedback.wxml-->
+<view class='yanshoutitle'><i class="iconfont icon-fanhui" bindtap=""></i>我的反馈</view>
+<view class='fankuiwaik'>
+  <view class='shigwk'>
+     <view class='shigongstatus'>施工状态：<text>水电整改</text></view>
+     <view class='statusresult nohege'>不合格</view>
+  </view>
+   <view class='addreason'>当我们买完房子以后就要开始着手装修的事宜了，在装修前要确定，当我们买完房子以当我们买完房子以后就要开始着手装修的事宜了，在装修前要确定，当我们买完房子以后就要开始着手装修的事宜了，在装修前要确定当我们买完房子以后就要开始着手装修的事宜了，在装修前要确定，当我们买完房子以后就要开始着手装修的事宜了，在装修前要确定当我们买完房子以后就要开始着手装修的事宜了，在装修前要确定，当我们买完房子以后就要开始着手装修的事宜了，在装修前要确定后就要开始着手装修的事宜了，在装修前要确定</view>
+   <view class='picwaik'>
+    <view class='picitem'>
+      <image src='../../img/remove10.jpg'></image>
+    </view>
+    <view class='picitem'>
+      <image src='../../img/remove10.jpg'></image>
+    </view>
+    <view class='picitem'>
+      <image src='../../img/remove10.jpg'></image>
+    </view>
+    <view class='picitem'>
+      <image src='../../img/remove10.jpg'></image>
+    </view>
+  </view>
+  <view class='riqidate'>2018-08-10<text>16:00:00</text></view>
+</view>
+
+<view class='fankuiwaik myfankui'>
+  <view class='shigwk'>
+     <view class='shigongstatus'>我的反馈</view>
+  </view>
+   <view class='addreason'>压根没整</view>
+   <view class='picwaik'>
+    <view class='picitem'>
+      <image src='../../img/remove10.jpg'></image>
+    </view>
+  
+  </view>
+  <view class='riqidate'>2018-08-10<text>16:00:00</text></view>
+</view>

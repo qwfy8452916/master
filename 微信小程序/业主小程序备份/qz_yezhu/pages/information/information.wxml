@@ -1,0 +1,29 @@
+<!--pages/information/information.wxml-->
+<view class='infortitle'>个人信息
+  <i class='iconfont icon-zhuye'></i>
+  <i class='iconfont icon-lingdang' bindtap="newsinfo"><view class='redyuan'></view></i>
+</view>
+<view class='informationwk'>
+  <view class='touxiangwk'>
+    <image src='../../img/remove09.jpg'></image>
+  </view>
+  <view class='infomswaik'>
+     <view class='infomswaik-name'>余彦君</view>
+     <view class='infomswaik-address'><text>江苏</text><text>苏州</text></view>
+  </view>
+</view>
+
+<view class='myorderwk orderbeijing'>
+   <view class='myorderwk-title'>当前订单</view>
+   <view class='myorderwk-ieem sxjian'>联系人：<text>xxx</text></view>
+   <view class='myorderwk-ieem'>装修地址：<text>江苏苏州姑苏区xx小区</text></view>
+</view>
+<view class='myorderwk' bindtap='orderjindu'>
+  <view class='myorderwkwrap'>
+    <view class='myorderwk-title'>订单1</view>
+    <view class='myorderwk-ieem sxjian'>联系人：<text>xxx</text></view>
+    <view class='myorderwk-ieem'>装修地址：<text>江苏苏州姑苏区xx小区</text></view>
+   </view>
+   <i class="iconfont icon-gengduo"></i>
+   
+</view>

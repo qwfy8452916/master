@@ -1,0 +1,10 @@
+<!--pages/shouquan/index.wxml-->
+<view class='confirm-box'>
+  <view class='sq-text'>授权公开用户信息</view>
+  <block wx:if="{{isAgree}}">
+    <button open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo" class='btn-sq'>授权</button>
+  </block>
+  <block wx:if="{{!isAgree}}">
+    <button open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo" class='no-sq'>已授权</button>
+  </block>
+</view>

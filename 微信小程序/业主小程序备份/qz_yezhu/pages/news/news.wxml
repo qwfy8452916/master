@@ -1,0 +1,25 @@
+<!--pages/news/news.wxml-->
+<view class='newswk'>
+  <block wx:for="{{newsdata}}" wx:key>
+   <view class='newitem'>
+     <view class='newitem-left'>
+        <view class='newitemlef-title'>{{item.content}}</view>
+        <view class='newitemlef-title02'><text>{{item.difftime}}</text>分钟前</view>
+     </view>
+     <view class='newitem-right' bindtap='xiangqing'>详情</view>
+   </view>
+ </block>
+   <!-- <view class='newitem'>
+     <view class='newitem-left'>
+        <view class='newitemlef-title'>您的装修进度更新了,请尽快验收哦~</view>
+        <view class='newitemlef-title02'>20分钟前</view>
+     </view>
+     <view class='newitem-right' bindtap='xiangqing'>详情</view>
+   </view>
+   <view class='newitem'>
+     <view class='newitem-left'>
+        <view class='newitemlef-title'>您的装修进度更新了,请尽快验收哦~</view>
+        <view class='newitemlef-title02'>20分钟前</view>
+     </view>
+   </view> -->
+</view>

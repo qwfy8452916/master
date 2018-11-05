@@ -1,0 +1,27 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/login/login",
+    
+    "pages/user/user",
+    
+    "pages/myorder/myorder",
+    "pages/companynoqy/companynoqy",
+    "pages/companyprogress/companyprogress",
+    "pages/news/news",
+    "pages/information/information",
+    "pages/yanshou/yanshou",
+    "pages/constructionteam/constructionteam",
+    "pages/feedback/feedback"
+
+    
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+
+}

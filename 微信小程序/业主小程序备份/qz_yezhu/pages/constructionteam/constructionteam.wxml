@@ -1,0 +1,15 @@
+<!--pages/constructionteam/constructionteam.wxml-->
+<view class='infortitle'><i class="iconfont icon-fanhui" bindtap="fanhuicompany"></i>施工队
+</view>
+
+<view class='myorderwk' bindtap='orderjindu'>
+   <view class='myorderwk-title'>余彦君<text class='zhiwcolor'>项目经理</text></view>
+   <view class='myorderwk-ieem sxjian'>手机号：<text>13636433764</text></view>
+   <view class='myorderwk-ieem'>微信号：<text>13636433764</text></view>
+</view>
+<view class='myorderwk' bindtap='orderjindu'>
+   <view class='myorderwk-title'>余彦君<text>木工</text></view>
+   <view class='myorderwk-ieem sxjian'>手机号：<text>13636433764</text></view>
+   <view class='myorderwk-ieem'>微信号：<text>13636433764</text></view>
+</view>
+

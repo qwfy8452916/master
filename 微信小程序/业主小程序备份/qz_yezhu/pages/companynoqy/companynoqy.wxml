@@ -1,0 +1,39 @@
+<!--pages/companynoqy/companynoqy.wxml-->
+<view class='headinfo'>
+   <view class='companylogobj'>
+      <image src='../../img/remove02.png'></image>
+   </view>
+   <view class='company_title'>深圳市昊天装饰有限公司</view>
+</view>
+<view class='tishiquyu'>
+   <view class='tishiquyu-bj'></view>
+   <view class='tishiquyu-ms'>抱歉该公司暂未与您签订</view>
+</view>
+
+<view class='companyxgtwk'>
+  <view class='companyxgt-item'>
+     <view class='companyimg'>
+       <image src='../../img/remove03.jpg'></image>
+     </view>
+     <view class='companyms'>
+        <view class='companyms_left'>
+          <i class="iconfont icon-buoumaotubiao23"></i>海星国际广场
+        </view>
+        <view class='companyms_right'>现代简约</view>
+     </view>
+  </view>
+</view>
+
+<view class='companyxgtwk'>
+  <view class='companyxgt-item'>
+     <view class='companyimg'>
+       <image src='../../img/remove03.jpg'></image>
+     </view>
+     <view class='companyms'>
+        <view class='companyms_left'>
+          <i class="iconfont icon-buoumaotubiao23"></i>海星国际广场
+        </view>
+        <view class='companyms_right'>现代简约</view>
+     </view>
+  </view>
+</view>

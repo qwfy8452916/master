@@ -1,0 +1,18 @@
+<!--pages/myorder/myorder.wxml-->
+<view class='header'>
+    <image class='qz_login' src='../../img/logo02.png'></image>
+</view>
+<view class='bannerwk'>
+   <image src='../../img/remove01.jpg'></image>
+</view>
+<view class='fenpeiwk'>匹配到多个订单，请选择查看</view>
+<block wx:for="{{myorderdata}}" wx:key>
+<view class='orderinfoitem' data-order="{{item.order_no}}" data-comstate="{{item.comstate}}" bindtap='fenpeiorder'>
+   <view>联系人：<text>{{item.consumer_name}}</text></view>
+   <view class='addressdz'>装修地址：<text>{{item.build_address}}</text></view>
+</view>
+</block>
+<!-- <view class='orderinfoitem'>
+   <view>联系人：<text>xxx</text></view>
+   <view class='addressdz'>装修地址：<text>江苏省姑苏区xx小区</text></view>
+</view> -->

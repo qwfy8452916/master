@@ -1,0 +1,7 @@
+/* pages/shouquan/index.wxss */
+page{background: #EBEBEB}
+.confirm-box{background: #fff; padding: 20rpx;margin:20rpx 0rpx;overflow: hidden;}
+.btn-box{float: right}
+.btn-sq{width: 150rpx; height: 60rpx;float: right; background:#1AAC19;border: none; font-size: 26rpx; color:#fff; }
+.sq-text{font-size:32rpx;float: left; margin-top: 10rpx;}
+.no-sq{width: 150rpx; height: 60rpx;float: right; border: none; font-size: 26rpx; color:#dedede;}

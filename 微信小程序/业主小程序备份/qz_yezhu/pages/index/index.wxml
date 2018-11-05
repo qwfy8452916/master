@@ -1,0 +1,63 @@
+<view class='header'>
+    <image class='qz_login' src='../../img/logo02.png'></image>
+</view>
+<view class='bannerwk'>
+   <image src='../../img/remove01.jpg'></image>
+</view>
+<view class='fenpeiwk'>已为您分配的装修公司</view>
+<view class='companyitem'  bindtap='qianyue' wx:for="{{delcompdata}}" wx:key>
+   <view class='gongslogowk'>
+      <image src='{{item.company_logo}}'></image>
+   </view>
+   <view class='gongstext'>
+     <text class='gongstext-title'>{{item.company_name}}</text>
+     <view class='contactliangf'><text class='lianxitext'>已与您联系</text><text class='liangftext'>已量房</text></view>
+     <view class='wenbenwrap'>
+        <view class='shejishi wenbenwrap-item'><text>设计师：</text><text>{{item.design_num}}</text></view>
+        <view class='shigongtd wenbenwrap-item'><text >施工团队：</text><text>{{item.group_num}}</text></view>
+        <view class='zhuangxal wenbenwrap-item'><text >装修案例：</text><text>{{item.cases_num}}</text></view>
+     </view>
+     <view class='addresswk'><text class='iconfont icon-buoumaotubiao23'></text>{{item.company_address}}<view class='tanchuangbj' catchtap='tancselect'>...</view></view>
+   </view>
+</view>
+
+<!-- <view class='companyitem' bindtap='qianyue'>
+   <view class='gongslogowk'>
+      <image src='../../img/remove02.png'></image>
+   </view>
+   <view class='gongstext'>
+     <text class='gongstext-title'>深圳市昊天装饰有限公司</text>
+     <view class='contactliangf'><text class='lianxitext'>已与您联系</text><text class='liangftext'>已量房</text></view>
+     <view class='wenbenwrap'>
+        <view class='shejishi wenbenwrap-item'><text>设计师：</text><text>19</text></view>
+        <view class='shigongtd wenbenwrap-item'><text >施工团队：</text><text>3</text></view>
+        <view class='zhuangxal wenbenwrap-item'><text >装修案例：</text><text>981</text></view>
+     </view>
+     <view class='addresswk'><text class='iconfont icon-buoumaotubiao23'></text>苏州市工业园区松涛路128号<view class='tanchuangbj' catchtap='tancselect'>...</view></view>
+   </view>
+</view> -->
+<view class="yinying {{isHideCity?'transtion-off':'transtion-on'}}" bindtap='yingyclose'></view>
+<view class="gongsxuanz {{isHideCity?'transtion-off':'transtion-on'}}">
+  <view class='gongsxuanzhang01'>
+    <view class='quxiaotc' bindtap='quxiaotc'>取消</view>
+    请选择当前公司是否为您服务
+    <view class='savebc' bindtap='savebc'>保存</view>
+  </view>
+
+  <radio-group class="group">
+   <view wx:for="{{radioItems}}" bindchange="radioChange">
+      <view class='gongsxuanzhang02'>
+          <radio id="{{item.name}}" value="{{item.value}}"></radio>
+          <label class="label-2-text" for="{{item.name}}"><text>{{item.value}}</text></label>
+      </view>
+   </view>
+   <!-- <view class='gongsxuanzhang03'>
+      <radio id="lianxradio02" value="已为您量房"></radio>
+      <label class="label-2-text" for="lianxradio02"><text>已为您量房</text></label>
+   </view> -->
+   </radio-group>
+</view>
+
+
+
+<view bindtap='login'>登录</view>

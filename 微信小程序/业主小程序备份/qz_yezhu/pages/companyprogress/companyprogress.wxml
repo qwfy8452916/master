@@ -1,0 +1,134 @@
+<!--pages/companyprogress/companyprogress.wxml-->
+<view class='header'>
+    <image class='qz_login' src='../../img/logo02.png'></image>
+    <view class='gerenlogo' bindtap='gereninfo'>
+       <i class="iconfont icon-wode"></i>
+    </view>
+</view>
+<view class='headinfo'>
+   <view class='companylogobj'>
+      <image src='../../img/remove02.png'></image>
+   </view>
+   <view class='company_title'>深圳市昊天装饰有限公司</view>
+</view>
+<view class='navxz'>
+   <view class="navxz-item {{arrehide[0]?'':'activitynav'}}" bindtap='tabqiehuan' data-index="0">装修进度</view>
+   <view class="navxz-item {{arrehide[1]?'':'activitynav'}}" bindtap='tabqiehuan' data-index="1">设计图稿</view>
+   <view class="navxz-item {{arrehide[2]?'':'activitynav'}}" bindtap='tabqiehuan' data-index="2">专属团队</view>
+</view>
+<view class='wrap' hidden="{{arrehide[0]}}">
+<block wx:for="{{zxjindu}}" wx:key>
+ <view class='jinduitemwk' wx:if="{{item.check_state==1}}">
+  <view class='jinduitem'>
+     <view class='jinduitemtitlewk'>
+       <view class='jinduitemtitlewk-lef'>施工状态：{{item.state_name}}</view>
+       <view class='jinduitemtitlewk-rig noyanshou'>未验收</view>
+     </view>
+     <view class='statuspic'>
+       <view class='statuspicwk'>
+        
+        <image src='//{{item}}' wx:for="{{item.imgs}}" wx:key></image>
+       </view>
+       <view class='datewk'>{{item.add_time}}</view>
+     </view>
+  </view>
+  <view class='myfeedback yanshouniu' bindtap="yanshou">验收</view>
+ </view>
+ <view class='jinduitemwk' wx:elif="{{item.check_state==2}}">
+  <view class='jinduitem'>
+     <view class='jinduitemtitlewk'>
+       <view class='jinduitemtitlewk-lef'>施工状态：{{item.state_name}}</view>
+       <view class='jinduitemtitlewk-rig nohege'>不合格</view>
+     </view>
+     <view class='statuspic'>
+       <view class='statuspicwk'>
+        <image src='//{{item}}' wx:for="{{item.imgs}}" wx:key></image>
+       </view>
+       <view class='datewk'>{{item.add_time}}</view>
+     </view>
+  </view>
+  <view class='myfeedback' bindtap="myfeedback">我的反馈</view>
+ </view>
+  <view class='jinduitemwk' wx:elif="{{item.check_state==3}}">
+  <view class='jinduitem'>
+     <view class='jinduitemtitlewk'>
+       <view class='jinduitemtitlewk-lef'>施工状态：{{item.state_name}}</view>
+       <view class='jinduitemtitlewk-rig yiyanshou'>已验收</view>
+     </view>
+     <view class='statuspic'>
+       <view class='statuspicwk'>
+        <image src='//{{item}}' wx:for="{{item.imgs}}" wx:key></image>
+       </view>
+       <view class='datewk'>{{item.add_time}}</view>
+     </view>
+  </view>
+  <!-- <view class='myfeedback'>我的反馈</view> -->
+ </view>
+</block>
+</view>
+
+
+<view class='wrap' hidden="{{arrehide[1]}}">
+  <view class='sjtgwk'>
+    <view class='sjtgitem' wx:for="{{designtugao}}" wx:key>
+      <image src='//{{item.img}}'></image>
+    </view>
+    <!-- <view class='sjtgitem'>
+      <image src='../../img/remove07.jpg'></image>
+    </view> -->
+  </view>
+</view>
+<view class='wrap wrapzstd' hidden="{{arrehide[2]}}">
+  <block wx:for="{{zsteam}}" wx:key>
+   <view class='zstdwaik' wx:if="{{item.workgroup==1}}">
+      <view class='zstditem'>
+        <image src='//{{item.image}}'></image>
+         <view class='zstditemtext'>
+           <view class='zstdhang'>
+              <text class='zstdname'>{{item.name}}</text><text class='zstdzhicheng project'>{{item.dept_name}}</text>
+           </view>
+           <view class='zstdhang sxjianjv'>
+              <text>手机号：</text><text>{{item.tel}}</text>
+           </view>
+           <view class='zstdhang'>
+              <text>微信号：</text><text>{{item.wx_num}}</text>
+           </view>
+           <view class='shigongteam' bindtap='shigongteam'>施工团队</view>
+         </view>
+      </view>
+   </view>
+   <view class='zstdwaik' wx:else>
+      <view class='zstditem'>
+        <image src='//{{item.image}}'></image>
+         <view class='zstditemtext weizhi'>
+           <view class='zstdhang'>
+              <text class='zstdname'>{{item.name}}</text><text class='zstdzhicheng'>{{item.dept_name}}</text>
+           </view>
+           <view class='zstdhang sxjianjv'>
+              <text>手机号：</text><text>{{item.tel}}</text>
+           </view>
+           <view class='zstdhang'>
+              <text>微信号：</text><text>{{item.wx_num}}</text>
+           </view>
+         </view>
+      </view>
+   </view>
+   </block>
+   <!-- <view class='zstdwaik'>
+      <view class='zstditem'>
+        <image src='../../img/remove08.jpg'></image>
+         <view class='zstditemtext weizhi'>
+           <view class='zstdhang'>
+              <text class='zstdname'>胡佳蓉</text><text class='zstdzhicheng'>接待客服</text>
+           </view>
+           <view class='zstdhang sxjianjv'>
+              <text>手机号：</text><text>13636433764</text>
+           </view>
+           <view class='zstdhang'>
+              <text>微信号：</text><text>13636433764</text>
+           </view>
+         </view>
+      </view>
+   </view> -->
+
+</view>
