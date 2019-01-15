@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>底部弹窗</title>
+    <link rel="stylesheet" href="../common/css/m-reset.css">
+	<link rel="stylesheet" href="../common/css/m-publicrem.new.css">
+    <link rel="stylesheet" href="../common/font/font-awesome.min.css">
+    <link rel="stylesheet" href="../common/css/qzCitySelect.css">
+	<link rel="stylesheet" href="../common/css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="css/footfadantcjs.css">
+</head>
+<body>
+    <div class="fadanwrap">
+        <div class="footfadanwk">
+            <div class="headms"></div>
+                <ul class="contentfd">
+                    <li class="gongsili">
+                        <span>公司名称</span><input class="gongsiname" type="text" placeholder="您的公司名称">
+                    </li>
+                    <li class="lianxili">
+                        <span>联系人</span><input class="linkren" type="text" placeholder="您的称呼">
+                    </li>
+                    <li class="chengshili">
+                        <span>所在城市</span><button id="showCityPicker2" type="button" class="contentfd-city">
+                            <i class="fa fa-map-marker">
+                            </i>
+                            <empty name="info.cityarea">
+                            请选择您所在的区域
+                            <else />
+                            {$mapUseInfo.provincefull} {$mapUseInfo.name} {$info.cityarea.name}
+                            </empty>
+                        </button>
+                            <input type="hidden" name="province" data-id="{$mapUseInfo.pid}">
+                            <input type="hidden" name="city" data-id="{$mapUseInfo.id}">
+                            <input type="hidden" name="area" data-id="{$info.cityarea.id}">
+                    </li>
+                    <li class="mianjili">
+                        <span>房屋面积</span><input class="mianjipf" type="tel" maxlength="4"><i class="danweipf">㎡</i>
+                    </li>
+                    <li>
+                        <span>联系方式</span><input class="phonehaoma" type="tel" maxlength="11" placeholder="请输入您的手机号">
+                    </li>
+                    <div class="baojiatijiao">免费获取报价明细</div>
+                </ul>
+        </div>
+    
+    </div>
+    <div class="footfadan">
+        <ul class="footdaohang">
+            <li>
+                <span class="defaultdh baojia1"></span><div class="defaultms">快速报价</div>
+            </li>
+            <li>
+                <span class="defaultdh sheji1"></span><div class="defaultms">免费设计</div>
+            </li>
+            <li>
+                <span class="defaultdh gongshi1"></span><div class="defaultms">装修公司</div>
+            </li>
+            <li>
+                <span class="defaultdh shangjai1"></span><div class="defaultms">商家入驻</div>
+            </li>
+        </ul>
+    </div>
+</body>
+    <script type="text/javascript" src="http://{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="../common/js/yanzhengx.js"></script>
+    <script type="text/javascript" src="../common/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../common/js/rlpca20170608083808.js"></script>
+    <script type="text/javascript" src="../common/js/jroll.js"></script>
+    <script type="text/javascript" src="../common/js/swiper-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../common/js/qzCitySelect.js"></script>
+<script>
+    // 城市选择插件
+    selectQz.init({
+         province:$("input[name=province]").attr("data-id"),
+         city:$("input[name=city]").attr("data-id"),
+         area:$("input[name=area]").attr("data-id")
+     });
+ 
+ 
+        +(function($){
+             var indexpanduan
+             $('.footdaohang li').click(function(){
+                indexpanduan=$(this).index();
+                    if(indexpanduan==0){
+                      $('.footfadanwk .headms').attr("class","headms headms0")
+                      $('.contentfd .baojiatijiao').text("免费获取报价明细")
+                      $('.contentfd li.chengshili').show()
+                      $('.contentfd li.mianjili').show()
+                      $('.contentfd li.gongsili').hide()
+                      $('.contentfd li.lianxili').hide()
+                    }else if(indexpanduan==1){
+                      $('.footfadanwk .headms').attr("class","headms headms1")
+                      $('.contentfd .baojiatijiao').text("立即领取")
+                      $('.contentfd li.chengshili').show()
+                      $('.contentfd li.mianjili').show()
+                      $('.contentfd li.gongsili').hide()
+                      $('.contentfd li.lianxili').hide()
+                    }else if(indexpanduan==2){
+                      $('.footfadanwk .headms').attr("class","headms headms2")
+                      $('.contentfd .baojiatijiao').text("立即申请")
+                      $('.contentfd li.chengshili').show()
+                      $('.contentfd li.mianjili').show()
+                      $('.contentfd li.gongsili').hide()
+                      $('.contentfd li.lianxili').hide()
+                    }else if(indexpanduan==3){
+                      $('.contentfd li.gongsili').show()
+                      $('.contentfd li.lianxili').show()
+                      $('.contentfd li.chengshili').hide()
+                      $('.contentfd li.mianjili').hide()
+                      $('.footfadanwk .headms').attr("class","headms headms3")
+                      $('.contentfd .baojiatijiao').text("立即申请")
+                       
+                    }
+                    if($(this).hasClass('activeys')){
+                         $(this).removeClass('activeys')
+                         $('.footfadanwk').hide()
+                     }else{
+                         $(this).addClass('activeys')
+                         $(this).siblings().removeClass('activeys')
+                         $('.footfadanwk').hide()
+                         $('.footfadanwk').stop().animate({height:'show'},500)
+                     }
+             })
+ 
+             $('.contentfd .baojiatijiao').click(function(){
+                 var dataobj,
+                     cityzhi=$('input[name=city]').attr('data-id'),
+                     areazhi=$('input[name=area]').attr('data-id'),
+                     gongshizhi=$.trim($('.contentfd .gongsiname').val()),
+                     lianxizhi=$.trim($('.contentfd .linkren').val()),
+                     mianjizhi=$.trim($('.contentfd .mianjipf').val()),
+                     phonezhi=$.trim($('.contentfd .phonehaoma').val());
+                     if(indexpanduan==3){
+                         if(gongshizhi==""){
+                         alert("请填写装修公司名称");
+                         $('.contentfd .gongsiname').focus();
+                         return false;
+                         }
+                         if(lianxizhi==""){
+                          alert("请填写联系人名称");
+                          $('.contentfd .linkren').focus();
+                          return false;
+                         }
+                     }else{
+                         if(cityzhi=="" && areazhi==""){
+                         alert("请填写所在区域");
+                         return false;
+                         }
+                         if(mianjizhi==""){
+                         alert("请填写房屋面积");
+                         $('.contentfd .mianjipf').focus();
+                         return false;
+                        }
+                        if(mianjizhi==0){
+                         alert("房屋面积不能为0");
+                         $('.contentfd .mianjipf').focus();
+                         return false;
+                        }
+                     }
+  
+                     if(phonezhi==""){
+                         alert("请填写您的手机号");
+                         $('.contentfd .phonehaoma').focus();
+                         return false;
+                     }
+                     var newReg = new RegExp("^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$");
+                     if(!newReg.test(phonezhi)){
+                         alert("请填写正确的手机号");
+                         $('.contentfd .phonehaoma').focus();
+                         return false;
+                     }
+                     if(indexpanduan!=3){
+                       
+                         var src = "{$src}";
+                         window.order({
+                             extra:{
+                                 cs:$('input[name=city]').attr('data-id'),
+                                 qx:$('input[name=area]').attr('data-id'),
+                                 mianji:$('.contentfd .mianjipf').val(),
+                                 tel:$('.contentfd .phonehaoma').val(),
+                                 save:1
+                             },
+                             error:function(){
+                                 alert("发生了未知的错误,请稍后再试！");
+                             },
+                             success:function(data, status, xhr){
+                                 if(data.status == 1){
+                                     if(indexpanduan==0){
+                                         if(src){
+                                         window.location.href = "http://{:C('MOBILE_DONAMES')}/baojia-success?src="+src;
+                                     }else{
+                                         window.location.href = "http://{:C('MOBILE_DONAMES')}/baojia-success/";
+                                      }
+                                     }
+                                     if(indexpanduan==1){
+                                         if(src){
+                                         window.location.href = "http://{:C('MOBILE_DONAMES')}/sheji-success?src="+src;
+                                     }else{
+                                         window.location.href = "http://{:C('MOBILE_DONAMES')}/sheji-success/";
+                                      }
+                                     }
+                                     if(indexpanduan==2){
+                                         if(src){
+                                         window.location.href = "http://{:C('MOBILE_DONAMES')}/compang-success?src="+src;
+                                     }else{
+                                         window.location.href = "http://{:C('MOBILE_DONAMES')}/compang-success/";
+                                      }
+                                     }
+ 
+                                 }else{
+                                     alert(data.info);
+                                 }
+                             },
+                             validate:function(item, value, method, info){
+ 
+                                 if (('cs' == item || 'qx' == item) && 'notempty' == method) {
+                                 alert(info);
+                                 return false;
+                                 };
+                                 if ('mianji' == item && '' != method) {
+                                     alert(info);
+                                     // $(".m-bj-edit input[name=mianji]").val("");
+                                     $('.contentfd .mianjipf').focus();
+                                     return false;
+                                 };
+                                 if ('tel' == item && '' != method) {
+                                     alert(info);
+                                     $('.contentfd .phonehaoma').focus();
+                                     return false;
+                                 };
+                                 return true;
+                             }
+                         });
+                     }else{
+                         $.ajax({
+                         url:'/zhaoshang/consult',
+                         type:'post',
+                         dataType:'json',
+                         data:{name:gongshizhi,linkman:lianxizhi,tel:phonezhi},
+                         success:function(res){
+                           if(res.status==1){
+                             alert(res.info)
+                             if(res.info=="操作成功"){
+                                 window.location.href = "http://{:C('MOBILE_DONAMES')}/ruzhu-success/";
+                             }
+                           }
+                         },
+                         error:function(xhr){
+                           alert("网络错误,请稍后再试")
+                         }
+                        })
+                     }
+ 
+             })
+ 
+         })(jQuery)
+ 
+ 
+ </script>
+</html>

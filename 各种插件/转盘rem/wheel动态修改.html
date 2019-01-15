@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>幸运大转盘</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" src="js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/wheel.css">
+	<style id="style_aa">
+	</style>
+</head>
+<body>
+	<section class="container">
+		<div id="wheel">
+			
+		</div>
+		<div id="arrow">
+				
+		</div>
+		
+	</section>
+</body>
+</html>
+<script type="text/javascript">
+	var arrow =  document.getElementById("arrow");
+	var wheel =  document.getElementById("wheel");
+	var styleid =  document.getElementById("style_aa");
+	arrow.onclick = function(){
+		
+		 var xx=2700
+		 var yy=2
+		 var run='@keyframes run {0% {transform: rotate(0deg);}\n'+'100% {transform: rotate('+xx+'deg);}}'
+		 styleid.innerHTML=run;
+		 wheel.style.animation = "run 3s "+yy+" ease-in-out forwards"
+		
+	}
+</script>

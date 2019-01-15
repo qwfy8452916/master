@@ -1,0 +1,30 @@
+html{height: 100%;}
+.contentone{width: 100%;padding: 0 4%;box-sizing: border-box;
+border-bottom:0.1rem solid #f5f5f5;overflow: hidden;border-top: 1px solid #e6e6e6;}
+.youhuiqwk{overflow: hidden;width: 100%;height: 1.165rem;background:url(/assets/mobile/card/img/couponwk.png) no-repeat;
+margin-top: 0.13188rem;background-size: 100% 100%;color: #fff;}
+.youhuiqwk .youhqneir{width: 2.58rem;height: 100%;float: left;padding: 0 0.165rem;box-sizing: border-box;
+text-align: center;}
+.youhqneir .youhqneir-title{font-size:0.132rem;color: #fff;padding: 0.088rem 0;border-bottom: 1px solid #fff;}
+.youhqneir .quanzhiwk{padding: 0.012rem 0;}
+.quanzhiwk .pricewk{display: inline-block;font-size: 0.36rem;font-weight: bold;}
+.quanzhiwk .pricewk-danwei{font-size: 0.162rem;}
+.quanzhiwk .pricems{display: inline-block;font-size: 0.132rem;text-align: left;line-height: 0.15rem;}
+.youhqneir .youohuiqtime{font-size: 0.11rem;}
+
+.contentone .anniuwk{overflow: hidden;}
+.contentone .jinniu{width: 1.389rem;height: 0.334rem;line-height:0.334rem;border-radius:10px;display: block;
+text-align: center;color:#fff;margin: 0 auto;font-size: 0.132rem;margin-top: 0.22rem;margin-bottom: 0.264rem;
+background: #ff5353;}
+
+.contenttwo{width: 100%;padding: 0.246rem 4%;box-sizing: border-box;overflow: hidden;}
+.contenttwo .contenttwo-title{font-size: 0.132rem;font-weight: bold;color: #333;margin-bottom:0.106rem;}
+.contenttwo .usemiaos{font-size: 0.123rem;text-align:justify;color: #333;}
+
+
+
+
+
+
+
+

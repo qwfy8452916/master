@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         *{
+                margin: 0;
+                padding: 0;
+            }
+            #all{
+                width: 520px;
+                height: 280px;
+                overflow: hidden;
+                position: relative;
+            }
+            .banner{
+                list-style:none;
+                width: 1560px;
+                height: 280px;
+            }
+            .banner>li{
+                width: 520px;
+                float: left;
+            }
+            #all span{
+                display: block;
+                width: 30px;
+                height: 40px;
+                cursor: pointer;
+                color: #fff;
+                font-size: 30px;
+                text-align: center;
+                line-height: 40px;
+                background: rgba(0,0,0,.5);
+                position: absolute;
+                top: 50%;
+                margin-top: -15px;
+            }
+            #all span.btn-prev{
+                right: 0;
+            }
+
+    
+    </style>
+</head>
+<body>
+
+    <div id="all">
+        <ul class="banner">
+            <li><img src="http://d.hiphotos.baidu.com/image/pic/item/caef76094b36acaf6d1e855571d98d1000e99c98.jpg"/></li>
+            <li><img src="http://d.hiphotos.baidu.com/image/pic/item/9825bc315c6034a84d0cf125c6134954082376a3.jpg"/></li>
+            <li><img src="http://c.hiphotos.baidu.com/image/pic/item/2f738bd4b31c870173d4b35d2a7f9e2f0708ff2f.jpg"/></li>
+        </ul>
+        <span class="btn-prev">></span>
+        <span class="btn-next"><</span>
+    </div>
+    　<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    
+    $(function(){
+
+            var i;
+            function move(){
+                $(".banner").animate({"margin-left":"-520px"},function(){  
+                    $(".banner").css("margin-left","0px");
+                    $(".banner").append($(".banner li").eq(0));
+
+                })
+            }
+            i=setInterval(move,2000);
+            /*鼠标悬浮事件*/
+            $("#all").hover(function(){
+                clearInterval(i);
+            },
+            function(){
+                i=setInterval(move,2000);
+            });
+            /*按钮 下一个*/
+            $(".btn-next").on("click",function(){
+                $(".banner").animate({"margin-left":"-520px"},function(){
+                    $(".banner").append($("li").eq(0));
+                    $(".banner").css("margin-left","0px");
+                })
+            })
+            /*按钮上一个*/
+            $(".btn-prev").on("click",function(){
+                $(".banner").prepend($(".banner li:last"));
+                $(".banner").css("margin-left","-520px");
+                $(".banner").animate({"margin-left":"0px"},function(){ 
+
+                })
+            })
+        })
+
+    
+    </script>
+</body>
+</html>

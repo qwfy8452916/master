@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ifram</title>
+    <style>
+      html,body{background: #1baaed;}
+      .nowwk{width: 100%;height: 100%;background: #1baaed;}
+      .nowwk-sall{width: 500px;height: 500px;background: #698624;margin-top: 200px;margin-left: 400px;}
+      .tancwk{width: 90%;height: 90%;overflow: hidden;position: fixed;top: 0;bottom: 0;left: 0;right: 0;
+    margin: auto;background: #698624;display:none;}
+     .tancwk .closegb{position: absolute;display: inline-block;padding: 5px;background: #4d2486;color: #fff;
+    cursor: pointer;top: 0;right: 0;}
+     .zidingyigaodu{height: 750px;overflow-y: hidden;width: 100%;background: #696a13;margin-top: 55px;}
+      .dianjievent{width: 100px;height: 100px;text-align: center;line-height: 100px;background: #4d2486;color: #fff;
+      position: relative;top: -400px;left: 200px;cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div class="nowwk">
+        <div class="nowwk-sall">当前</div>
+        <div class="dianjievent">点击</div>
+    </div>
+     <div class="tancwk">
+         <span class="closegb">关闭</span>
+         <div class="tancwk-title"></div>
+        <div class="zidingyigaodu">
+        <iframe src="" width="100%" height="100%" id="iframid" scrolling="yes" frameborder="0"></iframe>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+       $(function(){
+
+        $('.dianjievent').click(function(){
+           $('.tancwk-title').text("选取相关商品")
+           $('.tancwk').show();
+           $("#iframid", parent.document.body).attr("src","iframzhuan.html")
+        }) 
+
+        $('.tancwk .closegb').click(function(){
+            $('.tancwk').hide();
+        })
+
+
+       })
+    </script>
+</body>
+</html>
