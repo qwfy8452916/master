@@ -1,0 +1,104 @@
+<extend name="Main:baseTemplate"/>
+<block name="style">
+    <link rel="stylesheet" href="/assets/home/orderstat/css/config.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="content">
+    <section class="content-header">
+        <h1>需求池设置</h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box no-margin">
+                    <div class="box-body">
+                        <div class="ml10">
+                            <div id="new" class="btn btn-info">新建</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 mt20">
+                <div class="box no-margin">
+                    <div class="box-body c-box">
+                        <table class="table table-hover" id="all_list">
+                            <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>已设置派单城市</th>
+                                    <th>剩余可派城市</th>
+                                    <th>已设置派单客服</th>
+                                    <th>剩余客服</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                            <volist name="list" id="vo">
+                                <tr>
+                                    <td>{$vo.pond_name}</td>
+                                    <td>{$vo.city_num}</td>
+                                    <td>{$vo.un_city_num}</td>
+                                    <td>{$vo.kf_num}</td>
+                                    <td>{$vo.un_kf_num}</td>
+                                    <td><a href="/orderpond/configdetail?id={$vo.id}">设置</a><if condition="$vo['id']!=1"><span class='red del' data-id="{$vo.id}">删除</span></if></td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="margin-top:150px;">
+                <div class="modal-content">
+                    <div class="modal-body" style="text-align:center;">
+                        是否确定删除
+                    </div>
+                    <div class="modal-footer" style="text-align:center;">
+                        <button type="button" class="btn btn-default" id="sure">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</block>
+<block name="script">
+    <script>
+        var index;
+        $('#new').click(function(){
+            index = $('#tbody').children().length;
+            $.ajax({
+                url: '/orderpond/addpond/',
+                type: 'POST',
+                dataType: 'JSON',
+                data:{'pond_name':'池' + index}
+            }).done(function(data) {
+                if (data.status == 1) {
+                    window.location.reload();
+                }else{
+                    alert(data.info);
+                }
+            });
+        });
+        $('.table').on('click','.del',function(){
+            var _this = $(this)
+            $("#myModal").modal('show')
+            $('#sure').click(function(){
+                $.ajax({
+                    url: '/orderpond/delpond/',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data:{'id':_this.attr('data-id')}
+                }).done(function(data) {
+                    if (data.status == 1) {
+                        $("#myModal").modal('hide');
+                        window.location.reload();
+                    } else {
+                        alert(data.info);
+                    }
+                });
+            })
+        })
+    </script>
+</block>

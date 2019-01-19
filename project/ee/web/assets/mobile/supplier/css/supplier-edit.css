@@ -1,0 +1,18 @@
+/*
+* @Author: jsb
+* @Date:   2018-08-31 11:20:32
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-03 16:19:28
+*/
+.add-box .pay-way {
+    border-bottom: 1px solid #6F809C;
+}
+.add-box li input.bank-name {
+    width: 10rem;
+}
+.toolbar .picker-button {
+    color:#0E94EA;
+}
+#style {
+    color: #000;
+}

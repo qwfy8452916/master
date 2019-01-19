@@ -1,0 +1,114 @@
+{extend name="common:basic" /}
+{block name="title"}
+    部门管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/departmentgl.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<div class="titlewaik">部门管理</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="b-owf">
+        <span class="b-fr p-btn p-primary classification {if (!btnRule('/department/add/'))} btn_hide{/if}">添加部门</span>
+    </div>
+    <div class="tabwaik">
+        <table class="p-suppliertab">
+            <thead>
+            <tr>
+                <th>部门名称</th>
+                <th>职能描述</th>
+                <th>成员数量</th>
+                <th>添加时间
+                    {if(isset($order)&&$order==1)}
+                    <i class="fa fa-caret-up paixu" aria-hidden="true" data-order="{$order|default=1}"></i>
+                    {else/}
+                    <i class="fa fa-caret-down paixu" aria-hidden="true" data-order="{$order|default=1}"></i>
+                    {/if}
+                </th>
+                <th>是否启用</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="list" id="vo"}
+            <tr>
+                <td class="dept_name">{$vo.dept_name}</td>
+                <td class="dept_desc">{$vo.dept_depict}</td>
+                <td class="dept_amount">
+                    {if($vo['amount'] == 0) }
+                    {$vo.amount}
+                    {else/}
+                    <a href="/employee/?dept={$vo.id}" target="_blank">{$vo.amount}</a>
+                    {/if}
+                </td>
+                <td>{$vo.add_time}</td>
+                <td>
+                    {if($vo['dept_status'] == 1) }
+                    已启用
+                    {else/}
+                    未启用
+                    {/if}
+                </td>
+                <td data-id="{$vo.id}">
+                    <span class="editbj{if (!btnRule('/department/edit/'))} btn_hide{/if}">
+                        <span data-id="{$vo.id}" class="p-edit">编辑</span></span>
+                        <span class="switchniu {if (!btnRule('/department/forbid/'))} btn_hide{/if}">
+                        {if($vo['dept_status'] == 1) }
+                        <span class="prohibit">禁用</span>
+                        {else/}
+                        <span class="openkaiqi">启用</span>
+                        {/if}
+                    </span>
+                    <span class="caozuo{if (!btnRule('/department/delete/'))} btn_hide{/if}"><a href="#">删除</a></span>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+        {$page|raw}
+    </div>
+</div>
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0"
+        frameborder="0"></iframe>
+<div class="p-tancfl addtanchuang">
+    <div class="tancfl-title">
+        <span class="edit-fl">添加部门</span>
+        <span class="p-close"></span>
+    </div>
+    <div class="contentnr jvlibot">
+        <div class="hangwk">
+            <span class="hangwk-title">部门名称：</span>
+            <input class="fenleiname" name="dept_name" type="text" maxlength="12" placeholder="请输入部门名称"><span
+                class="requirebj">*</span>
+            <div class="tishi bumen-tishi"></div>
+            <input type="hidden" name="dept_id">
+        </div>
+        <div class="hangwk descriptionwk">
+            <span class="hangwk-title">职能描述：</span>
+            <textarea class="description" name="dept_desc" id="" maxlength="50" cols="30" rows="10"
+                      placeholder="请输入职能描述"></textarea>
+        </div>
+
+    </div>
+    <div class="foottanc">
+        <span class="p-btn p-padding cancelqx">取消</span><span class="p-btn  p-primary p-padding savebc">保存</span>
+    </div>
+</div>
+
+<div class="p-tancfl operationtc">
+    <div class="status">
+        <span class="status-pic"></span><span class="status-title">操作失败</span>
+    </div>
+    <div class="cannotms"><!-- 该部门存在关联人员，无法禁用。 --></div>
+    <div class="caozuosurewk"><span class="caozuosurewk-sure">确定</span></div>
+</div>
+
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/departmentgl.js?v={:config('STATIC_VERSION')}"></script>
+
+{/block}

@@ -1,0 +1,26 @@
+/*
+* @Author: qz_xsc
+* @Date:   2018-09-04 11:48:05
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-09-17 15:20:43
+*/
+.set-table{width:100%; vertical-align: middle;border:1px solid #EAEAEA; text-align: left; margin-bottom: 20px;}
+.one-title{width:130px;background:#F5F5F5; border-right:1px solid #EAEAEA; padding-left:30px; padding-top:15px; padding-bottom: 15px}
+.two-title{width:160px; background:#F5F5F5; border-right:1px solid #EAEAEA;border-top: 1px solid #EAEAEA;padding-left:30px; padding-top: 15px; padding-bottom: 15px}
+.set-item{float: left;width:20%; padding:15px 0px;border-bottom: 1px solid #EAEAEA;}
+.set-two-table{width:100%; margin-bottom: -1px; margin-top: -1px; }
+.set-three-table{width:100%;}
+.set-three-table tr{border-bottom:1px solid #EAEAEA;}
+.set-three-table tr td{padding:10px 0px;}
+.set-table span{display:inline-block;  cursor: pointer; white-space: nowrap;overflow: hidden;}
+
+.set-table i{display: inline-block; width:13px; height: 13px;float: left;border:1px solid #B8B8B8; border-radius: 4px; margin:2px 5px; background: #fff}
+.set-table span:hover{color:#1890FF;}
+.set-table span:hover i{border:1px solid #1890FF;}
+.set-table .hasChecked{color:#1890FF;}
+.set-table .hasChecked i{border:1px solid #1890FF;}
+.p-form-column{width:30%;}
+.bottom-btn span{margin:0px 10px}
+.p-form-box .tishi{margin-left: 78px;}
+.set-three-table{text-align: left; font-size: 0px; margin-bottom: -2px }
+.set-three-table td span{display:inline-block; width:18%; font-size:14px; padding:5px 0px; padding-left:2%;}

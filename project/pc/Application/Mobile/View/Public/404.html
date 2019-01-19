@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <title>齐装网首页</title>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/mobile/index/css/index.css?v={:C('STATIC_VERSION')}">
+</head>
+<body>
+    <header class="box-width-css">
+        <a href="javascript:void(0)" class="back">
+            <span>后退</span>
+        </a>
+        <nav class="hd-nav">
+            <span>导航</span>
+            <ul class="subnav">
+                <li><a href="/sheji/?bm={$cityInfo.bm}">免费设计</a></li>
+                <li><a href="/zhaobiao/?bm={$cityInfo.bm}">免费报价</a></li>
+                <li>
+                    <if condition="empty($cityInfo['bm'])">
+                         <a href="/company/">找装修公司</a>
+                    <else/>
+                        <a href="/{$cityInfo.bm}/company/">找装修公司</a>
+                    </if>
+                </li>
+                <li><a href="/gonglue/lc/">装修流程</a></li>
+                <li><a href="/gonglue/">装修攻略</a></li>
+                <li>
+                    <if condition="empty($cityInfo['bm'])">
+                          <a href="/xgt/">效果图</a>
+                    <else/>
+                       <a href="/{$cityInfo.bm}/xgt/">效果图</a>
+                    </if>
+               </li>
+                <li><a href="/city/">城市导航</a></li>
+                <li>
+                    <if condition="empty($cityInfo['bm'])">
+                          <a href="/city/">返回首页</a>
+                    <else/>
+                        <a href="/{$cityInfo.bm}/">返回首页</a>
+                    </if>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- logo -->
+    <section class="box-width-css sec-logo-wrap">
+        <h1>&nbsp;</h1>
+        <span></span>
+    </section>
+
+    <div class="banxin">
+        <div class="white-box mar-t20">
+            <div class="fzf">
+                <p>您所访问的页面找不到了...</p>
+                <h1>404</h1>
+                <p>您可以：</p>
+                <a href="/zhaobiao/">免费获取报价</a>
+                <if condition="empty($cityInfo['bm'])">
+                      <a href="/xgt/">浏览更多案例</a>
+                <else/>
+                    <a href="/{$cityInfo.bm}/xgt/">浏览更多案例</a>
+                </if>
+            </div>
+        </div>
+    </div>
+    <include file="SubIndex:footer" />
+</body>
+<script type="text/javascript">
+    $(".back").click(function(event) {
+        window.location.href = document.referrer;
+    });
+</script>
+</html>

@@ -1,0 +1,93 @@
+/*
+* @Author: qz_dc
+* @Date:   2018-09-04 08:46:30
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-04 10:00:51
+*/
+.wrapper {
+    height: 94%;
+}
+.add {
+    width: 100%;
+}
+.add-box {
+    width: 6rem;
+    margin: 1rem auto;
+    height: 0.85rem;
+    line-height: 0.85rem;
+    padding: 0;
+}
+.add .img {
+    float: left;
+    height: 100%;
+    width: 0.85rem;
+    margin-right: 0.3rem;
+}
+.add .img img {
+    display: block;
+    width: 100%;
+}
+.add .add-group {
+    float: left;
+}
+.worker-list {
+    background: #fff;
+    font-size: 0.7rem;
+    color:#212121;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 0.8rem;
+    padding-top: 0.5rem;
+    box-sizing: border-box;
+}
+.worker-list .close {
+    position: absolute;
+    top:0.5rem;
+    right:0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
+}
+.worker-list .close img {
+    display: block;
+    width: 100%;
+}
+.list .avator {
+    width: 4.25rem;
+    height: 4.25rem;
+    margin-right: 0.5rem;
+}
+.list .avator  img {
+    display: block;
+    width: 100%;
+}
+.worker-list .list-btn {
+    border-top: 1px solid #E6E6E6;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.worker-list .list-btn .edit .edit-btn{
+    background: #0E94EA;
+    color: #fff;
+    border: 1px solid #0E94EA;
+    margin-right: 1.5rem;
+    width: 2.5rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    text-align: center;
+    font-size: 0.7rem;
+    border-radius: 0.2rem;
+}
+.worker-list .info .job {margin-top: 0.1rem;}
+.worker-list .info .job span {
+    display: block;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    border: 1px solid #29CFAB;
+    border-radius: 0.35rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    font-size: 0.6rem;
+}

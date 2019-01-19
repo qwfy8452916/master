@@ -1,0 +1,218 @@
+{extend name="common:basic" /}
+{block name="title"}
+    施工管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap.min.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/datetimepicker/daterangepicker.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/order.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>施工管理</span>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="p-form-box b-owf">
+      <form class="biaodantj">
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">订单编号：</span>
+            <input name="order_no" type="text" class="p-input quchupad" placeholder="请输入" value="{$search_data.order_no|default=''}">
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">手机号：</span>
+            <input name="consumer_tel" type="number" class="p-input quchupad" placeholder="请输入" value="{$search_data.consumer_tel|default=''}" oninput="if(value.length>11)value=value.slice(0,11)">
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">订单状态：</span>
+            <select class="p-input" name="state">
+                <option value="">请选择</option>
+                {foreach $order_status as $k=>$vo}
+                {if(!empty($search_data['state']) && $search_data['state'] == $k) }
+                <option value="{$k}" selected >{$vo}</option>
+                {else/}
+                <option value="{$k}">{$vo}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">业主姓名：</span>
+            <input name="consumer_name" type="text" class="p-input quchupad" placeholder="请输入" value="{$search_data.consumer_name|default=''}" >
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">施工状态：</span>
+            <select class="p-input" name="build_state">
+                <option value="">请选择</option>
+                {foreach $build_status as $k=>$vo}
+                {if(!empty($search_data['build_state']) && $search_data['build_state'] == $k) }
+                <option value="{$k}" selected >{$vo}</option>
+                {else/}
+                <option value="{$k}">{$vo}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+          <div class="p-form-column wrapinput">
+              <span class="p-form-title">项目经理：</span>
+              <select class="p-input" name="project_account_id">
+                  <option value="">请选择</option>
+                  {volist name='projectUser' id='vo'}
+                  <option value="{$vo.id|default=''}" {if !empty($_GET['project_account_id']) && $_GET['project_account_id'] == $vo.id}selected{/if}>{$vo.name|default=''}</option>
+                  {/volist}
+              </select>
+          </div>
+          <div class="p-form-column wrapinput">
+              <span class="p-form-title">施工人员：</span>
+              <select class="p-input" name="worker_account_id">
+                  <option value="">请选择</option>
+                  {volist name='workerUser' id='vo'}
+                  <option value="{$vo.id|default=''}" {if !empty($_GET['worker_account_id']) && $_GET['worker_account_id'] == $vo.id}selected{/if}>{$vo.name|default=''}</option>
+                  {/volist}
+              </select>
+          </div>
+          <div class="p-form-column wrapinput">
+              <span class="p-form-title"><span class="p-long-text">开工日期：</span></span>
+              <div class="wrapdate">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  <input type="text" style="width:100%" class="p-input quchupad shigongdateriqi" id="kgtime" value="">
+                  <input type="text" hidden name="kaigong_start_time"
+                         value="{$search_data['kaigong_start_time']|default=''}">
+                  <input type="text" hidden name="kaigong_end_time"
+                         value="{$search_data['kaigong_end_time']|default=''}">
+              </div>
+        </div>
+        <span class="p-btn p-primary b-fr sousuo" style="margin-right:3.3%;">搜索</span>
+       </form>
+    </div>
+
+</div>
+
+<div class="p-panel datatablwk">
+    <table class="p-suppliertab">
+        <thead>
+        <tr>
+            <td>订单编号</td>
+            <td>订单类型</td>
+            <td>业主姓名</td>
+            <td>小区</td>
+            <td>接待客服</td>
+            <td>设计师</td>
+            <td>项目经理</td>
+            <td>施工人员</td>
+            <td>开工日期</td>
+            <td>订单状态</td>
+            <td>施工状态</td>
+            <td>验收状态</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        {foreach $list as $vo}
+        <tr>
+            <td>
+                <a class="p-eidt" href="http://{:config('pc_host')}/shigong/build/edit?order_no={$vo.order_no}">
+                {$vo.order_no}
+                </a>
+            </td>
+            <td>{$vo.source}</td>
+            <td>{$vo.consumer_name}</td>
+            <td>{$vo.xiaoqu}</td>
+            <td>{$vo.receptionShigongAccount.contact_name|default=''}</td>
+            <td>{$vo.designerShigongAccount.contact_name|default=''}</td>
+            <td>
+                {if ( $vo.manage__worker_type == 1)}
+                 {$vo.shigong_name_group}
+                {else/}
+                 --
+                {/if}
+            </td>
+            <td>
+                {if ( $vo.manage__worker_type == 2)}
+                <?php
+                    $vo['shigong_name_group'] = explode(',',$vo['shigong_name_group']);
+                    echo implode('、',array_unique($vo['shigong_name_group']));
+                ?>
+                {else/}
+                 --
+                {/if}
+            </td>
+            <td>
+                {notempty name='$vo.manage__kaigong_time'}
+                    {$vo.manage__kaigong_time|date='Y-m-d H:i:s'}
+                {/notempty}
+            </td>
+            <td>{$order_status[$vo.manage__state]|default=''}</td>
+            <td>{$build_status[$vo.manage__build_state]|default=''}</td>
+            <td>
+                {if(!empty($vo['manage__build_state'])) }
+                {switch $vo.manage__check_state }
+                {case 1 }
+                <span class="weiyans" >未验收</span>
+                {/case}
+                {case 2}
+                <span class="buhege">不合格</span>
+                {/case}
+                {case 3}
+                <span class="yiyanshou">合格</span>
+                {/case}
+                {default /}
+                {/switch}
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+
+        </tbody>
+    </table>
+    {$page|raw|default=''}
+
+</div>
+{/block}
+
+{block name='script'}
+
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/bootstrap/js/bootstrap.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/datetimepicker/bootstrap-datepicker.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/daterangepicker/moment.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/daterangepicker/daterangepicker.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/shigong.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+$('#kgtime').daterangepicker({
+            "opens":'left',
+            // "alwaysShowCalendars": true,
+            // "linkedCalendars":false,
+            // "autoUpdateInput": false,
+            // "timePicker": true,
+            // "timePicker24Hour": false,
+            // "linkedCalendars": false,
+            "autoUpdateInput": false,
+            locale : {
+                format: 'YYYY-MM-DD',
+                separator: ' ~ ',
+                applyLabel : '确定',
+                cancelLabel : '取消',
+                fromLabel : '起始时间',
+                toLabel : '结束时间',
+                resetLabel: "重置",
+                customRangeLabel : '自定义',
+                daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                        '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+                firstDay : 1
+            },
+
+        },
+        function(start, end, label) {
+            if (!this.startDate) {
+                this.element.val('');
+            } else {
+                this.element.val(this.startDate.format(this.locale.format) + this.locale.separator + this.endDate.format(this.locale.format));
+            }
+
+               startshijian=$("input[name='kaigong_start_time']").val(this.startDate.format(this.locale.format));
+               endshijian=$("input[name='kaigong_end_time']").val(this.endDate.format(this.locale.format));
+
+        });
+</script>
+{/block}

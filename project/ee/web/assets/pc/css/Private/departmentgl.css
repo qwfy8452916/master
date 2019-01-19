@@ -1,0 +1,29 @@
+.add-waik{overflow: hidden;}
+.btn-addfl{background: #1890ff;color: #fff;}
+.tabwaik{overflow: hidden;margin-top: 24px;}
+.p-suppliertab span{cursor: pointer;}
+.p-suppliertab .editbj{color: #1890ff;}
+.p-suppliertab .caozuo{color: #f5222d;}
+.p-suppliertab .switchniu{color: #52c41a;margin:0px 10px}
+.p-suppliertab .switchniu .prohibit{color: #fa8c16;}
+.paixu{cursor: pointer;padding: 5px;}
+
+.addtanchuang{width: 600px;height: 406px;display: none;}
+.hangwk{overflow: hidden;padding-left: 100px;}
+.hangwk .hangwk-title{width: 80px;text-align: right;vertical-align: top;line-height: 40px;display: inline-block;
+float: left;}
+.hangwk input{float: left;}
+.description{width: 298px;height:118px;border:1px solid #d6d6d6;outline: none;border-radius: 5px;text-indent: 1em;float: left;}
+.p-tancfl .contentnr .requirebj{line-height: 40px;float: left;}
+.tishi{height: 20px;color: #ff5353;font-size: 12px;clear: both;text-align: left;margin-left: 82px;}
+.p-tancfl .jvlibot{padding-bottom: 40px;}
+
+.operationtc{width: 375px;height: 188px;text-align: center;display: none;}
+.status{overflow: hidden;vertical-align: middle;margin-top: 35px;}
+.status-pic{display: inline-block;width: 26px;height: 26px;background: url(/assets/pc/img/Common/errorstatus.png) no-repeat;
+vertical-align: middle;margin-right: 10px;}
+.status-title{color: #333;font-weight: bold;font-size: 15px;}
+.cannotms{margin-top: 18px;}
+.caozuosurewk{height:48px;line-height: 48px;border-top:1px solid #e6e6e6;margin-top: 40px;}
+.caozuosurewk .caozuosurewk-sure{display: inline-block;color: #1890ff;padding:0 10px;cursor: pointer;}
+.dept_amount{color: #1890ff;}

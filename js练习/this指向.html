@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this指向</title>
+</head>
+<body>
+    <script>
+    
+    var test="Tony";  
+    var myobj={  
+         test : "Tom"  
+    }; 
+
+    function zidingyi(){
+        this.test="我是函数变量"
+        console.log(this.test)
+    }
+   var gouzao=new zidingyi()
+
+    function doSomething(name, age){  
+        alert(this.test + ":" + name + age);  
+        // alert(obj.test + ":" + name + age);   直接调用gouzao对象
+    }  
+    doSomething("Tony",23);//普通调用 结果Tony:Tony23  
+    doSomething.call(myobj,"Tony",23);//call调用结果Tom:Tony23  
+    doSomething.call(gouzao,"Tony",24);//call指向构造函数对象
+   // doSomething(gouzao,"Tony",25); 直接调用gouzao对象
+    doSomething.apply(myobj,["Tony",23]);//apply调用 结果与call相同   
+    
+    </script>
+</body>
+</html>

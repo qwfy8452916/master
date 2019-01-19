@@ -1,0 +1,1 @@
+a:5:{i:0;s:10:"noticle_id";i:1;s:3:"uid";i:2;s:6:"isread";s:3:"_pk";a:2:{i:0;s:10:"noticle_id";i:1;s:3:"uid";}s:5:"_type";a:3:{s:10:"noticle_id";s:7:"int(11)";s:3:"uid";s:7:"int(11)";s:6:"isread";s:10:"tinyint(4)";}}

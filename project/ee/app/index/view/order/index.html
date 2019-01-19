@@ -1,0 +1,168 @@
+{extend name="common:basic" /}
+{block name="title"}
+    跟单管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap.min.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/datetimepicker/daterangepicker.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/order.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>跟单管理</span>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="p-form-box b-owf">
+      <form class="biaodantj">
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">订单编号：</span>
+            <input name="order_no" type="text" class="p-input" placeholder="请输入" value="{$search_data.order_no|default=''}">
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">业主姓名：</span>
+            <input name="consumer_name" type="text" class="p-input" placeholder="请输入" value="{$search_data.consumer_name|default=''}" >
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">手机号：</span>
+            <input name="consumer_tel" type="number" class="p-input" placeholder="请输入" value="{$search_data.consumer_tel|default=''}" oninput="if(value.length>11)value=value.slice(0,11)">
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">订单类型：</span>
+            <select class="p-input" name="source">
+                <option value="">请选择</option>
+                {foreach $order_source as $k=>$vo}
+                {if(!empty($search_data['source']) && $search_data['source'] == $k) }
+                <option value="{$k}" selected >{$vo}</option>
+                {else/}
+                <option value="{$k}">{$vo}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">订单状态：</span>
+            <select class="p-input" name="state">
+                <option value="">请选择</option>
+                {foreach $order_status as $k=>$vo}
+                {if(!empty($search_data['state']) && $search_data['state'] == $k) }
+                <option value="{$k}" selected >{$vo}</option>
+                {else/}
+                <option value="{$k}">{$vo}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">施工状态：</span>
+            <select class="p-input" name="build_state">
+                <option value="">请选择</option>
+                {foreach $build_status as $k=>$vo}
+                {if(!empty($search_data['build_state']) && $search_data['build_state'] == $k) }
+                <option value="{$k}" selected >{$vo}</option>
+                {else/}
+                <option value="{$k}">{$vo}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        <div class="p-form-column wrapinput" style="white-space:nowrap">
+            <span class="p-form-title"><span class="p-long-text">订单生成时间：</span></span>
+            <div class="wrapdate" style="width:100%" id="date-box">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <input type="text" class="p-input quchupad dateriqi" value="" >
+                <input type="text" hidden name="start_time" value="{$search_data['start_time']|default=''}">
+                <input type="text" hidden name="end_time" value="{$search_data['end_time']|default=''}">
+            </div>
+        </div>
+        <div class="wrapinput b-fr mr-hide" style="margin-right:3%" id="large-screen">
+            <a href="/order/add" class="addorder p-btn p-blue b-fr {if (!btnRule('/order/add'))} btn_hide{/if}">添加订单</a>
+            <span class="p-btn p-primary b-fr b-mt20 sousuo">搜索</span>
+        </div>
+       </form>
+    </div>
+    <div class="b-owf btn-box mr-hide" id="small-screen">
+        <a href="/order/add" class="addorder p-btn p-blue b-fr {if (!btnRule('/order/add'))} btn_hide{/if}">添加订单</a>
+        <span class="p-btn p-primary b-fr b-mt20 sousuo">搜索</span>
+    </div>
+</div>
+<script>
+ setBtnPosition();
+ function setBtnPosition(){
+    var screen_width = document.body.clientWidth;
+    if(screen_width < 1500){
+        $("#large-screen").hide();
+        $("#small-screen").show();
+        $("#date-box").css("width","162%");
+    }else{
+        $("#large-screen").show();
+        $("#small-screen").hide();
+        $("#date-box").css("width","100%");
+    }    
+}
+</script>
+<div class="p-panel datatablwk">
+    <table class="p-suppliertab">
+        <thead>
+        <tr>
+            <td>订单编号</td>
+            <td>订单类型</td>
+            <td>业主姓名</td>
+            <td>小区</td>
+            <td>接待客服</td>
+            <td>设计师</td>
+            <td>订单生成时间</td>
+            <td>订单状态</td>
+            <td>施工状态</td>
+            <td>验收状态</td>
+        </tr>
+        </thead>        
+	<tbody>
+        {foreach $list as $vo}
+        <tr>
+            <td>
+                <a class="p-eidt" href="http://{:config('pc_host')}/order/detail?order_no={$vo.order_no}" >{$vo.order_no}</a>
+            </td>
+            <td>{$vo.source}</td>
+            <td>{$vo.consumer_name}</td>
+            <td>{$vo.xiaoqu}</td>
+            <td>{$vo.receptionAccount.contact_name|default='--'}</td>
+            <td>{$vo.designerAccount.contact_name|default='--'}</td>
+            <td>{$vo.add_time}</td>
+            <td>{$vo.manage.state|default=''}</td>
+            <td>{$vo.manage.build_state|default=''}</td>
+            <td>
+                {if(!empty($vo['manage']['build_state'])) }
+                {switch $vo.manage.check_state }
+                {case 1 }
+                <span class="weiyans" >未验收</span>
+                {/case}
+                {case 2}
+                <span class="buhege">不合格</span>
+                {/case}
+                {case 3}
+                <span class="yiyanshou">合格</span>
+                {/case}
+                {default /}
+                {/switch}
+                {/if}
+            </td>
+                  </tr>
+        {/foreach}
+
+        </tbody>
+    </table>
+    {$page|raw|default=''}
+
+</div>
+{/block}
+
+{block name='script'}
+
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/bootstrap/js/bootstrap.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/datetimepicker/bootstrap-datepicker.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/daterangepicker/moment.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/daterangepicker/daterangepicker.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/order.js?v={:config('STATIC_VERSION')}"></script>
+
+{/block}

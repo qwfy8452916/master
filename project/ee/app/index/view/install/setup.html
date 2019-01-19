@@ -1,0 +1,173 @@
+{extend name="common:basic" /}
+{block name="title"}
+    个人设置
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/setup.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<div class="titlewaik">个人设置</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <!--区分公司和个人账号-->
+    {if !empty($accountinfo) && $accountinfo.class_type == 1}
+        <div class="tabwaik">
+        <div class="puthangwk">
+            <span class="spantitle">公司简称：</span>
+            <div class="inputwk">
+                <input class="p-input" type="text" name="username" maxlength="10" value="{$accountinfo.companyjc}" placeholder="请输入姓名" disabled></div>
+                <input class="staffname" type="hidden" value="{$accountinfo.contact_name}">
+            <span class="redxing">*</span>
+            <div class="tishi staff-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">手机号：</span>
+            <div class="inputwk"><input class="p-input phonenumber" type="text" name="user_tel"
+                                        value="{$accountinfo.contact_tel}" placeholder="请输入手机号" maxlength="11">
+            </div>
+            <span class="redxing">*</span>
+            <div class="tishi phone-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">微信号：</span>
+            <div class="inputwk"><input class="p-input weixinnumber" maxlength="20" type="text" value="{$accountinfo.contact_wx}"
+                                        placeholder="请输入微信号"></div>
+            <div class="tishi weixin-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">登录账号：</span>
+            <div class="inputwk"><input class="p-input loginumber" type="text" value="{$accountinfo.account}"
+                                        placeholder="请输入员工登录账号" disabled="disabled">
+            </div>
+            <span class="p-btn p-origin resetpass">修改密码</span>
+            <div class="tishi loginumber-tishi"></div>
+        </div>
+            <div class="puthangwk">
+                <span class="spantitle">到期时间：</span>
+                <div class="inputwk">{$accountinfo.end_time|date="Y年m月d日"}
+                </div>
+            </div>
+
+    </div>
+    {else/}
+        <div class="tabwaik">
+        <div class="puthangwk">
+            <span class="spantitle">姓名：</span>
+            <div class="inputwk">
+                <input class="p-input staffname" type="text" name="username" maxlength="10" value="{$accountinfo.contact_name}" placeholder="请输入姓名"></div>
+            <span class="redxing">*</span>
+            <div class="tishi staff-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">手机号：</span>
+            <div class="inputwk"><input class="p-input phonenumber" type="text" name="user_tel"
+                                        value="{$accountinfo.contact_tel}" placeholder="请输入手机号" maxlength="11">
+            </div>
+            <span class="redxing">*</span>
+            <div class="tishi phone-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">微信号：</span>
+            <div class="inputwk"><input class="p-input weixinnumber" maxlength="20" type="text" value="{$accountinfo.contact_wx}"
+                                        placeholder="请输入微信号"></div>
+            <div class="tishi weixin-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">所属部门：</span>
+            <div class="inputwk">
+                <input type="text" class="p-input departmentxz" value="{$accountinfo.dept_name}" disabled="disabled">
+            </div>
+            <div class="tishi department-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">岗位：</span>
+            <div class="inputwk">
+                <input type="text" class="p-input" value="{$accountinfo.name}" disabled="disabled">
+            </div>
+
+            <div class="tishi postxz-tishi"></div>
+        </div>
+        <div class="puthangwk">
+            <span class="spantitle">登录账号：</span>
+            <div class="inputwk"><input class="p-input loginumber" type="text" value="{$accountinfo.account}"
+                                        placeholder="请输入员工登录账号" disabled="disabled">
+            </div>
+            <span class="p-btn p-origin resetpass">修改密码</span>
+            <div class="tishi loginumber-tishi"></div>
+        </div>
+
+    </div>
+    {/if}
+
+    <div class="touxiangwk">
+
+    	<div class="photowk">
+    		<span class="photowk-title">头像：</span>
+    		<div class="photopic">
+    			<div class="photopic-wrap">
+                    {if ($accountinfo['image'] neq '' AND !empty($accountinfo['image']))}
+                        <img src="{$accountinfo.image}" alt="头像">
+                    {else/}
+                        <img src="/assets/pc/img/Private/setphoto.png" alt="头像">
+                    {/if}
+    			</div>
+    			<span class="genghuan p-btn p-normal">&nbsp;&nbsp;更换&nbsp;&nbsp;</span>
+    		</div>
+    		<span class="proposal">建议尺寸为：80*80</span>
+    	</div>
+    </div>
+
+</div>
+<div class="footwk">
+    <span class="p-btn p-primary b-fr savebaocun">保存</span>
+</div>
+
+<div class="p-tancfl addtanchuang">
+    <div class="tancfl-title">
+        <span class="edit-fl">修改密码</span>
+        <span class="p-close"></span>
+    </div>
+    <div class="passwaik">
+        <div class="contentnr">
+            <span>设置新密码：</span>
+            <input class="fenleiname inpassword" type="password" maxlength="24" placeholder="请输入新密码"><span class="requirebj">*</span>
+            <div class="passtishi mima-tishi"></div>
+        </div>
+        <div class="contentnr">
+            <span>确认新密码：</span>
+            <input class="fenleiname surepass" type="password" maxlength="24" placeholder="请确认新密码"><span class="requirebj">*</span>
+            <div class="passtishi sure-tishi"></div>
+        </div>
+    </div>
+
+    <div class="foottanc">
+        <span class="p-btn cancelqx">取消</span><span class="p-btn  p-primary savebc">保存</span>
+    </div>
+</div>
+
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0"
+        frameborder="0"></iframe>
+<div class="touxiangkz">
+            <span class="closequx"></span>
+            <div>
+                <p id="swfContainer">
+                    本组件需要安装Flash Player后才可使用，请从
+                    <a href="http://www.adobe.com/go/getflashplayer" class="p-eidt">这里</a>
+                    下载安装。
+                </p>
+            </div>
+</div>
+
+<div class="passsurewk">
+    <div class="passsurems">为了您的账号安全，请重新登录</div>
+    <span class="suresave">确定</span>
+</div>
+
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Plugin/touxiangjs2/fullAvatarEditor.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/touxiangjs2/swfobject.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/setup.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

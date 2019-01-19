@@ -1,0 +1,146 @@
+mip-img{height: 100%}
+.mip-carousel-indicator-wrapper{position: absolute; width: 100%;margin-top: -0.2rem}
+.mip-carousel-indecator-item{width:10px !important; height: 10px !important;}
+.xgt-list {
+    background: #fff;
+    padding: 4vw;
+}
+.xgt-list-tit {
+    text-align: center;
+    height: 1px;
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0 30px 0;
+}
+.xgt-list-tit section {
+    background: #fff;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    width: 40%;
+    top: -20px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.2em;
+}
+.xgt-list-tit section i:first-of-type {
+    background: #ff5659;
+    left: 5px;
+    bottom: 5px;
+}
+
+.xgt-list-tit section i {
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+}
+
+.xgt-list-tit section i:last-of-type {
+    background: #ff8e90;
+    right: 2vw;
+    top: 10px;
+}
+.xgt-list-tit section i:last-of-type:after {
+    content: "";
+    position: absolute;
+    width: 2vw;
+    height: 2vw;
+    background: #ff5659;
+    right: -1vw;
+    top: -5px;
+}
+.xgt-list-tit section i:first-of-type:before {
+    content: "";
+    position: absolute;
+    width: 2vw;
+    height: 2vw;
+    background: #ff8e90;
+    right: -1vw;
+    top: -5px;
+}
+i {
+    font-style: normal;
+}
+.xgt-gz-list, .xgt-list-tag, [class*="xgt-list-row"] {
+    overflow: hidden;
+}
+.xgt-list-row1 a.xgt-list-big {
+    width: 63%;
+    width: 60vw;
+    height: 150px;
+    height: 40vw;
+    float: left;
+    margin: 0 1.5% 0 3%;
+    margin: 0 0 4vw 0;
+}
+[class*="xgt-list-row"] a {
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+[class*="xgt-list-row"] a span {
+    position: absolute;
+    background: rgba(0,0,0,.5);
+    display: block;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    font-size: .8em;
+    line-height: 1.5em;
+    padding: 0 .2em;
+}
+[class*="xgt-list-row"] a img {
+    width: 100%;
+    height: 100%;
+}
+.xgt-list-row1 a.xgt-list-small {
+    width: 30%;
+    width: 28vw;
+    height: 70px;
+    height: 18vw;
+    float: right;
+    margin: 0 1.5% 3% 1.5%;
+    margin: 0 0 4vw 0;
+}
+[class*="xgt-list-row"] a {
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+.xgt-list-row2 a.xgt-list-small:first-of-type {
+    margin-left: 3%;
+    margin-left: 0vw;
+}
+.xgt-list-row2 a.xgt-list-small {
+    width: 30%;
+    width: 28vw;
+    height: 70px;
+    height: 18vw;
+    float: left;
+    margin: 0 1.5%;
+    margin: 0 0 0 4vw;
+}
+.xgt-gz-list li {
+    width: 20%;
+    margin: 0 2.5%;
+    float: left;
+    text-align: center;
+    font-size: .8em;
+    line-height: 3em;
+    margin-bottom: 10px;
+}
+.xgt-list-tag li {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+    font-size: 0.8em;
+    line-height: 2.4em;
+}
+.xgt-list-tag li a {
+    border: 1px solid #ddd;
+    color: #ff5659;
+    display: block;
+    padding: 0 1em;
+}
+
+
+

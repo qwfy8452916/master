@@ -1,0 +1,18 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="/userset" class="c2ce pl1 rel"><span class="top-middle">取消</span></a></div>
+    <div>意见反馈</div>
+    <div><span class="pr1 orange" data-name="publish">提交</span></div>
+</header>
+<div class="suggestion-box bg-c4">
+    <textarea name="" id="feedback-area" cols="30" rows="10" placeholder="请在此输入您的宝贵意见" maxlength="500"></textarea>
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/install/js/feedback.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

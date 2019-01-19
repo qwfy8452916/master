@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="{$keys.keywords}">
+        <meta name="description" content="{$keys.description}">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <title>{$keys.title}-{$title}</title>
+        <include file="Index:resource" />
+        <include file="Home:resource" />
+        <link rel="stylesheet" href="{$static_host}/assets/user/message/css/ht-messge.css?v={:C('STATIC_VERSION')}">
+    </head>
+    <body>
+        <include file="Home:header" />
+        <div class="ht-wrap oflow ht-relative">
+            <include file="Home:comnavleft" />
+            <include file="Message:header" />
+            <div class="ht-main">
+                <if condition="$info['notices']">
+                <ul class="ht-systemes">
+                    <volist name="info.notices" id="vo">
+                    <li>
+                      <h1>站内公告：</h1>
+                      <p class="gray">{$vo.time|date="Y-m-d",###}</p>
+                      <p>
+                        <if condition="$vo['id'] NEQ ''">
+                          {$vo.title}
+                        <else/>
+                          <strong>{$vo.title}</strong>
+                        </if>
+
+                      </p>
+                      <p>详情猛戳：<a href="http://u.qizuang.com/message/{$vo.cid}">http://u.qizuang.com/message/{$vo.cid}</a></p>
+                    </li>
+                    </volist>
+                </ul>
+                {$info.page}
+                <else/>
+                    <if condition="$notice">
+                        <dl>
+                          <dt>
+                            <h3>{$notice.title}</h3>
+                          </dt>
+                          <dt>
+                          发布人:齐装网 {$notice.time|date="Y-m-d",###}
+                          </dt>
+                          <dd>
+                              {$notice.text}
+                          </dd>
+                        </dl>
+                    <else/>
+                        <p class="none-msg">没有最新消息</p>
+                    </if>
+                </if>
+            </div>
+        </div>
+        <include file="Index:footer" />
+    </body>
+</html>

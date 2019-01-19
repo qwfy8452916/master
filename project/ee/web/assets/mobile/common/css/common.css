@@ -1,0 +1,284 @@
+/*
+* @Author: jsb
+* @Date:   2018-08-30 16:22:15
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-29 08:59:35
+*/
+.clearfix::before,
+.clearfix::after{
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+body, html {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+input[type="search"]::-webkit-search-cancel-button{
+    display: none;
+}
+input[type="search"]{
+    -webkit-appearance: none;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+}
+input::-moz-placeholder, textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+}
+input::-ms-input-placeholder, textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #999;
+}
+.wrapper {
+   background:#f8f8f8;
+   padding-bottom: 0.1rem;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.m-main {
+    height: 100%;
+    position: relative;
+}
+/*-----------------------------头部-----------------------*/
+header {
+    position: relative;
+    height: 45px;
+    background: #19283D;
+    color: #fff;
+    line-height: 45px;
+    z-index: 100;
+}
+.menu {
+    float: left;
+    width: 0.85rem;
+    height: 0.85rem;
+    margin:0.6rem 0.8rem;
+}
+.menu img {
+    display: block;
+    width: 100%;
+}
+header h1 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #C2CEE1;
+    float: left;
+    margin-left: 4.5rem;
+    width: 5rem;
+    text-align: center;
+}
+.header [data-top='top'] {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #C2CEE1;
+    float: left;
+    margin-left: 4.5rem;
+    width: 5rem;
+    text-align: center;
+}
+.choose {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 0.8rem;
+    font-weight:400;
+}
+.back {
+    float: left;
+    width: 0.5rem;
+    height: 0.925rem;
+    margin:0.7rem 0.8rem;
+}
+.back img {
+    display: block;
+    width: 100%;
+}
+.save {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 0.8rem;
+    font-weight:400;
+    color: #EFB013;
+}
+/*--------------------------右侧栏----------------------*/
+.panel-overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+    opacity: 0.5;
+    z-index: 98;
+}
+.panel {
+    display: none;
+    position:absolute;
+    top: 6%;
+    right: 0;
+    width: 14rem;
+    height: 94%;
+    background:#fff;
+    z-index: 99;
+}
+.search {
+    background: #fff;
+    padding: 0.5rem 1rem;
+}
+.searchBar {
+    padding:0 0.5rem;
+    background: #fff;
+    border:none;
+    margin-top: 1.5rem;
+}
+.search-box {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+.search-box i {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+}
+.search-box input {
+    border: 0;
+    outline: none;
+    padding-left: 36px;
+    width: 100%;
+    background: transparent;
+    color: #333;
+}
+.choose-order, .choose-status, .choose-time,.constructor {
+    margin-top: 1.6rem;
+    margin-left: 1rem;
+}
+#searchBar select {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    width: 7.5rem;
+    font-size: 0.65rem;
+    color: #212121;
+    padding-bottom: 0.25rem;
+    outline: none;
+    background: #fff;
+}
+.choose-time input {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    width: 7.5rem;
+    font-size: 0.65rem;
+    color: #212121;
+    padding-bottom: 0.25rem;
+    outline: none;
+}
+/*侧边栏搜索按钮*/
+.searchbtn {
+    position: absolute;
+    bottom: 20px;
+    padding-left: 0.75rem;
+}
+.searchbtn button {
+    width: 5.75rem;
+    height: 1.9rem;
+    line-height: 1.9rem;
+    border: 1px solid #ccc;
+    background: #ccc;
+    color: #fff;
+    border-radius: 1rem;
+    outline: none;
+}
+.searchbtn .reset {
+    margin-right:0.875rem;
+}
+.searchbtn .ensure {
+    background: #0E94EA;
+}
+.weui-picker-modal.weui-picker-modal-visible {
+    z-index: 999;
+}
+.weui-picker__hd .weui-picker__action {
+    color: #0E94EA!important;
+}
+/*-----------------------------------------导航栏---------------------------*/
+.top-nav {
+    width: 10.3rem;
+    position: absolute;
+    top: 40px;
+    left: 0.5rem;
+    background: #fff;
+    box-shadow: 0px 0px 10px #999;
+    z-index: 999;
+    display: none;
+}
+.triangle {
+    position: absolute;
+    top: -0.75rem;
+    left: 0.3rem;
+    width: 0;
+    height: 0;
+    border-width: 0.4rem 0.4rem;
+    border-style: solid;
+    border-color: transparent transparent #fff;
+}
+.nav-list ul li {
+    height: 3.075rem;
+    line-height: 3.07rem;
+    position: relative;
+}
+.nav-list ul li .img {
+    width: 1.2rem;
+    height: 1.4rem;
+    position: absolute;
+    top:1rem;
+    left: 0.85rem;
+}
+.gongying-img {
+    margin-top: -5px;
+}
+.nav-list ul li .img img {
+    display: block;
+    width: 100%;
+}
+.nav-list ul li a > div {
+    width: 7.5rem;
+    border-bottom: 1px solid #D9D9D9;
+}
+.mask {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 998;
+    display: none;
+}
+.weui-dialog{
+    border-radius: 0.6rem !important;
+}
+.weui-dialog__title, .weui-dialog__bd{
+    color: black !important;
+}
+.weui-dialog__btn{
+    color: #157efb !important;
+}
+/*后端使用*/
+.btn_hide{
+    display: none !important;
+}
+
+.weui-photo-browser-modal{
+    z-index: 9999;
+}

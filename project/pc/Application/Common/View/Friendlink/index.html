@@ -1,0 +1,83 @@
+<if condition="$friendLink['hotCity'] || $friendLink['link'] || $friendLink['provinceCity'] || $friendLink['recentCity'] || $friendLink['tags'] || $friendLink['areaCompany']">
+<div class="friend" id="friend">
+    <div class="wrap">
+        <div class="tab-nav j-tab-nav-link">
+            <if condition="$friendLink['tags']">
+                <a href="javascript:void(0);">装修效果图</a>
+            </if>
+            <if condition="$friendLink['link']">
+                <a href="javascript:void(0);">友情链接</a>
+            </if>
+            <if condition="$friendLink['hotCity']">
+                <a href="javascript:void(0);">热门城市</a>
+            </if>
+            <if condition="$friendLink['recentCity']">
+                <a href="javascript:void(0);">附近城市</a>
+            </if>
+            <if condition="$friendLink['areaCompany']">
+                <a href="javascript:void(0);">区域装修公司</a>
+            </if>
+            <if condition="$friendLink['provinceCity']">
+                <a href="javascript:void(0);">同省城市</a>
+            </if>
+            <if condition="$friendLink['recommendCompany']">
+                <a href="javascript:void(0);">推荐装修公司</a>
+            </if>
+        </div>
+        <div class="tab-con">
+            <div class="j-tab-con-link">
+                <if condition="$friendLink['tags']">
+                <div class="tab-con-item">
+                    <volist name="friendLink.tags" id="vo">
+                        <li><a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a></li>
+                    </volist>
+                </div>
+                </if>
+                <if condition="$friendLink['link']">
+                <div class="tab-con-item">
+                    <volist name="friendLink.link" id="vo">
+                        <li><a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a></li>
+                    </volist>
+                </div>
+                </if>
+                <if condition="$friendLink['hotCity']">
+                <div class="tab-con-item">
+                    <volist name="friendLink.hotCity" id="vo">
+                        <a href="http://{$vo.bm}.{:C('QZ_YUMING')}/" target="_blank">{$vo.cname}装修</a>
+                    </volist>
+                </div>
+                </if>
+                <if condition="$friendLink['recentCity']">
+                <div class="tab-con-item">
+                    <volist name="friendLink.recentCity" id="vo">
+                        <a href="http://{$vo.bm}.{:C('QZ_YUMING')}/" target="_blank">{$vo.cname}装修</a>
+                    </volist>
+                </div>
+                </if>
+                <if condition="$friendLink['areaCompany']">
+                    <div class="tab-con-item">
+                        <volist name="friendLink.areaCompany" id="vo" offset="0" length='35'>
+                            <a href="{$vo.link_url}" target="_blank">{$vo.link_name}</a>
+                        </volist>
+                    </div>
+                </if>
+                <if condition="$friendLink['provinceCity']">
+                <div class="tab-con-item">
+                    <volist name="friendLink.provinceCity" id="vo">
+                        <a href="http://{$vo.bm}.{:C('QZ_YUMING')}/company/" target="_blank">{$vo.cname}装修公司</a>
+                    </volist>
+                </div>
+                </if>
+                <if condition="$friendLink['recommendCompany']">
+                    <div class="tab-con-item">
+                        <volist name="friendLink.recommendCompany" id="vo">
+                            <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+                        </volist>
+                    </div>
+                </if>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="/assets/home/meitu/js/frendlink.js?v={:C('STATIC_VERSION')}"></script>
+</if>

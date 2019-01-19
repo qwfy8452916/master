@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title>{$keys['title']}</title>
+    <meta name="keywords" content="{$keys['keywords']}" />
+    <meta name="description" content="{$keys['description']}" />
+    <notempty name="info.head.canonical">
+        <link href="{$info.head.canonical}" rel="canonical" />
+    </notempty>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="{$static_host}/assets/common/css/public-new.css?v={:C('STATIC_VERSION')}" />
+    <link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/designer/css/designer-list.css?v={:C('STATIC_VERSION')}" />
+<!--     <link rel="stylesheet" href="{$static_host}/assets/sub/designer/fonts/font-awesome.min.css?v={:C('STATIC_VERSION')}"> -->
+    <link href="{$static_host}/assets/sub/company/css/default.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<!--[if IE]>
+		<script src="js/html5shiv.min.js?v={:C('STATIC_VERSION')}"></script>
+<![endif]-->
+</head>
+
+<body>
+    <include file="Index:header" />
+    <div class="wrap ofw">
+        <div class="new-bread"> <a href="/">首页</a>&gt;设计师大全 </div>
+        <div class="new-box-l">
+        <!--S 筛选条件-->
+            <div class="comp-chouse">
+                <div class="comp-chouse-list">
+                    <dl>
+                        <dt>从业时间：</dt>
+                        <volist name="designersinfo.worktime" id="wv">
+                            <if condition="$wv['checked']">
+                                <dd><a rel="nofollow" href="http://{$bm}.{:C('QZ_YUMING')}/designer/{$wv.link}/" class="current">{$wv.name}</a></dd>
+                            <else/>
+                                <dd><a rel="nofollow" href="http://{$bm}.{:C('QZ_YUMING')}/designer/{$wv.link}/">{$wv.name}</a></dd>
+                            </if>
+                        </volist>
+                    </dl>
+                    <dl>
+                        <dt>设计级别：</dt>
+                        <volist name="designersinfo.level" id="lv">
+                            <if condition="$lv['checked']">
+                                <dd><a rel="nofollow" href="http://{$bm}.{:C('QZ_YUMING')}/designer/{$lv.link}/" class="current">{$lv.name}</a></dd>
+                            <else/>
+                                <dd><a rel="nofollow" href="http://{$bm}.{:C('QZ_YUMING')}/designer/{$lv.link}/">{$lv.name}</a></dd>
+                            </if>
+                        </volist>
+                    </dl>
+                    <dl>
+                        <dt>擅长风格：</dt>
+                        <volist name="designersinfo.fengge" id="sv">
+                            <if condition="$sv['checked']">
+                                <dd><a rel="nofollow" href="http://{$bm}.{:C('QZ_YUMING')}/designer/{$sv.link}/" class="current">{$sv.name}</a></dd>
+                            <else/>
+                                <dd><a rel="nofollow" href="http://{$bm}.{:C('QZ_YUMING')}/designer/{$sv.link}/">{$sv.name}</a></dd>
+                            </if>
+                        </volist>
+                    </dl>
+                </div>
+            </div>
+            <!--E 筛选条件-->
+            <!--S 设计师列表-->
+            <volist name="info.designers" id="vo">
+                <div class="designer-list-ul">
+                  <div class="designer-info">
+                    <div class="designer-head"><a href="http://{$bm}.{:C('QZ_YUMING')}/blog/{$vo.userid}/" target="_blank"><img src="{$vo.logo}" width="121" height="121" alt=""/></a></div>
+                    <ul class="designer-info-main">
+                    <li class="de-name"><a href="http://{$bm}.{:C('QZ_YUMING')}/blog/{$vo.userid}/" target="_blank">{$vo.name}</a>
+                    <if condition="$vo['zw'] NEQ ''">
+                        <span>{$vo.zw}</span>
+                    </if></li>
+                    <li class="de-year"><span>设计经验：</span>{$vo.jobtime}&nbsp;<i>|</i>&nbsp;<span>作品：</span>{$vo.count}个</li>
+                    <li class="de-more"><span>擅长风格：</span>{$vo.fengge|mbstr=0,43}</li>
+                    <li class="de-more">
+                        <span>个人介绍：</span>
+                        <if condition="$vo['jianjie'] NEQ ''">
+                            {$vo.jianjie|mbstr=0,300}
+                        <else/>
+                            这个人很懒,什么都没有留下
+                        </if>
+                        <a href="http://{$bm}.{:C('QZ_YUMING')}/blog/{$vo.userid}/" target="_blank">[全文]</a>
+                    </li>
+                    </ul>
+                   <a class="de-button" href="javascript:void(0)" data-des="{$vo.userid}/">预约设计师</a>
+                  </div>
+                      <p>新作品<a href="http://{$bm}.{:C('QZ_YUMING')}/blog/{$vo.userid}/" target="_blank">更多作品</a></p>
+                      <ul class="de-img">
+                          <volist name="vo.child" id="v">
+                              <li>
+                                  <a href="http://{$bm}.{:C('QZ_YUMING')}/caseinfo/{$v.caseid}.shtml" target="_blank">
+                                      <if condition="$v['img_host'] EQ 'qiniu'">
+                                          <img src="http://{:C('QINIU_DOMAIN')}/{$v.img_path}" alt="{$v.title}"/>
+                                      <else/>
+                                          <img src="http://{:C('STATIC_HOST1')}{$v.img_path}s_{$v.img}">
+                                      </if>
+                                  </a>
+                              </li>
+                          </volist>
+                      </ul>
+                </div>
+            </volist>
+            <empty name="info['designers']">
+                <div class="img-empty">
+                    <h3>施主！这个类型的设计师很有可能跟人私奔了</h3>
+                    <a href="http://{$bm}.{:C('QZ_YUMING')}/designer/">去看看其他设计师&gt;&gt;</a>
+                </div>
+                <div class="emptu-tips">
+                    <p>
+                        &gt;&gt;80%的业主还选择了<a href="/zhaobiao/">免费帮我做设计方案</a>
+                    </p>
+                    您能获得4大免费服务
+                    <ul class="emptu-list">
+                        <li>专人两房</li>
+                        <li>户型设计</li>
+                        <li>免费预算报价</li>
+                        <li>免费参观样板房</li>
+                    </ul>
+                    还能享受6大诚信保障
+                    <ul class="emptu-list">
+                        <li>正规公司</li>
+                        <li>材料正品</li>
+                        <li>官方监督</li>
+                        <li>双方验收</li>
+                        <li>纠纷处理</li>
+                        <li>长久质保</li>
+                    </ul>
+                    犹豫什么，赶快开启美好之行吧！
+                </div>
+            </empty>
+            <!--E 设计师列表-->
+            <!--S 分页-->
+            {$info.page}
+        <!--E 分页-->
+        </div>
+        <div class="new-box-r">
+            {$orderTmp}
+            <div class="zxfw mt20">
+                <dl>
+                    <dt>
+                        为什么在齐装网上找装修公司?
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li>
+                                <i class="icon icon1"></i>
+                                <em>您附近的公司,高效率</em>
+                                <span>10分钟内筛选成功并发送至您的手机,
+                                坐等装修公司联系您！
+                                </span>
+                            </li>
+                            <li>
+                                <i class="icon icon2"></i>
+                                <em>4家公司免费出方案</em>
+                                <span>全套图纸,包括原始结构图、平面图、效果图等,
+                                不满意重做！
+                                </span>
+                            </li>
+                            <li>
+                                <i class="icon icon3"></i>
+                                <em>运用高质量环保材料</em>
+                                <span>以每一位业主的健康利益为重,确保性价比高于同行！</span>
+                            </li>
+                            <li>
+                                <i class="icon icon4"></i>
+                                <em>比任何渠道低20%以上</em>
+                                <span>详细报价清单,价格公开透明,绝不增项,
+                                    让每一笔费用一清二楚！
+                                </span>
+                            </li>
+                            <li>
+                                <i class="icon icon5"></i>
+                                <em>施工质量严格把关,有保障</em>
+                                <span>强烈杜绝装修猫腻,偷工减料！</span>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dd>
+                    <a href="javascript:void(0)">享受高质量装修服务</a>
+                    </dd>
+                </dl>
+            </div>
+            <!--S 设计榜-->
+            <div class="new-favo">
+                <h4>设计榜</h4>
+                <ul>
+                    <volist name="listFive" id="vlist">
+                        <li>
+                        <span>{$i}</span><a href="http://{$bm}.{:C('QZ_YUMING')}/blog/{$vlist.userid}/" target="_blank">{$vlist.name}</a><a class="favo-a" href="http://{$bm}.{:C('QZ_YUMING')}/blog/{$vlist.userid}/" target="_blank">查看作品</a>
+                        <p>作品：{$vlist.count}</p>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        <!--E 设计榜-->
+        </div>
+    </div>
+    <include file="Index:footer" />
+    <input id="safecode" type="hidden" value="{$safecode}" />
+    <input id="safekey" type="hidden" value="{$safekey}" />
+</body>
+<script type="text/javascript">
+var shen = null,shi = null;
+shen = citys["shen"];
+shi = citys["shi"];
+$(function(){
+    $(".zxfw dd a").click(function(event) {
+        $.ajax({
+            url: '/dispatcher/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+               type:"fb",
+               action:"load",
+               cs:"{$cityInfo.id}"
+            }
+        })
+        .done(function(data) {
+            if (data.status == 1) {
+                $("body").append(data.data);
+                $("input[name='name']").focus();
+            }
+        });
+    });
+
+    $(".de-button").click(function(event) {
+        var des = $(this).attr("data-des");
+        $.ajax({
+            url: '/dispatcher/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+               type:'sj',
+               action:"load",
+               cs:"{$cityInfo.id}",
+               des:des
+            }
+        })
+        .done(function(data) {
+            if (data.status == 1) {
+                $("body").append(data.data);
+                $(".zb_box_sj").fadeIn(400,function(){
+                    $(this).find("input[name=lf-name]").focus();
+                });
+            }
+        });
+    });
+});
+
+</script>
+</html>

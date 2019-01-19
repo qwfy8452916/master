@@ -1,0 +1,52 @@
+<extend name="Common:basic"/>
+<block name="title"><title>装修报价</title></block>
+<block name="link">
+<link href="{$static_host}/assets/mobile/baojia/b-zxbj.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link rel="stylesheet" href="/assets/mobile/css/font-awesome-ie7.min.css?v={:C('STATIC_VERSION')}" />
+<![endif]-->
+</block>
+<block name="top">
+    <div class="m-header-his" >
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <a class="m-header-left" href="http://m.{:C('QZ_YUMING')}"></a>
+    <div class="m-header-tit">装修报价</div>
+</block>
+<block name="content">
+    <article id="article-height">
+        <div class="success-ok-img">
+            <i class="fa fa-check-circle"></i>
+            获取成功
+        </div>
+        <div class="baojia-list">
+            <ul id="accordion" class="accordion">
+                <volist name="info.child" id="vo">
+                    <li class="baojia-item">
+                        <div class="baojia-text">
+                            <switch name="key">
+                            <case value="kt">客厅总价</case>
+                            <case value="cf">厨房总价</case>
+                            <case value="zw">卧室总价</case>
+                            <case value="wsj">卫生间总价</case>
+                            <case value="sd">水电总价</case>
+                            <case value="other">其他总价</case>
+                            </switch>
+                        </div>
+                        <div class="baojia-money"><span>{$vo}</span><i>元</i></div>
+
+                    </li>
+                </volist>
+                <li class="half-baojia">
+                    <div class="baojia-text">半包价</div>
+                    <div class="baojia-money"><span>{$info.total}</span><i>元</i></div>
+                </li>
+            </ul>
+            <p class="disclaimer">*该报价为半包估算价，实际以上门量房实测为准</p>
+        </div>
+    </article>
+</block>
+<block name="script">
+<script type="text/javascript">
+</script>
+</block>

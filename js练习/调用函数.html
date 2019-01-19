@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>调用函数</title>
+	<style>
+		.daojis{width: 100px;height: 30px;text-align: center;background: blue;color: #fff;line-height: 30px;}
+	</style>
+</head>
+<body>
+	
+	<div class="daojis">60秒</div>
+	<input type="text" class="shuru" >
+
+     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+
+           
+
+   //          function countDown(sec, ele, callback){
+
+			// 	if( $(ele).length <= 0 ){
+			// 		var $ele = $(document);
+			// 	}else{
+			// 		var $ele = $(ele);
+			// 	}
+			// 	var s = sec || 60;
+			// 	$ele.text(s+"s");
+			// 	function calc(){
+			// 		timer = setTimeout(function(){
+			// 			s--;
+			// 			$ele.text(s+"s");
+			// 			if( s > 0 ){
+			// 				calc();
+			// 			}else{
+			// 				callback && callback.call();
+			// 			}
+			// 		},1000);
+			// 	}
+			// 	calc();
+			// }
+			// var Daojis=$('.daojis');
+
+			// countDown(60, Daojis, function(){
+			// 	console.log("执行了")
+			// })
+
+
+
+			// function forbidenInput(ele, type){
+
+			// 	var $ele = $(ele);
+			// 	if( $(ele).length <= 0 ){
+			// 		return;
+			// 	}
+			// 	switch(type){
+			// 		case 1:
+			// 			$ele.val($ele.val().replace(/\s+/g,""));
+			// 			break;
+			// 		case 2:
+			// 			$ele.val($ele.val().replace(/\D/g,""));
+			// 			break;
+			// 		case 3:
+			// 			$ele.val($ele.val().replace(/[^\d.]*/g,""));
+			// 			break;
+			//         case 4:
+			//             $ele.val($ele.val().replace(/[~'!@#￥$%^&*()-+_\-=:\.\/]/g,""));
+			//             break;
+			// 		default :
+			// 			break;
+			// 	}
+			// }
+
+			// var Shuru=$('.shuru');
+			// forbidenInput(Shuru,3)
+			// if(forbidenInput(Shuru,4)){
+			// 	console.log("真")
+			// }else{
+			// 	console.log("假")
+			// }
+
+
+
+		// function calcCharacterSize(str){
+		//     if(typeof str != "string"){
+		//         return;
+		//     } 
+		//     var len = 0;
+		//     for (var i=0; i<str.length; i++) {
+		//         if (str.charCodeAt(i)>127 || str.charCodeAt(i)==94) {
+		//             len += 2;
+		//         } else {
+		//             len ++;
+		//         }
+		//     }
+		//     console.log(len)
+		//     return len;
+		// }
+		// var kk="123sdad还好";
+
+		// calcCharacterSize(kk)
+
+
+  //    function checkPhoneNum(str){
+
+		// 	if( !str ){
+		// 		return;
+		// 	}
+		// 	var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+		// 	return reg.test(str);
+
+		// }
+
+		// var phone="171111";
+		// checkPhoneNum(phone)
+
+  //       if(checkPhoneNum(phone)){
+  //         console.log("正确")
+  //       }else{
+  //       	console.log("不正确")
+  //       }
+
+
+
+         function ajaxAction(options){
+
+		    var defalutOptions = {
+		        url : "",
+		        method : "get",
+		        data : null,
+		        successCallback : null,
+		        failCallback : null
+		    };
+		    options = $.extend({}, defalutOptions, options);
+		    console.log(options);
+		    $.ajax({
+		        url : options.url,
+		        data : options.data,
+		        method : options.method,
+		        success : function(res){
+		            options.successCallback && options.successCallback(res);
+
+		        },
+		        fail : function(res){
+		            options.failCallback && options.failCallback(res);
+		        }
+		    });
+		}
+
+
+
+
+
+
+
+
+   //        function cutStr(str, start, end){
+
+			// 	if( !str ){
+			// 		return;
+			// 	}
+			// 	start = start || 0;
+			// 	end = end || str.length;
+			// 	str.slice(start, end);
+			// 	return str.slice(start, end);
+			// }
+
+			// var zifu="abcdefghigkl";
+			// cutStr(zifu,2,4);
+   //          console.log(cutStr(zifu,2,4))
+
+
+
+		})
+
+	</script>
+</body>
+</html>

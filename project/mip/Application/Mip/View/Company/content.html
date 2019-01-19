@@ -1,0 +1,25 @@
+<div class="company_box">
+    <div class="company_img">
+        <div class="company_size">
+            <mip-img src="{$info.user.logo|default='http://staticqn.qizuang.com/Public/default/images/default_logo.png'}" alt="{$info.user.qc}"></mip-img>
+        </div>
+    </div>
+    <div class="company_title">
+        <h4>{$info.user.qc} <em><mip-img src="/assets/mobile/companyhome/img/v.jpg" alt=""></mip-img></em></h4>
+        <p>
+            <em> <mip-img src="/assets/mobile/companyhome/img/xian.jpg" alt=""></mip-img></em>
+            {$info.user.kouhao|default="为你打造更好的生活 !"}            <em> <mip-img src="/assets/mobile/companyhome/img/xian.jpg" alt=""></mip-img></em>
+        </p>
+    </div>
+    <div class="company_img2">
+        <mip-img src="/assets/mobile/companyhome/img/t1.jpg" alt=""></mip-img>
+    </div>
+</div>
+<div class="tab-title">
+    <ul>
+        <li class="{$nav_home}"><a href="{$global_basehost}/{$cityInfo.bm}/company_home/{$info.user.id}">首页</a></li>
+        <li class="{$navCases}"><a href="{$global_basehost}/{$cityInfo.bm}/company_case/{$info.user.id}">装修案例</a></li>
+        <li class="{$navTeam}"><a href="{$global_basehost}/{$cityInfo.bm}/company_team/{$info.user.id}">设计团队</a></li>
+        <li class="{$nav_message}"><a href="{$global_basehost}/{$cityInfo.bm}/company_message/{$info.user.id}">业主牛评</a></li>
+    </ul>
+</div>

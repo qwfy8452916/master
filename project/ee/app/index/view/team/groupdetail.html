@@ -1,0 +1,82 @@
+{extend name="common:basic" /}
+{block name="title"}
+    施工组管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/groupdetail.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<div class="titlewaik">施工组管理/施工组详情</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="add-waik">
+        <span class="classification">基本信息</span>
+    </div>
+    <div class="tabwaik">
+        <div class="hangwk">
+            <div class="hangitem">
+                <span class="hangitem-title01">施工组：</span><span
+                    class="hangitem-title02">{$list.group_name|default=''}</span>
+            </div>
+            <div class="hangitem contact">
+                <span class="hangitem-title01">联系电话：</span><span
+                    class="hangitem-title02">{$list.contact_tel|default=''}</span>
+            </div>
+            <div class="hangitem">
+                <span class="hangitem-title01">微信号：</span><span
+                    class="hangitem-title02">{$list.contact_wx|default=''}</span>
+            </div>
+        </div>
+        <div class="hangwk">
+            <div class="hangitem">
+                <span class="hangitem-title01">项目经理：</span><span class="hangitem-title02">{$list.contact_mame|default=''}</span>
+            </div>
+            <div class="hangitem contact">
+                <span class="hangitem-title01">最近登录：</span><span class="hangitem-title02">{if (isset($list.login.time) && !empty($list.login.time))}{:date('Y-m-d H:i:s',$list.login.time)}{/if}</span>
+            </div>
+        </div>
+        <div class="hangwk">
+            <div class="hangitem">
+                <span class="hangitem-title01">登录账号：</span><span
+                    class="hangitem-title02">{$list.account|default=''}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="p-panel">
+    <div class="add-waik">
+        <span class="classification">施工人员({:count($list.work_users)})</span>
+    </div>
+    <table class="p-suppliertab topjvli">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>工种</th>
+            <th>手机号</th>
+            <th>微信号</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name='list.work_users' id='v'}
+        <tr>
+            <td>{$v.name}</td>
+            <td>{$v.worktype_name}</td>
+            <td>{$v.tel}</td>
+            <td>{$v.wx_num}</td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+</div>
+<div class="footwk">
+    <span class="p-btn b-fr p-primary cancelbtn">返回</span>
+</div>
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Private/groupdetail.js?v={:config('STATIC_VERSION')}"></script>
+
+{/block}

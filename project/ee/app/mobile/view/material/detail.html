@@ -1,0 +1,28 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+    <header class="sim-table public-header">
+        <div><a href="/material/index" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a></div>
+        <div>材料详情</div>
+        <div></div>
+    </header>
+    <div class="material-detail-container bg-c4">
+        {volist name="list" id="vo"}
+            <div class="items">
+                <p class="infos">材料名称：{$vo.name|default=''}</p>
+                <p class="infos">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：{$vo.amount|default=''}</p>
+                <p class="infos">单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：{$vo.price|default=''}元</p>
+                <p class="infos">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：{$vo.amount*$vo.price}元</p>
+                <p class="infos">采购时间：{$vo.buy_time|default=''}</p>
+                <p class="infos">送货时间：{$vo.send_time|default=''}</p>
+            </div>
+        {/volist}
+
+    </div>
+{/block}
+{block name='script'}
+
+{/block}

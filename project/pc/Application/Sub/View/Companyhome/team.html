@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/company_team/{$userInfo.user.id}" />
+<title>{$keys.title}-{$title}</title>
+<meta name="keywords" content="{$keys.keywords}" />
+<meta name="description" content="{$keys.description}" />
+<link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_team/{$userInfo.user.id}/" rel="canonical" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-pub.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-designer.css?v={:C('STATIC_VERSION')}" />
+<include file="Companyhome:headerbar" />
+
+<div class="c-wrap">
+    <div class="c-bread">
+        <a href="/">{$cityinfo.name}装修</a> >
+        <a href="/company/">{$cityinfo.name}装修公司</a> >
+        <a href="/company_home/{$userInfo.user.id}/"  title="{$userInfo.user.qc}">公司详情</a> >
+        <span>设计师</span>
+    </div>
+    <div class="c-long-zb">
+        <p class="form">
+            <span>免费获取4份户型设计与报价方案</span>
+            <input type="text" name="name" placeholder="请填写您的姓名">
+            <input type="tel" name="tel" placeholder="请填写您的手机号" maxlength="11">
+            <input type="hidden" name="fb_type" value="sheji">
+            <button class="sjbjbtn">立即申请</button>
+        </p>
+        <p class="bottom-tip">极速获取，已有{:releaseCount("fbrs")}人成功申请</p>
+    </div>
+
+    <!--S 设计师列表-->
+    <div class="c-designer-info">
+        <div class="c-designer-info-tit">全部团体成员</div>
+        <ul>
+            <if condition="$userInfo['team']">
+            <volist name="userInfo.team" id="vo">
+            <li>
+                <div class="c-designer-info-img">
+                    <a href="/blog/{$vo.id}/">设计方案<em>{$vo.case_counts}</em></a>
+                    <if condition="$vo['logo'] NEQ ''">
+                        <img src="{$vo.logo}">
+                    <else/>
+                        <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}">
+                    </if>
+                </div>
+                <a href="/blog/{$vo.id}/" target="_blank">{$vo.name}</a>
+                <if condition="$vo['zw'] NEQ ''">{$vo.zw}<else/>设计师</if>
+            </li>
+            </volist>
+            <else/>
+            </if>
+        </ul>
+    </div>
+    <!--E 设计师列表-->
+
+    <!--S 分页-->
+    <div class="pagebox">
+    {$userInfo.page}
+    </div>
+    <!--E 分页-->
+</div>
+<include file="footerbar" />
+<include file="Index:footer" />
+</body>
+</html>

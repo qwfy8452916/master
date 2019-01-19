@@ -1,0 +1,533 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">
+        <div class="m-header-city"><a href="{$global_basehost}/city/">全国<i class="fa fa-sort-desc"></i></a></div>
+   </div>
+</block>
+<block name="link">
+    <link rel="canonical" href="http://m.qizuaung.com"/>
+    <link rel="stylesheet" href="{$static_host}/assets/index/css/css.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="content">
+    <mip-carousel
+        autoplay
+        defer="2000"
+        layout="responsive"
+        width="600"
+        height="260"
+        indicatorId="mip-carousel-example">
+        <volist name="info.lunbo" id="vo">
+            <a data-type="mip" href="{$vo.url}">
+                <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url}-w1210c2.jpg" alt="{$vo.title}"></mip-img>
+            </a>
+        </volist>
+    </mip-carousel>
+    <div class="mip-carousel-indicator-wrapper">
+        <div class="mip-carousel-indicatorDot" id="mip-carousel-example">
+            <div class="mip-carousel-activeitem mip-carousel-indecator-item"></div>
+            <?php for($i=0; $i<$lunboCount-1; $i++){ ?>
+                <div class="mip-carousel-indecator-item"></div>
+            <?php } ?>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="home-nav">
+            <ul>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/baojia?src=mip">
+                        <mip-img src="/assets/index/images/nav_zxbj.png"></mip-img>
+                        装修报价
+                    </a>
+                    <span>
+                        <mip-img src="/assets/index/images/hot.gif"></mip-img>
+                    </span>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sheji?src=mip">
+                        <mip-img src="/assets/index/images/nav_hxsj.png"></mip-img>
+                        户型设计
+                    </a>
+                    <span>
+                        <mip-img src="/assets/index/images/free.gif"></mip-img>
+                    </span>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_basehost}/meitu">
+                        <mip-img src="/assets/index/images/nav_xgt.png"></mip-img>
+                        装修效果图
+                    </a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_basehost}/gonglue/">
+                        <mip-img src="/assets/index/images/nav_zxgl.png"></mip-img>
+                        装修攻略
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="home-nav-bottom">
+            <li>
+                <a data-type="mip" href="http://mip.qizuang.com/video/">
+                    <div class="nav_bottom_content">
+                        <div class="nav_title">装修视频</div>
+                        <div class="nav_detial">视频轻松学装修</div>
+                   </div>
+                </a>
+            </li>
+            <li>
+                <a data-type="mip" href="http://mip.qizuang.com/xgt/">
+                    <div class="nav_bottom_content">
+                        <div class="nav_title">装修案例</div>
+                        <div class="nav_detial">真实的装修参考</div>
+                   </div>
+                </a>
+            </li>
+            <li>
+                <a data-type="mip" href="{$global_yuming_m}/hl/">
+                    <div class="nav_bottom_content">
+                        <div class="nav_title">开工吉日</div>
+                        <div class="nav_detial">趣味测算吉日</div>
+                   </div>
+                </a>
+            </li>
+            <li>
+                <a data-type="mip" href="http://mip.qizuang.com/activity/">
+                    <div class="nav_bottom_content">
+                        <div class="nav_title">活动专题</div>
+                        <div class="nav_detial">精彩活动不停</div>
+                   </div>
+                </a>
+            </li>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="link-banner">
+            <a data-type="mip" href="{$global_yuming_m}/sheji?src=mip">
+                <mip-img src="/assets/index/images/sheji.jpg"></mip-img>
+            </a>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="home-sec">
+            <div class="home-sec-title">
+                <h2 class="pull-left">装修效果图</h2>
+                <a data-type="mip" href="http://mip.qizuang.com/meitu/" class="more pull-right">更多 ></a>
+            </div>
+        </div>
+        <div class="zxxgt">
+            <mip-vd-tabs>
+                <section>
+                    <li>大户型</li>
+                    <li>小户型</li>
+                    <li>复式楼</li>
+                    <li>别墅</li>
+                </section>
+                <div class="tab-content">
+                    <mip-vd-tabs allow-scroll>
+                        <section>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f12h7c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fkb643Zl1fmajMyYdr4WFb3_S00z"></mip-img>
+                                    <div class="img_detail">简约风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f13h7c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fl8y8UvKMOobrvCLtoJ4kl5YjS-1"></mip-img>
+                                    <div class="img_detail">田园风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f4h7c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fl1U-keP1HwM3wnCzZ-c_fuLsPxi"></mip-img>
+                                    <div class="img_detail">中式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f8h7c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fru1gVeTndfrqT-DjQM6qloRwCFb"></mip-img>
+                                    <div class="img_detail">欧式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f7h7c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FjXLELSAU6n6KlRuBzgu13oD6ADo"></mip-img>
+                                    <div class="img_detail">美式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f17h7c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FmpJZF63Zr4FS3G1-4SkhMavauAU"></mip-img>
+                                    <div class="img_detail">混搭风格</div>
+                                </a>
+                            </li>
+                    </mip-vd-tabs>
+                </div>
+                <div class="tab-content">
+                    <mip-vd-tabs allow-scroll>
+                        <section>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f12h10c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Flt74McbSv-noQKcfyOQYZK-VggO"></mip-img>
+                                    <div class="img_detail">简约风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f13h10c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FstFjSputBFz6iCpDS4pxh8K7nIY"></mip-img>
+                                    <div class="img_detail">田园风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f4h10c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FjMdmyEnv3rFKKQLhhtHx5htIrDl"></mip-img>
+                                    <div class="img_detail">中式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f8h10c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fh998GSRhHiTcQP2yrT5BpWfwWtg"></mip-img>
+                                    <div class="img_detail">欧式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f7h10c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Flor30npndT8MFTBIVUlIoYIlxxM"></mip-img>
+                                    <div class="img_detail">美式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f17h10c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FlYbMxGh-XwxIQ3y8SABZiLFW0ud"></mip-img>
+                                    <div class="img_detail">混搭风格</div>
+                                </a>
+                            </li>
+                    </mip-vd-tabs>
+                </div>
+                <div class="tab-content">
+                    <mip-vd-tabs allow-scroll>
+                        <section>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f12h9c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fo4llkgII7IpkIruFn08pPScEICw"></mip-img>
+                                    <div class="img_detail">简约风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f13h9c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FgeHIW27AVBk7DfIF8kkxb22ii6f"></mip-img>
+                                    <div class="img_detail">田园风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f4h9c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FpAu1ektPTHHM_kJcJY-vQtI2B3Z"></mip-img>
+                                    <div class="img_detail">中式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f8h9c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fg0lQuGvMZWj_B8-6fYboe8L9EYL"></mip-img>
+                                    <div class="img_detail">欧式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f7h9c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FvzO9fDZN5SdQNSCiDbHlU1ATjKh"></mip-img>
+                                    <div class="img_detail">美式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f17h9c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fu7UfwJ2xyWSkGpyJdBr0aumI1tn"></mip-img>
+                                    <div class="img_detail">混搭风格</div>
+                                </a>
+                            </li>
+                    </mip-vd-tabs>
+                </div>
+                <div class="tab-content">
+                    <mip-vd-tabs allow-scroll>
+                        <section>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f12h8c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fl7iKEiefgZb0gtLOYSp_6iXX1M3"></mip-img>
+                                    <div class="img_detail">简约风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f13h8c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FsLObPb5W_2R6vLmkR-e-ctOyFxi"></mip-img>
+                                    <div class="img_detail">田园风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f4h8c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FpjGQgGSNRFaxa0HU5Yt5og_6t3m"></mip-img>
+                                    <div class="img_detail">中式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f8h8c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fux28LPGFQS3nH0U1Rwtng_hWUBt"></mip-img>
+                                    <div class="img_detail">欧式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f7h8c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/Fim68x1W3j-wSUY24im1qcgG3io9"></mip-img>
+                                    <div class="img_detail">美式风格</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="http://mip.qizuang.com/meitu/list-l0f17h8c0">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/20171108/FllbR-n6S1pMLt9W-RkmCY7QSNh0"></mip-img>
+                                    <div class="img_detail">混搭风格</div>
+                                </a>
+                            </li>
+                    </mip-vd-tabs>
+                </div>
+            </mip-vd-tabs>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="home-sec">
+            <div class="home-sec-title">
+                <h2 class="pull-left">学装修</h2>
+                <!--<a data-type="mip" href="" class="more pull-right">更多 ></a>-->
+            </div>
+        </div>
+        <div class="zxxgt">
+            <mip-vd-tabs>
+                <section>
+                    <li>装修视频</li>
+                    <li>装修攻略</li>
+                    <li>装修百科</li>
+                </section>
+                <div class="study_content">
+                    <ul class="study_content_baike">
+                        <li>
+                            <a data-type="mip" href="{$global_yuming_m}/video/jubu/">
+                                <div class="baike_img"><div class="mask-start"><i class="fa fa-play"></i></div><mip-img src="/assets/index/images/video_jubu.jpg" alt="局部装修"></mip-img></div>
+                                <div class="baike_content">
+                                    <div class="baike_title">局部装修</div>
+                                    <div class="baike_detail">
+                                        准备工作做的好，将来不会有烦恼
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-type="mip" href="{$global_yuming_m}/video/daogou/">
+                                <div class="baike_img"><div class="mask-start"><i class="fa fa-play"></i></div><mip-img src="/assets/index/images/video_saomang.jpg" alt="装修扫盲"></mip-img></div>
+                                <div class="baike_content">
+                                    <div class="baike_title">装修扫盲</div>
+                                    <div class="baike_detail">
+                                        放坑小知识，助你快乐装新家
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-type="mip" href="{$global_yuming_m}/video/xuancai/">
+                                <div class="baike_img"><div class="mask-start"><i class="fa fa-play"></i></div><mip-img src="/assets/index/images/video_xuancai.jpg" alt="选材导购"></mip-img></div>
+                                <div class="baike_content">
+                                    <div class="baike_title">选材导购</div>
+                                    <div class="baike_detail">
+                                        验房软装，教你轻松搞定
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <a data-type="mip" href="{$global_yuming_m}/video/" class="seeMore">查看更多&gt;</a>
+                </div>
+
+                <!--装修攻略-->
+                <div class="study_content">
+                    <ul class="study_content_baike">
+                        <volist name="info.article" id="vi">
+                            <li>
+                                <a data-type="mip" href="{$global_basehost}/gonglue/{$vi.shortname}/{$vi.id}.html">
+                                    <div class="baike_img">
+                                        <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vi.face}" alt="{$vi.title}"></mip-img>
+                                    </div>
+                                    <div class="baike_content">
+                                        <div class="baike_title">{$vi.title}</div>
+                                        <div class="baike_detail">{$vi.subtitle}</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </volist>
+                    </ul>
+                    <a data-type="mip" href="{$global_basehost}/gonglue/" class="seeMore">查看更多&gt;</a>
+                </div>
+
+                <!--装修百科-->
+                <div class="study_content">
+                    <ul class="study_content_baike">
+                        <volist name="info.baike" id="vi">
+                            <li>
+                                <a data-type="mip" href="{$global_basehost}/baike/{$vi.id}.html">
+                                    <div class="baike_img">
+                                        <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vi.thumb}" alt="{$vi.title}"></mip-img>
+                                    </div>
+                                    <div class="baike_content">
+                                        <div class="baike_title">{$vi.title}</div>
+                                        <div class="baike_detail">
+                                            {$vi.description}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </volist>
+                    </ul>
+                    <a data-type="mip" href="{$global_basehost}/baike/" class="seeMore">查看更多&gt;</a>
+                </div>
+            </mip-vd-tabs>
+        </div>
+    </div>
+
+    <!--学装修-->
+    <div class="white_bg">
+        <div class="home-sec">
+            <div class="home-sec-title">
+                <h2 class="pull-left">学经验</h2>
+                <!--<a data-type="mip" href="" class="more pull-right">更多 ></a>-->
+            </div>
+        </div>
+        <div class="zxxgt">
+            <mip-vd-tabs>
+                <section>
+                    <li>装修流程</li>
+                    <li>装修日记</li>
+                    <li>装修问答</li>
+                </section>
+                <!--装修流程-->
+                <div class="study_content">
+                    <div class="study_content">
+                        <ul class="study_content_zxlc">
+                            <li>
+                                <a data-type="mip" href="{$global_basehost}/gonglue/shoufang/">
+                                    <div class="zxlc_fl">装修前</div>
+                                </a>
+                                <a data-type="mip" href="{$global_basehost}/gonglue/{$info.jingyan.lc.1.shortname}/{$info.jingyan.lc.1.id}.html">
+                                    <div class="zxlc_title">{$info.jingyan.lc.1.title}</div>
+                                    <div class="zxlc_content">{$info.jingyan.lc.1.subtitle}</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="{$global_basehost}/gonglue/chagai/">
+                                    <div class="zxlc_fl">装修中</div>
+                                </a>
+                                <a data-type="mip" href="{$global_basehost}/gonglue/{$info.jingyan.lc.2.shortname}/{$info.jingyan.lc.2.id}.html">
+                                    <div class="zxlc_title">{$info.jingyan.lc.2.title}</div>
+                                    <div class="zxlc_content">{$info.jingyan.lc.2.subtitle}</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-type="mip" href="{$global_basehost}/gonglue/jianche/">
+                                    <div class="zxlc_fl">装修后</div>
+                                </a>
+                                <a data-type="mip" href="{$global_basehost}/gonglue/{$info.jingyan.lc.3.shortname}/{$info.jingyan.lc.3.id}.html">
+                                    <div class="zxlc_title">{$info.jingyan.lc.3.title}</div>
+                                    <div class="zxlc_content">{$info.jingyan.lc.3.subtitle}</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a data-type="mip" href="{$global_basehost}/gonglue/lc/" class="seeMore">查看更多&gt;</a>
+                </div>
+
+                <!--装修日记-->
+                <div class="study_content">
+                    <ul class="study_content_zxrj">
+                        <volist name="info.jingyan.riji" id="vi">
+                            <li>
+                                <div class="zxrj_tx">
+                                    <mip-img src="{$vi.user_logo}" class="tx_img"></mip-img><span>{$vi.user_name}</span>
+                                </div>
+                                <a data-type="mip" href="{$global_basehost}/riji/d{$vi.id}.html">
+                                    <div class="baike_title">{$vi.title}</div>
+                                </a>
+                                <div class="zxrj_content">
+                                    <div class="pull-left">{:date('Y-m-d', $vi['diary_time'])}</div>
+                                    <div class="pull-right"><i class="fa fa-commenting"></i>&nbsp;<span>{$vi.reply_count}</span></div>
+                                    <div class="pull-right"><i class="fa fa-eye"></i>&nbsp;<span>{$vi.page_view}</span></div>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                    <a data-type="mip" href="{$global_basehost}/riji/" class="seeMore">查看更多&gt;</a>
+                </div>
+
+                <!--装修问答-->
+                <div class="study_content">
+                    <ul class="study_content_zxrj">
+                        <volist name="info.jingyan.wenda" id="vi">
+                            <li>
+                                <div class="zxrj_tx">
+                                    <mip-img src="{$vi.user_logo}" class="tx_img"></mip-img><span>{$vi.user_name}</span>
+                                </div>
+                                <a data-type="mip" href="http://mip.qizuang.com/wenda/x{$vi.id}.html">
+                                    <div class="baike_title">{$vi.title}</div>
+                                </a>
+                                <div class="zxrj_content">
+                                    <div class="pull-left">{:date('Y-m-d', $vi['post_time'])}</div>
+                                    <div class="pull-right"> |&nbsp;&nbsp;<span class="red-color">{$vi.anwsers}</span>人回答</div>
+                                    <div class="pull-right"><span class="red-color">{$vi.sub_category_name}</span></div>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                    <a data-type="mip" href="{$global_basehost}/wenda/" class="seeMore">查看更多&gt;</a>
+                </div>
+            </mip-vd-tabs>
+        </div>
+    </div>
+    <div class="white_bg zxgs">
+        <div class="home-sec">
+            <div class="home-sec-title">
+                <h2 class="pull-left">找装修公司</h2>
+                <a data-type="mip" href="{$global_basehost}/company/" class="more pull-right">更多 ></a>
+            </div>
+            <mip-vd-tabs allow-scroll>
+                <section class="company_box_list">
+                    <volist name="info.company" id="vi">
+                        <li>
+                            <a data-type="mip" href="http://mip.qizuang.com/{$vi.bm}/company_home/{$vi.id}">
+                                <div class="company_zp">
+                                    <mip-img src="/assets/mobile/sub/img/bg_xgt.jpg"></mip-img>
+                                </div>
+                                <div class="company_logo">
+                                    <mip-img src="{$vi.logo}" alt="{$vi.jc}"></mip-img>
+                                </div>
+                                <div class="company_info">
+                                    <div class="company_name">{$vi.jc}</div>
+                                    <div class="company_star">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="company_pl">{$vi.comment_count}条评论</div>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </section>
+            </mip-vd-tabs>
+        </div>
+    </div>
+    <div class="white_bg">
+        <div class="link-banner">
+            <a data-type="mip" href="{$global_yuming_m}/baojia?src=mip">
+                <mip-img src="{$global_yuming_m}/assets/mobile/baojia/img/baojia-banner.jpg" ></mip-img>
+            </a>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+</block>

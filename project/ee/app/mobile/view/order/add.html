@@ -1,0 +1,184 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+
+<header class="sim-table public-header">
+    <div><a href="http://{:config('m_host')}/order" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a></div>
+    <div>添加</div>
+    <div><span class="orange pr1" data-name="save">保存</span></div>
+</header>
+<div class="forder-add-container bg-c4">
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">业主姓名</div>
+            <div class="second"><input type="text" placeholder="请输入" maxlength="10" data-name="householder"></div>
+            <div class="third"></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">手机号</div>
+            <div class="second"><input type="number" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入" data-name="phone"></div>
+            <div class="third"></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">微信号</div>
+            <div class="second"><input type="text" placeholder="请输入" oninput="if(value.length>20)value=value.slice(0,20)" data-name="wechat"></div>
+            <div class="third"></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">户型</div>
+            <div class="second">
+                <input type="hidden" id="layout_data" value="{$house_type|json_encode}">
+                <input type="text" placeholder="请选择" readonly data-name="layout">
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">面积</div>
+            <div class="second"><input type="text" placeholder="请输入" data-name="area"></div>
+            <div class="third">m²</div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">小区</div>
+            <div class="second">
+                <textarea placeholder="请输入" oninput="if(value.length>20)value=value.slice(0,20)" data-name="housing-estate"></textarea>
+            </div>
+            <div class="third"></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">装修地址</div>
+            <div class="second">
+                <textarea placeholder="请输入" oninput="if(value.length>30)value=value.slice(0,30)" data-name="house-address"></textarea>
+            </div>
+            <div class="third"></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">现联系地址</div>
+            <div class="second">
+                <div style="padding: 0.2rem 0;">
+                <textarea placeholder="请输入" oninput="if(value.length>30)value=value.slice(0,30)" data-name="contact-address"></textarea>
+                </div>
+            </div>
+            <div class="third"></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">订单状态</div>
+            <div class="second">
+                <input type="text" placeholder="请选择" data-name="order-status" readonly>
+
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div>
+
+    <div class="items hide-status">
+        <div class="sim-table public-s1">
+            <div class="first">预约量房时间</div>
+            <div class="second">
+                <input type="text" placeholder="请选择" data-name="ordertime" id="yuyue">
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div>
+    <div class="items hide-status">
+        <div class="sim-table public-s1">
+            <div class="first">实际量房时间</div>
+            <div class="second">
+                <input type="text" placeholder="请选择" data-name="realtime" id="shiji">
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div>
+
+    <div class="items hide-status">
+        <div class="sim-table public-s1">
+            <div class="first">签单金额</div>
+            <div class="second">
+                <input type="text" placeholder="请输入" data-name="qiandan_jine">
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div>
+    <!--施工状态暂时去除-->
+    <!--<div class="items">-->
+        <!--<div class="sim-table public-s1">-->
+            <!--<div class="first">施工状态</div>-->
+            <!--<div class="second">-->
+                <!--<input type="text" placeholder="请选择" data-name="build-status" readonly>-->
+            <!--</div>-->
+            <!--<div class="third"><i class="iconfont icon-angle-right"></i></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">接待客服</div>
+            <div class="second">
+                <input type="text" placeholder="请选择" data-name="servicer" readonly>
+                <input type="hidden" id="servicer_data" value="{$reception|json_encode}">
+
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div>
+    <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">设计师</div>
+            <div class="second">
+                <input type="hidden" id="designer_data" value="{$designer|json_encode}">
+                <input type="text" placeholder="请选择" data-name="designer" readonly>
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div>
+    <!-- <div class="items">
+        <div class="sim-table public-s1">
+            <div class="first">项目经理</div>
+            <div class="second">
+                <input type="text" placeholder="请选择" data-name="manager" readonly>
+                <input type="hidden" id="manager_data" value="{$project_manager|json_encode}">
+            </div>
+            <div class="third"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+    </div> -->
+    <!--<div class="items">-->
+        <!--<div class="sim-table public-s1">-->
+            <!--<div class="first">施工组</div>-->
+            <!--<div class="second">-->
+                <!--<input type="text" placeholder="请选择" data-name="group" readonly>-->
+                <!--<input type="hidden" id="group_value" value="">-->
+            <!--</div>-->
+            <!--<div class="third"><i class="iconfont icon-angle-right"></i></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="items" style="border:none;">
+        <div class="sim-table public-s1">
+            <div class="first">跟单详情</div>
+            <div class="second"></div>
+            <div class="third"></div>
+        </div>
+    </div>
+    <textarea placeholder="请输入跟单内容, 字数不超过100字" maxlength="100" data-name="remark" style="width:100%; height:5rem;" ></textarea>
+</div>
+
+{/block}
+{block name='script'}
+<script src="/assets/mobile/order/js/add.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

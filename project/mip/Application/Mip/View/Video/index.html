@@ -1,0 +1,73 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修视频</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/video/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <div class="type_box">
+        <div id="parent_list">
+            <ul>
+                <volist name="allCategory" id="vi">
+                    <eq name="vi.char" value="$bigCategory['char']">
+                        <li class="active">
+                            <a data-type='mip' href="{$global_basehost}/video/{$vi.char}/" class="active">{$vi.name}</a>
+                            <div class="under_line"></div>
+                        </li>
+                    <else />
+                        <li>
+                            <a data-type='mip' href="{$global_basehost}/video/{$vi.char}/" >{$vi.name}</a>
+                            <div class="under_line"></div>
+                        </li>
+                    </eq>
+                </volist>
+            </ul>
+        </div>
+
+        <div id="children_list">
+            <div id="wrapper">
+                <ul id="paren_width">
+                    <volist name="bigCategory.children" id="vi">
+                        <eq name="vi.char" value="$subCategory['char']">
+                            <li>
+                                <a data-type='mip' href="{$global_basehost}/video/{$vi.char}/" class="active">{$vi.name}</a>
+                            </li>
+                        <else />
+                            <li>
+                                <a data-type='mip' href="{$global_basehost}/video/{$vi.char}/">{$vi.name}</a>
+                            </li>
+                        </eq>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   <div id="video_box">
+       <ul class="wrapul">
+           <volist name="info.info" id="vo">
+               <li class="zxfgjj">
+                   <a data-type="mip" href="{$global_basehost}/video/v{$vo.id}.html">
+                       <div class="img_box">
+                           <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.cover_img}-w400.jpg" alt="{$vo.title}"></mip-img>
+                           <div class="video_kg"><mip-img src="/assets/video/images/playanniu.png" alt=""></mip-img></div>
+                           <span class="qishutime">{$vo.time|date="Y-m-d",###}期</span>
+                       </div>
+                       <p class="video_name">
+                           {$vo.title}
+                       </p>
+                       <p class="video_author">
+                           本期讲师:{$vo.author}
+                       </p>
+                   </a>
+               </li>
+           </volist>
+       </ul>
+    </div>
+    {$info.page}
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+</block>

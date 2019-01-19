@@ -1,0 +1,94 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修资讯</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/zixun/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$global_yuming_m}{$canonical}">
+</block>
+<block name="content">
+    <div class="zx-ask-nav under-line">
+        <mip-vd-tabs allow-scroll >
+            <section class="diary-menu">
+                <li class="{$bendi}"><a data-type="mip" href="{$global_basehost}/{$cityInfo.bm}/zxinfo/bendi/">本地资讯</a><span></span></li>
+                <li class="{$jingyan}"><a data-type="mip" href="{$global_basehost}/{$cityInfo.bm}/zxinfo/jingyan/">装修经验</a><span></span></li>
+                <li class="{$daogou}"><a data-type="mip" href="{$global_basehost}/{$cityInfo.bm}/zxinfo/daogou/">建材导购</a><span></span></li>
+                <li class="{$gongsi}"><a data-type="mip" href="{$global_basehost}/{$cityInfo.bm}/zxinfo/gongsi/">装修公司资讯</a><span></span></li>
+                <li class="{$baojia}"><a data-type="mip" href="{$global_basehost}/{$cityInfo.bm}/zxinfo/baojia/">装修报价</a><span></span></li>
+                <li class="{$xuetang}"><a data-type="mip" href="{$global_basehost}/{$cityInfo.bm}/zxinfo/xuetang/">装修学堂</a><span></span></li>
+                <li class="{$wenwen}"><a data-type="mip" href="{$global_basehost}/{$cityInfo.bm}/zxinfo/wenwen/">装修问问</a><span></span></li>
+            </section>
+        </mip-vd-tabs>
+    </div>
+    <div class="zhuyaonr">
+        <ul class="nrul">
+            <volist name="info.list" id="vo">
+                <a data-type="mip" href="http://mip.{:C('QZ_YUMING')}/{$cityInfo.bm}/zxinfo/{$vo.id}.html">
+                    <li>
+                        <if condition="$vo['img'] NEQ '' ">
+                            <volist name="vo.img" id="v">
+                                <a data-type="mip" href="http://mip.{:C('QZ_YUMING')}/{$cityInfo.bm}/zxinfo/{$vo.id}.html">
+                                    <mip-img alt="{$vo.title}" src="{$v}"></mip-img>
+                                </a>
+                            </volist>
+                        <else/>
+                            <if condition="$vo['face'] NEQ ''">
+                                <a data-type="mip" href="http://mip.{:C('QZ_YUMING')}/{$cityInfo.bm}/zxinfo/{$vo.id}.html">
+                                    <if condition="$vo['img_host'] EQ 'qiniu'">
+                                        <mip-img alt="{$vo.title}" src="{$vo.face}"></mip-img>
+                                    <else/>
+                                        <mip-img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.face}"></mip-img>
+                                    </if>
+                                </a>
+                            </if>
+                        </if>
+                        <div class="tuwenjs">
+                            <div class="titlebt"><a href="http://mip.{:C('QZ_YUMING')}/{$cityInfo.bm}/zxinfo/{$vo.id}.html">{$vo.title}</a></div>
+                            <div class="jieshao">{$vo.description}</div>
+                            <div class="yued"><span class="eyeyj"></span><span class="yued_sl">{$vo.pv}</span></div>
+                        </div>
+                    </li>
+                </a>
+            </volist>
+
+        </ul>
+        <div class="page-box">
+            <div class="page-box-container">
+                <div id="prev-page">
+                    <present name="info.prevUrl">
+                        <a data-type="mip" href="{$info.prevUrl}">上一页</a>
+                        <else />
+                        <span>上一页</span>
+                    </present>
+                </div>
+                <div id="page-count" on="tap:tab-5.toggle">
+                    <span class="dangqianye">{$info.page}</span>/<span>{$info.pageCount}</span>
+                </div>
+                <div id="next-page" class="red-active">
+                <present name="info.nextUrl">
+                    <a data-type="mip" href="{$info.nextUrl}">下一页</a>
+                    <else />
+                    <span data-type="mip">下一页</span>
+                </present>
+                </div>
+            </div>
+        </div>
+        <include file="Common:freeDesign"/>
+    </div>
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+            "appid": "1575859058891466",
+            "title": "{$head.title}",
+            "images": [],
+            "pubDate": ""
+        }
+    </script>
+</block>

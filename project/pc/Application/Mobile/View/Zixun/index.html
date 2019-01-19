@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <link href="http://{:C('QZ_YUMINGWWW')}/gonglue/" rel="canonical" />
+    <title>{$keys.title}{$title}</title>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/mobile/index/css/index.css?v={:C('STATIC_VERSION')}">
+</head>
+
+<body>
+    <include file="SubIndex:header" />
+    <div class="banxin">
+        <div class="white-box mar-t20">
+            <div class="gl-tit">
+                <h1 class="fl-l">装修流程</h1><span class="fl-r">为您准备2000多篇装修流程知识</span>
+            </div>
+            <div class="big-img">
+                 <a href="/gonglue/{$info['steps'][0]['shortname']}/{$info['steps'][0]['id']}.html">
+                  <img alt="{$info['steps'][0]['title']}" src="http://{:C('QINIU_DOMAIN')}/{$info['steps'][0]['face']}-w240.jpg">
+                </a>
+                <span>{$info["steps"][0]["title"]}</span>
+            </div>
+            <ul class="wenz-list">
+                <volist name="info.steps" id="vo" offset="1">
+                  <li>
+                      <a href="/gonglue/{$vo.shortname}/{$vo.id}.html">
+                        <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w240.jpg">
+                      <h1>{$vo.title}</h1>
+                      <p>{$vo.subtitle}</p>
+                      </a>
+                  </li>
+                </volist>
+              </ul>
+        </div>
+        <div class="white-box mar-t20">
+            <a class="more" href="http://{:C('MOBILE_DONAMES')}/gonglue/lc/">查看更多流程>></a>
+        </div>
+        <div class="white-box mar-t20">
+            <div class="gl-tit">
+                <h1 class="fl-l">局部装修</h1><span class="fl-r">为您准备2000多篇局部装修知识</span>
+            </div>
+            <div class="big-img">
+                <a href="/gonglue/{$info['jbzx'][0]['shortname']}/{$info['jbzx'][0]['id']}.html">
+                  <img alt="{$info['jbzx'][0]['title']}" src="http://{:C('QINIU_DOMAIN')}/{$info['jbzx'][0]['face']}-w240.jpg">
+                </a>
+                <span>{$info["jbzx"][0]["title"]}</span>
+            </div>
+            <ul class="wenz-list">
+                <volist name="info.jbzx" id="vo" offset="1">
+                  <li>
+                      <a href="/gonglue/{$vo.shortname}/{$vo.id}.html">
+                        <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w240.jpg">
+                      <h1>{$vo.title}</h1>
+                      <p>{$vo.subtitle}</p>
+                      </a>
+                  </li>
+                </volist>
+              </ul>
+        </div>
+        <div class="white-box mar-t20">
+            <a class="more" href="/gonglue/{$info['jbzx'][0]['secondshortname']}">查看所有局部装修知识>></a>
+        </div>
+        <div class="white-box mar-t20">
+            <div class="gl-tit">
+                <h1 class="fl-l">装修风水</h1><span class="fl-r">为您准备2000多篇局部装修知识</span>
+            </div>
+           <div class="big-img">
+                <a href="/gonglue/{$info['zxfs'][0]['shortname']}/{$info['zxfs'][0]['id']}.html">
+                  <img alt="{$info['zxfs'][0]['title']}" src="http://{:C('QINIU_DOMAIN')}/{$info['zxfs'][0]['face']}-w240.jpg">
+                </a>
+                <span>{$info["zxfs"][0]["title"]}</span>
+            </div>
+            <ul class="wenz-list">
+                <volist name="info.zxfs" id="vo" offset="1">
+                  <li>
+                      <a href="/gonglue/{$vo.shortname}/{$vo.id}.html">
+                        <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w240.jpg">
+                      <h1>{$vo.title}</h1>
+                      <p>{$vo.subtitle}</p>
+                      </a>
+                  </li>
+                </volist>
+            </ul>
+        </div>
+        <div class="white-box mar-t20">
+            <a class="more" href="/gonglue/{$info['zxfs'][0]['secondshortname']}">查看所装修风水知识>></a>
+        </div>
+        <div class="white-box mar-t20">
+            <div class="gl-tit">
+                <h1 class="fl-l">装修风格</h1><span class="fl-r">为您准备2000多篇局部装修知识</span></div>
+            <div class="big-img">
+                <a href="/gonglue/{$info['zxfg'][0]['shortname']}/{$info['zxfg'][0]['id']}.html">
+                  <img alt="{$info['zxfg'][0]['title']}" src="http://{:C('QINIU_DOMAIN')}/{$info['zxfg'][0]['face']}-w240.jpg">
+                </a>
+                <span>{$info["zxfg"][0]["title"]}</span>
+            </div>
+            <ul class="wenz-list">
+                <volist name="info.zxfg" id="vo" offset="1">
+                  <li>
+                      <a href="/gonglue/{$vo.shortname}/{$vo.id}.html">
+                        <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w240.jpg">
+                      <h1>{$vo.title}</h1>
+                      <p>{$vo.subtitle}</p>
+                      </a>
+                  </li>
+                </volist>
+              </ul>
+        </div>
+        <div class="white-box mar-t20">
+            <a class="more" href="/gonglue/{$info['zxfg'][0]['secondshortname']}">查看所装修风格知识>></a>
+        </div>
+        <div class="fastapply mar-t20">
+            <h2 class="title">不麻烦了，让齐装网给我提供装修服务</h2>
+            <div class="content">
+                <form class="secbox_form"  onsubmit="return false;">
+                <input type="text" name="name" placeholder="您的称呼">
+                <input type="number" name="tel" placeholder="联系方式">
+                <button id="btnSub" type="button">给我提供免费装修服务</button>
+                </form>
+                <input id="safecode" type="hidden" value="{$safecode}" />
+                <input id="safekey" type="hidden" value="{$safekey}" />
+            </div>
+        </div>
+        <div class="white-box mar-t20">
+            <div class="wenz-text">
+                找苏州装修公司就上苏州齐装网，为您提供苏州装修公司大全及苏州装修公司排名，免费设计！
+            </div>
+        </div>
+    </div>
+    <include file="SubIndex:footer" />
+</body>
+<script type="text/javascript">
+   $("#btnSub").click(function(event) {
+        App.pop.reset();
+        if (!App.validate.run($(".fastapply input[name=tel]").val(),"moblie")) {
+            $(".fastapply input[name=tel]").focus();
+            App.pop.run($(".fastapply input[name=tel]"),"请填写正确的手机号码");
+            return false;
+        }
+
+        $.ajax({
+            url: '/fb_order/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                cs: "000001",
+                name:$(".fastapply input[name=name]").val(),
+                tel:$(".fastapply input[name=tel]").val(),
+                source: '306',
+                safecode:$("#safecode").val(),
+                safekey: $("#safekey").val(),
+                ssid:"{$ssid}"
+            }
+        })
+        .done(function(data) {
+           $("#safecode").val(data.data.safecode);
+            $("#safekey").val(data.data.safekey);
+            if(data.status == 1){
+                $(".secbox_form")[0].reset();
+                alert("您的订单已经发布成功，齐装网客服会尽快与您联系为您推荐最适合你的装修公司");
+            }else{
+                alert(data.info);
+            }
+        })
+        .fail(function(xhr) {
+            alert("发生了未知的错误,请稍后再试！");
+        });
+    });
+</script>
+</html>

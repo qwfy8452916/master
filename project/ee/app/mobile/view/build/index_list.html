@@ -1,0 +1,40 @@
+{foreach $list as $vo}
+<div class="construct-item">
+    <div class="title">
+        <div class="l"><span>施工状态：</span>
+            {$vo.state}
+            {if $vo.times > 0}
+            （{$vo.times+1}次验收）
+            {/if}
+        </div>
+        <div class="r">
+            {switch $vo.check_state }
+            {case 1 }
+            <span class="orange">未验收</span>
+            {/case}
+            {case 2}
+            <a href="/order/build/shigongfail?build_no={$vo.id}"><span class="red" >不合格</span></a>
+            {/case}
+            {case 3}
+            <span class="green">已验收</span>
+            {/case}
+            {default /}
+            {/switch}
+        </div>
+    </div>
+    <div class="desc">{$vo.remark}</div>
+    <div class="pics">
+        {foreach $vo.build_design as $design}
+        <img src="http://{$design.img}" alt="{$design.title}" class="swiper-hook">
+        {/foreach}
+    </div>
+    <div class="action">
+        <span class="l c3">{$vo.add_time}</span>
+        {if $vo.check_state ==1}
+        <span class="r c2" data-name="del" data-build-id="{$vo.id}">删除</span>
+        {elseif $vo.check_state ==2 /}
+        <span class="r c2"><a href="http://{:config('m_host')}/build/add?order_no={$order.order_no}&build_state={$vo.order_manage->getData('build_state')}" class="red">重新上传</a></span>
+        {/if}
+    </div>
+</div>
+{/foreach}

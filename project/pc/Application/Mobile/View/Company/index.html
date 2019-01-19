@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company/" rel="canonical" />
+    <title>{$keys.title}-{$title}</title>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/mobile/index/css/index.css?v={:C('STATIC_VERSION')}">
+    <script type="text/javascript" src="{$static_host}/assets/common/js/jquery.scrollLoading-min.js?v={:C('STATIC_VERSION')}"></script>
+</head>
+
+<body>
+    <!-- header头部 -->
+    <include file="SubIndex:header" />
+    <div class="banxin">
+        <div class="white-box mar-t20">
+            <div class="comp-search">
+                <input name="keyword" type="text" placeholder="输入您想看的装修公司" value="{$info.keyword}">
+                <a class="search-btn" href="javascript:void(0)"></a>
+            </div>
+        </div>
+        <ul class="comp-list">
+            <volist name="info.companyList" id="vo">
+                <li>
+                    <div class="comp-logo">
+                        <a href="/{$cityInfo.bm}/company_home/{$vo.id}">
+                        <if condition="$robot">
+                            <img alt="{$vo.qc}" src="{$vo.logo}">
+                        <else/>
+                            <img alt="{$vo.qc}" data-url="{$vo.logo}" src="/assets/common/pic/pixel.gif" class="scrollLoading"/>
+                        </if>
+                        </a>
+                    </div>
+                    <h1><a href="/{$vo.bm}/company_home/{$vo.id}">{$vo.qc}</a></h1>
+                    <span>设计师：{$vo.dcount|default=0}　案例：{$vo.count|default=0}</span>
+                    <p><a href="http://{:C('MOBILE_DONAMES')}/zhaobiao/?bm={$vo.bm}">在线咨询</a><a href="/{$vo.bm}/company_case/{$vo.id}">查看案例</a></p>
+                </li>
+            </volist>
+        </ul>
+        <div class="white-box mar-t20">
+            {$info.page}
+        </div>
+    </div>
+    <include file="SubIndex:footer" />
+</body>
+<script type="text/javascript">
+    $(".scrollLoading").scrollLoading();
+    $(".search-btn").click(function(event) {
+        var keyword = $("input[name=keyword]").val();
+        if("{$cityInfo.bm}" != ""){
+            window.location.href="/{$cityInfo.bm}/company/?keyword="+keyword;
+        }else{
+            window.location.href="/company/?keyword="+keyword;
+        }
+    });
+</script>
+</html>

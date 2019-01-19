@@ -1,0 +1,38 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/common/css/add.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/assets/mobile/manager/css/addworker.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="header">
+        <div class="back" id="back">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <h1 class="supplier">添加</h1>
+        <div class="save">保存</div>
+    </header>
+    <div class="wrapper">
+        <ul class="add-box">
+            <li>
+                <span>姓名</span>
+                <input type="text" class="name" placeholder="请输入">
+            </li>
+            <li>
+                <span>手机号</span>
+                <input type="tel" maxlength="11" class="tel" placeholder="请输入">
+            </li>
+            <li>
+                <span>微信</span>
+                <input type="text" class="wechat" placeholder="请输入">
+            </li>
+            <li class="clearfix">
+                <span class="fl">工种</span>
+                <div class="work fr" id="work" data-values="">请选择</div>
+                <i class="right"></i>
+            </li>
+        </ul>
+    </div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/manager/js/addworker.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

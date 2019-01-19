@@ -1,0 +1,214 @@
+.mip-vd-tabs .mip-vd-tabs-nav{padding:0px; border-bottom: 1px solid #ececec; font-size: 16px}
+.mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected{border:none; color:#333;}
+.active-menu{color: #ff3535; }
+.active-menu span{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: #ff5353;
+    color: #ff5353 !important;
+}
+.diary-menu li{position: relative;}
+.active-menu a{color: #ff5353;}
+.zhuyaonr {
+    height: auto;
+    border-top: 1px solid #e6e6e6;
+}
+.dangqianye{
+    color: #ff5353;
+}
+.zhuyaonr .nrul li {
+    padding: 15px 10px;
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;
+    position: relative;
+}
+.zhuyaonr .nrul li mip-img {
+    width: 115px;
+    height: 86px;
+    float: left;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.zhuyaonr .nrul li .tuwenjs {
+    float: right;
+    display: inline-block;
+    width: calc(100% - 140px);
+    width: -moz-calc(100% - 140px);
+    width: -webkit-calc(100% - 130px);
+}
+.zhuyaonr .nrul li .tuwenjs .titlebt {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.zhuyaonr .nrul li .tuwenjs  .jieshao {
+    height: 33px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #666;
+    margin-top: 9px;
+}
+.zhuyaonr .nrul li .tuwenjs .yued {
+    display: block;
+    text-align: right;
+}
+.zhuyaonr .nrul li .tuwenjs .yued .eyeyj {
+    width: 11px;
+    height: 9px;
+    display: inline-block;
+    background: url(/assets/zixun/images/eye.jpg) no-repeat center center;
+    background-size: 100% 100%;
+}
+.zhuyaonr .nrul li .tuwenjs .yued .yued_sl {
+    color: #999;
+    font-size: 11px;
+    margin-left: 5px;
+}
+.under-line{border-top:1px solid #e6e6e6;}
+.m-bread {
+    width: 95%;
+    height: 2.2em;
+    overflow: hidden;
+    padding-left: .85em;
+    top: 50px;
+    left: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #fff;
+    box-sizing: border-box;
+    line-height: 2.2em;
+    font-size: .8em;
+}
+.article {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding-top: .6em;
+    padding-bottom: 1em;
+}
+.article-box, .article-info {
+    width: 92%;
+    margin: 0 auto;
+}
+.article-info .article-tit {
+    font-size: 1.2em;
+    font-weight: 800;
+}
+.article-info p {
+    padding-bottom: .6em;
+    text-indent: 0 !important;
+}
+
+.article-time {
+    font-size: 0.8em;
+}
+
+.article-box, .article-info {
+    width: 92%;
+    margin: 0 auto;
+}
+
+.other-article {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+.other-article-box {
+    padding: .75em;
+}
+.other-article-word {
+    font-size: 1em;
+    font-weight: 800;
+    line-height: 1.1em;
+}
+.red-block {
+    width: .2em;
+    height: 1.2em;
+    background-color: #ff5659;
+    display: block;
+    float: left;
+    margin-right: .4em;
+}
+.other-article-list {
+    margin-top: .6em;
+    overflow: hidden;
+}
+.other-article-item {
+    width: 100%;
+    height: 4em;
+    padding: .5em 0;
+    border-bottom: 1px solid #ccc;
+}
+.other-article-img {
+    width: 6em;
+    height: 4em;
+    float: left;
+    margin-right: .6em;
+}
+.other-article-img mip-img {
+    width: 100%;
+    height: 100%;
+}
+.other-article-item:nth-last-child(1){border:none;}
+
+.article{width: 100%;height: auto;background-color: #fff;padding-top: .6em;padding-bottom: 1em;}
+.article-info .article-tit{font-size: 1.2em;font-weight: 800;}
+.article-box, .article-info{width: 92%;margin: 0 auto;}
+.article-time{font-size: 0.8em;}
+.article img{
+    width: 100% !important;
+    height: auto !important;
+}
+.article-info p {
+    padding-bottom: .6em;
+    text-indent: 0 !important;
+}
+
+.article-box p {
+    line-height: 25px;
+    color: #666;
+    padding-bottom: .8em;
+    text-indent: 0 !important;
+}
+
+.assist {
+    width: 4.5em;
+    height: 1.5em;
+    border-radius: 0.9em;
+    border: 1px solid #ff565d;
+    background: #fff;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.5em;
+    margin-top: 1em;
+}
+.assist i {
+    display: block;
+    width: 1.55em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #ff565d;
+    float: left;
+    text-align: center;
+    line-height: 1.4em;
+    color: #fff;
+    margin-left: -1px;
+}
+.assist span {
+    font-size: 0.9em;
+    color: #ff565d;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动点击</title>
+	<style>
+		.dianjiniu{width: 100px;height: 40px;line-height: 40px;background: blue;color: #fff;
+			text-align: center;}
+	    .zhixing{width: 200px;height: 100px;background: #f555d1;color: #fff;margin-top: 50px;
+	    	text-align: center;display: none;}
+	</style>
+</head>
+<body>
+	
+	<div class="dianjiniu">点击执行</div>
+	<div class="zhixing">执行显示区域</div>
+
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		
+        $(function(){
+
+            
+
+			$('.dianjiniu').click(function(event) {
+				$('.zhixing').show();
+			});
+			
+            $('.dianjiniu').trigger('click');
+
+        })
+
+        
+	</script>
+
+	
+</body>
+</html>

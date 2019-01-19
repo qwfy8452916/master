@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="{$keys.keywords}">
+        <meta name="description" content="{$keys.description}">
+        <link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$info.case.id}.shtml" rel="canonical" />
+        <title>{$keys.title}{$title}</title>
+        <include file="Index:resource" />
+	    <link rel="stylesheet" type="text/css" href="/assets/mobile/index/css/index.css?v={:C('STATIC_VERSION')}">
+    </head>
+    <body>
+        <include file="SubIndex:header" />
+		<div class="banxin">
+		  <div class="white-box mar-t20">
+                <dl class="anli-info">
+                  <dd>设计师：{$info.case.dname}</dd>
+                  <dd>风格：{$info.case.fengge}</dd>
+                  <dd>楼盘：{$info.case.title}</dd>
+                  <dd>面积：{$info.case.mianji}平方米</dd>
+                  <dd>户型结构：{$info.case.shi}室{$info.case.ting}厅{$info.case.wei}卫</dd>
+                  <dd>类型：
+                    <switch name="info.case.classid">
+                        <case value="1">家装</case>
+                        <case value="2">公装</case>
+                        <case value="3">在建工地</case>
+                    </switch>
+                  </dd>
+                  </dl>
+                <ul class="img-list">
+                    <volist name="info.case.child" id="vo">
+                        <li>
+                            <if condition="$vo['img_host'] EQ 'qiniu'">
+                                <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg">
+                            <else/>
+                                <img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}s_{$vo.img}">
+                            </if>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="fastapply mar-t20">
+    			<h2 class="title">懒得挑了，就让他设计吧</h2>
+    			<div class="content">
+                    <form class="secbox_form" onsubmit="return false;">
+    				<input type="text" name="name" placeholder="您的称呼">
+    				<input type="number" name="tel" placeholder="联系方式">
+    				<button id="btnSub" type="button">帮我免费设计</button>
+                    </form>
+                    <input id="safecode" type="hidden" value="{$safecode}" />
+                    <input id="safekey" type="hidden" value="{$safekey}" />
+    			</div>
+    		</div>
+		</div>
+		<include file="SubIndex:footer" />
+    </body>
+<script type="text/javascript">
+    $("#btnSub").click(function(event) {
+        App.pop.reset();
+        if (!App.validate.run($(".fastapply input[name=tel]").val(),"moblie")) {
+            $(".fastapply input[name=tel]").focus();
+            App.pop.run($(".fastapply input[name=tel]"),"请填写正确的手机号码");
+            return false;
+        }
+
+        $.ajax({
+            url: '/fb_order/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                cs: "{$cityInfo.id}",
+                name:$(".fastapply input[name=name]").val(),
+                tel:$(".fastapply input[name=tel]").val(),
+                source: '303',
+                safecode:$("#safecode").val(),
+                safekey: $("#safekey").val(),
+                ssid:"{$ssid}"
+            }
+        })
+        .done(function(data) {
+           $("#safecode").val(data.data.safecode);
+            $("#safekey").val(data.data.safekey);
+            if(data.status == 1){
+                $(".secbox_form")[0].reset();
+                alert("您的订单已经发布成功，齐装网客服会尽快与您联系为您推荐最适合你的装修公司");
+            }else{
+                alert(data.info);
+            }
+        })
+        .fail(function(xhr) {
+            alert("发生了未知的错误,请稍后再试！");
+        });
+    });
+</script>
+</html>

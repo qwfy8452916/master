@@ -1,0 +1,92 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修日记</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/diary/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$global_yuming_m}/riji">
+</block>
+<block name="content">
+    <div class="zx-ask-nav under-line">
+        <mip-vd-tabs allow-scroll>
+            <section class="diary-menu">
+                <if condition="$cid eq '' ">
+                    <li class="active-menu"><a data-type="mip" href="http://{:C('MIP_DONAMES')}/riji/">全部日记</a><span></span></li>
+                    <else/>
+                    <li><a data-type="mip" href="http://{:C('MIP_DONAMES')}/riji/">全部日记</a><span></span></li>
+                </if>
+                <volist name="category" id="v">
+                    <if condition="$cid eq $v.id ">
+                        <li class="active-menu"><a data-type="mip" href="http://{:C('MIP_DONAMES')}/riji/c{$v.id}">{$v.type_name}</a><span></span></li>
+                        <else/>
+                        <li><a data-type="mip" href="http://{:C('MIP_DONAMES')}/riji/c{$v.id}">{$v.type_name}</a></li>
+                    </if>
+                </volist>
+            </section>
+        </mip-vd-tabs>
+    </div>
+    <div class="riji-list contentnr">
+        <volist name="list" id="v">
+            <div class="riji-item">
+                <div class="riji-box">
+                    <div class="riji-header">
+                        <div class="person-img">
+                            <mip-img
+                                    src="{$v.user_info.logo}"></mip-img>
+                        </div>
+                        <span class="person-name">{$v.user_info.name}</span>
+                    </div>
+                    <div class="riji-body">
+                        <p class="riji-info">
+                            <a data-type="mip" href="{$global_basehost}/riji/d{$v.id}.html">{$v.content|mbstr=0,50}</a>
+                        </p>
+                        <div class="img-list">
+                            <volist name="v['img_list']" id="val">
+                                <div class="img-item">
+                                    <mip-img
+                                            src="http://{:C('QINIU_DOMAIN')}/{$val.img_path}-w640.jpg"></mip-img>
+                                </div>
+                            </volist>
+                        </div>
+                        <div class="riji-footer">
+                            <div class="footer-box">
+                                <div class="fl"><span class="riji-date">{$v.diary_time|timeFormat}</span></div>
+                                <div class="fr">
+                                    <span class="riji-zan"><i class="fa fa-eye"></i><i class="number">{$v.page_view}</i></span>
+                                    <span class="riji-view"><i class="fa fa-commenting-o"></i><i
+                                            class="number">{$v.reply_count}</i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <if condition="$v['stage'] eq '1' ">
+                            <div class="tip zhunbei">准备阶段</div>
+                            <elseif condition="$v['stage'] eq 2"/>
+                            <div class="tip shigong">施工阶段</div>
+                            <else/>
+                            <div class="tip ruzhu">入住阶段</div>
+                        </if>
+                    </div>
+                </div>
+            </div>
+        </volist>
+    </div>
+    <include file="Common:freeDesign"/>
+    {$page}
+
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+                {
+                    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+                    "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+                    "appid": "1575859058891466",
+                    "title": "{$head.title}",
+                    "images": [],
+                    "pubDate": ""
+                }
+            </script>
+</block>

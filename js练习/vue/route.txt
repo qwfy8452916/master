@@ -1,0 +1,355 @@
+export const asyncRouterMap = [
+  {
+    path: '/manager',
+    component: Layout,
+    redirect: '/manager/ad',
+    name: 'manager',
+    meta: { title: '运营管理' , url:'http://168zxs.qizuang.com/manager/ad' },
+    children: [
+      {
+        path: 'ad',
+        name: '广告位管理',
+        component: () => import('@/views/manager/ad'),
+        meta: { title: '广告位管理', url:'http://168zxs.qizuang.com/manager/ad' }
+      },
+      {
+        path: 'createAd',
+        component: () => import('@/views/manager/components/createAd'),
+        name: '创建广告',
+        hidden: true,
+        meta: { title: '创建广告' }
+      },
+      {
+        path: 'createAd/:id',
+        component: () => import('@/views/manager/components/createAd'),
+        name: '编辑广告',
+        hidden: true,
+        meta: { title: '编辑广告', noCache: true }
+      },
+      {
+        path: 'cover',
+        name: '封面管理',
+        component: () => import('@/views/manager/cover'),
+        meta: { title: '封面管理' }
+      },
+      {
+        path: 'createCover',
+        component: () => import('@/views/manager/components/createCover'),
+        name: '创建封面',
+        hidden: true,
+        meta: { title: '创建封面' }
+      },
+      {
+        path: 'createCover/:id',
+        component: () => import('@/views/manager/components/createCover'),
+        name: '编辑封面',
+        hidden: true,
+        meta: { title: '编辑封面', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/content',
+    component: Layout,
+    redirect: '/content/article/article',
+    name: 'content',
+    meta: { title: '内容管理' },
+    children: [
+      {
+        path: 'article/article',
+        name: '文章管理',
+        component: () => import('@/views/content/article/article'),
+        meta: { title: '文章管理' }
+      },
+      {
+        path: 'article/backstage',
+        name: '后台发布',
+        hidden: true,
+        component: () => import('@/views/content/article/backStage'),
+        meta: { title: '后台发布' }
+      },
+      {
+        path: 'article/garbage',
+        name: '文章垃圾箱',
+        hidden: true,
+        component: () => import('@/views/content/article/garbage'),
+        meta: { title: '文章垃圾箱' }
+      },
+      {
+        path: 'article/create',
+        name: '新建文章',
+        hidden: true,
+        component: () => import('@/views/content/article/create'),
+        meta: { title: '新建文章' }
+      },
+      {
+        path: 'article/create/:id',
+        name: '',
+        hidden: true,
+        component: () => import('@/views/content/article/create'),
+        meta: { title: '' }
+      },
+      {
+        path: 'article/tag',
+        name: '文章标签管理',
+        hidden: true,
+        component: () => import('@/views/content/article/tag'),
+        meta: { title: '文章标签管理' }
+      },
+      {
+        path: 'article/top',
+        name: '文章置顶',
+        hidden: true,
+        component: () => import('@/views/content/article/top'),
+        meta: { title: '文章置顶' }
+      },
+      {
+        path: 'article/usersub',
+        name: '文章用户投稿',
+        hidden: true,
+        component: () => import('@/views/content/article/userSub'),
+        meta: { title: '文章用户投稿' }
+      },
+      {
+        path: 'experience',
+        name: '经验管理',
+        component: () => import('@/views/content/experience/experience'),
+        meta: { title: '经验管理' }
+      },
+      {
+        path: 'experience/garbage',
+        name: '经验管理垃圾箱',
+        hidden: true,
+        component: () => import('@/views/content/experience/garbage'),
+        meta: { title: '经验管理垃圾箱' }
+      },
+      {
+        path: 'experience/edit',
+        name: '发布/编辑经验',
+        hidden: true,
+        component: () => import('@/views/content/experience/edit'),
+        meta: { title: '发布/编辑经验' }
+      },
+      {
+        path: 'experience/edit/:id',
+        name: '',
+        hidden: true,
+        component: () => import('@/views/content/experience/edit'),
+        meta: { title: '' }
+      },
+      {
+        path: 'experience/cate',
+        name: '经验分类管理',
+        hidden: true,
+        component: () => import('@/views/content/experience/cate'),
+        meta: { title: '经验分类管理' }
+      },
+      {
+        path: 'topic',
+        name: 'topic',
+        component: () => import('@/views/content/topic/topic'),
+        meta: { title: '话题管理' },
+      },
+      {
+        path: 'topic/grabage',
+        name: 'topicGrabage',
+        hidden: true,
+        component: () => import('@/views/content/topic/garbage'),
+        meta: { title: '垃圾箱' }
+      },
+      {
+        path: 'topic/top',
+        name: 'toppicTop',
+        hidden: true,
+        component: () => import('@/views/content/topic/top'),
+        meta: { title: '置顶' }
+      },
+      {
+        path: 'topic/editTopic',
+        hidden: true,
+        name: 'newTopic',
+        component: () => import('@/views/content/topic/editTopic'),
+        meta: { title: '新建话题' }
+      },
+      {
+        path: 'topic/editTopic/:id',
+        hidden: true,
+        name: 'editTopic',
+        component: () => import('@/views/content/topic/editTopic'),
+        meta: { title: '编辑话题' }
+      },
+      {
+        path: 'contrast',
+        name: '对比管理',
+        component: () => import('@/views/content/contrast/index'),
+        meta: { title: '对比管理' }
+      },
+      {
+        path: 'createContrast',
+        component: () => import('@/views/content/contrast/edit'),
+        name: 'createContrast',
+        hidden: true,
+        meta: { title: '新建对比' }
+      },
+      {
+        path: 'createContrast/:id',
+        component: () => import('@/views/content/contrast/edit'),
+        name: 'createContrastEdit',
+        hidden: true,
+        meta: { title: '新建对比', noCache: true }
+      },
+      {
+        path: 'material-bill',
+        name: '材料品牌榜单管理',
+        component: () => import('@/views/content/materialBill/materialBill'),
+        meta: { title: '材料品牌榜单管理' }
+      },
+      {
+        path: 'creatematerialBill',
+        component: () => import('@/views/content/materialBill/materialBillNew'),
+        name: 'creatematerialBill',
+        hidden: true,
+        meta: { title: '新建榜单' }
+      },
+      {
+        path: 'creatematerialBill/:id',
+        component: () => import('@/views/content/materialBill/materialBillNew'),
+        name: 'creatematerialBillEdit',
+        hidden: true,
+        meta: { title: '新建榜单', noCache: true }
+      },
+      {
+        path: 'brandClassify',
+        component: () => import('@/views/content/materialBill/materialBrandClassify'),
+        name: 'brandClassify',
+        hidden: true,
+        meta: { title: '分类管理', url: '121221' }
+      },
+      {
+        path: 'material-classify',
+        name: '材料分类榜单管理',
+        component: () => import('@/views/content/materialClassify/materialClassify'),
+        meta: { title: '材料分类榜单管理' }
+      },
+      {
+        path: 'creatematerialClassify',
+        component: () => import('@/views/content/materialClassify/classifyNew'),
+        name: 'creatematerialClassify',
+        hidden: true,
+        meta: { title: '新建榜单' }
+      },
+      {
+        path: 'creatematerialClassify/:id',
+        component: () => import('@/views/content/materialClassify/classifyNew'),
+        name: 'creatematerialClassifyEdit',
+        hidden: true,
+        meta: { title: '新建榜单', noCache: true }
+      },
+      {
+        path: 'Classify',
+        component: () => import('@/views/content/materialClassify/classify'),
+        name: 'Classify',
+        hidden: true,
+        meta: { title: '分类管理' }
+      },
+      {
+        path: 'budget-classify',
+        name: '预算类目管理',
+        component: () => import('@/views/content/budget/budgetClassify'),
+        meta: { title: '预算类目管理' }
+      },
+      {
+        path: 'create-budget-version',
+        name: '创建预算版本管理',
+        hidden: true,
+        component: () => import('@/views/content/budget/components/createVersion'),
+        meta: { title: '创建预算版本管理' }
+      },
+      {
+        path: 'create-budget-version/:id',
+        name: '编辑预算版本管理',
+        hidden: true,
+        component: () => import('@/views/content/budget/components/createVersion'),
+        meta: { title: '编辑预算版本管理' }
+      },
+      {
+        path: 'budget-version',
+        name: '预算版本管理',
+        component: () => import('@/views/content/budget/budgetVersion'),
+        meta: { title: '预算版本管理' }
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/list',
+    name: 'user',
+    meta: { title: '用户管理' },
+    children: [
+      {
+        path: 'list',
+        name: '用户管理',
+        component: () => import('@/views/user/list'),
+        meta: { title: '用户管理' }
+      },
+      {
+        path: 'feedback',
+        name: '用户反馈',
+        component: () => import('@/views/user/feedback'),
+        meta: { title: '用户反馈' }
+      },
+      {
+        path: 'account',
+        component: () => import('@/views/user/components/account'),
+        name: '新建账号',
+        hidden: true,
+        meta: { title: '新建账号' }
+      },
+      {
+        path: 'account-edit/:id',
+        component: () => import('@/views/user/components/accountEdit'),
+        name: '编辑账号',
+        hidden: true,
+        meta: { title: '编辑账号' }
+      }
+    ]
+  },
+  {
+    path: '/upgrade',
+    component: Layout,
+    redirect: '/upgrade/index',
+    name: 'upgrade',
+    meta: { title: '升级管理' },
+    children: [
+      {
+        path: 'index',
+        name: 'Update',
+        component: () => import('@/views/upgrade/index'),
+        meta: { title: '升级管理' }
+      },
+      {
+        path: 'rubbish',
+        name: 'Rubbish',
+        hidden: true,
+        component: () => import('@/views/upgrade/rubbish'),
+        meta: { title: '垃圾箱' }
+      },
+      {
+        path: 'editVer',
+        name: 'CreaterVer',
+        hidden: true,
+        component: () => import('@/views/upgrade/editVer'),
+        meta: { title: '新建版本' }
+      },
+      {
+        path: 'editVer/:id',
+        name: 'EditVer',
+        hidden: true,
+        component: () => import('@/views/upgrade/editVer'),
+        meta: { title: '编辑版本' }
+      }
+    ]
+  },
+  { path: '*', redirect: '/404', hidden: true }
+]

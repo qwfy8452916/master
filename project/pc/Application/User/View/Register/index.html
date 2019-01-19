@@ -1,0 +1,752 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="keywords" content="装修公司,装修网,装修效果图,装饰,齐装网">
+    <meta name="description" content="齐装网是中国家居装修装饰门户网站，汇集了很高的家居装修装饰公司，为您提供专业的装修服务以及全新的装修设计效果图、案例和装修知识；专业服务、品质保障，让您的装修更安心！">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>注册-齐装网</title>
+    <include file="Index:resource" />
+    <link href="{$static_host}/assets/user/register/css/default.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <link href="{$static_host}{$static_host}/assets/common/css/popVerify.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{$static_host}/assets/common/js/popVerify.js?v={:C('STATIC_VERSION')}"></script>
+</head>
+<body>
+    <include file="Index:header" />
+    <div class="wrap">
+        <div class="loginlogo">
+             <a class="logo" href="http://{:C('QZ_YUMINGWWW')}/"><img src="{$static_host}/assets/common/pic/logo.jpg"/></a>
+        </div>
+    </div>
+    <div class="loginbg">
+
+        <div class="wrap">
+        <div class="loginbgby">
+        <img src="{$static_host}/assets/common/img/921171932.jpg" width="540" height="340">
+        <div class="zhezhao"></div>
+        </div>
+            <div class="loginbox">
+                <div class="tab" id="tab">
+                    <div class="tab-nav j-tab-nav">
+                        <a href="javascript:void(0);" class="current">业主注册</a>
+                        <a href="javascript:void(0);">装修公司注册</a>
+                        <a href="javascript:void(0);">设计师注册</a>
+                    </div>
+                    <div class="tab-con">
+                        <div class="j-tab-con">
+                            <div class="tab-con-item  reg-user" style="display:block;">
+                                <ul>
+                                    <li>
+                                        <input type="text" class="full" placeholder="手机/邮箱" name="tel">
+                                        <div class="registertips nameTips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input name="name" class="full" type="text" placeholder="昵称" data-type="1">
+                                        <div class="registertips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input name="password" class="full" type="password" placeholder="密码">
+                                        <div class="registertips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                    <input name="verifyCode" class="half" type="input" placeholder="右侧验证码">
+                                    <img src="/verify" style="margin-top:5px;cursor:pointer" class="verifyimg" title="点击更换验证码">
+                                        <div class="registertips verifyCodeTips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                    <input name="code" type="text" class="half" placeholder="手机验证码/邮箱验证码"><button  class="half" target="reg-user">
+                                        <em>发送验证码</em>
+                                    </button>
+                                        <div class="registertips verifySMSCode">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li><input type="checkbox" class="as_service" checked="checked"> 我已阅读并接受<a href="http://{:C('QZ_YUMINGWWW')}/about/legal/" target="_blank">《齐装网用户服务协议》</a></li>
+                                </ul>
+                                <a id="regUser" class="registerbtn" href="javascript:void(0)">同意以上协议并注册</a>
+                            </div>
+                            <div class="tab-con-item  reg-company">
+                                <ul>
+                                    <li>
+                                        <input type="text" name="name" class="full half" placeholder="用户名">
+                                        <input type="password" name="password" class="full half" placeholder="密码" style="margin:0;">
+                                        <div class="simpleTips nameTips">
+
+                                        </div>
+                                        <div class="simpleTips passTips">
+
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input type="text" name="qc" class="full" placeholder="公司名称">
+                                        <div class="registertips">
+                                            <!--验证信息-->
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <!-- <input type="text" name="contact" class="full half" placeholder="联系人" > -->
+                                        <input name="tel" class="full" type="text" placeholder="手机" style="margin:0;">
+                                        <!-- <div class="simpleTips contactTips">
+
+                                        </div> -->
+                                        <div class="simpleTips telTips">
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <select id="cs" name="cs">
+                                        </select>
+                                        <select id="qy" name="qy" style=" margin-right:0">
+                                        </select>
+                                        <div class="registertips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                    <input name="verifyCode" class="half" type="input" placeholder="右侧验证码">
+                                    <img src="/verify" style="margin-top:5px;cursor:pointer" class="verifyimg" title="点击更换验证码">
+                                        <div class="registertips verifyCodeTips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <!-- <li>
+                                    <input name="code" type="text" class="half" placeholder="验证码"><button  class="half" target="reg-company">
+                                        <em>发送验证码</em>
+                                    </button>
+                                        <div class="registertips verifySMSCode">
+                                            验证信息
+                                        </div>
+                                    </li> -->
+                                    <li><input type="checkbox" class="as_service" checked="checked"> 我已阅读并接受<a href="http://{:C('QZ_YUMINGWWW')}/about/legal/" target="_blank">《齐装网用户服务协议》</a></li>
+                                </ul>
+                                <a id="regComapny" class="registerbtn" href="javascript:void(0)">同意以上协议并注册</a>
+                            </div>
+                            <div class="tab-con-item  reg-designer">
+                                <ul>
+                                    <li>
+                                        <input type="text" class="full" placeholder="手机/邮箱" name="tel">
+                                        <div class="registertips nameTips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input name="name" class="full" type="text" placeholder="昵称" data-type="1">
+                                        <div class="registertips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input name="password" class="full" type="password" placeholder="密码">
+                                        <div class="registertips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                    <input name="verifyCode" class="half" type="input" placeholder="右侧验证码">
+                                    <img src="/verify" style="margin-top:5px;cursor:pointer" class="verifyimg" title="点击更换验证码">
+                                        <div class="registertips verifyCodeTips">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li>
+                                    <input name="code" type="text" class="half" placeholder="验证码"><button  class="half" target="reg-designer">
+                                        <em>发送验证码</em>
+                                    </button>
+                                        <div class="registertips verifySMSCode">
+                                            <!--验证信息-->
+                                        </div>
+                                    </li>
+                                    <li><input type="checkbox" class="as_service" checked="checked"> 我已阅读并接受<a href="http://{:C('QZ_YUMINGWWW')}/about/legal/" target="_blank">《齐装网用户服务协议》</a></li>
+                                </ul>
+                                <a id="regDesigner" class="registerbtn" href="javascript:void(0)">同意以上协议并注册</a>
+                                <!-- <div class="other1">
+                                    <p><em>使用合作网站账号登录</em>
+                                        <a href="#"><img src="{$static_host}/assets/common/img/QQ.gif" width="19" height="18" /></a><em>|</em>
+                                        <a href="#"><img src="{$static_host}/assets/common/img/weib.gif" width="17" height="18" /></a>
+                                    </p>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Index:footer" />
+</body>
+<script type="text/javascript">
+
+$(".verifyimg").click(function(event) {
+    $(this).attr("src","/verify?rand="+Math.random());
+});
+
+$(".tab-nav").click(function(event) {
+    $(".verifyimg").attr("src","/verify?rand="+Math.random());
+});
+
+$('.as_service').click(function() {
+    $(this).parent().parent().parent().find('.registerbtn').toggleClass('registerbtn_no');
+});
+
+
+var shen = null,shi = null,cityId=null;
+shen = citys["shen"];
+shi = citys["shi"];
+cityId = "{$cityId}";
+//请先定义citys对象
+App.citys.init("#cs","#qy",shen,shi);
+    $(function() {
+        if(cityId != ""){
+            $("#cs option").each(function(){
+                if($(this).attr("value") == cityId){
+                    $(this).attr("selected","selected");
+                    $(this).trigger('change');
+                }
+            });
+        }
+        $("button.half").attr('disabled',false);
+        $("#tab").rTabs({
+            bind: 'click',
+            animation: 'fadein',
+            auto: false
+        });
+
+        $("#regComapny").click(function(event) {
+            var _this = $(this);
+            if(_this.parent().find('.as_service').is(':checked') == false) {
+                return false;
+            }
+            var reg =/[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/i;
+            $(".registertips").html("");
+            $(".simpleTips").html("");
+
+            if(!App.validate.run($(".reg-company input[name=name]").val())){
+                $(".reg-company input[name=name]").addClass('secbox_focus');
+                $(".reg-company input[name=name]").focus();
+                $(".reg-company input[name=name]").parent().find(".nameTips").html("请填写公司用户名！");
+                return false;
+            }
+
+            if($(".reg-company input[name=name]").val().match(reg)){
+                $(".reg-company input[name=name]").addClass('secbox_focus');
+                $(".reg-company input[name=name]").focus();
+                $(".reg-company input[name=name]").parent().find(".nameTips").html("无效的公司用户名！");
+                return false;
+            }
+
+            if(!App.validate.run($(".reg-company input[name=password]").val())){
+                $(".reg-company input[name=password]").addClass('secbox_focus');
+                $(".reg-company input[name=password]").focus();
+                $(".reg-company input[name=password]").parent().find(".passTips").html("请填写登录密码！");
+                return false;
+            }
+
+            if(!App.validate.run($(".reg-company input[name=password]").val().length,"length",6)){
+                $(".reg-company input[name=password]").addClass('secbox_focus');
+                $(".reg-company input[name=password]").focus();
+                $(".reg-company input[name=password]").parent().find(".passTips").html("密码不能小于6位");
+                return false;
+            }
+
+            if(!App.validate.run($(".reg-company input[name=password]").val())){
+                $(".reg-company input[name=password]").addClass('secbox_focus');
+                $(".reg-company input[name=password]").focus();
+                $(".reg-company input[name=password]").parent().find(".passTips").html("无效的登录密码");
+                return false;
+            }
+
+            if(!App.validate.run($(".reg-company input[name=qc]").val())){
+                $(".reg-company input[name=qc]").addClass('secbox_focus');
+                $(".reg-company input[name=qc]").focus();
+                $(".reg-company input[name=qc]").parent().find(".registertips").html("请填写公司名称！");
+                return false;
+            }
+
+            if(!App.validate.run($(".reg-company input[name=qc]").val().length,"length",4)){
+                $(".reg-company input[name=qc]").addClass('secbox_focus');
+                $(".reg-company input[name=qc]").focus();
+                $(".reg-company input[name=qc]").parent().find(".registertips").html("请填写4位以上的公司名称");
+                return false;
+            }
+
+            if($(".reg-company input[name=qc]").val().match(reg)){
+                $(".reg-company input[name=qc]").addClass('secbox_focus');
+                $(".reg-company input[name=qc]").focus();
+                $(".reg-company input[name=qc]").parent().find(".registertips").html("无效的公司名称");
+                return false;
+            }
+
+            $(".reg-company input[name=qc]").removeClass('secbox_focus');
+            $(".reg-company input[name=qc]").parent().find(".registertips").html("");
+
+            if(!App.validate.run($(".reg-company input[name=tel]").val())){
+                $(".reg-company input[name=tel]").addClass('secbox_focus');
+                $(".reg-company input[name=tel]").focus();
+                $(".reg-company input[name=tel]").parent().find(".telTips").html("请填写手机号码！");
+                return false;
+            }
+
+
+            if(!App.validate.run($(".reg-company input[name=tel]").val(),"moblie")){
+                $(".reg-company input[name=tel]").addClass('secbox_focus');
+                $(".reg-company input[name=tel]").focus();
+                $(".reg-company input[name=tel]").parent().find(".telTips").html("请填写正确的手机！");
+                return false;
+            }
+
+            $(".reg-company input[name=tel]").removeClass('secbox_focus');
+            $(".reg-company input[name=tel]").parent().find(".registertips").html("");
+
+            $(".reg-company input[name=name]").removeClass('secbox_focus');
+            $(".reg-company input[name=name]").parent().find(".registertips").html("");
+
+
+
+            if(!App.validate.run($(".reg-company select[name=cs]").val())){
+                $(".reg-company select[name=cs]").addClass('secbox_focus');
+                $(".reg-company select[name=cs]").focus();
+                $(".reg-company select[name=cs]").parent().find(".registertips").html("请选择您所在的城市");
+                return false;
+            }
+
+            if(!App.validate.run($(".reg-company select[name=qy]").val())){
+                $(".reg-company select[name=qy]").addClass('secbox_focus');
+                $(".reg-company select[name=qy]").focus();
+                $(".reg-company select[name=qy]").parent().find(".registertips").html("请选择您所在的区县");
+                return false;
+            }
+
+            if($(".reg-company input[name=verifyCode]").val() == "" || $(".reg-company input[name=verifyCode]").val().length == 0){
+                $(".reg-company input[name=verifyCode]").addClass('secbox_focus');
+                $(".reg-company input[name=verifyCode]").focus();
+                $(".reg-company input[name=verifyCode]").parent().find(".registertips").html("请输入右侧验证码");
+                return false;
+            }
+
+            $(".reg-company select[name=qy]").removeClass('secbox_focus');
+            $(".reg-company select[name=qy]").parent().find(".registertips").html("");
+
+            var value = {
+                qc:$(".reg-company input[name=qc]").val(),
+                name: $(".reg-company input[name=name]").val(),
+                tel: $(".reg-company input[name=tel]").val(),
+                contact:$(".reg-company input[name=contact]").val(),
+                cs:$(".reg-company select[name=cs]").val(),
+                qy:$(".reg-company select[name=qy]").val(),
+                password:$(".reg-company input[name=password]").val(),
+                classid:3,
+                verifyCode:$(".reg-company input[name=verifyCode]").val()
+            }
+            register(value,_this,true);
+        });
+
+        $("#regDesigner").click(function(event) {
+            var _this = $(this);
+            if(_this.parent().find('.as_service').is(':checked') == false) {
+                return false;
+            }
+            $(".registertips").html("");
+            if($(".reg-designer input[name=tel]").val() == ""){
+                $(".reg-designer input[name=tel]").addClass('secbox_focus');
+                $(".reg-designer input[name=tel]").focus();
+                $(".reg-designer input[name=tel]").parent().find(".registertips").html("请填写手机号码/邮箱！");
+                return false;
+            }
+            //验证手机,邮箱
+            if (!App.validate.run($(".reg-designer input[name=tel]").val(),"moblie") && !App.validate.run($(".reg-designer input[name=tel]").val(),"email")) {
+                $(".reg-designer input[name=tel]").addClass('secbox_focus');
+                $(".reg-designer input[name=tel]").focus();
+                $(".reg-designer input[name=tel]").parent().find(".registertips").html("请填写正确的手机/邮箱");
+                return false;
+            }
+            $(".reg-designer input[name=tel]").removeClass('secbox_focus');
+            $(".reg-designer input[name=tel]").parent().find(".registertips").html("");
+
+            if($(".reg-designer input[name=name]").val() == "" ||$(".reg-designer input[name=name]").val().length == 0){
+                $(".reg-designer input[name=name]").addClass('secbox_focus');
+                $(".reg-designer input[name=name]").focus();
+                $(".reg-designer input[name=name]").parent().find(".registertips").html("请填写您的昵称!");
+                return false;
+            }
+
+            $(".reg-designer input[name=name]").removeClass('secbox_focus');
+            $(".reg-designer input[name=name]").parent().find(".registertips").html("");
+
+            if($(".reg-designer input[name=password]").val() == "" ||$(".reg-designer input[name=name]").val().length == 0){
+                $(".reg-designer input[name=password]").addClass('secbox_focus');
+                $(".reg-designer input[name=password]").focus();
+                $(".reg-designer input[name=password]").parent().find(".registertips").html("输入密码!");
+                return false;
+            }
+
+            if($(".reg-designer input[name=password]").val().length < 6){
+                $(".reg-designer input[name=password]").addClass('secbox_focus');
+                $(".reg-designer input[name=password]").focus();
+                $(".reg-designer input[name=password]").parent().find(".registertips").html("密码长度至少6位");
+                return false;
+            }
+
+            if($(".reg-designer input[name=verifyCode]").val() == "" || $(".reg-designer input[name=verifyCode]").val().length == 0){
+                $(".reg-designer input[name=verifyCode]").addClass('secbox_focus');
+                $(".reg-designer input[name=verifyCode]").focus();
+                $(".reg-designer input[name=verifyCode]").parent().find(".registertips").html("请输入右侧验证码");
+                return false;
+            }
+
+            $(".reg-designer input[name=password]").removeClass('secbox_focus');
+            $(".reg-designer input[name=password]").parent().find(".registertips").html("");
+            if($(".reg-designer input[name=code]").val() == "" || $(".reg-designer input[name=code]").val().length == 0){
+                $(".reg-designer input[name=code]").addClass('secbox_focus');
+                $(".reg-designer input[name=code]").focus();
+                $(".reg-designer input[name=code]").parent().find(".registertips").html("请输入验证码");
+                return false;
+            }
+            var istel = 2;
+            if(App.validate.run($(".reg-designer input[name=tel]").val(),"moblie")){
+                istel = 1;
+            }
+
+            var value = {
+                    name:$(".reg-designer input[name=name]").val(),
+                    tel:$(".reg-designer input[name=tel]").val(),
+                    password:$(".reg-designer input[name=password]").val(),
+                    istel:istel,
+                    classid:2,
+                    verifyCode:$(".reg-designer input[name=verifyCode]").val()
+            }
+            $.ajax({
+                url: "/verifysmscode/",
+                type: 'POST',
+                dataType : "JSON",
+                data: {
+                    code: $(".reg-designer input[name=code]").val(),
+                    tel:$(".reg-designer input[name=tel]").val()
+                },
+                success: function(data) {
+                    if (data.status == 1) {
+                        register(value,_this);
+                    }else{
+                        //显示提示
+                        $.pt({
+                            target: _this,
+                            content:data.info,
+                            width: 'auto'
+                        });
+                    }
+                },
+                error: function(xhr) {
+                    $.pt({
+                        target: _this,
+                        content:"提交失败,请稍后再试！",
+                        width: 'auto'
+                    });
+                }
+            });
+        });
+
+        $("#regUser").click(function(event) {
+            var _this = $(this);
+            if(_this.parent().find('.as_service').is(':checked') == false) {
+                return false;
+            }
+            $(".registertips").html("");
+            $(".secbox_focus").removeClass("secbox_focus");
+            if($(".reg-user input[name=tel]").val() == ""){
+                $(".reg-user input[name=tel]").addClass('secbox_focus');
+                $(".reg-user input[name=tel]").focus();
+                $(".reg-user input[name=tel]").parent().find(".registertips").html("请填写手机号码/邮箱！");
+                return false;
+            }
+            //验证手机,邮箱
+           if (!App.validate.run($(".reg-user input[name=tel]").val(),"moblie") && !App.validate.run($(".reg-user input[name=tel]").val(),"email")) {
+                $(".reg-user input[name=tel]").addClass('secbox_focus');
+                $(".reg-user input[name=tel]").focus();
+                $(".reg-user input[name=tel]").parent().find(".registertips").html("请输入正确的手机/邮箱");
+                return false;
+            }
+
+            if($(".reg-user input[name=name]").val() == "" ||$(".reg-user input[name=name]").val().length == 0){
+                $(".reg-user input[name=name]").addClass('secbox_focus');
+                $(".reg-user input[name=name]").focus();
+                $(".reg-user input[name=name]").parent().find(".registertips").html("请填写您的昵称!");
+                return false;
+            }
+
+            if($(".reg-user input[name=password]").val() == "" ||$(".reg-user input[name=name]").val().length == 0){
+                $(".reg-user input[name=password]").addClass('secbox_focus');
+                $(".reg-user input[name=password]").focus();
+                $(".reg-user input[name=password]").parent().find(".registertips").html("输入密码!");
+                return false;
+            }
+
+            if($(".reg-user input[name=password]").val().length < 6){
+                $(".reg-user input[name=password]").addClass('secbox_focus');
+                $(".reg-user input[name=password]").focus();
+                $(".reg-user input[name=password]").parent().find(".registertips").html("密码长度至少6位");
+                return false;
+            }
+
+            if($(".reg-user input[name=verifyCode]").val() == "" || $(".reg-user input[name=verifyCode]").val().length == 0){
+                $(".reg-user input[name=verifyCode]").addClass('secbox_focus');
+                $(".reg-user input[name=verifyCode]").focus();
+                $(".reg-user input[name=verifyCode]").parent().find(".registertips").html("请输入右侧验证码");
+                return false;
+            }
+
+            if($(".reg-user input[name=code]").val() == "" || $(".reg-user input[name=code]").val().length == 0){
+                $(".reg-user input[name=code]").addClass('secbox_focus');
+                $(".reg-user input[name=code]").focus();
+                $(".reg-user input[name=code]").parent().find(".registertips").html("请输入手机或邮箱验证码");
+                return false;
+            }
+
+
+            var istel = 2;
+            if(App.validate.run($(".reg-user input[name=tel]").val(),"moblie")){
+                istel = 1;
+            }
+
+            var value = {
+                    name:$(".reg-user input[name=name]").val(),
+                    tel:$(".reg-user input[name=tel]").val(),
+                    password:$(".reg-user input[name=password]").val(),
+                    istel:istel,
+                    classid:1,
+                    verifyCode:$(".reg-user input[name=verifyCode]").val(),
+                    checkUser:1
+            }
+
+            $.ajax({
+                url: "/verifysmscode/",
+                type: 'POST',
+                dataType : "JSON",
+                data: {
+                    code: $(".reg-user input[name=code]").val(),
+                    tel:$(".reg-user input[name=tel]").val()
+                },
+                success: function(data) {
+                    if (data.status == 1) {
+                        register(value,_this);
+                    }else{
+                        //显示提示
+                        $.pt({
+                            target: _this,
+                            content:data.info,
+                            width: 'auto'
+                        });
+                    }
+                },
+                error: function(xhr) {
+                    $.pt({
+                        target: _this,
+                        content:"提交失败,请稍后再试！",
+                        width: 'auto'
+                    });
+                }
+            });
+        });
+        var time = 60;
+        var t = null;
+
+        //发送验证码到手机
+        $("button.half").click(function(event) {
+            var _this =  $(this);
+            var text = _this.find("em").html();
+            var parent = $(this).attr("target");
+            var tel = $("."+parent).find("input[name=tel]");
+            var isCompany = 0;
+            var name = null;
+            //验证手机,邮箱
+            // var reg = /^([0-9]{3,4}-)?[0-9]{7,8}$|^[0-9]{11}$/i;
+            // var reg1 =/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,5}$/i;
+            if(parent != "reg-company"){
+                if (tel.val() == "" || tel.val().length == 0) {
+                    tel.addClass('secbox_focus');
+                    tel.focus();
+                    tel.parent().find(".registertips").html("请填写手机号码/邮箱！");
+                    return false;
+                }
+
+                if (!App.validate.run(tel.val(),"moblie") && !App.validate.run(tel.val(),"email")) {
+                    tel.addClass('secbox_focus');
+                    tel.focus();
+                    tel.parent().find(".registertips").html("请输入正确的手机/邮箱!");
+                    return false;
+                }
+            }else{
+
+                name = $("."+parent).find("input[name=name]");
+                if (tel.val() == "" || tel.val().length == 0) {
+                    tel.addClass('secbox_focus');
+                    tel.focus();
+                    tel.parent().find(".telTips").html("请填写手机号码！");
+                    return false;
+                }
+
+                if (!App.validate.run(tel.val(),"moblie")){
+                    tel.focus();
+                    tel.parent().find(".telTips").html("请输入正确的手机");
+                    return false;
+                }
+            }
+
+            //验证码
+            verifyCode = $("."+parent).find("input[name=verifyCode]");
+            if(verifyCode.val() == "" || verifyCode.val().length == 0){
+                verifyCode.addClass('secbox_focus');
+                verifyCode.focus();
+                verifyCode.parent().find(".registertips").html("请输入右侧验证码");
+                return false;
+            }
+
+            tel.removeClass('secbox_focus');
+            tel.parent().find(".registertips").html("");
+            $(".verifyCodeTips").html("");
+
+             t = setInterval(function(){
+                _this.find("em").html(time+"秒后重新获取");
+                time --;
+                if(time == 0){
+                    clearInterval(t);
+                    _this.find("em").html(text);
+                    _this.attr("disabled",false);
+                    time = 60;
+                }
+            },1000);
+            _this.attr("disabled","disabled");
+            $(".nameTips").html("");
+
+            if (App.validate.run(tel.val(),"moblie")) {
+                if(name != null){
+                    sendSms(tel.val(),name.val(),_this);
+                }else{
+                    sendSms(tel.val(),null,_this);
+                }
+            }else{
+                if(name != null){
+                    sendEmail(tel.val(),name.val(),_this);
+                }else{
+                    sendEmail(tel.val(),null,_this);
+                }
+            }
+
+        });
+
+        function sendEmail(tel,name,target){
+             var data = {
+                    email:tel,
+                    checkUser:1,
+                    name:name,
+                    code:verifyCode.val()
+                }
+                $.ajax({
+                    type : "POST",
+                    url : "/sendemail/",
+                    dataType : "json",
+                    data:data,
+                    success : function(data){
+                        if(data.status == 0){
+                            target.attr("disabled",false);
+                            target.parent().parent().find(".nameTips").html(data.info);
+                            clearInterval(t);
+                        }
+                        if(data.status == 9){
+                            target.attr("disabled",false);
+                            target.parent().parent().find(".verifyCodeTips").html(data.info);
+                            clearInterval(t);
+                        }
+                        if(data.status == 1){
+                            target.parent().parent().find(".nameTips").html(data.info);
+                        }
+                    },
+                    error:function(xhr){
+                        target.attr("disabled",false);
+                        target.parent().find(".registertips").html("发送失败,请稍后再试！");
+                        clearInterval(t);
+                    }
+                });
+        }
+
+        function sendSms(tel,name,target){
+            var data = {
+                tel:tel,
+                save:0,
+                checkUser:1,
+                name:name,
+                code:verifyCode.val()
+            }
+            $.ajax({
+                type : "POST",
+                url : "/sendsms/",
+                dataType : "json",
+                data:data,
+                success : function(data){
+                    if(data.status == 0){
+                        target.attr("disabled",false);
+                        target.parent().parent().find(".nameTips").html(data.info);
+                        clearInterval(t);
+
+                    }
+                    if(data.status == 9){
+                        target.attr("disabled",false);
+                        target.parent().parent().find(".verifyCodeTips").html(data.info);
+                        clearInterval(t);
+                    }
+                    if(data.status == 1){
+                        target.parent().parent().find(".nameTips").html(data.info);
+                    }
+                },
+                error:function(xhr){
+                    target.attr("disabled",false);
+                    target.parent().find(".registertips").html("发送失败,请稍后再试！");
+                    clearInterval(t);
+                }
+            });
+        }
+
+        function register(value,target,flag){
+            $(".verifyCodeTips").html("");
+            $.ajax({
+                url: '/save',
+                type: 'POST',
+                dataType: 'JSON',
+                data: value
+            })
+            .done(function(data) {
+                if(data.status == 1){
+                     window.location.href = "/home/";
+                }else{
+                    target.parent().find("button.half").attr("disabled",false);
+                    $.pt({
+                        target: target,
+                        content: data.info,
+                        width: 'auto'
+                    });
+                }
+            })
+            .fail(function(xhr) {
+                target.parent().find("button.half").attr("disabled",false);
+                $.pt({
+                    target: target,
+                    content: "提交失败,请稍后再试！",
+                    width: 'auto'
+                });
+            });
+        }
+});
+
+
+</script>
+</html>

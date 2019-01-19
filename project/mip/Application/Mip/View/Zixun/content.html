@@ -1,0 +1,93 @@
+<block name="top-fadan">
+    <div class="top-fadan">
+        <a data-type="mip" href="{$global_yuming_m}/baojia?src=mip">
+            <div class="top-fadan-img"><mip-img src="{$global_yuming_m}/assets/mobile/article/images/top-jisuan.png"></mip-img></div>
+            <div class="top-fadan-center">
+                <div class="top-fadan-info">
+                    <p class="zx-money">装修该花多少钱？</p>
+                    <p class="zx-sheji"><span class="red-color">8秒</span>免费获取报价</p>
+                </div>
+            </div>
+            <div class="top-fadan-btn">立即获取</div>
+        </a>
+    </div>
+</block>
+<block name="style">
+    <style mip-custom>
+        .article-box p{
+            white-space: normal; text-indent: 2em; text-align: left;
+        }
+        .article-box img,.mip-fill-content{
+            width: 100% !important;
+            height: auto !important;
+        }
+        .article-box mip-img{
+            width:100%!important;
+        }
+    </style>
+</block>
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修资讯</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/zixun/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$global_yuming_m}{$canonical}">
+</block>
+<block name="content">
+    <div class="m-bread">
+        <a href="{$global_basehost}/{$cityInfo.bm}/zxinfo/">装修资讯</a> &gt;
+        <a href="{$global_basehost}/{$cityInfo.bm}/zxinfo/{$articleInfo.article.now.shortname}/">{$articleInfo.article.now.classname}</a> &gt;
+        <!--{$articleInfo.article.now.title}-->
+        正文
+    </div>
+    <div class="article">
+        <div class="article-info">
+            <p class="article-tit">{$articleInfo.article.now.title}</p>
+            <p class="article-time">{$articleInfo.article.now.addtime|date="Y-m-d H:i:s",###}</p>
+        </div>
+        <div class="article-box">
+            {$articleInfo.article.now.content}
+        </div>
+    </div>
+    <div class="baojia">
+        <a data-type="mip" href="{$global_yuming_m}/hongbao?src=mip" rel="nofollow"><mip-img src="http://staticqn.qizuang.com/file/20171113/Fr9j9oGNEs7n29Cx3Umf1-iJujjF.png"></mip-img></a>
+    </div>
+
+    <div class="other-article">
+        <div class="other-article-box">
+            <div class="other-article-word"><span class="red-block"></span>推荐阅读</div>
+            <div class="other-article-list">
+                <volist name="articleInfo.recommendArticles" id="vo">
+                    <div class="other-article-item">
+                        <a data-type="mip" href="http://m.{:C('QZ_YUMING')}/{$cityInfo.bm}/zxinfo/{$vo.id}.html">
+                            <div class="other-article-img"><mip-img src="{$vo.face}-w240.jpg"></mip-img></div>
+                            <div class="other-article-text"><p>{$vo.title}</p></div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "{$baidu.url}",
+            "appid": "1575859058891466",
+            "title": "{$head.title}",
+            "images": [
+                "{$images.0}",
+                "{$images.1}",
+                "{$images.2}"
+            ],
+            "pubDate": "{$baidu.optime}"
+        }
+    </script>
+</block>

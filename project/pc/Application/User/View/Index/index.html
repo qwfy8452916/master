@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="用户中心">
+    <meta name="description" content="用户中心">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>登录-齐装网</title>
+    <link href="{$static_host}/assets/user/login/css/pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <link href="{$static_host}/assets/user/login/css/u.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{$static_host}/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="{$static_host}/assets/common/js/jQuery.rTabs.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="{$static_host}/assets/common/js/App.js?v={:C('STATIC_VERSION')}"></script>
+
+</head>
+<body>
+
+<!--E logo-->
+<div class="pub-head">
+    <a class="logo" href="#"></a>
+    <h3>欢迎登录</h3>
+    <div class="back-link"><a href="{:C('BASE_URL')}/zhaobiao">设计与报价</a><a href="{:C('BASE_URL')}/">返回首页</a></div>
+</div>
+<!--S logo-->
+
+<div class="wrap ofw">
+    <!--S 左侧图-->
+    <div class="login-img">
+        <img src="{$static_host}/assets/user/login/images/0918105202.jpg" width="540" height="340">
+        <div class="zhezhao"></div>
+    </div>
+    <!--E 左侧图-->
+    <!--S 登录框-->
+    <div class="loginbox">
+        <div class="tab" id="tab">
+            <div class="tab-nav j-tab-nav">
+                <a href="javascript:void(0);" class="current">帐号登录</a>
+                <a href="javascript:void(0);">手机快捷登录</a>
+            </div>
+            <div class="tab-con">
+                <div class="j-tab-con">
+                    <div class="tab-con-item" style="display:block;">
+                        <div class="loginput">
+                            <input type="text" name="name" class="log" placeholder="手机/邮箱/用户名">
+                            <div class="yanzheng"></div>
+                            <input name="password" type="password" class="res" placeholder="密码">
+                            <div class="yanzheng logintips"></div>
+                        </div>
+                        <div class="forgt">
+                            <label><input name="remember" id="remember" type="checkbox" checked="checked" > 三个内免登录</label>
+                            <a href="/getpassword/" target="_blank">忘记密码？</a>
+                        </div>
+                        <div class="btn">
+                            <button class="logbtn webLogin">登录</button>
+                        </div>
+                        <div class="other"> <i>第三方帐号登录：</i>
+                            <a href="http://oauthtmp.qizuang.com/loginfromqq" title="QQ登录" class="qqlogin"></a>
+                            <a href="http://oauthtmp.qizuang.com/loginfromsina" title="微博登录" class="weibologin"></a>
+                            <a href="http://oauthtmp.qizuang.com/loginfromwechat" title="微信登录" class="tblogin"></a>
+                        </div>
+                        <div class="logintit"> <i>还没有齐装帐号？<a href="/reg/" target="_blank">点击注册»</a></i>
+                </div>
+            </div>
+            <!--手机快捷登录-->
+            <div class="tab-con-item">
+                <div class="loginput mLogin">
+                    <input type="text" name="tel" class="log" placeholder="请输入您的手机号">
+                    <div class="yanzheng"></div>
+                    <div class="tel" ><input type="input" name="verifysmscode" placeholder="请输入您收到的验证码"><button class="sendsms">发送短信</button></div>
+                    <div class="yanzheng"></div>
+                </div>
+                <div class="forgt">
+                    <label><input name="remember" id="remember" type="checkbox" checked="checked"> 三个内免登录</label>
+                    <a href="/getpassword/" target="_blank">忘记密码？</a>
+                </div>
+                <div class="btn">
+                    <button class="logbtn mLoginBtn">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!--E 登录框-->
+
+<include file="Home@Index/footer" />
+</body>
+<script type="text/javascript">
+$(function (){
+    $("#tab").rTabs({
+        bind: 'click',
+        animation: 'fadein',
+        auto: false
+    });
+    $(document).keydown(function(e) {
+        if(e.keyCode == 13){
+            $(".logbtn").trigger('click');
+        }
+    });
+
+    //发送短信
+    $(".sendsms").click(function(event) {
+        var _this =  $(this);
+        var time = 60;
+        var t = null;
+        var tel = _this.parent().parent().find("input[name=tel]");
+
+        if (!App.validate.run(tel.val(),"moblie")){
+            tel.focus();
+            tel.parent().find(".yanzheng:eq(0)").html("请输入正确的手机");
+            return false;
+        }
+
+        t = setInterval(function(){
+            _this.html(time+"秒后重新发送");
+            time --;
+            if(time == 0){
+                clearInterval(t);
+                _this.html('重新发送验证码');
+                _this.attr("disabled",false);
+                time = 60;
+            }
+        },1000);
+        _this.attr("disabled","disabled");
+
+        //开始发送短信
+        var data = {
+            tel:tel.val(),
+        }
+        $.ajax({
+            type : "POST",
+            url : "/sendsms/",
+            dataType : "json",
+            data:data,
+            success : function(data){
+                if(data.status == 0){
+                    _this.attr("disabled",false);
+                    tel.parent().parent().find(".yanzheng:eq(0)").html(data.info);
+                    clearInterval(t);
+                }
+                if(data.status == 1){
+                    tel.parent().find(".yanzheng:eq(1)").html(data.info);
+                }
+            },
+            error:function(xhr){
+                alert("发送失败,请稍后再试！");
+                _this.attr("disabled",false);
+                clearInterval(t);
+            }
+        });
+    });
+
+
+    $(".mLoginBtn").click(function(event) {
+        var _this =  $(".mLogin");
+        var tel = _this.find("input[name=tel]").val();
+        var code = _this.find("input[name=verifysmscode]").val();
+
+        if (!App.validate.run(tel, "moblie")) {
+            _this.find("input[name=tel]").focus();
+            _this.find(".yanzheng:eq(0)").html("您输入的手机号有误，请重新输入");
+            return false;
+        }
+        if(!App.validate.run(code)){
+            _this.find("input[name=verifysmscode]").focus();
+            _this.find(".yanzheng:eq(1)").html("无效的登录密码");
+            return false;
+        }
+        $(".logbtn").text("登陆中...请稍等");
+
+        //开始验证手机验证码
+        $.ajax({
+            url: "/verifysmscode/",
+            type: 'POST',
+            dataType : "JSON",
+            data:{
+                code:code,
+                tel:tel,
+                isverify:'2'
+            },
+            success: function(data) {
+                if (data.status == 1) {
+                    mobileLogin(tel,code);
+                }else{
+                    alert('验证码不正确！');
+                }
+            },
+            error: function(xhr) {
+                alert('提交失败,请稍后再试！');
+            }
+        });
+
+    });
+
+    function mobileLogin(tel,code){
+        $.ajax({
+            url: '/mobilelogin',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                tel:tel,
+                code:code,
+                remember:$('#remember').is(':checked'),
+                safecode:"{$safecode}",
+                ssid:"{$ssid}"
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+               window.location.href= "/home/";
+            }else{
+                $(".logintips").html(data.info);
+                $(".logbtn").text("登陆");
+            }
+        })
+        .fail(function(xhr) {
+            $(".logbtn").text("登陆");
+            $(".logintips").html("登录失败,请稍后再试！");
+        });
+    }
+
+
+    $(".webLogin").click(function(event) {
+        if($("input[name=name]").val() == ""){
+            $("input[name=name]").parent().find(".yanzheng:eq(0)").html("无效的用户帐号！");
+            $("input[name=name]").focus();
+            return false;
+        }
+        $("input[name=name]").parent().find(".yanzheng:eq(0)").html("");
+
+        if($("input[name=password]").val() == "" || $("input[name=password]").val().length < 0){
+            $("input[name=password]").parent().find(".yanzheng:eq(1)").html("无效的用户密码！");
+            $("input[name=password]").focus();
+            return false;
+        }
+        $("input[name=password]").parent().find(".yanzheng:eq(1)").html("");
+
+        $(".logbtn").text("登陆中...请稍等");
+
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                name:$("input[name=name]").val(),
+                password:$("input[name=password]").val(),
+                remember:$('#remember').is(':checked'),
+                safecode:"{$safecode}",
+                ssid:"{$ssid}"
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+               window.location.href= "/home/";
+            }else{
+                $(".logintips").html(data.info);
+                $(".logbtn").text("登陆");
+            }
+        })
+        .fail(function(xhr) {
+            $(".logbtn").text("登陆");
+            $(".logintips").html("登录失败,请稍后再试！");
+        });
+    });
+});
+</script>
+</html>

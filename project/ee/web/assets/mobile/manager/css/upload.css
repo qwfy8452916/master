@@ -1,0 +1,98 @@
+/*
+* @Author: qz_dc
+* @Date:   2018-09-05 16:24:01
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-13 15:20:30
+*/
+.wrapper {
+    height: 94%;
+}
+.cancel {
+    margin-left: 0.85rem;
+}
+.publish {
+    color:#EFB013;
+    margin-right: 0.85rem;
+}
+.box {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.box .construct {
+    padding: 0.6rem 0.25rem;
+    position: relative;
+    color: #212121;
+}
+.box .status > div {
+    text-align: right;
+    color: #999;
+    margin-left: 9.5rem;
+    font-size: 0.7rem;
+}
+.box .right {
+    display: block;
+    width: 0.4rem;
+    height: 0.75rem;
+    background: url(../../common/img/right.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.8rem;
+}
+#describe {
+    width: 100%;
+    border-color: #999;
+    background: #f8f8f8;
+}
+/*---------------------调整图片样式------*/
+.weui-cell {
+    padding: 0;
+}
+.weui-uploader__input-box {
+    width: 5rem;
+    height: 5rem;
+    border: 0;
+    background: #E6E6E6;
+}
+.weui-uploader__input-box:last-chid {
+    margin-right: 0;
+}
+.weui-uploader__file {
+    width: 5rem;
+    height: 5rem;
+}
+.weui-cells {
+    background: #f8f8f8;
+}
+.weui-cells:before {
+    border-top-color: #fff;
+}
+.weui-cells:after {
+    border-bottom-color: #fff;
+}
+.weui-uploader__input-box:after, .weui-uploader__input-box:before {
+    background-color: #999;
+}
+.weui-mask {
+    visibility: visible;
+}
+.weui-dialog {
+    visibility: visible;
+}
+
+.example {
+    font-size: 0.6rem;
+}
+.example .zuiduo {
+    color: #E31919;
+    display: none;
+    padding-left: 0.8rem;
+}
+.example a {
+    border-bottom: 1px solid #0D5AA9;
+    color: #0D5AA9;
+    font-size: 0.6rem;
+}
+.example a {
+    color: #0D5AA9;
+}

@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="http://{:C('QZ_YUMINGWWW')}/meitu/" rel="canonical" />
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-meitu.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<link rel="stylesheet" href="/assets/home/diary/css/font-awesome.min.css?v={:C('STATIC_VERSION')}">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/assets/mobile/css/font-awesome-ie7.min.css?v={:C('STATIC_VERSION')}">
+<![endif]-->
+<title>{$info.title} - 装修美图</title>
+</head>
+<body>
+<div class="m-wrap">
+    <div class="m-nav">
+    <div class="m-back"><a href="/"><span></span>后退</a></div>
+    <div class="m-title">装修百科</div>
+    <include file="Index:topMenu" />
+    </div>
+  <div class="m-logo">
+    <div class="logo-main"></div>
+    <div class="logo-s"></div>
+  </div>
+
+<div class="neckad-into" href="#"><img src="/assets/mobile/images/hl33.jpg" alt=""/></div>
+
+<div class="meitu-menu">
+    <dl>
+        <dt>局部效果图</dt>
+        <dd>
+            <volist name="info.location" id="v">
+            <a href="{$v.link}">{$v.name}</a>
+            </volist>
+            <div class="flexible">展开<i class="icon-double-angle-down"></i></div>
+        </dd>
+    </dl>
+    <div class="meitu-more-img">
+        <ul>
+            <volist name="info.locationImg" id="v">
+            <li><a href="/meitu/p{$v.id}.html"><img src="http://staticqn.qizuang.com/{$v.img_path}-s180x180.jpg" alt="{$v.title}"/></a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+
+<div class="meitu-menu">
+    <dl>
+        <dt>装修风格</dt>
+        <dd>
+            <volist name="info.fengge" id="v">
+            <a href="{$v.link}">{$v.name}</a>
+            </volist>
+            <div class="flexible">展开<i class="icon-double-angle-down"></i></div>
+        </dd>
+    </dl>
+    <div class="meitu-more-img">
+        <ul>
+            <volist name="info.fenggeImg" id="v">
+            <li><a href="/meitu/p{$v.id}.html"><img src="http://staticqn.qizuang.com/{$v.img_path}-s180x180.jpg" alt="{$v.title}"/></a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+
+
+<div class="meitu-menu">
+    <dl>
+        <dt>户型分类</dt>
+        <dd>
+            <volist name="info.huxing" id="v">
+                <a href="{$v.link}">{$v.name}</a>
+            </volist>
+            <div class="flexible">展开<em class="icon-double-angle-down"></em></div>
+        </dd>
+    </dl>
+    <div class="meitu-more-img">
+        <ul>
+            <volist name="info.huxingImg" id="v">
+            <li><a href="/meitu/p{$v.id}.html"><img src="http://staticqn.qizuang.com/{$v.img_path}-s180x180.jpg" alt="{$v.title}"/></a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+
+
+<div class="meitu-menu">
+    <dl>
+        <dt>颜色分类</dt>
+        <dd>
+            <volist name="info.color" id="v">
+                <a href="{$v.link}">{$v.name}</a>
+            </volist>
+            <div class="flexible">展开<i class="icon-double-angle-down"></i></div>
+        </dd>
+    </dl>
+    <div class="meitu-more-img">
+        <ul>
+            <volist name="info.colorImg" id="v">
+            <li><a href="/meitu/p{$v.id}.html"><img src="http://staticqn.qizuang.com/{$v.img_path}-s180x180.jpg" alt="{$v.title}"/></a></li>
+            </volist>
+        </ul>
+    </div>
+</div>
+
+<div class="meitu-gz">
+    <h3>公装效果图</h3>
+    <ul>
+        <li><a href="/meitu/list-l0f0h29c0"><span class="gz-img"><img src="/assets/mobile/images/g1.png" alt=""/></span>办公室</a></li>
+        <li><a href="/meitu/list-l0f0h26c0"><span class="gz-img"><img src="/assets/mobile/images/g2.png" alt=""/></span>服装店</a></li>
+        <li><a href="/meitu/list-l0f0h35c0"><span class="gz-img"><img src="/assets/mobile/images/g3.png" alt=""/></span>酒店</a></li>
+        <li><a href="/meitu/list-l6f0h0c0"><span class="gz-img"><img src="/assets/mobile/images/g4.png" alt=""/></span>餐厅</a></li>
+        <li><a href="/meitu/list-l0f0h34c0"><span class="gz-img"><img src="/assets/mobile/images/g5.png" alt=""/></span>厂房</a></li>
+        <li><a href="/meitu/list-l0f0h25c0"><span class="gz-img"><img src="/assets/mobile/images/g6.png" alt=""/></span>水果店</a></li>
+        <li><a href="/meitu/list-l0f0h30c0"><span class="gz-img"><img src="/assets/mobile/images/g7.png" alt=""/></span>美容院</a></li>
+        <li><a href="/meitu/list-l0f0h33c0"><span class="gz-img"><img src="/assets/mobile/images/g8.png" alt=""/></span>宾馆</a></li>
+    </ul>
+</div>
+
+</div>
+<include file="Index:newFooter" />
+</body>
+</html>

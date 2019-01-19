@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>daonghang</title>
+    <style>
+        #head {
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            height: 50px;
+            background-color: #fff;
+            margin: 0;
+            box-shadow: 0 0 5px #000
+            }
+            #inhead {
+            width: 80%;
+            margin: auto;
+            font-size: 25px;
+            padding: 10px
+            }
+            #menupoint {
+            float: right;
+            }
+            #menu {
+            height: 50px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.8);
+            position: fixed;
+            z-index: 1;
+            top: 50px;
+            display: none;
+            padding-left: 10%;
+            padding-right: 10%;
+            color: #fff;
+            display: flex;
+            }
+            #list {
+            min-width: 80px;
+            text-align: center;
+            flex-grow: 0.18
+            }
+            #link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            line-height: 50px
+            }
+            #list:hover {
+            background-color: rgba(70,70,70,0.8);
+            }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <div id="inhead">
+        <img id="ioc" src="tupian/ioc.png">
+        时火的个人博客
+        <div id="menupoint">
+        <img id="Category" src="tupian/Category.png" height="35px">
+        </div>
+        </div>
+        </div>
+        <div id="menu">
+        <div id="list"><a id="link" href="index.php">首页</a></div>
+        <div id="list"><a id="link" href="resource.php">资源</a></div>
+        <div id="list"><a id="link" href="suibi.php">随笔</a></div>
+        <div id="list"><a id="link" href="message.php">留言</a></div>
+        </div>
+        <script src="http://upwill.cn/js/js.js"></script>
+        <!-- <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script> -->
+        <script type="text/javascript">
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width > 1000){
+            $(document).ready(function(){
+            $("#menu").fadeOut();
+            }
+            );
+            $(document).ready(function(){
+            $("#Category").mouseover(function(){
+            $("#menu").fadeIn(100);
+            });
+            }
+            );
+            $(document).ready(function(){
+            $("#menu").mouseleave(function(){
+            $("#menu").fadeOut(100);
+            });
+            }
+            );
+            }
+            </script>
+</body>
+</html>

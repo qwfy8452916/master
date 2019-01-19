@@ -1,0 +1,174 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">公装美图</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$info.canonical}"/>
+</block>
+<block name="content">
+    <div class="box">
+        <div class="form_control">
+            <mip-form method="get" url="http://">
+                <input type="text" name="keyword" value="" placeholder="请输入您想找的效果图" validatetarget="keyword" validatetype="must">
+                <div target="keyword">关键词不能为空</div>
+                <button type="submit"><i class="fa fa-search"></i></button>
+           </mip-form>
+        </div>
+    </div>
+
+    <section class="menu_list mbt10">
+        <ul>
+            <li on="tap:tab-1.toggle">{$info.nav.wz|default="局部"}</li>
+            <li on="tap:tab-2.toggle">{$info.nav.fg|default="风格"}</li>
+            <li on="tap:tab-3.toggle">{$info.nav.mj|default="面积"}</li>
+        </ul>
+    </section>
+    <mip-lightbox
+        id="tab-1"
+        layout="nodisplay"
+        class="mip-hidden z-menu">
+        <div class="tab_container">
+            <a data-type='mip' rel="nofollow" href="{$info['select']['location']}">不限</a>
+            <volist name="info.wz" id="v">
+                <a data-type='mip' href="{$v.link}" <empty name="v.nofollow">rel="nofollow"</empty> <if condition="$info['navParams']['location'] EQ $v.id ">class="now"</if> >{$v.name}</a>
+            </volist>
+        </div>
+    </mip-lightbox>
+    <mip-lightbox
+        id="tab-2"
+        layout="nodisplay"
+        class="mip-hidden z-menu">
+        <div class="tab_container">
+            <a data-type='mip' href="">不限</a><a data-type='mip' href="">一居</a>
+            <a data-type='mip' href="">二居</a><a data-type='mip' href="">三居</a>
+            <a data-type='mip' href="">大户型</a><a data-type='mip' href="">别墅</a>
+            <a data-type='mip' href="">复式楼</a><a data-type='mip' href="">小户型</a>
+        </div>
+    </mip-lightbox>
+    <mip-lightbox
+        id="tab-3"
+        layout="nodisplay"
+        class="mip-hidden z-menu">
+        <div class="tab_container">
+            <a data-type='mip' href="">不限</a><a data-type='mip' href="">客厅</a>
+            <a data-type='mip' href="">阳台</a><a data-type='mip' href="">儿童房</a>
+            <a data-type='mip' href="">飘窗</a><a data-type='mip' href="">鞋柜</a>
+            <a data-type='mip' href="">餐厅</a><a data-type='mip' href="">厨房</a>
+        </div>
+    </mip-lightbox>
+    <mip-lightbox
+        id="tab-4"
+        layout="nodisplay"
+        class="mip-hidden">
+        <div class="tab_container">
+            <ul class="color-list">
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c0" >不限</a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c12"  class="ccc"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c11"  class="cdd1da"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c6"  class="f4e8b1"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c5"  class="f4cdb0"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c4"  class="f4c6cf"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c7"  class="eca9b1"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c8"  class="dfe6ae"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c9"  class="bcd16e"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c10"  class="ccb8e0"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c15"  class="f1d6ac"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c14"  class="a462c03"></a></li>
+                <li><a data-type='mip' href="{$global_basehost}/meitu/list-l5f0h0c13"  class="qicai"></a></li>
+            </ul>
+        </div>
+    </mip-lightbox>
+    <div class="wrapper gongzhuang">
+        <ul class="wall">
+            <div class="wall-column">
+                <div class="article" id="">
+                    <a data-type="mip" href="{$global_basehost}/meitu/g461.html">
+                        <mip-img src="http://staticqn.qizuang.com/meitu/20160722/579175f016a99-w300.jpg" alt="2016都市温馨美容院室内设计装修效果图"></mip-img>
+                    </a>
+                    <p><a data-type='mip' href="{$global_basehost}/meitu/g461.html">2016都市温馨美容院室内设计装修效果图</a></p>
+                </div>
+                <div class="article" id="">
+                    <a data-type="mip" href="{$global_basehost}/meitu/g461.html">
+                        <mip-img src="http://staticqn.qizuang.com/meitu/20160722/579175f016a99-w300.jpg" alt="2016都市温馨美容院室内设计装修效果图"></mip-img>
+                    </a>
+                    <p><a data-type='mip' href="{$global_basehost}/meitu/g461.html">2016都市温馨美容院室内设计装修效果图</a></p>
+                </div>
+                <div class="article" id="">
+                    <a data-type="mip" href="{$global_basehost}/meitu/g461.html">
+                        <mip-img src="http://staticqn.qizuang.com/meitu/20160722/579175f016a99-w300.jpg" alt="2016都市温馨美容院室内设计装修效果图"></mip-img>
+                    </a>
+                    <p><a data-type='mip' href="{$global_basehost}/meitu/g461.html">2016都市温馨美容院室内设计装修效果图</a></p>
+                </div>
+            </div>
+            <div class="wall-column">
+                <div class="article" id="">
+                    <a data-type="mip" href="{$global_basehost}/meitu/g493.html">
+                        <mip-img src="http://staticqn.qizuang.com/meitu/20171109/5a03fc82bff17-w300.jpg" alt="测试0233"></mip-img>
+                    </a>
+                    <p><a data-type="mip" href="{$global_basehost}/meitu/g493.html">测试0233</a></p>
+                </div>
+                <div class="article" id="">
+                    <a data-type="mip" href="{$global_basehost}/meitu/g493.html">
+                        <mip-img src="http://staticqn.qizuang.com/meitu/20171109/5a03fc82bff17-w300.jpg" alt="测试0233"></mip-img>
+                    </a>
+                    <p><a data-type="mip" href="{$global_basehost}/meitu/g493.html">测试0233</a></p>
+                </div>
+            </div>
+       </ul>
+    </div>
+    <div class="page-box">
+        <div class="page-box-container">
+            <div id="prev-page">
+                <!--<a data-type="mip" href="javascript:void(0)" class="page-change">上一页</a>-->
+                <a data-type="mip" href="http://mip.qizuang.com/meitu/gongzhuang/" class="page-change">上一页</a>
+            </div>
+            <div id="page-count" on="tap:tab-5.toggle">
+                <span id="current-page">1</span>/<span id="page-num">100 <i class="fa fa-caret-down" id="goto-page"></i></span>
+            </div>
+            <div id="next-page" class="red-active"><a data-type="mip" href="{$global_yuming_m}/sz/company/?p=2" class="page-change">下一页</a>
+            </div>
+        </div>
+    </div>
+     <mip-lightbox
+        id="tab-5"
+        layout="nodisplay"
+        class="mip-hidden">
+        <div class="fenye_list">
+            <div class="fenye-title">分页</div>
+            <ul>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=1">第<span>1</span>页</a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=2">第<span>2</span>页</a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=3">第<span>3</span>页</a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=4">第<span>4</span>页</a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=5">第<span>5</span>页</a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=6">第<span>6</span>页</a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=7">第<span>7</span>页</a>
+                </li>
+                <li>
+                    <a data-type="mip" href="{$global_yuming_m}/sz/company/?p=8">第<span>8</span>页</a>
+                </li>
+            </ul>
+        </div>
+    </mip-lightbox>
+
+</block>
+<block name="script">
+     <!--搜索框-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-form/mip-form.js"></script>
+    <!--下拉菜单切换-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+</block>

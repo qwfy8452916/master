@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>banner轮播</title>
+    <style>
+      html,body{margin:0;padding: 0;}
+      .showkuang{width: 520px;height: 300px;overflow: hidden;border: 1px solid #8aeafe;
+      margin: 100px auto 0;position: relative;}
+      .bannerlength{width:2080px;overflow: hidden;margin: 0;padding: 0;}
+      .bannerlength li{float: left;width: 520px;height: 100%;list-style: none;}
+      .bannerlength li img{width: 100%;}
+      .showkuang .niu{display: inline-block;width: 30px;height: 40px;line-height: 40px;
+      text-align: center;font-size: 30px;top: 50%;margin-top: -15px;background: rgba(0,0,0,.5);
+      position: absolute;color: #fff;cursor: pointer;}
+      .showkuang .niu_pre{left: 0;}
+      .showkuang .niu_next{right: 0;}
+
+      .yuandianwk{position: absolute;bottom: 0;width: 100%;text-align: center;}
+      .yuandianwk span{width: 15px;height: 15px;display: inline-block;border-radius: 50%;border: 1px solid #fff;}
+      .yuandianwk .on{background: #f5e922;}
+
+    </style>
+</head>
+<body>
+    <div class="showkuang">
+        <ul class="bannerlength">
+            <li data-id="0">
+                <img src="http://d.hiphotos.baidu.com/image/pic/item/caef76094b36acaf6d1e855571d98d1000e99c98.jpg" alt="">
+            </li>
+            <li data-id="1">
+                <img src="http://d.hiphotos.baidu.com/image/pic/item/9825bc315c6034a84d0cf125c6134954082376a3.jpg" alt="">
+            </li>
+            <li data-id="2">
+                <img src="http://c.hiphotos.baidu.com/image/pic/item/2f738bd4b31c870173d4b35d2a7f9e2f0708ff2f.jpg" alt="">
+            </li>
+            <li data-id="3">
+                <img src="http://a.hiphotos.baidu.com/image/pic/item/960a304e251f95caf1852c0bc4177f3e6709521e.jpg" alt="">
+            </li>
+        </ul>
+        <div class="yuandianwk">
+            <span class="on"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <span class="niu niu_pre"><</span>
+        <span class="niu niu_next">></span>
+    </div>
+
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+       $(function(){
+        // 圆点索引
+        var nowindex;
+        // 圆点索引
+
+         /*自动播放*/
+         var k;
+
+
+         function donghua(){
+           $('.bannerlength').animate({"margin-left":"-520px"},function(){
+             $('.bannerlength').css("margin-left","0");
+             $('.bannerlength').append($('.bannerlength li').eq(0))
+           
+            // 自动圆点切换
+            nowindex=$('.bannerlength li').eq(0).data('id')
+            $('.yuandianwk span').eq(nowindex).addClass('on')
+            $('.yuandianwk span').eq(nowindex).siblings().removeClass('on')
+            // 自动圆点切换
+
+           })
+         }
+
+         k=setInterval(donghua,2000)
+         
+         /*鼠标悬浮移入移除事件*/
+         $('.showkuang').hover(function(){
+             clearInterval(k)
+         },
+         function(){
+            k=setInterval(donghua,2000)
+         })
+        
+          /*按钮 下一个*/
+         $('.niu_pre').on('click',function(){
+            $('.bannerlength').animate({"margin-left":"-520px"},function(){
+                
+                $('.bannerlength').append($('.bannerlength li').eq(0))
+                $('.bannerlength').css("margin-left","0px");
+
+                // 点击下一个圆点切换
+                nowindex=$('.bannerlength li').eq(0).data('id')
+                $('.yuandianwk span').eq(nowindex).addClass('on')
+                $('.yuandianwk span').eq(nowindex).siblings().removeClass('on')
+                // 点击下一个圆点切换
+                
+            })
+         })
+         
+         /*按钮上一个*/
+         $('.niu_next').on('click',function(){
+             $('.bannerlength').prepend($('.bannerlength li:last'))
+             $('.bannerlength').css("margin-left","-520px")
+             $('.bannerlength').animate({"margin-left":"0px"},function(){
+                
+                // 点击上一个圆点切换
+                nowindex=$('.bannerlength li').eq(0).data('id')
+                $('.yuandianwk span').eq(nowindex).addClass('on')
+                $('.yuandianwk span').eq(nowindex).siblings().removeClass('on')
+                // 点击上一个圆点切换
+
+             })
+         })
+
+        
+
+
+       })
+    
+    </script>
+</body>
+</html>

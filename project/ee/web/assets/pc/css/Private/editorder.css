@@ -1,0 +1,68 @@
+button{outline: none;}
+.tabbiaot{overflow: hidden;}
+.tabbiaot li{display: inline-block;float: left;font-size: 16px;color: #000;padding: 14px 24px;
+font-weight: 600;}
+.b-bread-text{padding-bottom: 0 !important;}
+.active{border-bottom: 2px solid #1890ff;}
+.tabbiaot a{color: #333!important}
+.active a{color: #1890ff!important;}
+.wrapinput{width: 33% !important;}
+.p-form-title{width: 27% !important;display: inline-block;text-align: right;
+line-height: 38px;vertical-align: top;}
+.quchupad{padding-left: 0;text-indent: 0.8em; ;}
+.wrapdate{display: inline-block;position: relative;overflow: hidden;width: 60%;}
+.wrapdate .dateriqi{width: 99%;}
+.wrapdate .fa-calendar{position: absolute;top:11px;right: 10px;}
+.yiyanshou{color: #52c41a;}
+.weiyans{color: #fa8c16;}
+.buhege{color: #f5222d;}
+.yihang{overflow: hidden;}
+.orderremark{
+  width: 400px !important; height: 100px
+}
+.yezhu-title{padding-bottom: 24px;border-bottom: 1px solid #e6e6e6;}
+.p-form-box{margin-top: 24px;}
+.p-form-box1 {
+  width: 100%;
+  overflow: hidden;
+}
+.hang-title{display: inline-block;width: 98px;text-align: right;vertical-align: top;line-height: 40px;}
+.hangwrap .inputwk{display: inline-block;width: 348px;}
+.red-xing{color: #f5222d;margin-left: 3px;}
+.tishi{height: 24px;color: #ff5353;margin-left: 100px;font-size: 12px;}
+.hangwrap .inlinelie{display: inline-block;float:left; width: 32%;}
+.hangwrap .lefjvli{margin-left: 135px;}
+.inlinelie .mianjiwk{position: relative;}
+.mianjiwk .danwei{position: absolute;top: 12px;right: 5px;font-size: 12px;}
+.qingchufu{clear: both;}
+.hangwrap .widlength{width: 949px;}
+.orderhang{overflow: hidden;}
+.bottom-btn{text-align: right;}
+.bottom-btn button{margin:0px 10px;}
+
+.chuan-title{margin: 24px 0 20px 0;font-size: 12px;}
+
+
+.uploadpicwk{overflow: hidden;}
+#uploader-demo{margin: 10px 0;}
+.uploader-list{overflow:visible !important;}
+#uploader-demo .thumbnail{overflow:visible !important;}
+.file-item{padding: 0;margin-bottom: 0 !important;}
+.file-item .error{top: 0;right: 0;left: 0;}
+.delimgbtns{position: absolute;top: -4px;right: -3px;z-index: 999;
+display: inline-block;width: 18px;height: 18px;line-height: 18px;text-align: center;
+border-radius: 50%;background: #000;opacity:0.7;filter:alpha(opacity=70);font-size: 12px;cursor: pointer;color: #fff}
+.hengxian{width: 36px;height: 4px;display: inline-block;background: #d6d6d6;border-radius: 5px;
+position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+.suxian{height: 36px;width: 4px;display: inline-block;background: #d6d6d6;border-radius: 5px;
+position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+.webuploader-pick{border:1px dashed #d6d6d6;padding-top: 50px !important;}
+.file-item div.file-panel{text-align: center;}
+.inbiaoti{height: 100%;width: 100%;text-indent: 1em;background: rgba(0,0,0,0);color: #fff;
+outline: none;border:0;}
+.upload-state-done:after{top: 0 !important;left: 0 !important;line-height: 150px;width: 100%;text-align: center;
+display: none;}
+.file-item .progress{position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+
+.zhangshuxz{overflow: hidden;margin-top: 16px;color: #999;}
+.zhangshuxz .canupload,.zhangshuxz .yuupload{color: #1890ff;margin: 0 3px;}

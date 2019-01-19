@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       ul li{display: inline-block;float: left;width: 100px;height: 80px;line-height: 80px;text-align: center;
+       color: #fff;background: #1a4381;border-left: 1px solid #80811a;}
+    </style>
+</head>
+<body>
+    <ul class="ulwrak">
+        <li data-id="001">001</li>
+        <li data-id="002">002</li>
+        <li data-id="003">003</li>
+        <li data-id="004">004</li>
+        <li data-id="005">005</li>
+    </ul>
+
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+
+   var bendihunc2=sessionStorage.getItem("bendihunc") ? JSON.parse(sessionStorage.getItem("bendihunc")):[];
+
+   $('.ulwrak li').click(function(){
+       var panduan=true;
+       var codeattr=getLocation("bendihunc") || [];
+       var dataid=$(this).data('id')
+
+        if(codeattr.length>0){
+            $.each(codeattr,function(index){
+               if(codeattr[index]==dataid){
+                  panduan=false;
+                  codeattr.splice(index,1)
+               }
+            })
+            if(panduan==true){
+                codeattr.push(dataid)
+            }
+        }else{
+            codeattr.push(dataid)
+        }
+       sessionStorage.setItem("bendihunc",JSON.stringify(codeattr))
+   })
+
+    function getLocation(huancunname){
+       if(!huancunname || typeof huancunname !=="string"){
+           return
+       }
+       return sessionStorage.getItem(huancunname) ? JSON.parse(sessionStorage.getItem(huancunname)):[];
+     }
+
+</script>
+  
+
+</body>
+</html>

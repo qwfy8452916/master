@@ -1,0 +1,483 @@
+<link rel="stylesheet" href="{$static_host}/assets/common/css/font-awesome.min.css?v={:C('STATIC_VERSION')}" type="text/css" />
+<link rel="stylesheet" href="{$static_host}/assets/common/js/tooltips/tooltips.css?v={:C('STATIC_VERSION')}"/>
+<link href="{$static_host}/assets/common/js/icheck/skins/all.css?v={:C('STATIC_VERSION')}" rel="stylesheet"/>
+<link href="{$static_host}/assets/common/js/icheck/skins/minimal/red.css?v={:C('STATIC_VERSION')}" rel="stylesheet"/>
+<link href="{$static_host}/assets/common/css/step.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="{$static_host}/assets/common/css/window.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+
+<!--S小贴士-->
+<link rel="stylesheet" href="/assets/home/about/css/swiper-3.3.1.min.css?v={:C('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/common/css/xiaotieshi.css?v={:C('STATIC_VERSION')}">
+<link rel="stylesheet" type="text/css" href="/assets/common/css/daohang20180712.css?v={:C('STATIC_VERSION')}"/>
+<script type="text/javascript" src="{$static_host}/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<!--E小贴士-->
+
+<!--[if IE]>
+    <script src="{$static_host}/assets/common/js/html5shiv.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="{$static_host}/assets/common/js/placeholders.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="{$static_host}/assets/xiaoguotu/js/css3-mediaqueries.js?v={:C('STATIC_VERSION')}"></script>
+<![endif]-->
+<!--[if lte IE 7]>
+    <script  type="text/javascript" src="{$static_host}/assets/common/js/json2.js?v={:C('STATIC_VERSION')}"></script>
+<![endif]-->
+<!--[if lte IE 8]> <link rel="stylesheet" type="text/css" href="/assets/home/ie/forie.css?v={:C('STATIC_VERSION')}"/> <![endif]-->
+<!--[if lte IE 9]> <link rel="stylesheet" type="text/css" href="/assets/home/ie/forie.css?v={:C('STATIC_VERSION')}"/> <![endif]-->
+</head>
+<body>
+<!-- 新头部 -->
+<div class="pub-top">
+    <div class="wrap">
+        <div class="city">
+            <i class="fa fa-map-marker location" style=" margin-top: 6px;"></i>
+            <strong>{$cityInfo.name}</strong>
+            <if condition="$cityInfo['adj_city']">
+                <i style="font-size: 14px; margin-top:0;font-style:normal">[</i>
+                <volist name="cityInfo.adj_city" id="vo">
+                    <if condition="!empty($vo['bm'])">
+                        <a href="http://{$vo.bm}.{:C('QZ_YUMING')}" rel="nofollow" target="_blank" style=" margin:0 2px;">{$vo.name}</a>
+                    </if>
+                </volist>
+                <i style="margin-right:3px;font-size: 14px;margin-top:0;font-style:normal">]</i>
+            </if>
+            <div class="pub-city">
+                <a class="city-link" href="http://{:C('QZ_YUMINGWWW')}/city/" rel="nofollow">[切换]</a>
+            </div>
+            {$info.returnhome}
+        </div>
+        <ul class="menu">
+            <if condition="isset($_SESSION['u_userInfo'])">
+            <li>
+                <a href="http://u.qizuang.com/home/" target="_blank">
+                    <switch name="Think.session.u_userInfo.classid">
+                        <case value="1">{$_SESSION['u_userInfo']['name']}</case>
+                        <case value="2">{$_SESSION['u_userInfo']['name']}</case>
+                        <case value="3">{$_SESSION['u_userInfo']['jc']}</case>
+                    </switch>
+                </a>
+                <a class="loginout" href="javascript:void(0)">退出</a>
+            </li>
+                <script type="text/javascript">
+                $(".loginout").click(function(event) {
+                    $.ajax({
+                            url: '/loginout',
+                            type: 'GET',
+                            dataType: 'JSON',
+                            data: {
+                                ssid: "{$ssid}"
+                            }
+                        })
+                        .done(function(data) {
+                            if (data.status == 1) {
+                                window.location.href = window.location.href;
+                            } else {
+                                $.pt({
+                                    target: _this,
+                                    content: data.info,
+                                    width: 'auto'
+                                });
+                            }
+                        })
+                        .fail(function(xhr) {
+                            $.pt({
+                                target: _this,
+                                content: '操作失败,请稍后再试！',
+                                width: 'auto'
+                            });
+                        });
+                });
+                </script>
+            <else/>
+                <li><a href="http://u.qizuang.com" rel="nofollow">登录</a></li>
+                <li><a href="http://u.qizuang.com/reg/" rel="nofollow">注册</a></li>
+            </if>
+            <li><a href="http://{:C('QZ_YUMINGWWW')}/ruzhu" rel="nofollow">商家入驻</a></li>
+            <li><a class="active" href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/zhaobiao/" rel="nofollow">我要装修</a></li>
+            <li class="guanzhuli"><a href="javascript:void(0);" rel="nofollow"><span class="guanzhupic"></span><span>关注有礼</span><div class="erweimawk"><img src="/assets/common/img/topyouhuama.png" alt="关注有礼二维码"><div class="guanzhums">关注微信</div><div class="guanzhums">随身看攻略</div></div></a></li>
+            <li>全国统一服务热线：<span class="menu-telnum">{:OP("QZ_CONTACT_TEL400")}</span></li>
+        </ul>
+    </div>
+</div>
+<div class="pub-head-box">
+    <div class="pub-head">
+        <a class="logo" href="/">
+            <img class="logo-img1" src="/assets/common/pic/logo-new.jpg" alt="{:OP('QZ_SITE_NAME')}" title="{:OP('QZ_SITE_NAME')}"/>
+            <img class="logo-img2" src="/assets/common/pic/logo-fubiao.gif" alt="中国知名装修平台">
+        </a>
+        <div class="pub-head-nav">
+            <ul class="nav">
+                <if condition="$cityInfo['bm'] NEQ ''">
+                    <li><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/">首页</a></li>
+                    <else/>
+                    <li><a href="http://{:C('QZ_YUMINGWWW')}/">首页</a></li>
+                </if>
+                <if condition="$cityInfo['bm'] NEQ ''">
+                    <li><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/zhaobiao/" rel="nofollow">设计与报价</a></li>
+                    <else/>
+                    <li><a href="http://{:C('QZ_YUMINGWWW')}/zhaobiao/" rel="nofollow">设计与报价</a></li>
+                </if>
+                <li class="nav-list-meitu" data-pub="zxmt-nav"><a href="http://{:C('MEITU_DONAMES')}/">装修效果图<i class="fa fa-sort-desc"></i></a></li>
+                <if condition="$cityInfo['bm'] NEQ ''">
+                    <li><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company/">装修公司</a></li>
+                    <else/>
+                    <li><a href="http://{:C('QZ_YUMINGWWW')}/company/">装修公司</a></li>
+                </if>
+                <li class="nav-list-gonglue" data-pub="zxgl-nav"><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/">装修攻略<i class="fa fa-sort-desc"></i></a></li>
+                <li class="nav-list-more" data-pub="more-nav"><a href="">更多<i class="fa fa-sort-desc"></i></a></li>
+                <li class="search-box"><a><img src="/assets/common/pic/sousuo.png"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="pub-search">
+            <div class="search-nav">
+                <if condition="$serch_uri EQ 'meitu' ">
+                <form class="search-form" method="GET" action="http://meitu.{:C('QZ_YUMING')}/list/">
+                <else />
+                <form class="search-form" method="GET" action="http://{:C('QZ_YUMINGWWW')}/{$serch_uri}/">
+                </if>
+                    <if condition="$serch_uri EQ 'meitu' ">
+                    <div class="first-search" placeholder="{$holdercontent}" target="http://meitu.{:C('QZ_YUMING')}/list">{$serch_type}<i class="fa  fa-sort-desc"></i></div>
+                    <else />
+                    <div class="first-search" placeholder="{$holdercontent}" target="http://{:C('QZ_YUMINGWWW')}/{$serch_uri}/">{$serch_type}<i class="fa  fa-sort-desc"></i></div>
+                    </if>
+                    <ul>
+                        <li  placeholder="全国超过十万家装修公司为您免费设计" target="http://{:C('QZ_YUMINGWWW')}/companysearch/">装修公司</li>
+                        <li  placeholder="海量精选美图任您挑选" target="http://meitu.{:C('QZ_YUMING')}/list/">装修效果图</li>
+                        <li  placeholder="3922515套真实案例任您挑选" target="http://{:C('QZ_YUMINGWWW')}/xgt/">装修案例</li>
+                        <li  placeholder="了解相关的装修知识" target="http://{:C('QZ_YUMINGWWW')}/gonglue/search/">装修攻略</li>
+                        <li  placeholder="专业解决您所有的装修问题" target="http://{:C('QZ_YUMINGWWW')}/wenda/search">装修问答</li>
+                        <li  placeholder="视频学装修更简单" target="http://{:C('QZ_YUMINGWWW')}/video/jiangtang/">装修视频</li>
+                    </ul>
+                    <div class="search-input">
+                        <input type="text" placeholder="{$holdercontent}" name="keyword">
+                        <button type="button"></button>
+                    </div>
+                </form>
+            </div>
+            <div class="search-close"><img src="/assets/common/pic/quxiao.png"></div>
+        </div>
+    </div>
+    <div class="pub-nav-hover">
+        <div class="zxmt-nav">
+            <div class="zxmt-nav-main">
+                <div class="daohxiugitem" <if condition="$choose_menu EQ 'jiajumeitu'">class="active"</if>><a href="http://{:C('MEITU_DONAMES')}/list/" target="_blank"><span <if condition="$choose_menu EQ 'list'">class="jiazlogodh"<else/>class="jiazlogodh2"</if>></span><span <if condition="$choose_menu EQ 'list'">class="jiazuangdhms2"<else/>class="jiazuangdhms3"</if>>家装效果</span></a></div>
+                <div class="daohxiugitem" <if condition="$choose_menu EQ 'gongzhuang'">class="active"</if>><a href="http://{:C('MEITU_DONAMES')}/gongzhuang/" target="_blank"><span <if condition="$choose_menu EQ 'gongzhuang'">class="gongzuanglogodh2"<else/>class="gongzuanglogodh"</if>></span><span <if condition="$choose_menu EQ 'gongzhuang'">class="gongzuangdhms2"<else/>class="gongzuangdhms"</if>>公装效果</span></a></div>
+
+                <if condition="$cityInfo['bm'] NEQ ''">
+                <div class="daohxiugitem" <if condition="$choose_menu EQ 'xgt'">class="active"</if>><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/xgt/" target="_blank"><span <if condition="$choose_menu EQ 'xgt'">class="quanwulogodh2"<else/>class="quanwulogodh"</if>></span><span <if condition="$choose_menu EQ 'xgt'">class="quanwudhms2"<else/>class="quanwudhms"</if>>全屋图集</span></a></div>
+                <else/>
+                <div class="daohxiugitem" <if condition="$choose_menu EQ 'xgt'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/xgt/" target="_blank"><span <if condition="$choose_menu EQ 'xgt'">class="quanwulogodh2"<else/>class="quanwulogodh"</if>></span><span <if condition="$choose_menu EQ 'xgt'">class="quanwudhms2"<else/>class="quanwudhms"</if>>全屋图集</span></a></div>
+                </if>
+                <div class="daohxiugitem" <if condition="$choose_menu EQ '3dxgt'">class="active"</if>><a href="http://{:C('MEITU_DONAMES')}/3d/" target="_blank"><span <if condition="$choose_menu EQ '3dxgt'">class="vrlogodh2"<else/>class="vrlogodh"</if>></span><span <if condition="$choose_menu EQ '3dxgt'">class="vrgdhms2"<else/>class="vrgdhms"</if>>VR实景</span></a></div>
+                <if condition="$cityInfo['bm'] NEQ ''">
+                <div class="daohxiugitem" <if condition="$choose_menu EQ 'sheji'">class="active"</if>><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/sheji/" target="_blank" rel="nofollow"><span <if condition="$choose_menu EQ 'sheji'">class="qiangsjlogodh2"<else/>class="qiangsjlogodh"</if>></span><span <if condition="$choose_menu EQ 'sheji'">class="qiangsjdhms2"<else/>class="qiangsjdhms"</if>>0元抢设计</span></a></div>
+                <else/>
+                <div class="daohxiugitem" <if condition="$choose_menu EQ 'sheji'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/sheji/" target="_blank" rel="nofollow"><span <if condition="$choose_menu EQ 'sheji'">class="qiangsjlogodh2"<else/>class="qiangsjlogodh"</if>></span><span <if condition="$choose_menu EQ 'sheji'">class="qiangsjdhms2"<else/>class="qiangsjdhms"</if>>0元抢设计</span></a></div>
+                </if>
+        </div>
+    </div>
+        <div class="zxgl-nav">
+            <div class="zxgl-nav-main">
+                <div class="daohxiugitem" <if condition="$choose_gonglue EQ 'lc'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/lc/" target="_blank"><span <if condition="$choose_gonglue EQ 'lc'">class="zxlclogodh2"<else/>class="zxlclogodh"</if>></span><span <if condition="$choose_gonglue EQ 'lc'">class="zxlcdhms2"<else/>class="zxlcdhms"</if>>装修流程</span></a></div>
+                <div class="daohxiugitem" <if condition="$choose_gonglue EQ 'video'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/video/jiangtang/" target="_blank"><span <if condition="$choose_gonglue EQ 'video'">class="zxjtlogodh2"<else/>class="zxjtlogodh"</if>></span><span <if condition="$choose_gonglue EQ 'video'">class="zxjtdhms2"<else/>class="zxjtdhms"</if>>装修讲堂</span></a></div>
+                <div class="daohxiugitem" <if condition="$choose_gonglue EQ 'baike'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/baike/" target="_blank"><span <if condition="$choose_gonglue EQ 'baike'">class="zxbklogodh2"<else/>class="zxbklogodh"</if>></span><span <if condition="$choose_gonglue EQ 'baike'">class="zxbkdhms2"<else/>class="zxbkdhms"</if>>装修百科</span></a></div>
+                <div class="daohxiugitem" <if condition="$choose_gonglue EQ 'wenda'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/wenda/" target="_blank"><span <if condition="$choose_gonglue EQ 'wenda'">class="zxwdlogodh2"<else/>class="zxwdlogodh"</if>></span><span <if condition="$choose_gonglue EQ 'wenda'">class="zxwddhms2"<else/>class="zxwddhms"</if>>在线问答</span></a></div>
+                <div class="daohxiugitem" <if condition="$choose_gonglue EQ 'riji'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/riji/" target="_blank"><span <if condition="$choose_gonglue EQ 'riji'">class="yhrjlogodh2"<else/>class="yhrjlogodh"</if>></span><span <if condition="$choose_gonglue EQ 'riji'">class="yhrjdhms2"<else/>class="yhrjdhms"</if>>用户日记</span></a></div>
+                <div class="daohxiugitem" <if condition="$choose_gonglue EQ 'hl'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/hl/" target="_blank"><span <if condition="$choose_gonglue EQ 'hl'">class="kgjrlogodh2"<else/>class="kgjrlogodh"</if>></span><span <if condition="$choose_gonglue EQ 'hl'">class="kgjrdhms2"<else/>class="kgjrdhms"</if>>开工吉日</span></a></div>
+                </div>
+        </div>
+        <div class="more-nav">
+            <div class="more-nav-main">
+                <div class="daohxiugitem" <if condition="$choose_more EQ 'zxbj'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/zxbj/" target="_blank" rel="nofollow"><span <if condition="$choose_more EQ 'zxbj'">class="fastbjlogodh2"<else/>class="fastbjlogodh"</if>></span><span <if condition="$choose_more EQ 'zxbj'">class="fastbjdhms2"<else/>class="fastbjdhms"</if>>8秒报价</span></a></div>
+                <div class="daohxiugitem" <if condition="$choose_more EQ 'baozhang'">class="active"</if>><a href="http://{:C('QZ_YUMINGWWW')}/baozhang.html" target="_blank" rel="nofollow"><span <if condition="$choose_more EQ 'baozhang'">class="fuwubzlogodh2"<else/>class="fuwubzlogodh"</if>></span><span <if condition="$choose_more EQ 'baozhang'">class="fuwubzdhms2"<else/>class="fuwubzdhms"</if>>服务保障</span></a></div>
+                <div class="daohxiugitem"><a href="http://jiancai.qizuang.com/" target="_blank"><span class="jczxlogodh"></span><span class="jczxdhms">建材资讯</span></a></div>
+                <!--<div class="daohxiugitem"><a href="http://jiaju.qizuang.com/" target="_blank"><span class="jjscdh"></span><span class="jjscdhms">家居商城</span></a></div>-->
+            </div>
+        </div>
+    </div>
+    <div class="pub-jisuanqi" style="width: 52px;height: 65px;position: absolute;right: 8px;top: 5px;">
+        <a href="http://{:C('QZ_YUMINGWWW')}/zxbj/?source=18013034" target="_blank">
+            <img width="50" height="39" src="/assets/common/img/zhinengbaojia.gif" alt="智能报价" />
+        </a>
+    </div>
+</div>
+<div class="pub-head-empty"></div>
+
+<!--S 头-->
+<div class="c-head">
+    <div class="c-wrap">
+        <div class="c-mark">
+            <if condition="$userInfo['user']['logo'] NEQ ''">
+            <img src="{$userInfo.user.logo}" width="126" height="63" alt="{$userInfo.user.qc}"/>
+            <else/>
+            <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_COMPANY_LOGO')}" width="126" height="63" alt="齐装网" />
+            </if>
+        </div>
+        <div class="c-info-box">
+            <h1 class="com-tit">{$userInfo.user.qc}<if condition="$userInfo['user']['fake'] EQ 0 AND $userInfo['user']['on'] EQ 2"><i  title="该公司已认证"></i></if>
+            </h1>
+            <div class="com-tit2">{$userInfo.user.kouhao|mbstr=0,30}</div>
+            <div class="com-info">
+                <ul class="com-star">
+                    <li><span>设计水平</span>
+                    <if condition="(($userInfo['user']['avgsj'] NEQ 0 AND $userInfo['user']['avgsj'] EGT 9) OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 9))">
+                    <i></i><i></i><i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgsj'] NEQ 0 AND$userInfo['user']['avgsj'] EGT 8 AND $userInfo['user']['avgsj'] LT 9)OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 8 AND $userInfo['user']['avgcount'] LT 9))" />
+                    <i></i><i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgsj'] NEQ 0 AND$userInfo['user']['avgsj'] EGT 4 AND $userInfo['user']['avgsj'] LT 8)OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 4 AND $userInfo['user']['avgcount'] LT 8))" />
+                    <i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgsj'] NEQ 0 AND$userInfo['user']['avgsj'] EGT 2 AND $userInfo['user']['avgsj'] LT 4)OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 2 AND $userInfo['user']['avgcount'] LT 4))" />
+                    <i></i><i></i>
+                    <ELSE/>
+                    <i></i>
+                    </if></li>
+                    <li><span>服务态度</span>
+                    <if condition="(($userInfo['user']['avgfw'] NEQ 0 AND $userInfo['user']['avgfw'] EGT 9) OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 9))">
+                    <i></i><i></i><i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgfw'] NEQ 0 AND$userInfo['user']['avgfw'] EGT 8 AND $userInfo['user']['avgfw'] LT 9)OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 8 AND $userInfo['user']['avgcount'] LT 9))" />
+                    <i></i><i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgfw'] NEQ 0 AND$userInfo['user']['avgfw'] EGT 4 AND $userInfo['user']['avgfw'] LT 8)OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 4 AND $userInfo['user']['avgcount'] LT 8))" />
+                    <i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgfw'] NEQ 0 AND$userInfo['user']['avgfw'] EGT 2 AND $userInfo['user']['avgfw'] LT 4)OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 2 AND $userInfo['user']['avgcount'] LT 4))" />
+                    <i></i><i></i>
+                    <ELSE/>
+                    <i></i>
+                    </if>
+                    </li>
+                    <li><span>施工质量</span>
+                    <if condition="(($userInfo['user']['avgsg'] NEQ 0 AND $userInfo['user']['avgsg'] EGT 9) OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 9))">
+                    <i></i><i></i><i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgsg'] NEQ 0 AND$userInfo['user']['avgsg'] EGT 8 AND $userInfo['user']['avgsg'] LT 9)OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 8 AND $userInfo['user']['avgcount'] LT 9))" />
+                    <i></i><i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgsg'] NEQ 0 AND$userInfo['user']['avgsg'] EGT 4 AND $userInfo['user']['avgsg'] LT 8)OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 4 AND $userInfo['user']['avgcount'] LT 8))" />
+                    <i></i><i></i><i></i>
+                    <ELSEIF condition="(($userInfo['user']['avgsg'] NEQ 0 AND$userInfo['user']['avgsg'] EGT 2 AND $userInfo['user']['avgsg'] LT 4)OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 2 AND $userInfo['user']['avgcount'] LT 4))" />
+                    <i></i><i></i>
+                    <ELSE/>
+                    <i></i>
+                    </if>
+                    </li>
+                </ul>
+                <a class="com-btn" id="btnTop" href="javascript:;">免费设计与报价</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--E 头-->
+<div class="c-nav-box">
+    <ul class="c-nav">
+        <li class="c-top-step allserve"><a href="#">&nbsp;</a>
+        <div id="stepall">
+            <dl class="fstep">
+              <dt class="st1" data-title="一键免费申请"> <i>免费量房验房</i> 专业检测仪器，验房有保障
+                  <div class="fstep-int">
+                      <div class="fstep-int-left"><img src="/assets/common/img/1-1.png">
+                          <h2>拒绝开发商用各项理由"大事化小"<br>不放过自己的每一项权利！</h2>
+                          <h3>漏水、裂缝、气泡等质量问题一网打尽！</h3>
+                      </div>
+                  </div>
+              </dt>
+              <dt class="st2"  data-title="获取4套设计方案"><i>免费4份不同设计</i> 严格审核图纸，不收任何费用
+                  <div class="fstep-int">
+                      <div class="fstep-int-left"><img src="/assets/common/img/1-2.png">
+                          <h2>合理的采光色调及空间布局！<br>理想的风水规划,专业人办专业事儿！</h2>
+                          <h3>4套设计全面PK,让你的装修绝不后悔！</h3>
+                      </div>
+                  </div>
+              </dt>
+              <dt class="st3"  data-title="获取详细预算清单"><i>免费{:date("Y")}新报价</i>准确预算，货比三家不上当
+                  <div class="fstep-int">
+                      <div class="fstep-int-left"><img src="/assets/common/img/1-3.png">
+                          <h2>主材辅料费用,运输及人工成本等一目了然！<br>您千万不要当"冤大头"！</h2>
+                          <h3>全照国家标准,0漏项,0增项,远离被"蒙"！</h3>
+                      </div>
+                  </div>
+              </dt>
+              <dt class="st4"  data-title="马上获取预算报价"><i>免费申请第三方监管</i>细致装修，后期有保障
+                  <div class="fstep-int">
+                      <div class="fstep-int-left"><img src="/assets/common/img/1-4.png">
+                          <h2>详细预算清单,4份不同报价挤干水份！<br>花1分钟可省万元！</h2>
+                          <h3>环保材料,透明报价,土豪也能省！</h3>
+                      </div>
+                  </div>
+              </dt>
+          </dl>
+          <form class="secbox_form" onsubmit="return false;">
+              <div class="fstep-int-right">
+                    <span class="zbtitle">快速免费申请</span>
+                    <div class="lines"><span>您的姓名:</span><input name="name" type="text" placeholder="您的姓名"></div>
+                    <div class="lines"><span>您的手机:</span>
+                        <input name="tel" type="text" placeholder="接收方案的手机">
+                        <input type="hidden" name="fb_type" value="sheji">
+                    </div>
+                    <div class="lines" style="height:26px"><span>装修类型:</span>
+                          <input name="lx" type="radio" id="house1" class="icheck" value="1" checked>
+                          <label class="mr" for="house1">家装</label>
+                          <input id="house2" name="lx" type="radio" class="icheck" value="2">
+                          <label for="house2">公装</label>
+                    </div>
+                    <a id="fstep-btn" href="javascript:void(0)" class="btn">一键免费申请</a>
+                    <p>今日已有 <em class="red">{:releaseCount("fbrs")}</em> 户业主成功免费申请！
+                    <br>本月申请人数已达 <em class="red">{:releaseCount("fbzrs")}</em> 人</p>
+              </div>
+          </form>
+        </div>
+        </li>
+        <li><a href="/company_home/{$userInfo.user.id}/">首页</a></li>
+        <li><a href="/company_team/{$userInfo.user.id}/">设计师</a></li>
+        <li><a href="/company_case/{$userInfo.user.id}/">装修案例</a></li>
+        <li><a href="/company_event/{$userInfo.user.id}/">优惠活动</a></li>
+        <li><a href="/company_about/{$userInfo.user.id}/">关于我们</a></li>
+    </ul>
+</div>
+<script type="text/javascript" src="/assets/common/js/hm.min.js?ver=1&md={:time()}"></script>
+<script type="text/javascript" src="/assets/home/about/js/swiper-3.3.1.min.js?v={:C('STATIC_VERSION')}"></script>
+<script src="/assets/common/js/disclamer.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+
+  $(".search-nav ul li").click(function(event) {
+        $(".options em").html($(this).html());
+        $(".search-nav input[type=text]").attr("placeholder", $(this).attr("placeholder"));
+        var url = $(this).attr("target");
+        $(".search-form").attr("action",url);
+        $(".search-nav .first-search").html($(this).html()+'<i class="fa fa-sort-asc"></i>').find('i').css('line-height','30px');
+    });
+    $(".search-nav button").click(function(event) {
+        var url = $(".search-form").attr("action");
+        var keyword = $(".search-nav input[name=keyword]").val();
+        url += "?keyword="+keyword;
+        window.open(url);
+    });
+    $(".pub-head-nav ul li").removeClass('active');
+    $(".pub-head-nav ul li").eq("{$tabIndex}").addClass('active');
+
+    $(".pub-city").hover(function() {
+        $(this).addClass('active');
+    }, function() {
+        $(this).removeClass('active');
+    });
+    var timer = null;
+    $('.first-search').mouseenter(function() {
+        $(this).css('color','#ff5353').find('i').removeClass('fa-sort-desc').addClass('fa-sort-asc').css('line-height','30px')
+        clearTimeout(timer);
+        $('.search-nav ul').show();
+    });
+    $('.first-search').mouseleave(function() {
+        timer = setTimeout(function(){
+            $('.search-form ul').hide();
+            $(this).css('color','#333').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','22px')
+        },500);
+    });
+    $('.search-nav ul').mouseenter(function() {
+        $('.first-search').css('color','#ff5353').find('i').removeClass('fa-sort-desc').addClass('fa-sort-asc').css('line-height','30px')
+        clearTimeout(timer);
+        $(this).show();
+    });
+    $('.search-nav ul').mouseleave(function() {
+        $('.first-search').css('color','#333').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','22px')
+        clearTimeout(timer);
+        $(this).hide();
+    });
+
+
+     var timer1 = null;
+        var timer2 = null;
+        $(".pub-head-nav li").mouseenter(function(event) {
+            clearTimeout(timer2);
+            clearTimeout(timer1);
+            $(this).addClass('on').find('i').removeClass('fa-sort-desc').addClass('fa-sort-asc').css('line-height','56px');
+            $(this).siblings().removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+            var pub_text=$(this).data("pub");
+            if(pub_text){
+                $('.pub-nav-hover').show().attr('state',pub_text);
+                $("."+pub_text).show();
+                $("."+pub_text).siblings().hide();
+            }else{
+                $('.pub-nav-hover').hide();
+            }
+        });
+
+         $(".pub-head-nav li").mouseleave(function(event) {
+            var that=$(this);
+            timer1 = setTimeout(function(){
+                that.removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                $('.pub-nav-hover').hide().removeAttr('state');
+                $(".zxgl-nav , .zxmt-nav, .more-nav").hide();
+                clearTimeout(timer1);
+            },500);
+        });
+
+        $('.pub-nav-hover').mouseenter(function() {
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+            $(this).show();
+            if($(this).attr('state') == 'zxmt-nav'){
+                $('.nav-list-meitu').addClass('on').find('i').removeClass('fa-sort-desc').addClass('fa-sort-asc').css('line-height','56px');
+                $('.nav-list-gonglue').removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                $('.nav-list-more').removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                $(this).find('.zxmt-nav').show().siblings().hide();
+            }else if($(this).attr('state') == 'zxgl-nav'){
+                $('.nav-list-gonglue').addClass('on').find('i').removeClass('fa-sort-desc').addClass('fa-sort-asc').css('line-height','56px');
+                $('.nav-list-meitu').removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                $('.nav-list-more').removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                $(this).find('.zxgl-nav').show().siblings().hide();
+            }else if($(this).attr('state') == 'more-nav'){
+                $('.nav-list-more').addClass('on').find('i').removeClass('fa-sort-desc').addClass('fa-sort-asc').css('line-height','56px');
+                $('.nav-list-meitu').removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                $('.nav-list-gonglue').removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                $(this).find('.more-nav').show().siblings().hide();
+            }
+        });
+        $('.pub-nav-hover').mouseleave(function() {
+            var that=$(this);
+
+            timer2=setTimeout(function(){
+                that.removeAttr('state');
+            $('.nav-list-meitu,.nav-list-gonglue,.nav-list-more').removeClass('on').find('i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','47px');
+                that.hide().children().hide();
+            },500);
+        });
+
+    $('.pub-nav .nav li').hover(function() {
+        $(this).find('a i').removeClass('fa-sort-desc').addClass('fa-sort-asc').css('line-height','55px');
+    }, function() {
+        $(this).find('a i').removeClass('fa-sort-asc').addClass('fa-sort-desc').css('line-height','45px');
+    });
+    $(window).scroll(function(){
+        var scrollTop = $(document).scrollTop();
+        if($('.header-top-img').length>0){
+            if(scrollTop>106){
+                $('.pub-head-box').addClass('fixed_top');
+                $('.pub-head-empty').show();
+            }else{
+                $('.pub-head-box').removeClass('fixed_top');
+                $('.pub-head-empty').hide();
+            }
+        }else{
+            if(scrollTop>30){
+                $('.pub-head-box').addClass('fixed_top');
+                $('.pub-head-empty').show();
+            }else{
+                $('.pub-head-box').removeClass('fixed_top');
+                $('.pub-head-empty').hide();
+            }
+        }
+    });
+
+    // 搜索框模块切换
+    $('.search-box').on('click',function(){
+        $('.pub-head-nav').stop().animate({width: 0}, 250,function(){
+            $('.pub-head-nav').hide();
+            $('.pub-search').show();
+        });
+
+    });
+    // 关闭搜索框模块
+    $('.search-close').on('click',function() {
+        $('.pub-search').hide();
+        $('.pub-head-nav').show().stop().animate({width: 754}, 250)
+    });
+});
+</script>
+

@@ -1,0 +1,44 @@
+{foreach $list as $vo}
+<div class="forder-item">
+    <p class="infos">
+        <span class="l">订单编号：{$vo.order_no}</span>
+        <span class="r orange">{$vo.manage.state|default=''}</span>
+    </p>
+    {if $type == 1 }
+    <p class="infos">订单生成时间：{$vo.add_time}</p>
+    {else/}
+    <p class="infos">开工日期：{notempty name='$vo.manage.kaigong_time'}
+        {$vo.manage.kaigong_time|date='Y-m-d H:i:s'}
+        {/notempty}</p>
+    {/if}
+    <p class="infos">业主姓名：{$vo.consumer_name}</p>
+    <p class="infos">手机号：{$vo.consumer_tel}</p>
+    <p class="infos">施工状态：<span>{$vo.manage.build_state|default=''}</span></p>
+    <div class="forder-action">
+        {if $type == 2 }
+        <button class="btn btn-green{if (!btnRule('/order/build/list/'))} btn_hide{/if}">
+            <a href="http://{:config('m_host')}/order/shigongrenyuan?order_no={$vo.order_no}" class="white">施工人员</a>
+        </button>
+        <button class="btn btn-blue{if (!btnRule('/order/build/list/'))} btn_hide{/if}">
+            <a href="http://{:config('m_host')}/order/build/list?order_no={$vo.order_no}" class="white">施工信息</a>
+        </button>
+        {/if}
+        {if $type == 1 }
+        <button class="btn btn-green{if (!btnRule('/order/house/design/'))} btn_hide{/if}">
+            <a href="http://{:config('m_host')}/order/house/todesign?order_no={$vo.order_no}" class="white">设计图</a>
+        </button>
+
+        <button class="btn btn-blue{if (!btnRule('/order/edit/'))} btn_hide{/if}">
+            <a href="http://{:config('m_host')}/order/edit?order_no={$vo.order_no}" class="white">编辑</a>
+        </button>
+        {/if}
+        <button class="btn btn-white detail-btn">
+            {if $type == 1 }
+            <a href="http://{:config('m_host')}/order/detail?order_no={$vo.order_no}&type=1" class="c9">详情</a>
+            {else}
+            <a href="http://{:config('m_host')}/order/shigongdetail?order_no={$vo.order_no}&type=2" class="c9">详情</a>
+            {/if}
+        </button>
+    </div>
+</div>
+{/foreach}

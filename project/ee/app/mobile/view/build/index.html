@@ -1,0 +1,32 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+
+    <header class="sim-table public-header">
+        <div><a href="http://{:config('m_host')}/shigong" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a></div>
+        <div>施工图</div>
+        <div><a href="http://{:config('m_host')}/order/build/add?order_no={$order.order_no}" data-href="/mobile/order/uploadconstructpic" class="orange pr1 public-beautify-upload">上传照片</a></div>
+    </header>
+    <div class="forder-construct-box bg-c4">
+        <div class="order-prief">
+            <p><span>订单编号</span>{$order.order_no}</p>
+            <p><span>业主姓名</span>{$order.consumer_name}</p>
+        </div>
+        <div class="construct-item-box">
+            {include file="build/index_list" /}
+        </div>
+        <div class="weui-loadmore" style="display: none;">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+    </div>
+
+{/block}
+{block name='script'}
+<script src="/assets/mobile/manager/js/swiper.min.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/manager/js/photos.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/order/js/constructdraw.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

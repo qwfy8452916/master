@@ -1,0 +1,191 @@
+input, select {
+    outline: none;
+}
+
+.subinfo {
+    overflow: hidden;
+}
+
+
+
+.subblock {
+    overflow: hidden;
+    padding-top: 24px;
+}
+
+.supp-item,.supp-item-plus{padding:13px 18px; border:1px solid #D6D6D6; font-size: 14px; display:inline-block; margin:10px; cursor: pointer; border-radius: 8px;-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;}
+.supp-item-active{
+    background: #1890ff;
+    border:1px solid #1890ff;
+    color: #fff;
+}
+.supp-item-plus{ border:1px solid #1890ff; color:#1890ff; padding:13px 23px; border-radius: 8px;}
+
+
+.addtanchuang {
+    width: 600px;
+    height: 269px;
+    display: none;
+}
+
+.subcontent {
+    overflow: hidden;
+}
+
+.subcontent .spantitle {
+    display: inline-block;
+    width: 96px;
+    text-align: right;
+    line-height: 40px;
+}
+
+.subcontent .inputinfo {
+    width: 340px;
+    height: 40px;
+    display: inline-block;
+}
+
+.subcontent .redstar {
+    color: #f5222d;
+    margin-left: 14px;
+    cursor: pointer;
+}
+
+.subcontent .selectxing {
+    margin-left: 6px;
+}
+
+.subcontent .selectwk {
+    width: 348px;
+}
+
+.footwk {
+    overflow: hidden;
+}
+
+.cancelbtn {
+    margin-left: 20px;
+    background: #fff;
+    border: 0;
+}
+
+
+
+.resetpass {
+    padding: 10px 30px;
+    margin-left: 6px;
+}
+
+.passwaik {
+    overflow: hidden;
+    padding: 40px 0 18px 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.p-tancfl .contentnr {
+    margin-bottom: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+}
+
+.passtishi {
+    text-align: left;
+    margin-left: 190px;
+    color: #f5222d;
+    font-size: 12px;
+    height: 24px;
+}
+
+.suppmetro {
+    margin: 18px 0 0 95px;
+}
+
+.suppmetro li {
+    margin: 10px;
+}
+
+
+.subpay{
+    border:1px solid #e6e6e6;
+    margin-top:24px;
+    overflow:hidden;
+    padding-bottom: 40px;
+}
+.paytype{
+    width: 100%;
+    height: 56px;
+    padding:0 22px ;
+    background-color: #f5f5f5;
+}
+.payname{
+    line-height: 56px;
+
+}
+.payaccount{
+    margin-top: 24px;
+    margin-bottom: 30px;
+}
+
+.banckinfo .banckdetail{
+    max-width: 300px;
+    width: 340px;
+    margin-right: 15px;
+}
+.addbanck{
+    border:1px dashed #e6e6e6;
+    max-width: 1080px;
+    height: 38px;
+    margin-left: 102px;
+    border-radius: 5px;
+    margin-top: -30px;
+}
+.addbtn{
+    line-height: 38px;
+    text-align: center;
+    cursor: pointer;
+    color:#999;
+}
+.bank-list{ margin-left: 5px;margin-bottom: 30px; font-size: 0px}
+.bank-list span{font-size: 14px}
+.bank-list input{width:20%; display:inline-block; margin-right: 10px; font-size: 14px}
+.bottom-btn span{margin:0px 10px;}
+.select-input {width:357px !important;}
+.select-input select{width:148px; color:#666;}
+.select-area{margin-left:5px}
+.pay_methods{width:350px!important;}
+.info-text{padding-top: 10px;}
+.info-text div.b-owf{padding:6px 0px;}
+.info-text p{
+    padding:10px 0px; color:#666;
+}
+.info-text span{color:#333!important;}
+.info-text table{width:100%; table-layout: fixed; color:#666; padding:6px 0px;}
+
+.subpay .info-text{
+    padding-left: 20px
+}
+.detail-table{width:70%!important; max-width:900px;}
+.detail-table td{padding-bottom:8px; padding-right: 15px}
+.kh-bank{display: inline-block; width:150px;}
+.contact-info td{padding-right: 15px}
+.add-date{position: relative;}
+.add-date i{position: absolute; right:-17px;  cursor: pointer; font-size: 16px; color:#666;}
+.fa-sort-desc{top:-2px;}
+.fa-sort-asc{top:5px;}
+.type-box{
+    height: 40px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+}
+.supplier_types{width:90%;}
+.supplier_types span{color:#666!important;}

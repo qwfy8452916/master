@@ -1,0 +1,53 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修风水</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/gonglue/css/list.css?v={:C('STATIC_VERSION')}">
+    <link href="{$static_host}/assets/gonglue/css/m-public.new.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <div class="fg-nav">
+        <div class="fg-hd clearfix">
+            <span class="fg-nav-l">{$info.now.title}</span>
+
+        </div>
+    </div>
+    <mip-accordion sessions-key="mip_1" animatetime='0.24'>
+        <section>
+            <span class="fg-nav-r to-top">全部筛选</span>
+            <div class="fenlei-list">
+                <ul>
+                    <volist name="info.children.child" id="vo">
+                        <li><a data-type="mip" href="http://{:C('MIP_DONAMES')}/gonglue/{$vo.shortname}/">{$vo.classname}</a></li>
+                    </volist>
+                </ul>
+            </div>
+
+        </section>
+    </mip-accordion>
+    <div class="fg-list-box ">
+        <volist name="info.articles" id="vo">
+            <div class="fg-list-box ">
+                <div class="fg-list clearfix">
+                    <a data-type="mip" href="http://{:C('MIP_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                        <div class="fg-img">
+                            <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w400.jpg" alt="{$vo.title}"></mip-img>
+                        </div>
+                        <div class="fg-send">
+                            <strong>{$vo.title|mbstr=0,12}</strong>
+                            <p>{$vo.jianjie|mbstr=0,28}</p>
+                            <i class="fg-yj fa fa-eye"> {$vo.pv}</i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </volist>
+    </div>
+    {$info.page}
+    <include file="Common:freeDesign"/>
+</block>
+<block name="script">
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-accordion/mip-accordion.js"></script>
+</block>

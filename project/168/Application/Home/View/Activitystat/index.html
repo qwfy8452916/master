@@ -1,0 +1,222 @@
+<extend name="Main:baseTemplate" />
+<block name="title">
+    <title>活动订单数据统计 - 控制台</title>
+
+</block>
+<block name="style">
+    <link rel="stylesheet" href="{:C('168NEW_URL')}/assets/common/js/plugins/select2/select2.min.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{:C('168NEW_URL')}/assets/common/css/select2_metro.css?v={:C('STATIC_VERSION')}" />
+    <link rel="stylesheet" href="/assets/common/js/plugins/datetimepicker/datepicker.css?v={:C('STATIC_VERSION')}" />
+    <link rel="stylesheet" href="/assets/home/activity/css/activity.css?v={:C('STATIC_VERSION')}" />
+    <link rel="stylesheet" href="{:C('168NEW_URL')}/assets/common/phpexcel/phpexcel.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{:C('168NEW_URL')}/assets/common/phpexcel/handsontable.full.min.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="content">
+    <section class="content-header">
+        <h1>活动订单数据统计</h1>
+    </section>
+    <section class="content-header">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">条件查询</h3>
+            </div>
+            <div class="box-body">
+                <form action="" method="get">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <div class=" lh-34" >活动名称：</div>
+                            <select name="activity_id" type="text" class="form-control">
+                                <volist name="vars.activity" id="vi">
+                                    <eq name="vi.id" value="$vars.condition.activity_id">
+                                        <option data-start="{$vi.start|default=''}" data-end="{$vi.end|default=''}" selected value="{$vi.id}">{$vi.name}</option>
+                                    <else />
+                                        <option data-start="{$vi.start|default=''}" data-end="{$vi.end|default=''}" value="{$vi.id}">{$vi.name}</option>
+                                    </eq>
+                                </volist>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class=" lh-34" >查询时间-开始：</div>
+                            <input type="text" name="time_start" class="form-control datepicker" placeholder="开始时间" value="{$vars.condition.time_start}">
+                        </div>
+                        <div class="col-xs-2">
+                            <div class=" lh-34" >查询时间-结束：</div>
+                            <input type="text"  name="time_end" class="form-control datepicker" placeholder="结束时间" value="{$vars.condition.time_end}">
+                        </div>
+                        <div class="col-xs-2">
+                            <div class=" lh-34" >渠道：</div>
+                            <select id="src" class="select2 select2-offscree" name="src" type="text" placeholder="渠道" tabindex="-1">
+                                <option value="">请选择</option>
+                                <volist name="vars.src_data" id="src">
+                                    <option value="{$src.src}">{$src.name}</option>
+                                </volist>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <div>&nbsp;</div>
+                            <button type="submit" class="btn btn-info" style="width:185px;"> 查询 </button>
+                        </div>
+                        <div class="col-xs-2">
+                            <div>&nbsp;</div>
+                            <button id="export" type="button" class="excel"> 导出EXCEL </button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+            </div>
+        </div>
+        <div class="box stat-by">
+            <div class="box-body " style="padding:0px;">
+                <div class="table-responsive table-wrap-list">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <th>订单日期</th>
+                            <th>访问量PV</th>
+                            <th>访问数UV</th>
+                            <th>发单量</th>
+                            <th>有效订单量</th>
+                            <th>实际有效订单量</th>
+                            <th>分单量</th>
+                            <th>分单率</th>
+                            <th>实际分单量</th>
+                            <th>实际分单率</th>
+                        </thead>
+                        <tbody>
+                            <volist name="vars.time" id="vi">
+                                <tr>
+                                    <td>{$vi}</td>
+                                    <td>{$vars['info'][$vi]['pv']|default=0}</td>
+                                    <td>{$vars['info'][$vi]['uv']|default=0}</td>
+                                    <td>{$vars['info'][$vi]['sum']|default=0}</td>
+                                    <td>{$vars['info'][$vi]['youxiao']|default=0}</td>
+                                    <td>{$vars['info'][$vi]['real_youxiao']|default=0}</td>
+                                    <td>{$vars['info'][$vi]['fen']|default=0}</td>
+                                    <td>{:number_format($vars['info'][$vi]['fen'] / $vars['info'][$vi]['sum'] * 100, 2)}%</td>
+                                    <td>{$vars['info'][$vi]['real_fen']|default=0}</td>
+                                    <td>{:number_format($vars['info'][$vi]['real_fen'] / $vars['info'][$vi]['sum'] * 100, 2)}%</td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>合计</td>
+                                <td>{$vars['alls']['pv']}</td>
+                                <td>{$vars['alls']['uv']}</td>
+                                <td>{$vars['alls']['sum']}</td>
+                                <td>{$vars['alls']['youxiao']}</td>
+                                <td>{$vars['alls']['real_youxiao']}</td>
+                                <td>{$vars['alls']['fen']}</td>
+                                <td>{:number_format($vars['alls']['fen'] / $vars['alls']['sum'] * 100, 2)}%</td>
+                                <td>{$vars['alls']['real_fen']}</td>
+                                <td>{:number_format($vars['alls']['real_fen'] / $vars['alls']['sum'] * 100, 2)}%</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-header width-border">
+                <h3 class="box-title">帮助说明</h3>
+            </div>
+            <div class="box-body manunal-info">
+                <blockquote>
+                    <p><b>分单量：</b>客服从查询时间段内的发单量中，在查询时间段内打出的分单量</p>
+                    <p><b>实际有效订单量：</b>在查询时间段内，客服实际打出的分担量与赠单量的和</p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+</block>
+<block name="script">
+    <script src="{:C('168NEW_URL')}/assets/common/js/echarts.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="{:C('168NEW_URL')}/assets/common/js/plugins/select2/select2.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="{:C('168NEW_URL')}/assets/common/js/plugins/datetimepicker/bootstrap-datepicker.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="{:C('168NEW_URL')}/assets/common/js/select2.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="/assets/common/phpexcel/handsontable.full.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="/assets/common/phpexcel/phpexcel.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript">
+         $(document).ready(function(){
+             $('#src').select2();
+             $("#src").select2("val", "{$Think.get.src}");
+            $(".datepicker").datepicker({
+                format:"yyyy-mm-dd"
+            });
+            $('select[name=activity_id]').change(function(event) {
+                var op = $(this).children('option:selected');
+                var start = op.attr('data-start');
+                if ('' != start) {
+                    $('input[name=time_start]').val(start.substr(0, 10));
+                };
+                var end = op.attr('data-end');
+                var mydate = new Date();
+                var nowtime = mydate.getFullYear() + '-' + (mydate.getMonth() + 1) + '-' + mydate.getDate() + ' ' + mydate.getHours() + ':' + mydate.getMinutes() + ':' + mydate.getSeconds();
+                //判断 1.活动开始时间大于活动时间 则默认显示活动开始结束时间 2.否则 再判断结束时间是否大于现在的时间
+                if(strtotime(start) < strtotime(nowtime)){
+                    if(strtotime(end) > strtotime(nowtime)){
+                        end = nowtime;
+                    }
+                }
+                //取 年月日
+                end = end.split(" ")[0].split("-");
+                if ('' != end) {
+                    $('input[name=time_end]').val(end[0] + '-' + end[1] + '-' + end[2]);
+                };
+            });
+
+            $("#export").click(function(event) {
+                var title = $('select[name=activity_id]')[0].options[$('select[name=activity_id]')[0].selectedIndex].text;
+                var colums = [];
+                var data =[];
+                $('.table-wrap-list table thead th').each(function(){
+                    var sub =[];
+                    sub["text"] = $(this).html().trim();
+                    colums.push(sub);
+                });
+                data.push(colums);
+                $('.table-wrap-list table tbody tr').each(function(i){
+                    var tr = $(this);
+                    var sub = [];
+                    tr.find("td").each(function(){
+                        var _td = {
+                            text:$(this).text().trim()
+                        }
+                        sub.push(_td);
+                    });
+                    data.push(sub);
+                });
+                $('.table-wrap-list table tfoot tr').each(function(i){
+                    var tr = $(this);
+                    var sub = [];
+                    tr.find("td").each(function(){
+                        var _td = {
+                            text:$(this).text().trim()
+                        }
+                        sub.push(_td);
+                    });
+                    data.push(sub);
+                });
+
+                $(this).exportExcel({
+                    data:data,
+                    title:'活动订单数据统计-' + title,
+                    url:'/export/download/'
+                });
+            });
+        });
+
+         function strtotime(string) {
+             var f = string.split(' ', 2);
+             var d = (f[0] ? f[0] : '').split('-', 3);
+             var t = (f[1] ? f[1] : '').split(':', 3);
+             return (new Date(
+                 parseInt(d[0], 10) || null,
+                 (parseInt(d[1], 10) || 1) - 1,
+                 parseInt(d[2], 10) || null,
+                 parseInt(t[0], 10) || null,
+                 parseInt(t[1], 10) || null,
+                 parseInt(t[2], 10) || null
+             )).getTime() / 1000;
+         }
+    </script>
+</block>

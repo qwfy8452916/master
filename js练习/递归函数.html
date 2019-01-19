@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归函数</title>
+</head>
+<body>
+    
+    <script>
+
+
+// function myFun(n){
+//     if(n == 1){
+//         return 1;
+//     }       
+//     return n*myFun(n-1);    
+// }
+// alert("5的阶乘为："+myFun(5));
+
+// function sum(n){
+//    if(n>3){
+//      return n;
+//    }
+//    return n+sum(n+1)
+
+// }
+// console.log(sum(1))
+
+function add(a,b){
+   alert(a+b);   
+}
+function sub(a,b){
+   alert(a-b);
+}
+add.call(sub,3,1);
+/*用add来替换sub
+add.call(sub,3,1) == add(3,1)
+所以运行结果为：alert(4)*/
+
+        
+    </script>
+</body>
+</html>

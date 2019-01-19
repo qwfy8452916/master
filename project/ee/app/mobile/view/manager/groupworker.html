@@ -1,0 +1,48 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/manager/css/groupworker.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="content"}
+<header class="header">
+        <div class="back" id="back">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <h1>施工1组</h1>
+    </header>
+    <div class="wrapper">
+        <!-- 添加工人 -->
+        <div class="add clearfix">
+            <div class="add-box">
+                <a href="addworker">
+                    <div class="img">
+                        <img src="/assets/mobile/common/img/add.png" alt="">
+                    </div>
+                    <div class="add-worker">添加工人</div>
+                </a>
+            </div>
+            <div class="part">
+                <div class="worker-list">
+                    <div class="list clearfix">
+                        <div class="close" id="close">
+                            <img src="/assets/mobile/common/img/close.png" alt="">
+                        </div>
+                        <div class="avator fl">
+                            <img src="/assets/mobile/common/img/avator.png" alt="">
+                        </div>
+                        <div class="info fl">
+                            <div class="name">付正达</div>
+                            <div class="phone">手机号：13200000000</div>
+                            <div class="wechat">微信号：13200000000</div>
+                            <div class="job fl"><span>油漆工</span></div>
+                        </div>
+                    </div>
+                    <div class="list-btn clearfix">
+                        <div class="edit">
+                            <a href="editworker"><div class="edit-btn fr">编辑</div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}

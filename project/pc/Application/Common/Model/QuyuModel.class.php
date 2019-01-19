@@ -1,0 +1,294 @@
+<?php
+
+//区域
+
+namespace Common\Model;
+use Think\Model;
+
+class QuyuModel extends Model{
+
+    protected $autoCheckFields = false;
+
+    //根据BM头获取城市ID
+    public function getCityIdByBm($bm){
+        $thisCity = S("Cache:Quyu:".$bm);
+        if(empty($thisCity)){
+          $thisCity =  $this->getCityInfoByBm($bm);
+        }
+        return $thisCity['cid'];
+    }
+
+    //根据BM头获取城市ID及相邻城市
+    public function getCityInfoByBm($bm){
+        //先取单个城市的缓存
+        $city = S("Cache:Quyu:".$bm);
+        if(empty($city)){
+            $map['a.bm'] = $bm;
+            $map['b.type'] = array("EQ",1);
+
+            $result = M("quyu")->alias("a")->where($map)
+               ->join("inner join qz_area as b on a.cid = b.fatherid and b.type = 1")
+               ->join("inner join qz_province as c on c.qz_provinceid = a.uid")
+               ->field("a.cid as cid,a.cname,a.uid,a.type,a.bm,a.px,a.px_abc,a.parent_city,a.parent_city1,a.parent_city2,a.parent_city3,a.parent_city4,a.other_city,b.qz_areaid,b.qz_area,b.orders,c.qz_province,c.qz_bigpart,c.qz_bigpart_name,a.lng,a.lat")
+               ->order("a.bm,qz_area DESC")->select();
+
+            //导入扩展文件
+            import('Library.Org.Util.App');
+            $app = new \App();
+
+            $areaKey = $app->getFirstCharter($result['0']['cname']);
+            $city = array();
+            $city = array(
+                'cid' => $result['0']['cid'],
+                'usercount' => '',
+                'key' => $areaKey,
+                'bm' => $result['0']['bm'],
+                'uid' => $result['0']['uid'],
+                'cname' => $areaKey.' '.$result['0']['cname'],
+                'oldName' => $result['0']['cname'],
+                'province' => $result['0']['qz_province'],
+                'bigpart' => $result['0']['qz_bigpart'],
+                'bigpart_name' => $result['0']['qz_bigpart_name'],
+                'px' => $result['0']['px'],
+                'type' => $result['0']['type'],
+                'parent_city' => $result['0']['parent_city'],
+                'parent_city1' => $result['0']['parent_city1'],
+                'parent_city2' => $result['0']['parent_city2'],
+                'parent_city3' => $result['0']['parent_city3'],
+                'parent_city4' => $result['0']['parent_city4'],
+                'lng' => $result['0']["lng"],
+                'lat' => $result['0']["lat"]
+
+            );
+
+            foreach ($result as $key => $value) {
+                $tempKey = $app->getFirstCharter($value["qz_area"]);
+                $tempCity = array(
+                    'key' => $tempKey,
+                    'oldName' => $value['qz_area'],
+                    'qz_areaid' => $value['qz_areaid'],
+                    'qz_area' => $tempKey.' '.$value['qz_area'],
+                    'orders' => $value['orders'],
+                );
+
+                $city['child'][] = $tempCity;
+            }
+
+            $str = multi_array_sort($city['child'],'key');
+            unset($city['child']);
+            $city['child'] = $str;
+
+            //取相邻城市数据
+            $cids = array();
+            if(!empty($city['parent_city'])){
+                $cids[] = $city['parent_city'];
+            }
+            if(!empty($city['parent_city1'])){
+                $cids[] = $city['parent_city1'];
+            }
+            if(!empty($city['parent_city2'])){
+                $cids[] = $city['parent_city2'];
+            }
+            if(!empty($city['parent_city3'])){
+                $cids[] = $city['parent_city3'];
+            }
+            if(!empty($city['parent_city4'])){
+                $cids[] = $city['parent_city4'];
+            }
+            $cids = implode(',', $cids);
+            if(!empty($cids)){
+                $adjMap['cid'] = array('IN',$cids);
+                $city['adj_city'] = M("quyu")->where($adjMap)->field("bm,cname name,cid")->order("field(cid,$cids)")->select();
+            }else{
+                $city['adj_city'] = '';
+            }
+            S("Cache:Quyu:".$bm,$city,15 * 60);
+        }
+        return $city;
+    }
+
+    /**
+     * [getHotCity 获取热门城市]
+     * @return [type] [description]
+     */
+    public function getHotCity()
+    {
+        $result = M("quyu")->field('cid,uid,cname,bm')->where(array('hot'=>array('EQ',1)))->select();
+        return $result;
+    }
+
+    /**
+     * [getProvinceCityLinkByCid 根据城市ID获取相同省份的城市友情链接]
+     * @param  [type] $cid [description]
+     * @return [type]      [description]
+     */
+    public function getProvinceCityLinkByCid($cid)
+    {
+        if(empty($cid)){
+            return false;
+        }
+        $info = M('quyu')->field('uid')->where(array('cid' => $cid))->find();
+        $result = M("quyu")->field('cid,uid,cname,bm')->where(array('uid' => $info['uid'],'little' => '0'))->select();
+        return $result;
+    }
+
+    //根据 cname 城市名 获取城市信息
+    public function getCityIdByCname($cname)
+    {
+        if (empty($cname)) {
+            return false;
+        }
+
+        //过滤
+        //比如 苏州市 过滤掉市
+        $searchArr = array(
+                           '市',
+                           );
+        $replaceArr = array(
+                           '',
+                           );
+
+        $cname = str_replace($searchArr, $replaceArr, $cname);
+        $map = array();
+        $map['cname'] = array('eq', $cname);
+        return M("quyu")->field('cid,uid,cname,bm')->where($map)->find();
+    }
+
+    /**
+     * 获取所有的城市
+     * @return [type] [description]
+     */
+    public function getAllCity(){
+        return M("quyu")->field("cname,bm,px_abc,mark_red")->order("mark_red desc,px_abc")->select();
+    }
+
+
+    //获取所有城市的vip数量
+    public function getCityVipCount($cs){
+        $map = array(
+            "a.classid" =>array("EQ",3),
+            "b.fake" => array("EQ",0),
+            "a.on" => '2',
+            "a.cs" => $cs
+        );
+
+        $cacheKey = 'Cache:vipNum:'.$cs;
+        $result = S($cacheKey);
+        if (!$result) {
+            $result = M("user")->where($map)->alias("a")
+                ->join("inner join qz_user_company b on a.id = b.userid")
+                ->field("count(if(a.on = 2,a.id,null)) as vipnum")
+                ->order("cs desc")
+                ->find();
+            S($cacheKey, $result, 60*15);
+        }
+        return $result;
+    }
+
+    /**
+     * 根据ID获取城市信息
+     * @param  string $cid [城市ID]
+     * @return array
+     */
+    public function getCityById($cid)
+    {
+        $cityInfo = S("C:q:info:".$cid);
+        if (!$cityInfo) {
+            $map = array(
+                "cid" => array("EQ",$cid)
+            );
+
+            $cityInfo = M("quyu")->where($map)->field("cid,cname,bm")->find();
+            S("C:q:info:".$cid,$cityInfo,3600*6);
+        }
+        return $cityInfo;
+    }
+
+
+    /**
+     * 获取城市 根据指定的城市名
+     * @param  string $cname 城市名称
+     * @return array | mixed
+     */
+    public function getCityByName($cname, $limit=1){
+        $map = array("cname" => array("IN",$cname));
+        return M("quyu")->field("cname,bm")
+                        ->where($map)
+                        ->limit($limit)
+                        ->select();
+    }
+
+    /**
+     * 根据城市名称获取城市信息
+     * @param  string $cname 城市名称
+     * @return array | mixed
+     */
+    public function getCityIdByCityName($cname)
+    {
+        $map = array("cname" => array("IN",$cname));
+        return M("quyu")->field("cid,cname,bm")->where($map)->limit(0,10)->select();
+    }
+
+    //获取城市的bm信息
+    public function getBm($city_id){
+        $map['cid'] = $city_id;
+        $bm = $this->field('bm')->where($map)->find();
+        return $bm;
+    }
+
+
+    /**
+     * 通过城市名称获取城市信息
+     * @param  [type] $name [description]
+     * @return [type]       [description]
+     */
+    public function getCityInfoByName($name)
+    {
+        $cityInfo = S("Cache:M:Q:".$name);
+        if (!$cityInfo) {
+            $map = array(
+                 "a.cname" => array("LIKE","%$name%")
+            );
+            $cityInfo = M("quyu")->where($map)->alias("a")
+                                 ->join("join qz_province b on a.uid = b.qz_provinceid")
+                                 ->field("a.*,b.qz_province as province")
+                                 ->find();
+            S("Cache:M:Q:".$name,$cityInfo,3600);
+        }
+        return $cityInfo;
+    }
+
+    /**
+     * 根据父级城市ID获取区域列表
+     * @param   $fatherid  城市id
+     * @return  城市区域列表
+     */
+    public function getAreaByFatherId($fatherid=''){
+        if(empty($fatherid)){
+            return false;
+        }
+        $AreaByFatherId = S("C:CS:A1:".$fatherid);
+        if (empty($AreaByFatherId)) {
+            $AreaByFatherId = M('area')->field('qz_areaid AS id,qz_area AS name')
+                                       ->where(array('fatherid' => $fatherid))
+                                       ->order('orders')->select();
+            S("C:CS:A1:".$fatherid, $AreaByFatherId, 15*60);
+        }
+        return $AreaByFatherId;
+    }
+
+    /*
+    *   根据qz_areaid获取区域的详细信息
+    *   @param  [string] $cid       [城市编号]
+    *   @return [array]  $result    [区域信息数组]
+    */
+    public function getAreaInfos($cid)
+    {
+        $map['a.qz_areaid'] = $cid;
+        $result = M("area")->alias("a")->where($map)
+                           ->join("left join qz_quyu q on q.cid = a.fatherid")
+                           ->field("a.*,q.bm")
+                           ->find();
+        return $result;
+    }
+}

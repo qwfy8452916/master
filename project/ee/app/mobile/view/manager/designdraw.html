@@ -1,0 +1,33 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap">
+    <header class="sim-table public-header">
+        <div class="back" id="back" style="width: 0.5rem;">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <div>设计图</div>
+        <div><a href="uploadpic" class="orange pr1">上传照片</a></div>
+    </header>
+    <div class="forder-design-box bg-c4">
+        <div class="order-prief">
+            <p><span>订单编号</span>12212221</p>
+            <p><span>业主姓名</span>12212221</p>
+        </div>
+        <div class="design-pic">
+            <img src="/assets/mobile/common/img/design-pic.png" alt="">
+            <p class="text-right">删除</p>
+        </div>
+        <div class="design-pic">
+            <img src="/assets/mobile/common/img/design-pic.png" alt="">
+            <p class="text-right">删除</p>
+        </div>
+    </div>
+</div>
+{/block}
+{block name='script'}
+
+{/block}

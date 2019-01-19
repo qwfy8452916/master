@@ -1,0 +1,33 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap bg-deepblue">
+    <header class="sim-table public-header">
+        <div><span class="pl1">取消</span></div>
+        <div>密码更改</div>
+        <div><a href="/" class="orange pr1">保存</a></div>
+    </header>
+    <div class="get-password-one">
+        <div class="error-container">验证码错误，请重新输入</div>
+        <div class="input-line">
+            <span class="label">账号</span>
+            <input type="text" value="admin">
+        </div>
+        <div class="input-line">
+            <span class="label">手机验证</span>
+            <input type="password" placeholder="请输入手机号" class="code-phone">
+            <button class="get-code">发送验证码</button>
+        </div>
+        <div class="input-line">
+            <span class="label">验证码</span>
+            <input type="text" placeholder="请输入验证码">
+        </div>
+    </div>
+</div>
+{/block}
+{block name='script'}
+
+{/block}

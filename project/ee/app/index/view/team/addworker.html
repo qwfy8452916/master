@@ -1,0 +1,128 @@
+{extend name="common:basic" /}
+{block name="title"}
+    施工组管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/addGroup.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<div class="titlewaik">施工组管理/{if (!empty($Think.get.edit_id))}编辑{else/}添加{/if}施工组</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="add-waik">
+        <span class="classification">基本信息</span>
+    </div>
+    <div class="tabwaik">
+        <div class="hangwk">
+            <span class="hangwk-title">施工组：</span>
+            <div class="wrapinput"><input class="p-input group_name" maxlength="10" type="text" value="{$list[0]['group_name']|default=''}" placeholder="请输入施工组名称"></div>
+            <span class="inputxing">*</span>
+            <div class="tishi shigzu-tis"></div>
+        </div>
+        <div class="hangwk">
+           <div class="yihanglie">
+            <span class="hangwk-title">项目经理：</span>
+            <div class="wrapselect">
+                <select name="" class="p-input project_user">
+                    <option value="">请选择</option>
+                    {volist name='progectUser' id='vo'}
+                    <option value="{$vo.id|default=''}" {if (isset($list[0]['manager_id']) and $list[0]['manager_id'] == $vo['id'])}selected{/if}>{$vo.name|default=''}</option>
+                    {/volist}
+                </select>
+            </div>
+            <span class="selectxing">*</span>
+            <div class="tishi xiangmu-tish"></div>
+          </div>
+
+          <div class="yihanglie lefjvli">
+            <span class="hangwk-title">工种：</span>
+            <div class="wrapselect">
+                <select name="" class="p-input manager_wortype">
+                    <option value="">请选择</option>
+                    {volist name='worktypeSelect' id='vo'}
+                    <option value="{$vo.id|default=''}" {if (isset($list[0]['manager_worktype_id']) and $list[0]['manager_worktype_id']== $vo.id)}selected{/if}>{$vo.name}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="tishi gongzhong-tish"></div>
+          </div>
+
+        </div>
+    </div>
+</div>
+<div class="p-panel">
+    <div class="add-waik">
+        <span class="classification">施工人员(<span class="shigongsl"></span>)</span>
+    </div>
+    <table class="p-suppliertab topjvli">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>工种</th>
+            <th>手机号</th>
+            <th>微信号</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody class="wraptbody">
+        {if (isset($list) and !empty($list))}
+        {volist name='list' id='v' key='k'}
+        <tr class="group_user">
+            <td><span class="tdspan"><input type="text" class="work_name" value="{$v.name|default=''}"
+                                            placeholder="请输入施工人员姓名" maxlength="10"><div class="tishi work_name-tishi"></div>
+                                        </span></td>
+            <td class="worktypeSelect">
+                <select class="p-input work_type">
+                    <option value="">请选择</option>
+                    {volist name='worktypeSelect' id='vo'}
+                    <option value="{$vo.id|default=''}" {if ($v.worktype_id== $vo.id)}selected{/if}>{$vo.name}</option>
+                    {/volist}
+                </select>
+                <div class="tishi selectgz-tishi"></div>
+            </td>
+            <td><span class="tdspan"><input type="text" class="work_tel" value="{$v.tel|default=''}"
+                                            placeholder="请输入施工人员手机号" maxlength="11"><div class="tishi work_tel-tishi"></div></span></td>
+            <td><span class="tdspan"><input type="text" class="work_wx" value="{$v.wx_num|default=''}"
+                                            placeholder="请输入施工人员微信号" maxlength="30"></span><div class="tishi work_wx-tishi"></div></td>
+            <td>{if (isset($k) and $k != 1)}<span class='delquchu'>删除</span>{/if}</td>
+        </tr>
+        {/volist}
+        {else/}
+        <!--添加默认页面-->
+        <tr class="group_user">
+            <td><span class="tdspan"><input type="text" class="work_name"
+                                            placeholder="请输入施工人员姓名" maxlength="10"><div class="tishi work_name-tishi"></div></span></td>
+            <td class="worktypeSelect">
+                <select class="p-input work_type">
+                    <option value="">请选择</option>
+                    {volist name='worktypeSelect' id='vo'}
+                    <option value="{$vo.id|default=''}">{$vo.name}</option>
+                    {/volist}
+                </select>
+                <div class="tishi selectgz-tishi"></div>
+            </td>
+            <td><span class="tdspan"><input type="text" class="work_tel"
+                                            placeholder="请输入施工人员手机号" maxlength="11"><div class="tishi work_tel-tishi"></div></span></td>
+            <td><span class="tdspan"><input type="text" class="work_wx"
+                                            placeholder="请输入施工人员微信号" maxlength="30">
+                                        </span><div class="tishi work_wx-tishi"></div></td>
+            <td></td>
+        </tr>
+        {/if}
+        </tbody>
+    </table>
+    <div class="wrapadd"><i class="fa fa-plus" aria-hidden="true"></i><span>添加</span></div>
+</div>
+<div class="footwk">
+    <span class="p-btn b-fr p-padding cancelbtn">取消</span>
+    <span class="p-btn p-primary b-fr p-padding savebaocun">保存</span>
+</div>
+<input type="hidden" name="edit_id" class="edit_id" value="{$Think.get.edit_id|default=''}">
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0"
+        frameborder="0"></iframe>
+{/block}
+{block name='script'}
+
+<script type="text/javascript" src="/assets/pc/js/Private/addGroup.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

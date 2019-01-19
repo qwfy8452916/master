@@ -1,0 +1,78 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/common/css/add.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="back" id="back">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <h1 class="supplier">添加</h1>
+        <div class="save">保存</div>
+    </header>
+    <div class="wrapper">
+        <ul class="add-box">
+            <li>
+                <span>供应商</span>
+                <input type="text" class="gongying" maxlength="30" placeholder="请输入">
+            </li>
+            <li>
+                <span>联系人</span>
+                <input type="text" class="lianxi" maxlength="12" placeholder="请输入">
+            </li>
+            <li>
+                <span>手机号</span>
+                <input type="tel" class="tel" maxlength="11" placeholder="请输入">
+            </li>
+            <li>
+                <span>微信</span>
+                <input type="text" class="wechat" placeholder="请输入">
+            </li>
+            <li>
+                <span>邮箱</span>
+                <input type="email" class="email" placeholder="请输入">
+            </li>
+            <li class="clearfix">
+                <span class="fl">类型</span>
+                <div class="style fr" id="style" data-values="">请选择</div>
+                <i class="right"></i>
+            </li>
+            <li class="clearfix">
+                <span class="fl">结算方式</span>
+                <div class="balance-way fr" id="balance-way">请选择</div>
+                <i class="right"></i>
+            </li>
+            <li class="pay-way">
+                <a href="payway">
+                    <span>付款方式</span>
+                    <i class="right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- 右侧类型选择栏 -->
+        <div class="panel-overlay"></div>
+        <div class="panel panel-right panel-cover active">
+            <div class="content-block">
+                <div class="style-div">类型</div>
+                <ul class="style-ul clearfix">
+                    <li class="current" data-values="1">水泥</li>
+                    <li data-values="2">水电材料</li>
+                    <li data-values="3">瓷砖</li>
+                    <li data-values="4">水泥</li>
+                    <li data-values="5">水电材料</li>
+                    <li data-values="6">瓷砖</li>
+                    <li data-values="7">水泥</li>
+                    <li data-values="8">水电材料</li>
+                    <li data-values="9">瓷砖</li>
+                </ul>
+                <div class="searchbtn">
+                    <button class="reset">重置</button>
+                    <button class="ensure">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/supplier/js/supplier-add.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

@@ -1,0 +1,27 @@
+.cx-select-wrap{
+    display: block;
+}
+
+.cx-select{
+    width: 30%;
+    float: left;
+}
+.cx-select-wrap .mg{
+    margin-left: 3%;
+}
+
+.table td ,.table th{
+    text-align: left;
+}
+
+.recommend-tags button{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.download-dialog input{
+    margin-left: 18px;
+}
+
+.download-dialog label{
+    margin-right: 18px;
+}

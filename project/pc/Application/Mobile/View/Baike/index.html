@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="http://{:C('QZ_YUMINGWWW')}/baike/" rel="canonical" />
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-baike.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<title>{$info.title} - 装修百科</title>
+</head>
+<body>
+<div class="m-wrap">
+    <div class="m-nav">
+    <div class="m-back"><a href="/"><span></span>后退</a></div>
+    <div class="m-title">装修百科</div>
+    <include file="Index:topMenu" />
+    </div>
+  <div class="m-logo">
+    <div class="logo-main"></div>
+    <div class="logo-s"></div>
+  </div>
+ <a class="neckad-into" href="/baike/"><img src="/assets/mobile/images/hl22.jpg" width="640" height="142" alt=""/></a>
+ <dl class="baike-intro-list">
+    <dt class="hot">热门百科</dt>
+    <volist name="hotBaike" id="v">
+    <dd>
+      <div class="baike-list-img"><a href="/baike/{$v.id}.html"> <img src="http://{:C('QINIU_DOMAIN')}/{$v.thumb}" alt=""/> </a> </div>
+      <div class="baike-list-word">
+        <h2><a href="/baike/{$v.id}.html">{$v.title}</a></h2>
+        <p>{$v.content|mbstr=0,55}</p>
+      </div>
+    </dd>
+    </volist>
+  </dl>
+
+<volist name="topCategory" id="vo">
+<dl class="baike-intro-list">
+    <dt>{$vo.name}</dt>
+    <volist name="vo['subList']" id="v">
+        <dd>
+        <div class="baike-list-img"><a href="/baike/{$v.id}.html"> <img src="http://{:C('QINIU_DOMAIN')}/{$v.thumb}" alt=""/> </a> </div>
+        <div class="baike-list-word">
+            <h2><a href="/baike/{$v.id}.html">{$v.title|mbstr=0,15}</a></h2>
+            <p>{$v.content|mbstr=0,78}</p>
+        </div>
+        </dd>
+    </volist>
+    <dd><a class="more-links" href="/baike/{$vo.url}">进入{$vo.name}百科..</a></dd>
+</dl>
+</volist>
+
+
+
+</div>
+<include file="Index:newFooter" />
+</body>
+</html>

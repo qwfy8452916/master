@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>监听点击事件</title>
+	<style>
+		ul{padding: 0;}
+		ul li{list-style: none;display: inline-block;width: 100px;height: 35px;line-height: 35px;
+			text-align: center;font-size: 14px;color: #fff;background: blue;}
+	</style>
+</head>
+<body>
+
+     <ul>
+     	<li id="box">点击1</li>
+     	<li class="box2">点击2</li>
+     	<li>点击3</li>
+     	<li>点击4</li>
+     	<li>点击5</li>
+     </ul>
+	<p>111</p>
+	<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+         // +function(){
+             
+             // document.addEventListener("click",function(){
+             // 	console.log("执行了点击事件")
+             // 	alert("执行了点击事件");
+             // },false);
+
+             // var zhixing=document.getElementById('box');
+             // var zhixing=$('ul li.box2');
+             // console.log(zhixing)
+             // $('ul').click('li','',function(){
+
+             // })
+
+              $('ul li').on("click",function(){
+             	console.log("执行了点击事件")
+             	alert("执行了点击事件");
+             });
+
+            $('p').addEvent('click',function(e){  alert('哦，我被点啦。。。'); 3 });
+             
+         // }(jQuery)
+
+	</script>
+</body>
+</html>

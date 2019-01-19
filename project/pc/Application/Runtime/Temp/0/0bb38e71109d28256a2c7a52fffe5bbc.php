@@ -1,0 +1,3 @@
+<?php
+//000000000900a:1:{i:0;a:22:{s:2:"id";s:4:"4211";s:5:"title";s:0:"";s:7:"city_id";s:0:"";s:10:"company_id";s:1:"0";s:12:"company_name";s:0:"";s:6:"module";s:16:"home_bigbanner_b";s:10:"start_time";s:10:"1462291200";s:8:"end_time";s:10:"1880812800";s:7:"img_url";s:29:"bigadv/20180705/5b3de1d8c66ee";s:14:"img_url_mobile";s:0:"";s:8:"img_host";s:5:"qiniu";s:3:"url";s:32:"http://www.qizuang.com/zhaobiao/";s:10:"url_mobile";s:0:"";s:11:"description";s:0:"";s:7:"op_time";s:10:"1530782171";s:6:"op_uid";s:4:"1264";s:8:"op_uname";s:9:"周永鑫";s:4:"sort";s:1:"1";s:6:"status";s:1:"1";s:5:"value";s:0:"";s:2:"bm";N;s:2:"jc";N;}}
+?>

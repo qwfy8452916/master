@@ -1,0 +1,165 @@
+{extend name="common:basic" /}
+{block name="title"}
+    跟单管理
+{/block}
+{block name="link"}
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/webuploader.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/upload.css?v={:config('STATIC_VERSION')}">
+	<link rel="stylesheet" href="/assets/pc/css/Private/addorder.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap-datetimepicker.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/select3/css/select3.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/select2/css/select2.min.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>跟单管理/添加</span>
+{/block}
+{block name="content"}
+    <div class="p-panel">
+        <div class="yezhu-title">业主信息</div>
+        <div class="p-form-box b-owf">
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">业主姓名：</span>
+                <input type="text" class="p-input yezhuinfo" placeholder="请输入业主姓名" value="">
+                <span class="red-xing">*</span>
+                <div class="tishi yezhuinfo-tishi"></div>
+            </div>
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">手机号：</span>
+                <input type="text" maxlength="11" class="p-input quchupad phoneshouji" placeholder="请输入业主手机号">
+                <!--<span class="red-xing">*</span>-->
+                <div class="tishi phoneshouji-tishi"></div>
+            </div>
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">微信号：</span>
+                <input type="text" maxlength="20" class="p-input quchupad weixin" placeholder="请输入业主微信号">
+                <div class="tishi weixin-tishi"></div>
+            </div>
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">小区：</span>
+                <input type="text"  class="p-input quchupad xiaoqu" placeholder="请输入小区名称">
+                <div class="tishi xiaoqu-tishi"></div>
+            </div>
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">户型：</span>
+                <select class="p-input quchupad huxing" name="" id="">
+                    <option value="">请选择</option>
+                    {foreach $house_type as $vo}
+                    <option value="{$vo.id}">{$vo.name}</option>
+                    {/foreach}
+                </select>
+                <div class="tishi xiaoqu-tishi"></div>
+            </div>
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">面积：</span>
+                <input type="number" class="p-input quchupad mianji" placeholder="请输入面积" autocomplete="off">
+                <span class="danwei">㎡</span>
+                <div class="tishi mianji-tishi"></div>
+            </div>
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">装修地址：</span>
+                <input type="text" class="p-input quchupad address" placeholder="请输入业主待装修的地址">
+                <div class="tishi address-tishi"></div>
+                <div class="paste-icon" title="一键复制装修地址"></div>
+            </div>
+            <div class="p-form-column wrapinput">
+                <span class="p-form-title">联系地址：</span>
+                <input type="text" maxlength="30" class="p-input quchupad lianxaddress" placeholder="请输入业主的联系地址">
+                <div class="tishi lianxaddress-tishi"></div>
+            </div>
+            <div class="hangwk">
+                <div class="p-form-column wrapinput">
+                    <span class="p-form-title">接待客服：</span>
+                    <div class="xuantwowk jiedaiwk">
+                            <select class="p-input select2 jiedaikefu" style="width:100%;">
+                                <option value="">请选择</option>
+                            </select>
+                        </div> 
+
+                </div>
+                <div class="p-form-column wrapinput">
+                    <span class="p-form-title">设计师：</span>
+                    <div class="xuantwowk jiedaiwk">
+                            <select class="p-input select2 designyuan" style="width:100%;">
+                                <option value="">请选择</option>
+                            </select>
+                        </div> 
+
+                </div>
+        </div>
+        </div>
+    </div>
+ 
+
+    <div class="p-panel">
+    	<div class="yezhu-title">跟单信息</div>
+        <div class="p-form-box b-owf">
+        	<div class="orderhang">
+	            <div class="p-form-column wrapinput">
+	                <span class="hang-title">订单状态：</span>
+	                <select class="p-input quchupad orderstatus" name="" id="">
+	                	<option value="">请选择</option>
+                        {foreach $order_status as $k=>$vo}
+                        <option value="{$k}">{$vo}</option>
+                        {/foreach}
+	                </select>
+                    <span class="red-xing">*</span>
+	                <div class="tishi orderstatus-tishi"></div>
+	            </div>
+                <div class="p-form-column wrapinput ordertimediv" style="display: none">
+                    <span class="hang-title">预约量房时间：</span>
+                    <input type="text" class="p-input ordertime">&nbsp;&nbsp;<i class="fa fa-calendar"></i>
+                    <div class="tishi ordertime-tishi"></div>
+                </div>
+                <div class="p-form-column wrapinput realtimediv" style="display: none">
+                    <span class="hang-title">实际量房时间：</span>
+                    <input type="text" class="realtime p-input">&nbsp;&nbsp;<i class="fa fa-calendar"></i>
+                    <div class="tishi realtime-tishi"></div>
+                </div>
+                <div class="p-form-column wrapinput qiandan_jinediv" style="display: none">
+                    <span class="hang-title">签单金额：</span>
+                    <input type="text" class="qiandan_jine p-input">元
+                    <span class="red-xing">*</span>
+                    <div class="tishi qiandan_jine-tishi"></div>
+                </div>
+            </div>
+            <div>
+                <span class="hang-title">跟单详情：</span>
+                <textarea class="p-input quchupad boxmoxing orderremark" maxlength="100" placeholder="请输入跟单内容,字数不超过100个字。" cols="30" rows="10" ></textarea>
+                <div class="tishi orderremark-tishi"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="bottom-btn">
+    	<button class="p-btn p-primary" id="save-btn">保存</button>
+        <a href="/order" class="p-btn p-white">取消</a>
+    </div>
+{/block}
+
+{block name='script'}
+    <script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/webuploader.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/upload.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Private/addorder.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/bootstrap/js/bootstrap.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/datetimepicker/bootstrap-datetimepicker.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/select3/js/select3.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/select2.min.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/zh-CN.js?v={:config('STATIC_VERSION')}"></script>
+    <script>
+     var kfdata = {:json_encode($reception)};
+     var sjsdata = {:json_encode($designer)};
+     $(function(){
+        setData('.jiedaikefu',kfdata);
+        setData('.designyuan',sjsdata);
+
+        function setData(selector,data){
+            for(var i in data){
+            $(selector).append("<option value="+data[i].id+">"+data[i].name+"&"+data[i].order_number+"</option>");
+            }
+        }
+    })
+        </script>
+{/block}

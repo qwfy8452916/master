@@ -1,0 +1,123 @@
+{extend name="common:basic" /}
+{block name="title"}
+    首页
+{/block}
+{block name="link"}
+
+<link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap.min.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/feedback.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/datetimepicker/daterangepicker.css?v={:config('STATIC_VERSION')}">
+
+
+{/block}
+{block name="bread_title"}
+<div class="titlewaik">首页</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <h1>欢迎使用齐装云管家！</h1>
+    <div class="center">
+        
+    
+        <div class="item">
+        <div class="title">最新订单跟踪情况</div>
+        <div class="content">
+            <table class="table table-hover table-bordered" id="table">
+                <thead>
+                    <tr class="active">
+                    <th>装修地址</th>
+                    <th>业主姓名</th>
+                    <th>接待客服</th>
+                    <th>设计师</th>
+                    <th>订单状态</th>
+                    <th>最新跟踪时间</th>
+                    <th>项目经理</th>
+                    <th>施工状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {volist name='list' id='vo'}
+                    <tr>
+                        <td>{$vo.build_address|default=''}</td>
+                        <td>{$vo.consumer_name|default=''}</td>
+                        <td>{$vo.reception_name|default=''}</td>
+                        <td>{$vo.designer_name|default=''}</td>
+                        <td>{$vo.order_status|default=''}</td>
+                        <td>{$vo.add_time|date='Y-m-d H:i:s'|default=''}</td>
+                        <td>{$vo.project_name|default='--'}</td>
+                        <td>{$vo.build_state|default='--'}</td>
+                    </tr>
+                {/volist}
+                </tbody>
+            </table>
+            {if empty($list)}
+            <div class="none">
+                <p style="text-align:center">暂无<a href="/order/" style="color:#108EE9">跟单</a>记录</p>
+            </div>
+            {/if}
+        </div>
+        </div>
+        <div class="enter">
+                <div class="title">快捷入口</div>
+                <ul>
+                    <li>
+                    <a href="/order">
+                        <div class="img"></div>
+                        <p>跟单管理</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="/shigong">
+                            <div class="img"></div>
+                            <p>施工管理</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/employee">
+                            <div class="img"></div>
+                            <p>员工管理</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/material">
+                            <div class="img"></div>
+                            <p>材料进销</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>
+<div class="p-panel">
+    <div class="bottom">
+        <div class="title">签单统计</div>
+        <div class="cont">
+            <div class="search">
+                <div class="col-xs-2 weekmonth">
+                    <!-- <span class="week fl">近一周</span> -->
+                    <span class="month fl">近一个月</span>
+                </div>
+                <div class="col-xs-2 demo">
+                    <input type="text" id="time" class="form-control" autocomplete="off">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                </div>
+            </div>
+            <div id="statistic"></div>
+        </div>
+    </div>
+</div>
+<input type="text" value="{$statistics|default=''}" id="ceshi">
+
+{/block}
+
+{block name='script'}
+<script>
+    var statistics = "{$statistics|default=''}";
+</script>
+<script type="text/javascript" src="/assets/pc/js/Common/echarts.common.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/bootstrap/js/bootstrap.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/daterangepicker/moment.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/daterangepicker/daterangepicker.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/pc/js/Private/index.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

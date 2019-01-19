@@ -1,0 +1,80 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修问答</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/wenda/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$global_yuming_m}/wenda">
+</block>
+<block name="content">
+    <if condition="$is_search EQ '0'">
+        <div class="box">
+            <div class="form_control">
+                <mip-form method="get" url="http://mip.qizuang.com/wenda/search/">
+                    <input type="text" name="keyword" value="" placeholder="请输入您的装修问题" validatetarget="keyword" validatetype="must">
+                    <div target="keyword">关键词不能为空</div>
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </mip-form>
+            </div>
+        </div>
+        <div class="zx-ask-nav under-line">
+            <mip-vd-tabs allow-scroll>
+                <section class="diary-menu">
+                    <li <if condition="$cateId eq ''">class="active-menu"</if>><a data-type="mip" href="{$global_basehost}/wenda/">热门回答</a><span></span></li>
+                    <volist name="category" id="v">
+                        <li><span {$v.cls}><a data-type="mip" href="{$global_basehost}/wenda/ask-{$v.cid}/">{$v.name}</a></span></li>
+                    </volist>
+                </section>
+
+
+
+            </mip-vd-tabs>
+        </div>
+        <div class="children-content">
+            <volist name="subCategory" id="v">
+                <neq name="v.cid" value="7">
+                    <span {$v.cls}><a data-type="mip" href="{$global_basehost}/wenda/ask-{$v.cid}/">{$v.name}</a></span>
+                </neq>
+            </volist>
+        </div>
+    </if>
+    <div class="zx-ask-list">
+        <volist name="list" id="v">
+        <div class="zx-ask-item">
+            <div class="item-content">
+                <div class="item-top oflow">
+                    <div class="user-img fl"><mip-img src="{$v.logo}" alt="{$v.username}"></mip-img></div>
+                    <div class="user-name fl">{$v.username}</div>
+                </div>
+                <p class="item-body">
+                    <a data-type="mip" href="{$global_basehost}/wenda/x{$v.id}.html">{$v.title}</a>
+                </p>
+                <div class="item-foot">
+                    <span class="fl">{$v.post_time|date="Y-m-d",###}</span>
+                    <span class="fr"><a href="{$global_basehost}/wenda/ask-8">{$v.name}</a><i class="sm-line-y"></i><i>{$v.anwsers}</i>人回答</span>
+                </div>
+            </div>
+        </div>
+        </volist>
+    </div>
+
+     {$page}
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-form/mip-form.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+                {
+                    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+                    "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+                    "appid": "1575859058891466",
+                    "title": "{$head.title}",
+                    "images": [],
+                    "pubDate": ""
+                }
+            </script>
+</block>

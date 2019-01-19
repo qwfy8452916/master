@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="keywords" content="齐装网分站">
+    <meta name="description" content="目前齐装网已经在全国包括苏州、上海、广州、天津、重庆、杭州、南京、武汉、福州、合肥、太原等200多个城市建立了分部！">
+    <title>齐装网分站导航-齐装网</title>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/mobile/index/css/index.css?v={:C('STATIC_VERSION')}">
+</head>
+<body>
+    <!-- header头部 -->
+    <header class="box-width-css">
+        <p>欢迎来到齐装网！</p>
+        <section class="hd-phone">
+            <i class="icon-hd-phone"></i>
+            <span>{:OP("QZ_CONTACT_TEL400")}</span>
+        </section>
+    </header>
+    <!-- logo -->
+    <section class="box-width-css sec-logo-wrap">
+        <h1>齐装网，轻松装修乐无忧！</h1>
+        <span></span>
+    </section>
+    <!-- 定位 -->
+    <div class="location">
+    <span>当前定位：</span><em>苏州</em>&nbsp;<a href="http://{:C('MOBILE_DONAMES')}/sz/">进入>></a>
+    </div>
+    <div class="banxin">
+        <!-- 热门城市 -->
+        <div class="hotcity">
+            <h2 class="title">热门城市</h2>
+            <ul>
+                 <volist name="cityInfo.hotCitys" id="vo">
+                    <li>
+                      <a href="http://m.{:C('QZ_YUMING')}/{$vo.bm}/">{$vo.cname}</a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+        <!-- 字母查找 -->
+        <div class="word mar-t20">
+            <h2 class="title">按字母查找您所在的城市</h2>
+            <ul>
+              <volist name="cityInfo.accordCity" id="vo">
+                  <li><a href="#{$vo.pname}">{$vo.pname}</a></li>
+              </volist>
+            </ul>
+        </div>
+        <volist name="cityInfo.accordCity" id="vo">
+          <div id="{$vo.pname}" class="city-word mar-t20">
+              <h2 class="title">{$vo.pname}（以{$vo.pname}开头的城市）</h2>
+              <ul>
+                  <volist name="vo.child" id="v">
+                      <li><a href="http://m.{:C('QZ_YUMING')}/{$v.bm}/">{$v.cname}</a></li>
+                    </volist>
+              </ul>
+          </div>
+      </volist>
+    </div>
+    <include file="Index:footer" />
+</body>
+<script type="text/javascript">
+  getLocation();
+
+  function getLocation() {
+        if (!navigator.onLine) {
+            return false;
+        }
+        window.navigator.geolocation.getCurrentPosition(function(position) {
+            var latitude = position.coords.latitude; //纬度
+            var longitude = position.coords.longitude; //经度
+            $.ajax({
+                url: "/getLocation/",
+                type: 'post',
+                dataType: 'json',
+                timeout: 2000,
+                data: {
+                    lat: latitude,
+                    lan: longitude
+                },
+                success: function(data) {
+                    if (data.status == 1) {
+                      $(".location em").html(data.data.cname);
+                      $(".location a").arrr("href",data.data.link);
+                    }
+                }
+            });
+        }, function(error) {
+          console.log(error);
+        }, {
+            maximumAge: 0,
+            timeout: 3000,
+            enableHighAccuracy: true
+        });
+    }
+</script>
+</html>

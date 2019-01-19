@@ -1,0 +1,143 @@
+{extend name="common:basic" /}
+{block name="title"}
+    供应商管理
+{/block}
+{block name="bread_title"}
+<span>供应商管理</span>
+{/block}
+{block name='link'}
+    <link rel="stylesheet" href="/assets/pc/css/Private/supplier/addsupplier.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+    <div class="p-panel">
+        <form id="dataform" action="/supplier/" method="get">
+                <div class="p-form-box b-owf">
+                    <div class="p-form-column">
+                        <span class="p-form-title">供应商：</span>
+                        <input type="text" name="suppliername" class="p-input" placeholder="请输入" maxlength="30" value="{$Think.get.suppliername}">
+                    </div>
+                    <div class="p-form-column">
+                        <span class="p-form-title">分类：</span>
+                        <select name="categoryid"  class="p-input">
+                            <option value="0">请选择</option>
+                            {volist name="category" id="vo"}
+                            <option value="{$vo.id}">{$vo.category_name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                    <div class="p-form-column">
+                        <span class="p-form-title">联系人：</span>
+                        <input type="text" name="c_person" class="p-input" placeholder="请输入" value="{$Think.get.c_person}">
+                    </div>
+                    <div class="b-owf">
+                        <a class="p-btn p-primary b-fr p-blue {if (!btnRule('/supplier/addsupplier/'))} btn_hide{/if}" href="/supplier/addsupplier/">新增供应商</a>
+                        <button class="p-btn p-primary b-fr b-mt20 submit">搜索</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="p-panel">
+        <p class="b-mbt20">数据列表</p>
+         <table class="p-suppliertab">
+            <thead>
+            <tr>
+                <td>供应商</td>
+                <td>分类</td>
+                <td>联系人</td>
+                <td>手机号</td>
+                <td>结算方式</td>
+                <td>
+                    <span class="add-date">添加日期
+                      <!-- 向上 -->
+                        {if(isset($order)&&$order==1)}
+                        <i class="fa fa-sort-asc sort-icon paixu" data-order="{$order|default=1}"></i>
+                        {else/}
+                        <i class="fa fa-sort-desc sort-icon paixu" data-order="{$order|default=1}"></i>
+                        {/if}
+                       <!-- 向下  -->
+                    </span>
+                </td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tbody>
+                {volist name="list" id="vo"}
+                <tr>
+                    <td><a href="/supplier/detail/?id={$vo.id}" class="p-eidt supplier-title type-box">{$vo.name|default=''}</a></td>
+                    <td><div class="type-box">{$vo.category_names|default=''}</div></td>
+                    <td>{$vo.contact_name|default=''}</td>
+                    <td>{$vo.contact_tel|default=''}</td>
+                    <td>{$payType[$vo["pay_way"]]|default=''}</td>
+                    <td>{$vo.add_time|default=''}</td>
+                    <td>
+                        <a href="/supplier/addsupplier/?edit_id={$vo.id}" class="p-eidt {if (!btnRule('/supplier/edit/'))} btn_hide{/if}">编辑</a>
+                        <span class="p-delete{if (!btnRule('/supplier/delete/'))} btn_hide{/if}" data-id='{$vo.id}'>删除</span>
+                    </td>
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+        {$page|raw}
+    </div>
+{/block}
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+    $(function(){
+
+        if('{$Think.get.categoryid}'){
+            $('select[name=categoryid]').val("{$Think.get.categoryid}");
+        }
+        $('.paixu').click(function(){
+            var dataOrder = $(this).attr('data-order');
+            if(dataOrder == 1){
+                window.location = '/supplier/?order=2';
+            }else{
+                window.location = '/supplier/?order=1';
+            }
+
+        });
+
+        $("#reset-search").on("click",function(){
+            $("#dataform").find('input').val("")
+            $('select[name=categoryid]').val("0").css("color","#666");
+        });
+
+        //删除供应商
+        $(".p-suppliertab").on("click",".p-delete",function(){
+            var id=parseInt($(this).attr("data-id"));
+            var that=$(this);
+            $(this).p_confirm({
+                "confirmText":"确定要删除该供应商吗",
+                okFun:function(){
+                    $.ajax({
+                        url:"/supplier/delete",
+                        data:{"supplier_id":id},
+                        type:"POST",
+                        success:function(res){
+                            if(res.status==0){
+                                tishitip("删除成功",1);
+                                setTimeout(function(){
+                                    that.parents("tr").remove();
+                                },500)
+
+                            }else{
+                                 tishitip(res.info,2)
+                            }
+                        },
+                        fail:function(res){
+                            tishitip("发生未知错误，请稍后重试~",2)
+                        }
+
+                    });
+                },
+                noFun:function(){
+
+                }
+            });
+
+        });
+
+    });
+</script>
+{/block}

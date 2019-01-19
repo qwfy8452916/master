@@ -1,0 +1,73 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/common/css/add.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="back" id="back">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <h1>{if ($Think.get.id)}编辑{else/}添加{/if}</h1>
+        <div class="save">保存</div>
+    </header>
+
+    <div class="wrapper">
+    <ul class="add-box">
+        <li class="clearfix">
+            <span>姓名</span>
+            <input type="text" maxlength="10" class="name" value="{$list.contact_name|default=''}" placeholder="请输入">
+        </li>
+        <li>
+            <span>手机号</span>
+            <input type="tel" onpaste="return false" ondragenter="return false"  onkeyup="this.value=check(this.value)" class="tel" maxlength="11" value="{$list.contact_tel|default=''}" placeholder="请输入">
+        </li>
+        <li>
+            <span>微信</span>
+            <input type="text" class="wechat" maxlength="20" value="{$list.contact_wx|default=''}" placeholder="请输入">
+        </li>
+        <li class="clearfix">
+            <span class="fl">部门</span>
+            <div class="department fr" id="department" type="text" data-values="{$list.dept_id|default=''}">
+                {$list.dept_name|default='请选择'}
+            </div>
+            <i class="right"></i>
+        </li>
+        <li class="clearfix">
+            <span class="fl">岗位</span>
+            <div class="station fr" id="station" type="text" data-values="{$list.station_id|default=''}">
+                {$list.name|default='请选择'}
+            </div>
+            <i class="right"></i>
+        </li>
+        <li>
+            <span>账号</span>
+            <input type="text"  class="user" maxlength="18" placeholder="请输入" value="{$list.account|default=''}"
+                   {if condition="isset($list.id) and $list.id and $list.id neq null" }disabled{/if}>
+        </li>
+
+        {if condition="isset($list.id) and $list.id and $list.id neq null" }
+        {else/}
+        <li>
+            <span>密码</span>
+            <input type="password" onpaste="return false" ondragenter="return false"  onkeyup="this.value=check(this.value)" class="psw" maxlength="24" placeholder="请输入" >
+        </li>
+        {/if}
+    </ul>
+</div>
+
+<input type="hidden" name="edit_id" value="{$list.id|default=''}">
+{/block}
+{block name='script'}
+<script>
+    var deptSelect = '{$deptSelect|raw}'
+    var stationSelect = '{$stationSelect|raw}'
+    function check(str){
+        var temp=""
+        for(var i=0;i<str.length;i++)
+             if(str.charCodeAt(i)>0&&str.charCodeAt(i)<255)
+                temp+=str.charAt(i)
+        return temp;
+    }
+</script>
+<script src="/assets/mobile/team/js/member-add.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

@@ -1,0 +1,151 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修效果图</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$global_yuming_m}{$canonical}">
+</block>
+<block name="content">
+    <div class="box">
+        <div class="form_control">
+            <mip-form method="get" url="http://mip.qizuang.com/meitu/list-l0f0h0c0/" target="_self">
+                <input type="text" name="keyword" placeholder="请输入您想找的效果图" validatetarget="keyword" validatetype="must" value="{$keyword}" >
+                <div target="keyword">关键词不能为空</div>
+                <button type="submit"><i class="fa fa-search"></i></button>
+           </mip-form>
+        </div>
+    </div>
+    <div class="menu_list">
+        <ul class="pull_down_list">
+           <mip-accordion sessions-key="mip_4" expaned-limit>
+                <section>
+                    <li class="parten_menu">{$info.nav.fg|default="风格"} <i class="fa fa-angle-down"></i></li>
+                    <div class="tab_container">
+                        <a data-type='mip' rel="nofollow" href="{$info['select']['fengge']}">不限</a>
+                <volist name="info.fg" id="v">
+                    <empty name="v.nofollow">
+                        <if condition="$info['navParams']['fengge'] EQ $v.id ">
+                        <a data-type='mip' href="{$v.link}/" rel="nofollow"  class="now">{$v.name}</a>
+                        <else />
+                        <a data-type='mip' href="{$v.link}/" rel="nofollow">{$v.name}</a>
+                        </if>
+                    <else />
+                         <if condition="$info['navParams']['fengge'] EQ $v.id ">
+                        <a data-type='mip' href="{$v.link}/" class="now">{$v.name}</a>
+                         <else />
+                        <a data-type='mip' href="{$v.link}/">{$v.name}</a>
+                         </if>
+                    </empty>
+                </volist>
+                    </div>
+                    <div class="active_mask"></div>
+                </section>
+                <section>
+                    <li class="parten_menu">{$info.nav.hx|default="户型"} <i class="fa fa-angle-down"></i></li>
+                    <div class="tab_container">
+                        <a data-type='mip' rel="nofollow"  href="{$info['select']['huxing']}">不限</a>
+                <volist name="info.hx" id="v">
+                    <empty name="v.nofollow">
+                        <if condition="$info['navParams']['huxing'] EQ $v.id ">
+                            <a data-type='mip' href="{$v.link}/" rel="nofollow"  class="now">{$v.name}</a>
+                        <else />
+                            <a data-type='mip' href="{$v.link}/" rel="nofollow">{$v.name}</a>
+                        </if>
+                    <else />
+                        <if condition="$info['navParams']['huxing'] EQ $v.id ">
+                            <a data-type='mip' href="{$v.link}/" class="now">{$v.name}</a>
+                        <else />
+                            <a data-type='mip' href="{$v.link}/">{$v.name}</a>
+                        </if>
+                    </empty>
+                </volist>
+                    </div>
+                    <div class="active_mask"></div>
+                </section>
+                <section>
+                    <li class="parten_menu">{$info.nav.wz|default="局部"} <i class="fa fa-angle-down"></i></li>
+                    <div class="tab_container">
+                        <a data-type='mip' rel="nofollow"  href="{$info['select']['location']}">不限</a>
+                <volist name="info.wz" id="v">
+                    <empty name="v.nofollow">
+                        <if condition="$info['navParams']['location'] EQ $v.id ">
+                            <a data-type='mip' href="{$v.link}/" rel="nofollow"  class="now">{$v.name}</a>
+                        <else />
+                            <a data-type='mip' href="{$v.link}/" rel="nofollow">{$v.name}</a>
+                        </if>
+                    <else />
+                        <if condition="$info['navParams']['location'] EQ $v.id ">
+                            <a data-type='mip' href="{$v.link}/" class="now">{$v.name}</a>
+                        <else />
+                            <a data-type='mip' href="{$v.link}/">{$v.name}</a>
+                        </if>
+                    </empty>
+                </volist>
+                    </div>
+                    <div class="active_mask"></div>
+                </section>
+                <section>
+                    <li class="parten_menu">{$info.nav.ys|default="颜色"} <i class="fa fa-angle-down"></i></li>
+                    <div class="tab_container">
+                        <ul class="color-list">
+                        <li ><a data-type='mip' rel="nofollow"  href="{$info['select']['color']}" class="border_ccc">不限</a></li>
+                        <volist name="info.ys" id="v">
+                            <li>
+                                <empty name="v.nofollow">
+                                    <if condition="$info['navParams']['color'] EQ $v.id ">
+                                        <a data-type='mip'  rel="nofollow"  href="{$v.link}/" rel="nofollow"  class="now {$v.style}" ></a>
+                                        <else />
+                                        <a data-type='mip'  rel="nofollow"  href="{$v.link}/" rel="nofollow" class="{$v.style}"></a>
+                                    </if>
+                                    <else />
+                                    <if condition="$info['navParams']['color'] EQ $v.id ">
+                                        <a data-type='mip'  rel="nofollow"  href="{$v.link}/" class="now {$v.style}" ></a>
+                                        <else />
+                                        <a data-type='mip'  rel="nofollow"  href="{$v.link}/" class="{$v.style}"></a>
+                                    </if>
+                                </empty>
+                            </li>
+                        </volist>
+                        </ul>
+                    </div>
+                    <div class="active_mask"></div>
+                </section>
+           </mip-accordion>
+        </ul>
+    </div>
+
+    <div class="box-body meitu-list-body">
+    <ul>
+        <volist name="info.meitu" id="v">
+            <li class="back-white">
+                <a data-type='mip' href="{$global_basehost}/meitu/p{$v.id}.html" class="imgs-box" rel="nofollow">
+                    <mip-img src="http://{:C('QINIU_DOMAIN')}/{$v.img_path}-w300.jpg" alt="{$v.title}"></mip-img>
+                </a>
+                <div class="details">
+                    <a data-type='mip' href="{$global_basehost}/meitu/p{$v.id}.html">
+                        <p>{$v.title}</p>
+                    </a>
+                    <div class="details-content">
+                        <span>{$v.wz}</span>
+                        <span>{$v.fg}</span>
+                        <span>{$v.hx}</span>
+                        <span>{$v.ys}</span>
+                        <div class="rightIcon" data-id="{$v.id}" data-on="0">
+                            <i class="fa fa fa-thumbs-up"></i><span>{$v.likes}</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </volist>
+    </ul>
+</div>
+    {$info.page}
+    <mip-lightbox id="tab-5" layout="nodisplay" class="mip-hidden"></mip-lightbox>
+</block>
+<block name="script">
+     <!--搜索框-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-form/mip-form.js"></script>
+    <!--下拉菜单切换-->
+    <script src="https://c.mipcdn.com/static/v1/mip-accordion/mip-accordion.js"></script>
+</block>

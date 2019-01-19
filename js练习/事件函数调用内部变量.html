@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件函数调用内部变量</title>
+	<style>
+		.aa,.bb{width: 100px;height: 35px;line-height: 35px;text-align: center;background: blue;
+			color: #fff;font-size: 16px;cursor:pointer;}
+			.bb{margin-top: 20px;}
+	</style>
+</head>
+<body>
+	
+<div class="aa">1</div>
+<div class="bb">2</div>
+
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		
+       $(function(){
+
+
+
+   //     function outerFun()
+			// {
+			// 	 var a=0;
+			// 	 function innerFun()
+			// 	 {
+			// 	  a++;
+			// 	  alert(a);
+			// 	 }
+			// 	 return innerFun;  //注意这里
+			// }
+
+			// 	var obj=outerFun();
+			// 	obj();  //结果为1
+			// 	obj();  //结果为2
+			// 	var obj2=outerFun();
+			// 	obj2();  //结果为1
+			// 	obj2();  //结果为2
+
+
+
+
+
+
+
+       	// function b(){
+
+       	// 	var aa=1000;
+       	// 	function xx(){
+       			
+       	// 		aa=aa+1;
+        //         console.log(aa)
+       	// 	}
+       	// 	return xx;
+
+       	// }
+        // var ww=b();
+        // ww();
+        // ww();
+
+
+
+
+      
+         $('.aa').click(function ww(event) {
+         	     function a(){
+
+				 var a=12;
+				var b=23;
+				return {a,b}
+
+				}
+         });
+
+
+
+         $('.bb').click(function(event) {
+
+	           function m(){
+
+			  var dd=a();
+				console.log(dd.a);
+				console.log(dd.b) 
+				}
+				m()
+         });
+
+    
+
+		
+
+
+
+
+       })
+
+
+	</script>
+</body>
+</html>

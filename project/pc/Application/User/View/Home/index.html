@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>{$keys.title}-{$title}</title>
+    <include file="Index:resource" />
+    <include file="Home:resource" />
+    <link rel="stylesheet" href="{$static_host}/assets/user/home/css/ht-common.css?v={:C('STATIC_VERSION')}">
+    <script type="text/javascript" src="{$static_host}/assets/user/home/js/goalProgress.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="{$static_host}/assets/common/js/jquery.queue.js?v={:C('STATIC_VERSION')}"></script>
+</head>
+<body>
+    <include file="Home:header" />
+    <div class="ht-wrap oflow">
+        <include file="Home:comnavleft" />
+        <div class="ht-main">
+            <div class="ht-comp-info">
+                <div class="ht-logo">
+                    <a href="/info/basic"><img src="{$info.user.logo}" width="193" height="110">
+                        <span class="ht-logo-alter">更换LOGO</span>
+                    </a>
+                </div>
+                <div class="ht-content">
+                    <h3 class="pull-left ml20">
+                    <if condition="$info['user']['on'] EQ 2 AND $info['user']['fake'] EQ 0">
+                    <i class="icon-trophy mr10" style="color:#F30" title="VIP会员公司"></i>
+                    <else/>
+                      <i class="icon-trophy mr10" style="color:#888" title="您还不是会员公司">  </i>
+                      <div class="jmtel">加盟热线：{:OP('QZ_CONTACT_TEL400')}</div>
+                    </if>
+                    {$info.user.qc}
+                    </h3>
+                    <if condition="$info['perfect'] NEQ 100">
+                        <div class="ht-comp-info-alter">资料完善度{$info.perfect}%
+                        <a href="/info/basic">>> 去完善</a></div>
+                    </if>
+                    <if condition="$info['user']['on'] EQ 2 AND $info['user']['fake'] EQ 0">
+                        <p class="pull-left ico ml20">
+                            <span title="该公司营业执照已认证"><i class="ico1">认</i></span>
+                            <span title="该公司无优惠"><i class="iconone">惠</i></span>
+                        </p>
+                    </if>
+                    <ul id="banging" class="banding">
+                    <li>
+                        <if condition="!$info['user']['mail_safe_chk']">
+                             <i class="icon-envelope icon-2x gray"></i>
+                             <h3>安全邮箱</h3>
+                             <p>未绑定<a href="javascript:void(0)" data-type="mail">立即绑定</a></p>
+                        <else/>
+                             <i class="icon-envelope icon-2x green"></i>
+                             <h3>安全邮箱</h3>
+                             <p>{$info.user.mail_safe}</p>
+                             <p>已绑定<a href="javascript:void(0)" data-type="mail">修改</a></p>
+                        </if>
+
+                    </li>
+                    <li>
+                        <if condition="!$info['user']['tel_safe_chk']">
+                             <i class="icon-mobile-phone icon-3x"></i>
+                             <h3>安全手机</h3>
+                             <p>未绑定<a href="javascript:void(0)" data-type="tel">立即绑定</a></p>
+                        <else/>
+                             <i class="icon-mobile-phone icon-3x green"></i>
+                             <h3>安全手机</h3>
+                             <p>{$info.user.tel_safe}</p>
+                             <p>已绑定<a href="javascript:void(0)" data-type="tel">修改</a></p>
+                        </if>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+            <if condition="$info['user']['unreadcount'] NEQ 0">
+                <div class="ht-home-message mt20">
+                    <i class="icon-inbox icon-large mr10"></i>
+                    <a href="/orders/">您有{$info['user']['unreadcount']}条未读的订单消息，请尽快查阅！</a>
+                </div>
+            </if>
+            <div class="ht-home-tj mt20">
+                <h2>全面体检</h2>
+                <if condition="$info['user']['check_score'] EQ 0">
+                    <h3 class="red" style="float:left; margin-left:10px;">( 您还没有体检过 )</h3>
+                <else/>
+                <span class="gray" style="float:left; margin-left:10px;">
+                    <if condition="$info['user']['check_warning']">
+                        <em class="red" style="font-size:14px;">
+                            <i class=" icon-exclamation-sign"></i>
+                        </em>
+                        <em class="red">
+                            您已经超过7天未体检了
+                        </em>
+                    <else/>
+                        上次体检时间&nbsp;&nbsp;<em class="red">{$info.user.check_time|date="Y-m-d H:i:s",###}</em></span>
+                    </if>
+                </span>
+                </if>
+                <span class="ml20 gray">完善您的内容将使您的知名度与签单成功率更上一层楼</span>
+            </div>
+            <div class="ht-home-jdt oflow">
+                <div class="jdt sample_goal" id="sample_goal"></div>
+                <button class="jdt-btn"><i class="icon-exchange mr10"></i><em>开始检测</em></button>
+            </div>
+            <div class="ht-home-check">
+
+            </div>
+            <div class="ht-home-tj mt20">
+                <h2>操作记录</h2>
+                <span class="ml20 gray">若不是您本人操作，请与齐装网客服联系，谢谢！</span>
+            </div>
+            <dl class="ht-home-czjl">
+                <volist name="info.logs" id="vo">
+                    <if condition="$key EQ date('Y-m-d')">
+                        <dt>今天</dt>
+                        <else/>
+                        <dt>{$vo.date|date="m-d",###}</dt>
+                    </if>
+                    <volist name="vo.child" id="v">
+                        <dd><i class="icon-time mr10"></i>{$v.time|date="H:i:s",###}&nbsp;&nbsp;&nbsp;{$v.info}&nbsp;&nbsp;&nbsp;{$v.remark}</dd>
+                    </volist>
+                </volist>
+            </dl>
+            <if condition="$info['orders']">
+            <div class="ht-home-tj mt20">
+                <h2>新申请量房动态</h2>
+                <span class="ml20 red">成为齐装网会员，立刻获得业主信息！</span>
+            </div>
+            <ul class="newser">
+              <li class="tlist1">业主</li>
+              <li class="tlist1">装修预算</li>
+              <li class="tlist1">项目类型</li>
+              <li class="tlist1">装修类型</li>
+              <li class="tlist2">装修小区</li>
+              <li class="tlist1">发布时间</li>
+            </ul>
+            <div class="maquee">
+                <ul>
+                <volist name="info.orders" id="vo">
+                    <li>
+                     <span class="tlist1">{$vo.name}{$vo.sex|default="先生"}</span>
+                     <span class="tlist1">{$vo.yusuan|default="-"}</span>
+                     <span class="tlist1">{$vo.hxname|default="-"}</span>
+                     <span class="tlist1">{$vo.fname|default="-"}</span>
+                     <span class="tlist2">{$vo.xiaoqu|default="-"}</span>
+                     <span class="tlist1">{$vo.time}</span> </li>
+                </volist>
+                </ul>
+            </div>
+            </if>
+        </div>
+    </div>
+    <include file="Index:footer" />
+    {$urgentNotice}
+</body>
+<script type="text/javascript">
+$(function(){
+    $('#sample_goal').goalProgress({
+        goalAmount: 100, //进度条控制台
+        currentAmount:100 ,
+        text:"亲,您上一次体检得分 {$info.user.check_score|default=0}！"
+    });
+
+    $(".jdt-btn").click(function(event) {
+        if($(".ht-home-list").length == 0){
+            var total = 0;
+            var _this = $(this);
+            $.ajax({
+                url: '/chkstatus',
+                type: 'POST',
+                dataType: 'JSON'
+            })
+            .done(function(data) {
+                if(data.status == 1){
+                    $(".ht-home-check").append(data.data.tmp);
+                    _this.addClass('active').find("em").html("停止检测");
+                    $('#sample_goal').goalProgress("reset");
+                    var total = 0;
+                    var score = 0;
+                    var parent = $(".ht-home-list");
+                    $(".ht-home-list li").each(function(i){
+                        var li = $(this);
+                        var type = li.attr("data-type");
+
+                        var target = data.data[type];
+                        if(typeof target != "undefined"){
+                            score += parseInt(target.score);
+                            var arguments = [target.percentage,"正在检测"+target.name+"...",total,function(){
+                                li.find("p").html(target.text);
+                                li.append("<a></a>");
+                                if(target.score >= target.percentage){
+                                    li.addClass('sucsess');
+                                    li.find("i").removeClass("icon-refresh").addClass('icon-ok-circle');
+                                    li.find("a").addClass('none').html("已完成");
+                                }else{
+                                    li.addClass('danger');
+                                    li.find("i").removeClass("icon-refresh").addClass(target.icon);
+                                    li.find("a").html(target.info).attr("href",target.href);
+                                }
+                            }];
+                            $('#sample_goal').goalProgress("queue",arguments);
+                            total += target.percentage;
+
+                            if(i == $(".ht-home-list li").length -1){
+                                arguments = [score,"亲,您这次体检的得分",function(){
+                                    $.ajax({
+                                        url: '/editbaseinfo',
+                                        type: 'POST',
+                                        dataType: 'JSON',
+                                        data: {
+                                            score:score
+                                        }
+                                    });
+                                    _this.find("em").html("检测完成!");
+                                }];
+                                $('#sample_goal').goalProgress("finish",arguments);
+                            }
+                        }
+                    });
+                    $('#sample_goal').goalProgress("dequeue");
+                }else{
+                    $('#sample_goal').goalProgress("abort");
+                }
+            })
+            .fail(function(xhr) {
+                $.pt({
+                    target: _this,
+                    content:"发生了未知的错误,请刷新页面！",
+                    width: 'auto'
+                });
+            });
+        }else{
+            $(".ht-home-list").remove();
+            $(this).find("em").html("开始检测");
+            $('#sample_goal').goalProgress("abort",[function(){$.ajax({
+                                    url: '/editbaseinfo',
+                                    type: 'POST',
+                                    dataType: 'JSON',
+                                    data: {
+                                        score:"{$info.user.check_score}",
+                                        time:"{$info.user.check_time}"
+                                    }
+                                });}]);
+        }
+    });
+
+    $(".banding a").click(function(event) {
+        var _this = $(this);
+        var type = _this.attr("data-type");
+        $.ajax({
+            url: '/account/',
+            type: 'POST',
+            dataType: 'JSON',
+            data:{
+                ssid:"{$info.ssid}",
+                type:type
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+                $("body").append(data.data);
+            }
+        }).fail(function(xhr) {
+            //显示提示
+            $.pt({
+                target: _this,
+                content: '操作失败,请稍后再试！',
+                width: 'auto'
+            });
+        });
+    });
+
+    setInterval('autoScroll(".maquee")', 500);
+});
+function autoScroll(obj) {
+    $(obj).find("ul").animate({
+        marginTop: "-30px"
+    }, 2000, function() {
+        $(this).css({
+            marginTop: "0px"
+        }).find("li:first").appendTo(this);
+    })
+}
+
+
+</script>
+</html>

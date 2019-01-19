@@ -1,0 +1,18 @@
+::-moz-placeholder { color: #666; }
+::-webkit-input-placeholder { color:#666; }
+:-ms-input-placeholder { color:#666; }
+.wrapinput{margin-bottom:24px;}
+ .p-form-title{
+line-height: 38px;vertical-align: top;}
+.datatablwk{overflow: hidden;}
+.wrapdate{display: inline-block;position: relative;overflow: hidden;width: 60%;}
+.wrapdate .dateriqi{width: 99%;font-size: 13px;}
+.wrapdate .fa-calendar{position: absolute;top:11px;right: 18px;}
+.yiyanshou{color: #52c41a;}
+.weiyans{color: #fa8c16;}
+.buhege{color: #f5222d;}
+a:hover{color:#fff;}
+a.addorder:focus{color: #fff !important;text-decoration: none !important;}
+.p-suppliertab td a:hover,.p-suppliertab td a:focus{color: #428bca !important;}
+.btn-box{width:94%; margin:0px auto}
+.mr-hide{display: none}

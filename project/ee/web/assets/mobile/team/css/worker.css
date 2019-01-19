@@ -1,0 +1,107 @@
+/*
+* @Author: jsb
+* @Date:   2018-09-01 11:25:16
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-20 09:01:02
+*/
+.wrapper {
+    height: 100%;
+}
+.item {
+    background: #fff;
+    padding-left: 0.8rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    margin-bottom: 0.225rem;
+}
+.manager {
+    padding: 0.75rem 1rem;
+    background: #fff;
+    margin-bottom: 0.75rem;
+    font-size: 0.7rem;
+}
+.manager div {
+    margin-bottom: 0.5rem;
+}
+.manager .job {
+    margin-bottom: 0;
+}
+.add-box {
+    background: #fff;
+    height: 2rem;
+    line-height: 2rem;
+    padding-left: 0.75rem;
+    margin-bottom: 0.22rem;
+}
+.add-box .img {
+    width: 0.85rem;
+    height: 100%;
+    margin-right: 0.55em;
+}
+.add-box .img img {
+    display: block;
+    width: 100%;
+    margin-top: 0.55rem;
+}
+.worker {
+    background: #fff;
+    font-size: 0.7rem;
+    color:#212121;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 0.8rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+}
+.list .close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
+}
+.list .close img {
+    display: block;
+    width: 100%;
+}
+.list .avator {
+    width: 4.25rem;
+    height: 4.25rem;
+    margin-right: 0.5rem;
+}
+.list .avator img {
+    display: block;
+    width: 100%;
+}
+.list .info {
+    font-size: 0.7rem;
+}
+.list .info .worker-name span {
+    height: 0.75rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    border: 1px solid #29CFAB;
+    border-radius: 0.35rem;
+    font-size: 12px;
+    color: #29CFAB;
+}
+.edit {
+    margin-top: 5.25rem;
+    border-top: 1px solid #E6E6E6;
+}
+.edit .edit-btn {
+    margin-right: 0.8rem;
+    width: 2.5rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    background: #0E94EA;
+    color: #fff;
+    font-size: 0.7rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}

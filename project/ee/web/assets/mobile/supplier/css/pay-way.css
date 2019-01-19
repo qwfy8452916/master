@@ -1,0 +1,91 @@
+/*
+* @Author: jsb
+* @Date:   2018-08-31 13:31:54
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-03 14:47:17
+*/
+.wrapper {
+    height: 100%;
+}
+.div {
+    height: 0.55rem;
+}
+.pay-box {
+    padding: 0.7rem 0.75rem;
+    background: #fff;
+    position: relative;
+    color: #212121;
+}
+.pay-way {
+    float: right;
+    outline: none;
+    border: 0;
+    width: 8rem;
+    line-height: 1.25rem;
+    color: #000;
+    text-align: right;
+    padding-right: 1.5rem;
+}
+.right {
+    position: absolute;
+    right: 0.85rem;
+    top: 0.95rem;
+    display: block;
+    width: 0.4rem;
+    height: 0.75rem;
+    background: url(../../common/img/right.png) no-repeat;
+    background-size: 100% 100%;
+}
+.toolbar .picker-button {
+    color:#0E94EA;
+}
+.weui-cell__bd p {
+    text-align: center;
+}
+.zhifubao {
+    padding: 0.85em 0.75rem;
+    display: none;
+}
+.zhifubao-box {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3rem;
+    padding-left: 0.4rem;
+}
+.zhifubao input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    width: 12rem;
+
+}
+.wechat {
+    padding: 0.85em 0.75rem;
+    display: none;
+}
+.wechat-box {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3rem;
+    padding-left: 0.4rem;
+}
+.wechat input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    width: 12rem;
+}
+.bank {
+    padding: 0.85em 0.75rem;
+    display: none;
+}
+.bank-box {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3rem;
+    padding-left: 0.4rem;
+    padding-top: 0.8rem;
+}
+.bank input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    width: 12rem;
+}

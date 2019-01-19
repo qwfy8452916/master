@@ -1,0 +1,282 @@
+{extend name="common:basic" /}
+{block name="title"}
+    材料进销
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap.min.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/select2/css/select2.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/datetimepicker/datetimepicker.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/material/index.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>
+    {present name="info['id']"}
+        材料进销/编辑
+    {else/}
+       材料进销/添加
+    {/present}
+
+</span>
+{/block}
+{block name="content"}
+    <div class="p-panel b-owf">
+        <div class="p-header">
+            相关订单
+        </div>
+
+        <div class="p-body">
+            <table class="detail-table add-order">
+                <tr>
+                    <td>
+                        <span class="table-title">业主姓名</span>
+                        {present name="info['id']"}
+                            <select id="yzname" name="yzname" class="select p-input" disabled="disabled">
+                                <option value="0">请选择</option>
+                                {volist name="orders" id="vo"}
+                                  <option value="{$vo.order_no}" {if condition="$vo.order_no eq $info['erp_order_id']"} selected {/if} >{$vo.consumer_name}</option>
+                                {/volist}
+                            </select>
+                        {else/}
+                             <select id="yzname" name="yzname" class="select2 p-input">
+                                  <option value="0">请选择</option>
+                                  {volist name="orders" id="vo"}
+                                    <option value="{$vo.order_no}" {if condition="$vo.order_no eq $info['erp_order_id']"} selected {/if} >{$vo.consumer_name}</option>
+                                  {/volist}
+                              </select>
+                        {/present}
+
+                        <span class="p-no-null">*</span>
+                        <div class="tishi" style="height:0px;margin-left: 106px"></div>
+                    </td>
+                    <td>
+                        <span class="table-title">订单编号</span>
+                        <span id="order_id"></span>
+                    </td>
+                    <td>
+                        <span class="table-title" >ERP单号</span>
+                        <span id="erp_id"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="table-title">装修地址</span>
+                        <span id="address"></span>
+                    </td>
+                    <td>
+                        <span class="table-title">户型</span>
+                        <span id="huxing"></span>
+                    </td>
+                    <td>
+                        <span class="table-title">面积</span>
+                        <span id="mianji"></span> ㎡
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="p-panel">
+        <div class="p-header">
+            材料
+        </div>
+        <div class="p-body">
+            <table class="detail-table add-order">
+                <tr>
+                    <td>
+                        <span class="table-title">供应商分类</span>
+                        <select name="category" class="p-input">
+                            <option value="0">请选择</option>
+
+                            {volist name="category" id="vo"}
+                            <option value="{$vo.id}">{$vo.category_name}</option>
+                            {/volist}
+                        </select>
+                        <input type="hidden" name="material_id" value="{$info.id|default=''}">
+                    </td>
+                    <td>
+                        <span class="table-title">供应商</span>
+                        <select name="supplier" class="p-input" id="gysname" >
+                            <option value="0">请选择</option>
+                            {volist name="supplier" id="vo"}
+                            <option value="{$vo.id}">{$vo.name}</option>
+                            {/volist}
+                        </select>
+                        <div id='hide_select'>
+                           {volist name="supplier" id="vo"}
+                            <option value="{$vo.id}">{$vo.name}</option>
+                            {/volist}
+                        </div>
+                        <span class="p-no-null">*</span>
+                    </td>
+                    <td>
+                      <span class="tishi" style="margin-left: 0px;"></span>
+                    </td>
+                </tr>
+            </table>
+            <table class="p-suppliertab add-material-table">
+                <thead>
+                    <tr>
+                        <td>材料名称</td><td>数量</td><td>单价(元)</td><td>采购时间</td><td>送货时间</td><td>票据单号</td><td>操作</td>
+                    </tr>
+                </thead>
+                  <tbody id="mater-list">
+                  {present name="info['id']"}
+                  {volist name="info.list" id="vo"}
+
+                  <tr class="mtr">
+                        <td>
+                            <input type="text" class="mname" placeholder="请输入材料名称" value="{$vo.name|default=''}" maxlength="20">
+                            <input type='hidden'  class='material_id'  value="{$vo.id|default=''}">
+                        </td>
+                        <td>
+                            <input type="text" class="mamount" placeholder="输入数量" value="{$vo.amount|default=''}" >
+                        </td>
+                        <td>
+                            <input type="text" class="mprice" placeholder="请输入单价" value="{$vo.price|default=''}">
+                        </td>
+                        <td>
+                            <input  type="text" class="buy-date mbuytime" value="{$vo.buy_time|default=''}">
+                            <i class="fa fa-calendar"></i>
+                        </td>
+                        <td>
+                            <input  type="text" class="send-date msendtime" value="{$vo.send_time|default=''}">
+                            <i class="fa fa-calendar"></i>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="请输入票据单号" class="piaoju"  value="{$vo.note|default=''}" >
+                        </td>
+                        {if($key!=0)}
+                        <td>
+                            <span class='p-delete p-delete-true' data-id="{$vo.id}">删除</span>
+                        </td>
+                        {/if}
+                    </tr>
+                  {/volist}
+                  {else/}
+                  <tr class="mtr">
+                      <td>
+                          <input type="text" class="mname" placeholder="请输入材料名称" maxlength="20">
+                      </td>
+                      <td>
+                          <input type="text" class="mamount" placeholder="输入数量">
+                      </td>
+                      <td>
+                          <input type="text" class="mprice" placeholder="请输入单价">
+                      </td>
+                      <td>
+                          <input value="" type="text" class="buy-date mbuytime">
+                          <i class="fa fa-calendar"></i>
+                      </td>
+                      <td>
+                          <input value="" type="text" class="send-date msendtime">
+                          <i class="fa fa-calendar"></i>
+                      </td>
+                      <td>
+                          <input type="text" placeholder="请输入票据单号" class="piaoju">
+                      </td>
+                      <td>
+
+                      </td>
+                  </tr>
+                  {/present}
+
+                </tbody>
+            </table>
+            <p id="add-material-btn">
+                + 添加
+            </p>
+        </div>
+    </div>
+    <div class="b-fr">
+        <span class="p-btn p-primary" id="save-order">保存</span>
+        <a class="p-btn p-white" href="/material/" style="margin-left:10px;">取消</a>
+    </div>
+    <div class="b-cleat-float"></div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/select2.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/zh-CN.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/bootstrap/js/bootstrap.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/datetimepicker/bootstrap-datetimepicker.js?v={:config('STATIC_VERSION')}"></script>
+<!-- 页面私有方法 -->
+<script type="text/javascript" src="/assets/pc/js/Private/material/add_material.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+  $(function(){
+
+      $('.select2').select2({
+        width:'70%',
+        language: "zh-CN"
+      });
+
+      $("select[name=category]").val("{$info.supplier_category_id|default='0'}");
+      $("select[name=supplier]").val("{$info.supplier_id|default='0'}");
+
+      //联动
+      $("select[name=category]").change(function(event) {
+          var that=$(this), supplier = $("select[name=supplier]");
+          supplier.html("");
+          if($(this).val()==0){
+             var option_html="<option value='0'>请选择</option>"+$("#hide_select").html();
+             supplier.append(option_html);
+            return false
+          }
+
+          $.ajax({
+            url:"/category/getmCategory",
+            data:{"id":that.val()},
+            success:function(res){
+              if(res.data.length>0){
+                for( var i=0; i<res.data.length;i++){
+                  supplier.append("<option value="+res.data[i].id+">"+res.data[i].name+"</option>")
+                }
+              }else{
+                var option_html="<option value='0'>请选择</option>";
+                supplier.append(option_html);
+              }
+            }
+          });
+      });
+  });
+
+
+
+  $("#order_id").text('{$orderinfo["qz_order"]|default=""}');
+  $("#erp_id").text('{$orderinfo["order_no"]|default=""}');
+  $("#address").text('{$orderinfo["build_address"]|default=""}');
+  $("#huxing").text('{$orderinfo["name"]|default=""}');
+  $("#mianji").text('{$orderinfo["house_area"]|default=""}');
+
+  $('select[name=yzname]').on('change',function(){
+        if($(this).val()){
+            $.ajax({
+                url: '/material/getorder/',
+                dataType: 'JSON',
+                data: {erp_id:$(this).val()}
+            })
+            .done(function(data) {
+                if(data.error_code == 0){
+                    var info = data.data;
+                    $("#order_id").text(info.qz_order);
+                    $("#erp_id").text(info.order_no);
+                    $("#address").text(info.build_address);
+                    $("#huxing").text(info.name=info.name == null?"":info.name);
+                    $("#mianji").text(info.house_area);
+                }else{
+                    $("#order_id").text('');
+                    $("#erp_id").text('');
+                    $("#address").text('');
+                    $("#huxing").text('');
+                    $("#mianji").text('');
+                }
+            })
+            .fail(function(xhr) {
+                tishitip('发生未知错误，请稍后重试~',2);
+                return false;
+            })
+        }else{
+            tishitip('参数有误,请刷新重试',2);
+        }
+    });
+</script>
+{/block}

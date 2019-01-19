@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断函数</title>
+	<style>
+		div{width: 200px;height: 50px;line-height: 50px;text-align: center;
+		}
+		.dianjiniu{background: blue;color: #fff;}
+	</style>
+</head>
+<body>
+	<div class="diyi" data-id="haha">选择data-id</div>
+	<div class="dianjiniu">点击触发函数</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+        $(function(){
+
+          function checkDisclamer(parent_box){
+		    if(!parent_box){
+		        console.error("请选择容器");
+		        return false;
+		    }
+		    var disclamer =$(parent_box).attr("data-id");
+		    if(disclamer=="haha"){
+		        alert("请勾选我已阅读并同意齐装网的《免责申明》！");
+		        return false;
+		    }
+		    return true;
+
+		}
+
+		$('.dianjiniu').click(function(event) {
+			if(!checkDisclamer(".diyi")){
+               return false;
+			}
+			console.log(33)
+		});
+
+
+
+        })
+
+	</script>
+</body>
+</html>

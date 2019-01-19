@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+	<style>
+	</style>
+</head>
+<body>
+	<div id="box">
+		<my-aaa></my-aaa>
+		<div @click="gaibian">点击事件{{msg}}</div>
+	</div>
+
+	<script>
+		window.onload=function(){
+
+           var vm=new Vue({
+			el:'#box',
+			data:{
+				msg:'大家好'
+			},
+			methods:{
+				gaibian:function(){
+					this.msg='你们好!';
+				}
+			},
+			components:{
+				'my-aaa':{
+					data(){
+						return {
+							msg:'welcome vue'
+						}
+					},
+					methods:{
+						change(){
+							this.msg='changed';
+
+						}
+					},
+					template:'<h2 @click="change">标题2->{{msg}}</h2>'
+				}
+			}
+		});
+
+
+
+		}
+		
+	</script>
+</body>
+</html>

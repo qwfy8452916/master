@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>{$keys.title}-{$title}</title>
+    <include file="Index:resource" />
+    <include file="Home:resource" />
+    <link rel="stylesheet" href="{$static_host}/assets/user/orders/css/ht-order.css?v={:C('STATIC_VERSION')}">
+</head>
+<body>
+    <include file="Home:header" />
+    <div class="ht-wrap oflow ht-relative">
+        <include file="Home:comnavleft" />
+        <include file="Orders:header" />
+        <div class="ht-main">
+            <div class="ht-wechat">
+                <h1> 绑定的微信能收到分配的新订单!</h1>
+                <p><img src="{$info.qrimg}" width="430" height="430"></p>
+                <p>请使用微信扫码二维码</p>
+                <p class="wechatstate"></p>
+                <if condition=" count($info['users']) GT 0">
+                <p><a title="解除所有绑定" href="javascript:void(0)" data-id="{$info.user.id}">解除全部绑定帐号</a></p>
+                </if>
+            </div>
+            <div class="ht-wechat-id">
+              <h3>已绑定账号</h3>
+              <volist name="info.users" id="vo"  empty="暂时未查询到名单信息！">
+              <dl>
+                  <dt><img src="{$vo.img}" /></dt>
+                  <dd>
+                    <p>微信昵称:{$vo.nickname}{$vo.sex}</p>
+                    <p>所在城市：{$vo.city}</p>
+                  </dd>
+                  <i title="解除绑定" class="menu icon-trash" data-id="{$vo.wx_unionid}" ></i>
+              </dl>
+              </volist>
+            </div>
+        </div>
+    </div>
+    <include file="Index:footer" />
+</body>
+<script type="text/javascript">
+    $(".ht-wechat-id dl:not(:first)").hover(function() {
+        $(this).find(".menu").show();
+    }, function() {
+      $(this).find(".menu").hide();
+    });
+
+    $(".icon-trash").click(function(event) {
+        if(confirm("确定解除绑定吗？")){
+            var _this = $(this);
+            var id = _this.attr("data-id");
+            $.ajax({
+              url: '/unbindwx',
+              type: 'POST',
+              dataType: 'JSON',
+              data: {
+                id: id
+              }
+            })
+            .done(function(data) {
+                if(data.status == 1){
+                    window.location.href = window.location.href;
+                }else{
+                  $.pt({
+                    target: _this,
+                    content:data.info,
+                    width: 'auto'
+                  });
+                }
+            })
+            .fail(function(xhr) {
+                $.pt({
+                  target: _this,
+                  content:"发生了未知的错误,请刷新后再试！",
+                  width: 'auto'
+                });
+            });
+        }
+    });
+
+    $(".ht-wechat a").click(function(event) {
+        if(confirm("确定全部解除绑定吗？")){
+            var _this = $(this);
+            var id = _this.attr("data-id");
+            $.ajax({
+              url: '/unbindwx',
+              type: 'POST',
+              dataType: 'JSON',
+              data: {
+                id: id,
+                action:"all"
+              }
+            })
+            .done(function(data) {
+                if(data.status == 1){
+                    window.location.href = window.location.href;
+                }else{
+                  $.pt({
+                    target: _this,
+                    content:data.info,
+                    width: 'auto'
+                  });
+                }
+            })
+            .fail(function(xhr) {
+                $.pt({
+                  target: _this,
+                  content:"发生了未知的错误,请刷新后再试！",
+                  width: 'auto'
+                });
+            });
+        }
+    });
+
+    var timmer =  setInterval(function(){
+        $.ajax({
+          url: '/polling',
+          type: 'POST',
+          dataType: 'JSON'
+        })
+        .done(function(data) {
+            $(".wechatstate").html(data.info);
+            if(data.status == 0){
+                clearInterval(timmer);
+            }else if(data.status == 3){
+                $(".ht-wechat img").attr("src",data.data);
+            }
+        })
+        .fail(function(xhr) {
+           $(".wechatstate").html("");
+           clearInterval(timmer);
+        });
+    },3000);
+</script>
+</html>

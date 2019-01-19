@@ -1,0 +1,116 @@
+{extend name="common:basic" /}
+{block name="title"}
+    施工管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/webuploader.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/upload.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/detail_material.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>施工管理/详情</span>
+<ul class="tabbiaot">
+    <li ><a href="http://{:config('pc_host')}/shigong/build/edit?order_no={$order_no}">施工信息</a></li>
+    <li class="active"><a href="#">材料进销</a></li>
+</ul>
+
+
+{/block}
+{block name="content"}
+<div class="p-panel shigong">
+    <div class="yezhu-title">基本信息</div>
+    <div class="tabwaik tabwaikgd01">
+        <div class="hangwk">
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">订单编号：</span><span class="hangitem-title02">{$order.order_no|default=''}</span>
+            </div>
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">齐装订单编号：</span><span class="hangitem-title02">{$order.qz_order|default=''}</span>
+            </div>
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">小区：</span><span class="hangitem-title02 xiaoqutext">{$order.xiaoqu|default=''}</span>
+            </div>
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">业主姓名：</span><span class="hangitem-title02 yezhutext">{$order.consumer_name|default=''}</span>
+            </div>
+        </div>
+        <div class="hangwk">
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">户型：</span><span class="hangitem-title02 huxingtext">{$order.huXing.name|default=''}</span>
+            </div>
+            <div class="hangitem contact hangitemwid">
+                <span class="hangitem-title01">面积：</span><span class="hangitem-title02 mianjitext">{$order.house_area|default=''}</span><em class="danweipf">㎡</em>
+
+            </div>
+            <div class="hangitem contact hangitemwid">
+                <span class="hangitem-title01">手机号：</span><span class="hangitem-title02 phonetext">{$order.consumer_tel|default=''}</span>
+            </div>
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">微信号：</span><span class="hangitem-title02 wechattext">{$order.consumer_wx_no|default=''}</span>
+            </div>
+        </div>
+        <div class="hangwk">
+            <div class="hangitem addrlength">
+                <span class="hangitem-title01">装修地址：</span><span class="hangitem-title02 zxadresstext">{$order.build_address|default=''}</span>
+            </div>
+            <div class="hangitem addrlength">
+                <span class="hangitem-title01">联系地址：</span><span class="hangitem-title02 linkaddresstext">{$order.link_address|default=''}</span>
+            </div>
+        </div>
+        <div class="hangwk">
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">接待客服：</span><span class="hangitem-title02 jiedaikftext">{$order.receptionAccount.contact_name|default=''}</span>{notempty name='$order.receptionAccount.contact_name'}<span
+                    class="relative-num guanlianjd" title="关联订单数"><a href="/order/" target="_blank">&nbsp;{notempty name='$order.reception_id_num'}{$order.reception_id_num|default=''}个关联订单{else/}空闲中{/notempty}</a></span>{/notempty}
+            </div>
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">设计师：</span><span class="hangitem-title02 designtext">{$order.designerAccount.contact_name|default=''}</span>{notempty name='$order.designerAccount.contact_name'}<span
+                    class="relative-num guanliandesign" title="关联订单数"><a href="/order/" target="_blank">&nbsp;{notempty name='$order.designer_id_num'}{$order.designer_id_num|default=''}个关联订单{else/}空闲中{/notempty}</a></span>{/notempty}
+            </div>
+        </div>
+
+    </div>
+    </div>
+{foreach $list as $vo}
+<div class="p-panel">
+    <p class="gys-title">
+        <b>供应商：</b>{$vo.supplier.name|default=''}
+    </p>
+    <table class="p-suppliertab">
+        <thead>
+        <th>材料名称</th>
+        <th>数量</th>
+        <th>单价(元)</th>
+        <th>总价(元)</th>
+        <th>采购时间</th>
+        <th>送货时间</th>
+        <th>状态</th>
+        </thead>
+        <tbody>
+        {foreach $vo.material as $material}
+        <tr>
+            <td>{$material.name}</td>
+            <td>{$material.amount}</td>
+            <td>{$material.price}</td>
+            <td>{:bcmul($material.price,$material.amount,2)}</td>
+            <td>{$material.buy_time}</td>
+            <td>{$material.send_time}</td>
+            <td>{$material.state}</td>
+        </tr>
+        {/foreach}
+
+        </tbody>
+    </table>
+</div>
+{/foreach}
+<div class="bottom-btn">
+    <a href="/shigong" class="p-btn p-primary">返回</a>
+</div>
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/webuploader.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/upload.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/detail_material.js?v={:config('STATIC_VERSION')}"></script>
+
+
+{/block}

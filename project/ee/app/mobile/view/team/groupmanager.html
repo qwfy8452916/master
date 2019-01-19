@@ -1,0 +1,97 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/manager/css/team.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="menu" id="menu">
+            <img src="/assets/mobile/common/img/menu.png" alt="">
+        </div>
+        <h1>团队管理</h1>
+    </header>
+    <div class="wrapper">
+        <!--如果有员工管理权限和施工组管理权限,显示tab切换,否则都不显示-->
+        <div class="tab{if (!btnRule('/employee/') || !btnRule('/workgroup/'))} btn_hide{/if}">
+            <div class="navbar clearfix">
+                <div class="navbar-item" data-name="add">
+                    <a href="/employee"><span>员工管理</span></a>
+                </div>
+                <div class="navbar-item" data-name="add-construction">
+                    <a href="/workgroup"><span class="on">施工组管理</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="part">
+            {volist name='list' id='vo'}
+            <div class="group-list">
+                <div class="close{if (!btnRule('/workgroup/del/'))} btn_hide{/if}" data-id="{$vo.gid|default=''}">
+                    <img src="/assets/mobile/common/img/close.png" alt="">
+                </div>
+                <div class="list-box">
+                    <div class="name">
+                        <div class="group-name">{$vo.group_name|default=''}</div>
+                    </div>
+                    <div class="member">
+                        <div class="num">成员：<span>{if (!empty($vo.uids))}{:count(explode(',',$vo.uids))}{else/}0{/if}</span>人</div>
+                    </div>
+                    {if (isset($vo.build_count) && $vo.build_count>0)}
+                    <div class="place">
+                        <div class="place-num"><span>{$vo.build_count|default=0}个工地进行中</span></div>
+                    </div>
+                    {/if}
+                </div>
+                <div class="list-btn clearfix{if (!btnRule('/workgroup/worker/'))} btn_hide{/if}">
+                    <div class="edit-detail">
+                        <a href="/workgroup/worker?edit_id={$vo.gid|default=''}"><div class="edit fr">详情</div></a>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    <p class="no-supplier" data-name="none">未找到符合的施工组</p>
+    {if($page!=0)}
+    <div class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips" data-id={$page}>正在加载</span>
+    </div>
+    {else/}
+    <div class="weui-loadmore">
+        <span class="weui-loadmore__tips" data-id={$page}>到底了~</span>
+    </div>
+    {/if}
+
+</div>
+
+<!-- 下拉加载模板 -->
+<script id="tmpl" type="text/x-handlebars-template">
+    {{each data as value }}
+    <div class="group-list">
+        <div class="close {if (!btnRule('/workgroup/del/'))} btn_hide{/if}" data-id="{{value.gid}}">
+            <img src="/assets/mobile/common/img/close.png" alt="">
+        </div>
+        <div class="list-box">
+            <div class="name">
+                <div class="group-name">{{value.group_name}}</div>
+            </div>
+            <div class="member">
+                <div class="num">成员：<span>{{hasuids(value.uids)}}</span>人</div>
+            </div>
+            {{ if value.build_count>0}}
+            <div class="place">
+                <div class="place-num"><span>{{value.build_count}}个工地进行中</span></div>
+            </div>
+            {{/if}}
+        </div>
+        <div class="list-btn clearfix {if (!btnRule('/workgroup/worker/'))} btn_hide{/if}">
+            <div class="edit-detail">
+                <a href="/workgroup/worker?edit_id={{value.gid}}"><div class="edit fr">详情</div></a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/common/js/template.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/team/js/group.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

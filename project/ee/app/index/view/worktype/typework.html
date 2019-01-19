@@ -1,0 +1,76 @@
+{extend name="common:basic" /}
+{block name="title"}
+    工种设置
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/typework.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<div class="titlewaik">工种设置</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="add-waik">
+        <span class="p-btn b-fr p-primary classification{if (!btnRule('/worktype/add/'))} btn_hide{/if}">新增工种</span>
+    </div>
+    <div class="tabwaik">
+        <table class="p-suppliertab">
+            <thead>
+            <tr>
+                <th>工种名称</th>
+                <th>添加时间
+                    <a href="/worktype?order={if ($Think.get.order == 'desc')}asc{else/}desc{/if}">
+                        <i class="fa paixu {if ($Think.get.order == 'desc')}fa-caret-down{else/}fa-caret-up{/if}" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="list.list" id="vo"}
+            <tr>
+                <td>{$vo.name}</td>
+                <td>{if ($vo.default == 2)}{$vo.create_time|date='Y-m-d H:i:s'}{/if}</td>
+                <td>
+                    {if ($vo.default == 2)}
+                    <span class="editbj{if (!btnRule('/worktype/edit/'))} btn_hide{/if}">
+                    <span data-id="{$vo.id}">编辑</span>
+                </span>
+                    <span class="caozuo{if (!btnRule('/worktype/del/'))} btn_hide{/if}">
+                    <span data-id="{$vo.id}">删除</span>
+                    </span>
+                    {/if}
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+        {$list.page|raw}
+    </div>
+</div>
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0"
+        frameborder="0"></iframe>
+<div class="p-tancfl addtanchuang">
+    <div class="tancfl-title">
+        <span class="edit-fl">添加工种</span>
+        <span class="p-close"></span>
+    </div>
+    <div class="contentnr botjvli">
+        <span>工种名称：</span>
+        <input class="fenleiname" type="text" name="type_name" placeholder="请输入工种名称" maxlength="12"><span
+            class="requirebj">*</span>
+        <div class="tishi fenlei-tishi"></div>
+    </div>
+    <div class="foottanc">
+        <span class="p-btn p-padding cancelqx">取消</span><span class="p-btn  p-primary p-padding save">保存</span>
+    </div>
+</div>
+<input type="hidden" name="edit_id" value="">
+
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/typework.js?v={:config('STATIC_VERSION')}"></script>
+
+{/block}

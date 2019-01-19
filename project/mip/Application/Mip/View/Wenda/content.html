@@ -1,0 +1,126 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修问答</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/wenda/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <div class="box">
+        <div class="form_control">
+            <mip-form method="get" url="http://mip.qizuang.com/wenda/search/">
+                <input type="text" name="keyword" value="" placeholder="请输入您的装修问题" validatetarget="keyword" validatetype="must">
+                <div target="keyword">关键词不能为空</div>
+                <button type="submit"><i class="fa fa-search"></i></button>
+           </mip-form>
+        </div>
+    </div>
+    <div class="zx-ask-list">
+        <div class="zx-ask-item no-border">
+            <div class="item-content">
+                <div class="item-top oflow">
+                    <div class="user-img fl">
+                        <mip-img src="http://staticqn.qizuang.com/Public/default/images/default_logo.png"></mip-img>
+                    </div>
+                    <div class="user-name fl">{$ask.username}</div>
+                </div>
+                <p class="item-body">
+                    <!--<a>{$ask.title}</a> -->
+                    <span>{$ask.title}</span>
+                </p>
+                <div class="item-foot">
+                    <span class="fl">{$ask.post_time}</span>
+                    <span class="fr"><a data-type="mip" href="{$global_basehost}/wenda/ask-{$ask.sub_category}">{$ask.sub_category_name}</a><i class="sm-line-y"></i><i>{$ask.anwsers}</i>人回答</span>
+                </div>
+                <if condition="(!empty($ask['content'])) OR (!empty($ask['img'])) ">
+                <div class="current-content">
+                    <p>{$ask.content}</p>
+                    <volist name="ask.img" id="vo">
+                    <a data-type="mip" href="http://{:C('QINIU_DOMAIN')}/{$vo.path}" target="_blank" title="{$ask.title}">
+                    <mip-img width="100%" src="http://{:C('QINIU_DOMAIN')}/{$vo.path}" alt="{$ask.title}"></mip-img></a>
+                    </volist>
+                </div>
+                </if>
+            </div>
+        </div>
+        <div class="lucky-img">
+            <a data-type="mip" href="{$global_basehost}/huangli/"><mip-img src="/assets/wenda/images/jiri.jpg"></mip-img></a>
+        </div>
+        <div class="ask-title">
+            <div class="ask-text"><span class="line-y"></span>回答</div>
+        </div>
+
+        <div class="other-ask-title">
+            <div class="other-ask-text">其他回答</div>
+        </div>
+        <div class="other-ask-list">
+            <volist name="anwserList" id="v">
+            <div class="zx-ask-item">
+                <div class="item-content oflow">
+                    <div class="item-top oflow">
+                        <div class="user-img fl"><mip-img src="{$v.logo}"></mip-img></div>
+                        <div class="user-name fl">{$v.name}</div>
+                    </div>
+                    <mip-showmore maxheight='65' animatetime='.3' id="showmore{$v.id}">
+                        <p class="item-body recommend-text">{$v.content}</p>
+                    </mip-showmore>
+                    <div on="tap:showmore{$v.id}.toggle" data-closetext="收起" class="mip-showmore-btn">全文</div>
+                    <div class="item-foot">
+                        <span class="fl">{$v.post_time}</span>
+                        <span class="fr"><i class="fa fa-thumbs-up"></i><i class="fanum">{$v.agree}</i></span>
+                    </div>
+                </div>
+            </div>
+            </volist>
+        </div>
+        <include file="Common:freeDesign"/>
+        <div class="about-ask">
+            <div class="about-ask-main">
+                <div class="about-ask-title">相关问题</div>
+                <volist name="related" id="v">
+                <div class="about-ask-list">
+                    <a data-type="mip" href="{$global_basehost}/wenda/x{$v.id}.html">
+                        <span class="fl">{$v.title|mbstr=0,15}</span>
+                        <span class="fr"><i>{$v.anwsers}</i>人回答</span>
+                    </a>
+                </div>
+                </volist>
+            </div>
+        </div>
+
+        <div class="tuijian-ask">
+            <div class="tuijian-ask-main">
+                <div class="tuijian-ask-title">为您推荐</div>
+                <div class="tuijian-ask-video">
+                    <a data-type="mip" href="{$global_basehost}/video/v{$video.id}.html">
+                        <mip-img src="http://{:C('QINIU_DOMAIN')}/{$video.cover_img}"></mip-img>
+                        <p>
+                            <span class="fl">{$video.title|mbstr=0,20}</span>
+                            <span class="fr">第<i>{$video.time|timeFormat}</i>期</span>
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-form/mip-form.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-showmore/mip-showmore.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+            "appid": "1575859058891466",
+            "title": "{$head.title}",
+            "images": [],
+            "pubDate": "{$baidu.optime}"
+        }
+    </script>
+</block>

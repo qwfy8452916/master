@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算</title>
+</head>
+<body style="text-align: center;padding-top: 200px;">
+<input type='text' id='txt1' value="" /> 
+<input type='button' value=' = ' onclick="count()" />
+<input type='text' id='fruit' />
+<script type="text/javascript">
+	function count(){
+  
+        var a=document.getElementById("txt1").value//获取第一个输入框的值
+        // var b=a/23.4375/2;
+        var b=a*2.3827;
+        
+        // var b = parseInt(document.getElementById("txt2").value)//获取第二个输入框的值
+        
+        // var d=document.getElementById("fruit").value
+       document.getElementById("fruit").value=b.toFixed(3);
+    }
+</script>
+	
+</body>
+</html>

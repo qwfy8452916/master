@@ -1,0 +1,43 @@
+.form-group .span {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+}
+.form-group .tips {
+  width: 250px;
+  text-align: left;
+  color: red;
+  margin-left: 10px;
+  position: relative;
+  top: -30px;
+  left: 280px;
+}
+#search {
+  width: 100%;
+  margin-top: 16px;
+}
+.form-group .address {
+  width: 300px;
+}
+.form-group .zuobiao {
+  width: 280px;
+}
+.form-group .fa-map-marker {
+  color: red;
+  width: 15px;
+  height: 15px;
+  font-size: 18px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.edit {
+  color: #00c0ef;
+  cursor: pointer;
+}
+.button {
+  float: right;
+}
+.form-group .hidden-xs {
+  width: 50px;
+}

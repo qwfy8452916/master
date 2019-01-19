@@ -1,0 +1,999 @@
+<extend name="Index:basic"/>
+<block name="meta">
+<title>{$keys.title}-{$title}</title>
+<meta name="keywords" content="{$keys.keywords}" />
+<meta name="description" content="{$keys.description}" />
+<notempty name="articleInfo.canonical">
+<link rel="canonical" href="{$articleInfo.canonical}"/>
+</notempty>
+<meta name="mobile-agent" content="format=html5;url=http://m.qizuang.com/gonglue/{$articleInfo.article.now.shortname}/{$articleInfo.article.now.id}.html" />
+</block>
+<block name="style">
+<link rel="stylesheet" type="text/css" href="/assets/home/zixun/css/zxgl-talk.css?v={:C('STATIC_VERSION')}">
+<link rel="stylesheet" type="text/css" href="/assets/home/article/css/index.css?v-2018060611180918">
+<link rel="stylesheet" type="text/css" href="/assets/home/article/css/article-erweima.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="content">
+<div class="wrap">
+    <!-- 面包屑导航 -->
+    <div class="bread">
+        <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/">装修攻略</a>
+        <present name="cate.parent.parent">
+        &gt; <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$cate.parent.parent.shortname}/">{$cate.parent.parent.classname}</a>
+        </present>
+        <present name="cate.parent">
+        > <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$cate.parent.shortname}/">{$cate.parent.classname}</a>
+        </present>
+        >
+            <eq name="articleInfo.article.now.shortname" value="history">
+                <a href="javascript:void(0)">{$articleInfo.article.now.classname}</a>
+            <else />
+                <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$articleInfo.article.now.shortname}/">{$articleInfo.article.now.classname}</a>
+            </eq>
+        <!--&gt; {$articleInfo.article.now.title}-->
+        > 正文
+    </div>
+    <div class="atl-body">
+        <!-- 左边部分模块 -->
+        <div class="atl-left">
+            <div class="baojia-tit">装修价格不被坑就来<span>算一算</span></div>
+            <!-- 报价计算器模块 -->
+            <div class="atl-baojia baojia-jisuanqi-wrap">
+                <div class="baojia-box">
+                    <div class="baojia-value">
+                        <div class="miaosuan"><span>8秒</span>计算装修需要多少钱</div>
+                        <div class="house-input">
+                            <input type="text" name="mianji" placeholder="输入您的房屋面积" style="color: #333333">
+                            <i class="order-icon">㎡</i>
+                            <p class="error-info"></p>
+                        </div>
+                        <div class="city-sel">
+                            <select class="gl_box_cs" name="cs"></select>
+                            <select class="gl_box_qx" name="qx"></select>
+                            <p class="error-info"></p>
+                        </div>
+                        <div class="tel-num">
+                            <input type="text" name="money_tel" id="baojia" placeholder="输入手机号获取报价结果" maxlength="11" style="color: #333333">
+                            <input type="hidden" name="fb_type" value="baojia">
+                            <p class="error-info"></p>
+                        </div>
+                        <div class="miaosuan_mz">
+                            <!--S-免责申明-->
+                            <include file="Common@Order/disclamer"/>
+                            <!--E-免责申明-->
+                        </div>
+
+                    </div>
+                    <div class="baojia-btn">
+                        <a id="btnSave" href="javascript:;"><i>立即<br>计算</i></a>
+                    </div>
+                    <div class="baojia-result">
+                        <div class="result-all">
+                            <p>
+                                您的装修预算为
+                                <span class="result-all-val counter" id="total-price">?</span>元
+                            </p>
+                        </div>
+                        <div class="money-img">
+                            <div class="" style="float: right;">
+                                <div class="num num-gray"></div>
+                                <div class="num num-gray"></div>
+                                <div class="num num-gray"></div>
+                                <div class="num num-gray"></div>
+                                <div class="num num-gray"></div>
+                                <div id="num-1" class="num num-1"></div>
+                                <div id="num-2" class="num num-2"></div>
+                                <div id="num-3" class="num num-0"></div>
+                                <div id="num-4" class="num num-4"></div>
+                                <div id="num-5" class="num num-5"></div>
+                                <div id="num-6" class="num num-8"></div>
+                                <span> 元</span>
+                            </div>
+                </div>
+                        <div class="result-item">
+                            <div class="result-item-left">
+                                <span>客厅：</span>
+                                <span id="kt-price" class="result-item-val counter">?</span>
+                                <span>元</span>
+                            </div>
+                            <div>
+                                <span>水电：</span>
+                                <span id="sd-price" class="result-item-val counter">?</span>
+                                <span>元</span>
+                            </div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-item-left">
+                                <span>卫生间：</span>
+                                <span id="wsj-price" class="result-item-val counter">?</span>
+                                <span>元</span>
+                            </div>
+                            <div>
+                                <span>卧室：</span>
+                                <span id="zw-price" class="result-item-val counter">?</span>
+                                <span>元</span>
+                            </div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-item-left">
+                                <span>厨房：</span>
+                                <span id="cf-price"  class="result-item-val counter">?</span>
+                                <span>元</span>
+                            </div>
+                            <div class="result-item-left">
+                                <span>其他：</span>
+                                <span id="other-price"  class="result-item-val counter">?</span>
+                                <span>元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 文章内容模块 -->
+            <div class="atl-main">
+                <div class="gl_tle">
+                    <h1>{$articleInfo.article.now.title}</h1>
+                </div>
+                <div class="gl_tm">
+                    <span>来源: 齐装网</span>
+                    <span>{$articleInfo.article.now.addtime|date="Y-m-d H:i:s",###}</span>
+                    <span>浏览量: {$articleInfo.article.now.pv}</span>
+                    <span> 分享:</span>
+                    <div class="bdsharebuttonbox gl_fx bdshare-button-style0-16" data-bd-bind="1490146086907">
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"> </a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    </div>
+                    <div class="gl_d">
+                        <span class="gl_xh" data-id="{$articleInfo.article.now.id}">
+                            <i class="fa fa-heart"></i>&nbsp;<em>{$articleInfo.article.now.likes}</em>
+                        </span>
+                        <if condition="$Think.session.u_userInfo.classid NEQ 3">
+                            <if condition="$articleInfo['collect']">
+                                <span class="gl_sc active" data-on="1">
+                                  <i class="fa fa-star"></i>已收藏
+                                </span>
+                            <else/>
+                                <span class="gl_sc" data-on="0">
+                                  <i class="fa fa-star"></i>收藏
+                                </span>
+                            </if>
+                        </if>
+                        <div class="sendsj">
+                           <div class="saoysao">
+                               <div class="wzewm">
+                                   <img data-on="false" id="weixinerweima" src="" alt="文章微信二维码" class="baiduab-beha">
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gl_works">
+                    <div class="works_p">
+                        {$articleInfo.article.now.content}
+                    </div>
+                </div>
+            </div>
+            <!-- 上一篇下一篇文章 -->
+            <div class="gl_tb">
+                <div class="prev">
+                    <if condition="!$articleInfo['article']['prv']">
+                        <a href="javascript:void(0)" rel="nofollow">
+                            <div class="prev-btn"><i class="fa fa-angle-left"></i></div>
+                            <div class="prev-info">
+                                <p class="gl_f_left">上一篇</p>
+                                <a href="javascript:void(0)" rel="nofollow">没有了</a>
+                            </div>
+                        </a>
+                    <else/>
+                        <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$articleInfo.article.prv.shortname}/{$articleInfo.article.prv.id}.html">
+                            <div class="prev-btn"><i class="fa fa-angle-left"></i></div>
+                            <div class="prev-img">
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$articleInfo.article.prv.face}-w240.jpg" alt="{$articleInfo.article.prv.title}" class="baiduab-beha"/>
+                            </div>
+                            <div class="prev-info">
+                                <p class="gl_f_left">上一篇</p>
+                                <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$articleInfo.article.prv.shortname}/{$articleInfo.article.prv.id}.html" title="{$articleInfo.article.prv.title}">
+                                    {$articleInfo.article.prv.title}
+                                </a>
+                            </div>
+                        </a>
+                    </if>
+                </div>
+
+                <div class="next">
+                    <if condition="!$articleInfo['article']['next']">
+                        <a href="javascript:void(0)" rel="nofollow">
+                            <div class="next-btn"><i class="fa fa-angle-right"></i></div>
+                            <div class="next-info">
+                                <p class="gl_f_right">下一篇</p>
+                                <a href="javascript:void(0)" rel="nofollow">没有了</a>
+                            </div>
+                        </a>
+                    <else/>
+                        <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$articleInfo.article.next.shortname}/{$articleInfo.article.next.id}.html">
+                            <div class="next-btn"><i class="fa fa-angle-right"></i></div>
+                            <div class="next-img">
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$articleInfo.article.next.face}-w240.jpg" alt="{$articleInfo.article.next.title}" class="baiduab-beha"/>
+                            </div>
+                            <div class="next-info">
+                                <p class="gl_f_right">下一篇</p>
+                                <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$articleInfo.article.next.shortname}/{$articleInfo.article.next.id}.html" title="{$articleInfo.article.next.title}">
+                                    {$articleInfo.article.next.title}
+                                </a>
+                            </div>
+                        </a>
+                    </if>
+                </div>
+            </div>
+            <!-- 其他相关文章模块 -->
+            <div class="atl-other">
+                <div class="atl-other-box">
+                    <div class="atl-other-tit"><i class="red-block"></i>90%的人还看了</div>
+                    <volist name="articleInfo.recommendArticles" id="vi">
+                        <div class="atl-other-item">
+                            <div class="other-item-img">
+                                <a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">
+                                    <img alt="{$vi.title}" src="http://{:C('QINIU_DOMAIN')}/{$vi.face}-w240.jpg" class="baiduab-beha">
+                                </a>
+                            </div>
+                            <div class="other-item-main">
+                                <p class="other-item-tit">
+                                    <a target="_blank" title="{$vi.title}" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">
+                                        {$vi.title|mbstr=0,20}
+                                    </a>
+                                </p>
+                                <p class="other-item-info">{$vi.subtitle}</p>
+                                <div class="other-item-ref">
+                                    <span class="add"><i class="fa fa-eye"></i><i>{$vi.pv}</i></span>
+                                    <span class="time">{$vi.addtime|date="Y-m-d",###}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--推荐数据大于1条-->
+                        <if condition="$countKey gt 1">
+                            <if condition="$key eq 0">
+                                <div class="atl-other-item" id="to-baojia">
+                                    <div class="other-item-img">
+                                            <img alt="报价发单" src="http://{:C('QINIU_DOMAIN')}/file/20180327/Fip5sNLwG0aG9vWR2v-H153PfTXu.png" class="to-baojia baiduab-beha">
+                                    </div>
+                                    <div class="other-item-main">
+                                        <p class="other-item-tit">
+                                            <a class="to-baojia">
+                                                一名业主晒出的记手账,详细记录各项装修费用,原来能省这么多钱
+                                            </a>
+                                        </p>
+                                        <p class="other-item-info"></p>
+                                        <div class="other-item-ref">
+                                            <span class="add"><i class="fa fa-eye"></i><i>3580</i></span>
+                                            <span class="time"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </if>
+                            <if condition="$key eq 1">
+                                <div class="atl-other-item" id="to-design">
+                                    <div class="other-item-img">
+                                            <img alt="设计发单" src="http://{:C('QINIU_DOMAIN')}/file/20180327/FgXi8ONzH8AeQXqYUnwDMVs1jzmN.png" class="to-design baiduab-beha">
+                                    </div>
+                                    <div class="other-item-main">
+                                        <p class="other-item-tit">
+                                            <a class="to-design">
+                                                天呐,4套装修效果图册、设计方案免费拿,欲领从速
+                                            </a>
+                                        </p>
+                                        <p class="other-item-info"></p>
+                                        <div class="other-item-ref">
+                                            <span class="add"><i class="fa fa-eye"></i><i>2988</i></span>
+                                            <span class="time"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </if>
+                        <else />
+                            <div class="atl-other-item" id="to-baojia">
+                                <div class="other-item-img">
+                                    <img alt="报价发单" src="http://{:C('QINIU_DOMAIN')}/file/20180327/Fip5sNLwG0aG9vWR2v-H153PfTXu.png" class="to-baojia baiduab-beha">
+                                </div>
+                                <div class="other-item-main">
+                                    <p class="other-item-tit">
+                                        <a class="to-baojia">
+                                            一名业主晒出的记手账,详细记录各项装修费用,原来能省这么多钱
+                                        </a>
+                                    </p>
+                                    <p class="other-item-info"></p>
+                                    <div class="other-item-ref">
+                                        <span class="add"><i class="fa fa-eye"></i><i>3580</i></span>
+                                        <span class="time"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="atl-other-item" id="to-design">
+                                <div class="other-item-img">
+                                    <img alt="设计发单" src="http://{:C('QINIU_DOMAIN')}/file/20180327/FgXi8ONzH8AeQXqYUnwDMVs1jzmN.png" class="to-design baiduab-beha">
+                                </div>
+                                <div class="other-item-main">
+                                    <p class="other-item-tit">
+                                        <a class="to-design">
+                                            天呐,4套装修效果图册、设计方案免费拿,欲领从速
+                                        </a>
+                                    </p>
+                                    <p class="other-item-info"></p>
+                                    <div class="other-item-ref">
+                                        <span class="add"><i class="fa fa-eye"></i><i>2988</i></span>
+                                        <span class="time"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </if>
+                    </volist>
+                </div>
+            </div>
+            <!-- 招标设计广告图模块 -->
+            <div class="sp_hf">
+                <a rel="nofollow" href="/zhaobiao/" target="_blank">
+                    <img src="http://www.qizuang.com/assets/home/zixun/img/hf3.png" alt="招标与设计" class="baiduab-beha">
+                </a>
+            </div>
+            <!-- 评论区模块 -->
+            <div class="tk-l">
+            {$reply}
+            <notempty name="comments">
+                <div class="tk-list">
+                    <div class="list-mod clearfix">
+                        <div class="mod-main">
+                            {$comments}
+                            <div class="main-msg">
+                                <div class="pl_more">
+                                    <p>
+                                        <a rel="nofollow" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$articleInfo.article.now.shortname}/{$articleInfo.article.now.id}/more-review/" target="_blank">
+                                            >> 查看更多评论
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </notempty>
+        </div>
+        </div>
+        <!-- 右边部分模块 -->
+        <div class="atl-right">
+            <!-- 微信专享文章 -->
+            <notempty name="info.weixinarticle">
+                <div class="weixinzx">
+                    <div class="titlewx">
+                        <span class="wxtb"></span>
+                        微信专享
+                    </div>
+                    <volist name="info.weixinarticle" id="vi">
+                        <div class="wrapbk" id="weixinarticle{$vi.id}" data-on="false">
+                            <div class="wxdtb wx-article-btn" data-id="{$vi.id}">
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$vi.face}-w240.jpg" alt="" class="baiduab-beha">
+                            </div>
+                            <div class="wzjs">
+                                <p class="wzjsly wx-article-btn" data-id="{$vi.id}">{$vi.title}</p>
+                                <p class="wzjsle wx-article-btn" data-id="{$vi.id}">{$vi.description}</p>
+                                <p class="wzjsls"><a class="wx-article-btn" data-id="{$vi.id}" href="javascript:void(0)">前往>></a></p>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+            </notempty>
+            <!-- 报价计算器 -->
+            {$orderTmp}
+            <!-- 最新文章 -->
+            <div class="atl-new">
+                <div class="atl-new-head"><p>新文章</p></div>
+                <div class="atl-new-list">
+                    <volist name="info.newarticles" id="vi">
+                        <eq name='key' value='0'>
+                            <div class="atl-new-item">
+                                <div class="mark actived"><span class="fa fa-bookmark"><i>{$key+1}</i></span></div>
+                                <div class="new-item-long hide"><p>{$vi.title|mbstr=0,14}</p></div>
+                                <div class="atl-new-img current">
+                                    <a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{$vi.face}-w240.jpg" alt="{$vi.title}" class="baiduab-beha">
+                                    </a>
+                                </div>
+                                <div class="atl-new-main current">
+                                    <a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">
+                                        <p class="atl-new-tit" title="{$vi.title}">{$vi.title|mbstr=0,8}</p>
+                                    </a>
+                                    <div class="atl-new-info">
+                                        <p title="{$vi.subtitle}">
+                                            {$vi.subtitle|mbstr=0,17}
+                                            <a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">[详细]</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <else />
+                            <div class="atl-new-item">
+                                <div class="mark"><span class="fa fa-bookmark"><i>{$key+1}</i></span></div>
+                                <div class="new-item-long"><p>{$vi.title|mbstr=0,16}</p></div>
+                                <div class="atl-new-img">
+                                    <a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{$vi.face}-w240.jpg" alt="" class="baiduab-beha">
+                                    </a>
+                                </div>
+                                <div class="atl-new-main">
+                                    <a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">
+                                        <p class="atl-new-tit" title="{$vi.title}">{$vi.title|mbstr=0,8}</p>
+                                    </a>
+                                    <div class="atl-new-info">
+                                        <p title="{$vi.subtitle}">
+                                            {$vi.subtitle|mbstr=0,17}
+                                            <a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">[详细]</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </eq>
+                    </volist>
+                </div>
+
+            </div>
+
+            <!-- 测算吉日 -->
+            {$hlBaoJia}
+
+        </div>
+
+    </div>
+</div>
+<div class="weixintanc"></div>
+ <div class="weixintanc_small">
+         <span class="shut">X</span>
+         <div class="biaot">家装中没必要花大钱的地方，真浪费钱！</div>
+         <p class="contentnr">挑什么材料绝对不能马虎？大家可得注意看咯，不然吃亏的可是自己。</p>
+         <p class="contentsm">扫描二维码</p>
+         <div class="wtjh">
+             即可在<span class="wxtb2"></span>微信阅读这篇干货
+         </div>
+         <div class="erwmlogo">
+            <img src="/assets/home/article/img/erwma.png" alt="" class="baiduab-beha">
+         </div>
+     </div>
+     <div class="wrap">
+        <div class="article_menu_box">
+            <div class="list-head">
+                <ul>
+                    <volist name="info.tags" id="tags" key="k">
+                        <li id="{$k}" class="">
+                            <a>{$tags.name}</a>
+                            <span>
+                            <i class="fa fa-sort-up"></i>
+                        </span>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="gray-back">
+                <volist name="info.tags" id="tags" key="k">
+                    <div class="back_item">
+                        <volist name="tags.sub_tags" id="tag">
+                             <a target="_blank" href="{$tag.url}" class="sub_tag">{$tag.name}</a>
+                        </volist>
+                    </div>
+                </volist>
+            </div>
+        </div>
+     </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="{$static_host}/assets/common/js/countUp.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="{$static_host}/assets/common/js/alert.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="{$static_host}/assets/common/js/initcomment.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript">
+    $(function () {
+        //默认选中效果
+        $(".article_menu_box li:eq(0)").addClass('head-active');
+        $(".gray-back .back_item:eq(0)").addClass('item_active');
+        $(".sub_tag").on('mouseover', function () {
+            $(this).attr('style', 'color:#ff5353 !important;');
+        }).on('mouseout', function () {
+            $(this).attr('style', 'color:#333 !important;');
+        })
+    });
+
+// 获取随机数的方法
+    function GetRandomNum(Min,Max){
+        var Range = Max - Min;
+        var Rand = Math.random();
+        return(Min + Math.round(Rand * Range));
+    }
+    // 随机数
+    var timer = setInterval(function(){
+        var num = GetRandomNum(30000,120000)+'';
+        if(num<99999){
+            var num1 = 'num num-gray',
+                num2 = 'num num-' + num.charAt(0),
+                num3 = 'num num-' + num.charAt(1),
+                num4 = 'num num-' + num.charAt(2),
+                num5 = 'num num-' + num.charAt(3),
+                num6 = 'num num-' + num.charAt(4);
+        }else{
+            var num1 = 'num num-' + num.charAt(0),
+                num2 = 'num num-' + num.charAt(1),
+                num3 = 'num num-' + num.charAt(2),
+                num4 = 'num num-' + num.charAt(3),
+                num5 = 'num num-' + num.charAt(4),
+                num6 = 'num num-' + num.charAt(5);
+        }
+        $('#num-1').removeClass().addClass(num1);
+        $('#num-2').removeClass().addClass(num2);
+        $('#num-3').removeClass().addClass(num3);
+        $('#num-4').removeClass().addClass(num4);
+        $('#num-5').removeClass().addClass(num5);
+        $('#num-6').removeClass().addClass(num6);
+
+    },400);
+
+    /*var shen = citys["shen"];
+    var shi  = citys["shi"];
+    App.citys.init(".baojia-jisuanqi-wrap .gl_box_cs", ".baojia-jisuanqi-wrap .gl_box_qx", shen, shi, "", "");*/
+    $(document).ready(function(){
+        initCity('{$theCityId}');
+        function initCity(cityId){
+            App.citys.init(".baojia-jisuanqi-wrap .gl_box_cs", ".baojia-jisuanqi-wrap .gl_box_qx", shen, shi,cityId);
+            App.citys.init(".baojia-jisuanqi-wrap .gl_box_cs", ".baojia-jisuanqi-wrap .gl_box_qx", shen, shi,cityId);
+            App.citys.init(".baojia-jisuanqi-wrap .gl_box_cs", ".baojia-jisuanqi-wrap .gl_box_qx", shen, shi,cityId);
+        }
+
+        $(".list-head ul li").hover(function(){
+            var index=$(this).index();
+            $(this).addClass("head-active");
+            $(this).siblings().removeClass("head-active");
+            $($(".back_item")[index]).addClass("item_active");
+            $($(".back_item")[index]).siblings().removeClass("item_active");
+        });
+    });
+    $(".baojia-jisuanqi-wrap input[name=mianji]").blur(function(event) {
+        var _this = $(this);
+        var container = $(".baojia-jisuanqi-wrap");
+        $(".focus", container).removeClass('focus');
+        $(".error-info", container).html("");
+        if (!App.validate.run($(this, container).val())) {
+            $(this, container).addClass('focus');
+            _this.siblings('.error-info').html("请填写房屋面积");
+            return false;
+        }
+        if ($(this, container).val() !="" && !App.validate.run($(this, container).val(),"num")) {
+            $(this, container).addClass('focus');
+            _this.siblings('.error-info').html("无效的房屋面积");
+            return false;
+        }
+    });
+
+    $(".baojia-btn").click(function(event) {
+        var container = $(".baojia-jisuanqi-wrap");
+        var that=$(this);
+        $(".focus", container).removeClass('focus');
+        $(".error-info", container).html("");
+        if($("input[name=mianji]",container).val()>10000){
+            $("input[name=mianji]", container).addClass('focus').focus();
+            $("input[name=mianji]", container).siblings('.error-info').html("面积不能大于10000");
+            return false;
+        }
+        window.order({
+            wrap:'.baojia-jisuanqi-wrap',
+            extra:{
+                mianji:$("input[name=mianji]",container).val(),
+                cs:$("select[name=cs]",container).val(),
+                qx:$("select[name=qx]",container).val(),
+                name:$("input[name=name]",container).val(),
+                tel:$("input[name=money_tel]",container).val(),
+                fb_type:$("input[name=fb_type]",container).val(),
+                source:182
+            },
+            error:function(){
+                alert('获取报价失败,请刷新页面');
+            },
+            success:function(data, status, xhr){
+                if(data.status == 1){
+                    $.ajax({
+                        url: '/getdetailsbyajax/',
+                        type: 'GET',
+                        dataType: 'JSON'
+                    })
+                    .done(function(data) {
+                        if(data.status == 1){
+                            $('#kt-price').text(data.data.kt);
+                            $('#zw-price').text(data.data.zw);
+                            $('#wsj-price').text(data.data.wsj);
+                            $('#cf-price').text(data.data.cf);
+                            $('#sd-price').text(data.data.sd);
+                            $('#other-price').text(data.data.other);
+                            $('#total-price').text(data.data.total);
+                            $(".counter").countTo({
+                                lastSymbol:"", //显示在最后的字符
+                                firstSymbol:"", //显示在最后的字符
+                                from: 0,  // 开始时的数字
+                                speed: 550,  // 总时间
+                                refreshInterval: 10,  // 刷新一次的时间
+                                beforeSize:0, //小数点前最小显示位数，不足的话用0代替
+                                decimals: 2,  // 小数点后的位数，小数做四舍五入
+                                onComplete: function () {
+                                    var dd = data.data.total+'';
+                                    //反转字符串
+                                    dd = dd.split("").reverse().join("");
+                                    var html = '<div class="" style="float: right;">\
+                                <div class="num num-gray"></div>\
+                                <div class="num num-gray"></div>\
+                                <div class="num num-gray"></div>\
+                                <div class="num num-gray"></div>\
+                                <div class="num num-gray"></div>\
+                                <div  class="num num-' + dd.charAt(5) + '"></div>\
+                                <div  class="num num-' + dd.charAt(4) + '"></div>\
+                                <div  class="num num-' + dd.charAt(3) + '"></div>\
+                                <div  class="num num-' + dd.charAt(2) + '"></div>\
+                                <div class="num num-' + dd.charAt(1) + '"></div>\
+                                <div  class="num num-' + dd.charAt(0) + '"></div>\
+                                <span> 元</span>';
+                                    $(".money-img").html(html);
+                                    that.children('#btnSave').html("<i>重新<br/>计算</i>")
+                                }
+                            });
+
+                        }else{
+                            alert(data.info);
+                        }
+                    })
+                    .fail(function(xhr) {
+                        alert('获取报价失败,请刷新页面');
+                    });
+                }else{
+                    alert(data.info);
+                    if(data.info=="请填写正确的手机号码 ^_^!"){
+                        $("#baojia").addClass("focus").focus();
+                        return false;
+                    }
+                }
+            },
+            validate:function(item, value, method, info){
+                if ('mianji' == item) {
+                    if (!App.validate.run($("input[name=mianji]", container).val())) {
+                        $("input[name=mianji]", container).addClass('focus').focus();
+                        $("input[name=mianji]", container).siblings('.error-info').html("请填写房屋面积");
+                        return false;
+                    }
+                    if (!App.validate.run($("input[name=mianji]", container).val(), "num")) {
+                        $("input[name=mianji]", container).addClass('focus').focus();
+                        $("input[name=mianji]", container).siblings('.error-info').html("无效的房屋面积");
+                        return false;
+                    }
+                };
+                if ('cs' == item && 'notempty' == method) {
+                    $("select[name=cs]", container).addClass('focus').focus();
+                    $("select[name=cs]", container).siblings('.error-info').html("请选择城市");
+                    return false;
+                };
+
+
+                if (!App.validate.run($("input[name=money_tel]", container).val())) {
+                    $("input[name=money_tel]", container).parent().addClass('height_auto');
+                    $("input[name=money_tel]", container).addClass('focus').focus();
+                    var span = $("<i class='error-info'></i>");
+                    span.html("请填写正确的手机号码 ^_^!");
+                    $("input[name=money_tel]", container).parent().append(span);
+                    return false;
+                } else {
+                    var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+                    if (!reg.test($("input[name=money_tel]", container).val())) {
+                        $("input[name=money_tel]", container).parent().addClass('height_auto');
+                        $("input[name=money_tel]", container).addClass('focus').focus();
+                        $("input[name=money_tel]", container).val('');
+                        var span = $("<i class='error-info'></i>");
+                        span.html("请填写正确的手机号码 ^_^!");
+                        $("input[name=money_tel]", container).parent().append(span);
+                        return false;
+                    }
+                }
+
+
+                if(!checkDisclamer(".miaosuan_mz")){
+                    return false;
+                }
+                return true;
+            }
+        });
+    });
+
+    //不可删除，用于评论标识
+    var module = "wwwarticle";
+
+    $("body").forbidmenu({copy:false});
+    window._bd_share_config=
+    {"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    $(".gl_xh").click(function(event) {
+        var _this = $(this);
+        $.ajax({
+            url: '/dolike/',
+            type: 'POST',
+            dataType: 'JSON',
+            data:{
+                id:_this.attr("data-id")
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+                _this.addClass('active').unbind("click");
+                var i = _this.find("em").text();
+                i = parseInt(i)+1;
+                _this.find("em").html(i);
+            }
+        });
+    });
+
+    // 最新文章
+    $('.atl-new-item').each(function(index, el) {
+        $(el).on('mouseenter', function(){
+            $(this).find('.mark').addClass('actived');
+            $(this).find('.new-item-long').addClass('hide');
+            $(this).find('.atl-new-img').addClass('current');
+            $(this).find('.atl-new-main').addClass('current');
+            $(this).siblings().find('.mark').removeClass('actived');
+            $(this).siblings().find('.new-item-long').removeClass('hide');
+            $(this).siblings().find('.atl-new-img').removeClass('current');
+            $(this).siblings().find('.atl-new-main').removeClass('current');
+        });
+    });
+    // 设计报价滚动到1830px 悬浮
+    $(window).scroll(function(event) {
+        if($(window).scrollTop() >= 1830){
+            $('.secbox_form').css({
+                "width":"260px",
+                "margin-top":"0",
+                "position":"fixed",
+                "top":"80px",
+                "zIndex":2
+            });
+        }else{
+            $('.secbox_form').css({
+                "margin-top":"20px",
+                "position":"",
+                "top":"",
+                "zIndex":''
+            });
+        }
+    });
+</script>
+<!--收藏文章-->
+<if condition="!session('u_userInfo')">
+<script type="text/javascript">
+$(".gl_sc").click(function(event) {
+    $.ajax({
+        url: '/login/',
+        type: 'POST',
+        dataType: 'JSON',
+        data:{
+          ssid:"{$ssid}"
+        }
+    })
+    .done(function(data) {
+        if(data.status == 1){
+            $("body").append(data.data);
+            $(".win_login").fadeIn(400);
+        }
+    });
+});
+</script>
+<else />
+<script type="text/javascript">
+$(".gl_sc").click(function(event) {
+    var id = "{$articleInfo.article.now.id}";
+    var _this = $(this);
+    if(_this.attr("data-on") == 1){
+        // alert("您已经收藏过了");
+        _this.Alert({
+            css:{
+                "width":"200px",
+                "height":"60px",
+                "background":"#E76363",
+                "margin-left":"-100px",
+                "margin-top":"-30px",
+                "font-size":"20px",
+                "line-height":"60px"
+            },
+            text:"您已经收藏过了"
+        });
+        return false;
+    }
+    $.ajax({
+        url: '/collect/',
+        type: 'POST',
+        dataType: 'JSON',
+        data:{
+            classtype:"1",
+            classid:id,
+            ssid:"{$ssid}"
+        }
+    })
+    .done(function(data) {
+        if(data.status == 1){
+            _this.attr("data-on",1).addClass('active').Alert({
+                css:{
+                    "width":"200px",
+                    "height":"60px",
+                    "background":"#E76363",
+                    "margin-left":"-100px",
+                    "margin-top":"-30px",
+                    "font-size":"20px",
+                    "line-height":"60px"
+                },
+                text:"收藏成功 +1"
+            });
+        }else{
+            _this.Alert({
+                css:{
+                    "width":"200px",
+                    "height":"60px",
+                    "background":"#E76363",
+                    "margin-left":"-100px",
+                    "margin-top":"-30px",
+                    "font-size":"20px",
+                    "line-height":"60px"
+                },
+                text:"收藏失败！"
+            });
+        }
+    });
+});
+
+
+</script>
+</if>
+
+<script>
+
+$(document).ready(function(){
+    //微信专享文章按钮
+    $('.wx-article-btn').click(function(event) {
+        var _this = $(this);
+        var id = _this.attr('data-id');
+        var obj = $('#weixinarticle' + id);
+        var title = obj.find('.wzjsly').text();
+        var description = obj.find('.wzjsle').text();
+        var qrcode_url = "{:OP('WX_CONFIG_ZGZX_ERWEIMA')}";
+
+        //只有第一次点击的时候请求二维码地址
+        var on = obj.attr('data-on');
+        if (on == 'false') {
+            $.ajax({
+                url: '/article/getweixinarticleerweima/',
+                type: 'GET',
+                dataType: 'JSON',
+                async:false,
+                data:{
+                    id:id,
+                }
+            })
+            .done(function(data) {
+                if (data.status == 1) {
+                    _this.attr('data-qrcode-url', data.data);
+                } else {
+                    _this.attr('data-qrcode-url', qrcode_url);
+                }
+            })
+            .fail(function(xhr) {
+                _this.attr('data-qrcode-url', qrcode_url);
+            });
+        }
+        obj.attr('data-on', 'true');
+
+        //弹窗赋值
+        $('.weixintanc_small .biaot').text(title);
+        $('.weixintanc_small .contentnr').text(description);
+        $('.weixintanc_small .erwmlogo img').attr('src',_this.attr('data-qrcode-url'));
+        $('.weixintanc').show();
+        $('.weixintanc_small').show();
+        $('.weixintanc').click(function(e){
+            $('.weixintanc').hide();
+            $('.weixintanc_small').hide();;
+        })
+        e.stopPropagation();
+    });
+    //关闭微信专享文章弹窗
+    $('.shut').click(function(){
+        $('.weixintanc').hide();
+        $('.weixintanc_small').hide();
+    })
+    /*文章二维码鼠标动作*/
+    $('.sendsj').mouseover(function(){
+        var on = $("#weixinerweima").attr('data-on');
+        if (on == 'false') {
+            $.ajax({
+                url: '/article/getwwwarticleerweima/',
+                type: 'GET',
+                dataType: 'JSON',
+                data:{
+                    id:'{$articleInfo.article.now.id}',
+                }
+            })
+            .done(function(data) {
+                $("#weixinerweima").attr('data-on', 'true');
+                if (data.status == 1) {
+                    $("#weixinerweima").attr('src', data.data);
+                } else {
+                    $("#weixinerweima").attr('src', "{:OP('WX_CONFIG_ZGZX_ERWEIMA')}");
+                }
+            })
+            .fail(function(xhr) {
+                $("#weixinerweima").attr('data-on', 'true');
+                $("#weixinerweima").attr('src', "{:OP('WX_CONFIG_ZGZX_ERWEIMA')}");
+            });
+        };
+        $('.saoysao').show();
+    });
+    $('.sendsj').mouseout(function(){
+        $('.saoysao').hide();
+    });
+
+
+    $("#to-design .to-design").on("click",function(){
+        var _this = $(this);
+        $.ajax({
+            url: '/dispatcher/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                type:"sj",
+                source: '{$source}',
+                action:"load"
+            }
+        })
+            .done(function(data) {
+                if (data.status == 1) {
+                    $("body").append(data.data);
+                    if(navigator.appName == "Microsoft Internet Explorer"){
+                        $(".zxfb").show();
+                    }else{
+                        $(".zxfb").fadeIn(400,function(){
+                            $(this).find("input[name='bj-xiaoqu']").focus();
+                        });
+                        $(".zxbj_content").removeClass('smaller');
+                    }
+                    $(".win_box .win-box-bj-mianji").addClass('focus').focus();
+                }
+            });
+    });
+
+
+    $("#to-baojia .to-baojia").on("click",function(){
+        var _this = $(this);
+        $.ajax({
+            url: '/dispatcher/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                type:"bj",
+                source: '{$source}',
+                action:"load"
+            }
+        })
+            .done(function(data) {
+                if (data.status == 1) {
+                    $("body").append(data.data);
+                    if(navigator.appName == "Microsoft Internet Explorer"){
+                        $(".zxfb").show();
+                    }else{
+                        $(".zxfb").fadeIn(400,function(){
+                            $(this).find("input[name='bj-xiaoqu']").focus();
+                        });
+                        $(".zxbj_content").removeClass('smaller');
+                    }
+                    $(".win_box .win-box-bj-mianji").addClass('focus').focus();
+                }
+            });
+    });
+
+
+
+})
+</script>
+</block>

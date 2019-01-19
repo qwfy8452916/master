@@ -1,0 +1,1190 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/" />
+    <title>{$keys.title}</title>
+    <meta name="keywords" content="{$keys.keywords}" />
+    <meta name="description" content="{$keys.description}" />
+    <meta name="location" content="province={$cityInfo.province};city={$cityInfo.name};coord={$cityInfo.lng},{$cityInfo.lat}" />
+    <link rel="canonical" href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/"/>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/common/plugin/bxslider/bxslider.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" type="text/css" href="/assets/home/index/css/home_20181221.css?v={:C('STATIC_VERSION')}" />
+    <link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/company/css/animate.min.css?v={:C('STATIC_VERSION')}" />
+</head>
+
+<body>
+    <include file="Index:header" />
+    <div class="play">
+        <div class="home-slider">
+            <div class="ck-slide">
+                <ul class="ck-slide-wrapper">
+                    <volist name="info.lunbo" id="vo">
+                        <if condition="$key EQ 0">
+                            <li data-value="{$vo.value}">
+                                <a rel="nofollow" href="{$vo.url}" target="_blank">
+                                    <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url}-w1920h400.jpg" height="400" alt="{$vo.title}" />
+                                </a>
+                            </li>
+                        <else/>
+                            <li data-value="{$vo.value}" style="display:none;">
+                                <a rel="nofollow" href="{$vo.url}" target="_blank">
+                                    <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url}-w1920h400.jpg" height="400" alt="{$vo.title}" />
+                                </a>
+                            </li>
+                        </if>
+                    </volist>
+                </ul>
+                <div class="ck-slidebox">
+                    <div class="slideWrap">
+                        <ul class="dot-wrap">
+                            <volist name="info.lunbo" key="k" id="vo">
+                                <if condition="$k EQ 1">
+                                    <li class="current"><i class="fa fa-circle-o"></i></li>
+                                    <else/>
+                                    <li><i class="fa fa-circle-o"></i></li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="order-box validate">
+                <strong class="h1">免费设计与报价</strong>
+                <strong class="h2">免费获取<span class="cf53">4</span>套设计方案，装修立省<span class="cf53">30%</span></strong>
+                <div class="box-line">
+                    <select class="edit-city"></select>
+                    <select class="edit-quyu"></select>
+                </div>
+                <div class="box-line">
+                    <input class="edit-text" type="text" name="name" placeholder="怎么称呼您">
+                </div>
+                <div class="box-line">
+                    <input class="edit-text" type="text" name="tel" placeholder="输入手机号获取免费设计与报价" maxlength="11">
+                    <input type="hidden" name="fb_type" value="sheji">
+                </div>
+                <!--S-免责申明-->
+                    <include file="Common@Order/disclamer-fz"/>
+                <!--E-免责申明-->
+                <button class="box-line" id="btnSave" type="button">立即申请</button>
+                <div class="order-box-tip">
+                    <span>今日还剩<i>{:releaseCount('fbsyrs')}</i>个免费名额</span><br/>
+                    <span>累计帮助过<i>{:releaseCount('fbzrs')}</i>位业主</span>
+                    <a href="http://{:C('QZ_YUMINGWWW')}/zxbj/?source=18013029" rel="nofollow">智能报价</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zx-step">
+        <div class="wrap">
+            <ul>
+                <li class="s1">
+                    <a href="http://{:C('QZ_YUMINGWWW')}/zxbj/" target="_blank" rel="nofollow">
+                        <div>
+                            <span class="img"></span>
+                            <span class="text">智能报价</span>
+                        </div>
+                        <p>8秒获取准确报价</p>
+                    </a>
+                </li>
+                <li class="s2">
+                        <a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/sheji/" target="_blank" rel="nofollow">
+                        <div >
+                            <span class="img"></span>
+                            <span class="text">免费设计</span>
+                        </div>
+                        <p>领取4份设计方案</p>
+                    </a>
+                </li>
+                <li class="s3">
+                        <a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company/" target="_blank" rel="nofollow">
+                        <div>
+                            <span class="img"></span>
+                            <span class="text">找装修公司</span>
+                        </div>
+                        <p>精选优质装修公司</p>
+                    </a>
+                </li>
+                <li class="s4">
+                    <a href="http://{:C('QZ_YUMINGWWW')}/baozhang.html" target="_blank" rel="nofollow">
+                        <div>
+                            <span class="img"></span>
+                            <span class="text">六大保障</span>
+                        </div>
+                        <p>轻松装修乐无忧</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 装修公司 S -->
+    <div class="wrap">
+        <div class="box company-model">
+            <div class="box-tit">
+                <div class="tit"><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company/" target="_blank"><h2>{$cityInfo.name}装修公司</h2></a></div>
+                <div class="heng-line"></div>
+                <div class="tit-sm">{$cityInfo.name}装修网为您甄选<i class="f-red">本地优质</i>装修公司</div>
+            </div>
+            <div class="company-box">
+                <ul>
+                    <volist name="info.brands" id="vo">
+                        <if condition="$vo['real'] EQ '2' and $vo['fake'] EQ '0'">
+                            <li>
+                                <div class="recommend"><img src="/assets/home/index/img/recommend.png" /></div>
+                                <div class="img-logo">
+                                    <a rel="nofollow" href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url}" alt="{$vo['jc']}"></a>
+                                </div>
+                                <p class="company-description"><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank" title="{$vo.qc}">{$vo['jc']}</a></p>
+                                <p class="company-location">{$vo.area_name}</p>
+                                <div class="company-star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="company-ap">
+                                    <span>案例数：<i>{$vo.case_count}</i></span>
+                                    <span>评论数：<i>{$vo['comment_count']}</i></span>
+                                </div>
+                                <a href="javascript:void(0)" class="free-sheji">免费设计</a>
+                            </li>
+                            <else/>
+                            <li>
+                                <div class="img-logo">
+                                    <a rel="nofollow" href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url}" alt="{$vo['jc']}"></a>
+                                </div>
+                                <p class="company-description"><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank" title="{$vo.qc}">{$vo['jc']}</a></p>
+                                <p class="company-location">{$vo.area_name}</p>
+                                <div class="company-star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                </div>
+                                <div class="company-ap">
+                                    <span>案例数：<i>{$vo.case_count}</i></span>
+                                    <span>评论数：<i>{$vo['comment_count']}</i></span>
+                                </div>
+                                <a href="javascript:void(0)" class="free-sheji">免费设计</a>
+                            </li>
+                        </if>
+                    </volist>
+                    <for start="0" end="$info.brandscount">
+                        <li>
+                            <div class="img-logo">
+                                <a rel="nofollow" href="#"><img src="/assets/home/index/img/companglogo.png" title="公司简称"></a>
+                            </div>
+                            <p class="company-description">虚位以待</p>
+                            <p class="company-location nocompany">装修公司火热招商中</br>
+                                等你加入
+                            </p>
+                            <a rel="nofollow" href="http://www.{:C('QZ_YUMING')}/ruzhu/" class="free-ruzhu" target="_blank">申请入驻</a>
+                        </li>
+                    </for>
+                </ul>
+            </div>
+            <a rel="nofollow" class="more" href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/company/" target="_blank" style="margin-bottom: 0;">查看更多装修公司</a>
+        </div>
+    </div>
+    <!-- 装修公司 E -->
+
+    <!-- 广告轮播模块 S -->
+    <div class="wrap">
+        <div class="newsbanner">
+            <ul>
+                <volist name="info.bigbanner_b" id="vo">
+                    <li>
+                        <if condition="$vo['url'] NEQ ''">
+                            <a rel="nofollow" href="{$vo.url}" target="_blank">
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url|addImgExt}" width="1210" height="110" alt="{$vo.company_name|default='装修公司'}" />
+                            </a>
+                            <else/>
+                            <if condition="$vo['company_id'] NEQ 0">
+                                <a rel="nofollow" href="http://{$vo.bm}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank">
+                                    <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url|addImgExt}" width="1210" height="110" alt="{$vo.company_name|default='装修公司'}" />
+                                </a>
+                                <else/>
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url|addImgExt}" width="1210" height="110" alt="{$vo.company_name|default='装修公司'}" />
+                            </if>
+                        </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <!-- 广告轮播模块 E -->
+
+    <!-- 装修案列模块 S -->
+    <div class="wrap">
+        <div class="box">
+            <div class="box-tit">
+                <div class="tit"><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/xgt/" target="_blank"><h2>{$cityInfo.name}装修案例</h2></a></div>
+                <div class="heng-line"></div>
+                <div class="tit-sm">{$cityInfo.name}装修网提供<i class="f-red">{$info.casesCount}套</i>真实装修案例，任您挑选</div>
+            </div>
+            <div class="al-box">
+                <ul class="al-list">
+                    <volist name="info.cases" id="vo">
+                        <if condition="$key EQ  0">
+                            <li class="active">
+                                <div class="shupai">{$vo.title}</div>
+                                <a href="{$vo.url}" target="_blank"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url}-s800x360.jpg" width="800" height="360" alt="{$vo.title}" /></a>
+                                <div class="p-bg">
+                                    <p>
+                                        <span>{$vo.title}</span>
+                                        <a></a>
+                                        <i><a rel="nofollow" href="http://{$vo.bm}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank">{$vo.company_name}</a></i>
+                                    </p>
+                                </div>
+                            </li>
+                            <else/>
+                            <li>
+                                <div class="shupai">{$vo.title}</div>
+                                <a href="{$vo.url}" target="_blank"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url}-s800x360.jpg" width="800" height="360" alt="{$vo.title}" /></a>
+                                <div class="p-bg">
+                                    <p>
+                                        <span>{$vo.title}</span>
+                                        <a></a>
+                                        <i><a rel="nofollow" href="http://{$vo.bm}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank">{$vo.company_name}</a></i>
+                                    </p>
+                                </div>
+                            </li>
+                        </if>
+                    </volist>
+                </ul>
+            </div>
+            <a rel="nofollow" class="more zx-more"  href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/xgt/" target="_blank">查看更多装修案例</a>
+        </div>
+    </div>
+    <!-- 装修案列模块 E -->
+
+    <!-- 装修效果图模块 S -->
+    <div class="zx-xgt">
+        <div class="wrap">
+            <div class="box">
+                <div class="box-tit">
+                    <div class="tit"><a href="http://meitu.{:C('QZ_YUMING')}/" target="_blank"><h2>{$cityInfo.name}装修效果图</h2></a></div>
+                    <div class="heng-line"></div>
+                    <div class="tit-sm"><i class="f-red">{$info.caseimgsCount}张</i>装修美图任您挑选，帮您找到您喜欢的装修风格</div>
+                </div>
+                <div class="ulist-center">
+                    <ul class="ullist">
+                        <volist name="info.effect_meitu.wdrecommend" id="vo">
+                            <li><a href="{$vo.url}" target="_blank">{$vo.title}</a></li>
+                        </volist>
+                        <li class="xgt-more"><a href="http://meitu.{:C('QZ_YUMING')}/" target="_blank">更多</a></li>
+                    </ul>
+                </div>
+
+                <div class="xgt-box xgt-box-tit">
+                    <ul class="row-1">
+                        <li><a href="{$info['effect_meitu']['imrecommend'][0]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][0]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][0]['title']}</p></a>
+                        </li>
+                        <li><a href="{$info['effect_meitu']['imrecommend'][5]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][5]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][5]['title']}</p></a>
+                        </li>
+                    </ul>
+                    <ul class="row-2">
+                        <li><a href="{$info['effect_meitu']['imrecommend'][1]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][1]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][1]['title']}</p></a>
+                        </li>
+                        <li><a href="{$info['effect_meitu']['imrecommend'][4]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][4]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][4]['title']}</p></a>
+                        </li>
+                    </ul>
+                    <ul class="row-1">
+                        <li><a href="{$info['effect_meitu']['imrecommend'][2]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][2]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][2]['title']}</p></a>
+                        </li>
+                        <li><a href="{$info['effect_meitu']['imrecommend'][7]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][7]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][7]['title']}</p></a>
+                        </li>
+                    </ul>
+                    <ul class="row-2" id="row-3">
+                        <li><a href="{$info['effect_meitu']['imrecommend'][3]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][3]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][3]['title']}</p></a>
+                        </li>
+                        <li><a href="{$info['effect_meitu']['imrecommend'][6]['url']}" target="_blank">
+                            <img src="{$info['effect_meitu']['imrecommend'][6]['img']}" />
+                            <p>{$info['effect_meitu']['imrecommend'][6]['title']}</p></a>
+                        </li>
+                    </ul>
+                </div>
+                <a rel="nofollow" class="more" href="http://{:C('MEITU_DONAMES')}/" target="_blank">查看更多装修效果图</a>
+            </div>
+        </div>
+    </div>
+    <!-- 装修效果图模块 E -->
+
+    <!-- 苏州装修资讯 S -->
+    <div class="wrap">
+        <div class="box">
+            <div class="box-tit">
+                <div class="tit"><a href="http://{$cityInfo['bm']}.{:C('QZ_YUMING')}/zxinfo/" target="_blank"><h2>{$cityInfo.name}装修资讯</h2></a></div>
+                <div class="heng-line"></div>
+                <div class="tit-sm">学习更多的装修资讯，<i class="f-red">轻松装修</i>乐无忧</div>
+            </div>
+            <div class="xgt-box" style="overflow:hidden;">
+                <div class="zx-box">
+                    <ul class="zxlist">
+                        <volist name="info.cateGory" id="value" key="ke">
+                            <li>
+                                <div class="leftimg">
+                                    <a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/zxinfo/{$value.shortname}/" target="_blank">
+                                        <img src="/assets/home/index/img/zx0{$ke}.jpg" alt="{$value.name}"/>
+                                        <div class="zxcover">{$value.name}</div>
+                                    </a>
+                                </div>
+                                <div class="leftcontent">
+                                    <ul>
+                                        <volist name="value.content" id="content">
+                                        <li>
+                                            <a href="/zxinfo/{$content.id}.html" target="_blank">{$content['title']}</a>
+                                            <span>{$content.addtime|date="Y-m-d",###}</span>
+                                        </li>
+                                        </volist>
+                                    </ul>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <a rel="nofollow" class="more" href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/zxinfo/" target="_blank" style="margin-bottom: 0;">查看更多装修资讯</a>
+        </div>
+    </div>
+    <!-- 苏州装修资讯 E -->
+
+    <!-- 广告轮播模块 S -->
+    <div class="wrap">
+        <div class="newsbanner">
+            <ul>
+                <volist name="info.bigbanner_b" id="vo">
+                    <li>
+                        <if condition="$vo['url'] NEQ ''">
+                            <a rel="nofollow" href="{$vo.url}" target="_blank">
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url|addImgExt}" width="1210" height="110" alt="{$vo.company_name|default='装修公司'}" />
+                            </a>
+                            <else/>
+                            <if condition="$vo['company_id'] NEQ 0">
+                                <a rel="nofollow" href="http://{$vo.bm}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}/" target="_blank">
+                                    <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url|addImgExt}" width="1210" height="110" alt="{$vo.company_name|default='装修公司'}" />
+                                </a>
+                                <else/>
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_url|addImgExt}" width="1210" height="110" alt="{$vo.company_name|default='装修公司'}" />
+                            </if>
+                        </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <!-- 广告轮播模块 E -->
+
+    <!-- 装修设计师模块 S -->
+    <div class="wrap">
+        <div class="box">
+            <div class="box-tit">
+                <div class="tit"><a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/designer/" target="_blank"><h2>{$cityInfo.name}装修设计师</h2></a></div>
+                <div class="heng-line"></div>
+                <div class="tit-sm">挑选到适合您的好装修设计师，让装修变得<i class="f-red">更轻松</i></div>
+            </div>
+            <div class="decorator-designer">
+                <ul>
+                    <volist name="info.designer" id="vo">
+                    <li>
+                        <a rel="nofollow" href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/blog/{$vo.uid}/" target="_blank">
+                            <div class="designer-photo"><img src="{$vo.logo}" width="121" height="121" ></div>
+                            <p class="designer-name">{$vo.uname}</p>
+                            <p class="designer-position">{$vo.zw|default="设计师"}</p>
+                        </a>
+                    </li>
+                    </volist>
+                    <for start="0" end="$info.designercount">
+                        <li>
+                            <a rel="nofollow" href="javascript:void(0)" alt="">
+                                <div class="designer-photo"><img src="/assets/home/index/img/companglogo.png"></div>
+                                <p class="designer-name">暂无</p>
+                                <p class="designer-position"></p>
+                            </a>
+                        </li>
+                    </for>
+                </ul>
+            </div>
+            <a rel="nofollow" class="more" href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/designer/" target="_blank" style="margin-bottom: 0;">查看更多装修设计师</a>
+        </div>
+    </div>
+    <!-- 装修设计师模块 E -->
+
+    <!-- 装修业主评价模块 S -->
+    <div class="wrap">
+        <div class="box">
+            <div class="box-tit">
+                <div class="tit"><h2>{$cityInfo.name}装修业主评价</h2></div>
+                <div class="heng-line"></div>
+                <div class="tit-sm">一起来看看业主们在装修过程中的<i class="f-red">体验</i>吧</div>
+            </div>
+            <div class="decorator-comment">
+                <ul>
+                    <volist name="info.comment" id="vo">
+                        <li class="marginbottom">
+                            <div class="comment-top">
+                                <a rel="nofollow" href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_home/{$vo.company_id}" target="_blank">
+
+                                    <if condition="$vo.logo NEQ ''">
+                                        <img src="{$vo.logo}">
+                                        <else/>
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_COMPANY_LOGO')}" />
+                                    </if>
+                                    <span class="comment-company">{$vo.jc}</span>
+                                </a>
+                            </div>
+                            <div class="comment-center">
+                                <span>{$vo.name}：</span>
+                                <span>{:mbstr($vo['text'],0,96)}</span>
+                            </div>
+                            <div class="comment-bottom">
+                                <span>评分：</span>
+                                <span class="company-star">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </span>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 装修业主评价模块 E -->
+
+    <!-- 装修攻略模块 S -->
+    <div class="zx-gl">
+        <div class="wrap">
+            <div class="box">
+                <div class="box-tit">
+                    <div class="tit"><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/" target="_blank"><h3>装修攻略</h3></a></div>
+                    <div class="heng-line"></div>
+                    <div class="tit-sm">轻松学习<i class="f-red">装修知识</i>，避免掉入装修陷阱</div>
+                </div>
+                <div class="gl-list">
+                    <ul>
+                        <li>
+                            <div class="gl-img">
+                                <a href="http://{:C('QZ_YUMINGWWW')}/gonglue/lc/" target="_blank">
+                                    <img src="assets/home/index/img/gl-liucheng.jpg" alt="装修流程">
+                                    <div>装修流程</div>
+                                </a>
+                            </div>
+                            <div class="gl-list-wz">
+                                <volist name="info.liucheng" id="vo">
+                                    <div class="gl-list-item">
+                                        <a href="http://www.{:C('QZ_YUMING')}/gonglue/{$vo.shortname}/" target="_blank">
+                                            <span class="wz-fenlei">{$vo.classname}</span>
+                                        </a>
+                                        <a href="http://www.{:C('QZ_YUMING')}/gonglue/{$vo.shortname}/{$vo.id}.html" target="_blank">
+                                            <span class="wz-det">{$vo['title']}</span>
+                                        </a>
+                                    </div>
+                                </volist>
+                                <div class="to-gl"><p><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/lc/">GO<i class="go-to"></i></a></p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="gl-img">
+                                <a href="http://{:C('QZ_YUMINGWWW')}/wenda/" target="_blank">
+                                    <img src="assets/home/index/img/gl-wenda.jpg" alt="装修问答">
+                                    <div>装修问答</div>
+                                </a>
+                            </div>
+                            <div class="gl-list-wd">
+                                <volist name="info.wenda" id="vo">
+                                    <div class="gl-list-item">
+                                        <a href="http://{:C('QZ_YUMINGWWW')}/wenda/x{$vo.id}.html" target="_blank">
+                                            <span class="wz-det">{$vo['title']}</span>
+                                        </a>
+                                        <span class="wz-shijian">{$vo.anwsers}个回答</span>
+                                    </div>
+                                </volist>
+                                <div class="to-gl"><p><a href="http://{:C('QZ_YUMINGWWW')}/wenda/">GO<i class="go-to"></i></a></p></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="gl-img">
+                                <a href="http://{:C('QZ_YUMINGWWW')}/baike/" target="_blank">
+                                    <img src="assets/home/index/img/gl-baike.jpg" alt="装修百科">
+                                    <div>装修百科</div>
+                                </a>
+                            </div>
+                            <div class="gl-list-wz">
+                                <volist name="info.baike" id="vo">
+                                    <div class="gl-list-item">
+                                        <a href="http://{:C('QZ_YUMINGWWW')}/baike/{$vo.url}/" target="_blank"><span class="wz-fenlei">{$vo.sub_category}</span></a>
+                                        <a href="http://{:C('QZ_YUMINGWWW')}/baike/{$vo.id}.html" target="_blank">
+                                            <span class="wz-det">{$vo['title']}</span>
+                                        </a>
+                                    </div>
+                                </volist>
+                                <div class="to-gl"><p><a href="http://{:C('QZ_YUMINGWWW')}/baike/" target="_blank">GO<i class="go-to"></i></a></p></div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="gl-img">
+                                <a href="http://{:C('QZ_YUMINGWWW')}/riji/" target="_blank">
+                                    <img src="assets/home/index/img/gl-riji.jpg" alt="装修日记">
+                                    <div>装修日记</div>
+                                </a>
+                            </div>
+                            <div class="gl-list-wd">
+                                <volist name="info.riji" id="vo">
+                                    <div class="gl-list-item">
+                                        <a href="http://{:C('QZ_YUMINGWWW')}/riji/d{$vo.id}.html" target="_blank"><span class="zx-rj">{$vo['xf']}</span></a>
+                                    </div>
+                                </volist>
+                                <div class="to-gl"><p><a href="http://{:C('QZ_YUMINGWWW')}/riji/" target="_blank">GO<i class="go-to"></i></a></p></div>
+                            </div>
+                        </li>
+            </ul>
+        </div>
+        <a rel="nofollow" class="more" href="http://{:C('QZ_YUMINGWWW')}/gonglue/" target="_blank">查看更多装修攻略</a>
+    </div>
+    </div>
+    </div>
+    <!-- 装修攻略模块 E -->
+
+     <!-- 装修视频模块 S -->
+    <div class="wrap">
+        <div class="box">
+            <div class="box-tit">
+                <div class="tit"><a href="http://{:C('QZ_YUMINGWWW')}/video/jiangtang/" target="_blank">装修视频</a></div>
+                <div class="heng-line"></div>
+                <div class="tit-sm">施工<i class="f-red">现场直击</i>，重点细节归纳解析</div>
+            </div>
+            <div class="video-container ofw">
+                <div class="pay-area pull-left">
+                    <a href="http://{:C('QZ_YUMINGWWW')}/video/v{$vRecommend['id']}.html" target="_blank">
+                        <img src="http://{:C('QINIU_DOMAIN')}/{$vRecommend['cover_img']}-w660.jpg" class="cover-img">
+                        <img src="/assets/home/index/img/playIcon.png" class="playIcon">
+                    </a>
+                </div>
+                <div class="video-list-box pull-left">
+                    <ul>
+                        <volist name="videos" id="vol">
+                            <li>
+                                <div class="video-icon">
+                                    <a href="http://{:C('QZ_YUMINGWWW')}/video/v{$vol.id}.html" target="_blank">
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{$vol.cover_img}-w400.jpg" alt="{$vol.title}">
+                                    </a>
+                                </div>
+                                <div class="video-text">
+                                    <a href="http://{:C('QZ_YUMINGWWW')}/video/v{$vol.id}.html" target="_blank"><span>{$vol.title}</span></a>
+                                    <p>{$vol.description}</p>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <a rel="nofollow" class="more" style="margin-bottom: 0;" href="http://{:C('QZ_YUMINGWWW')}/video/" target="_blank">查看更多装修视频</a>
+        </div>
+    </div>
+    <!-- 装修视频模块 E -->
+
+    <!-- 服务流程模块 S -->
+    <div class="wrap">
+        <div class="box">
+            <div class="box-tit">
+                <div class="tit"> <a href="javascript:;" style="color: #333;cursor: auto;">服务流程</a></div>
+                <div class="heng-line"></div>
+                <div class="tit-sm">一站式<i class="f-red">贴心服务</i>满足您的所有需求</div>
+            </div>
+            <div class="fw-step">
+                <div class="fw-step-box">
+                    <div class="step-item">
+                        <div class="yuyue"></div>
+                        <p>在线预约</p>
+                    </div>
+                    <i class="arrow-right"></i>
+                    <div class="step-item">
+                        <div class="yusuan"></div>
+                        <p>方案+预算</p>
+                    </div>
+                    <i class="arrow-right"></i>
+                    <div class="step-item">
+                        <div class="hetong"></div>
+                        <p>签订合同</p>
+                    </div>
+                    <i class="arrow-right"></i>
+                    <div class="step-item">
+                        <div class="shigong"></div>
+                        <p>装修施工</p>
+                    </div>
+                    <i class="arrow-right"></i>
+                    <div class="step-item">
+                        <div class="yanshou"></div>
+                        <p>装修验收</p>
+                    </div>
+                    <i class="arrow-right"></i>
+                    <div class="step-item">
+                        <div class="shouhou"></div>
+                        <p>售后服务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 服务流程模块 E -->
+
+    <!-- 为什么选择齐装网 S -->
+    <div class="why-select">
+        <div class="wrap">
+            <div class="why-bg">
+                <div class="why-list">
+                    <p class="why-tit">为什么选择齐装网?</p>
+                    <p class="why-fuwu"><i class="fuwu-icon"></i><span>贴心的一站式服务</span></p>
+                    <p class="why-tip">健全的服务体系 优质的服务质量</p>
+                    <p class="why-fuwu"><i class="baozhang-icon"></i><span>靠谱的六大保障</span></p>
+                    <p class="why-tip">官方监管质量保证 装修过程0增项</p>
+                </div>
+                <div class="xiang-list">
+                    <ul class="ul-1">
+                        <li class="li-1">
+                            <p class="xiang-list-one">1500万</p>
+                            <p class="xiang-list-two">服务业主</p>
+                        </li>
+                        <li class="li-2">
+                            <p class="xiang-list-one">6万</p>
+                            <p class="xiang-list-two">合作设计师</p>
+                        </li>
+                        <li>
+                            <p class="xiang-list-one">86万</p>
+                            <p class="xiang-list-two">业主点评</p>
+                        </li>
+                    </ul>
+                    <ul class="ul-2">
+                        <li class="li-3">
+                            <p class="xiang-list-one">500个</p>
+                            <p class="xiang-list-two">开通城市分站</p>
+                        </li>
+                        <li>
+                            <p class="xiang-list-one">6万</p>
+                            <p class="xiang-list-two">合作装修公司</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="erweima-di weixin">
+                    <img src="/assets/home/index/img/weixingongzhao.jpg" alt="齐装网二维码" />
+                    <p>关注微信公众号</p>
+                    <p>装修费用降30%</p>
+                </div>
+                <div class="erweima-di">
+
+                    <img src="/assets/home/index/img/weibo.jpg" alt="齐装网二维码" />
+                    <p>关注官方微博</p>
+                    <p>了解更多装修知识</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!--<div class="footerpopup">
+        <div class="midcen">
+            <div class="shejipic"></div>
+            <div class="footerfadan">
+                <input type="text" class="footername" name="name" placeholder="怎么称呼您">
+                <input type="text" class="footerphone" name="phone" maxlength="11" placeholder="输入手机号获取装修服务">
+                <button class="footertj">立即报名</button>
+                <span class="footerxian">( 限每日前<span>100</span>名 )</span>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="footerpopup2">
+        <div class="cenzhongjian">
+            <div class="zhongjiangx">恭喜小主,报名成功！</div>
+            <div class="footerhuo">您将获得以下福利:<span>1</span>免费量房<span>2</span>四分设计方案<span>3</span>一份装修报价</div>
+            <div class="footshao">稍后客服将给您致电为您奉上以上福利,请耐心等待哦~</div>
+            <span class="footerclose">x</span>
+        </div>
+    </div>
+    <!-- 为什么选择齐装网 S -->
+    <!-- 滚动用户的图片信息 S-->
+    <div class="g-msg">
+        <div class="msg msg1 animated fadeInUp">
+            <img src="http://{:C('QINIU_DOMAIN')}/desLogo/201705/100.jpg" alt="">
+            <span>来自杭州的李先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;13秒前</span>
+        </div>
+    </div>
+    <!-- 滚动用户的图片信息 E-->
+    <include file="Common@Friendlink/index" />
+    <include file="Index/footer" />
+    <script type="text/javascript" src="/assets/home/index/js/slider.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/home/index/js/pic_script.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="/assets/home/index/js/jquery.luara.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/home/index/js/base.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/common/js/jQuery.rTabs.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="/assets/home/index/js/jquery.scrollbox.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="/assets/home/index/js/jquery.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="/assets/common/plugin/bxslider/bxslider.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="/assets/common/js/webticker/js/jquery.webticker.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript">
+    var shen = null,shi = null;
+    shen = citys["shen"];
+    shi = citys["shi"];
+
+    initCity('{$theCityId}');
+    function initCity(cityId){
+        App.citys.init(".order-box .edit-city", ".order-box .edit-quyu", shen, shi,cityId);
+        App.citys.init(".edit-city-qa", ".edit-quyu-qa", shen, shi,cityId);
+        App.citys.init(".edit-city-ds", ".edit-quyu-ds", shen, shi, cityId);
+    }
+
+    $('.ck-slide').ckSlide({
+        autoPlay: true
+    });
+    // 装修公司案列图片居中
+    $('.company-lunbo .slide-item').each(function(index, el) {
+        var img = $(el).find('.company-anli').find('img');
+        if( img.height()<$(el).find('.company-anli').height()){
+            img.css({'height':'100%','width':'auto'})
+        }
+    });
+    //装修效果图鼠标移入效果
+    $(".xgt-box-tit ul li").mouseenter(function () {
+        $(this).find("p").stop().animate({height:"40px"});
+    }).mouseleave(function () {
+        $(this).find("p").stop().animate({height:"0px"});
+    })
+
+    // 装修公司轮播
+    $('.company-slider').bxSlider({
+        slideWidth: 287,
+        minSlides: 4,
+        maxSlides: 4,
+        slideMargin: 20,
+        auto: true,
+        stopAutoOnClick:true,
+        autoHover: true,
+        autoStart:true
+    });
+    // 广告轮播
+    $('.newsbanner ul').bxSlider({
+        mode:'vertical',
+        slideWidth: 1210,
+        minSlides: 1,
+        maxSlides: 1,
+        auto: true
+    });
+    $(".free-sheji").click(function (event) {
+        var _this = $(this);
+        $.ajax({
+            url: '/dispatcher/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                type: "sj",
+                source:'158',
+                action: "load"
+            }
+        })
+            .done(function(data) {
+                if (data.status == 1) {
+                    $("body").append(data.data);
+                }
+            });
+    })
+    
+    // 案例切换
+    $(".al-box ul li").hover(function(){
+        $(this).find('.shupai').hide();
+        $(this).siblings().find('p').hide()
+        $(this).stop(true).animate({width:"800px"},1000,function(){
+            $(this).find('.shupai').siblings('.p-bg').find('p').show();
+        }).siblings().stop(true).animate({width:"100px"},1000);
+        $(this).siblings().find('.shupai').show();
+    },function(){
+        $(this).siblings().find('p').hide();
+        $(this).find('p').show();
+    });
+    // 页面滚动到美图模块透明度变化
+    $(window).on('scroll',function(){
+        var a = $('.xgt-box').parent('.box').offset().top;
+        if(a>=$(document).scrollTop()){
+            $('.xgt-box ul li').stop(true).animate({opacity: 1}, 1500)
+        }
+
+    });
+
+    //友链
+    $("#friend").rTabs({
+        speed:2000
+    });
+
+    $('#disigner').scrollbox({
+        direction: 'h',
+        distance: 183,
+        switchItems:1
+    });
+
+
+    $(".play #btnSave").click(function(event) {
+        var container = $(".play");
+        $(".focus", container).removeClass('focus');
+        $(".height_auto", container).removeClass('height_auto');
+        $(".valdate-info", container).remove();
+
+        if (!App.validate.run($("input[name=name]", container).val())) {
+            $("input[name=name]", container).parent().addClass('height_auto');
+            $("input[name=name]", container).addClass('focus').focus();
+            var span = $("<i class='valdate-info'></i>");
+            span.html("您输入的姓名有误，请重新输入");
+            $("input[name=name]", container).parent().append(span);
+            return false;
+        } else {
+            var reg = new RegExp("^[\u4e00-\u9fa5a-zA-Z]+$");
+            if (!reg.test($("input[name=name]", container).val())) {
+                $("input[name=name]", container).parent().addClass('height_auto');
+                $("input[name=name]", container).addClass('focus').focus();
+                $("input[name=name]", container).val('');
+                var span = $("<i class='valdate-info'></i>");
+                span.html("请输入正确的名称，只支持中文和英文");
+                $("input[name=name]", container).parent().append(span);
+                return false;
+            }
+        }
+
+        if (!App.validate.run($("input[name=tel]", container).val())) {
+            $("input[name=tel]", container).parent().addClass('height_auto');
+            $("input[name=tel]", container).addClass('focus').focus();
+            var span = $("<i class='valdate-info'></i>");
+            span.html("请输入正确的手机号");
+            $("input[name=tel]", container).parent().append(span);
+            return false;
+        } else {
+            var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+            if (!reg.test($("input[name=tel]", container).val())) {
+                $("input[name=tel]", container).parent().addClass('height_auto');
+                $("input[name=tel]", container).addClass('focus').focus();
+                $("input[name=tel]", container).val('');
+                var span = $("<i class='valdate-info'></i>");
+                span.html("请输入正确的手机号");
+                $("input[name=tel]", container).parent().append(span);
+                return false;
+            }
+        }
+
+        if (!App.validate.run($(".edit-city", container).val())) {
+            $(".edit-city", container).parent().addClass('height_auto');
+            $(".edit-city", container).addClass('focus').focus();
+            var span = $("<i class='valdate-info'></i>");
+            span.html("请输入选择您的城市");
+            $(".edit-city", container).parent().append(span);
+            return false;
+        }
+        if(!checkDisclamer(".validate")){
+            return false;
+        }
+
+
+        window.order({
+            extra:{
+                cs: $(".edit-city", container).val(),
+                qx: $(".edit-quyu", container).val(),
+                name: $("input[name=name]", container).val(),
+                tel: $("input[name=tel]", container).val(),
+                fb_type: $("input[name=fb_type]", container).val(),
+                source: '156',
+                step: 2
+            },
+            error:function(){},
+            success:function(data, status, xhr){
+                $("#safecode").val(data.data.safecode);
+                $("#safekey").val(data.data.safekey);
+                if (data.status == 1) {
+                    $("body").append(data.data.tmp);
+                } else {
+                    if(data.info=="请输入正确的手机号"){
+                        $("input[name=tel]", container).parent().addClass('height_auto');
+                        $("input[name=tel]", container).addClass('focus').focus();
+                        var span = $("<i class='valdate-info'></i>");
+                        span.html("请输入正确的手机号");
+                        $("input[name=tel]", container).parent().append(span);
+                        return false;
+                    }
+                    $(".edit-city", container).parent().addClass('height_auto');
+                    $(".edit-city", container).addClass('focus').focus();
+                    var span = $("<i class='valdate-info'></i>");
+                    span.html(data.info);
+                    $(".edit-city", container).parent().append(span);
+                }
+
+            },
+            validate:function(item, value, method, info){
+                return true;
+            }
+        });
+    });
+    $(".company-sheji").click(function(event) {
+        var type = 'sj';
+        var source = '0';
+        if ('lf' === type) {
+            source = '157';
+        }
+        if ('sj' === type || 'sjnew' == type) {
+            source = '158';
+        }
+        if ('ys' === type) {
+            source = '160';
+        }
+        if (typeof type != "undefined") {
+            $.ajax({
+                url: '/dispatcher/',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    type: type,
+                    source:source,
+                    action: "load"
+                }
+            })
+                .done(function(data) {
+                    if (data.status == 1) {
+                        $("body").append(data.data);
+                        $(".zb_box_" + type).fadeIn(400, function() {
+                            $(this).find("input[name=lf-name]").focus();
+                        });
+                    }
+                });
+        }
+    });
+
+    (function(){
+
+          var indexfootertc=localStorage.indexfootertc;
+
+
+            $('.midcen .footerfadan .footertj').click(function(event) {
+                var zongkuo=$('.footerpopup');
+                window.order({
+                wrap:'.quickdesi',
+                extra:{
+                    name: $("input[name=name]", zongkuo).val(),
+                    tel: $("input[name=phone]", zongkuo).val(),
+                    source: '18062835',
+                    step: 2
+                },
+                success:function(data, status, xhr){
+                    if (data.status == 1) {
+                       localStorage.indexfootertc=100;
+                       $('.footerpopup').hide();
+                       $('.footerpopup2').show();
+                    } else {
+
+                    }
+                },
+                validate:function(item, value, method, info){
+                    if ('name' == item && 'notempty' == method) {
+                        alert("请输入您的称呼");
+                        return false;
+                    };
+                    if ('name' == item && 'isword' == method) {
+                        alert("请输入正确的名称，只支持中文和英文");
+                        return false;
+                    };
+                    if ('tel' == item && 'notempty' == method) {
+                        alert("请输入您的手机号码");
+                        return false;
+                    };
+
+                    if ('tel' == item && 'ismobile' == method) {
+                        alert("请输入11位手机号码");
+                        return false;
+                    };
+                    return true;
+                }
+            });
+
+
+            });
+
+            $('.cenzhongjian .footerclose').click(function(event) {
+                $('.footerpopup2').hide();
+            });
+
+         })()
+        // 底部悬浮框滚动显示隐藏效果
+        $(function () {
+            var indexfootertc=localStorage.indexfootertc, $footerPopup = $('.footerpopup');
+            $(window).on("scroll",function () {
+                //console.log($(this).scrollTop())
+                if( $(window).scrollTop() > 740 && $(window).scrollTop() < 3740 && !indexfootertc ){
+                    $footerPopup.show();
+                }else{
+                    $footerPopup.hide();
+                };
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        /**
+         * 检测IE版本
+         */
+        function IEVersion() {
+            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+            var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器
+            var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器
+            var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+            if(isIE) {
+                var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+                reIE.test(userAgent);
+                var fIEVersion = parseFloat(RegExp["$1"]);
+                if(fIEVersion == 7) {
+                    return 7;
+                } else if(fIEVersion == 8) {
+                    return 8;
+                } else if(fIEVersion == 9) {
+                    return 9;
+                } else if(fIEVersion == 10) {
+                    return 10;
+                } else {
+                    return 6;//IE版本<=7
+                }
+            } else if(isEdge) {
+                return 'edge';//edge
+            } else if(isIE11) {
+                return 11; //IE11
+            }else{
+                return -1;//不是ie浏览器
+            }
+        }
+        //滚动用户信息的提示
+        var msgNum=0;
+        setTimeout(function () {
+            var setInval = setInterval(function(){
+                var msgImg = ['http://{:C('QINIU_DOMAIN')}/desLogo/201705/100.jpg',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FmJ4GGIfw5S6TDVOjoDRkffzjaS9',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FrdMGFpLBnsNb8MvcWWHE9_dJHAc',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/Fk-7YW9x8qTUAh-IILlUjsR87Mq2',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/Fj-C_o_rrHgTdDG3VCsq8857FKHZ',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FtofOIR1h8G-_4Yxn-OeS1i3BO3E',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FtofOIR1h8G-_4Yxn-OeS1i3BO3E',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FrX0mqcteABpqvNuvZiDlzOVJXsb',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FljRwrjYW6RqGzoXx94VCwv9QnML',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FhC7pnEVY5L2m_Zfqpsbxc59yKDR',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FtgfBcOanHSB2Wd7u0hQXXtMvIy5',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FtofOIR1h8G-_4Yxn-OeS1i3BO3E',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/Fi1b63xaSd-0pk3TCp9XHHl-DX7M',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FljRwrjYW6RqGzoXx94VCwv9QnML',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FljRwrjYW6RqGzoXx94VCwv9QnML',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FtgfBcOanHSB2Wd7u0hQXXtMvIy5',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/Fk-7YW9x8qTUAh-IILlUjsR87Mq2',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FmJ4GGIfw5S6TDVOjoDRkffzjaS9',
+                        'http://{:C('QINIU_DOMAIN')}/desLogo/20161130/FtgfBcOanHSB2Wd7u0hQXXtMvIy5']
+                    <empty name="info.city">
+                var msgArry = ["来自盐城的王先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;1秒前",
+                    "来自苏州的李女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;5秒前",
+                    "来自芜湖的张先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;7秒前",
+                    "来自杭州的刘先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;9秒前",
+                    "来自上海的陈女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;13秒前",
+                    "来自漯河的杨先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;14秒前",
+                    "来自信阳的黄女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;16秒前",
+                    "来自贵阳的赵女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;18秒前",
+                    "来自南宁的周女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;20秒前",
+                    "来自嘉兴的吴先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;22秒前",
+                    "来自苏州的徐女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;1分钟前",
+                    "来自杭州的孙先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;2分钟前",
+                    "来自合肥的马女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;3分钟前",
+                    "来自开封的胡先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;4分钟前",
+                    "来自六安的朱先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;5分钟前",
+                    "来自合肥的郭先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;6分钟前",
+                    "来自南昌的何先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;7分钟前",
+                    "来自泰安的罗女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;8分钟前",
+                    "来自济南的高女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;9分钟前",
+                    "来自南京的林女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;10分钟前"];
+            <else />
+                var msgArry = ["来自{$info.city}的王先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;1秒前",
+                    "来自{$info.city}的李女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;5秒前",
+                    "来自{$info.city}的张先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;7秒前",
+                    "来自{$info.city}的刘先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;9秒前",
+                    "来自{$info.city}的陈女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;13秒前",
+                    "来自{$info.city}的杨女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;14秒前",
+                    "来自{$info.city}的黄女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;16秒前",
+                    "来自{$info.city}的赵女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;18秒前",
+                    "来自{$info.city}的周女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;20秒前",
+                    "来自{$info.city}的吴先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;22秒前",
+                    "来自{$info.city}的徐女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;1分钟前",
+                    "来自{$info.city}的孙先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;2分钟前",
+                    "来自{$info.city}的马女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;3分钟前",
+                    "来自{$info.city}的胡先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;4分钟前",
+                    "来自{$info.city}的朱先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;5分钟前",
+                    "来自{$info.city}的郭先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;6分钟前",
+                    "来自{$info.city}的何先生申请成功&nbsp;&nbsp;&nbsp;&nbsp;7分钟前",
+                    "来自{$info.city}的罗女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;8分钟前",
+                    "来自{$info.city}的高女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;9分钟前",
+                    "来自{$info.city}的林女士申请成功&nbsp;&nbsp;&nbsp;&nbsp;10分钟前"];
+            </empty>
+
+                $('.msg span').html(msgArry[msgNum]);
+                $('.msg img').attr('src',msgImg[msgNum]);
+
+                msgNum++;
+
+                if (msgNum >= 20) {msgNum=0}
+                if( IEVersion() == 8 || IEVersion() == 9 ){
+                    $('.msg').css({
+                        "display" : 'block',
+                        "opacity" : "0"
+                    });
+                    $('.msg').animate({
+                        "top":"0",
+                        "opacity" : 1
+                    }, 1500)
+                    var s1 = setTimeout(function () {
+                        $('.msg').animate({
+                            "top":"-50px",
+                            "opacity" : 0
+                        }, 1500, function () {
+                            $('.msg').css("top","50px");
+                        });
+                        clearTimeout(s1);
+                    }, 6500);
+                }else{
+                    $('.msg').removeClass('fadeOutUp');
+                    $('.msg').show();
+                    $('.msg').addClass('animated fadeInUp');
+                    var setTime1=setTimeout(function(){
+                        $('.msg').addClass('fadeOutUp');
+                        clearTimeout(setTime1);
+                    },5000);
+                }
+
+            },10000);
+            setTimeout(function () {
+                clearInterval(setInval);
+            },180000)
+        }, 10000)
+    </script>
+</body>
+
+</html>

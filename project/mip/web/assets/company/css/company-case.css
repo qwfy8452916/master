@@ -1,0 +1,36 @@
+/*
+* @Author: qz_xsc
+* @Date:   2018-01-23 15:32:31
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-01-24 08:52:08
+*/
+.tab-title{
+    margin-bottom:10px;
+}
+.change_img {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5em;
+    background-color: #fff;
+}
+.change_img mip-img {
+    width: 100%;
+}
+.change_img .change_present {
+    width: 100%;
+    padding: 0.6em;
+    position: relative;
+}
+.change_img .change_present span {
+    font-size: 0.8em;
+}
+.c_left {
+    float: left;
+}
+.change_img .change_present i {
+    color: #FF5561;
+}
+.c_right {
+    float: right;
+    margin-right: 23px;
+}

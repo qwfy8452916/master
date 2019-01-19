@@ -1,0 +1,98 @@
+/*初始化样式*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0;font-family:SimSun,Microsoft YaHei,couriernew,courier, monospace !important; }
+body, button, input, select, textarea { color:#333; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+address, cite, dfn, em, var { font-style:normal; }
+button{font-size:16px;}
+code, kbd, pre, samp { font-family:'Microsoft YaHei','couriernew','courier', 'monospace'; }
+small{ font-size:12px; }
+ul, ol { list-style:none; }
+a { text-decoration:none; color:inherit;}
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+input, select, textarea { font-size:100%; color:#333;}
+table { border-collapse:collapse; border-spacing:0; }
+body {margin:0; padding:0px;background:#ffffff;}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,p{padding:0; margin:0;}
+li{list-style-type:none;}
+img{vertical-align:top;border:0;}
+ol,ul {list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:12px; font-weight:normal;}
+address,cite,code,em,th {font-weight:normal; font-style:normal;}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+body{
+ min-width: 1366px; font-size:16px!important;
+ line-height: 1.4!important;
+}
+
+/*常用共样式*/
+.b-fl{float:left;}
+.b-fr{float: right;}
+.b-clear:after{ content: ".";  display: block;  width:0px;  height: 0px;  clear: both; padding:0px; margin:0px;}
+.b-cleat-float{clear:both; width:0px; height: 0px; display: block;}
+.b-owf{ overflow: hidden;}
+.b-radius{  border-radius: 10px; }
+.b-mtl50{margin-left:150px;}
+.b-mt20{margin:0px 20px;}
+.b-mbt20{margin-bottom: 20px}
+a:hover{text-decoration: none!important}
+
+
+/*框架样式*/
+
+html,body{display: block;box-sizing:border-box;border:0; height: 100%;}
+.b-container{min-height: 1200px; position: relative; overflow-y: auto;background: #001A33 }
+.b-header{background: #fff; border-bottom: 1px solid #EAEAEA; padding:15px 20px; }
+.b-body{min-height:100%;}
+.b-space{height: 80px;}
+.b-content{ background: #F0F3F5; overflow-y: auto; height: 100% }
+.b-menu-box{width: 210px; }
+.b-menu li{cursor: pointer; font-size: 16px;}
+.b-menu li .b-menu-father{display:block;background: #001A33; color:#999;padding:10px 0px 10px 40px;}
+.b-menu li .b-menu-father i{font-size: 12px; margin-right:20px;margin-top: 2px;}
+.b-menu li ul{background: #000C17; height: 0px;overflow-y: hidden}
+.b-menu li ul li a{color:#999;display:inline-block; width:100%; height: 100%; text-indent: 60px; padding:10px 0px;}
+.b-menu li ul li:hover{background: #1890FF}
+.b-menu li ul li:hover a{color:#fff; text-decoration: none!important}
+.b-right-content{margin-left:210px;background: #F0F3F5; min-height:calc(1200px - 80px); width: calc(100% - 210px)  }
+.b-main-content{padding:0px 15px 15px 15px; /*min-width: 1100px;*/}
+.b-menu-active{color:#fff !important;}
+.b-current-menu{background:#1890FF;}
+.b-current-menu a{color:#fff!important;}
+/*面包屑*/
+.b-bread-text{
+    padding:20px 30px; color:#666; background: #fff;
+}
+
+/*select2*/
+.select2-container .select2-choice{
+    border:none !important;
+    height: 32px!important
+}
+.select2-container-active .select2-choice, .select2-container-active .select2-choices{
+    border:none !important;
+}
+
+.select2-container .select2-choice{
+    border:none!important;
+}
+
+.b-header .exitwk{display: inline-block;float: right;color: #666;height: 100%;line-height: 48px;
+margin-right: 40px;}
+.exitwk .touxiang{width: 34px;height: 34px;display: inline-block;vertical-align: middle;}
+.exitwk .touxiang img{width: 100%;height:100%;border-radius: 50%;vertical-align: top;}
+/* .exitwk .namecheghu{margin-left: 5px;} */
+.exitwk .tuichuwk{cursor: pointer;margin-left: 25px;}
+.exitwk .tuichuwk .fa-power-off{color: #8a8787;font-size: 16px;}
+/*后端需求*/
+.btn_hide{display: none!important;}
+.touxiangname{display: inline-block;}
+
+.select2-container--default .select2-selection--single{border: 1px solid #d6d6d6 !important;
+outline: none;}

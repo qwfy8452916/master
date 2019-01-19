@@ -1,0 +1,85 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修百科</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/baike/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$global_yuming_m}/baike">
+</block>
+<block name="content">
+    <div class="box">
+        <div class="form_control">
+            <mip-form method="get" url="{$global_basehost}/baike/">
+                <input type="text" name="keyword" value="" placeholder="请输入您想了解的装修百科" validatetarget="keyword" validatetype="must">
+                <div target="keyword">关键词不能为空</div>
+                <button type="submit"><i class="fa fa-search"></i></button>
+           </mip-form>
+        </div>
+    </div>
+    <mip-vd-tabs allow-scroll  current="{$choose['choose_one']}">
+        <section class="baike_list">
+            <volist name="category" id="v">
+                <li class=""><a data-type="mip" href="{$global_basehost}/baike/{$v.url}">{$v.name}</a></li>
+            </volist>
+        </section>
+    </mip-vd-tabs>
+    <div class="child_menu">
+        <mip-vd-tabs allow-scroll current="{$choose['choose_two']}">
+            <section>
+
+                <volist name="subCate[$choose['choose']]" id="v">
+                    <li><a data-type="mip" href="{$global_basehost}/baike/{$v.url}">{$v.name}</a></li>
+                </volist>
+
+            </section>
+        </mip-vd-tabs>
+    </div>
+    <div class="baike_container">
+        <ul>
+            <volist name="info" id="v">
+                <if condition="$v.id == 0 ">
+                    <div class="no-content">{$v.content}</div>
+                 <else />
+                <li>
+                    <a data-type="mip" href="{$global_basehost}/baike/{$v.id}.html">
+                        <div class="img-box">
+                            <mip-img src="http://{:C('QINIU_DOMAIN')}/{$v.thumb}" alt="{$v.title}"></mip-img>
+                        </div>
+                        <div class="baike-list-content">
+                            <div class="list-content-title">{$v.title}</div>
+                            <div class="list-content-body">{$v.description|mbstr=0,44}
+                                <div class="list-content-foot">
+                                    <span class="foot-date">{$v.post_time|date="Y-m-d",###}</span>
+                                    <span class="foot-zan"><i class="fa fa fa-thumbs-up"></i> <span class="zan-num">{$v.views}</span> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </if>
+            </volist>
+            <div class="free-design"><a data-type="mip" href="{$global_yuming_m}/sheji/"><mip-img src="{$global_yuming_m}/assets/mobile/baike/img/free-design.png" alt=""></mip-img></a></div>
+        </ul>
+    </div>
+    {$page}
+
+</block>
+<block name="script">
+     <!--搜索框-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-form/mip-form.js"></script>
+
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+                {
+                    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+                    "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+                    "appid": "1575859058891466",
+                    "title": "{$head.title}",
+                    "images": [],
+                    "pubDate": ""
+                }
+            </script>
+</block>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/xgt/" rel="canonical" />
+    <title>{$keys.title}{$title}</title>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/mobile/companyhome/css/company.css?v={:C('STATIC_VERSION')}">
+    <script type="text/javascript" src="{$static_host}/assets/common/js/jquery.scrollLoading-min.js?v={:C('STATIC_VERSION')}"></script>
+</head>
+
+<body>
+    <!-- header头部 -->
+    <include file="SubIndex:header" />
+    <div class="white-box mar-t20">
+        <dl class="shaix">
+            <dt>风格:</dt>
+            <volist name="info.fg" id="vo">
+                <dd>
+                    <if condition="(!$info['fengge'] AND $key EQ 0) OR $info['fengge'] EQ $vo['id']">
+                        <a href="javascript:void(0)" data-type="fengge" class="active" data-id="{$vo.id}">{$vo.name}</a>
+                        <else/>
+                        <a href="javascript:void(0)" data-type="fengge" data-id="{$vo.id}">{$vo.name}</a>
+                    </if>
+                </dd>
+            </volist>
+        </dl>
+        <dl class="shaix">
+            <dt>户型:</dt>
+            <volist name="info.hx" id="vo">
+                <dd>
+                    <if condition="(!$info['huxing'] AND $key EQ 0) OR $info['huxing'] EQ $vo['id']">
+                        <a href="javascript:void(0)" class="active" data-type="hx" data-id="{$vo.id}">{$vo.name}</a>
+                        <else/>
+                        <a href="javascript:void(0)" data-type="hx" data-id="{$vo.id}">{$vo.name}</a>
+                    </if>
+                </dd>
+            </volist>
+        </dl>
+    </div>
+    <div class="banxin">
+        <volist name="info.cases" id="vo">
+                <div class="dec-case mar-t20">
+                	<a href="http://{:C('MOBILE_DONAMES')}/{$vo.bm}/caseinfo/{$vo.id}.shtml">
+                    <h3>{$vo.title}</h3>
+                	</a>
+                    <p>
+                    	{$vo.zarea}㎡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$vo.zstyle}
+                        <a href="http://{:C('MOBILE_DONAMES')}/{$vo.bm}/company_home/{$vo.uid}" class="pull-right">{$vo.writer}</a>
+                    </p>
+                    <a href="http://{:C('MOBILE_DONAMES')}/{$vo.bm}/caseinfo/{$vo.id}.shtml">
+                    <if condition="$robot">
+                        <if condition="$vo['img_host'] EQ 'qiniu'">
+                            <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.src}-w240.jpg">
+                            <else/>
+                            <img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}s_{$vo.img}">
+                        </if>
+                    <else/>
+                        <if condition="$vo['img_host'] EQ 'qiniu'">
+                            <img alt="{$vo.title}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.src}-w240.jpg" src="/assets/common/pic/pixel.gif" class="scrollLoading">
+                            <else/>
+                            <img alt="{$vo.title}" data-url="http://{:C('STATIC_HOST1')}{$vo.src}s_{$vo.img}" src="/assets/common/pic/pixel.gif" class="scrollLoading">
+                        </if>
+                    </if>
+                    </a>
+                </div>
+
+        </volist>
+        {$info.page}
+    </div>
+    <include file="SubIndex:footer" />
+</body>
+<script type="text/javascript">
+$(".scrollLoading").scrollLoading();
+$(".shaix a").click(function(event) {
+    $(this).parent().parent().find(".active").removeClass('active');
+    $(this).addClass('active');
+    var url = "?";
+    $(".shaix .active").each(function() {
+        url += $(this).attr("data-type") + "=" + $(this).attr("data-id") + "&";
+    });
+    url = url.substr(0, url.length - 1);
+    if("{$cityInfo.bm}" != ""){
+        window.location.href = "/{$cityInfo.bm}/xgt/" + url;
+    }else{
+        window.location.href = "/xgt/" + url;
+    }
+
+});
+</script>
+
+</html>

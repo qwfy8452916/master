@@ -1,0 +1,33 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/common/css/add.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="back" id="back">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <h1>添加</h1>
+        <div class="save">保存</div>
+    </header>
+    <div class="wrapper">
+        <ul class="add-box">
+            <li>
+                <span>施工组</span>
+                <input type="text" class="group" placeholder="请输入">
+            </li>
+            <li>
+                <span>项目经理</span>
+                <input type="text" value="方政勤" disabled="disabled">
+            </li>
+            <li class="clearfix">
+                <span class="fl">工种</span>
+                <div class="work fr" id="work">请选择</div>
+                <i class="right"></i>
+            </li>
+        </ul>
+    </div>
+{/block}
+{block name="script"}
+<script src="/assets/mobile/manager/js/addgroup.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

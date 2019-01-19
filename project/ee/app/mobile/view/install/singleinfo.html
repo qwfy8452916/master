@@ -1,0 +1,22 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="/userset/info" class="c2ce pl1 rel"><span class="top-middle">取消</span></a></div>
+    <div>设置名字</div>
+    <div><span class="pr1 orange" data-name="change">完成</span></div>
+</header>
+<div class="set-detail-box bg-c4">
+    <div class="sim-table detail-info">
+        <div class="first"><span class="pl1">名字</span></div>
+        <div class="second"><input type="text" maxlength="10" value="{$userinfo.contact_name}" class="detail-info-input" data-name="info-input"></div>
+        <div class="third"><i class="iconfont icon-circle-close pl1" data-name="close"></i></div>
+    </div>
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/install/js/changeaccountinfo.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

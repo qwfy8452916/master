@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="{$keys.keywords}">
+        <meta name="description" content="{$keys.description}">
+        <link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_team/{$info.user.id}" rel="canonical" />
+        <title>{$keys.title}{$title}</title>
+	    <include file="Index:resource" />
+        <link rel="stylesheet" type="text/css" href="/assets/mobile/companyhome/css/company.css?v={:C('STATIC_VERSION')}">
+    </head>
+    <body>
+    	<include file="SubIndex:header" />
+        <include file="Companyhome:header" />
+		<div class="banxin">
+            <volist name="info.team" id="vo">
+			<div class="team-case mar-t20">
+    			<div class="userhead">
+                  <a href="http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/blog/{$vo.uid}">
+                    <img src="{$vo.logo}"></a>
+                </div>
+                <div class="team-name"><a href="http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/blog/{$vo.uid}">{$vo.name}<span>{$vo.zw}</span></a></div>
+                <div class="team-btn">
+                    <a href="/sheji/">找TA帮我免费设计</a>
+                    <a href="http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/blog/{$vo.uid}">查看TA的主页</a>
+                </div>
+		    </div>
+            </volist>
+		</div>
+        {$info.page}
+		<include file="SubIndex:footer" />
+    </body>
+</html>

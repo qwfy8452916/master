@@ -1,0 +1,188 @@
+[ 2018-10-10T11:48:29+08:00 ] 127.0.0.1 /gtverify/getstartverify?t=1539143309236
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000707s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001226s ]
+NOTIC: [8] Undefined index: LOCAL_ADDR E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1086 行.
+NOTIC: [8] Undefined index: LOCAL_PORT E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1087 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_user` [ RunTime:0.0028s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT COUNT(*) AS tp_count FROM qz_user a LEFT JOIN qz_user_company as b on b.userid = a.id  WHERE a.cs = '320500' AND a.on = 2 AND b.fake = 0 LIMIT 1   [ RunTime:0.0113s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_adv_banner` [ RunTime:0.0017s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143309 AND `end_time` >= 1539143309 AND `city_id` = '320500' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0017s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143309 AND `end_time` >= 1539143309 AND `city_id` = '000001' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0022s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143309 AND `end_time` >= 1539143309 AND `city_id` = '0' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0018s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_options` [ RunTime:0.0014s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT `option_name`,`option_value`,`option_group`,`autoload` FROM `qz_options` WHERE `option_name` = 'CAPTCHA_ID' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT `option_name`,`option_value`,`option_group`,`autoload` FROM `qz_options` WHERE `option_name` = 'PRIVATE_KEY' LIMIT 1   [ RunTime:0.0011s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\newwamp\www\qzwww\Application\Common\Model\VerifyserverModel.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001835s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002069s ]
+
+[ 2018-10-10T11:48:44+08:00 ] 127.0.0.1 /gtverify/getstartverify?t=1539143324489
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000860s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001594s ]
+NOTIC: [8] Undefined index: LOCAL_ADDR E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1086 行.
+NOTIC: [8] Undefined index: LOCAL_PORT E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1087 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_user` [ RunTime:0.0029s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT COUNT(*) AS tp_count FROM qz_user a LEFT JOIN qz_user_company as b on b.userid = a.id  WHERE a.cs = '320500' AND a.on = 2 AND b.fake = 0 LIMIT 1   [ RunTime:0.0118s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_adv_banner` [ RunTime:0.0016s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143324 AND `end_time` >= 1539143324 AND `city_id` = '320500' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0016s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143324 AND `end_time` >= 1539143324 AND `city_id` = '000001' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0015s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143324 AND `end_time` >= 1539143324 AND `city_id` = '0' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0017s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\newwamp\www\qzwww\Application\Common\Model\VerifyserverModel.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001044s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001155s ]
+
+[ 2018-10-10T11:48:53+08:00 ] 127.0.0.1 /gtverify/getstartverify?t=1539143333641
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000661s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001162s ]
+NOTIC: [8] Undefined index: LOCAL_ADDR E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1086 行.
+NOTIC: [8] Undefined index: LOCAL_PORT E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1087 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_user` [ RunTime:0.0031s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT COUNT(*) AS tp_count FROM qz_user a LEFT JOIN qz_user_company as b on b.userid = a.id  WHERE a.cs = '320500' AND a.on = 2 AND b.fake = 0 LIMIT 1   [ RunTime:0.0113s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_adv_banner` [ RunTime:0.0017s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143333 AND `end_time` >= 1539143333 AND `city_id` = '320500' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0019s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143333 AND `end_time` >= 1539143333 AND `city_id` = '000001' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0015s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143333 AND `end_time` >= 1539143333 AND `city_id` = '0' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0014s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\newwamp\www\qzwww\Application\Common\Model\VerifyserverModel.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000826s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000928s ]
+
+[ 2018-10-10T11:49:01+08:00 ] 127.0.0.1 /gtverify/getstartverify?t=1539143341257
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000712s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001270s ]
+NOTIC: [8] Undefined index: LOCAL_ADDR E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1086 行.
+NOTIC: [8] Undefined index: LOCAL_PORT E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1087 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_user` [ RunTime:0.0033s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT COUNT(*) AS tp_count FROM qz_user a LEFT JOIN qz_user_company as b on b.userid = a.id  WHERE a.cs = '320500' AND a.on = 2 AND b.fake = 0 LIMIT 1   [ RunTime:0.0115s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_adv_banner` [ RunTime:0.0018s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143341 AND `end_time` >= 1539143341 AND `city_id` = '320500' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0018s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143341 AND `end_time` >= 1539143341 AND `city_id` = '000001' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0015s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143341 AND `end_time` >= 1539143341 AND `city_id` = '0' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0014s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\newwamp\www\qzwww\Application\Common\Model\VerifyserverModel.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001174s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001299s ]
+
+[ 2018-10-10T11:52:31+08:00 ] 127.0.0.1 /gtverify/getstartverify?t=1539143551672
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000693s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001191s ]
+NOTIC: [8] Undefined index: LOCAL_ADDR E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1086 行.
+NOTIC: [8] Undefined index: LOCAL_PORT E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1087 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_user` [ RunTime:0.0032s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT COUNT(*) AS tp_count FROM qz_user a LEFT JOIN qz_user_company as b on b.userid = a.id  WHERE a.cs = '320500' AND a.on = 2 AND b.fake = 0 LIMIT 1   [ RunTime:0.0114s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_adv_banner` [ RunTime:0.0044s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143551 AND `end_time` >= 1539143551 AND `city_id` = '320500' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143551 AND `end_time` >= 1539143551 AND `city_id` = '000001' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0017s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143551 AND `end_time` >= 1539143551 AND `city_id` = '0' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0016s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\newwamp\www\qzwww\Application\Common\Model\VerifyserverModel.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000961s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001065s ]
+
+[ 2018-10-10T11:53:48+08:00 ] 127.0.0.1 /gtverify/getstartverify?t=1539143627786
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000985s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001779s ]
+NOTIC: [8] Undefined index: LOCAL_ADDR E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1086 行.
+NOTIC: [8] Undefined index: LOCAL_PORT E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1087 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_user` [ RunTime:0.0031s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT COUNT(*) AS tp_count FROM qz_user a LEFT JOIN qz_user_company as b on b.userid = a.id  WHERE a.cs = '320500' AND a.on = 2 AND b.fake = 0 LIMIT 1   [ RunTime:0.0130s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_adv_banner` [ RunTime:0.0017s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143627 AND `end_time` >= 1539143627 AND `city_id` = '320500' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0032s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143627 AND `end_time` >= 1539143627 AND `city_id` = '000001' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0015s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143627 AND `end_time` >= 1539143627 AND `city_id` = '0' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0016s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\newwamp\www\qzwww\Application\Common\Model\VerifyserverModel.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000981s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001082s ]
+
+[ 2018-10-10T11:54:09+08:00 ] 127.0.0.1 /gtverify/getstartverify?t=1539143648636
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000795s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001416s ]
+NOTIC: [8] Undefined index: LOCAL_ADDR E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1086 行.
+NOTIC: [8] Undefined index: LOCAL_PORT E:\newwamp\www\qzwww\Application\Common\Common\function.php 第 1087 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_user` [ RunTime:0.0030s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT COUNT(*) AS tp_count FROM qz_user a LEFT JOIN qz_user_company as b on b.userid = a.id  WHERE a.cs = '320500' AND a.on = 2 AND b.fake = 0 LIMIT 1   [ RunTime:0.0113s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SHOW COLUMNS FROM `qz_adv_banner` [ RunTime:0.0015s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143649 AND `end_time` >= 1539143649 AND `city_id` = '320500' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0018s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143649 AND `end_time` >= 1539143649 AND `city_id` = '000001' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0017s ]
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+NOTIC: [2] mt_rand(): max(0) is smaller than min(1) E:\newwamp\www\qzwww\Core2015\Library\Think\Db\Driver.class.php 第 1106 行.
+SQL: SELECT a.*,b.bm,c.jc FROM ( SELECT * FROM `qz_adv_banner` WHERE `status` = 1 AND `module` = 'home_topbanner' AND `start_time` <= 1539143649 AND `end_time` >= 1539143649 AND `city_id` = '0' ORDER BY id desc  ) a LEFT JOIN qz_user as c on a.company_id = c.id LEFT JOIN qz_quyu as b on c.cs = b.cid  LIMIT 1   [ RunTime:0.0014s ]
+NOTIC: [8] A session had already been started - ignoring session_start() E:\newwamp\www\qzwww\Application\Common\Model\VerifyserverModel.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001026s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001132s ]
+

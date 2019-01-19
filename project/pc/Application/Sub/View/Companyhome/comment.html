@@ -1,0 +1,408 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/company_message/{$userInfo.user.id}" />
+<title>{$keys.title}-{$title}</title>
+<meta name="keywords" content="{$keys.keywords}" />
+<meta name="description" content="{$keys.description}" />
+<link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_message/{$userInfo.user.id}/" rel="canonical" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-pub.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-kn.css?v={:C('STATIC_VERSION')}" />
+<include file="Companyhome:headerbar" />
+
+<div class="c-wrap">
+    <div class="c-bread">
+        <a href="/">{$cityinfo.name}装修</a> >
+        <a href="/company/">{$cityinfo.name}装修公司</a> >
+        <a href="/company_home/{$userInfo.user.id}/"  title="{$userInfo.user.qc}">公司详情</a> >
+        <span>业主牛评</span>
+    </div>
+
+    <div class="c-left-box">
+        <div class="c-pl-info">
+            <p>综合评分<span>{$userInfo.user.evaluation|default=0}分</span></p>
+            <p>好评率<span>
+             <present name="userInfo.user.haopinglve">
+                 {$userInfo.user.haopinglve}%
+                 <else />
+                 100%
+             </present>
+            </span></p>
+            <div class="c-comment-star">
+                <dl><dt>设计水平</dt>
+                <dd><ul>
+                    <if condition="(($userInfo['user']['avgsj'] NEQ 0 AND $userInfo['user']['avgsj'] EGT 9) OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 9))">
+                    <li></li><li></li><li></li><li></li><li></li>
+                    <ELSEIF condition="(($userInfo['user']['avgsj'] NEQ 0 AND$userInfo['user']['avgsj'] EGT 8 AND $userInfo['user']['avgsj'] LT 9)OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 8 AND $userInfo['user']['avgcount'] LT 9))" />
+                    <li></li><li></li><li></li><li></li><li class="star-empty"></li>
+                    <ELSEIF condition="(($userInfo['user']['avgsj'] NEQ 0 AND$userInfo['user']['avgsj'] EGT 4 AND $userInfo['user']['avgsj'] LT 8)OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 4 AND $userInfo['user']['avgcount'] LT 8))" />
+                    <li></li><li></li><li></li><li class="star-empty"></li><li class="star-empty"></li>
+                    <ELSEIF condition="(($userInfo['user']['avgsj'] NEQ 0 AND$userInfo['user']['avgsj'] EGT 2 AND $userInfo['user']['avgsj'] LT 4)OR($userInfo['user']['avgsj'] EQ 0 AND $userInfo['user']['avgcount'] EGT 2 AND $userInfo['user']['avgcount'] LT 4))" />
+                    <li></li><li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                    <ELSE/>
+                    <li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                    </if>
+
+                </ul></dd>
+                </dl>
+                <dl><dt>服务态度</dt>
+                <dd><ul>
+                <if condition="(($userInfo['user']['avgfw'] NEQ 0 AND $userInfo['user']['avgfw'] EGT 9) OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 9))">
+                <li></li><li></li><li></li><li></li><li></li>
+                <ELSEIF condition="(($userInfo['user']['avgfw'] NEQ 0 AND$userInfo['user']['avgfw'] EGT 8 AND $userInfo['user']['avgfw'] LT 9)OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 8 AND $userInfo['user']['avgcount'] LT 9))" />
+                <li></li><li></li><li></li><li></li><li class="star-empty"></li>
+                <ELSEIF condition="(($userInfo['user']['avgfw'] NEQ 0 AND$userInfo['user']['avgfw'] EGT 4 AND $userInfo['user']['avgfw'] LT 8)OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 4 AND $userInfo['user']['avgcount'] LT 8))" />
+                <li></li><li></li><li></li><li class="star-empty"></li><li class="star-empty"></li>
+                <ELSEIF condition="(($userInfo['user']['avgfw'] NEQ 0 AND$userInfo['user']['avgfw'] EGT 2 AND $userInfo['user']['avgfw'] LT 4)OR($userInfo['user']['avgfw'] EQ 0 AND $userInfo['user']['avgcount'] EGT 2 AND $userInfo['user']['avgcount'] LT 4))" />
+                <li></li><li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                <ELSE/>
+                <li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                </if>
+
+                </ul></dd>
+                </dl>
+                <dl><dt>施工质量</dt>
+                <dd><ul>
+                <if condition="(($userInfo['user']['avgsg'] NEQ 0 AND $userInfo['user']['avgsg'] EGT 9) OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 9))">
+                <li></li><li></li><li></li><li></li><li></li>
+                <ELSEIF condition="(($userInfo['user']['avgsg'] NEQ 0 AND$userInfo['user']['avgsg'] EGT 8 AND $userInfo['user']['avgsg'] LT 9)OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 8 AND $userInfo['user']['avgcount'] LT 9))" />
+                <li></li><li></li><li></li><li></li><li class="star-empty"></li>
+                <ELSEIF condition="(($userInfo['user']['avgsg'] NEQ 0 AND$userInfo['user']['avgsg'] EGT 4 AND $userInfo['user']['avgsg'] LT 8)OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 4 AND $userInfo['user']['avgcount'] LT 8))" />
+                <li></li><li></li><li></li><li class="star-empty"></li><li class="star-empty"></li>
+                <ELSEIF condition="(($userInfo['user']['avgsg'] NEQ 0 AND$userInfo['user']['avgsg'] EGT 2 AND $userInfo['user']['avgsg'] LT 4)OR($userInfo['user']['avgsg'] EQ 0 AND $userInfo['user']['avgcount'] EGT 2 AND $userInfo['user']['avgcount'] LT 4))" />
+                <li></li><li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                <ELSE/>
+                <li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                </if>
+
+                </ul>
+                </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="c-zb">
+            <div class="c-zb-tit">免费获得4份不同<br>户型设计及预算方案</div>
+            <input type="text" name="tel" placeholder="请填写您的手机号码" maxlength="11">
+            <button type="submit" id="minibj">立即申请</button>
+         </div>
+    </div>
+
+    <div class="c-right-box">
+        <div class="c-comment">
+        <if condition="$userInfo['comments']">
+        <volist name="userInfo.comments" id="vo">
+        <div class="c-comment-box">
+            <div class="c-user-head"><img src="{$vo.logo}" alt=""/><p>{$vo.name}</p></div>
+            <div class="c-user-detail">
+                <div class="c-user-info">
+                    <span><if condition="$vo['lp'] NEQ ''">{$vo.quyu}{$vo.lp}<if condition="$vo['mianji']">{$vo.mianji}㎡</if></if></span>
+                    <span>{$vo['step']}</span>
+                    <ul>
+                    <if condition="$vo['totalCount'] EGT 9">
+                    <li></li><li></li><li></li><li></li><li></li>
+                    <elseif condition="$vo['totalCount'] EGT 8 AND $vo['totalCount'] LT 9" />
+                    <li></li><li></li><li></li><li></li><li class="star-empty"></li>
+                    <elseif condition="$vo['totalCount'] EGT 4 AND $vo['totalCount'] LT 8" />
+                    <li></li><li></li><li></li><li class="star-empty"></li><li class="star-empty"></li>
+                    <elseif condition="$vo['totalCount'] EGT 2 AND $vo['totalCount'] LT 4" />
+                    <li></li><li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                    <else/>
+                    <li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                    </if>
+                    </ul>
+                    <em>{$vo.time|date="Y-m-d H:i:s",###}</em>
+                </div>
+                <div class="c-user-mes">{$vo.text}</div>
+                <if condition="$vo['rptxt'] NEQ ''"><div class="c-user-reply"><p>回复:</p>{$vo.rptxt}</div></if>
+            </div>
+        </div>
+        </volist>
+
+        <else/>
+        暂时还没有评论
+        </if>
+
+            <div class="pagebox">{$userInfo.page}</div>
+            <!--S 评论输入-->
+            <if condition="isset($_SESSION['u_userInfo']) AND $_SESSION['u_userInfo']['classid'] EQ 1">
+            <div class="c-comment-edit">
+                <textarea class="c-comment-text"></textarea>
+                <div class="c-comment-word">还可以再输入 <em>200</em> 字</div>
+                <div class="c-comment-info">
+                    <div class="c-comment-star postComment">
+                        <dl><dt>设计水平</dt><dd><div class="star"></div></dd></dl>
+                        <dl><dt>服务态度</dt><dd><div class="star"></div></dd></dl>
+                        <dl><dt>施工质量</dt><dd><div class="star"></div></dd></dl>
+                    </div>
+                    <div class="c-comment-floor">所在楼盘&nbsp;<input type="text" name="lp" placeholder="填写您的楼盘名称"></div>
+                    <div class="c-comment-stage">选择阶段
+                    <select name="step">
+                        <option value="开工阶段">开工阶段</option>
+                        <option value="水电阶段">水电阶段</option>
+                        <option value="泥木阶段">泥木阶段</option>
+                        <option value="油漆阶段">油漆阶段</option>
+                        <option value="竣工阶段">竣工阶段</option>
+                    </select></div>
+                </div>
+                <div class="c-comment-bottom">
+                    <!-- <input name="verifyCode" type="text" placeholder="验证码" ><a class="verify" href="javascript:void(0)"><img src="/verify" align="top" width="120" height="35" /></a> --><button type="button" id="btnComment">评价</button>
+                    <div class="c-comment-msg"></div>
+
+                    <button type="button" id="verbtn" style="display: none;"></button>
+                    <div id="popup-captcha"></div>
+
+                </div>
+            </div>
+            <else/>
+                <if condition="!isset($_SESSION['u_userInfo']) OR $_SESSION['u_userInfo']['classid'] EQ 1">
+                <div class="comptit" style="text-align:center; font-size:14px;">
+                <em>请<a href="javascript:void(0)" id="btnLogin" style="float:none; color:#EA3D3D;">登录</a>发表您的评价!</em>
+                </div>
+                </if>
+            </if>
+            <!--E 评论输入-->
+        </div>
+    </div>
+
+    <div style="clear: both;"></div>
+</div>
+
+
+<include file="footerbar" />
+<script type="text/javascript" src="{$static_host}/assets/common/js/raty/jquery.raty.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="{$static_host}/assets/common/js/gt.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript">
+$(function(){
+
+    $("#minibj").click(function(event) {
+        var _this = $(this);
+        var container = $(".c-zb");
+        if (!App.validate.run($("input[name=tel]", container).val())) {
+            $.pt({
+                target: _this,
+                content: "请填写正确的手机号码 ^_^!",
+                width: 'auto'
+            });
+            return false;
+        } else {
+            var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+            if (!reg.test($("input[name=tel]", container).val())) {
+                $("input[name=tel]", container).focus();
+                $("input[name=tel]", container).val('');
+                $.pt({
+                    target: _this,
+                    content: "请填写正确的手机号码 ^_^!",
+                    width: 'auto'
+                });
+                return false;
+            }
+        }
+        var data = {
+            tel:$("input[name=tel]",container).val(),
+            cs:"{$cityInfo.id}",
+            source: '108',
+            step:2
+        };
+
+        window.order({
+            extra:data,
+            error:function(){},
+            success:function(data, status, xhr){
+                if (data.status == 1) {
+                    $("body").append(data.data.tmp);
+                } else {
+                    $.pt({
+                        target: _this,
+                        content: data.info,
+                        width: 'auto'
+                    });
+                }
+            },
+            validate:function(item, value, method, info){
+                return true;
+            }
+        });
+    });
+
+
+    $("#btnLogin").click(function(event) {
+        var _this = $(this);
+        $.ajax({
+            url: '/login/',
+            type: 'POST',
+            dataType: 'JSON',
+            data:{
+                ssid:""
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+                $("body").append(data.data);
+                $(".win_login").fadeIn(400);
+            }
+        });
+    });
+
+    $(".c-comment-text").bind("input propertychange",function(){
+        var length = $(this).val().length;
+        if(length > 200){
+            var offset = length - 200;
+            $('.c-comment-text').val($('.c-comment-text').val().substr(0, 200 - 1));
+        }else{
+            $(".c-comment-word em").html(200 - length);
+        }
+    });
+
+    $("#btnComment").click(function(event) {
+        $(".c-comment-msg").html("");
+        if (!App.validate.run($(".c-comment-text").val())) {
+            $(".c-comment-text").focus();
+            $(".c-comment-msg").html("请输入评论内容哦");
+            return false;
+        }
+
+        if (!App.validate.run($(".c-comment-floor input[type=text]").val())) {
+            $(".c-comment-floor input[type=text]").focus();
+            $(".c-comment-msg").html("请输入楼盘名称哦");
+            return false;
+        }
+
+/*        if (!App.validate.run($(".c-comment-bottom input[type=text]").val())) {
+            $(".c-comment-verify input[type=text]").focus();
+            $(".c-comment-msg").html("请输入验证码哦");
+            return false;
+        }*/
+
+        $("#verbtn").click();
+
+        /*var score = [];
+        $(".postComment dl dd").each(function(){
+            var val =$(this).find(".star input[name=score]").val();
+            score.push(val);
+        });
+        $.ajax({
+          url: '/companycomment/',
+          type: 'POST',
+          dataType: 'JSON',
+          data: {
+              id: "{$userInfo.user.id}",
+              content:$(".c-comment-text").val(),
+              cs:"{$cityInfo.id}",
+              code:$(".c-comment-bottom input[type=text]").val(),
+              sj:score[0],
+              fw:score[1],
+              sg:score[2],
+              lp:$(".c-comment-floor input[type=text]").val(),
+              step:$("select[name=step]").val()
+          }
+        })
+        .done(function(data) {
+              if(data.status == 1){
+                  window.location.href = window.location.href;
+              }else{
+                $(".c-comment-msg").html(data.info);
+              }
+        });*/
+    });
+
+    $(".star").raty({
+        size: 16,
+        path: '{$static_host}/assets/common/js/raty/img/',
+        half: true,
+        starHalf : 'star-half.png',
+        starOff  : 'star-off.png',
+        starOn   : 'star-on.png',
+        hints: ['差评', '一般', '还不错', '挺好的', '好评'],
+        score:5,
+        precision: false
+    });
+
+    $(".c-comment-bottom img").click(function(event) {
+        $(this).attr("src","/verify?rand="+Math.random());
+    });
+
+        $.ajax({
+        // 获取id，challenge，success（是否启用failback）
+        url: "/gtverify/getstartverify?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+            }, handlerPopup);
+        }
+    });
+
+    var handlerPopup = function (captchaObj) {
+        // 弹出式需要绑定触发验证码弹出按钮
+        captchaObj.bindOn("#verbtn");
+        // 将验证码加到id为captcha的元素里
+        captchaObj.appendTo("#popup-captcha");
+        $("#verbtn").click(function () {
+
+            var validate = captchaObj.getValidate();
+            if (!validate) {
+                alert('请先完成验证！');
+                return;
+            }
+
+            $.ajax({
+                url: "/gtverify/verifylogin", // 进行二次验证
+                type: "post",
+                dataType: "json",
+                data: {
+                    // 二次验证所需的三个值
+                    geetest_challenge: validate.geetest_challenge,
+                    geetest_validate: validate.geetest_validate,
+                    geetest_seccode: validate.geetest_seccode
+                },
+                success: function (result) {
+                    if (result.status == 1) {
+                        var score = [];
+                        $(".postComment dl dd").each(function(){
+                            var val =$(this).find(".star input[name=score]").val();
+                            score.push(val);
+                        });
+                        $.ajax({
+                            url: '/companycomment/',
+                            type: 'POST',
+                            dataType: 'JSON',
+                            data: {
+                                id: "{$userInfo.user.id}",
+                                content:$(".c-comment-text").val(),
+                                cs:"{$cityInfo.id}",
+                                code:$(".c-comment-bottom input[type=text]").val(),
+                                sj:score[0],
+                                fw:score[1],
+                                sg:score[2],
+                                lp:$(".c-comment-floor input[type=text]").val(),
+                                step:$("select[name=step]").val()
+                            }
+                        })
+                        .done(function(data) {
+                            if(data.status == 1){
+                                window.location.href = window.location.href;
+                            }else{
+                                $(".c-comment-msg").html(data.info);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    };
+
+})
+</script>
+<include file="Index:footer" />
+</body>
+</html>

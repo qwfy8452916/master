@@ -1,0 +1,31 @@
+input,select{outline: none;}
+.staffwk{overflow: hidden;}
+.formwaik{overflow: hidden;}
+.formdivitem{width: 20%;display: inline-block;float: left; }
+.staffwk .span-title{display: inline-block;width: 80px;text-align: right;}
+.formdivitem .divinput{width: 58%;display: inline-block;}
+.firstdiv{margin-left: 0;overflow: hidden;}
+.formniuiwk{width:91%; margin:0px auto;margin-top: 22px;}
+.formniuiwk .sousniu{padding:10px 30px;margin-right: 20px;}
+.formniuiwk .resetniu{padding:10px 30px;}
+
+.data-title{font-size: 16px;}
+.add-waik{overflow: hidden;}
+.tabwaik{overflow: hidden;margin-top: 24px;}
+.addtanchuang{width: 600px;height: 294px;display: none;}
+.paixu{cursor: pointer;padding: 5px;}
+
+.editniu{color: #1890ff;cursor: pointer;}
+.disableniu{color: #fa8c16;cursor: pointer;}
+.delniu{color: #f5222d;cursor: pointer;}
+.portrait img{width: 36px;height: 36px;}
+
+.operationtc{width: 375px;height: 188px;text-align: center;display: none;}
+.status{overflow: hidden;vertical-align: middle;margin-top: 35px;}
+.status-pic{display: inline-block;width: 26px;height: 26px;background: url(/assets/pc/img/Common/errorstatus.png) no-repeat;
+vertical-align: middle;margin-right: 10px;}
+.status-title{color: #333;font-weight: bold;font-size: 15px;}
+.cannotms{margin-top: 18px;}
+.caozuosurewk{height:48px;line-height: 48px;border-top:1px solid #e6e6e6;margin-top: 40px;}
+.caozuosurewk .caozuosurewk-sure{display: inline-block;color: #1890ff;padding:0 10px;cursor: pointer;}
+.paixusort{color: #1890FF !important;}

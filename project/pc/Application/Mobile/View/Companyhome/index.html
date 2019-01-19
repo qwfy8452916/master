@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       	<meta charset="utf-8">
+		<meta name="keywords" content="{$keys.keywords}">
+	    <meta name="description" content="{$keys.description}">
+	    <link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_home/{$info.user.id}" rel="canonical" />
+		<title>{$keys.title}{$title}</title>
+	   	<include file="Index:resource" />
+	    <link rel="stylesheet" type="text/css" href="/assets/mobile/companyhome/css/company.css?v={:C('STATIC_VERSION')}">
+	    <script type="text/javascript" src="{$static_host}/assets/common/js/jquery.scrollLoading-min.js?v={:C('STATIC_VERSION')}"></script>
+    </head>
+    <body>
+    	<include file="SubIndex:header" />
+		<!-- 装修公司导航 -->
+		<include file="Companyhome:header" />
+		<div class="banxin">
+			<!-- 综合评价 -->
+			<div class="pinjia mar-t20">
+				<ul class="pinjia-left fl-l">
+					<li>设计水平：
+						<i class="star2">
+	                     <if condition="(($info['user']['avgsj'] NEQ 0 AND $info['user']['avgsj'] EGT 9) OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 9))">
+	                        <i class="star1" style="width:0.32rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgsj'] NEQ 0 AND$info['user']['avgsj'] EGT 8 AND $info['user']['avgsj'] LT 9)OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 8 AND $info['user']['avgcount'] LT 9))" />
+	                    <i class="star1"  style="width:0.26rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgsj'] NEQ 0 AND$info['user']['avgsj'] EGT 4 AND $info['user']['avgsj'] LT 8)OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 4 AND $info['user']['avgcount'] LT 8))" />
+	                    <i class="star1" style="width:0.20rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgsj'] NEQ 0 AND$info['user']['avgsj'] EGT 2 AND $info['user']['avgsj'] LT 4)OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 2 AND $info['user']['avgcount'] LT 4))" />
+	                    <i class="star1" style="width:0.14rem;"></i>
+	                    <ELSE/>
+	                    <i class="star1" style="width:0.07rem;"></i>
+	                    </if>
+	                    </i>
+						<if condition="$info['user']['avgsj'] NEQ 0">
+	                        <em>{$info.user.avgsj}分</em>
+	                        <else/>
+	                        <em>{$info.user.avgcount}分</em>
+	                    </if>
+                    </li>
+					<li>服务态度：
+						<i class="star2">
+	                     <if condition="(($info['user']['avgfw'] NEQ 0 AND $info['user']['avgfw'] EGT 9) OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 9))">
+	                        <i class="star1" style="width:0.32rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgfw'] NEQ 0 AND$info['user']['avgfw'] EGT 8 AND $info['user']['avgfw'] LT 9)OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 8 AND $info['user']['avgcount'] LT 9))" />
+	                    <i class="star1"  style="width:0.26rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgfw'] NEQ 0 AND$info['user']['avgfw'] EGT 4 AND $info['user']['avgfw'] LT 8)OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 4 AND $info['user']['avgcount'] LT 8))" />
+	                    <i class="star1" style="width:0.20rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgfw'] NEQ 0 AND$info['user']['avgfw'] EGT 2 AND $info['user']['avgfw'] LT 4)OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 2 AND $info['user']['avgcount'] LT 4))" />
+	                    <i class="star1" style="width:0.14rem;"></i>
+	                    <ELSE/>
+	                    <i class="star1" style="width:0.07rem;"></i>
+	                    </if>
+	                    </i>
+						<if condition="$info['user']['avgfw'] NEQ 0">
+	                        <em>{$info.user.avgfw}分</em>
+	                        <else/>
+	                        <em>{$info.user.avgcount}分</em>
+	                    </if>
+					</li>
+					<li>施工水平：
+						<i class="star2">
+	                     <if condition="(($info['user']['avgsg'] NEQ 0 AND $info['user']['avgsg'] EGT 9) OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 9))">
+	                        <i class="star1" style="width:0.32rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgsg'] NEQ 0 AND$info['user']['avgsg'] EGT 8 AND $info['user']['avgsg'] LT 9)OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 8 AND $info['user']['avgcount'] LT 9))" />
+	                    <i class="star1"  style="width:0.26rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgsg'] NEQ 0 AND$info['user']['avgsg'] EGT 4 AND $info['user']['avgsg'] LT 8)OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 4 AND $info['user']['avgcount'] LT 8))" />
+	                    <i class="star1" style="width:0.20rem;"></i>
+	                    <ELSEIF condition="(($info['user']['avgsg'] NEQ 0 AND$info['user']['avgsg'] EGT 2 AND $info['user']['avgsg'] LT 4)OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 2 AND $info['user']['avgcount'] LT 4))" />
+	                    <i class="star1" style="width:0.14rem;"></i>
+	                    <ELSE/>
+	                    <i class="star1" style="width:0.07rem;"></i>
+	                    </if>
+	                    </i>
+						<if condition="$info['user']['avgsg'] NEQ 0">
+	                        <em>{$info.user.avgsg}分</em>
+	                        <else/>
+	                        <em>{$info.user.avgcount}分</em>
+	                    </if>
+					</li>
+				</ul>
+				<div class="pinjia-right fl-l">
+				综合评价：
+				<if condition="$info['user']['avgsj'] NEQ 0">
+					<span class="hot">{$info.user.avgscore}分</span>
+				<else/>
+					<span class="hot">{$info.user.avgcount}分</span>
+				</if>
+				</div>
+			</div>
+			<!-- 出设计、出报价 -->
+			<div class="design mar-t20">
+				<a type="button" href="/sheji/?bm={$cityInfo.bm}">免费帮我做设计</a>
+				<a type="button" href="/zhaobiao/?bm={$cityInfo.bm}">免费帮我出报价</a>
+			</div>
+			<!-- 公司简介 -->
+			<div class="com-summary mar-t20">
+				<h2 class="title">公司简介</h2>
+				<if condition="$info['user']['jianjie'] NEQ ''">
+					<p><em class="company_text">{$info.user.jianjie|mbstr=0,150}</em>
+					<if condition="mb_strlen($info['user']['jianjie'],'utf-8') GT 150">
+						<a href="javascript:void(0)" data-on="1" class="moretext" data-text='{$info.user.jianjie}'><em>点击展开</em></a>
+					</if>
+					</p>
+				</if>
+			</div>
+			<!-- 公司定位 -->
+			<div class="location mar-t20">
+				{$info.user.dz}
+			</div>
+			<!-- 公司文化 -->
+			<div class="com-culture mar-t20">
+				<h2 class="title">公司文化</h2>
+				<div class="content">
+					<volist name="info.imgs" id="vo">
+						<if condition="$robot">
+							<if condition="$vo['img_host'] EQ 'qiniu'">
+								<img alt="{$info.user.qc}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img}-w660"/>
+							<else/>
+								<img alt="{$info.user.qc}" src="http://{:C('STATIC_HOST1')}/upload/company/m_{$vo.img}"/>
+							</if>
+						<else/>
+							<if condition="$vo['img_host'] EQ 'qiniu'">
+								<img alt="{$info.user.qc}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.img}-w660" src="/assets/common/pic/pixel.gif" class="scrollLoading"/>
+							<else/>
+								<img alt="{$info.user.qc}" data-url="http://{:C('STATIC_HOST1')}/upload/company/m_{$vo.img}" src="/assets/common/pic/pixel.gif" class="scrollLoading"/>
+							</if>
+						</if>
+					</volist>
+				</div>
+			</div>
+			<p class="com-text mar-t20">找苏州装修公司就上苏州齐装网，为您提供苏州装修公司大全
+及苏州装修公司排名，免费设计！</p>
+		</div>
+		<include file="SubIndex:footer" />
+    </body>
+<script type="text/javascript">
+	$(".scrollLoading").scrollLoading();
+	$(".moretext").click(function(event) {
+		var _this = $(this);
+		var text = _this.attr("data-text");
+		if(_this.attr("data-on") == 1){
+			_this.attr("data-on",2);
+			$(".com-summary .company_text").html(text);
+			_this.find("em").html("点击收起");
+		}else{
+			_this.attr("data-on",1);
+			$(".com-summary .company_text").html(text.substring(0,150)+"...");
+			_this.find("em").html("点击展开");
+		}
+	});
+</script>
+</html>

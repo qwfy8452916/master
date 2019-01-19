@@ -1,0 +1,56 @@
+{foreach $list as $key=>$vo}
+<div class="shigongwk">
+          <span class="sortpaixu">{$count-$listPageIndex  * $listPageCount - $key}</span>
+          <span class="yuanwk noyanshou-border"></span>
+    <div class="shigongwk-title-top">
+        <span>{$vo.add_time|date='Y-m-d H:i:s'}</span>
+        <div class="chenghu">
+            {if(!empty($vo['station'])) }
+            <span>{$vo['station']}：</span>
+            {/if}
+            <span class="namech">{$vo.contact_name|default=''}</span>
+         </div>
+    </div>
+    <div class="hangwk">
+        <div class="left-title">
+            <span class="miaos-tit">订单状态：</span>
+            <span class="shuidainzg">
+            {switch $vo.status}
+            {case 1}未联系{/case}
+            {case 2}已联系{/case}
+            {case 3}预约量房{/case}
+            {case 4}已见面{/case}
+            {case 5}已量房{/case}
+            {case 6}未成功量房{/case}
+            {case 7}签订设计合同{/case}
+            {case 8}签订装修合同{/case}
+            {case 9}施工中{/case}
+            {case 10}延期单{/case}
+            {case 11}已竣工{/case}
+            {case 12}废弃单{/case}
+            {case 13}完成{/case}
+            {default /}
+            {/switch}
+            </span>
+        </div>
+        {switch $vo.status}
+        {case 3}
+        <span class="shigongwk-title">预约量房时间：</span><span class="shuidainzg">{notempty name="$vo.order_time"}{$vo.order_time|date='Y-m-d H:i:s'}{/notempty}</span>
+        {/case}
+        {case 5}
+        <span class="shigongwk-title">实际量房时间：</span><span class="shuidainzg">{notempty name="$vo.lf_time"}{$vo.lf_time|date='Y-m-d H:i:s'}{/notempty}</span>
+        {/case}
+        {case 8}
+        <span class="shigongwk-title">签订金额：</span><span class="shuidainzg">{$vo.qiandan_jine|default=''}</span>
+        {/case}
+        {default /}
+        {/switch}
+        {neq name="$vo.remark" value=""}
+        <div class="hangwk">
+            <span class="miaos-tit">跟单详情：</span><span class="shuidainzg">{$vo.remark|default=''}</span>
+        </div>
+        {/neq}
+    </div>
+
+</div>
+{/foreach}

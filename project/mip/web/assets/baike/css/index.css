@@ -1,0 +1,183 @@
+/*
+* @Author: qz_xsc
+* @Date:   2017-12-25 15:46:05
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-10-10 13:51:31
+*/
+.baike_list{background: #fff; height: 50px; border-bottom: 1px solid #DEDEDE;}
+.baike_list a{display:inline-block;height: 50px; line-height: 50px;  text-align: center; font-size: 0.13rem}
+.mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected {
+    border-bottom: 1px solid #ff3535;
+}
+.mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected a{
+    color: #ff3535;
+}
+.mip-vd-tabs .mip-vd-tabs-nav{padding:0px;}
+.child_menu{background: #fff;padding:8px 0px;}
+.child_menu .mip-vd-tabs .mip-vd-tabs-nav-li{height: 32px; line-height: 32px; margin:0px 6px;}
+.child_menu a{display: inline-block;  font-size: 0.13rem;  }
+.child_menu  .mip-vd-tabs-nav-view{height: 32px;}
+.child_menu .mip-vd-tabs .mip-vd-tabs-nav {height: 32px;}
+.child_menu  .mip-vd-tabs .mip-vd-tabs-nav .mip-vd-tabs-nav-selected{border:1px solid #ff5353;}
+.child_menu li{display: inline-block;}
+.baike_container{
+    background: #fff;margin-top: 0.1rem
+}
+.baike_container ul li {
+    overflow: hidden;
+    padding: 0.1rem 0.08rem;
+    border-bottom: 1px solid #EBEBEB;
+}
+.baike_container .img-box {
+    width: 1rem;
+    float: left;
+    height: 0.8rem;
+    margin-top: .065rem;
+}
+.baike_container .img-box img {
+    width: 100%;
+    height: 100%;
+}
+.baike-list-content {
+    margin-left: 1.1rem;
+}
+.list-content-title {
+    font-weight: bold;
+    font-size: 0.13rem;
+    padding-top: 0.04rem;
+    padding-bottom: 0.04rem;
+}
+.list-content-body {
+    font-size: 0.11rem;
+    color: #666666;
+    padding-bottom: 0.02rem;
+}
+.list-content-foot {
+    font-size: 0.11rem;
+    color: #999999;
+    overflow: hidden;
+}
+.foot-date {
+    float: left;
+}
+
+.foot-zan {
+    float: right;
+}
+
+.m-bread {
+    width: 100%;
+    height: 2.5em;
+    padding-left: .85em;
+    background-color: #fff;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    box-sizing: border-box;
+    line-height: 2.2em;
+    font-size: .8em;
+    overflow: hidden;
+}
+.bk-brief {
+    width: 100%;
+    height: 1.15rem;
+    background-color: #fff;
+    margin-bottom: 0.1rem;
+}
+.bk-brief-main {
+    padding: .8em;
+    overflow: hidden;
+    color:#333;
+}
+.bk-brief-img {
+    width: 1.2rem;
+    height:1.15rem;
+    float: left;
+    overflow: hidden;
+}
+
+.bk-brief-info {
+    height: 1.15rem;
+    margin-left: 1.3rem;
+    position: relative;
+    overflow: hidden;
+}
+.bk-brief-tit {
+    font-size: 0.13rem;
+    line-height: 1em;
+    font-weight: 800;
+}
+.bk-brief-content {
+    margin-top: .5em;
+    font-size: 0.12rem;
+    line-height: 1.3em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.bk-brief-time {
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+    text-align: right;
+    color: #999999;
+    font-size: 0.1rem;
+}
+.bk-article {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+.bk-baojia {
+    width: 100%;
+    height: auto;
+    margin: .1rem 0;
+}
+.bk-about {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding: 10px 0px;
+}
+.bk-about-box {
+    padding: .75em;
+}
+.bk-about-word {
+    font-size: 0.14rem;
+    font-weight: 800;
+    line-height: 0.15rem;
+}
+.red-block {
+    width: .18em;
+    height: 1.1em;
+    background: #ff5659;
+    display: block;
+    float: left;
+    margin-right: 0.05rem;
+}
+.bk-word-list {
+    margin-top: .6em;
+    overflow: hidden;
+}
+.bk-word-list span {
+    margin-right: .5em;
+    float: left;
+    font-size: 0.12rem;
+    line-height: 0.25rem;
+}
+.no-content{
+    background: #eee;
+    padding: .6rem;
+    text-align: center;
+}
+
+/* other-article */
+.other-article{width: 100%;height: auto;background-color: #fff;}
+.other-article-box {padding: .75em;}
+.red-block{width: .2em;height: 1.2em;background-color: #ff5659;display: block;float: left;margin-right: .4em;}
+.other-article-word{font-size: 1em;font-weight: 800;line-height: 1.1em;}
+.other-article-list{margin-top: .6em;overflow: hidden;}
+.other-article-item{width: 100%;height: 4em;padding: .5em 0;border-bottom: 1px solid #ccc;}
+.other-article-item:last-child{border-bottom: 0;}
+.other-article-img{width: 6em;height: 4em;float: left;margin-right: .6em;}
+.other-article-img mip-img{width: 100%;height: 100%;}

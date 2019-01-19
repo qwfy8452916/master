@@ -1,0 +1,42 @@
+<!-- <div class="ht-wrap">
+    <img src="//{:C('QINIU_DOMAIN')}/pc/assets/user/home/img/qd.jpg" width="1210" height="80"></div> -->
+<div class="ht-top">
+    <div class="ht-wrap">
+        <h2 class="mr20">{$info.user.qc}</h2>
+        <ul class="ht-link ht-pull-right">
+            <li><a href="http://{$info.user.bm}.{:C('QZ_YUMING')}/company_home/{$info.user.id}" target="_blank">公司首页</a></li>
+            <li><a href="http://{$info.user.bm}.{:C('QZ_YUMING')}/company_case/{$info.user.id}" target="_blank">公司案例</a></li>
+            <li><a href="http://{$info.user.bm}.{:C('QZ_YUMING')}/company_zixun/{$info.user.id}" target="_blank">公司资讯</a></li>
+            <li>
+                 <a class="red" href="/loginout">退出</a>
+            </li>
+        </ul>
+        <div class="info-box"><i class="icon-envelope-alt mr10"></i>消息通知
+            <if condition="$info['user']['unreadcount'] NEQ 0 OR $info['user']['unreadsystem'] NEQ 0">
+                <span class="ml10 tips">{$info['user']['unreadcount']+$info['user']['unreadsystem']}</span>
+            </if>
+            <i class="icon-angle-down ml10"></i>
+            <div class="info">
+                <ul>
+                    <li><a href="/orders/"><i class="icon-copy mr10"></i>订单信息
+                    <if condition="$info['user']['unreadcount'] NEQ 0">
+                        <span class="ml10 tips">{$info['user']['unreadcount']}</span>
+                    </if>
+                    </a></li>
+                    <li><a href="/message/"><i class="icon-bullhorn mr10"></i>系统消息
+                     <if condition="$info['user']['unreadsystem'] NEQ 0">
+                        <span class="ml10 tips">{$info['user']['unreadsystem']}</span>
+                     </if>
+                    </a></li>
+                </ul>
+                <!---暂时没有消息-->
+            </div>
+        </div>
+        <ul class="ht-link">
+            <li><a href="http://{$info.user.bm}.{:C('QZ_YUMING')}/" target="_blank">齐装网首页</a></li>
+            <li><a href="http://{$info.user.bm}.{:C('QZ_YUMING')}/company/" target="_blank">装修公司大全</a></li>
+            <li><a href="http://{$info.user.bm}.{:C('QZ_YUMING')}/xtg/" target="_blank">装修案例</a></li>
+        </ul>
+    </div>
+</div>
+<div class="ht-tit">用户管理中心</div>

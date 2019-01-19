@@ -1,0 +1,138 @@
+{extend name="common:basic" /}
+{block name="title"}
+    员工管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/employee.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<div class="titlewaik">员工管理</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="staffwk">
+        <form action="" class="search_form">
+            <div class="formwaik">
+                <div class="formdivitem firstdiv">
+                    <span class="span-title">员工姓名：</span>
+                    <div class="divinput"><input class="p-input staffname" name="name" type="text" value="{$Think.get.name|default=''}" maxlength="10" placeholder="请输入"></div>
+                </div>
+                <div class="formdivitem">
+                    <span class="span-title">状态：</span>
+                    <div class="divinput">
+                        <select class="p-input statusxz" name="status">
+                            <option value="">请选择</option>
+                            <option value="1" {if ($Think.get.status == 1)}selected{/if}>已启用</option>
+                            <option value="2" {if ($Think.get.status == 2)}selected{/if}>未启用</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="formdivitem">
+                    <span class="span-title">部门：</span>
+                    <div class="divinput">
+                        <select class="p-input departmentxz" name="dept">
+                            <option value="">请选择</option>
+                            {volist name='deptSelect' id='vo'}
+                            <option value="{$vo.id|default=''}" {if ($Think.get.dept == $vo.id)}selected{/if}>{$vo.dept_name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+                <div class="formdivitem">
+                    <span class="span-title">岗位：</span>
+                    <div class="divinput">
+                        <select class="p-input positionxz" name="station">
+                            <option value="">请选择</option>
+                            {volist name='stationSelect' id='vo'}
+                            <option value="{$vo.id|default=''}" {if ($Think.get.station == $vo.id)}selected{/if}>{$vo.name|default=''}</option>
+                            {/volist}
+                        </select>
+                    </div>
+                </div>
+                <div class="formdivitem b-owf">
+                    <a href="/employee/add" class="p-btn p-blue b-fr {if (!btnRule('/employee/add/'))} btn_hide{/if}">添加</a>
+                    <!-- <span class="p-btn b-fr resetniu">重置</span> -->
+                    <span class="p-btn p-primary b-fr b-mt20 sousniu">搜索</button></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="p-panel">
+   
+    <div class="tabwaik">
+        <table class="p-suppliertab">
+            <thead>
+            <tr>
+                <th>头像</th>
+                <th><a href="?{$order}&order_by=order_name">员工姓名<i class="fa {if ($Think.get.order == 'asc' and $Think.get.order_by == 'order_name')}fa-caret-up paixusort{elseif ($Think.get.order == 'desc' and $Think.get.order_by == 'order_name')}fa-caret-down  paixusort{else/}fa-caret-down{/if} paixu" aria-hidden="true"></i></a></th>
+                <th>登录账号</th>
+                <th><a href="?{$order}&order_by=order_dept">所属部门<i class="fa {if ($Think.get.order == 'asc' and $Think.get.order_by == 'order_dept')}fa-caret-up paixusort{elseif ($Think.get.order == 'desc' and $Think.get.order_by == 'order_dept')}fa-caret-down paixusort{else/}fa-caret-down{/if} paixu" aria-hidden="true"></i></a></th>
+                <th><a href="?{$order}&order_by=order_station">岗位<i class="fa {if ($Think.get.order == 'asc' and $Think.get.order_by == 'order_station')}fa-caret-up paixusort{elseif ($Think.get.order == 'desc' and $Think.get.order_by == 'order_station')}fa-caret-down paixusort{else/}fa-caret-down{/if} paixu" aria-hidden="true"></i></a></th>
+                <th>手机号</th>
+                <th>创建人</th>
+                <th><a href="?{$order}&order_by=order_time">创建时间<i class="fa {if ($Think.get.order == 'asc' and $Think.get.order_by == 'order_time')}fa-caret-up paixusort{elseif ($Think.get.order == 'desc' and $Think.get.order_by == 'order_time')}fa-caret-down paixusort{else/}fa-caret-down{/if} paixu" aria-hidden="true"></i></a></th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name='list.list' id='v'}
+            <tr>
+                <td class="portrait"><img src={if (!empty($v.image))}'//{$v.image}'{else/}'/assets/pc/img/Private/setphoto.png'{/if} alt="头像"></td>
+                <td>{$v.contact_name|default=''}</td>
+                <td>{$v.account|default=''}</td>
+                <td>{$v.dept_name|default=''}</td>
+                <td>{$v.name|default=''}</td>
+                <td>{$v.contact_tel|default=''}</td>
+                <td>{$v.op_name|default=''}</td>
+                <td>{$v.create_time|date='Y-m-d H:i:s'|default=''}</td>
+                <td>
+                    {if condition='isset($v.status) and $v.status eq 1'} 已启用 {else/} 未启用 {/if}
+                </td>
+                <td>
+                    <div style="width:120px;margin:0px auto">
+                        <a href="/employee/edit?id={$v.id|default=''}" class="editniu{if (!btnRule('/employee/edit/'))} btn_hide{/if}">编辑</a>
+                        <span class="disableniu{if (!btnRule('/employee/change/'))} btn_hide{/if}" data-status="{$v.status|default=''}"
+                                data-id="{$v.id|default=''}">{if condition='isset($v.status) and $v.status eq 1'}禁用{else/}启用{/if}</span>
+                        <span class="delniu{if (!btnRule('/employee/del/'))} btn_hide{/if}" data-id="{$v.id|default=''}">删除</span>
+                    </div>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+        {$list.page|raw|default=''}
+    </div>
+</div>
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0"
+        frameborder="0"></iframe>
+<div class="p-tancfl addtanchuang">
+    <div class="tancfl-title">
+        <span class="edit-fl">添加供应商分类</span>
+        <span class="p-close"></span>
+    </div>
+    <div class="contentnr">
+        <span>分类名称：</span>
+        <input class="fenleiname" type="text" placeholder="请输入供应商分类名称"><span class="requirebj">*</span>
+    </div>
+    <div class="foottanc">
+        <span class="p-btn p-padding cancelqx">取消</span><span class="p-btn  p-primary p-padding savebc">保存</span>
+    </div>
+</div>
+
+
+<div class="p-tancfl operationtc">
+    <div class="status">
+        <span class="status-pic"></span><span class="status-title">操作失败</span>
+    </div>
+    <div class="cannotms"><!-- 该部门存在关联人员，无法禁用。 --></div>
+    <div class="caozuosurewk"><span class="caozuosurewk-sure">确定</span></div>
+</div>
+
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/employee.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

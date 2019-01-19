@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<if condition="$info['canonical'] eq 1">
+    <link href="http://{:C('QZ_YUMINGWWW')}/riji/" rel="canonical" />
+</if>
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-diary.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/jquery.smint.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/TouchSlide.1.1.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<title>{$info.title} - 装修日记</title>
+</head>
+<body>
+<div class="m-wrap">
+    <div class="m-nav">
+    <div class="m-back"><a href="/"><span></span>后退</a></div>
+    <div class="m-title">装修知道</div>
+    <include file="Index:topMenu" />
+    </div>
+  <div class="m-logo">
+    <div class="logo-main"></div>
+    <div class="logo-s"></div>
+  </div>
+
+
+<a class="neckad-into" href="#"><img src="/assets/mobile/images/hl.jpg" width="640" height="142" alt=""/></a>
+<ul class="m-ask-choes subMenu">
+    <li class="active"><a href="#">{$info.title}日记</a></li>
+    <li class="switch">日记分类
+        <ul class="s2">
+        <li><a href="/riji/">全部日记</a></li>
+        <volist name="category" id="v">
+            <li><a href="/riji/c{$v.id}">{$v.type_name}</a></li>
+        </volist>
+        </ul>
+    </li>
+</ul>
+<ul class="diary-list">
+<volist name="list" id="v">
+<li>
+<if condition="$v['stage'] eq '1' "><div class="diary-t1">准备阶段</div><elseif condition="$v['stage'] eq 2" /><div class="diary-t2">施工阶段</div><else/><div class="diary-t3">入住阶段</div></if>
+<h1><a href="/riji/d{$v.id}.html">{$v.title}</a></h1>
+<div class="user-info"><img src="{$v.user_info.logo}" alt=""/><span>{$v.user_info.name}</span><span>{$v.pcount} 篇</span><span>{$v.diary_time|timeFormat} 更新</span></div>
+<div class="diary-list-main">{$v.content}</div>
+<div class="diary-list-img">
+<volist name="v['img_list']" id="vo">
+    <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" alt=""/>
+</volist>
+</div>
+</li>
+</volist>
+</ul>
+
+<div class="loading-more"><a href="javascript:;">加载更多..</a></div>
+<input name="pageid" id="pageid" type="hidden" value="{$info.pageid}">
+</div>
+
+<script language="javascript">
+$(function() {
+    var urlStr = window.location.href;
+    var isNextStatus = false;
+    $(".loading-more").click(function(event){
+        var page = $("#pageid").val();
+        var thisPage = 'p=' + page;
+        var nextPage = 'p=' + (parseInt(page) + 1);
+        var isNext = parseInt(page) % 5 ;
+        if(isNextStatus == true){
+            window.location.href = $(".loading-more a").attr("href");
+            return false;
+        }
+        if(page !== '0'){
+            if(urlStr.indexOf("p=") == -1 ){
+                if(urlStr.indexOf("?") == -1 ){
+                    var url = urlStr + "?p=" + (parseInt(page) + 1);
+                }else{
+                    var url = urlStr + "&p=" + (parseInt(page) + 1);
+                }
+            }else{
+                url = urlStr.replace(thisPage,nextPage);
+            }
+            $.ajax({
+                url: url + '&act=ajax',
+                type: 'POST',
+                dataType: 'html',
+            })
+            .done(function(result) {
+                $(".diary-list").append(result);
+                if(isNext == 0){
+                    $(".loading-more").html('<a href="' + url + '">下一页</a>');
+                    isNextStatus = true;
+                }
+                urlStr = url;
+                $("#pageid").val(parseInt(page) + 1);
+            })
+            .fail(function(xhr) {
+                alert("加载失败,请刷新再试！");
+            });
+        }
+    });
+});
+</script>
+
+
+<include file="Index:newFooter" />
+</body>
+</html>

@@ -1,0 +1,137 @@
+/*
+* @Author: qz_xsc
+* @Date:   2017-12-19 14:33:47
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-10-10 16:33:14
+*/
+body{background: #f5f5f5 !important}
+.bg-white{background: #fff;}
+.hidetab {overflow: hidden;}
+.hidetab ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+
+}
+.hidetab ul{padding:0.05rem 0px;}
+.hidetab ul li .bjtplogo{
+    width: 0.3rem;
+    height: 0.34rem;
+
+    margin: 0.06rem auto;
+}
+.hidetab ul li .tpimg {
+    background: url(/assets/gonglue/images/bjlogo01.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg3 {
+    background: url(/assets/gonglue/images/bjlogo03.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg2 {
+    background: url(/assets/gonglue/images/bjlogo02.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg4 {
+    background: url(/assets/gonglue/images/bjlogo04.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg5 {
+    background: url(/assets/gonglue/images/bjlogo05.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg6 {
+    background: url(/assets/gonglue/images/bjlogo06.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg7 {
+    background: url(/assets/gonglue/images/bjlogo07.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg8 {
+    background: url(/assets/gonglue/images/bjlogo08.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg9 {
+    background: url(/assets/gonglue/images/bjlogo09.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg10 {
+    background: url(/assets/gonglue/images/bjlogo10.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg11 {
+    background: url(/assets/gonglue/images/bjlogo11.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li .tpimg12 {
+    background: url(/assets/gonglue/images/bjlogo12.png) no-repeat;background-size: 100% 100%;
+}
+.hidetab ul li a p:last-child {
+    font-size: 12px;
+    color: #333;
+    line-height: .18rem;
+}
+.jrzxlc{text-align: center; font-size: 0.15rem; padding:0.19rem 0px;}
+.jrzxlc a span {
+    font-size: 0.205rem;
+    color: red;
+    margin-left: 0.05rem;
+}
+.zhuagnxiuxg {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    margin-top: 0.08rem;
+}
+.zhuagnxiuxg ul {
+    display: block;
+    height: auto;
+    overflow: hidden;
+    padding: 0px 0.1rem;
+}
+.zhuagnxiuxg .zxstyle {
+    width: 100%;
+    margin: 0 auto;
+    height: .42rem;
+    line-height: .42rem;
+}
+.zhuagnxiuxg .zxstyle span {
+    float: left;
+    font-size: 0.16rem;
+}
+.zhuagnxiuxg .zxstyle a {
+    float: right;
+    font-size: 0.12rem;
+}
+.new_style_list {
+    height: 0.85rem !important;
+    width: 100% !important;
+    overflow: hidden;
+    margin-bottom: 0.14rem;
+}
+.new_style_img {
+    width: 1.19rem;
+    float: left;
+}
+.new_style_img img {
+    width: 100%;
+}
+.new_style_content {
+    margin-left: 1.3rem;
+}
+.zhuagnxiuxg ul li .xdjyfg {
+    font-size: 0.15rem;
+    overflow: hidden;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    color: #333;
+}
+.new_style_title {
+    font-size: 0.15rem !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+.zhuagnxiuxg ul li p {
+    width: 100%;
+}
+.new_style_xq {
+    height: 0.3rem !important;
+    font-size: 0.11rem !important;
+    color: #999;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}

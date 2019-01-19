@@ -1,0 +1,88 @@
+/*
+* @Author: qz_xsc
+* @Date:   2017-12-16 13:46:04
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2017-12-16 13:58:02
+*/
+.m-hxsj-finish {
+    text-align: center;
+    padding: 15px 0;
+}
+.m-font-h1 {
+    font-size: 1.5em;
+    line-height: 2em;
+}
+.m-font-h1 i.fa {
+    vertical-align: -0.15em;
+    margin-right: 5px;
+    font-size: 1.8em;
+    color: #5fbd05;
+}
+.m-hxsj-finish p span {
+    color: #ec4646;
+}
+.m-hxsj-finish p {
+    font-size: 0.8em;
+    line-height: 1.8em;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.m-hxsj-erweima {
+    background: #fff;
+    padding: 20px 30px;
+    overflow: hidden;
+}
+.m-hxsj-erweima-img {
+    float: left;
+    width: 50%;
+}
+.m-hxsj-erweima-aside {
+    font-size: 0.8em;
+    text-align: center;
+    line-height: 2em;
+}
+.m-hxsj-erweima p {
+    font-size: 0.8em;
+    clear: both;
+}
+.m-more-link {
+    padding: 10px 0;
+    background: #fff;
+    margin-top: 20px;
+}
+.m-more-link-tit {
+    padding-left: 10px;
+}
+.m-more-link ul {
+    overflow: hidden;
+}
+.m-more-link ul li {
+    float: left;
+    width: 25%;
+    padding: 0 1em;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 2.5em;
+    white-space: nowrap;
+}
+.m-more-link ul li span {
+    padding: 15%;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+    border-radius: 40%;
+    opacity: 0.8;
+}
+.m-more-link ul li span mip-img {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+}
+
+mip-img {
+    border: 0;
+    vertical-align: bottom;
+}

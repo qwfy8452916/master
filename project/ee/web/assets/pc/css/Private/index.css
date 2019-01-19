@@ -1,0 +1,151 @@
+h1{
+  font-size: 35px;
+  margin: 20px 0 20px 10px;
+  color: #108EE9;
+  font-weight: bolder;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+.fr{
+  float: right;
+}
+
+.calendar-time{
+  display: none !important;
+}
+
+.center{
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.enter{
+  float: left;
+  width: 22%;
+  height: 385px;
+  border: 1px solid #F0F3F5;
+  margin-left: 3%;
+}
+
+.title{
+  padding: 10px 10px;
+  font-size: 18px;
+  background-color: #F0F3F5;
+}
+
+.enter ul{
+  overflow: hidden;
+  padding: 34px 15px;
+}
+
+.enter li{
+  width: 50%;
+  float: left;
+}
+
+.enter li .img{
+  width: 90px;
+  height: 90px;
+  background-color: skyblue;
+  margin: 0 auto;
+}
+
+.enter li p{
+  text-align: center;
+  padding: 10px 0 20px 0;
+}
+
+ .item{
+  float: left;
+  height: 385px;
+  width: 69%;
+  overflow: hidden;
+  border: 1px solid #F0F3F5;
+}
+
+ .item .content {
+  padding: 10px;
+  height: 350px;
+}
+
+.content .none{
+  height: 260px;
+  border: 1px solid #ddd;
+  margin-top: -20px;
+  border-top: none;
+  padding-top: 20px;
+}
+
+
+ .item .content tbody td{
+  height: 55px;
+  vertical-align: middle !important;
+}
+
+table {
+  text-align: center;
+}
+table th{
+  text-align: center;
+}
+
+.bottom {
+  margin-top: 10px;
+  width: 94%;
+  padding: 0 20px;
+
+}
+
+.bottom .cont{
+  border: 1px solid #F0F3F5;
+}
+
+.bottom #statistic{
+  height: 500px;
+  padding: 0 10px;
+  
+}
+
+.bottom .search{
+  padding-top: 5px;
+  overflow: hidden;
+}
+
+.weekmonth{
+  padding: 0 !important;
+  width: 9% !important;
+}
+
+.bottom .search span{
+  height: 34px;
+  line-height: 34px;
+  margin-left: 15px;
+  cursor: pointer;
+  color: #666;
+}
+
+.bottom .search span.active{
+  color: skyblue;
+}
+
+.demo {
+  padding-left: 0;
+  position: relative;
+  width: 250px !important;
+}
+
+.demo i {
+  position: absolute;
+  bottom: 10px;
+  right: 24px;
+  top: auto;
+  cursor: pointer;
+}
+
+#ceshi{
+  display: none;
+}

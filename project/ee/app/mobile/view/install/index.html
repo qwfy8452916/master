@@ -1,0 +1,70 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap">
+    <header class="sim-table public-header">
+        <div class="menu" id="menu" style="width: 0.85rem;"><img src="/assets/mobile/common/img/menu.png" alt=""></div>
+        <div data-top="top">设置</div>
+        <div></div>
+    </header>
+
+    <div class="set-index-container">
+        <a href="/userset/info" style="display: inline-block;height: auto;">
+        <div class="sim-table company-head-area set-head-area">
+            <div class="first">
+                {if ($accountinfo['image'] neq '' AND !empty($accountinfo['image']))}
+                    <span style="display: inline-block; width: 3.75rem; height: 3.75rem;"><img src="{$accountinfo.image}" alt=""></span>
+                {else/}
+                <span style="display: inline-block; width: 3.75rem; height: 3.75rem;"><img src="/assets/mobile/common/img/avatar.png" alt=""></span>
+                {/if}
+            </div>
+            <div class="second" style="width: 10rem;">
+                <p class="cname">{$accountinfo.contact_name}</p>
+                <p class="permission">账号：{$accountinfo.account}</p>
+                <p class="role">岗位：{$accountinfo.name}</p>
+            </div>
+            <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+        </div>
+        </a>
+        <div class="set-base">
+            <a href="/userset/cpd">
+            <div class="sim-table set-base-item">
+                <div class="first"><i class="iconfont icon-lock"></i></div>
+                <div class="second">密码修改</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+            </a>
+        </div>
+        <div class="set-base{if (!btnRule('/feedback/'))} btn_hide{/if}">
+            <a href="/feedback">
+            <div class="sim-table set-base-item">
+                <div class="first"><i class="iconfont icon-note"></i></div>
+                <div class="second">意见反馈</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+            </a>
+        </div>
+    </div>
+    <button class="sign-out" onclick="loginout()">退出登录</button>
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript">
+    function loginout() {
+        ajaxAction({
+            url: "/login/loginout",
+            method: "get",
+            successCallback: function (res) {
+                if(res.error_code==0){
+                    location.href='/login';
+                }else{
+                    $.toptip(res.error_msg);
+                }
+            }
+        })
+    }
+</script>
+{/block}

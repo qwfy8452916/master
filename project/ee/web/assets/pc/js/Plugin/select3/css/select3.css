@@ -1,0 +1,121 @@
+/*
+* @Author: Administrator
+* @Date:   2019-01-14 08:37:38
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-01-14 08:38:39
+*/
+.select3{
+  width:100%;
+  height: 38px;
+  border:1px solid #ccc;
+  color:#333;
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  -webkit-user-select:none;
+  -o-user-select:none;
+  vertical-align: middle;
+  -moz-user-select:none;
+}
+.select3 .select-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+.select3 .placeholder {
+  float:left;
+  color:#666;
+}
+.select3 .icon-select {
+  width:0;
+  height:0;
+  border-width:6px 3px 0;
+  border-style:solid;
+  border-color:#666666 transparent transparent;
+  position: absolute;
+  right:8px;
+  top:16px;
+}
+.select-item {
+  padding-right:10px;
+}
+.select3-chosebox{
+  position: absolute;
+  border:1px solid #ccc;
+  box-shadow: 0px 3px 5px #ccc;
+  border-top:none;
+  background: #fff;
+  z-index: 10000;
+}
+.select3-chosebox ul{
+  list-style: none;
+  cursor: pointer;
+  margin:0px;
+  margin-top:6px;
+  padding:0px;
+  height: 175px;
+  overflow-y: auto;
+}
+.select-no-data{
+  color:#666;
+  padding:8px;
+  font-size: 14px;
+}
+.select3-chosebox ul li{
+  height: 35px;
+  line-height: 35px;
+  overflow: hidden;
+  font-size: 14px;
+  padding:0px 6px;
+  white-space: nowrap;
+}
+.select3-chosebox ul li:hover{
+  background: #F0F3F5;
+}
+.select3-chosebox ul li input{
+  float: left;
+  margin-top:11px;
+  margin-right:6px;
+  display: none
+}
+.select-name{
+  float: left;
+  width: 60%;
+}
+.select-rel{
+  float:right;
+  color:#1890FF;
+}
+.select3-active{
+   background:#1890FF;
+   color:#fff;
+}
+.select3-active:hover{
+  background:#1890FF !important;
+  color:#fff !important;
+}
+.select3-active span{
+  color:#fff !important;
+}
+.select-btn {
+  padding:3px 10px;
+  cursor:pointer;
+  border-radius: 5px;
+  display: inline-block;
+  margin:0px 5px;
+  font-size:14px;
+  border:1px solid #1890FF;
+}
+.select-btn-box{
+  padding:8px;
+  border-top:1px solid #ccc;
+  text-align: right;
+}
+.select-btn-pamary{
+  background: #1890FF;
+  color:#fff;
+}
+.select-btn-default{
+  background: none;
+  color:#1890FF;
+}

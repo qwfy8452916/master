@@ -1,0 +1,225 @@
+<extend name="Main:baseTemplate"/>
+<block name="title">
+    <title>装修攻略-标签组管理-编辑</title>
+</block>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="/assets/common/js/plugins/datetimepicker/datetimepicker.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" type="text/css" href="/assets/common/css/Alert.css?v={:C('STATIC_VERSION')}"/>
+    <style type="text/css">
+        .input_d {
+            width: 500px
+        }
+    </style>
+</block>
+<block name="content">
+    <section class="content-header">
+        <if condition="$_GET['type'] eq 1">
+            <if condition="$_GET['id'] eq ''">
+                <h1>标签组新增</h1>
+                <else/>
+                <h1>标签组编辑</h1>
+            </if>
+            <else/>
+            <if condition="$_GET['id'] eq ''">
+                <h1>标签新增</h1>
+                <else/>
+                <h1>标签编辑</h1>
+            </if>
+        </if>
+    </section>
+    <switch name="type">
+        <case value="1">
+            <div class="form" style="margin: 30px 0 0 20px">
+                <form class="tag_form">
+                    <div class="form-group">
+                        <div>标签组名</div>
+                        <input type="text" class="form-control input_d" name="tag_name"
+                               placeholder="请输入标签组名"
+                               value="{$data.name}">
+                    </div>
+                    <div class="form-group">
+                        <div>排序</div>
+                        <input type="text" class="form-control input_d" name="tag_order"
+                               placeholder="标签组排序"
+                               value="{$data.order|default=0}">
+                    </div>
+                    <div class="form-group">
+                        <div>是否展示在前台</div>
+                        <div >
+                            <label class="control-label">
+                                <if condition="$data.on EQ 1">
+                                    <input  class="icheck" type="radio" name="on" checked value="1" />&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input  class="icheck" type="radio" name="on"   value="2" />&nbsp;&nbsp;否
+                                <else/>
+                                    <input  class="icheck" type="radio" name="on"  value="1" />&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input  class="icheck" type="radio" name="on" checked value="2" />&nbsp;&nbsp;否
+                                </if>
+                                <input type="hidden" name="style"  value="{$Think.get.style}" />
+                            </label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="edit_id" value="{$data.id}">
+                    <input type="hidden" name="type" value="1">
+                </form>
+            </div>
+        </case>
+        <case value="2">
+            <div class="form" style="margin: 30px 0 0 20px">
+                <form class="tag_form">
+                    <if condition="$pdata neq null">
+                    <div class="form-group">
+                        <div>标签组</div>
+                        <select class="form-control select-sm input_d" name="pid">
+                            <volist name="pdata" id="pd">
+                                <if condition="$data['pid'] eq $pd['id']">
+                                    <option value="{$pd.id}" selected>{$pd.name}</option>
+                                    <else/>
+                                    <option value="{$pd.id}">{$pd.name}</option>
+                                </if>
+                            </volist>
+                        </select>
+                    </div>
+                    </if>
+                    <div class="form-group">
+                        <div>标签名</div>
+                        <input style="" type="text" class="form-control input_d" name="tag_name"
+                               placeholder="请输入新标签名"
+                               value="{$data.name}">
+                    </div>
+                    <div class="form-group">
+                        <div>标签链接</div>
+                        <input type="text" class="form-control input_d" name="tag_url"
+                               placeholder="请输入标签链接"
+                               value="{$data.url}">
+                    </div>
+                    <div class="form-group">
+                        <div>排序</div>
+                        <input type="text" class="form-control input_d" name="tag_order"
+                               placeholder="标签排序"
+                               value="{$data.order|default=1}">
+                    </div>
+                    <input type="hidden" name="edit_id" value="{$data.id}">
+                    <input type="hidden" name="type" value="2">
+                    <input type="hidden" name="style" value="{$Think.get.style}">
+                    <input type="hidden" name="on" value="1">
+                </form>
+            </div>
+        </case>
+    </switch>
+    <div class="col-xs-2">
+        <div class="btn btn-primary back_btn"><i class="glyphicon glyphicon-chevron-left"></i> 返回</div>
+        <div style="margin-left: 20px" class="btn btn-info save_btn"><i class="glyphicon glyphicon-ok"></i> 保存</div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="/assets/common/js/Alert.js?v={:C('STATIC_VERSION')}"></script>
+    <script>
+        $(function () {
+            //返回按钮
+            $(".back_btn").on('click', function () {
+                window.history.back(-1);
+            });
+            //保存按钮
+            $(".save_btn").on('click', function () {
+                var _this = $(this);
+                var style = "{$style}";
+                //验证名称是否存在
+                var tag_name = $("input[name=tag_name]").val();
+                if(tag_name == ''){
+                    $("input[name=tag_name]").focus();
+                    _this.Alert({
+                        msg: "请输入名称！",
+                        level: 2
+                    });
+                    return false;
+                }
+//                var tag_url = $("input[name=tag_url]").val();
+//                if(tag_url == ''){
+//                    $("input[name=tag_url]").focus();
+//                    _this.Alert({
+//                        msg: "请输入标签链接！",
+//                        level: 2
+//                    });
+//                    return false;
+//                }
+
+//                var match = /^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&:\/~\+#]*[\w\-\@?^=%&\/~\+#])?$/;
+//                if(!match.test(tag_url)){
+//                    $("input[name=tag_url]").focus();
+//                    _this.Alert({
+//                        msg: "请输入正确格式的标签链接！",
+//                        level: 2
+//                    });
+//                    return false;
+//                }
+//
+//                var tag_order = $("input[name=tag_order]").val();
+//                if(tag_order == ''){
+//                    $("input[name=tag_order]").focus();
+//                    _this.Alert({
+//                        msg: "请输入排序号！",
+//                        level: 2
+//                    });
+//                    return false;
+//                }
+
+                var edit_id = $("input[name=edit_id]").val();
+                var style = $("input[name=style]").val();
+                if (!edit_id) {
+                    $.ajax({
+                        url: '/specialarticle/checkname',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: {tag_name:tag_name,style:style}
+                    })
+                        .done(function (data) {
+                            if(data.status == 0){
+                                _this.Alert({
+                                    msg: data.info,
+                                    level: 2
+                                });
+                                $("input[name=tag_name]").focus();
+                                return;
+                            }
+                            saveData(_this);
+                        })
+                        .fail(function () {
+                            _this.Alert({
+                                msg: "操作失败,请联系技术部门！",
+                                level: 2
+                            });
+                        });
+                }else {
+                    saveData(_this);
+                }
+            });
+        })
+
+        //验证成功后采去提交数据
+        function saveData(_this) {
+            var obj = $(".tag_form").serializeArray();
+            $.ajax({
+                url: '/specialarticle/basetagsedit',
+                type: 'POST',
+                dataType: 'JSON',
+                data: obj
+            })
+                .done(function (data) {
+                    if (data.status == 1) {
+                        window.location.href = '/specialarticle/basetags?style={$Think.get.style}';
+                    } else {
+                        _this.Alert({
+                            msg: data.info,
+                            level: 2
+                        });
+                    }
+                })
+                .fail(function () {
+                    _this.Alert({
+                        msg: "操作失败,请联系技术部门！",
+                        level: 2
+                    });
+                });
+        }
+    </script>
+</block>

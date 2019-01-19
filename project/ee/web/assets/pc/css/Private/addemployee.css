@@ -1,0 +1,20 @@
+input,select{outline: none;}
+
+.add-waik{overflow: hidden;}
+.btn-addfl{background: #1890ff;color: #fff;}
+.tabwaik{overflow: hidden;margin-top: 24px;border-top: 1px solid #e6e6e6;margin-bottom: 50px;padding-top: 24px;}
+.addtanchuang{width: 600px;height: 326px;display: none;}
+
+.puthangwk{overflow: hidden;}
+.puthangwk .spantitle{display: inline-block;width: 85px;text-align: right;line-height: 40px;}
+.puthangwk .inputwk{width: 340px;height: 40px;display: inline-block;}
+.puthangwk .redxing{color: #f5222d;margin-left: 14px;}
+.puthangwk .selectxing{margin-left: 6px;}
+.puthangwk .selectwk{width: 348px;}
+.footwk{overflow: hidden;}
+.cancelbtn{margin-left: 20px;background: #fff;border:0;}
+.tishi{color: #f5222d;font-size: 12px;margin-left: 80px;height: 24px;}
+.resetpass{padding: 10px 30px;margin-left: 6px;}
+.passwaik{overflow: hidden;padding: 40px 0 18px 0;border-bottom: 1px solid #e6e6e6;}
+.p-tancfl .contentnr{margin-bottom: 0;border-bottom: 0;padding-bottom: 0;margin-top: 0;}
+.passtishi{text-align: left;margin-left: 190px;color: #f5222d;font-size: 12px;height: 24px;}

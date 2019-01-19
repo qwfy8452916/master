@@ -1,0 +1,128 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修公司</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/company/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <div class="box">
+        <div class="form_control">
+            <mip-form method="get" url="http://mip.qizuang.com/company/?keyword=">
+                <input type="text" name="keyword" value="{$Think.get.keyword}" placeholder="查找你了解的装修公司" validatetarget="keyword" validatetype="must">
+                <div target="keyword">关键词不能为空</div>
+                <button type="submit"><i class="fa fa-search"></i></button>
+           </mip-form>
+        </div>
+    </div>
+    <if condition="!isset($is_www)">
+    <section class="menu_list">
+         <ul class="pull_down_list">
+           <mip-accordion sessions-key="mip_4" expaned-limit>
+                <section>
+                    <li class="parten_menu">{$navbar.area.selected.name|default="服务区域"}</li>
+                    <div class="tab_container">
+                        <volist name="navbar.area.result" id="vo">
+                            <a data-type='mip' rel="nofollow" href="{$vo.link}/">{$vo.name}</a>
+                        </volist>
+                    </div>
+                    <div class="active_mask"></div>
+                </section>
+                <section>
+                    <li class="parten_menu">{$navbar.fenge.selected.name|default="擅长风格"}</li>
+                    <div class="tab_container">
+                        <volist name="navbar.fenge.result" id="vo">
+                            <a data-type='mip' rel="nofollow" href="{$vo.link}/">{$vo.name}</a>
+                        </volist>
+                    </div>
+                </section>
+                <section>
+                    <li class="parten_menu">{$navbar.guimo.selected.name|default="公司规模"}</li>
+                    <div class="tab_container">
+                        <volist name="navbar.guimo.result" id="vo">
+                                <a data-type='mip' rel="nofollow" href="{$vo.link}/">{$vo.name}</a>
+                        </volist>
+                    </div>
+                    <div class="active_mask"></div>
+                </section>
+           </mip-accordion>
+        </ul>
+    </section>
+    </if>
+    <div class="company-box">
+        <ul>
+            <volist name="info.list" id="vo">
+                <li>
+                    <a data-type="mip" rel="nofollow" href="{$global_basehost}/{$vo.bm}/company_home/{$vo.id}">
+                        <div class="company-left">
+                            <mip-img src="{$vo.logo}" alt="{$vo.qc}" class="position-center"></mip-img>
+                        </div>
+                        <div class="company-center">
+                            <div class="center-container position-center">
+                                <div class="company-name">{$vo.jc|mbstr=0,10}</div>
+                                <div class="level">
+                                    <span>信赖度</span>
+                                    <span class="xld-srtar">
+                                            <for start="0" end="$vo.star">
+                                            <i class="fa fa-star"></i>
+                                            </for>
+                                        </span>
+                                </div>
+                                <div class="level">
+                                    <span>案例数</span><span class="hpl">{$vo.count|default=0}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="company-right">
+                            <a data-type="mip" rel="nofollow" href="http://{:C('MOBILE_DONAMES')}/sheji?src=mip" class="position-center to-datial">免费设计</a>
+                        </div>
+                    </a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+    <!--分页-->
+    {$info.page}
+    </div>
+    <!--新上传装修案例-->
+    <div class="new-upload">
+        <div class="new-upload-title">
+            <span>新上传装修案例</span> <!--<a data-type="mip" href="">更多</a>-->
+            <if condition="!isset($is_www)">
+                <a data-type="mip" href="http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/xgt/">更多</a>
+                <else/>
+                <a data-type="mip" href="http://{:C('MIP_DONAMES')}/xgt/">更多</a>
+            </if>
+        </div>
+    </div>
+    <div class="more-company">
+        <mip-vd-tabs allow-scroll>
+            <section>
+                <volist name="info.cases" id="vo">
+                    <li>
+                        <a data-type="mip" href="http://{:C('MIP_DONAMES')}/{$vo.bm}/caseinfo/{$vo.id}.shtml">
+                            <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w660.jpg" alt="{$vo.jc}"></mip-img>
+                            <div class="case-detail">
+                                <div class="case-title">{$vo.title|mbstr=0,10}</div>
+                                <div class="case-name"><span>{$vo.jc}</span><span>{$vo.mianji}m <sup>2</sup></span></div>
+                                <div class="case-style">{$vo.fname}</div>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </section>
+        </mip-vd-tabs>
+    </div>
+</block>
+<block name="script">
+    <!--搜索框-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-form/mip-form.js"></script>
+
+
+     <!--下拉菜单切换-->
+    <script src="https://c.mipcdn.com/static/v1/mip-accordion/mip-accordion.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+</block>

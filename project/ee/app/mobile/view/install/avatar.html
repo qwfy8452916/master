@@ -1,0 +1,45 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/avatar.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="/userset/info" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 0.5rem"></i><span class="top-middle" style="font-size: 0.7rem;padding-left:1.7rem;vertical-align: top">个人信息</span></a></div>
+    <div>个人头像</div>
+    <div class="rel">
+        <span class="pr1 upavatar">•••</span>
+        <div class="weui-cells weui-cells_form" id="uploaderCustom">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <div class="weui-uploader">
+                        <div class="weui-uploader__bd">
+                            <ul class="weui-uploader__files" id="uploaderCustomFiles" style="margin-right: -9px;"></ul>
+                            <div class="weui-uploader__input-box">
+                                <input id="uploaderCustomInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="avatar-box">
+    {if ($accountinfo['image'] neq '' AND !empty($accountinfo['image']))}
+        <img src="{$accountinfo.image}" alt="" data-name="avatar">
+    {else/}
+        <img src="/assets/mobile/common/img/avatar.png" alt="" data-name="avatar">
+    {/if}
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/install/js/avatar.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+    if(isWechat && mobileSystem().toLowerCase() == "android"){
+        $("#uploaderCustomInput").attr("capture", "camera");
+    }
+</script>
+{/block}

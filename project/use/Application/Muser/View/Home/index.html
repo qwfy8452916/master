@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>用户中心-齐装网</title>
+    <include file="Index:css_resources" />
+
+</head>
+
+<body class="m-bg">
+    <div class="m-wrap">
+        <div id="tab">
+            <div class="top-fixed">
+                <include file="Index:header" />
+                <div class="j-tab-nav">
+                    <a href="javascript:void(0);" class="current">已读订单</a>
+                    <a href="javascript:void(0);">未读订单
+                    <if condition="$unReadOrderCount NEQ null">
+                        <span>{$unReadOrderCount}</span>
+                    </if>
+                    </a>
+                </div>
+            </div>
+            <div class="order-main j-tab-con">
+                <ul class="order-list">
+                    <if condition="$readOrder NEQ null">
+                    {$readOrder}
+                    <else/>
+                    <li class="no-order">暂时没有未读订单信息</li>
+                    </if>
+                </ul>
+                <ul class="order-list un-order-list" style="display: none;">
+                    <if condition="$unReadOrderCount NEQ null">
+                    {$unReadOrder}
+                    <else/>
+                    <li class="no-order">暂时没有未读订单信息</li>
+                    </if>
+                </ul>
+                <p class="no-data">我是有底线的</p>
+            </div>
+        </div>
+    </div>
+     <div class="tips-mask">
+        <div class="tips-win">
+            <div class="domain">old.qizuang.com</div>
+            <p class="alert-info">密码错误五次，您可以找回密码，或10分钟后再试</p>
+            <div class="okBtn">
+                OK
+            </div>
+        </div>
+    </div>
+</body>
+<include file="Index:js_resources" />
+<script type="text/javascript" src="/assets/common/js/jQuery.rTabs.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript">
+$(function() {
+    var check_alert = '{$check_alert}';
+    if(check_alert == 1){
+        $(".alert-info").text("为了您的订单信息安全 , 请每隔30天前往PC端修改一次订单查询密码");
+        $(".tips-mask").fadeIn();
+    }
+    $("#tab").rTabs({
+        bind: 'click',
+        auto: false
+    });
+    $(".okBtn").click(function(event) {
+        $(".tips-mask").fadeOut();
+    });
+
+
+    $(window).scroll(function(event) {
+        //浏览器到底部了
+        var flag = false;
+        if($(document).scrollTop() >= $(document).height()-$(window).height()){
+            flag = true;
+        }
+        var loading = "<div class='loading'><div class='bottom'></div></div>";
+        if(flag){
+            if($(".loading").length == 0){
+                $(".loading").remove();
+                $("body").append(loading);
+                var index = $(".j-tab-nav .current").index();
+                $.ajax({
+                    url: '/orderlist',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        index: index
+                    }
+                })
+                .done(function(data) {
+                    $(".loading").remove();
+                    if(data.status == 1){
+                       $(".order-list").eq(index).append(data.data);
+                    }else{
+                        if($(".order-list").eq(index).find('.no-order').length==0){
+                            $(".no-data").css("display",'block')
+                        }else{
+                            $(".no-data").css("display",'none')
+                        }
+                        // alert("没有订单数据了");
+                    }
+                })
+                .fail(function() {
+                    alert("获取列表失败！");
+                });
+            }
+        }
+    });
+    // var pageStarX = 0;
+    // var pageStarY = 0;
+    // $("body")[0].addEventListener("touchstart",function(event){
+    //     pageStarX = event.targetTouches[0].screenX;
+    //     pageStarY = event.targetTouches[0].screenY;
+    // });
+
+    // $("body")[0].addEventListener("touchmove",function(event){
+
+    //     var pageEndX = event.targetTouches[0].screenX - pageStarX;
+    //     var pageEndY = event.targetTouches[0].screenY - pageStarY;
+    //     if( pageEndY >=-5 && pageEndY <= 5){
+    //         //如果pageendY小于5，判断为左右滑动
+    //         event.preventDefault();
+    //         if(pageEndX >= 0){
+    //             $(".j-tab-nav a").eq(0).trigger('click');
+    //         }else{
+    //             $(".j-tab-nav a").eq(1).trigger('click');
+    //         }
+    //     }else{
+
+    //     }
+
+    // });
+})
+</script>
+
+</html>

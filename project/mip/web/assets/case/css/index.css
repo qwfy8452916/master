@@ -1,0 +1,63 @@
+/*
+* @Author: qz_xsc
+* @Date:   2017-12-25 09:32:24
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2017-12-25 11:06:23
+*/
+body{color:#3c3c3c; }
+.caseInfo{border-top:1px solid #CFCFCF;}
+.m-case-tit {
+    width: 100%;
+    margin: 0 auto;
+}
+.m-case-tit p.home-tit {
+    margin-top: 35px;
+}
+.m-case-tit p {
+    width: 100%;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+}
+.m-case-tit p.home-tit span {
+    margin: 0 6px;
+}
+.m-case-tit p.company-tit {
+    font-size: 14px;
+    margin: 20px 0px;
+}
+.zxpic .zxpic-tit {
+    width: 90%;
+    margin: 20px auto;
+    font-size: 14px;
+}
+.zb-bottom {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 70px;
+    background: rgba(255,255,255,0.6);
+}
+#footer{
+    display: none;
+}
+footer {
+    text-align: center;
+    width: 100%;
+    background: #eee;
+    padding: 1em 0;
+    font-size: 0.6em;
+    /* line-height: 2em; */
+    padding-bottom: 100px;
+}
+.zb-bottom a {
+    display: inline-block;
+    width: 45%;
+    height: 40px;
+    border-radius: 4px;
+    background: #ff5659;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 20px;
+}

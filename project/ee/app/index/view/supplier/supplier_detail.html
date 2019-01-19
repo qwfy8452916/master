@@ -1,0 +1,88 @@
+{extend name="common:basic" /}
+{block name="title"}
+    供应商管理
+{/block}
+{block name="bread_title"}
+<span>供应商管理/供应商详情</span>
+{/block}
+{block name='link'}
+    <link rel="stylesheet" href="/assets/pc/css/Private/supplier/addsupplier.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name='content'}
+    <div class="p-panel">
+        <div class="p-header">
+            基本信息
+        </div>
+        <div class="info-text">
+            <p><span>供应商名称：</span>{$info.supplier.name|default=''}</p>
+            <p><span>供应商地址：</span>{$info.supplier.pname|default=''}/{$info.supplier.cname|default=''}/{$info.supplier.address|default=''}</p>
+            <div class="b-owf ">
+                <span class="b-fl">供应商分类：</span>
+                <div class="b-fl supplier_types">
+                    {volist name='$info.supplier.category_names' id="vo" key="key"}
+                        {if condition="$key eq count($info.supplier.category_names)"}
+                            <span>{$vo}</span>
+                        {else/}
+                            <span>{$vo}/</span>
+                        {/if}
+                    {/volist}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-panel">
+        <div class="p-header">
+            联系信息
+        </div>
+        <div class="info-text">
+            <p><span>联系人姓名：</span>{$info.supplier.contact_name|default=''}</p>
+            <table class="contact-info">
+                <td><span>手机号：</span>{$info.supplier.contact_tel|default=''}</td>
+                <td><span>微信号：</span>{$info.supplier.contact_wx|default=''}</td>
+                <td><span>邮箱地址：</span>{$info.supplier.contact_email|default=''}</td>
+            </table>
+        </div>
+    </div>
+    <div class="p-panel">
+        <div class="p-header">
+            付款信息
+        </div>
+        <div class="subblock">
+            <div class="info-text">
+                <p><span class="spantitle">结算方式：</span>{$payType[$info['supplier']['pay_way']]}</p>
+            </div>
+            <div class="subpay">
+                <div class="paytype">
+                    <p class="payname">付款方式</p>
+                </div>
+                <div class="info-text">
+                    <p><span>支付宝账号：</span>{$info.supplier.ali_account|default=''}</p>
+                    <p><span>微信账号：</span>{$info.supplier.wx_account|default=''}</p>
+                    <div class="b-owf">
+                        <span class="b-fl">银行账号：</span>
+                        <table class="b-fl detail-table">
+                            {volist name="info.bank" id="vo"}
+                            <tr>
+                                <td>{$vo.bank_name}</td>
+                                <td>{$vo.bank_open}</td>
+                                <td><span class="spantitle"></span><span class="kh-bank">{$vo.bank_account}</span>
+                               </td>
+                            </tr>
+
+                            {/volist}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-btn b-fr">
+        <a href="/supplier/" class="p-btn p-primary">返回</a>
+    </div>
+    <div class="b-cleat-float"></div>
+{/block}
+{block name="script"}
+
+
+    <!-- 页面私有方法 , 保存, 验证...-->
+{/block}

@@ -1,0 +1,1 @@
+a:8:{i:0;s:2:"id";i:1;s:9:"qz_areaid";i:2;s:7:"qz_area";i:3;s:8:"fatherid";i:4;s:6:"orders";i:5;s:4:"type";s:3:"_pk";s:2:"id";s:5:"_type";a:6:{s:2:"id";s:7:"int(11)";s:9:"qz_areaid";s:7:"int(11)";s:7:"qz_area";s:11:"varchar(20)";s:8:"fatherid";s:7:"int(11)";s:6:"orders";s:6:"int(2)";s:4:"type";s:10:"tinyint(1)";}}

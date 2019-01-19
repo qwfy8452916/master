@@ -1,0 +1,198 @@
+/*面板样式*/
+.p-panel{margin: 15px 0;padding: 24px;border-radius: 5px;
+background: #fff;}
+.p-header{border-bottom:1px solid #EDEDED; font-size: 16px; padding-bottom:20px; margin-top: -5px;}
+/*面板样式*/
+
+/*按钮样式*/
+.p-btn{
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+ 	border:1px solid #d8d8d8;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+ }
+.p-primary{background: #1890FF;color: #fff; border:1px solid #1890FF;}
+.p-origin{background: #fa8c16;color: #fff; border:1px solid #fa8c16;}
+.p-white{background: #fff; color:#333;border:1px solid #fff; }
+.p-blue{background:#00A65A;color:#fff;border:1px solid #00A65A}
+.p-normal{background: none; color:#1890FF;border:1px solid #1890FF;}
+.p-btn:hover{opacity: 0.8}
+.p-btn a{color:inherit;}
+/* .p-padding{padding:10px 35px;} */
+/*按钮样式*/
+
+/*表格样式*/
+.p-suppliertab{width: 100%;}
+
+.p-suppliertab thead tr{background: #f0f0f0; }
+.p-suppliertab tbody tr{border-bottom: 1px solid #e6e6e6;}
+.p-suppliertab td,.p-suppliertab th{width: 1%;
+    text-align: center;padding:18px 8px;
+    word-wrap:break-word;
+}
+.p-suppliertab tbody tr:hover{
+    background: #EBF1F5
+}
+/*表格样式*/
+
+/*背景阴影*/
+.p-backbj{position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity:0.7;
+    filter:alpha(opacity=70);
+    background: black;
+    z-index: 9;
+    display: none;
+    }
+/*背景阴影*/
+
+/*弹窗*/
+.p-tancfl{border-radius: 5px;background: #fff;position: fixed;top: 0;
+bottom: 0;left: 0;right: 0;margin: auto;z-index: 10;overflow: hidden;}
+.p-tancfl .tancfl-title{height: 60px;line-height: 60px;border-bottom: 1px solid #e6e6e6;
+padding: 0 30px;}
+.p-tancfl .edit-fl{float: left;}
+.p-tancfl .p-close{display: inline-block;width: 14px;height: 14px;padding:5px;
+background: url(/assets/pc/img/Private/p_close.png) no-repeat center center;float: right;margin-top: 19px;
+cursor: pointer;}
+.p-tancfl .contentnr{text-align: center;margin-top: 40px;padding-bottom: 70px;border-bottom: 1px solid #e6e6e6;}
+.p-tancfl .contentnr input{height: 38px;border:1px solid #d6d6d6;border-radius: 5px;
+width: 298px;outline: none;text-indent: 1em;}
+.p-tancfl .contentnr .requirebj{color: #f5222d;margin-left: 6px;}
+.p-tancfl .foottanc{overflow: hidden;margin-top: 20px;}
+.p-tancfl .foottanc .savebc{float: right;}
+.p-tancfl .foottanc .cancelqx{float: right;margin-left: 16px;margin-right: 30px;}
+/*弹窗*/
+
+
+
+/*input样式*/
+
+.p-input{width:100%; height: 38px; border-radius: 5px; border:1px solid #D6D6D6; outline: none; padding-left: 8px; line-height: 38px;}
+.p-form-box{
+    width:100%;overflow:hidden;
+}
+.p-form-column{
+    width:25%; float: left;
+}
+.p-form-title{
+    width: 25%;
+    min-width: 60px;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: right;
+    position: relative;
+}
+.p-form-title .p-long-text{
+    position: absolute;
+    display: block;
+    right:0px;
+    height: 100%;
+}
+.p-form-column .p-input{
+    width:60%;
+    min-width:160px;
+}
+ 
+
+/*编辑,禁用,删除*/
+.p-eidt{color:#1890FF; padding:5px; cursor: pointer;}
+.p-use{color:#52C41A;padding:5px; cursor: pointer;}
+.p-nouse{color:#FA8C16;padding:5px; cursor: pointer;}
+.p-delete{color:#F5222D;padding:5px; cursor: pointer;}
+
+/*确认框*/
+.p-cofirm-mask{
+    position: fixed;top: 0; bottom: 0;left: 0;right: 0;width: 100%;height: 100%;opacity:0.7;filter:alpha(opacity=70); background: black; z-index: 9; display:none;}
+.p-confirm-box{
+    position: fixed; background: #fff; border-radius: 10px; left:0px; right:0px; top:0px; bottom:0px; z-index:10;
+    text-align: center; margin:auto;display:none;
+}
+.p-confirm-title{
+    margin-top: 45px;font-size: 16px;font-weight: 700;
+}
+.p-confirm-foot{
+    margin-top: 45px;
+}
+
+.p-confirm-foot .p-btn{margin:0px 20px;}
+
+/*分页样式*/
+.p-page-container{overflow: hidden;margin-top: 20px;height: 40px; position: relative;}
+.p-page-title{float:left; margin-top:8px;}
+.page-box{ display:table; position: absolute; width:100%; }
+.p-page{overflow:hidden; display: table; margin:0px auto; }
+.p-jump{background:#1890FF; border:1px solid #1890FF; padding:5px 15px; border-radius: 5px; color:#fff; outline: none;}
+.p-pagination{overflow:hidden;float:left; height: 32px; line-height: 30px; font-size:0px; margin:0px!important;}
+.p-pagination li{display:inline-block;border:1px solid #ECECEC;  font-size:14px; margin:0px 5px; border-radius: 5px;}
+.p-pagination li a{padding:0px 15px; color:inherit;}
+.p-total-num{color:#1890FF; padding:0px 5px; }
+.p-total-rows{width:300px;}
+.turn-to{  float:left;}
+.p-pagination li:hover{background:#1890FF; color:#fff;}
+.p-page-container a:hover, .p-page-container a:focus{color: #fff !important;text-decoration: none !important;}
+.total a{padding:0px !important;}
+#skipPage{outline: none;}
+.p-current{background: #1890FF; color:#fff; border: 1px solid #1890FF}
+/*tips*/
+.p-tips-mask{
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;top: 0;bottom: 0; margin: auto;
+    z-index: 99;
+    left:0; right: 0px;
+    display: table;
+}
+.p-tips-box{
+    display: table-cell;
+    vertical-align: middle;
+}
+.p-smalltip{ border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    background:rgba(0,0,0,0.7); border-radius: 5px;
+    padding:15px 25px;
+}
+.p-smalltip .p-smalltip-ms{color: #fff;margin-left: 12px;}
+.p-smalltip .p-status-pic{width: 32px;height: 32px;display: inline-block;
+    background: url(/assets/pc/img/Common/successbj.png) no-repeat;background-size: 100% 100%;
+vertical-align: middle;}
+.p-smalltip .p-status-pic2{width: 32px;height: 32px;display: inline-block;
+    background: url(/assets/pc/img/Common/successbj2.png) no-repeat;background-size: 100% 100%;
+vertical-align: middle;}
+.tishi {
+    color: #f5222d;
+    font-size: 12px;
+    margin-left: 99px;
+    height: 24px;
+}
+/*tips*/
+
+.p-no-null{color:#F5222D; padding-left:10px}
+
+/*保存等待效果*/
+
+.p-wait{
+    display: table; width:100%; height: 100%;
+    position:fixed; left:0px; top: 0px;
+    z-index:9999;
+    text-align: center;
+}
+.p-wait .p-wait-img{
+    display: table-cell;
+    vertical-align:middle;
+}

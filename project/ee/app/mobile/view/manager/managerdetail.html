@@ -1,0 +1,43 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+
+    <header class="sim-table public-header">
+        <div class="back" id="back" style="width: 0.5rem;">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <div>详情</div>
+        <div></div>
+    </header>
+    <div class="forder-detail-box bg-c4">
+        <div class="detail">
+            <ul>
+                <li>• 订单编号：1233611</li>
+                <li>• 订单状态：接洽中</li>
+                <li>• 施工状态：施工中</li>
+                <li>• 接待客服：王小二</li>
+                <li>• 设计师：王小二</li>
+                <li>• 项目经理：王小二</li>
+                <li>• 添加时间：王小二</li>
+            </ul>
+        </div>
+        <div class="detail">
+            <ul>
+                <li>• 业主姓名：王晓晓</li>
+                <li>• 手机号：12552332</li>
+                <li>• 微信号：155122</li>
+                <li>• 户型：三室两厅</li>
+                <li>• 面积：128m²</li>
+                <li>• 装修地址：苏州工业园区海德公园5栋1282</li>
+                <li>• 现联系地址：苏州工业园区海德公园5栋1282</li>
+            </ul>
+        </div>
+    </div>
+
+{/block}
+{block name='script'}
+
+{/block}

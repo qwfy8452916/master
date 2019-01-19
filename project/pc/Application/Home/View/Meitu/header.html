@@ -1,0 +1,64 @@
+<div class="shorttop">
+    <div class="wrap">
+        <ul class="topnav">
+            <li><a href="/" target="_blank">回到首页</a></li>
+            <li><a href="http://{:C('QZ_YUMINGWWW')}/zhaobiao/" target="_blank">装修招标</a></li>
+            <li><a href="http://{:C('QZ_YUMINGWWW')}/company/" target="_blank">装修公司</a></li>
+            <li class="active"><a href="http://{:C('QZ_YUMINGWWW')}/meitu/" target="_blank">装修效果图</a></li>
+            <li><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/" target="_blank">装修攻略</a></li>
+            <li><a href="http://{:C('QZ_YUMINGWWW')}/wenda/" target="_blank">装修问答</a></li>
+            <li><a rel="nofollow" href="http://{:C('QZ_YUMINGWWW')}/zxbj/" target="_blank">在线智能报价</a></li>
+        </ul>
+        <ul class="login">
+            <if condition="isset($_SESSION['u_userInfo'])">
+                <li>
+                    <a href="http://u.qizuang.com/home/" target="_blank">
+                         <switch name="Think.session.u_userInfo.classid">
+                            <case  value="1">{$_SESSION['u_userInfo']['name']}</case>
+                            <case  value="2">{$_SESSION['u_userInfo']['name']}</case>
+                            <case  value="3">{$_SESSION['u_userInfo']['jc']}</case>
+                          </switch>
+                    </a>
+                    <a class="loginout" href="javascript:void(0)">退出</a>
+                </li>
+                <script type="text/javascript">
+                $(".loginout").click(function(event) {
+                    $.ajax({
+                            url: '/loginout',
+                            type: 'GET',
+                            dataType: 'JSON',
+                            data: {
+                                ssid: "{$ssid}"
+                            }
+                        })
+                        .done(function(data) {
+                            if (data.status == 1) {
+                                window.location.href = window.location.href;
+                            } else {
+                                $.pt({
+                                    target: _this,
+                                    content: data.info,
+                                    width: 'auto'
+                                });
+                            }
+                        })
+                        .fail(function(xhr) {
+                            $.pt({
+                                target: _this,
+                                content: '操作失败,请稍后再试！',
+                                width: 'auto'
+                            });
+                        });
+                });
+                </script>
+            <else/>
+            <li>
+                <span><a rel="nofollow" href="http://u.qizuang.com">登录</a></span>
+                <span><a rel="nofollow" href="http://u.qizuang.com/reg/">注册</a></span>
+            </li>
+            </if>
+            <li>|</li>
+            <li><strong> 全国统一服务热线：<em class="red">{:OP("QZ_CONTACT_TEL400")}</em></strong></li>
+        </ul>
+    </div>
+</div>

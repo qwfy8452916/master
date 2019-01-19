@@ -1,0 +1,26 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="/order/build/add?order_no={$order_no}" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a></div>
+    <div>示例图</div>
+    <div></div>
+</header>
+<div class="epic-box">
+    <img src="/assets/mobile/common/img/wsjps.jpg" alt="">
+    <p>卫生间铺砖</p>
+    <img src="/assets/mobile/common/img/design-pic.jpg" alt="">
+    <p>水电施工图</p>
+    <img src="/assets/mobile/common/img/psdnsg.jpg" alt="">
+    <p>铺设地暖水管</p>
+    <img src="/assets/mobile/common/img/nsjc.jpg" alt="">
+    <p>泥沙进场</p>
+
+</div>
+{/block}
+{block name='script'}
+
+{/block}

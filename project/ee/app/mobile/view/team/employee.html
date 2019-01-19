@@ -1,0 +1,107 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/team/css/team.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="menu" id="menu">
+            <img src="/assets/mobile/common/img/menu.png" alt="">
+        </div>
+        <div data-top="top">团队管理</div>
+    </header>
+    <div class="wrapper">
+        <!--如果有员工管理权限和施工组管理权限,显示tab切换,否则都不显示-->
+        <div class="tab{if (!btnRule('/employee/') || !btnRule('/workgroup/'))} btn_hide{/if}">
+          <div class="navbar clearfix">
+            <div class="navbar-item" data-name="add">
+              <a href="/employee"><span class="on">员工管理</span></a>
+            </div>
+            <div class="navbar-item" data-name="add-construction">
+              <a href="/yuangong"><span>施工班组</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="search">
+            <div class="search-box">
+                <form action="http://merp.qizuang.com/employee/" onsubmit="return false;">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="" id="searchInput" placeholder="姓名/手机号">
+                </form>
+            </div>
+        </div>
+        <!-- 添加员工 -->
+        <div class="add-box{if (!btnRule('/employee/add/'))} btn_hide{/if}">
+            <a href="/employee/add/">
+                <div class="img">
+                    <img src="/assets/mobile/common/img/add.png" alt="">
+                </div>
+                <div class="add-member">添加员工</div>
+            </a>
+        </div>
+        <div class="part clearfix">
+            {volist name='list' id='vo'}
+            <div class="member">
+                <div class="list clearfix">
+                    <div class="close delniu{if (!btnRule('/employee/del/'))} btn_hide{/if}" data-id="{$vo.id|default=''}">
+                        <img class="delniu" src="/assets/mobile/common/img/close.png" alt="">
+                    </div>
+                    <div class="avator fl">
+                        <img src={if (!empty($vo.image))}'//{$vo.image}'{else/}'/assets/pc/img/Private/setphoto.png'{/if} alt="">
+                    </div>
+                    <div class="info fl">
+                        <div class="name">{$vo.contact_name|default=''}</div>
+                        <div class="phone">手机号：{$vo.contact_tel|default=''}</div>
+                        <div class="department fl"><span>{$vo.dept_name|default=''}</span></div>
+                        <div class="job fl"><span>{$vo.name|default=''}</span></div>
+                    </div>
+                    <div class="edit{if (!btnRule('/employee/edit/'))} btn_hide{/if}">
+                        <a href="/employee/edit?id={$vo.id|default=''}"><div class="edit-btn fr">编辑</div></a>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+        <p class="no-supplier" data-name="none">未找到符合的员工</p>
+
+        {if($page!=0)}
+        <div class="weui-loadmore">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips" data-id={$page}>正在加载</span>
+        </div>
+        {else/}
+        <div class="weui-loadmore">
+            <span class="weui-loadmore__tips" data-id={$page}>到底了~</span>
+        </div>
+        {/if}
+
+    </div>
+
+    <!-- 下拉加载模板 -->
+    <script id="tmpl" type="text/x-handlebars-template">
+    {{each data as value }}
+        <div class="member">
+            <div class="list clearfix">
+                <div class="close{if (!btnRule('/employee/del/'))} btn_hide{/if}" data-id="{{value.id}}">
+                    <img src="/assets/mobile/common/img/close.png" alt="">
+                </div>
+                <div class="avator fl">
+                    <img src="{{value.image==''?'/assets/pc/img/Private/setphoto.png':'//'+ value.image}}" alt="">
+                </div>
+                <div class="info fl">
+                    <div class="name">{{value.contact_name}}</div>
+                    <div class="phone">手机号：{{value.contact_tel}}</div>
+                    <div class="department fl"><span>{{value.dept_name}}</span></div>
+                    <div class="job fl"><span>{{value.name}}</span></div>
+                </div>
+                <div class="edit{if (!btnRule('/employee/edit/'))} btn_hide{/if}">
+                    <a href="/employee/edit?id={{value.id}}"><div class="edit-btn fr">编辑</div></a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+    </script>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/common/js/template.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/team/js/employee.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

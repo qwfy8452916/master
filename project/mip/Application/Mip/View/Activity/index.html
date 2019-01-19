@@ -1,0 +1,174 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">活动专题</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/activity/css/activity.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <!--<div class="activity_box">
+        <ul>
+            <li>
+                <div class="act_stat">
+                    <div class="ongoing">火热进行中</div>
+                </div>
+                <a data-type="mip" href="" class="ongoing-list">
+                    <div class="act_img">
+                        <mip-img src="http://staticqn.qizuang.com/activity/20171115/5a0be1f447673" alt=""></mip-img>
+                    </div>
+                    <div class="act_name">
+                        PC-迎中秋国庆,好礼嗨不停
+                    </div>
+                </a>
+                <a data-type="mip" href="" class="ongoing-list">
+                    <div class="act_img">
+                        <mip-img src="http://staticqn.qizuang.com/activity/20171115/5a0be1f447673" alt=""></mip-img>
+                    </div>
+                    <div class="act_name">
+                        PC-迎中秋国庆,好礼嗨不停
+                    </div>
+                </a>
+                <a data-type="mip" href="" class="ongoing-list">
+                    <div class="act_img">
+                        <mip-img src="http://staticqn.qizuang.com/activity/20171115/5a0be1f447673" alt=""></mip-img>
+                    </div>
+                    <div class="act_name">
+                        PC-迎中秋国庆,好礼嗨不停
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="act_stat">
+                    <div class="begining">即将开始</div>
+                </div>
+                <a data-type="mip" href="" class="ongoing-list">
+                    <div class="act_img">
+                        <mip-img src="http://staticqn.qizuang.com/activity/20171115/5a0be1f447673" alt=""></mip-img>
+                    </div>
+                    <div class="act_name">
+                        PC-迎中秋国庆,好礼嗨不停
+                    </div>
+                </a>
+                <a data-type="mip" href="" class="ongoing-list">
+                    <div class="act_img">
+                        <mip-img src="http://staticqn.qizuang.com/activity/20171115/5a0be1f447673" alt=""></mip-img>
+                    </div>
+                    <div class="act_name">
+                        PC-迎中秋国庆,好礼嗨不停
+                    </div>
+                </a>
+                <a data-type="mip" href="" class="ongoing-list">
+                    <div class="act_img">
+                        <mip-img src="http://staticqn.qizuang.com/activity/20171115/5a0be1f447673" alt=""></mip-img>
+                    </div>
+                    <div class="act_name">
+                        PC-迎中秋国庆,好礼嗨不停
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="act_stat">
+                    <div class="over">往期活动</div>
+                </div>
+                    <mip-carousel
+                        defer="1000"
+                        layout="responsive"
+                        width="600"
+                        height="200" >
+                        <div>
+                             <mip-img
+                                src="https://www.mipengine.org/static/img/sample_01.jpg" layout="responsive"
+                             width="600"
+                             height="400">
+                             </mip-img>
+                            <div class="mip-carousle-subtitle">这里是title1</div>
+                        </div>
+                        <div>
+                             <mip-img
+                                src="https://www.mipengine.org/static/img/sample_01.jpg" layout="responsive"
+                             width="600"
+                             height="400">
+                             </mip-img>
+                            <div class="mip-carousle-subtitle">这里是title2</div>
+                        </div>
+                        <div>
+                             <mip-img
+                                src="https://www.mipengine.org/static/img/sample_01.jpg" layout="responsive"
+                             width="600"
+                             height="400">
+                             </mip-img>
+                            <div class="mip-carousle-subtitle">这里是title3</div>
+                        </div>
+                    </mip-carousel>
+            </li>
+        </ul>
+    </div>-->
+    <div class="activity_box">
+        <ul>
+            <present name="vars.effective.1">
+                <li>
+                    <div class="act_stat">
+                        <div class="ongoing">火热进行中</div>
+                    </div>
+                    <volist name="vars.effective.1" id="vi">
+                        <a data-type="mip" href="{$vi.mobile_url}" class="ongoing-list">
+                            <div class="act_img">
+                                <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vi.mobile_cover_url}" alt="{$vi.name}"></mip-img>
+                            </div>
+                            <div class="act_name">
+                                {$vi.name}
+                            </div>
+                        </a>
+                    </volist>
+                </li>
+            </present>
+            <present name="vars.effective.0">
+                <li>
+                    <div class="act_stat">
+                        <div class="begining">即将开始</div>
+                    </div>
+                    <volist name="vars.effective.0" id="vi">
+                        <a data-type="mip" href="{$vi.mobile_url}" class="start_list">
+                            <div class="act_img">
+                                <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vi.mobile_cover_url}" alt="{$vi.name}"></mip-img>
+                            </div>
+                            <div class="act_name">
+                                {$vi.name}
+                            </div>
+                        </a>
+                    </volist>
+                </li>
+            </present>
+            <li class="end_list">
+                <div class="act_stat">
+                    <div class="over">往期活动</div>
+                </div>
+                <div class="end_box" id="wrapper">
+                    <ul id="end_list">
+                        <mip-carousel
+                                defer="1000"
+                                layout="responsive"
+                                width="600"
+                                height="200" >
+                        <volist name="vars.expired" id="vi">
+                            <li>
+                                <div class="act_img1">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vi.mobile_cover_url}" alt="{$vi.name}"></mip-img>
+                                    <div class="end_tishi">已结束</div>
+                                </div>
+                                <div class="act_name over">
+                                    {$vi.name}
+                                </div>
+                            </li>
+                        </volist>
+                        </mip-carousel>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</block>
+<block name="script">
+
+</block>

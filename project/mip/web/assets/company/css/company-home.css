@@ -1,0 +1,182 @@
+.clearfix::before, .clearfix::after {
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.comment_head .c_head {
+    display: inline-block;
+    width: 3em;
+    float: left;
+}
+.comment_head .c_name {
+    display: inline-block;
+    float: left;
+    font-size: 0.9em;
+    padding-top: 0.5em;
+}
+.grade {
+    background-color: #fff;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.grade .grade_gd {
+    float: left;
+    background-color: #fff;
+    width: 50%;
+}
+.grade .grade_xing {
+    float: left;
+    background-color: #fff;
+    width: 50%;
+}
+.grade .btn_left, .grade .btn_right {
+    float: left;
+    width: 50%;
+    padding-top: 0.7em;
+    padding-bottom: 1em;
+    text-align: center;
+    background-color: #fff;
+}
+.grade .btn_left, .grade .btn_right {
+    float: left;
+    width: 50%;
+    padding-top: 0.7em;
+    padding-bottom: 1em;
+    text-align: center;
+    background-color: #fff;
+}
+.grade .grade_xing .grade_right {
+    margin-top: 10px;
+}
+.grade .grade_gd .grade_left {
+    margin-top: 10px;
+    border-right: 1px dashed #ccc;
+}
+.grade .grade_gd .grade_left p {
+    text-align: center;
+    line-height: 2.5em;
+    font-size: 0.7em;
+}
+.grade .grade_gd .grade_left p i {
+    font-style: normal;
+    color: #FC5656;
+    font-size: 1.2em;
+}
+.grade .grade_xing .grade_right p {
+    text-align: center;
+    line-height: 2em;
+    font-size: 0.7em;
+}
+.grade .grade_xing .grade_right p i {
+    color: #FFAF0B;
+}
+.star-empty{
+    color:#dededa !important;
+}
+.grade .btn_left a, .grade .btn_right a {
+    display: inline-block;
+    width: 70%;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 0.8em;
+    color: #fff;
+}
+.grade .btn_right a {
+    background-color: #FFA111;
+}
+
+.grade .btn_left a, .grade .btn_right a {
+    display: inline-block;
+    width: 70%;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 0.8em;
+    color: #fff;
+}
+.grade .btn_left a {
+    background-color: #FF5659;
+}
+.change_img {
+    width: 100%;
+    position: relative;
+    margin-bottom: 0.7em;
+    background-color: #fff;
+}
+.change_img mip-img {
+    width: 100%;
+}
+.change_img .change_present {
+    width: 100%;
+    padding: 0.6em;
+    position: relative;
+}
+.change_img .change_present span {
+    font-size: 0.8em;
+}
+.change_img .change_present i {
+    color: #FF5561;
+}
+
+.fa-map-marker {
+    margin-right: 4px;
+}
+.c_left {
+    float: left;
+}
+.c_right {
+    float: right;
+    margin-right: 23px;
+}
+.firm h4, .glory h4 {
+    width: 90%;
+    margin-left: 5%;
+    height: 2em;
+    font-size: 0.9em;
+    line-height: 2em;
+}
+.firm p {
+    font-size: 0.8em;
+    width:0.5rem;
+    margin-top: 1.3em;
+
+}
+.firm .company_text {
+    color: #000;
+    line-height: 22px;
+}
+.company_text{font-size: 13px; margin:0px 0.1rem; border-top:1px solid #CCCCCC;
+    text-indent: 20px;
+    padding-top: 5px;
+}
+.mip-showmore-btn{background: none; color:#f53535;
+    position: absolute;
+ padding:0px 5px;
+ border:none;
+ display: block !important;
+ right:0.1rem; margin-top: -20px;
+ background: #fff;
+  font-size: 13px;}
+  .mip-showmore-btn:hover, .mip-showmore-btn:active {
+    background:#fff;
+}
+.firm span {
+    margin-left: 4%;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    display: inline-block;
+}
+.firm span i {
+    color: #FF5561;
+    padding-bottom: 1.3em;
+}
+.mip-carousel-container {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.company_text p{border:none;}

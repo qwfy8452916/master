@@ -1,0 +1,42 @@
+/*
+* @Author: qz_dc
+* @Date:   2018-09-05 15:45:13
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-18 16:58:16
+*/
+.pr1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+}
+.public-header > div.upload-pic {
+    line-height: inherit;
+}
+#upload {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    z-index: 999;
+    opacity: 0;
+    filter:Alpha(opacity=0);
+    width: 5rem;
+}
+.weui-photo-browser-modal {
+    z-index: 111;
+}
+.weui-photo-browser-modal .photo-container img {
+    display: block;
+    width: 100%;
+}
+.pics span {
+    display: block;
+    width: 5rem;
+    height: 4.25rem;
+    background: #eee;
+    float: left;
+    margin-right: 0.75rem;
+}
+.pics span:nth-child(3) {
+    margin-right: 0;
+}

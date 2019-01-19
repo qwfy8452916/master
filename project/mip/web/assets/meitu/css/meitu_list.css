@@ -1,0 +1,215 @@
+/*
+* @Author: qz_xsc
+* @Date:   2017-12-15 11:48:15
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-10-12 18:15:01
+*/
+body{background: #f5f5f5;}
+mip-sidebar{background: none!important;}
+.box {overflow: hidden;padding: 10px;}
+.form_control {width: 100%;position: relative;}
+.form_control form { height: 100%;}
+.form_control input[type=text] {width: 100%;height: 32px;border: none;outline: none;text-indent: 12px;border: 1px solid silver;overflow: hidden;border-radius: 5px;}
+.form_control button[type=submit] { position: absolute; right: -2px;top: 0px;background-color: #ff5659;width: 50px;height: 32px;text-align: center;border: 0px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; font-size: 16px;color: white;font-weight: 100;}
+.tab_container{background: #fff;font-size: 0px;   }
+.tab_container>a{float: left; font-size: 15px;width:25%; text-align: center; line-height:50px; color: #000; }
+.menu_list ul{
+    padding-top: 10px;
+    background: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+.menu_list ul li{flex-grow: 1; position: relative;height: 30px; line-height: 30px}
+
+.box-body ul li {
+    margin: 10px auto;
+    padding: 10px;
+    overflow-x: hidden;
+}.back-white {
+    background: white;
+}.box-body ul li a.imgs-box {
+    width: 100%;
+    height: 211px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+.color-list a{
+    line-height: 31px !important;
+}
+.box-body ul li mip-img {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}.details {
+    margin-top: 10px;
+}.details-content {
+    margin-top: 5px;
+    overflow: hidden;
+    color: #999999;
+}.details-content span {
+    float: left;
+    margin-right: 10px;
+    font-size: 14px;
+}.details-content .rightIcon {
+    float: right;
+    margin-top: -2px;
+    cursor: pointer;
+}
+.color-list{overflow: hidden;}
+.color-list li{width: 25%; float: left;height: 50px !important; text-align: center;}
+.color-list li a{width:80%; margin:5px auto; display: block; height: 30px;}
+mip-lightbox{
+    padding:10px 0px;
+    background: #fff;
+    /*top:1rem !important;*/
+}
+
+.wuxian{border:1px solid #CCC;}
+.ccc{background: #fff;border:1px solid #ccc;}
+.cdd1da{background: #CDD1DA;border:1px solid #CDD1DA;}
+.f4e8b1{background: #F4E8B1;border:1px solid #F4E8B1;}
+.f4cdb0{background: #F4CDB0;border:1px solid #F4CDB0;}
+.f4c6cf{background: #F4C6CF;border:1px solid #F4C6CF;}
+.eca9b1{background: #ECA9B1;border:1px solid #ECA9B1;}
+.dfe6ae{background: #DFE6AE;border:1px solid #DFE6AE;}
+.bcd16e{background: #BCD1E6;border:1px solid #BCD1E6;}
+.ccb8e0{background: #CCB8E0;border:1px solid #CCB8E0;}
+.f1d6ac{background: #f1d6ac;border:1px solid #f1d6ac;}
+.a462c03{background: #462c03;border:1px solid #462c03;}
+.qicai{background:url('http://m.qizuang.com/assets/mobile/meitu/img/colorful.png')no-repeat 0 0px;padding:1px;}
+
+.gongzhuang .wall{
+    display: block;
+    position: relative;
+    width: 96%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.wall-column {
+    display: block;
+    position: relative;
+    width: 49%;
+    float: left;
+    box-sizing: border-box;
+}
+.article {
+    display: block;
+    margin: 0 0 4% 0;
+    background: white;
+    transition: all 100;
+    overflow: hidden;
+    position: relative;
+}
+.article p {
+    overflow: hidden;
+    font-size: 0.8em;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 6px;
+}
+.wall-column:last-child {
+    margin-left: 2%;
+}
+.mbt10{margin-bottom: 10px;}
+.pull_down_list{position: relative; }
+.pull_down_list .mip-layout-container{
+    width:100%;
+    border-bottom:1px solid #e6e6e6;
+    display: table;
+}
+.pull_down_list .mip-layout-container section{
+    display: table-cell;padding-bottom: 10px
+}
+.pull_down_list .mip-accordion-content{
+    position: absolute;
+    width: 100%;
+    left:0px;
+    z-index: 9999;
+    top:41px;
+}
+.parten_menu{border-right: 1px solid #e6e6e6}
+section[expanded="open"] i{
+    transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    transition: 0.5s;
+    -ms-transition:0.5s;
+    -webkit-transition:0.5s;
+    -o-transition:0.5s;
+    -moz-transition:0.5s;
+}
+section[expanded="open"] .active_mask{
+    display: block;
+}
+.now{color:#ff5353!important;}
+.active_mask{
+    background: rgba(0,0,0,0.3);
+    height: 2000px;
+    position: absolute;
+    top:41px;
+    width: 100%;
+    z-index: 99;
+    left:0px;
+    display: none;
+}
+.top_border{border-top:1px solid #e6e6e6;}
+.noresult{text-align: center; width: 96% !important}
+.noresult mip-img{width:25%; margin:10px auto;}
+.noresult a{color: #ff5353; }
+.noresult .notfind{margin-bottom: 8px;}
+.border_ccc{
+    border:1px solid #CCC;
+}
+.color_ful{
+    background:url(/assets/mobile/meitu/img/colorful.png)no-repeat 0 0px;padding:1px;
+}
+.color_fff{background: #fff; border:1px solid #ccc;}
+.color_CDD1DA{
+   background:#cdd1da;
+   border:1px solid #cdd1da;
+}
+.color_F4E8B1{
+   background:#F4E8B1;
+   border:1px solid #F4E8B1;
+}
+.color_F4CDB0{
+    background: #F4CDB0;
+    border:1px solid #F4CDB0;
+}
+.color_F4C6CF{
+    background: #F4C6CF;
+    border:1px solid #F4C6CF;
+}
+.color_ECA9B1{
+    background: #ECA9B1;
+    border:1px solid #ECA9B1;
+}
+.color_DFE6AE{
+    background: #DFE6AE;
+    border:1px solid #DFE6AE;
+}
+.color_BCD1E6{
+    background: #BCD1E6;
+    border:1px solid #BCD1E6;
+}
+.color_CCB8E0{
+    background: #CCB8E0;
+    border:1px solid #CCB8E0;
+}
+.color_f1d6ac{
+    background: #f1d6ac;
+    border:1px solid #f1d6ac;
+}
+.color_462c03{
+    background: #462c03;
+    border:1px solid #462c03;
+}

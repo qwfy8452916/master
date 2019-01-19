@@ -1,0 +1,109 @@
+body{
+    background:#F5F5F5;
+}
+.type_box {
+    background: #fff;
+}
+#parent_list {
+    border-bottom: 1px solid #EDEDED;
+    font-size: 0.13rem;
+    border-top: 1px solid #EDEDED;
+}
+#parent_list ul{
+    overflow: hidden;
+}
+#parent_list ul li {
+    float: left;
+    position: relative;
+    height: 0.35rem;
+    line-height: 0.35rem;
+    padding: 0px 0.105rem;
+}
+#children_list ul{
+    padding:6px 0px;
+}
+#children_list ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    font-size: 0.12rem;
+}
+#children_list ul li a{
+    display: inline-block;
+    width: 80%;
+    border: 1px solid #DEDEDE;
+    margin:0.05rem auto;
+    padding:0.02rem 0px;
+}
+#paren_width{overflow: hidden;}
+#parent_list .active{
+    color:#ff5659;
+}
+#children_list .active{
+    color: #ff5659;
+    border:1px solid #ff5659;
+}
+.active .under_line {
+    display: block;
+}
+.under_line {
+    width: 0.28rem;
+    position: absolute;
+    height: 2px;
+    background: #FF5659;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -0.14rem;
+    display: none;
+}
+.zxfgjj, .zxfgjj02 {
+    background: #fff;
+    margin-top: 10px;
+    padding: 0.115rem 0.08rem;
+}
+.img_box {
+    position: relative;
+    height: 1.75rem;
+}
+.zxfgjj img {
+    width: 100%;
+    height: 1.75rem;
+}
+.video_kg {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+}
+.video_kg img {
+    width: 100%;
+    height: 100%;
+}
+.qishutime {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 2px 8px;
+}
+.video_name {
+    font-size: 0.13rem;
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.video_author {
+    color: #AAAAAA;
+    font-size: 0.1rem;
+}

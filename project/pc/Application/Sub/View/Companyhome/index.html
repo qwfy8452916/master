@@ -1,0 +1,674 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/company_home/{$userInfo.user.id}" />
+<title>{$keys.title}-{$title}</title>
+<meta name="keywords" content="{$keys.keywords}" />
+<meta name="description" content="{$keys.description}" />
+<link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_home/{$userInfo.user.id}/" rel="canonical" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-pub.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-home.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/common/css/tanchuang.css?v={:C('STATIC_VERSION')}" />
+<include file="Companyhome:headerbar" />
+
+    <div class="company-detail-bread">
+        <a href="/">{$cityinfo.name}装修</a> >
+        <a href="/company/">{$cityinfo.name}装修公司</a> >
+        <span  title="{$userInfo.user.qc}" >公司详情</span>
+    </div>
+    <div class="c-neck">
+        <div class="c-vedio">
+            <if condition="$userInfo['user']['video_type'] NEQ 'jw' ">
+                <embed src="{$userInfo.user.video}" height="270" width="335" loop=true autostart="true" quality="high" allowScriptAccess="always" allowFullScreen="true" mode="transparent" type="application/x-shockwave-flash"/>
+            <else/>
+                <script type="text/javascript" src="{$static_host}/assets/common/plugin/jwplayer/jwplayer.js?v={:C('STATIC_VERSION')}"></script>
+                <script type="text/javascript" src="{$static_host}/assets/common/plugin/jwplayer/jwpsrv.js?v={:C('STATIC_VERSION')}"></script>
+                <div id="videoplay"></div>
+                <script type="text/javascript">
+                jwplayer("videoplay").setup({
+                    flashplayer: "{$static_host}/assets/common/plugin/jwplayer/jwplayer.flash.swf",
+                    file: "{$userInfo.user.video}",
+                    height: 270,
+                    width: 335,
+                    autostart:"{$userInfo.user.isautoplay}",
+                    image: "{$userInfo.user.video_image}"
+                });
+                </script>
+            </if>
+        </div>
+        <div class="c-neck-info" id="tab">
+            <div class="tab-nav j-tab-nav">
+                <a href="javascript:" class="current">服务范围</a><a href="javascript:">公司简介</a>
+            </div>
+            <div class="tab-con">
+                <div class="j-tab-con">
+                    <div class="tab-con-item" style="display:block;">
+                        <dl>
+                            <dt>服务区域：</dt>
+                            <dd>
+                                <span><em title="{$userInfo.user.area}">{$userInfo.user.area|mbstr=0,30}</em></span>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>服务专长：</dt>
+                            <dd><span><em title="{$userInfo.user.fw}">{$userInfo.user.fw|mbstr=0,40}</em></span></dd>
+                        </dl>
+                        <dl>
+                            <dt>承接价位：</dt>
+                            <dd><span>{$userInfo.user.jiawei}万元以上</span></dd>
+                        </dl>
+                        <dl>
+                            <dt>专长风格：</dt>
+                            <dd><span>{$userInfo.user.fg}</span></dd>
+                        </dl>
+                    </div>
+                    <div class="tab-con-item">
+                        <div class="c-content">
+                            <if condition="$userInfo['user']['jianjie'] NEQ ''">
+                                {$userInfo.user.jianjie|mbstr=0,160}
+                                <a rel="nofollow"  href="/company_about/{$userInfo.user.id}" target="_blank">更多>></a>
+                            <else/>
+                                暂无简介
+                            </if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c-tab">
+            <div class="tab-nav j-tab-nav">
+                <div class="current">总部</div>
+                <notempty name="userInfo.user.child">
+                <a id="more-shop" href="javascript:">[更多分店]</a>
+                </notempty>
+                <div id="more-shop-window" style="display:none">
+                    <div class="getwindowbox">
+                        <div class="shutdown"></div>
+                        <dl>
+                            <volist name="userInfo.user.child" id="vo">
+                            <dt>{$vo.name}</dt>
+                            <dd>
+                                <ul class="c-tab-send">
+                                    <li class="tel"><i></i>{$vo.tel}</li>
+                                    <if condition="$vo['addr'] NEQ ''"><li class="att"><i></i>{$vo.addr}</li></if>
+                                </ul>
+                                <div class="c-tab-qq">
+                                <if condition="$userInfo['user']['fake'] EQ 0 AND $userInfo['user']['on'] EQ 2">
+                                    <if condition="$vo['qq'] NEQ ''">
+                                        <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$vo.qq}&site=qq&menu=yes">{$vo.nickname}</a>
+                                    </if>
+                                    <if condition="$vo['qq1'] NEQ ''">
+                                        <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$vo.qq1}&site=qq&menu=yes">{$vo.nickname1}</a>
+                                    </if>
+                                <else/>
+                                    <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={:OP('QZ_CONTACT_QQ1')}&site=qq&menu=yes" title="点击这里给我发消息">家装咨询顾问</a>
+                                    <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={:OP('QZ_CONTACT_QQ2')}&site=qq&menu=yes" title="点击这里给我发消息">公装咨询顾问</a>
+                                </if>
+                                </div>
+                            </dd>
+                            </volist>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-con">
+                <div class="j-tab-con">
+                    <div class="tab-con-item" style="display:block;">
+                        <ul class="c-tab-send">
+                            <li class="tel"><i></i>{$userInfo.user.cal}</li>
+                            <li class="mob"><i></i>{$userInfo.user.tel}</li>
+                            <li class="att"><i></i>{$userInfo.user.dz|mbstr=0,21}</li>
+                        </ul>
+                        <div class="c-tab-qq">
+                            <if condition="$userInfo['user']['qq'] NEQ ''">
+                                <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$userInfo.user.qq}&site=qq&menu=yes" title="{$userInfo.user.nickname}">
+                                   {$userInfo.user.nickname}
+                                </a>
+                            </if>
+                            <if condition="$userInfo['user']['qq1'] NEQ ''">
+                                <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$userInfo.user.qq1}&site=qq&menu=yes" title="{$userInfo.user.nickname1}">
+                                    {$userInfo.user.nickname1}
+                                </a>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--装修服务-->
+    <div class="c-wrap ofw">
+        <div class="c-hd"><span>新装修服务</span><a class="hd-tozb" href="javascript:void(0)" data-type="sj" data-id="{$userInfo.user.id}">免费预约</a></div>
+        <div class="scroll-list">
+            <div class="zb-tit-font"></div>
+            <div class="zb-scroll-box">
+                <ul class="newser">
+                    <li class="tlist1">业主</li>
+                    <li class="tlist1">小区</li>
+                    <li class="tlist1">面积</li>
+                    <li class="tlist1">类型</li>
+                    <li class="tlist1">预算</li>
+                </ul>
+                <div class="maquee">
+                <!--循环-->
+                <if condition="$userInfo['orders']">
+                    <ul>
+                        <volist name="userInfo.orders" id="vo">
+                        <li>
+                            <span class="tlist1">{$vo['name']?mb_substr($vo['name'],0,1,'utf-8'):'马'}{$vo.sex|default="先生"}</span>
+                            <span class="tlist1">{$vo.xiaoqu}</span>
+                            <span class="tlist1">{$vo.mianji|default="100"}平米</span>
+                            <span class="tlist1">{$vo.huxing|default="普通户型"}</span>
+                            <span class="tlist1">{$vo.yusuan|default="4-7万"}</span>
+                        </li>
+                        </volist>
+                    </ul>
+                <else/>
+                    <div style="text-align:center;">暂时没有新订单</div>
+                </if>
+                <!--循环-->
+                </div>
+             </div>
+        </div>
+        <div class="c-zb-box">
+            <div class="c-zb">
+                <div class="c-zb-tit">免费获得4份不同<br>户型设计及预算方案</div>
+                <input type="text" name="tel" placeholder="请填写您的手机号码" maxlength="11">
+                <input type="hidden" name="fb_type" value="sheji">
+                <button type="submit" id="fbhxsj">立即申请</button>
+                <p>*{:date("Y")}全新设计预算<br>严格审核图纸报价规避陷阱风险</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 装修案例 -->
+    <div class="c-wrap ofw">
+        <div class="c-hd">
+            <span>装修案例</span>
+            <a rel="nofollow" class="hd-more" href="/company_case/{$userInfo.user.id}">更多&gt;&gt;</a>
+        </div>
+        <div class="zxal" id="tab3">
+            <div class="tab-nav j-tab-nav">
+                <a href="javascript:void(0);" class="current">家装案例</a>
+                <a href="javascript:void(0);">公装案例</a>
+                <a href="javascript:void(0);">在建工地</a>
+                <a href="javascript:void(0);">3D效果图</a>
+            </div>
+            <div class="tab-con">
+                <div class="j-tab-con">
+                    <div class="tab-con-item" style="display:block;">
+                        <ul class="c-anli">
+                        <volist name="userInfo.jzcase" id="vo">
+                            <li>
+                                <a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$vo.id}.shtml" target="_blank"><if condition="$vo['img_host'] EQ 'qiniu'"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" alt="{$vo.title}"><else/><img src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" alt="{$vo.title}"></if>
+                                </a>
+                                <div class="c-anli-list for_ie_bg">
+                                <h3><a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$vo.id}.shtml" target="_blank">{$vo.title}</a>
+                                </h3>
+                                    <if condition="$vo['logo'] NEQ ''">
+                                        <img src="{$vo.logo}" alt="{$vo.dname}">
+                                    <else/>
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}" alt="齐装网">
+                                    </if>
+                                <p>
+                                <span>{$vo.mianji}m²</span><span>|</span><span>{$vo.jiage}</span><span>|</span><span>{$vo.fg}</span>
+                                </p>
+                                </div>
+                            </li>
+                        </volist>
+                        </ul>
+                    </div>
+                    <div class="tab-con-item">
+                        <ul class="c-anli">
+                        <volist name="userInfo.gzcase" id="vo">
+                            <li>
+                                <a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$vo.id}.shtml" target="_blank"><if condition="$vo['img_host'] EQ 'qiniu'"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" alt="{$vo.title}"><else/><img src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" alt="{$vo.title}"></if>
+                                </a>
+                                <div class="c-anli-list for_ie_bg">
+                                <h3><a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$vo.id}.shtml" target="_blank">{$vo.title}</a>
+                                </h3>
+                                <if condition="$vo['logo'] NEQ ''">
+                                        <img src="{$vo.logo}" alt="{$vo.dname}">
+                                    <else/>
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}" alt="齐装网">
+                                    </if>
+                                <p>
+                                <span>{$vo.mianji}m²</span><span>|</span><span>{$vo.jiage}</span><span>|</span><span>{$vo.fg}</span>
+                                </p>
+                                </div>
+                            </li>
+                        </volist>
+                        </ul>
+                    </div>
+                    <div class="tab-con-item">
+                        <ul class="c-anli">
+                        <volist name="userInfo.zjcase" id="vo">
+                            <li>
+                                <a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$vo.id}.shtml" target="_blank"><if condition="$vo['img_host'] EQ 'qiniu'"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" alt="{$vo.title}"><else/><img src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" alt="{$vo.title}"></if>
+                                </a>
+                                <div class="c-anli-list for_ie_bg">
+                                <h3><a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$vo.id}.shtml" target="_blank">{$vo.title}</a>
+                                </h3>
+                                <if condition="$vo['logo'] NEQ ''">
+                                        <img src="{$vo.logo}" alt="{$vo.dname}">
+                                    <else/>
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}" alt="齐装网">
+                                    </if>
+                                <p>
+                                <span>{$vo.mianji}m²</span><span>|</span><span>{$vo.jiage}</span><span>|</span><span>{$vo.fg}</span>
+                                </p>
+                                </div>
+                            </li>
+                        </volist>
+                        </ul>
+                    </div>
+                    <div class="tab-con-item">
+                        <ul class="c-anli">
+                        <volist name="threedlist" id="vo">
+                            <li>
+                                <a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/3d-case{$vo.id}.html" target="_blank"><if condition="$vo['img_host'] EQ 'qiniu'"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-s3.jpg" alt="{$vo.title}"><else/><img src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" alt="{$vo.title}"></if>
+                                </a>
+                                <div class="c-anli-list for_ie_bg">
+                                <h3><a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/3d-case{$vo.id}.html" target="_blank">{$vo.title}</a>
+                                </h3>
+                                <if condition="$vo['logo'] NEQ ''">
+                                        <img src="{$vo.logo}" alt="{$vo.dname}">
+                                    <else/>
+                                        <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}" alt="齐装网">
+                                    </if>
+                                <p>
+                                <span>{$vo.mianji}m²</span><span>{$vo.jiage}</span><span>|</span><span>{$vo.fg}</span>
+                                </p>
+                                </div>
+                            </li>
+                        </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 设计团队-->
+    <div class="c-wrap">
+        <div class="c-hd"><span>设计团队</span>
+        <a rel="nofollow" class="hd-more" href="/company_team/{$userInfo.user.id}">更多&gt;&gt;</a></div>
+        <ul class="c-des-list">
+            <volist name="userInfo.designer" id="vo">
+            <li>
+                <span><if condition="$vo['logo'] NEQ ''"><img src="{$vo.logo}" width="500" height="500" alt="{$vo.name}"><else/><img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}" width="500" height="500" alt="{$vo.name}"></if>
+                <a class="teambtn" href="javascript:;" data-id="{$vo.id}" >预约设计</a></span>
+                <a class="c-des-name" href="/blog/{$vo.id}/" target="_blank">{$vo.name}</a>
+                <p>{$vo.zw}</p>
+            </li>
+            </volist>
+        </ul>
+    </div>
+
+    <!--业主牛评-->
+    <div class="c-wrap">
+        <div class="c-hd">
+            <span>业主牛评</span>
+            <a rel="nofollow" class="hd-more" href="/company_message/{$userInfo.user.id}">更多&gt;&gt;</a>
+        </div>
+        <div class="c-comment">
+            <if condition="$userInfo['comments']">
+            <volist name="userInfo.comments" id="vo">
+            <div class="c-comment-box">
+                <div class="c-user-head"><img src="{$vo.logo}" alt="{$vo.name}"/><p>{$vo.name}</p></div>
+                <div class="c-user-detail">
+                    <div class="c-user-info">
+                        <if condition="$vo['lp'] NEQ ''"><span>{$vo.lp}</span></if>
+                        <span>{$vo.step}</span>
+                        <ul>
+                            <if condition="$vo['totalCount'] EGT 9">
+                            <li></li><li></li><li></li><li></li><li></li>
+                            <elseif condition="$vo['totalCount'] EGT 8 AND $vo['totalCount'] LT 9"/>
+                            <li></li><li></li><li></li><li></li><li class="star-empty"></li>
+                            <elseif condition="$vo['totalCount'] EGT 4 AND $vo['totalCount'] LT 8"/>
+                            <li></li><li></li><li></li><li class="star-empty"></li><li class="star-empty"></li>
+                            <elseif condition="$vo['totalCount'] EGT 2 AND $vo['totalCount'] LT 4"/>
+                            <li></li><li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                            <else/>
+                            <li></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li><li class="star-empty"></li>
+                            </if>
+                        </ul>
+                        <em>{$vo.time|date="Y-m-d H:i:s",###}</em>
+                    </div>
+                    <div class="c-user-mes">{$vo.text}</div>
+                    <if condition="$vo['rptxt'] NEQ ''">
+                    <div class="c-user-reply"><p>回复:</p>{$vo.rptxt}</div>
+                    </if>
+                </div>
+            </div>
+            </volist>
+            <else/>
+            暂时还没有评论
+            </if>
+            <!--S 评论输入-->
+            <if condition="isset($_SESSION['u_userInfo']) AND $_SESSION['u_userInfo']['classid'] EQ 1">
+            <div class="c-comment-edit">
+                <textarea class="c-comment-text"></textarea>
+                <div class="c-comment-word">还可以再输入 <em>200</em> 字</div>
+                <div class="c-comment-info">
+                    <div class="c-comment-star postComment">
+                        <dl><dt>设计水平</dt><dd><div class="star"></div></dd></dl>
+                        <dl><dt>服务态度</dt><dd><div class="star"></div></dd></dl>
+                        <dl><dt>施工质量</dt><dd><div class="star"></div></dd></dl>
+                    </div>
+                    <div class="c-comment-floor">所在楼盘&nbsp;<input type="text" name="lp" placeholder="填写您的楼盘名称"></div>
+                    <div class="c-comment-stage">选择阶段
+                    <select name="step">
+                        <option value="开工阶段">开工阶段</option>
+                        <option value="水电阶段">水电阶段</option>
+                        <option value="泥木阶段">泥木阶段</option>
+                        <option value="油漆阶段">油漆阶段</option>
+                        <option value="竣工阶段">竣工阶段</option>
+                    </select></div>
+                </div>
+                <div class="c-comment-bottom">
+                    <button type="button" id="btnComment">评价</button>
+                    <div class="c-comment-msg"></div>
+                </div>
+                <button type="button" id="verbtn" style="display: none;"></button>
+                <div id="popup-captcha"></div>
+            </div>
+            <else/>
+                <if condition="!isset($_SESSION['u_userInfo']) OR $_SESSION['u_userInfo']['classid'] EQ 1">
+                <div class="comptit" style="text-align:center; font-size:14px;">
+                <em>请<a href="javascript:void(0)" id="btnLogin" style="float:none; color:#EA3D3D;">登录</a>发表您的评价!</em>
+                </div>
+                </if>
+            </if>
+            <!--E 评论输入-->
+        </div>
+    </div>
+
+    <!--问答动态-->
+    <div class="c-wrap">
+        <div class="c-hd"><span>问答动态</span></div>
+        <ul class="c-wend">
+            <volist name="userInfo.wenda" id="vo">
+            <li>回答了问题：<a href="http://{:C('QZ_YUMINGWWW')}/wenda/x{$vo.id}.html" target="_blank" >{$vo.title}</a><em>{$vo.post_time|timeFormat}</em>
+                <p>答：{$vo.content|htmlToText=228}</p>
+            </li>
+            </volist>
+        </ul>
+    </div>
+
+<include file="footerbar" />
+<script type="text/javascript" src="{$static_host}/assets/sub/companyhome/js/jQuery.rTabs.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="{$static_host}/assets/common/js/raty/jquery.raty.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="{$static_host}/assets/common/js/gt.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript">
+function autoScroll(obj){
+    $(obj).find("ul").animate({
+        marginTop : "-40px"
+    },2000,function(){
+        $(this).css({marginTop : "0px"}).find("li:first").appendTo(this);
+    })
+}
+
+$(function(){
+
+    $(".hd-tozb").click(function(event) {
+        $.ajax({
+            url: '/dispatcher/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                type:"step1",
+                cid:"{$cityInfo.id}",
+                select_comid : '{$userInfo.user.id}',
+                source:152
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+                $("body").append(data.data);
+            }
+        });
+    });
+
+
+    $("#fbhxsj").click(function(event) {
+        var _this = $(this);
+        var container = $(".c-zb");
+        if (!App.validate.run($("input[name=tel]", container).val())) {
+            $.pt({
+                target: _this,
+                content: "请填写正确的手机号码 ^_^!",
+                width: 'auto'
+            });
+            return false;
+        } else {
+            var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+            if (!reg.test($("input[name=tel]", container).val())) {
+                $("input[name=tel]", container).focus();
+
+                $.pt({
+                    target: _this,
+                    content: "请填写正确的手机号码 ^_^!",
+                    width: 'auto'
+                });
+                return false;
+            }
+        }
+        var data = {
+            tel:$("input[name=tel]",container).val(),
+            fb_type:$("input[name=fb_type]",container).val(),
+            cid:"{$cityInfo.id}",
+            select_comid : '{$userInfo.user.id}',
+            source:'165',
+            step:2
+        };
+
+        window.order({
+            extra:data,
+            error:function(){},
+            success:function(data, status, xhr){
+                if (data.status == 1) {
+                    $("body").append(data.data.tmp);
+                } else {
+                    $.pt({
+                        target: _this,
+                        content: data.info,
+                        width: 'auto'
+                    });
+                }
+            },
+            validate:function(item, value, method, info){
+                return true;
+            }
+        });
+    });
+
+    $(".c-comment-text").bind("input propertychange",function(){
+        var length = $(this).val().length;
+        if(length > 200){
+            var offset = length - 200;
+            $('.c-comment-text').val($('.c-comment-text').val().substr(0, 200 - 1));
+        }else{
+            $(".c-comment-word em").html(200 - length);
+        }
+    });
+
+    $(".teambtn").click(function(event) {
+        var desid = $(this).attr('data-id');
+        $.ajax({
+            url: '/dispatcher/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                type:"step1",
+                cid:"{$cityInfo.id}",
+                source:154,
+                select_comid : '{$userInfo.user.id}',
+                select_desid : desid,
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+                $("body").append(data.data);
+            }
+        });
+    });
+
+    $("#btnLogin").click(function(event) {
+        var _this = $(this);
+        $.ajax({
+            url: '/login/',
+            type: 'POST',
+            dataType: 'JSON',
+            data:{
+                ssid:""
+            }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+                $("body").append(data.data);
+                $(".win_login").fadeIn(400);
+            }
+        });
+    });
+
+    $.ajax({
+        // 获取id，challenge，success（是否启用failback）
+        url: "/gtverify/getstartverify?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+            }, handlerPopup);
+        }
+    });
+
+    var handlerPopup = function (captchaObj) {
+        // 弹出式需要绑定触发验证码弹出按钮
+        captchaObj.bindOn("#verbtn");
+        // 将验证码加到id为captcha的元素里
+        captchaObj.appendTo("#popup-captcha");
+        $("#verbtn").click(function () {
+
+            var validate = captchaObj.getValidate();
+            if (!validate) {
+                alert('请先完成验证！');
+                return;
+            }
+
+            $.ajax({
+                url: "/gtverify/verifylogin", // 进行二次验证
+                type: "post",
+                dataType: "json",
+                data: {
+                    // 二次验证所需的三个值
+                    geetest_challenge: validate.geetest_challenge,
+                    geetest_validate: validate.geetest_validate,
+                    geetest_seccode: validate.geetest_seccode
+                },
+                success: function (result) {
+                    if (result.status == 1) {
+                        var score = [];
+                        $(".postComment dl dd").each(function(){
+                            var val =$(this).find(".star input[name=score]").val();
+                            score.push(val);
+                        });
+
+                        $.ajax({
+                          url: '/companycomment/',
+                          type: 'POST',
+                          dataType: 'JSON',
+                          data: {
+                              id: "{$userInfo.user.id}",
+                              content:$(".c-comment-text").val(),
+                              cs:"{$cityInfo.id}",
+                              code:$(".c-comment-bottom input[type=text]").val(),
+                              sj:score[0],
+                              fw:score[1],
+                              sg:score[2],
+                              lp:$(".c-comment-floor input[type=text]").val(),
+                              step:$("select[name=step]").val()
+                          }
+                        })
+                        .done(function(data) {
+                              if(data.status == 1){
+                                  window.location.href = window.location.href;
+                              }else{
+                                $(".c-comment-msg").html(data.info);
+                              }
+                        });
+                    }
+                }
+            });
+        });
+    };
+
+    $("#btnComment").click(function(event) {
+        $(".c-comment-msg").html("");
+        if (!App.validate.run($(".c-comment-text").val())) {
+            $(".c-comment-text").focus();
+            $(".c-comment-msg").html("请输入评论内容哦");
+            return false;
+        }
+
+        if (!App.validate.run($(".c-comment-floor input[type=text]").val())) {
+            $(".c-comment-floor input[type=text]").focus();
+            $(".c-comment-msg").html("请输入楼盘名称哦");
+            return false;
+        }
+        $("#verbtn").click();
+    });
+
+    $(".star").raty({
+        size: 16,
+        path: '{$static_host}/assets/common/js/raty/img/',
+        half: true,
+        starHalf : 'star-half.png',
+        starOff  : 'star-off.png',
+        starOn   : 'star-on.png',
+        hints: ['差评', '一般', '还不错', '挺好的', '好评'],
+        score:5,
+        precision: false
+    });
+
+    $(".c-comment-bottom img").click(function(event) {
+        $(this).attr("src","/verify?rand="+Math.random());
+    });
+
+    //服务范围 公司简介
+    $("#tab").rTabs({
+        auto:false
+    });
+
+    //案例
+    $("#tab3").rTabs({
+        bind :'click',
+        auto:false
+    });
+
+    //分店
+    $('#more-shop').on('click',function(){
+        var winobj = $('#more-shop-window').html();
+        $('body').append('<div class="getwindowbg">'+winobj+'<div>');
+        $('.shutdown').on('click',function(){
+            $('.getwindowbg').remove();
+        })
+    })
+    setInterval('autoScroll(".maquee")',2500);
+})
+</script>
+<include file="Index:footer" />
+</body>
+</html>

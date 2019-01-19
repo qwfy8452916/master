@@ -1,0 +1,39 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap company-index">
+    <div class="sim-table company-head-area">
+        <div class="first"><img src="/assets/mobile/common/img/avatar.png" alt=""></div>
+        <div class="second">
+            <h1 class="cname">XXX公司</h1>
+            <p class="permission">项目经理</p>
+            <p class="role">王二</p>
+            <a href="managerset" class="setting"><i class="iconfont icon-gear"></i></a>
+        </div>
+    </div>
+    <div class="coi-container mt1">
+        <a href="">
+            <div class="sim-table company-operation-item">
+                <div class="line"></div>
+                <div class="icon"><img src="/assets/mobile/common/img/orderlist.png" alt=""></div>
+                <div class="text">跟单管理</div>
+            </div>
+        </a>
+    </div>
+    <div class="coi-container">
+        <a href="team">
+            <div class="sim-table company-operation-item">
+                <div class="line bg-c3"></div>
+                <div class="icon"><img src="/assets/mobile/common/img/team.png" alt=""></div>
+                <div class="text">团队管理</div>
+            </div>
+        </a>
+    </div>
+</div>
+{/block}
+{block name='script'}
+
+{/block}

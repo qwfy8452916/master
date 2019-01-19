@@ -1,0 +1,113 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/team/css/team.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css"/>
+{/block}
+{block name="content"}
+<header class="header">
+    <div class="menu" id="menu">
+        <img src="/assets/mobile/common/img/menu.png" alt="">
+    </div>
+    <div data-top="top">施工班组</div>
+</header>
+<div class="wrapper">
+    <!--如果有员工管理权限和施工组管理权限,显示tab切换,否则都不显示-->
+    <div class="tab{if (!btnRule('/employee/') || !btnRule('/workgroup/'))} btn_hide{/if}">
+        <div class="navbar clearfix">
+            <div class="navbar-item" data-name="add">
+                <a href="/employee"><span>员工管理</span></a>
+            </div>
+            <div class="navbar-item" data-name="add-construction">
+                <a href="/yuangong"><span class="on">施工班组</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="search">
+        <div class="search-box">
+            <form action="http://merp.qizuang.com/workgroup/" onsubmit="return false;">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="" id="searchInput" placeholder="姓名/手机号/工种" >
+            </form>
+        </div>
+    </div>
+
+    <div class="part">
+        {volist name='list' id='vo'}
+        <div class="group">
+            <div class="list clearfix">
+                <div class="info sg-group">
+                    <div class="clearfix group-div">
+                        <div class="name fl">{$vo.contact_name} </div>
+                        {volist name='vo.work_type' id='voc'}
+                        <div class="fl sg-group-build"><span>{$voc}</span></div>
+                        {/volist}
+                    </div>
+                    <div class="manager">{$vo.contact_tel}</div>
+                    <div class="phone">最新工地：{$vo.build_address|default='——'}</div>
+                </div>
+                <div class="clearfix sg-workspace-data">
+                    {if (isset($vo.build_count) && $vo.build_count>0)}
+                    <a href="/shigong/" class="l">{$vo.build_count|default=''}个工地进行中</a>
+                    {else/}
+                    <span>空闲中</span>
+                    {/if}
+                    <a href="/shigong/" class="l r"> 历史工地个数：{$vo.count|default='0'}个>>></a>
+                </div>
+            </div>
+        </div>
+        {/volist}
+    </div>
+
+    <p class="no-supplier" data-name="none">未找到符合的施工组</p>
+
+    {if($page!=0)}
+    <div class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips" data-id={$page}>正在加载</span>
+    </div>
+    {else/}
+    <div class="weui-loadmore">
+        <span class="weui-loadmore__tips" data-id={$page}>到底了~</span>
+    </div>
+    {/if}
+
+
+</div>
+
+<!-- 下拉加载模板 -->
+<script id="tmpl" type="text/x-handlebars-template">
+    {{each data as value }}
+    <div class="group">
+        <div class="list clearfix">
+            <div class="info sg-group">
+                <div class="clearfix group-div">
+                    <div class="name fl">{{value.contact_name}} </div>
+                    {{each value.work_type as wt }}
+                    <div class="fl sg-group-build"><span>{{wt}}</span></div>
+                    {{/each}}
+                </div>
+                <div class="manager">{{value.contact_tel}}</div>
+                <div class="phone">最新工地：
+                    {{ if value.build_address}}
+                        {{value.build_address}}
+                    {{ else }}
+                        ——
+                    {{/if}}
+                </div>
+            </div>
+            <div class="clearfix sg-workspace-data">
+                {{ if value.build_count>0}}
+                <a href="/shigong" class="l">{{value.build_count}}个工地进行中</a>
+                {{ else }}
+                <span>空闲中</span>
+                {{/if}}
+                <a href="/shigong/" class="l r"> 历史工地个数：{{value.count}}个>>></a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/common/js/template.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/team/js/sg-group.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

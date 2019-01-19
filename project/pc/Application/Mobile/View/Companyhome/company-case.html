@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta name="keywords" content="{$keys.keywords}">
+	    <meta name="description" content="{$keys.description}">
+	    <link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_case/{$info.user.id}" rel="canonical" />
+		<title>{$keys.title}{$title}</title>
+	   	<include file="Index:resource" />
+	    <link rel="stylesheet" type="text/css" href="/assets/mobile/companyhome/css/company.css?v={:C('STATIC_VERSION')}">
+	    <script type="text/javascript" src="{$static_host}/assets/common/js/jquery.scrollLoading-min.js?v={:C('STATIC_VERSION')}"></script>
+    </head>
+    <body>
+    	<!-- header头部 -->
+		<include file="SubIndex:header" />
+		<include file="Companyhome:header" />
+		<div class="banxin">
+			<volist name="info.cases" id="vo">
+				<div class="dec-case mar-t20">
+					<a href="http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/caseinfo/{$vo.id}.shtml">
+					<h3>{$vo.title}</h3>
+					<p>{$vo.mianji}㎡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$fg}</p>
+					<if condition="$robot">
+						<if condition="$vo['img_host'] EQ 'qiniu'">
+		                    <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" >
+		                <else/>
+		                    <img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}s_{$vo.img}">
+		                </if>
+					<else/>
+						<if condition="$vo['img_host'] EQ 'qiniu'">
+		                    <img alt="{$vo.title}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" src="/assets/common/pic/pixel.gif" class="scrollLoading">
+		                <else/>
+		                    <img alt="{$vo.title}" data-url="http://{:C('STATIC_HOST1')}{$vo.img_path}s_{$vo.img}" src="/assets/common/pic/pixel.gif" class="scrollLoading">
+		                </if>
+	            	</if>
+	            	</a>
+				</div>
+			</volist>
+			<div class="more mar-t20">案例载入中...</div>
+		</div>
+		<include file="SubIndex:footer" />
+    </body>
+<script type="text/javascript">
+	document.body.scrollTop = {$info.scrollTop|default=0};
+	$("body").data("on","1");
+	$(".scrollLoading").scrollLoading();
+	$(window).scroll(function(){
+        var scrollTop = document.body.scrollTop;
+        var wheight = $(document).height() - $(window).height();
+        if((wheight - scrollTop ) < 500){
+        	$(".more").show();
+	       	if($("body").data().on == 1){
+	       		$("body").data("on",0);
+	            $.ajax({
+	        		url: '/{$cityInfo.bm}/company_case/{$info.user.id}',
+	        		type: 'POST',
+	        		dataType: 'JSON',
+	        		data: {
+	        			id: "{$info.user.id}",
+	        			scroll:document.body.scrollTop
+	        		},
+	        	})
+	        	.done(function(data) {
+	        		if(data.status == 1){
+	        			template(data.data);
+	        		}else if(data.status == 2){
+	        			window.location.href = window.location.href;
+	        		}else{
+	        			$(".more").html("没有案例了");
+	        		}
+	        	})
+	        	.fail(function() {
+	        		alert("发生了意向不到的错误,请刷新重试！");
+	        	});
+	        }
+        }
+    });
+
+	function template(data){
+		var parent = $(".banxin");
+		for(var i in data){
+			var div = $("<div class='dec-case mar-t20'></div>");
+			var title = $("<h3></h3>")
+			title.html(data[i].title);
+			title.appendTo(div);
+			var p = $("<p></p>");
+			p.html(data[i].mianji+"㎡&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].fg);
+			p.appendTo(div);
+			var img = $("<img src='/assets/common/pic/pixel.gif'></img>");
+			img.addClass('scrollLoading');
+			if(data[i].img_host == "qiniu"){
+				img.attr("src","http://{:C('QINIU_DOMAIN')}/"+data[i].img_path+"-w240.jpg");
+			}else{
+				img.attr("src","http://{:C('STATIC_HOST1')}"+data[i].img_path+"s_"+data[i].img+"-w240.jpg");
+			}
+			img.appendTo(div);
+			div.appendTo(parent);
+		}
+		$("body").data("on","1");
+		$(".more").hide();
+	}
+</script>
+</html>

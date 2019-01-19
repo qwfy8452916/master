@@ -1,0 +1,96 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">效果图</div>
+</block>
+<block name="link">
+    <link rel="canonical" href="http://{:C('MOBILE_DONAMES')}/meitu"/>
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/index.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="content">
+    <mip-carousel autoplay defer="2000" layout="responsive" width="600" height="260" indicatorId="mip-carousel-example">
+        <volist name="info.lunbo" id="vo">
+                <a data-type='mip' href="{$vo.link}">
+                <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}" alt="{$vo.title}"></mip-img>
+                </a>
+        </volist>
+    </mip-carousel>
+    <div class="mip-carousel-indicator-wrapper">
+        <div class="mip-carousel-indicatorDot" id="mip-carousel-example">
+            <div class="mip-carousel-activeitem mip-carousel-indecator-item"></div>
+            <?php for($i=0; $i<$lunboCount-1; $i++){ ?>
+                <div class="mip-carousel-indecator-item"></div>
+            <?php } ?>
+        </div>
+    </div>
+    <div class="xgt-list">
+        <div class="xgt-list-tit"><section><i></i>局部之美<i></i></section></div>
+        <div class="xgt-list-row1">
+            <a data-type='mip' class="xgt-list-big" href="http://{:C('MIP_DONAMES')}/meitu/list-l4f0h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/keting-w300.jpg" alt="客厅装修效果图"></mip-img><span>客厅</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l5f0h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/woshi-w300.jpg" alt="卧室装修效果图"></mip-img><span>卧室</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l6f0h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/canting-w300.jpg" alt="餐厅装修效果图"></mip-img><span>餐厅</span></a>
+        </div>
+        <div class="xgt-list-row2">
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l7f0h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/chufang-w300.jpg" alt="厨房装修效果图"></mip-img><span>厨房</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l8f0h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/weishengjian-w300.jpg" alt="卫生间装修效果图"></mip-img><span>卫生间</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l9f0h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/yangtai-w300.jpg" alt="阳台装修效果图"></mip-img><span>阳台</span></a>
+
+        </div>
+    </div>
+    <div class="xgt-list">
+        <div class="xgt-list-tit"><section><i></i>风格之美<i></i></section></div>
+        <div class="xgt-list-row1">
+            <a data-type='mip' class="xgt-list-big" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f12h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/jianyue-w300.jpg" alt="简约装修效果图"></mip-img><span>简约</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f8h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/oushi-w300.jpg" alt="欧式装修效果图"></mip-img><span>欧式</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f13h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/tianyuan-w300.jpg" alt="田园装修效果图"></mip-img><span>田园</span></a>
+
+        </div>
+        <div class="xgt-list-row2">
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f4h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/zhongshi-w300.jpg" alt="中式装修效果图"></mip-img><span>中式</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f5h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/xiandai-w300.jpg" alt="现代装修效果图"></mip-img><span>现代</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f6h0c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/dizhonghai-w300.jpg" alt="地中海装修效果图"></mip-img><span>地中海</span></a>
+        </div>
+    </div>
+    <div class="xgt-list">
+        <div class="xgt-list-tit"><section><i></i>户型之美<i></i></section></div>
+        <div class="xgt-list-row1">
+            <a data-type='mip' class="xgt-list-big" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h4c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/yiju-w300.jpg" alt="一居装修效果图"></mip-img><span>一居</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h5c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/erju-w300.jpg" alt="二居装修效果图"></mip-img><span>二居</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h6c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/sanju-w300.jpg" alt="三居装修效果图"></mip-img><span>三居</span></a>
+        </div>
+        <div class="xgt-list-row2">
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h7c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/fushi-w300.jpg" alt="复式楼装修效果图"></mip-img><span>复式楼</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h8c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/bieshu-w300.jpg" alt="别墅装修效果图"></mip-img><span>别墅</span></a>
+            <a data-type='mip' class="xgt-list-small" href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h7c0/"><mip-img src="http://{:C('QINIU_DOMAIN')}/mobile/meitu/dahuxing-w300.jpg" alt="大户型装修效果图"></mip-img><span>大户型</span></a>
+        </div>
+    </div>
+    <include file="Common:freeDesign"/>
+    <div class="xgt-list">
+        <div class="xgt-list-tit"><section><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang/">公装效果图</a></section></div>
+        <ul class="xgt-gz-list">
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l8f0m0/"><mip-img src="/assets/meitu/images/index/p1.png" alt="办公室装修效果图"></mip-img>办公室</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l6f0m0/"><mip-img src="/assets/meitu/images/index/p2.png" alt="服装店装修效果图"></mip-img>服装店</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l7f0m0/"><mip-img src="/assets/meitu/images/index/p3.png" alt="酒店装修效果图"></mip-img>酒店</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l1f0m0/"><mip-img src="/assets/meitu/images/index/p4.png" alt="餐厅装修效果图"></mip-img>餐厅</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l5f0m0/"><mip-img src="/assets/meitu/images/index/p5.png" alt="厂房装修效果图"></mip-img>厂房</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l4f0m0/"><mip-img src="/assets/meitu/images/index/p6.png" alt="水果店装修效果图"></mip-img>水果店</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l3f0m0/"><mip-img src="/assets/meitu/images/index/p7.png" alt="美容院装修效果图"></mip-img>美容院</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/gongzhuang-l2f0m0/"><mip-img src="/assets/meitu/images/index/p8.png" alt="宾馆装修效果图"></mip-img>宾馆</a></li>
+        </ul>
+    </div>
+    <div class="xgt-list">
+        <div class="xgt-list-tit"><section>今日热搜</section></div>
+        <ul class="xgt-list-tag">
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l0f12h0c0/">简约风格家装图片</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h10c0/">小户型家装图</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l4f0h0c0/">客厅效果图</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l5f0h0c0/">卧室效果图</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l9f0h0c0/">阳台效果图</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l0f5h0c0/">现代风格家装图片</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l0f0h7c0/">大户型家装图</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l0f8h0c0/">欧式风格家装图片</a></li>
+            <li><a data-type='mip' href="http://{:C('MIP_DONAMES')}/meitu/list-l0f13h0c0/">田园风格家装图片</a></li>
+        </ul>
+    </div>
+</block>
+<block name="script">
+</block>

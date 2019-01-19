@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>齐装网ERP 管理系统</title>
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="applicable-device" content="mobile" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes" />
+    <meta name="browsermode" content="application" />
+    <meta name="x5-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="x5-page-mode" content="app" />
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/mobile/common/css/reset.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/mobile/common/css/common.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/mobile/common/css/weui.min.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/mobile/common/css/jquery-weui.css?v={:config('STATIC_VERSION')}">
+    {block name="link"}
+    <!-- 私有样式引入 -->
+    {/block}
+</head>
+<body>
+    <div class="m-main">
+        <div class="top-nav">
+            <div class="nav-box">
+                <div class="triangle"></div>
+                <div class="nav-list">
+                    <ul>
+                        <li>
+                            <div class="img"><img src="/assets/mobile/common/img/home-icon.png" alt=""></div>
+                            <a href="/"><div class="home fr">首页</div></a>
+                        </li>
+                        <li class="{if (!btnRule('/order/'))} btn_hide{/if}">
+                            <div class="img"><img src="/assets/mobile/common/img/order-icon.png" class="gendan-img" alt=""></div>
+                            <a href="/order"><div class="order fr">跟单管理</div></a>
+                        </li>
+                        <li class="{if (!btnRule('/order/'))} btn_hide{/if}">
+                            <div class="img"><img src="/assets/mobile/common/img/cons-icon.png" class="constructor-img" alt=""></div>
+                            <a href="/shigong"><div class="const fr">施工管理</div></a>
+                        </li>
+                        <li class="{if (!btnRule('/material/'))} btn_hide{/if}">
+                            <div class="img"><img src="/assets/mobile/common/img/material-icon.png" class="cailiao-img" alt=""></div>
+                            <a href="/material"><div class="material fr">材料进销</div></a>
+                        </li>
+                        <li class="{if (!btnRule('/supplier/'))} btn_hide{/if}">
+                            <div class="img"><img src="/assets/mobile/common/img/supplier-icon.png" class="gongying-img" alt=""></div>
+                            <a href="/supplier"><div class="supplier fr">供应商管理</div></a>
+                        </li>
+                        <li class="{if (!btnRule('/employee/') && !btnRule('/workgroup/'))} btn_hide{/if}">
+                            <div class="img"><img src="/assets/mobile/common/img/team-icon.png" class="tuandui-img" alt=""></div>
+                            <a href="{if (btnRule('/employee/'))}/employee/{else/}/workgroup/{/if}"><div class="team fr">团队管理</div></a>
+                        </li>
+                        <li class="{if (!btnRule('/userset/'))} btn_hide{/if}">
+                            <div class="img"><img src="/assets/mobile/common/img/set-icon.png" class="shezhi-img" alt=""></div>
+                            <a href="/userset"><div class="set fr">设置</div></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mask"></div>
+        {block name="content"}
+        {/block}
+
+    </div>
+    <script src="/assets/mobile/common/js/jquery1.11.3.min.js?v={:config('STATIC_VERSION')}"></script>
+    <script src="/assets/mobile/common/js/common.js?v={:config('STATIC_VERSION')}"></script>
+    <script src="/assets/mobile/common/js/jquery-weui.js?v={:config('STATIC_VERSION')}"></script>
+    <script src="/assets/mobile/common/js/weui.min.js?v={:config('STATIC_VERSION')}"></script>
+    {block name='script'}
+    <!-- 私有js引入 -->
+    {/block}
+</body>
+</html>

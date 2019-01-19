@@ -1,0 +1,42 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/manager/css/upload.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/fix-dialog.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="/order/house/design?order_no={$order_no}&type={$type}" class="pl1 c2ce rel"><span class="top-middle">取消</span></a></div>
+    <div></div>
+    <div><span class="pr1 orange" data-name="publish">提交</span></div>
+</header>
+<div class="forder-ulddesign-box bg-c4">
+    <input type="hidden" value="{$order_no}" id="order_no">
+    <input type="hidden" value="{$number}" id="number">
+    <input type="hidden" value="{$type}" id="imgtype">
+    <div class="weui-cells weui-cells_form" id="uploaderCustom">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <div class="weui-uploader">
+                    <div class="weui-uploader__bd">
+                        <ul class="weui-uploader__files" id="uploaderCustomFiles" style="margin-right: -9px;"></ul>
+                        <div class="weui-uploader__input-box">
+                            <input id="uploaderCustomInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fl zuiduo" style="display: none">最多上传9张</div>
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/order/js/uploadpic.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+    if(isWechat && mobileSystem().toLowerCase() == "android"){
+        $("#uploaderCustomInput").attr("capture", "camera");
+    }
+</script>
+{/block}

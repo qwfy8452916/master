@@ -1,0 +1,97 @@
+<block name="top-fadan">
+    <div class="top-fadan">
+        <a href="{$global_yuming_m}/baojia?src=mip">
+            <div class="top-fadan-img"><mip-img src="{$global_yuming_m}/assets/mobile/article/images/top-jisuan.png"></mip-img></div>
+            <div class="top-fadan-center">
+                <div class="top-fadan-info">
+                    <p class="zx-money">装修该花多少钱？</p>
+                    <p class="zx-sheji"><span class="red-color">8秒</span>免费获取报价</p>
+                </div>
+            </div>
+            <div class="top-fadan-btn">立即获取</div>
+        </a>
+    </div>
+</block>
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修攻略</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/gonglue/css/article.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$info.canonical}"/>
+</block>
+<block name="style">
+    <style mip-custom>
+        .article-box p{
+            text-indent: 2em !important; text-align: left;
+        }
+    </style>
+</block>
+<block name="content">
+    <div class="m-bread">
+        <a data-type="mip" href="{$global_basehost}/gonglue/">装修攻略</a> &gt;
+        <a data-type="mip" href="{$global_basehost}/gonglue/{$category.parent.shortname}/">{$category.parent.classname}</a> &gt;
+        <a data-type="mip" href="{$global_basehost}/gonglue/{$info.article.shortname}/">{$info.article.classname}</a> &gt;
+        正文
+    </div>
+    <div class="article">
+        <div class="article-info">
+            <p class="article-tit">{$info.article.title}</p>
+            <empty name="info.article.addtime">
+                <p class="article-time">{$info.article.optime|date="Y-m-d H:i:s",###}</p>
+                <else />
+                <p class="article-time">{$info.article.addtime|date="Y-m-d H:i:s",###}</p>
+            </empty>
+        </div>
+        <div class="article-box">
+            <!--文章内容-->
+            {$info.article.content}
+        </div>
+    </div>
+    <!-- <div class="baojia">
+        <a data-type="mip" href="{$global_yuming_m}/hongbao?src=mip" rel="nofollow">
+            <mip-img src="http://{:C('QINIU_DOMAIN')}/file/20171113/Fr9j9oGNEs7n29Cx3Umf1-iJujjF.png"></mip-img>
+        </a>
+    </div> -->
+    <div class="baojia">
+        <a data-type="mip" href="javascript:void(0)" rel="nofollow">
+            <mip-img popup src="http://{:C('QINIU_DOMAIN')}/file/20171113/Fr9j9oGNEs7n29Cx3Umf1-iJujjF.png"></mip-img>
+        </a>
+    </div>
+    <div class="other-article">
+        <div class="other-article-box">
+            <div class="other-article-word">
+                <span class="red-block"></span>
+                推荐阅读
+            </div>
+            <div class="other-article-list">
+                <volist name="info.recommendArticles" id="vo">
+                    <div class="other-article-item">
+                        <a data-type="mip" href="{$global_basehost}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                            <div class="other-article-img"><mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w240.jpg"></mip-img></div>
+                            <div class="other-article-text"><p>{$vo.title}</p></div>
+                        </a>
+                    </div>
+                </volist>
+            </div>
+        </div>
+
+    </div>
+    <include file="Common:freeDesign"/>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+            "@id": "{$baidu.url}",
+             "appid": "1575859058891466",
+            "title": "{$head.title}",
+            "images": [
+                "{$images.0}",
+                "{$images.1}",
+                "{$images.2}"
+                ],
+            "pubDate": "{$baidu.optime}"
+        }
+    </script>
+</block>

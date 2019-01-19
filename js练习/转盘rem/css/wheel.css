@@ -1,0 +1,42 @@
+.container{
+	width: 100%;
+	height: 28.736rem;
+	background:url(../img/zhuanp04.png) no-repeat; 
+	background-size: 100% 100%;
+}
+#wheel{
+	width: 13.01333333rem;
+	height: 13.01333333rem;
+	position: absolute;
+	z-index: 1;
+	background:url(../img/zhuanp03.png) no-repeat center center; 
+	background-size: 100% 100%;
+	margin-top: 6.3rem;
+	/* margin-left: 1.49333333rem; */
+	left: 50%; 
+	 margin-left: -6.506rem;
+	/* -webkit-transform: translate(-50%,0);
+	transform: translate(-50%,0); */
+	/* transform-origin:0 0; */
+}
+#arrow{
+	width: 6.22933333rem;
+	height: 6.22933333rem;
+	position: absolute;
+	z-index: 2;
+	background:url(../img/zhuanp01.png) no-repeat; 
+	background-size: 100% 100%;
+	left: 50%;
+	-webkit-transform: translate(-50%,0);
+	transform: translate(-50%,0);
+	margin-top: 10rem;
+}
+
+@keyframes run {
+  0% {
+  	 transform: rotate(0deg); 
+  	}
+  100% { 
+  	transform: rotate(2700deg);
+  }
+}

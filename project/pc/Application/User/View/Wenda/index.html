@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="用户中心">
+  <meta name="description" content="用户中心">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <title>装修问答 - 齐装网用户中心</title>
+  <include file="Index:resource" />
+  <include file="Designer:resource" />
+  <link href="{$static_host}/assets/home/ask/css/user.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+<style>
+.add-btn {float:left;margin-right:20px;width:42%;}
+.collect-tit{ padding:0px; overflow:hidden;}
+.collect-tit li{ float:left}
+.collect-tit li a{ display:block; margin-right:20px;padding-bottom:4px;font-size: 18px;
+  font-weight: 100; border-bottom:2px solid #fff; position:relative}
+.collect-tit li a.active:after{ position:absolute;content: ""; left:36px; bottom: -5px; width: 0; height: 0; border-top:0px solid transparent; border-left:10px solid #f16262; border-bottom: 5px solid transparent; }
+.collect-tit li a.active:before{ position:absolute;content: ""; left:26px; bottom: -5px; width: 0; height: 0; border-top:0px solid transparent; border-right:10px solid #f16262; border-bottom: 5px solid transparent; }
+.collect-tit li a.active,.collect-tit li a:hover{ border-bottom:2px solid #f16262; text-decoration:none}
+</style>
+</head>
+<body>
+    <include file="header" />
+    <div class="ht-wrap oflow">
+    <if condition="$info['user']['classid'] EQ '1' ">
+    <include file="User:usernavleft" />
+    <else/>
+    <include file="Designer:desnavleft" />
+    </if>
+    <div class="yh-main">
+
+<ul class="collect-tit">
+      <li><a class="active" href="/wenda/">我的提问</a></li>
+      <li><a href="/wenda/answer">我的回答</a></li>
+</ul>
+
+    <a class="add-btn" href="http://{:C('QZ_YUMINGWWW')}/wenda/addquestion"  target="_blank"><i class="icon-plus mr10"></i>我要提问</a>
+    <a class="add-btn" href="http://{:C('QZ_YUMINGWWW')}/wenda/unanswer"  target="_blank"><i class="icon-plus mr10"></i>我要回答</a>
+    <table class="list-tb" border="0" cellspacing="0" cellpadding="0">
+    <tr class="ht-article-tit">
+        <td>标题</td>
+        <td>分类</td>
+        <td>时间</td>
+        <td>状态</td>
+        <td>操作</td>
+    </tr>
+    <volist name="qList" id="vo">
+      <tr class="main-list">
+        <td style="text-align:left"><a target="_blank" href="http://{:C('QZ_YUMINGWWW')}/wenda/x{$vo.id}.html">{$vo.title}</a></td>
+        <td width="10%">{$vo.name}</td>
+        <td width="10%">{$vo.post_time|date='Y-m-d',###}</td>
+        <td width="8%"><img style="vertical-align:middle;" alt="{$vo.status_alt}" title="{$vo.status_alt}" src="{$static_host}/assets/home/ask/images/{$vo.status}"></td>
+        <td width="10%">{$vo.edit}</td>
+      </tr>
+    </volist>
+  </table>
+  {$page}
+</div>
+</div>
+<include file="Index:footer" />
+</body>
+</html>

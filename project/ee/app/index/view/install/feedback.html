@@ -1,0 +1,32 @@
+{extend name="common:basic" /}
+{block name="title"}
+    意见反馈
+{/block}
+{block name="link"}
+    <link rel="stylesheet" href="/assets/pc/css/Private/feedback.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+   <div class="titlewaik">意见反馈</div>
+{/block}
+{block name="content"}
+<div class="p-panel">
+
+    <div class="tabwaik">
+        <textarea class="fankuinr" placeholder="请在此输入您的宝贵意见。" cols="30" rows="10" maxlength="500" onchange="this.value=this.value.substring(0, 500)" onkeydown="this.value=this.value.substring(0, 500)" onkeyup="this.value=this.value.substring(0, 500)"></textarea>
+    </div>
+</div>
+
+<div class="footwk">
+    <span class="p-btn p-primary b-fr savebaocun">提交</span>
+</div>
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+<script type="text/javascript" src="/assets/pc/js/Common/jquery1.11.3.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/feedback.js?v={:config('STATIC_VERSION')}"></script>
+
+
+{/block}
+
+{block name='script'}
+
+
+{/block}

@@ -1,0 +1,42 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">{$info.case.title}</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/case/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <div class="caseInfo">
+            <div id="m-case">
+            <div class="m-case-tit">
+                <p class="home-tit"><span>{$info.case.title}</span>·<span>{$info.case.fengge}</span>·<span>{$info.case.mianji} m²</span></p>
+                <p class="company-tit">{$info.case.comapny|default="装修案例"}</p>
+            </div>
+            <div class="m-case-con">
+                <ul class="grid">
+                    <volist name="info.case.imgs" id="vo">
+                        <li>
+                            <div class="zxpic">
+                                <if condition="$vo['img_host'] EQ 'qiniu'">
+                                    <mip-img alt="{$vo.title}图{$key+1}"
+                                             src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg"></mip-img>
+                                    <else/>
+                                    <mip-img alt="{$vo.title}图{$key+1}"
+                                             src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}"></mip-img>
+                                </if>
+                                <p class="zxpic-tit">{$vo.title}图{$key+1}</p>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="zb-bottom">
+            <a data-type="mip" href="{$global_yuming_m}/sheji?src=mip">免费设计</a>
+            <a data-type="mip" href="{$global_yuming_m}/baojia?src=mip">免费装修报价</a>
+        </div>
+    </footer>
+</block>

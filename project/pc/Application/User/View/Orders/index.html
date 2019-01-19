@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>{$keys.title}-{$title}</title>
+    <include file="Index:resource" />
+    <include file="Home:resource" />
+    <link rel="stylesheet" href="{$static_host}/assets/user/orders/css/ht-order.css?v={:C('STATIC_VERSION')}">
+</head>
+<body>
+    <include file="Home:header" />
+    <div class="ht-wrap oflow ht-relative">
+    <include file="Home:comnavleft" />
+    <include file="Orders:header" />
+    <div class="ht-main">
+        <!--订单列表-->
+        <if condition="$info['user']['orderpass']">
+          <div class="ht-order-check"><strong>筛选:</strong>
+              <select name="read">
+                  <volist name="info.orderInfo.readStatus" id="vo">
+                    <if condition="$info['orderInfo']['isread'] EQ $vo['value']">
+                      <option value="{$vo.value}" selected="selected">{$vo.name}</option>
+                    <else/>
+                      <option value="{$vo.value}">{$vo.name}</option>
+                    </if>
+                  </volist>
+              </select>
+              <div class="search">
+                  <input name="text" type="text" placeholder="订单号/小区/电话号" value="{$info.orderInfo.keyword}">
+                  <input name="btnSearch" type="button" value="查找订单">
+              </div>
+          </div>
+          <table border="0" cellpadding="0" cellspacing="0" class="ht-order-list">
+              <tr class="order-title">
+                  <td>订单状态</td>
+                  <td>发布日期</td>
+                  <td>业主</td>
+                  <td>所在区域</td>
+                  <td>小区名称</td>
+                  <td>建筑面积</td>
+                  <td>装修预算</td>
+                  <td>订单类型</td>
+                  <td>签单操作</td>
+                  <td>订单小计</td>
+              </tr>
+              <volist name="info.orderInfo.orderlist" id="vo">
+              <if condition="!$vo['isread']">
+                <tr class="order-list unknow">
+                    <td><span class="green"><i class="icon-folder-close icon-large mr10"></i>未读</span></td>
+                    <td>{$vo.ordertime|date="Y-m-d",###}</td>
+                    <td>{$vo.ordername|default=""}{$vo.sex}</td>
+                    <td>{$vo.qx}</td>
+                    <td>{$vo.xiaoqu}</td>
+                    <td>{$vo.mianji}㎡</td>
+                    <td>{$vo.jiage}</td>
+                    <td>
+                      <if condition="$vo['type_fw'] EQ 1">
+                        分
+                      <else/>
+                        赠送
+                      </if>
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td><a href="/orderdetails?id={$vo.order}" class="order-look" data-id="{$vo.order}" target="_blank">订单小计</a></td>
+                </tr>
+              <else/>
+              <tr class="order-list">
+                <td><span class="gray"><i class="icon-folder-open icon-large mr10"></i>已读</span></td>
+                    <td>{$vo.ordertime|date="Y-m-d",###}</td>
+                    <td>{$vo.ordername|default=""}{$vo.sex}</td>
+                    <td>{$vo.qx}</td>
+                    <td>{$vo.xiaoqu}</td>
+                    <td>{$vo.mianji}㎡</td>
+                    <td>{$vo.jiage}</td>
+                    <td>
+                      <if condition="$vo['type_fw'] EQ 1">
+                        分
+                      <else/>
+                        赠送
+                      </if>
+                    </td>
+                    <td>
+                      <if condition="$vo['qiandan_companyid'] EQ $info['user']['id']">
+                        <if condition="$vo['qiandan_status']">
+                             <em class="green_1">已签单</em>
+                        <else/>
+                            <em class="orange">签单审核中</em>&nbsp;
+                            <a href="javascript:void(0)" class="red cancel" style="display:block;"  data-id="{$vo.order}">取消申请</a>
+                        </if>
+                      <elseif condition="$vo['qiandan_companyid'] EQ 0"/>
+                          <a class="red qd_sq" href="javascript:void(0)" data-id="{$vo.order}" >申请签单</a>
+                      <else/>
+                          <em class="gray">签单被申请</em>
+                      </if>
+                    </td>
+                    <td><a href="/orderdetails?id={$vo.order}" class="order-look" data-id="{$vo.order}" target="_blank">订单小计</a></td>
+              </tr>
+              </if>
+              </volist>
+          </table>
+          {$info.orderInfo.page}
+        <else/>
+          <if condition="$info['passinit']">
+             <div class="ht-order-login">订单密码：
+              <input name="pass" type="password" placeholder="订单密码"><i class="red error vtop"></i>
+            </div>
+            <div class="ht-order-login">重复密码：
+              <input name="confirmpass" type="password" placeholder="重复密码"><i class="red error vtop"></i>
+            </div>
+            <div class="ht-order-login">
+               <p><i class="red  ml10">
+                <i class="icon-info-sign mr10"></i>请妥善保管好您的查询密码,请勿泄漏给无相关人员,谢谢！
+              </i></p>
+            </div>
+            <div class="ht-yes btn-seting"><a  href="javascript:void(0)"><i class="icon-copy mr10"></i>设置</a></div>
+            <script type="text/javascript">
+                $(".btn-seting a").click(function(event) {
+                    if(!App.validate.run($("input[name=pass]").val())){
+                      $("input[name=pass]").focus();
+                      $("input[name=pass]").addClass('focus');
+                      $("input[name=pass]").parent().find(".error").html("请输入查看订单密码");
+                      return false;
+                    }
+
+                    if(!App.validate.run($("input[name=pass]").val(),"blend")){
+                        $("input[name=pass]").addClass('focus');
+                        $("input[name=pass]").focus();
+                        $("input[name=pass]").parent().find(".error").html("请不要填写纯数字/纯字母");
+                        return false;
+                    }
+
+                    if($("input[name=pass]").val() != $("input[name=confirmpass]").val()){
+                      $("input[name=confirmpass]").focus();
+                      $("input[name=confirmpass]").addClass('focus');
+                      $("input[name=confirmpass]").parent().find(".error").html("二次密码不一致");
+                      return false;
+                    }
+                     $.ajax({
+                        url: '/saveorderpass/',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: {
+                            pass:$("input[name=pass]").val()
+                        }
+                      })
+                      .done(function(data) {
+                          if(data.status == 1){
+                             window.location.href = window.location.href;
+                          }else{
+                            $(".error").html(data.info);
+                          }
+                      })
+                      .fail(function(xhr) {
+                        $.pt({
+                            target: _this,
+                            content:"发生了未知不到的错误,请刷新页面",
+                            width: 'auto'
+                        });
+                      });
+                });
+            </script>
+          <else/>
+            <!--输入订单密码-->
+            <div class="ht-order-login">查看订单密码：
+              <input name="pass" type="password"><i class="red error vtop"></i>
+              <p><i class="red  ml10">
+                <i class="icon-info-sign mr10"></i>提醒：此订单密码极为重要,请不要将密码透露给他人（包括齐装网的工作人员），谢谢！
+              </i></p>
+              <p><i class="red ml10"><i class="icon-info-sign mr10"></i>连续输错3次密码,查看订单将冻结10分钟,如有问题请联系客服</i></p>
+            </div>
+            <div class="ht-yes btn-look"><a  href="javascript:void(0)"><i class="icon-copy mr10"></i>查看订单</a></div>
+            <script type="text/javascript">
+                $(".btn-look a").click(function(event) {
+                    var _this = $(this);
+                    $(".focus").removeClass('focus');
+                    $(".error").html('');
+                    if(!App.validate.run($("input[name=pass]").val())){
+                      $("input[name=pass]").focus();
+                      $("input[name=pass]").addClass('focus');
+                      $(".error").html("亲,请输入查看订单密码");
+                      return false;
+                    }
+
+                    $.ajax({
+                      url: '/orders/',
+                      type: 'POST',
+                      dataType: 'JSON',
+                      data: {
+                          pass:$("input[name=pass]").val()
+                      }
+                    })
+                    .done(function(data) {
+                        if(data.status == 1){
+                           window.location.href = window.location.href;
+                        }else{
+                          $(".error").html(data.info);
+                        }
+                    })
+                    .fail(function(xhr) {
+                      $.pt({
+                          target: _this,
+                          content:"发生了未知不到的错误,请刷新页面",
+                          width: 'auto'
+                      });
+                    });
+                });
+            </script>
+          </if>
+        </if>
+    </div>
+    </div>
+    <include file="Index:footer" />
+</body>
+<script type="text/javascript">
+$(function(){
+
+
+    $("input[name=btnSearch]").click(function(event) {
+        var text = $("input[name=text]").val();
+        var isread = $("select[name=read]").val();
+        var url = "/orders";
+        if(isread !=""){
+          url +="/"+isread;
+        }
+        if(text != ""){
+           url +="/"+text;
+        }
+        window.location.href = url;
+    });
+    $(".qd_sq").click(function(event) {
+        var id = $(this).attr("data-id");
+        var _this = $(this);
+        $.ajax({
+          url: '/applyorder',
+          type: 'GET',
+          dataType: 'JSON',
+          data: {
+              id:id
+          }
+        })
+        .done(function(data) {
+            if(data.status == 1){
+                $("body").append(data.data);
+            }
+        })
+        .fail(function(xhr) {
+            $.pt({
+                target: _this,
+                content:"发生了未知不到的错误,请刷新页面！",
+                width: 'auto'
+            });
+        });
+    });
+
+    $(".order-list .cancel").click(function(event) {
+        if(confirm("确定取消申请")){
+          var id = $(this).attr("data-id");
+          var _this = $(this);
+          $.ajax({
+            url: '/unapplyorder',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                id:id
+            }
+          })
+          .done(function(data) {
+              if(data.status == 1){
+                  window.location.href = window.location.href;
+              }
+          })
+          .fail(function(xhr) {
+              $.pt({
+                  target: _this,
+                  content:"发生了未知不到的错误,请刷新页面！",
+                  width: 'auto'
+              });
+          });
+        }
+    });
+});
+</script>
+</html>

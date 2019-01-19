@@ -1,0 +1,223 @@
+{extend name="common:basic" /}
+{block name="title"}
+    供应商管理
+{/block}
+{block name="bread_title"}
+<span>
+    {present name="info['supplier']['id']"}
+        供应商管理/编辑供应商
+    {else/}
+        供应商管理/添加供应商
+    {/present}
+</span>
+{/block}
+{block name='link'}
+    <link rel="stylesheet" href="/assets/pc/css/Private/supplier/addsupplier.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name='content'}
+<div class="b-owf">
+    <form id="form-add">
+    <div class="p-panel">
+        <div class="p-header">
+            基本信息
+        </div>
+        <div class="subblock">
+            <div class="subcontent">
+                <span class="spantitle">供应商名称：</span>
+                <div class="inputinfo"><input class="p-input" name="staffname" type="text" placeholder="请输入供应商名称" value="{$info.supplier.name|default=''}" maxlength="30"></div>
+                <input type="hidden" name="supplier_id" value="{$info.supplier.id|default=''}">
+                <span class="p-no-null">*</span>
+                <div class="tishi staff-tishi"></div>
+            </div>
+            <div class="subcontent">
+                <span class="spantitle">供应商地址：</span>
+
+                <div data-toggle="distpicker" class="inputinfo select-input">
+                  <select class="p-input province" name="province">
+                      <option value="0">请选择</option>
+                  </select> 省
+                  <select class="p-input select-area city" name="city">
+                      <option value="0">请选择</option>
+                  </select> 市
+                </div>
+                <span class="p-no-null">*</span>
+                <div class="tishi phone-tishi"></div>
+            </div>
+            <div class="subcontent">
+                <span class="spantitle"></span>
+                <div class="inputinfo"><input class="p-input weixinnumber" name="add_detail" type="text" placeholder="请输入具体地址" maxlength="30" value="{$info.supplier.address|default=''}"></div>
+                <div class="tishi weixin-tishi"></div>
+            </div>
+            <div class="subcontent">
+                <span>供应商分类(可多选)</span><span class="p-no-null">*</span>
+                <div class="suppmetro b-owf" id="types">
+                    {volist name="category" id="vo"}
+                    {in name="$vo['id']" value="$info.supplier.category_ids|default=''"}
+                    <span class="supp-item supp-item-active" data-select='1' data-value="{$vo.id}">{$vo.category_name}</span>
+                    {else/}
+                    <span class="supp-item" data-select='0' data-value="{$vo.id}">{$vo.category_name}</span>
+                    {/in}
+                    {/volist}
+                </div>
+                <div class="tishi"></div>
+            </div>
+        </div>
+    </div>
+    <div class="p-panel">
+        <div class="p-header">
+            联系信息
+        </div>
+        <div class="subblock">
+            <div class="subcontent">
+                <span class="spantitle">联系人姓名：</span>
+                <div class="inputinfo"><input class="p-input staffname" name="link_name" type="text" placeholder="请输入联系人姓名" maxlength="12" value="{$info.supplier.contact_name|default=''}"></div>
+                <span class="p-no-null">*</span>
+                <div class="tishi staff-tishi"></div>
+            </div>
+            <div class="subcontent">
+                <span class="spantitle">手机号：</span>
+                <div class="inputinfo"><input class="p-input phonenumber" name="phonenumber" type="text" placeholder="请输入联系人手机号" maxlength="11"  value="{$info.supplier.contact_tel|default=''}">
+                </div>
+                <span class="p-no-null">*</span>
+                <div class="tishi phone-tishi"></div>
+            </div>
+            <div class="subcontent">
+                <span class="spantitle">微信号：</span>
+                <div class="inputinfo"><input class="p-input weixinnumber" maxlength="30" name="weixinnumber" type="text" placeholder="请输入联系人微信号" value="{$info.supplier.contact_wx|default=''}"></div>
+                <div class="tishi weixin-tishi"></div>
+            </div>
+            <div class="subcontent">
+                <span class="spantitle">邮箱：</span>
+                <div class="inputinfo"><input class="p-input email" name="email" type="text" maxlength="30" placeholder="请输入联系人邮箱"  value="{$info.supplier.contact_email|default=''}"></div>
+                <div class="tishi email-tishi"></div>
+            </div>
+        </div>
+    </div>
+    <div class="p-panel">
+        <div class="p-header">
+            付款信息
+        </div>
+        <div class="subblock">
+            <div class="subcontent">
+                <span class="spantitle">结算方式：</span>
+                <div class="inputinfo pay_methods">
+                    <select name="pay_methods" class="p-input">
+                        <option value="0">请选择</option>
+                        {volist name="payType" id="vo" key="k"}
+                        <option value="{$k}" {if (isset($info.supplier.pay_way) and $info.supplier.pay_way == $k)}selected{/if}>{$vo}</option>
+                        {/volist}
+                    </select>
+
+                </div>
+                <span class="p-no-null">*</span>
+                <div class="tishi"></div>
+            </div>
+            <div class="subpay">
+                <div class="paytype">
+                    <p class="payname">付款方式</p>
+                </div>
+                <div class="payaccount pay-way">
+                    <div class="subcontent">
+                        <span class="spantitle">支付宝账号：</span>
+                        <div class="inputinfo">
+                            <input class="p-input " type="text" placeholder="请输入供应商支付宝账号" name="pay_zfb" maxlength="30"  value="{$info.supplier.ali_account|default=''}">
+                        </div>
+                        <div class="tishi phone-tishi"></div>
+                    </div>
+                    <div class="subcontent">
+                        <span class="spantitle">微信账号：</span>
+                        <div class="inputinfo"><input class="p-input"  type="text" name="pay_wx" placeholder="请输入供应商微信账号" maxlength="30" value="{$info.supplier.wx_account|default=''}"></div>
+                        <div class="tishi weixin-tishi"></div>
+                    </div>
+
+                    {present name="info['supplier']['id']"}
+                    <div class="subcontent banckinfo bank-item">
+                        {empty name="info['bank']"}
+                            <div class="bank-list">
+                                <span class="spantitle b-fl">银行账号：</span>
+                                <input type="text" class="p-input bankname"  placeholder="请输入账号名称" value="" data-text="请输入账号名称" maxlength="20">
+                                <input type="text" class="p-input bankopen" placeholder="请输入开户行" value="" data-text="请输入开户行" maxlength="20">
+                                <input type="number" class="p-input bankaccount" placeholder="请输入供应商银行账号" value="" data-text="请输入供应商银行账号">
+                            </div>
+                        {else /}
+                             {volist name="info.bank" id="vo"}
+                                <div class="bank-list">
+                                    {if($key == 0)}
+                                    <span class="spantitle b-fl">银行账号：</span>
+                                    {else/}
+                                    <span class="spantitle b-fl">&nbsp;</span>
+                                    {/if}
+                                    <input type="text" class="p-input bankname"  placeholder="请输入账号名称" value="{$vo.bank_name}" data-text="请输入账号名称" maxlength="20">
+                                    <input type="text" class="p-input bankopen" placeholder="请输入开户行" value="{$vo.bank_open}" data-text="请输入开户行" maxlength="20">
+                                    <input type="number" class="p-input bankaccount" placeholder="请输入供应商银行账号" value="{$vo.bank_account}" data-text="请输入供应商银行账号">
+                                    {if($key != 0)}
+                                    <span class="p-delete">删除</span>
+                                    {/if}
+                                </div>
+                            {/volist}
+                        {/empty}
+
+                    </div>
+                    {else/}
+                    <div class="subcontent banckinfo bank-item">
+                         <div class="bank-list">
+                            <span class="spantitle b-fl">银行账号：</span>
+                            <input type="text" class="p-input bankname"  placeholder="请输入账号名称" value="" data-text="请输入账号名称" maxlength="20">
+                            <input type="text" class="p-input bankopen" placeholder="请输入开户行" value="" data-text="请输入开户行" maxlength="20">
+                            <input type="number" class="p-input bankaccount" placeholder="请输入供应商银行账号" value="" data-text="请输入供应商银行账号">
+                        </div>
+                    </div>
+                    {/present}
+                </div>
+                <div class="addbanck">
+                    <p class="addbtn">+&nbsp;添加银行账号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="bottom-btn b-fr">
+        <span class="p-btn p-primary" id="save-btn">保存</span>
+        <a href="/supplier" class="p-btn p-white">取消</a>
+    </div>
+</div>
+
+
+<!-- 弹层 -->
+<iframe class="p-backbj" src="about:blank" allowtransparency="true" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+<div class="p-tancfl addtanchuang">
+    <div class="tancfl-title">
+        <span class="edit-fl">重置密码</span>
+        <span class="p-close"></span>
+    </div>
+    <div class="passwaik">
+        <div class="contentnr">
+            <span>分类名称：</span>
+            <input class="fenleiname add_type_name" type="text" placeholder="请输入供应商分类名称"><span class="requirebj">*</span>
+            <div class="passtishi mima-tishi"></div>
+        </div>
+    </div>
+
+    <div class="foottanc">
+        <span class="p-btn p-padding cancelqx">取消</span><span class="p-btn  p-primary p-padding savebc">保存</span>
+    </div>
+</div>
+
+
+{/block}
+{block name="script"}
+    <script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/citySelect/citySelect.js?v={:config('STATIC_VERSION')}"></script>
+    <!-- 页面私有方法 , 保存, 验证...-->
+    <script type="text/javascript" src="/assets/pc/js/Private/supplier/supplier.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+    $(".select-input").citySelect({
+        ajaxUrl:"jiekou",
+        province:".province",
+        city:".city",
+        sheng:'{$info.supplier.province|default=""}',
+        shi:'{$info.supplier.city|default=""}'
+    });
+
+</script>
+{/block}

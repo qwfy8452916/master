@@ -1,0 +1,321 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">选材导购</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/gonglue/css/list.css?v={:C('STATIC_VERSION')}">
+    <link href="{$static_host}/assets/gonglue/css/m-public.new.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <div class="fg-nav">
+        <div class="fg-hd clearfix">
+            <span class="fg-nav-l">{$basic.now.title}</span>
+            <span class="fg-nav-r" on="tap:right-sidebar-menu.open">全部筛选</span>
+        </div>
+    </div>
+    <mip-sidebar
+        id="right-sidebar-menu"
+        layout="nodisplay"
+        side="right"
+        class="mip-hidden">
+        <mip-accordion sessions-key="mip_1" animatetime='0.24'>
+            <section>
+                 <div class="menu_head">
+                    <span class="name_left">{$jiancai['title']}</span><i class="fa fr mr10 fa-chevron-down icon_right"></i>
+                 </div>
+                <div class="child-menu">
+                    <mip-vd-tabs>
+                        <section>
+                            <volist name="jiancai.content" id="v">
+                                    <li>{$v.classname}</li>
+                            </volist>
+                        </section>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'diban'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'youqituliao'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'dengju'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'menchuang'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'cizhuan'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'chugui'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'weiyushebei'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'diaoding'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'wujin'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'nuanqi'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiancai.content" id="v">
+                                <if condition="$v['shortname'] eq 'chuju'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                    </mip-vd-tabs>
+                </div>
+            </section>
+            <!--<section  expanded="open">-->
+            <section>
+                 <div class="menu_head">
+                    <span class="name_left">{$ruanzhuang['title']}</span><i class="fa fr mr10 fa-chevron-down icon_right"></i>
+                 </div>
+                <div class="child-menu">
+                    <mip-vd-tabs>
+                        <section>
+                            <volist name="ruanzhuang.content" id="v">
+                                <li>{$v.classname}</li>
+                            </volist>
+                        </section>
+                        <div class="child-list">
+                            <volist name="ruanzhuang.content" id="v">
+                                <if condition="$v['shortname'] eq 'csyp'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="ruanzhuang.content" id="v">
+                                <if condition="$v['shortname'] eq 'zhuangshihua'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="ruanzhuang.content" id="v">
+                                <if condition="$v['shortname'] eq 'zhiwu'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="ruanzhuang.content" id="v">
+                                <if condition="$v['shortname'] eq 'shizixiu'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="ruanzhuang.content" id="v">
+                                <if condition="$v['shortname'] eq 'ditan'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="ruanzhuang.content" id="v">
+                                <if condition="$v['shortname'] eq 'chuanglian'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="ruanzhuang.content" id="v">
+                                <if condition="$v['shortname'] eq 'qiangzhi'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                    </mip-vd-tabs>
+                </div>
+            </section>
+            <section>
+                 <div class="menu_head">
+                    <span class="name_left">{$dianqi['title']}</span><i class="fa fr mr10 fa-chevron-down icon_right"></i>
+                 </div>
+                 <div class="child-menu">
+                    <mip-vd-tabs>
+                        <section>
+                            <volist name="dianqi.content" id="v">
+                                <li>{$v.classname}</li>
+                            </volist>
+                        </section>
+                        <div class="child-list">
+                            <volist name="dianqi.content" id="v">
+                                <if condition="$v['shortname'] eq 'bangong'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="dianqi.content" id="v">
+                                <if condition="$v['shortname'] eq 'jydq'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="dianqi.content" id="v">
+                                <if condition="$v['shortname'] eq 'cwdq'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="dianqi.content" id="v">
+                                <if condition="$v['shortname'] eq 'shuma'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                    </mip-vd-tabs>
+                </div>
+            </section>
+            <section>
+                 <div class="menu_head">
+                    <span class="name_left">{$jiaju['title']}</span><i class="fa fr mr10 fa-chevron-down icon_right"></i>
+                 </div>
+                 <div class="child-menu">
+                    <mip-vd-tabs>
+                        <section>
+                            <volist name="jiaju.content" id="v">
+                                <li>{$v.classname}</li>
+                            </volist>
+                        </section>
+                        <div class="child-list">
+                            <volist name="jiaju.content" id="v">
+                                <if condition="$v['shortname'] eq 'jiaju'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                        <div class="child-list">
+                            <volist name="jiaju.content" id="v">
+                                <if condition="$v['shortname'] eq 'ertongjiaju'">
+                                    <volist name="v.child" id="val">
+                                        <a datatype="mip" href="http://mip.{:C('QZ_YUMING')}/gonglue/{$val.shortname}/">{$val.classname}</a>
+                                    </volist>
+                                </if>
+                            </volist>
+                        </div>
+                    </mip-vd-tabs>
+                </div>
+            </section>
+    </mip-accordion>
+    </mip-sidebar>
+    <div class="wenzhang_list">
+        <volist name="info.articles" id="vo">
+            <div class="fg-list-box ">
+                <div class="fg-list clearfix">
+                    <a data-type="mip" href="http://{:C('MIP_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                        <div class="fg-img">
+                            <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w400.jpg" alt="{$vo.title}"></mip-img>
+                        </div>
+                        <div class="fg-send">
+                            <strong>{$vo.title|mbstr=0,12}</strong>
+                            <p>{$vo.jianjie|mbstr=0,28}</p>
+                            <i class="fg-yj fa fa-eye"> {$vo.pv}</i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </volist>
+    </div>
+    {$info.page}
+</block>
+<block name="script">
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-accordion/mip-accordion.js"></script>
+</block>

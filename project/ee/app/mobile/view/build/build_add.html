@@ -1,0 +1,52 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/manager/css/upload.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/fix-dialog.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="http://{:config('m_host')}/order/build/list?order_no={$order_no}" class="pl1 c2ce rel"><span class="top-middle">取消</span></a></div>
+    <div></div>
+    <div><span class="pr1 orange" data-name="publish">发布</span></div>
+</header>
+<div class="forder-uldconstruct-box bg-c4">
+    <input type="hidden" value="{$order_no}" id="order_no">
+    <div class="sim-table public-s1">
+        <div class="first">施工状态</div>
+        <div class="second">
+            <input type="text" placeholder="请选择" data-name="order-status" readonly>
+            <input type="hidden" value='{"id":"{$build_state|default=''}","name":"{$build_state_name|default=''}"}' id="build_status">
+        </div>
+        <div class="third"><i class="iconfont icon-angle-right"></i></div>
+    </div>
+    <textarea name="build_remark" id="build_remark" cols="30" rows="10" maxlength="100" placeholder="添加描述，限制100字以内" class="construct-desc"></textarea>
+    <div class="weui-cells weui-cells_form" id="uploaderCustom">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <div class="weui-uploader">
+                    <div class="weui-uploader__bd">
+                        <ul class="weui-uploader__files" id="uploaderCustomFiles" style="margin-right: -9px;"></ul>
+                        <div class="weui-uploader__input-box">
+                            <input id="uploaderCustomInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fl zuiduo" style="display: none">最多上传9张</div>
+    <p class="example-box text-right"><a href="http://{:config('m_host')}/open/build/image?order_no={$order_no}" class="example">查看实例</a></p>
+</div>
+
+
+{/block}
+{block name='script'}
+<script src="/assets/mobile/order/js/uploadconstructpic.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+    if(isWechat && mobileSystem().toLowerCase() == "android"){
+        $("#uploaderCustomInput").attr("capture", "camera");
+    }
+</script>
+{/block}

@@ -1,0 +1,82 @@
+<extend name="Common:basic"/>
+<block name="link">
+    <link href="{$static_host}/assets/index/css/city.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="{$global_yuming_m}/city/"/>
+</block>
+<block name="pageTitle">
+   <div class="m-header-tit">
+    城市选择
+   </div>
+</block>
+
+<block name="content">
+    <article>
+        <div class="c-before location">
+            <span class="auto-location">
+                <i class="c-pag fa fa-map-marker"></i>当前定位:<em>{$showall.name}</em>
+            </span>
+
+            <div class="c-hot">
+                <div class="c-hot-box">
+                    <h4 class="c-hot-tle">
+                        热门城市
+                    </h4>
+                    <div class="c-town clearfix">
+                        <ul class="clearfix uls">
+                            <empty name="showall">
+                                <li><a data-type="mip" href="http://mip.{:C('QZ_YUMING')}">全国</a></li>
+                            </empty>
+                            <volist name="hotcitytop" id="v">
+                                <if condition="!empty($redirect['baojia'])">
+                                    <li><a data-type="mip" href="http://mip.{:C('QZ_YUMING')}{$redirect.baojia}{$v.bm}">{$v.cname}</a></li>
+                                <elseif condition="!empty($redirect['zxgstj'])" />
+                                    <li><a data-type="mip" href="http://mip.{:C('QZ_YUMING')}{$redirect.zxgstj}?bm={$v.bm}">{$v.cname}</a></li>
+                                <else />
+                                    <li><a data-type="mip" href="http://mip.{:C('QZ_YUMING')}/{$v.bm}/">{$v.cname}</a></li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <div class="c-hot-box">
+                    <h4 class="c-hot-tle">
+                        按字母查找城市
+                    </h4>
+                    <div class="c-town c-row clearfix">
+                        <ul class="clearfix uls">
+                            <volist name="cityInfo.accordCity" id="vo">
+                                <li><a data-type="mip"  href="#{$vo.pname}">{$vo.pname}</a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <volist name="cityInfo.accordCity" id="vo">
+                    <div class="c-hot-box">
+                        <h4 class="c-hot-tle" id="{$vo.pname}">
+                            {$vo.pname}
+                        </h4>
+                        <div class="c-town clearfix">
+                            <ul class="clearfix uls">
+                                <volist name="vo.child" id="v">
+                                    <if condition="!empty($redirect['baojia'])">
+                                        <li><a data-type="mip"  href="http://mip.{:C('QZ_YUMING')}{$redirect.baojia}{$v.bm}">{$v.cname}</a></li>
+                                    <elseif condition="!empty($redirect['zxgstj'])" />
+                                        <li><a data-type="mip"  href="http://mip.{:C('QZ_YUMING')}{$redirect.zxgstj}{$v.bm}?bm={$v.bm}">{$v.cname}</a></li>
+                                    <else />
+                                        <li><a data-type="mip"  href="http://mip.{:C('QZ_YUMING')}/{$v.bm}/">{$v.cname}</a></li>
+                                    </if>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+         </div>
+        <div class="call-tel">
+            <a data-type="mip"  href="tel:{:OP('QZ_CONTACT_TELNUM400')}"> 装修咨询热线</a>
+        </div>
+    </article>
+    <mip-fixed type="gototop">
+        <mip-gototop></mip-gototop>
+    </mip-fixed>
+</block>

@@ -1,0 +1,107 @@
+/*
+* @Author: jsb
+* @Date:   2018-08-31 08:50:23
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-25 16:41:48
+*/
+.wrapper {
+    height: 94%;
+}
+input::-webkit-input-placeholder {
+    color: #999;
+}
+.add-box {
+    padding:0.8rem 1rem;
+}
+.add-box li {
+    padding: 0.6rem 0.25rem;
+    border-bottom: 1px solid #6F809C;
+    position: relative;
+    color: #212121;
+    font-size: 0.7rem;
+}
+.add-box li input {
+    float: right;
+    outline: none;
+    border: 0;
+    background: #f8f8f8;
+    width: 6rem;
+    line-height: 1.25rem;
+    color: #000;
+    text-align: right;
+    padding-right: 1.5rem;
+}
+.add-box li input.name {
+    width: 10rem;
+}
+.add-box li input.wechat {
+    width: 12rem;
+    max-width: 13rem;
+}
+.add-box li input.user {
+    width: 12rem;
+    max-width: 13rem;
+}
+.add-box li input.psw {
+    width: 10rem;
+}
+.right {
+    display: block;
+    width:0.4rem;
+    height: 0.75rem;
+    background: url(../img/right.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.9rem;
+}
+#manager,#work, #department, #station {
+    width: 8rem;
+    text-align: right;
+    padding-right: 1.5rem;
+}
+#style {
+    width: 10rem;
+    text-align: right;
+    padding-right: 1.5rem;
+    color: #999;
+}
+.balance-way {
+    padding-right: 1.5rem;
+    width: 5rem;
+    text-align: right;
+}
+/*----------------------右侧栏--------------*/
+.style-div {
+    padding-left: 0.8rem;
+    margin-top: 1rem;
+}
+.style-ul {
+    margin-top: 1rem;
+    padding-left: 0.8rem;
+}
+.style-ul > li {
+    list-style: none;
+    float: left;
+    padding: 0 0.7rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    box-sizing: border-box;
+    margin-right: 0.7rem;
+    margin-bottom: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #6F809C;
+}
+.current {
+    background: #6F809C;
+    color: #fff;
+}
+.add-box .pay-way {
+    border-bottom: 0;
+}
+.toolbar .picker-button {
+    color:#0E94EA;
+}
+.weui-cell__bd p {
+    text-align: center;
+}

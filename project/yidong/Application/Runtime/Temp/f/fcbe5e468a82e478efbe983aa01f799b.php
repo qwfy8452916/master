@@ -1,0 +1,3 @@
+<?php
+//000000003600a:2:{s:6:"result";a:4:{i:0;a:2:{s:4:"name";s:6:"不限";s:4:"link";s:47:"http://m.qizuang.com/sz/company/list-fu0f0g0bz0";}i:1;a:3:{s:2:"id";s:2:"26";s:4:"name";s:12:"全国连锁";s:4:"link";s:48:"http://m.qizuang.com/sz/company/list-fu0f0g26bz0";}i:2;a:3:{s:2:"id";s:2:"27";s:4:"name";s:9:"大中型";s:4:"link";s:48:"http://m.qizuang.com/sz/company/list-fu0f0g27bz0";}i:3;a:3:{s:2:"id";s:2:"28";s:4:"name";s:9:"中小型";s:4:"link";s:48:"http://m.qizuang.com/sz/company/list-fu0f0g28bz0";}}s:8:"selected";a:0:{}}
+?>

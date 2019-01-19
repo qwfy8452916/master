@@ -1,0 +1,241 @@
+{extend name="common:basic" /}
+{block name="title"}
+    跟单管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/webuploader.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/upload.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/detail_material.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/select3/css/select3.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/js/Plugin/select2/css/select2.min.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>跟单管理/详情</span>
+<ul class="tabbiaot">
+    <li><a href="http://{:config('pc_host')}/order/detail?order_no={$order_no}">跟单信息</a></li>
+    <li><a href="http://{:config('pc_host')}/order/orderHistory?order_no={$order_no}">跟单历史记录</a></li>
+    <li class="active"><a href="#">材料进销</a></li>
+</ul>
+
+
+{/block}
+{block name="content"}
+<div class="p-panel jibeninfowk">
+    <div class="add-waik">
+        <span class="classification">基本信息</span>
+        <div class="addhistorywk pull-right">
+            <span class="p-btn b-fr p-primary pull-right newadd">修改</span></div>
+        <div class="baocquxwk pull-right"><span class="p-btn b-fr pull-right quxiaocan">取消</span>
+            <span class="p-btn b-fr p-primary pull-right savubaocun jibeninfosave">保存</span></div>
+    </div>
+    <div class="tabwaik tabwaikgd01">
+        <div class="hangwk">
+            <div class="hangitem hangitemwid">
+                    <span class="hangitem-title01">订单编号：</span><span
+                        class="hangitem-title02">{$order.order_no|default=''}</span>
+            </div>
+           <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">齐装订单编号：</span><span
+                    class="hangitem-title02">{$order.qz_order|default=''}</span>
+            </div>
+            
+            <div class="hangitem hangitemwid">
+                    <span class="hangitem-title01">小区：</span><span
+                        class="hangitem-title02 xiaoqutext">{$order.xiaoqu|default=''}</span>
+            </div>
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">业主姓名：</span><span
+                    class="hangitem-title02 yezhutext">{$order.consumer_name|default=''}</span>
+            </div>
+            
+            
+        </div>
+        <div class="hangwk">
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">户型：</span><span class="hangitem-title02 huxingtext">{$order.huXing.name|default=''}</span>
+            </div>
+            <div class="hangitem contact hangitemwid">
+                <span class="hangitem-title01">面积：</span><span class="hangitem-title02 mianjitext">{$order.house_area|default=''}</span><em class="danweipf">㎡</em>
+
+            </div>
+            <div class="hangitem contact hangitemwid">
+                <span class="hangitem-title01">手机号：</span><span
+                    class="hangitem-title02 phonetext">{$order.consumer_tel|default=''}</span>
+            </div>
+            <div class="hangitem hangitemwid">
+                <span class="hangitem-title01">微信号：</span><span
+                    class="hangitem-title02 wechattext">{$order.consumer_wx_no|default=''}</span>
+            </div>
+        </div>
+        <div class="hangwk">
+            <div class="hangitem addrlength">
+                <span class="hangitem-title01">装修地址：</span><span
+                    class="hangitem-title02 zxadresstext">{$order.build_address|default=''}</span>
+            </div>
+            <div class="hangitem addrlength">
+                <span class="hangitem-title01">联系地址：</span><span
+                    class="hangitem-title02 linkaddresstext">{$order.link_address|default=''}</span>
+            </div>
+        </div>
+        <div class="hangwk">
+                <div class="hangitem hangitemwid width50">
+                    <span class="hangitem-title01">接待客服：</span><span class="hangitem-title02 jiedaikftext" data-id="{$order.receptionAccount.id}">{$order.receptionAccount.contact_name|default=''}</span>
+                    <a class="relative-num guanlianjd" title="关联订单数" href="/order/" target="_blank">
+                    {notempty name='$order.receptionAccount.contact_name'}
+                    &nbsp;{notempty name='$order.reception_id_num'}{$order.reception_id_num|default=''}个关联订单{else/}空闲中{/notempty}
+                    {/notempty}</a>
+                </div>
+                <div class="hangitem hangitemwid width50">
+                    <span class="hangitem-title01">设计师：</span><span class="hangitem-title02 designtext" data-id="{$order.designerAccount.id}">{$order.designerAccount.contact_name|default=''}</span><a class="relative-num guanliandesign" title="关联订单数" href="/order/" target="_blank">{notempty name='$order.designerAccount.contact_name'}&nbsp;{notempty name='$order.designer_id_num'}{$order.designer_id_num|default=''}个关联订单{else/}空闲中{/notempty}{/notempty}</a>
+                </div>
+        </div>
+
+    </div>
+    <div class="p-form-box b-owf tabwaikgd02 tabwaik">
+      <div class="p-form-column wrapinput">
+            <span class="p-form-title">订单编号：</span>
+            <span class="order-text">{$order.order_no|default=''}</span>
+            <div class="tishi"></div>
+        </div>
+       <div class="p-form-column wrapinput">
+            <span class="p-form-title">齐装订单编号：</span>
+            <span class="order-text">{$order.qz_order|default=''}&nbsp;</span>
+            <div class="tishi"></div>
+        </div>
+        
+        <div class="p-form-column wrapinput">
+                <span class="p-form-title">小区：</span>
+                <input class="p-input xiaoqu" maxlength="20" type="text" data-value="{$order.xiaoqu|default=''}" value="{$order.xiaoqu|default=''}" placeholder="请输入小区名称">
+                <div class="tishi"></div>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">业主姓名：</span>
+            <input class="p-input ownername" maxlength="10" type="text" data-value="{$order.consumer_name|default=''}" value="{$order.consumer_name|default=''}" placeholder="请输入业主姓名">
+            <span class="red">*</span>
+            <div class="tishi owner-tishi"></div>
+        </div>
+        
+        
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">户型：</span>
+            <select class="p-input apartment">
+                <option value="">请选择</option>
+                {foreach $house_type as $vo}
+                {if isset($order.huXing.id) and ($vo.id ==  $order.house_type)}
+                <option value="{$vo.id}" selected>{$vo.name}</option>
+                {else /}
+                <option value="{$vo.id}">{$vo.name}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">面积：</span>
+            <input class="p-input mianji" type="text" maxlength="8" data-value="{$order.house_area|default=''}" value="{$order.house_area|default=''}" placeholder="请输入面积">
+            <span>m²</span>
+            <div class="tishi mianji-tishi"></div>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">手机号：</span>
+            <input class="p-input shoujihao" maxlength="11" type="text" data-value="{$order.consumer_tel|default=''}" value="{$order.consumer_tel|default=''}" placeholder="请输入手机号" >
+            <div class="tishi phone-tishi"></div>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">微信号：</span>
+            <input class="p-input wechat" type="text" maxlength="30" data-value="{$order.consumer_wx_no|default=''}" value="{$order.consumer_wx_no|default=''}" placeholder="请输入微信号">
+            <div class="tishi"></div>
+        </div>
+        <div class="p-form-column wrapinput addrlength">
+            <span class="p-form-title" style="width:12.5%;">装修地址：</span>
+            <input style="width:78%" class="p-input zhuangxiuaddress" maxlength="30"  type="text" data-value="{$order.build_address|default=''}" value="{$order.build_address|default=''}" placeholder="请输入业主待装修的地址">
+            <span class="copyniu"></span>
+            <div class="tishi"></div>
+        </div>
+        <div class="p-form-column wrapinput addrlength">
+            <span class="p-form-title" style="width:12.5%">联系地址：</span>
+            <input style="width:80%" class="p-input contactaddress" type="text" maxlength="30" data-value="{$order.link_address|default=''}" value="{$order.link_address|default=''}" placeholder="请输入业主的联系地址">
+            <div class="tishi"></div>
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">接待客服：</span>
+            <div class="xuantwowk jiedaiwk">
+                <select class="p-input select2 jiedaikefu" style="width:100%;">
+                    <option value="">请选择</option>
+                </select>
+            </div> 
+            
+        </div>
+        <div class="p-form-column wrapinput">
+            <span class="p-form-title">设计师：</span>
+            <div class="xuantwowk shejiwk">
+            <select class="p-input select2 designyuan" style="width:100%;">
+                <option value="">请选择</option>
+            </select>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{foreach $list as $vo}
+<div class="p-panel">
+    <p class="gys-title">
+        <b>供应商：</b>{$vo.supplier.name|default=''}
+    </p>
+    <table class="p-suppliertab">
+        <thead>
+        <th>材料名称</th>
+        <th>数量</th>
+        <th>单价(元)</th>
+        <th>总价(元)</th>
+        <th>采购时间</th>
+        <th>送货时间</th>
+        <th>状态</th>
+        </thead>
+        <tbody>
+        {foreach $vo.material as $material}
+        <tr>
+            <td>{$material.name}</td>
+            <td>{$material.amount}</td>
+            <td>{$material.price}</td>
+            <td>{:bcmul($material.price,$material.amount,2)}</td>
+            <td>{$material.buy_time}</td>
+            <td>{$material.send_time}</td>
+            <td>{$material.state}</td>
+        </tr>
+        {/foreach}
+
+        </tbody>
+    </table>
+</div>
+{/foreach}
+<input type="hidden" class="ordernumber" value="{$order_no}">
+<div class="bottom-btn">
+    <a href="/order" class="p-btn p-primary">返回</a>
+</div>
+{/block}
+
+{block name='script'}
+<script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/webuploader.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/upload.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/detail_material.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/select3/js/select3.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/select2.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/zh-CN.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+
+        var kfdata = {:json_encode($reception)};
+        var sjsdata = {:json_encode($designer)};
+        $(function(){
+            setData('.jiedaikefu',kfdata);
+            setData('.designyuan',sjsdata);
+            
+        })
+        function setData(selector,data){
+                for(var i in data){
+                $(selector).append("<option value="+data[i].id+">"+data[i].name+"&"+data[i].order_number+"</option>");
+                }
+            }
+    
+    </script>
+
+{/block}

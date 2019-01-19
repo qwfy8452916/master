@@ -1,0 +1,277 @@
+{extend name="common:basic" /}
+{block name="title"}
+    跟单管理
+{/block}
+{block name="link"}
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/webuploader.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/upload.css?v={:config('STATIC_VERSION')}">
+	<link rel="stylesheet" href="/assets/pc/css/Private/editorder.css?v={:config('STATIC_VERSION')}">
+	<link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap.css?v={:config('STATIC_VERSION')}">
+	<link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap-datetimepicker.css?v={:config('STATIC_VERSION')}">
+
+{/block}
+{block name="bread_title"}
+<span>跟单管理/编辑</span>
+<ul class="tabbiaot">
+	<li class="active"><a href="#">跟单信息</a></li>
+	{if $order.manage->getData('state') >= $build_sign }
+	<li><a href="http://{:config('pc_host')}/order/build/edit?order_no={$order.order_no}">施工信息</a></li>
+	{/if}
+	<li><a href="http://{:config('pc_host')}/order/orderHistoryEdit?order_no={$order.order_no}">跟单历史</a></li>
+</ul>
+
+{/block}
+{block name="content"}
+	<div class="p-panel">
+		<div class="p-form-box1">
+			<div class="p-form-column wrapinput">
+				<span class="hanggao">装修订单编号：</span><span class="hanggao">{$order.qz_order|default=''}</span>
+			</div>
+			<div class="p-form-column wrapinput">
+				<span class="hanggao">ERP订单编号：</span><span class="hanggao">{$order.order_no|default=''}</span>
+			</div>
+		</div>
+	</div>
+    <div class="p-panel">
+    	<div class="yezhu-title">业主信息</div>
+        <div class="p-form-box b-owf">
+        	<input type="hidden" value="{$order.order_no}" id="orderhao">
+            <div class="hangwrap">
+	            	<div class="inlinelie">
+	            		<span class="hang-title">业主姓名：</span>
+		            	<div class="inputwk">
+		            		<input type="text" name="consumer_name" class="p-input quchupad yezhuinfo" placeholder="请输入业主姓名" value="{$order.consumer_name|default=''}">
+		             	</div>
+		                <span class="red-xing">*</span>
+		                <div class="tishi yezhuinfo-tishi"></div>
+	            	</div>
+	            	<div class="inlinelie">
+	            		<span class="hang-title">手机号：</span>
+		            	<div class="inputwk">
+		            		<input type="text" name="consumer_tel" class="p-input quchupad phoneshouji" maxlength="11" placeholder="请输入业主手机号" value="{$order.consumer_tel|default=''}">
+		            	</div>
+		                <span class="red-xing">*</span>
+		                <div class="tishi phoneshouji-tishi"></div>
+	            	</div>
+
+	            	<div class="inlinelie">
+		            	<span class="hang-title">微信号：</span>
+		            	<div class="inputwk">
+		            		<input type="text" name="consumer_wx_no" class="p-input quchupad weixin" maxlength="20" placeholder="请输入业主微信号" value="{$order.consumer_wx_no}">
+		            	</div>
+		                <div class="tishi weixin-tishi"></div>
+		            </div>
+            </div>
+            <div class="hangwrap">
+               <div class="inlinelie">
+	            	<span class="hang-title">户型：</span>
+	            	<div class="inputwk">
+						<select class="p-input quchupad huxing" name="" id="">
+							<option value="">请选择</option>
+							{foreach $house_type as $vo}
+							{if isset($order.huXing.id) and ($vo.id ==  $order.house_type)}
+							<option value="{$vo.id}" selected>{$vo.name}</option>
+							{else /}
+							<option value="{$vo.id}">{$vo.name}</option>
+							{/if}
+							{/foreach}
+						</select>
+	            	</div>
+	                <div class="tishi huxing-tihsi"></div>
+               </div>
+               <div class="inlinelie">
+	            	<span class="hang-title">面积：</span>
+	            	<div class="inputwk mianjiwk">
+	            		<input type="number" class="p-input quchupad mianji" placeholder="请输入面积" value="{$order.house_area}">
+	            		<span class="danwei">㎡</span>
+	            	</div>
+	                <div class="tishi mianji-tishi"></div>
+               </div>
+            </div>
+
+            <div class="hangwrap qingchufu">
+            	<span class="hang-title">装修地址：</span>
+            	<div class="inputwk widlength">
+            		<input type="text" class="p-input quchupad address" maxlength="30" placeholder="请输入业主装修的地址" value="{$order.build_address}">
+            	</div>
+                <div class="tishi address-tishi"></div>
+            </div>
+            <div class="hangwrap qingchufu">
+            	<span class="hang-title">联系地址：</span>
+            	<div class="inputwk widlength">
+            		<input type="text" class="p-input quchupad lianxaddress" maxlength="30" placeholder="请输入业主的联系地址" value="{$order.link_address}">
+            	</div>
+                <div class="tishi lianxaddress-tishi"></div>
+            </div>
+       </div>
+   </div>
+
+    <div class="p-panel">
+    	<div class="yezhu-title owf">跟单信息
+				<span class="pull-right"><a href="http://{:config('pc_host')}/order/orderHistoryEdit?order_no={$order.order_no}">历史记录</a></span>
+			</div>
+        <div class="p-form-box b-owf">
+        	<div class="orderhang">
+	            <div class="p-form-column wrapinput">
+	                <span class="hang-title">订单状态：</span>
+	                <select class="p-input quchupad orderstatus" name="">
+	                	<option value="">请选择</option>
+						{foreach $order_status as $k=>$vo}
+						{if $k ==  $order.manage->getData('state')}
+						<option value="{$k}" selected>{$vo}</option>
+						{else /}
+						<option value="{$k}">{$vo}</option>
+						{/if}
+						{/foreach}
+	                </select>
+	                <span class="red-xing">*</span>
+	                <div class="tishi orderstatus-tishi"></div>
+	            </div>
+					<div class="p-form-column wrapinput ordertimediv" style="display: none">
+						<span class="hang-title">预约量房时间：</span>
+						<input type="text" class="p-input ordertime" value="{notempty name='$order.manage->getData("order_time")'}{$order.manage->getData('order_time')|date='Y-m-d H:i'}{/notempty}">&nbsp;<i class="fa fa-calendar"></i>
+						<div class="tishi ordertime-tishi"></div>
+					</div>
+					<div class="p-form-column wrapinput realtimediv" style="display: none">
+						<span class="hang-title">实际量房时间：</span>
+						<input type="text p-input " class="realtime p-input" value="{notempty name='$order.manage->getData("lf_time")'}{$order.manage->getData('lf_time')|date='Y-m-d H:i'}{/notempty}">&nbsp;<i class="fa fa-calendar"></i>
+						<div class="tishi realtime-tishi"></div>
+					</div>
+				<div class="p-form-column wrapinput reasondiv" style="display: none">
+					<span class="hang-title">未量房原因：</span>
+					<input type="text" class="p-input reason">
+					<span class="red-xing">*</span>
+					<div class="tishi reason-tishi"></div>
+				</div>
+				<div class="p-form-column wrapinput qiandan_jinediv" style="display: none">
+					<span class="hang-title">签单金额：</span>
+					<input type="text" class="qiandan_jine p-input " value="{$order.manage->getData('qiandan_jine')}">
+					<span class="red-xing">*</span>
+					<div class="tishi qiandan_jine-tishi"></div>
+				</div>
+			</div>
+			<div class="p-form-column wrapinput">
+				<span class="hang-title">跟单详情：</span>
+				<textarea class="p-input quchupad boxmoxing orderremark" rows="25" cols="4" placeholder="请输入跟单内容，最多不超过100字" ></textarea>
+				<div class="tishi orderremark-tishi"></div>
+			</div>
+        </div>
+    </div>
+	<div class="p-panel">
+		<div class="yezhu-title">人员分配</div>
+		<div class="p-form-box b-owf">
+			<div class="yihang">
+				<div class="p-form-column wrapinput">
+					<span class="hang-title">接待客服：</span>
+					<select class="p-input jiedaikefu" name="">
+						<option value="">请选择</option>
+						{foreach $reception as $vo}
+						{if $vo.id ==  $order.manage.reception_id}
+						<option value="{$vo.id}" selected >{$vo.name}</option>
+						{else /}
+						<option value="{$vo.id}">{$vo.name}</option>
+						{/if}
+						{/foreach}
+					</select>
+					<div class="tishi jiedaikefu-tishi"></div>
+				</div>
+				<div class="p-form-column wrapinput">
+					<span class="hang-title">设计师：</span>
+					<select class="p-input designyuan" name="" id="">
+						<option value="">请选择</option>
+						{foreach $designer as $vo}
+						{if $vo.id ==  $order.manage.designer_id}
+						<option value="{$vo.id}" selected >{$vo.name}</option>
+						{else /}
+						<option value="{$vo.id}">{$vo.name}</option>
+						{/if}
+						{/foreach}
+					</select>
+					<div class="tishi designyuan-tishi"></div>
+				</div>
+			</div>
+			<div class="yihang">
+				<div class="p-form-column wrapinput">
+					<span class="hang-title">项目经理：</span>
+					<select class="p-input xuanxiangm" name="" >
+						<option value="">请选择</option>
+						{foreach $project_manager as $vo}
+						{if $vo.id ==  $order.manage.project_manager}
+						<option value="{$vo.id}" selected >{$vo.name}</option>
+						{else /}
+						<option value="{$vo.id}">{$vo.name}</option>
+						{/if}
+						{/foreach}
+					</select>
+					<div class="tishi xuanxiangm-tishi"></div>
+				</div>
+				<div class="p-form-column wrapinput">
+					<span class="hang-title">施工组：</span>
+					<select class="p-input xuanzshigz" name="">
+						<option value="">请选择</option>
+						{foreach $build_group as $vo}
+						{if $order.build_group ==  $vo.gid}
+						<option value="{$vo.gid}" selected >{$vo.group_name}</option>
+						{else /}
+						<option value="{$vo.gid}">{$vo.group_name}</option>
+						{/if}
+						{/foreach}
+					</select>
+					<div class="tishi xuanzshigz-tishi"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="p-panel">
+       <div class="yezhu-title">设计图</div>
+       <div class="chuan-title">单张图片大小不能超过6MB,支持jpg、png、bmp格式</div>
+		<input class="designdata" type="hidden" value="{$order.houseDesign|json_encode}">
+		<div class="uploadpicwk{if (!btnRule('/order/house/design/'))} btn_hide{/if}">
+			<div id="uploader-demo" class="controls">
+				<div class="uploader-list fileList"></div>
+				<div class="filePicker">
+					<span class="hengxian"></span>
+					<span class="suxian"></span>
+				</div>
+			</div>
+		</div>
+    <div class="zhangshuxz">共<span class="canupload">0</span>张,还能上传<span class="yuupload">9</span>张</div>
+
+    </div>
+    <div class="bottom-btn">
+    	<button class="p-btn p-primary" id="save-btn">保存</button>
+        <a href="/order" class="p-btn p-white">取消</a>
+    </div>
+{/block}
+
+{block name='script'}
+    <script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/webuploader.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/upload.js?v={:config('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/pc/js/Private/editorder.js?v={:config('STATIC_VERSION')}"></script>
+	<script type="text/javascript" src="/assets/pc/js/Plugin/bootstrap/js/bootstrap.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/datetimepicker/bootstrap-datetimepicker.js?v={:config('STATIC_VERSION')}"></script>
+	<script type="text/javascript">
+        $(document).ready(function(){
+			var status = '{$order.manage->getData("state")}';
+			if(status==3){
+                $('.ordertimediv').show();
+                $('.realtimediv').hide();
+			}else if(status==5){
+                $('.ordertimediv').hide();
+                $('.realtimediv').show();
+			}else if(status=='6'){
+                $('.ordertimediv').hide();
+                $('.realtimediv').hide();
+                $('.qiandan_jinediv').hide();
+            }else if(status=='8'){
+                $('.ordertimediv').hide();
+                $('.realtimediv').hide();
+                $('.qiandan_jinediv').show();
+            }else{
+                $('.ordertimediv').hide();
+                $('.realtimediv').hide();
+                $('.qiandan_jinediv').hide();
+            }
+        });
+	</script>
+{/block}

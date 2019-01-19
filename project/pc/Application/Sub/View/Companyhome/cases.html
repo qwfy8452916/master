@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<present name="info.mobileagent">
+    <meta name="mobile-agent" content="format=html5;url={$info.mobileagent}" />
+</present>
+<title>{$keys.title}-{$title}</title>
+<meta name="keywords" content="{$keys.keywords}" />
+<meta name="description" content="{$keys.description}" />
+<link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_case/{$userInfo.user.id}/" rel="canonical" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-pub.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-imgs.css?v={:C('STATIC_VERSION')}" />
+<include file="Companyhome:headerbar" />
+<div class="c-wrap ofw">
+    <div class="c-bread">
+        <a href="/">{$cityinfo.name}装修</a> >
+        <a href="/company/">{$cityinfo.name}装修公司</a> >
+        <a href="/company_home/{$userInfo.user.id}/" title="{$userInfo.user.qc}">公司详情</a> >
+        <span>装修案例</span>
+    </div>
+    <div class="c-long-zb">
+        <p class="form">
+            <span>免费获取4份户型设计与报价方案</span>
+            <input type="text" name="name" placeholder="请填写您的姓名">
+            <input type="tel" name="tel" placeholder="请填写您的手机号" maxlength="11">
+            <button class="sjbjbtn">立即申请</button>
+        </p>
+        <p class="bottom-tip">极速获取，已有{:releaseCount("fbrs")}人成功申请</p>
+    </div>
+    <div class="c-left-box">
+        <ul class="c-left-nav">
+            <li>
+                <b>家装案例</b>
+                <volist name="userInfo.jzTypes" id="vo">
+                <a rel="nofollow" href="/company_case/{$userInfo.user.id}/?cl=1&t={$vo.huxing}" <if condition="$choose_menu eq 'cl=1&t='.$vo['huxing']">class="active"</if>>{$vo.name}({$vo.count})&gt;</a>
+                </volist>
+                <b>公装案例</b>
+                <volist name="userInfo.gzTypes" id="vo">
+                <a rel="nofollow" href="/company_case/{$userInfo.user.id}/?cl=2&t={$vo.leixing}" <if condition="$choose_menu eq 'cl=2&t='.$vo['leixing']">class="active"</if>>{$vo.name}({$vo.count})&gt;</a>
+                </volist>
+                <b>在建工地</b>
+                <volist name="userInfo.zjTypes" id="vo">
+                <a rel="nofollow" href="/company_case/{$userInfo.user.id}/?cl=3&t={$vo.huxing}" <if condition="$choose_menu eq 'cl=3&t='.$vo['huxing']">class="active"</if>>{$vo.name}({$vo.count})&gt;</a>
+                </volist>
+                <b><a href="/company_case/{$userInfo.user.id}/?cl=4">3D效果图</a></b>
+            </li>
+        </ul>
+    </div>
+
+    <div class="c-right-box">
+        <ul class="c-anli">
+            <volist name="userInfo.cases" id="vo">
+            <li>
+                <if condition="$_GET['cl'] eq 4">
+                    <a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/3d-case{$vo.id}.html" target="_blank">
+                <else/>
+                    <a href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/caseinfo/{$vo.id}.shtml" target="_blank">
+                </if>
+                <if condition="$vo['img_host'] == 'qiniu' AND !empty($vo['img'])">
+                <img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg">
+                <elseif condition="$vo['img_host'] != 'qiniu' AND !empty($vo['img'])"/>
+                <img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}s_{$vo.img}">
+                <else />
+                <img alt="{$vo.title}"  src="https://staticqn.qizuang.com/jjdg/2018/08/041613218a69d8956-w240.jpg">
+                </if>
+                </a>
+                <div class="c-anli-list for_ie_bg">
+                    <h3><a title="{$vo.title}" href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/3d-case{$vo.id}.html" target="_blank">
+                        {$vo.title}</a>
+                    </h3>
+                    <p><span>{$vo.mianji}M²</span><span>{$vo.jiage}</span><span>|</span><span>{$vo.fg}</span></p>
+                </div>
+            </li>
+            </volist>
+        </ul>
+    </div>
+    <!--S 分页-->
+    <div class="pagebox">
+    {$userInfo.page}
+    </div>
+    <!--E 分页-->
+</div>
+
+<include file="footerbar" />
+
+<script type="text/javascript">
+$(function(){
+    $('.c-left-nav').find("[href='{$userInfo.url}']").addClass('active');
+});
+</script>
+<include file="Index:footer" />
+</body>
+</html>

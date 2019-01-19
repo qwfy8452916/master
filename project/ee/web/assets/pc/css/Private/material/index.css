@@ -1,0 +1,40 @@
+/*
+* @Author: qz_xsc
+* @Date:   2018-09-07 08:58:16
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-09-21 17:20:14
+*/
+@charset "utf-8";
+.p-panel .panel-title{width:100%; table-layout: fixed;  margin-bottom: 10px; color:#666;}
+.p-panel .panel-title span{font-weight: bold; color:#333;}
+.p-panel .panel-foot{padding-top:10px; text-align:right;}
+.load-more{color:#666; text-align: center; cursor: pointer; padding:30px 0px;}
+.fa-spinner{display: none;}
+.table-title{color:#333; padding-right: 3px; width:99px; display: inline-block; text-align: right}
+.table-title:after{ content:"："; color:#333; }
+.detail-table{width:100%; color:#666; margin-top: 8px; table-layout: fixed;}
+.detail-table td{padding:8px 0px;}
+.detail-gys{margin-bottom:8px;}
+.marginTop{padding-top: 20px;}
+.add-order td{padding:15px 0px !important; position: relative;}
+#reset{margin-left: 20px}
+#add-material-btn{border:1px dashed #D6D6D6; margin:20px 0px; padding:8px; color:#999; text-align: center; cursor: pointer;}
+.add-material-table input{text-align: center; padding-top: 8px; padding-bottom:4px; border:0px; border-bottom: 1px solid #CCCCCC; outline: none; width:90%;}
+.p-input{width:60%;}
+.fa-calendar{margin-left:-20px; color: #999}
+#mater-list tr:hover{background: none!important}
+
+.select2-container .select2-selection--single{
+    height: 38px !important; line-height: 38px !important;
+    outline:none;
+    border:1px solid #D6D6D6;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 36px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 33px
+}
+#hide_select{display: none;}
+
+.btn-box{margin-right:26px;}

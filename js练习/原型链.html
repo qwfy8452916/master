@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        var person=function(name){
+           this.name=name;
+        };
+        person.prototype.say=function(){
+            alert(this.name)
+        }
+        var p=new person("小李");
+        p.say()
+
+    </script>
+</body>
+</html>

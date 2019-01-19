@@ -1,0 +1,21 @@
+<p>{$info.fail_cause|default=''}</p>
+<ul>
+    {notempty name='$info.fail_design'}
+    {foreach $info.fail_design as $val}
+    <li class="pull-left">
+        <img src="//{$val.img}" alt="">
+    </li>
+    {/foreach}
+    {/notempty}
+</ul>
+<div class="bottom">
+    <div>
+        <span class="pull-right">{$info.contact_name|default=''}</span>
+        <span class="pull-right yezhu">业主</span>
+    </div>
+    <p class="pull-right">
+        {notempty name='$info.check_time'}
+        {$info.check_time|date='Y-m-d H:i;s'}
+        {/notempty}
+    </p>
+</div>

@@ -1,0 +1,70 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">{$basic.body.title}</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/blog/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$global_yuming_m}/blog">
+</block>
+<block name="content">
+    <div id="m-dsg">
+        <!-- 设计师信息 -->
+        <div class="m-dsg-img">
+            <mip-img src="{$info.designer.logo}" alt="{$info.designer.name}"></mip-img>
+        </div>
+        <div class="m-dsg-tit">
+            <p class="dsg-name">{$info.designer.name}</p>
+            <p class="dsg-time"><span>从业时间：{$info.designer.jobtime}</span><span>{$info.designer.zw}</span></p>
+        </div>
+        <div class="m-dsg-msg">
+            <span>设计理念</span>
+            <p class="dsg-idea">
+                <empty name="info.designer.linian">
+                    这个人很懒,什么都没有留下!
+                <else />
+                    {$info.designer.linian}
+                </empty>
+            </p>
+            <span>个人介绍</span>
+            <p class="dsg-personal">
+                <empty name="info.designer.text">
+                    这个人很懒,什么都没有留下!
+                <else />
+                    {$info.designer.text}
+                </empty>
+            </p>
+        </div>
+        <!-- 设计师作品 -->
+        <div class="m-dsg-con">
+            <ul class="grid">
+                <volist name="info.cases" id="vo">
+                    <li>
+                        <a href="http://{:C('MIP_DONAMES')}/{$cityInfo.bm}/caseinfo/{$vo.caseid}.shtml">
+                            <div class="dsg-case">
+                                <div class="bgchange"></div>
+                                <if condition="$robot">
+                                    <if condition="$vo['img_host'] EQ 'qiniu'">
+                                        <mip-img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg"></mip-img>
+                                    <else/>
+                                        <mip-img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}"></mip-img>
+                                    </if>
+                                <else/>
+                                    <if condition="$vo['img_host'] EQ 'qiniu'">
+                                        <mip-img alt="{$vo.title}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" class="scrollLoading"></mip-img>
+                                    <else/>
+                                        <mip-img alt="{$vo.title}" data-url="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" class="scrollLoading"></mip-img>
+                                    </if>
+                                </if>
+                                <span class="case-tit">{$vo.title}</span>
+                                <span class="case-style">{$vo.fg}</span>
+                            </div>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+            <include file="Common:freeDesign"/>
+        </div>
+    </div>
+    {$info.page}
+</block>
+

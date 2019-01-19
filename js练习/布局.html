@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>布局</title>
+	<style>
+	    html,body{margin:0;padding: 0;height: 100%;}
+		.header{width: 100%;height: 100px;background: #183eff;}
+		.contain{min-height:1200px;background: #95ecf6;}
+		.leftdiv{width: 240px;float: left;background: #eef7c6;min-height: calc(1200px - 100px);}
+		.rightdiv{margin-left: 240px;background: #95aef6;min-height: calc(1200px - 100px);}
+	</style>
+</head>
+<body>
+	
+    <div class="contain">
+       <div class="header"></div>
+    	<div class="leftdiv"></div>
+    	<div class="rightdiv"></div>
+    </div>
+
+</body>
+</html>

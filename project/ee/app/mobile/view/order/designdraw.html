@@ -1,0 +1,30 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="http://{:config('m_host')}/order/house/todesign?order_no={$order.order_no}&type={$type}" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a></div>
+    <div>{$title}</div>
+    <div><a href="http://{:config('m_host')}/order/house/design/add?order_no={$order.order_no}&type={$type}" class="orange pr1 public-beautify-upload {if (!btnRule('/order/edit'))} btn_hide{/if}">上传照片</a></div>
+</header>
+<div class="forder-design-box bg-c4">
+    <div class="order-prief">
+        <p><span>订单编号</span>{$order.order_no}</p>
+        <p><span>业主姓名</span>{$order.consumer_name}</p>
+    </div>
+
+    {foreach $design as $vo}
+        <div class="design-pic">
+            <img src="http://{$vo.img}" alt=""  class="swiper-hook">
+            <p class="text-right {if (!btnRule('/order/edit'))} btn_hide{/if}" data-name="del" data-id="{$vo.id}">删除</p>
+        </div>
+    {/foreach}
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/manager/js/swiper.min.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/manager/js/photos.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/order/js/designdraw.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

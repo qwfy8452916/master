@@ -1,0 +1,90 @@
+/*
+* @Author: qz_xsc
+* @Date:   2017-12-16 14:05:58
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2017-12-16 14:34:20
+*/
+.accordion {
+    margin: 0 12.5px;
+    background: #f8f8f8;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+.baojia-list ul li {
+    height: 2.9em;
+    line-height: 2.9em;
+    font-size: .95em;
+    overflow: hidden;
+    margin: 0 3%;
+}
+.baojia-list ul li div:first-child {
+    float: left;
+}
+
+.baojia-list ul li div.baojia-money {
+    float: right;
+    color: #ff5659;
+}
+.baojia-list ul li div.baojia-money i {
+    margin-left: 0.5em;
+    color: #000;
+}
+
+.baojia-list ul li:last-child {
+    font-size: 1.3em;
+}
+.baojia-list ul li:last-child span{
+    font-weight:bold;
+}
+
+.baojia-list ul li.baojia-item .baojia-money span {
+    color: #ff5353;
+    font-weight: bold;
+}
+.success-footer {
+    margin: 0 12.5px;
+    background: #f8f8f8;
+    overflow: hidden;
+    margin-bottom: 17.5px;
+    padding-top: 17.5px;
+    padding-bottom: 12.5px;
+}
+.success-tip {
+    font-size: 13px;
+    margin: 0 3%;
+    color: #666;
+    text-align: justify;
+    margin-bottom: 25px;
+}
+.success-footer-img mip-img {
+    width: 100%;
+    height: auto;
+}
+.gongzhonghao-text {
+    text-align: center;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 17px auto;
+}
+.guanzhu-text {
+    font-size: 13px;
+    line-height: 15px;
+    color: #666;
+    margin: 0 3%;
+    text-align: justify;
+}
+.recount {
+    margin: 0 12.5px;
+    margin-bottom: 20px;
+}
+.recount a {
+    width: 100%;
+    height: 2.8em;
+    display: block;
+    line-height: 2.8em;
+    text-align: center;
+    background: #ff5659;
+    color: #fff;
+    font-size: 1.1em;
+}

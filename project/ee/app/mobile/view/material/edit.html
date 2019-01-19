@@ -1,0 +1,116 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="/mobile/material/index" class="c2ce"><i class="iconfont icon-angle-left pl1" style="font-size: 1rem"></i></a></div>
+    <div>编辑</div>
+    <div><span class="pr1 orange" data-name="save">保存</span></div>
+</header>
+<div class="material-edit-contianer bg-c4">
+    <p class="edit-item" style="margin-top: -0.5rem"><span class="l t">订单编号</span><span class="r c">15542454511115</span></p>
+    <p class="edit-item"><span class="l t">业主姓名</span><span class="r c">王晓晓</span></p>
+    <p class="edit-item"><span class="l t">手机号</span><span class="r c">15542454511115</span></p>
+    <p class="edit-item"><span class="l t">微信号</span><span class="r c">15542454511115</span></p>
+    <p class="edit-item"><span class="l t">户型</span><span class="r c">三室两厅</span></p>
+    <p class="edit-item"><span class="l t">面积</span><span class="r c">128m²</span></p>
+    <p class="edit-item"><span class="l t">装修地址</span><span class="r c">苏州工业园区海德公园6栋520</span></p>
+    <p class="edit-item"><span class="l t">现联系地址</span><span class="r c">苏州工业园区海德公园6栋520</span></p>
+    <p class="edit-item"><span class="l t">添加事件</span><span class="r c">2018-08-02</span></p>
+    <div class="materials-box">
+        <div class="material-apply sim-table public-s1">
+            <div class="first">供应商</div>
+            <div class="second text-right">某某公司</div>
+        </div>
+        <div class="add-area">
+            <div class="sim-table public-s1 caption">
+                <div class="first">添加材料</div>
+                <div class="second"></div>
+                <div class="third"><i class="iconfont icon-plus" data-name="add-material" data-target="materials"></i></div>
+            </div>
+            <div id="add-material-container">
+                <div class="sim-table public-s1 materials">
+                    <div class="first">水泥</div>
+                    <div class="second"></div>
+                    <div class="third"><i class="iconfont icon-close" data-name="ama-item" data-target="materials"></i></div>
+                </div>
+                <div class="sim-table public-s1 materials">
+                    <div class="first">黄沙</div>
+                    <div class="second"></div>
+                    <div class="third"><i class="iconfont icon-close" data-name="ama-item" data-target="materials"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="materials" class="weui-popup__container popup-bottom">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="toolbar">
+            <div class="toolbar-inner">
+                <a href="javascript:;" class="picker-button close-popup">取消</a>
+                <h1 class="title"><span data-name="save-add">保存</span></h1>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="materials-container">
+                <div class="items">
+                    <div class="sim-table public-s1">
+                        <div class="first">材料名称</div>
+                        <div class="second"><input type="text" placeholder="请输入" data-name="material-name"></div>
+                        <div class="third"></div>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="sim-table public-s1">
+                        <div class="first">数量</div>
+                        <div class="second"><input type="text" placeholder="请输入" data-name="material-size"></div>
+                        <div class="third"></div>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="sim-table public-s1">
+                        <div class="first">单价</div>
+                        <div class="second"><input type="text" placeholder="请输入" data-name="material-signle-price"></div>
+                        <div class="third"></div>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="sim-table public-s1">
+                        <div class="first">总价</div>
+                        <div class="second"><input type="text" placeholder="请输入" data-name="material-total-price"></div>
+                        <div class="third"></div>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="sim-table public-s1">
+                        <div class="first">采购时间</div>
+                        <div class="second"><input type="text" placeholder="请选择" name="shop_time"></div>
+                        <div class="third"></div>
+                    </div>
+                </div>
+                <div class="items">
+                    <div class="sim-table public-s1">
+                        <div class="first">送货时间</div>
+                        <div class="second"><input type="text" placeholder="请选择" name="send_time"></div>
+                        <div class="third"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="add-material-tmpl" type="text/x-jquery-tmpl">
+    <div class="sim-table public-s1 added-item">
+        <div class="first">${name}</div>
+        <div class="second"></div>
+        <div class="third"><i class="iconfont icon-close" data-name="ama-item" data-target="added-item"></i></div>
+    </div>
+</script>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/common/js/jquery.tmpl.min.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/material/js/edit.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="用户中心">
+    <meta name="description" content="用户中心">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>用户中心-齐装网</title>
+    <include file="Index:resource" />
+    <include file="Designer:resource" />
+    <link href="{$static_host}/assets/user/designer/css/de-info.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <include file="Designer:header" />
+    <div class="ht-wrap oflow">
+        <include file="Designer:desnavleft" />
+        <div class="yh-main">
+            <h1 class="yh-tit">消息中心</h1>
+            <if condition="$info['notices']">
+            <ul class="yh-systemes">
+              <volist name="info.notices" id="vo">
+                  <li>
+                    <h1>站内公告：</h1>
+                    <p class="gray">{$vo.time|date="Y-m-d",###}</p>
+                    <p>
+                      <if condition="$vo['id'] NEQ ''">
+                        {$vo.title}
+                      <else/>
+                        <strong>{$vo.title}</strong>
+                      </if>
+
+                    </p>
+                    <p>详情猛戳：<a href="http://u.qizuang.com/desmessage/{$vo.cid}">http://u.qizuang.com/desmessage/{$vo.cid}</a></p>
+                  </li>
+                </volist>
+            </ul>
+            {$info.page}
+            <else/>
+                <if condition="$notice">
+                    <dl>
+                      <dt>
+                        <h3>{$notice.title}</h3>
+                      </dt>
+                      <dt>
+                      发布人:齐装网 {$notice.time|date="Y-m-d",###}
+                      </dt>
+                      <dd>
+                          {$notice.text}
+                      </dd>
+                    </dl>
+                <else/>
+                    <p class="none-msg">没有最新消息</p>
+                </if>
+            </if>
+        </div>
+    </div>
+    <include file="Index:footer" />
+</body>
+
+</html>

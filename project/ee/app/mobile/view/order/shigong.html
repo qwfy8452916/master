@@ -1,0 +1,55 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div class="menu" id="menu" style="width: 0.85rem;">
+        <img src="/assets/mobile/common/img/menu.png" alt="">
+    </div>
+    <div data-top="top">施工管理</div>
+    <div></div>
+</header>
+
+<div class="forder-container bg-c4">
+    <div style="background-color: white; margin: 0 -1.5rem;padding: 0 1.5rem;">
+        <div class="search-box">
+            <form action="http://merp.qizuang.com/material/" onsubmit="return false;" id="sform">
+                <input type="search" id="search" maxlength="30" autocomplete="off" placeholder="业主姓名/手机号/订单编号" value="{$search|default=''}">
+                <i class="iconfont icon-magnifier"></i>
+            </form>
+        </div>
+    </div>
+
+    {if (!empty($search)) && empty($list->toArray())}
+    <p class="without-ret" style="display: block">未找到符合的订单</p>
+    {/if}
+    <div class="forder-item-container">
+        <div class="forder-item-box">
+            {include file="order/index_list" /}
+        </div>
+        <div class="weui-loadmore" style="display: none;">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+    </div>
+</div>
+
+<script id="tmpl" type="text/x-handlebars-template">
+    {{each data as value }}
+    <div class="material-item">
+        <p class="infos"><span class="l">供应商：{{value.supplier_name}}</span><span class="r c4 f15h" data-name="close" data-id="{{value.moid}}" data-target="material-item" style="border:1px solid transparent;">×</span></p>
+        <p class="infos">联系人：{{value.contact_name}}</p>
+        <p class="infos">订单编号：{{value.contact_name}}</p>
+        <p class="infos">业主姓名：{{value.consumer_name}}</p>
+        <p class="infos"><a href="/material/detail/?id={{value.moid}}" class="orange">材料种类：{{value.b_num}}种 >> </a></p>
+    </div>
+    {{/each}}
+</script>
+
+{/block}
+{block name='script'}
+<script src="/assets/mobile/common/js/template.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/order/js/shigong.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

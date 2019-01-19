@@ -1,0 +1,79 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap">
+    <header class="sim-table public-header">
+        <div><a href="/userset" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a></div>
+        <div>个人信息</div>
+        <div></div>
+    </header>
+    <div class="set-person-container bg-c4">
+        <div class="set-base">
+            <a href="/userset/avatar">
+            <div class="sim-table set-person-item">
+                <div class="first">头像</div>
+                <div class="second text-right">
+                    {if ($accountinfo['image'] neq '' AND !empty($accountinfo['image']))}
+                        <span style="display:inline-block;border-radius: 50%;overflow: hidden"><img src="{$accountinfo.image}" alt="" style="width: 3rem; height: 3rem;"></span>
+                    {else/}
+                    <span style="display:inline-block;border-radius: 50%;overflow: hidden"><img src="/assets/mobile/common/img/avatar.png" alt="" style="width: 3rem; height: 3rem;"></span>
+                    {/if}
+                </div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+            </a>
+        </div>
+        <div class="set-base">
+            <a href="/userset/singleinfo">
+            <div class="sim-table set-person-item">
+                <div class="first">名字</div>
+                <div class="second text-right">{$accountinfo.contact_name}</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+            </a>
+        </div>
+        <div class="set-base">
+            <a href="/userset/singleinfomobile">
+            <div class="sim-table set-person-item">
+                <div class="first">手机号</div>
+                <div class="second text-right">{$accountinfo.contact_tel}</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+            </a>
+        </div>
+        <div class="set-base">
+            <a href="/userset/singleinfowechat">
+            <div class="sim-table set-person-item">
+                <div class="first">微信号</div>
+                <div class="second text-right">{$accountinfo.contact_wx}</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+            </a>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">账号</div>
+                <div class="second text-right">{$accountinfo.account}</div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">岗位</div>
+                <div class="second text-right">{$accountinfo.name}</div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">部门</div>
+                <div class="second text-right">{$accountinfo.dept_name}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/install/js/userset.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

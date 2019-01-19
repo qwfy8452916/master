@@ -1,0 +1,378 @@
+<extend name="Main:baseTemplate"/>
+<block name="title">
+    <title>装修攻略-标签组管理-控制台</title>
+</block>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="/assets/common/js/plugins/datetimepicker/datetimepicker.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="content">
+    <section class="content-header">
+        <h1>标签组管理</h1>
+    </section>
+    <style type="text/css">
+        table#add-table tr th:first-child {
+            text-align: left !important;
+        }
+
+        table#add-table tr td:first-child {
+            text-align: left !important;
+        }
+
+        table#add-table tr td, table#add-table tr th {
+            padding: 2px 0;
+            vertical-align: initial;
+        }
+
+        table#add-table tr td label input {
+            margin-right: 5px;
+        }
+
+        table#add-table tr td label {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        table#add-table tr td i.fa {
+            font-size: 16px;
+            margin: 0 5px
+        }
+
+        table#list-table tr td i.fa {
+            font-size: 16px;
+            margin: 0 5px
+        }
+
+        .alert-tem {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .alert-box {
+            width: 350px;
+            height: 150px;
+            background: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 4px;
+        }
+
+        .alert-box i.fa-close {
+            font-size: 20px;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            cursor: pointer;
+            -webkit-text-stroke: 2px #fff;
+        }
+
+        .alert-hd {
+            margin-top: 15px;
+        }
+    </style>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">条件查询</h3>
+                    </div>
+
+                    <div class="box-body">
+                        <form action="">
+                            <div class="col-xs-2">
+                                <div>标签名/链接</div>
+                                <select class="form-control select-sm" name="style" id="module">
+                                    <option value="0" selected {$module}>装修攻略</option>
+                                    <option value="1" selected = "">装修百科</option>
+                                    <option value="2" selected = "">装修公司</option>
+                                </select>
+
+                            </div>
+                            <div class="col-xs-2">
+                                <br>
+                                <button class="btn btn-info"><i class="fa fa-search"></i> 查询</button>
+                            </div>
+                        </form>
+
+                        <!--装修公司不让他添加/删除 标签组-->
+                        <if condition="$_GET['style'] NEQ 2">
+                        <table id="add-table" class="table">
+                            <thead>
+                            <tr>
+                                <th class="col-xs-2"><label class="all-sel"><input type="checkbox">全&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选</label>
+                                </th>
+                                <th class="col-xs-2">排序</th>
+                                <th class="col-xs-2">是否展示在前台</th>
+                                <th class="col-xs-2">添加时间</th>
+                                <th class="col-xs-8">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="sel-opt">
+                            <volist name="pdata" id="pd">
+                                <tr>
+                                    <td><label><input type="checkbox" name="del_tags_id" value="{$pd.id}">{$pd.name}</label></td>
+                                    <td>{$pd.order}</td>
+                                    <td>
+                                        <if condition="$pd.on EQ 1">
+                                            是
+                                        <else/>
+                                            否
+                                        </if>
+                                    </td>
+                                    <td>{$pd.addtime|date='Y-m-d H:i:s',###}</td>
+                                    <td>
+                                        <a href="/specialarticle/basetagsedit?type=1&id={$pd.id}&style={$Think.get.style}"><i class="fa fa-edit" data-toggle="edit"></i></a>
+                                        <i class="fa fa-trash" data-id="{$pd.id}" data-type="1" data-num="1" data-toggle="tags_del"></i>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                            <div style="float:right;">
+                            <div class="btn btn-danger" data-toggle="tags_del_all" data-type="1" data-num="2"><i class="glyphicon glyphicon-remove"></i> 批量删除</div>
+                            <div class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> <a
+                                    href="/specialarticle/basetagsedit?type=1&style={$module}" style="color: white">新增标签组</a></div>
+                        </div>
+                        </if>
+                    </div>
+                </div>
+
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">条件查询</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <form action="">
+                                <div class="col-xs-2">
+                                    <div>标签名/链接</div>
+                                    <input type="text" class="form-control" name="search_name" value="{$Think.get.search_name}">
+                                    <input type="hidden" name="style" value="{$Think.get.style}">
+                                </div>
+                                <!--装修公司没有标签组-->
+                                <if condition="$_GET['style'] NEQ 2">
+                                    <div class="col-xs-2">
+                                        <div>标签组</div>
+                                        <select class="form-control select-sm" name="search_pid">
+                                            <option value="">请选择标签组</option>
+                                            <volist name="pdata" id="pd">
+                                                <if condition="$pd['id'] eq $_GET['search_pid']">
+                                                    <option value="{$pd.id}" selected>{$pd.name}</option>
+                                                    <else/>
+                                                    <option value="{$pd.id}">{$pd.name}</option>
+                                                </if>
+                                            </volist>
+                                        </select>
+                                    </div>
+                                </if>
+                                <div class="col-xs-2">
+                                    <br>
+                                    <button class="btn btn-info"><i class="fa fa-search"></i> 查询</button>
+                                </div>
+                            </form>
+                            <div class="col-xs-2" style="float:right;">
+                                <div class="btn btn-danger" data-toggle="tag_del_all" data-type="2" data-num="2"><i class="glyphicon glyphicon-remove"></i> 批量删除</div>
+                                <div class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> <a
+                                        href="/specialarticle/basetagsedit?type=2&style={$module}" style="color: white">新增标签</a></div>
+                            </div>
+                            <div class="col-xs-12 h5">
+                                <table id="list-table" class="table table-bordered table-hover dataTable">
+                                    <thead>
+                                    <tr>
+                                        <!--<th class="col-sm-1">序号</th>-->
+                                        <th class="col-sm-2"><label class="all-sel"><input type="checkbox">全选</label>
+                                        </th>
+                                        <th class="col-sm-2">标签名</th>
+                                        <th class="col-sm-3">链接地址</th>
+                                        <th class="col-sm-1">标签组</th>
+                                        <th class="col-sm-1">排序</th>
+                                        <th class="col-sm-2">添加时间</th>
+                                        <th class="col-sm-1">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="sel-opt">
+                                    <volist name="cdata" id="cd" key="k">
+                                        <tr>
+                                            <!--<td>{$k}</td>-->
+                                            <td>
+                                                <div><input type="checkbox" name="del_tag_id" value="{$cd.id}"></div>
+                                            </td>
+                                            <td>{$cd.name}</td>
+                                            <td>{$cd.url}</td>
+                                            <td>{$cd.pname}</td>
+                                            <td>{$cd.order}</td>
+                                            <td>{$cd.addtime|date='Y-m-d H:i:s',###}</td>
+                                            <td>
+                                                <a href="/specialarticle/basetagsedit?type=2&id={$cd.id}&style={$Think.get.style}"><i class="fa fa-edit" data-toggle="edit"></i></a>
+                                                <i class="fa fa-trash" data-id="{$cd.id}" data-type="2" data-num="1" data-toggle="tag_del"></i>
+                                            </td>
+                                        </tr>
+                                    </volist>
+                                    </tbody>
+                                </table>
+                                {$page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert-tem">
+            <div class="alert-box">
+                <div class="alert-hd">
+                    <div class="col-xs-12 h4 text-center">确认要删除吗？操作不可恢复</div>
+                    <i class="fa fa-close"></i>
+                </div>
+
+                <div class="col-xs-12 text-center">确认删除弹框</div>
+                <div class="col-xs-12 h3">
+                    <div class="col-xs-2"></div>
+                    <div class="btn btn-default pull-left alert-no">取消删除</div>
+                    <div class="col-xs-2 pull-right"></div>
+                    <div class="btn btn-info pull-right alert-yes">确认删除</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</block>
+<block name="script">
+    <script type="text/javascript" src="/assets/common/js/plugins/datetimepicker/bootstrap-datetimepicker.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript">
+        var style = '{$Think.get.style}';
+        if(style != ''){
+            $('#module').val(style);
+        }else{
+            $('#module').val(0);
+        }
+
+        var del_type = 1; //删除类型 1.标签组 2.标签
+        var del_num = 1; //删除个数 1.单个 2.批量
+        var del_id = 0; //单个删除id
+        jQuery(document).ready(function ($) {
+            $('.datetimepicker').datetimepicker({
+                autoclose: true,
+                pickerPosition: 'bottom-left',
+                todayBtn: 'linked'
+            });
+            $('i[data-toggle="edit"]').popover({trigger: 'hover', placement: 'left', content: '编辑'});
+            $('i[data-toggle="tags_del"],i[data-toggle="tag_del"]').popover({trigger: 'hover', placement: 'right', content: '删除'});
+            //单个删除弹窗
+            $('i[data-toggle="tags_del"],i[data-toggle="tag_del"]').on('click', function () {
+                del_type = $(this).attr('data-type');
+                del_num = $(this).attr('data-num');
+                del_id = $(this).attr('data-id');
+                $('.alert-tem').fadeIn(300);
+            });
+            //批量删除弹窗
+            $('div[data-toggle="tags_del_all"],div[data-toggle="tag_del_all"]').on('click', function () {
+                del_type = $(this).attr('data-type');
+                del_num = $(this).attr('data-num');
+                $('.alert-tem').fadeIn(300);
+            });
+            $('.alert-tem i.fa-close').on('click', function () {
+                $('.alert-tem').fadeOut(300);
+            });
+            $('.alert-tem .alert-no').on('click', function () {
+                $('.alert-tem').fadeOut(300);
+            });
+            //确认删除操作
+            $('.alert-tem .alert-yes').on('click', function () {
+                var _this = $(this);
+                //标签组
+                if(del_type == 1){
+                    //批量
+                    if(del_num == 2){
+                        var spCodesTemp;
+                        $('input:checkbox[name=del_tags_id]:checked').each(function(i){
+                            if(0==i){
+                                spCodesTemp = $(this).val();
+                            }else{
+                                spCodesTemp += (","+$(this).val());
+                            }
+                        });
+                        //用来删除的id 原本一个就直接删除,批量就再赋值
+                        del_id = spCodesTemp;
+                    }
+                }
+                //标签
+                if(del_type == 2){
+                    //批量
+                    if(del_num == 2){
+                        var spCodesTemp;
+                        $('input:checkbox[name=del_tag_id]:checked').each(function(i){
+                            if(0==i){
+                                spCodesTemp = $(this).val();
+                            }else{
+                                spCodesTemp += (","+$(this).val());
+                            }
+                        });
+                        //用来删除的id 原本一个就直接删除,批量就再赋值
+                        del_id = spCodesTemp;
+                    }
+                }
+                $.ajax({
+                    url: '/specialarticle/deltags',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: {del_id:del_id}
+                })
+                    .done(function (data) {
+                        if (data.status == 1) {
+                            window.location.href = '/specialarticle/basetags/';
+                        } else {
+                            _this.Alert({
+                                msg: data.info,
+                                level: 2
+                            });
+                        }
+                    })
+                    .fail(function () {
+                        _this.Alert({
+                            msg: "操作失败,请联系技术部门！",
+                            level: 2
+                        });
+                    });
+            });
+            allSel($('.all-sel'));
+            oneSel($('.sel-opt'));
+
+            function allSel(allDom, selDom) {
+                allDom.find('input').on('click', function () {
+                    console.log()
+                    if ($(this).is(':checked')) {
+                        $(this).parent().parent().parent().parent().siblings('tbody').find('tr input[type="checkbox"]').prop('checked', true).attr('state', 'yes');
+                    } else {
+                        $(this).parent().parent().parent().parent().siblings('tbody').find('tr input[type="checkbox"]').prop('checked', false).attr('state', 'no');
+                    }
+                });
+            }
+
+            function oneSel(selDom) {
+                selDom.find('tr input[type="checkbox"]').on('click', function () {
+                    if ($(this).is(':checked')) {
+                        $(this).attr('state', 'yes');
+                    } else {
+                        $(this).attr('state', 'no');
+                    }
+                    var allSel = $(this).parent().parent().parent().parent().siblings('thead'),
+                        sel = $(this).parent().parent().parent().parent('tbody.sel-opt');
+
+                    if (sel.find('input[state="yes"]').length >= sel.find('tr').length) {
+                        allSel.find('input[type="checkbox"]').prop('checked', true);
+                    } else {
+                        allSel.find('input[type="checkbox"]').prop('checked', false);
+                    }
+                });
+            }
+        });
+    </script>
+</block>

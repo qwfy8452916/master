@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mockjs</title>
+	<style>
+		.dianji{width: 200px;height: 40px;line-height: 40px;text-align: center;background: blue;
+			color: #fff;}
+	</style>
+</head>
+<body>
+	
+	<div class="dianji">点击</div>
+
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+	
+  $(function(){
+    
+    $('.dianji').click(function(event) {
+    	console.log(11)
+    	$.ajax({
+    		url:"https://www.easy-mock.com/mock/5b7f7b7d4a96987699e40656/dc/list",
+    		type:"get",
+    		dataType:"json",
+    		success:function(data){
+              console.log(data.data.list[0].foods)
+    		}
+    	})
+    });
+
+
+
+  })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+
+    <header class="sim-table public-header">
+        <div>
+            {if $Think.get.type == 1 }
+            <a href="http://{:config('m_host')}/order" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a>
+            {else}
+            <a href="http://{:config('m_host')}/shigong" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a>
+            {/if}
+        </div>
+        <div>详情</div>
+        <div></div>
+    </header>
+    <div class="forder-detail-box bg-c4">
+        <div class="detail">
+            <ul>
+                <li>• 订单编号：{$order.order_no}</li>
+                <li>• 业主姓名：{$order.consumer_name}</li>
+                <li>• 手机号：{$order.consumer_tel}</li>
+                <li>• 微信号：{$order.consumer_wx_no}</li>
+                <li>• 户型：{$order.huXing.name|default=''}</li>
+                <li>• 面积：{$order.house_area}m²</li>
+                <li>• 小区：{$order.xiaoqu|default=""}</li>
+                <li>• 装修地址：{$order.build_address}</li>
+                <li>• 现联系地址：{$order.link_address}</li>
+                <li>• 接待客服：{$order.receptionAccount.contact_name|default=''}&nbsp;&nbsp;{notempty name='$order.receptionAccount.contact_name'}{notempty name='$order.reception_id_num'}{$order.reception_id_num}个关联订单{else/}空闲中{/notempty}{/notempty}</li>
+                <li>• 设计师：{$order.designerAccount.contact_name|default=''}&nbsp;&nbsp;{notempty name='$order.designerAccount.contact_name'}{notempty name='$order.designer_id_num'}{$order.designer_id_num}个关联订单{else/}空闲中{/notempty}{/notempty}</li>
+                <li>• 添加时间：{$order.add_time}</li>
+            </ul>
+        </div>
+        <div class="detail">
+            <ul>
+                <li>订单状态：{$order.manage.state|default=''}</li>
+                {switch $order.manage.state}
+                {case 3}
+                <li>预约量房时间：{$order.manage.order_time|date='Y-m-d H:i:s'}</li>
+                {/case}
+                {case 5}
+                <li>实际量房时间：{$order.manage.lf_time|date='Y-m-d H:i:s'}</li>
+                {/case}
+                {case 8}
+                <li>签单金额：{$order.manage.qiandan_jine|default=''}</li>
+                {/case}
+                {default /}
+                {/switch}
+                <li><a href="http://{:config('m_host')}/order/orderhistory?order_no={$order.order_no}" class="blue rel">查看历史跟单记录 <span class="pos-right">></span></a></li>
+            </ul>
+        </div>
+        <div class="detail">
+            <ul>
+            </ul>
+        </div>
+    </div>
+{/block}
+{block name='script'}
+
+{/block}

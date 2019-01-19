@@ -1,0 +1,98 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/manager/css/team.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="menu" id="menu">
+            <img src="/assets/mobile/common/img/menu.png" alt="">
+        </div>
+        <h1>团队管理</h1>
+    </header>
+    <div class="wrapper">
+        <div class="tab">
+            <div class="navbar clearfix">
+                <div class="navbar-item" data-name="add">
+                    <a href="/employee"><span>员工管理</span></a>
+                </div>
+                <div class="navbar-item" data-name="add-construction">
+                    <a href="/workgroup"><span class="on">施工组管理</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search-box">
+                <form action="http://merp.qizuang.com/workgroup/" onsubmit="return false;">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="" id="searchInput" placeholder="项目经理/手机号/施工组名称" required="">
+                </form>
+            </div>
+        </div>
+        <div class="part">
+            <div class="group-list">
+                <div class="close">
+                    <img src="/assets/mobile/common/img/close.png" alt="">
+                </div>
+                <div class="list-box">
+                    <div class="name">
+                        <div class="group-name">施工1组</div>
+                    </div>
+                    <div class="member">
+                        <div class="num">成员：<span>6</span>人</div>
+                    </div>
+                    <div class="place">
+                        <div class="place-num"><span>2</span>个工地进行中</div>
+                    </div>
+                </div>
+                <div class="list-btn clearfix">
+                    <div class="edit-detail">
+                        <a href="editgroup"><div class="edit fr">详情</div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <p class="no-supplier" data-name="none">未找到符合的施工组</p>
+    {if($page!=0)}
+    <div class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips" data-id={$page}>正在加载</span>
+    </div>
+    {else/}
+    <div class="weui-loadmore">
+        <span class="weui-loadmore__tips" data-id={$page}>到底了~</span>
+    </div>
+    {/if}
+
+</div>
+
+<!-- 下拉加载模板 -->
+<script id="tmpl" type="text/x-handlebars-template">
+    {{each data as value }}
+    <div class="group-list">
+        <div class="close">
+            <img src="/assets/mobile/common/img/close.png" alt="">
+        </div>
+        <div class="list-box">
+            <div class="name">
+                <div class="group-name">施工<span>1</span>组</div>
+            </div>
+            <div class="member">
+                <div class="num">成员：<span>6</span>人</div>
+            </div>
+            <div class="place">
+                <div class="place-num"><span>2个工地进行中</span></div>
+            </div>
+        </div>
+        <div class="list-btn clearfix">
+            <div class="edit-detail">
+                <a href="editgroup"><div class="edit fr">详情</div></a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/common/js/template.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/team/js/group.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

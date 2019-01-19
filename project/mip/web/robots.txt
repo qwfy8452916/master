@@ -1,0 +1,39 @@
+User-agent:BaiduSpider
+Disallow: /assets/
+Disallow: /article
+Disallow: /User
+Disallow: /company*?p=*
+Disallow: /company/*?*
+Disallow: /company_case/*?*
+Disallow: /company_message
+Disallow: /company_zixun/*/
+Disallow: /company_team/*-*
+Disallow: /?userid=*
+Disallow: */?keyword=*
+Disallow: /zxbj/
+Disallow: /zb
+Disallow: /dangan
+Disallow: /order
+Disallow: /zhuangxiuanli
+Disallow: /dianping
+Disallow: /dianping*
+Disallow: /works_info
+Disallow: /xgt&p=*
+Disallow: /xgt/-list-*
+Disallow: /zixun_info/
+Disallow: /meitu/list?*
+Disallow: /meitu/list/?*
+Disallow: /meitu/list*?*
+Disallow: /riji/list*
+Disallow: /*/?gdt*
+Disallow: /meitu/gongzhuang*?*
+Disallow: /xgt?*
+Disallow: /xiaoguotu/
+Disallow: /*?p=1
+Disallow: /?src*
+Disallow: /*/?src*
+Disallow: /*?src*
+Disallow: /dispatcher*
+
+User-agent:*
+Disallow:/

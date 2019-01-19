@@ -1,0 +1,45 @@
+<div class="construct-item">
+    <div class="title">
+        <div class="l"><span>施工状态：</span> {$info.state|default=''} </div>
+        <div class="r">
+            {switch $info.check_state }
+            {case 1 }
+            <span class="orange"></span>
+            {/case}
+            {case 2}
+            <span class="red" >不合格</span>
+            {/case}
+            {case 3}
+            <span class="green">已验收</span>
+            {/case}
+            {default /}
+            {/switch}
+        </div>
+    </div>
+    <div class="desc">{$info.remark|default=''}</div>
+    <div class="pics">
+        {notempty name='$info.build_design'}
+        {foreach $info.build_design as $val}
+            <img src="//{$val.img}" alt="">
+        {/foreach}
+        {/notempty}
+    </div>
+    <div class="action">{$info.add_time|default=''}</div>
+</div>
+
+<div class="construct-item">
+    <div class="title">业主描述</div>
+    <div class="desc">{$info.fail_cause|default=''}</div>
+    <div class="pics">
+        {notempty name='$info.fail_design'}
+        {foreach $info.fail_design as $val}
+        <img src="//{$val.img}" alt="">
+        {/foreach}
+        {/notempty}
+    </div>
+    <div class="action">
+        {notempty name='$info.check_time'}
+        {$info.check_time|date='Y-m-d H:i:s'|default=''}
+        {/notempty}
+    </div>
+</div>

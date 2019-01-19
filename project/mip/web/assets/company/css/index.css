@@ -1,0 +1,164 @@
+.company-box {
+
+    background: white;
+    padding: 0px 10px;
+}
+.company-box ul li {
+    border-top: 1px solid #ebebeb;
+    overflow: hidden;
+}
+.company-left {
+    width: 27%;
+    float: left;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    height: 0.8rem;
+}
+.company-left mip-img {
+    width: 100%;
+}
+
+.position-center {
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    height:0.42rem;
+    position: absolute;
+}
+.company-center {
+    width: 48%;
+    float: left;
+    position: relative;
+    z-index: 0;
+    height: 0.8rem;
+}
+.position-center {
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+}
+
+.center-container {
+    width: 80%;
+    height: 0.5rem;
+}
+.company-name {
+    font-weight: bold;
+    font-size: 0.14rem;
+}
+.level {
+    color: #666666;
+    font-size: 0.1rem;
+}
+.xld-srtar {
+    color: #fdd518;
+}
+.company-right {
+    width: 20%;
+    float: right;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    height: 0.8rem;
+}
+.position-center {
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+}
+
+.to-datial {
+    display: block;
+    width: 100%;
+    background: #FF5659;
+    border-radius: 3px;
+    color: #fff;
+    height: 0.22rem;
+    line-height: 0.22rem;
+}
+.mip-vd-tabs-nav-selected{border:none !important;  color:#333!important;}
+.new-upload {
+    background: white;
+    padding: 20px 0px;
+}
+.new-upload-title {
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 0px 10px;
+}
+.new-upload-title span {
+    float: left;
+    font-size: 17px;
+    font-weight: bold;
+}
+.new-upload-title a {
+    float: right;
+    font-size: 14px;
+    color: #848486;
+}
+
+.more-company mip-vd-tabs .mip-vd-tabs-nav{
+    height: auto !important;
+    padding:0px;
+
+}
+.more-company mip-img{width:100%; height: 100%}
+.more-company mip-vd-tabs .mip-vd-tabs-nav-view {
+    position: relative;
+    overflow: hidden;
+    height: auto!important;
+    text-align: left;
+    background-color: #fff;
+}
+.more-company mip-vd-tabs .mip-vd-tabs-nav-li {
+    display: block;
+    overflow: hidden;
+    width: 11em !important;
+    height:13em;
+    padding: 0px;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    list-style: none;
+
+    color: #333;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+}
+.more-company{margin-top: -20px; padding-bottom: 20px;}
+.more-company mip-vd-tabs .mip-vd-tabs-nav-view .mip-vd-tabs-nav .mip-vd-tabs-nav-li{
+    padding:0px;
+}
+
+.more-company li{
+    margin: 0px 10px;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+}
+.case-detail{
+    position: absolute;
+    width: 100%;
+    line-height: 20px;
+    left: 0px;
+    font-size: 13px;
+    bottom: 0px;
+    padding: 6px;
+    color: white;
+    background: rgba(0,0,0,0.3);
+}
+
+.menu_list ul {
+    display: flex;
+}

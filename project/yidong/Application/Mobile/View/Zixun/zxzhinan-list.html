@@ -1,0 +1,303 @@
+<extend name="Common:basic"/>
+<block name="link">
+    <link href="/assets/mobile/common/css/m-reset.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link href="/assets/mobile/common/css/m-public.new.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/assets/mobile/common/fonts/font-awesome.min.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="http://www.qizuang.com{$info.canonical}">
+    <link href="/assets/mobile/common/css/qzCitySelect.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css"/>
+    <link href="/assets/mobile/css/top-sj-bj.css?v={:C('STATIC_VERSION')}" rel="stylesheet"/>
+    <link href="/assets/mobile/xiaoguotu/css/zhuangxiuanli.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link href="/assets/mobile/zixun/css/zxzhinan-list.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+</block>
+<block name="top-fadan">
+    <include file="Common:top-fadan"/>
+</block>
+<block name="content">
+
+    <style>body {
+        overflow-x: hidden;
+    }</style>
+    <article>
+        <div class="head">
+            <div class=" head-search">
+                <form action="http://{:C('MOBILE_DONAMES')}/search">
+                <i class="fa fa-search"></i><input type="text" placeholder="电视机背景墙" id="search" name="keyword">
+                </form>
+            </div>
+        </div>
+
+        <div class="position">
+            <div id="zzc"></div>
+            <div id="tofixed">
+                <div class="box-title" id="tab-menus">
+                    <ul id="menuTitle">
+                        <empty name="nav.fg">
+                            <li><span>装修风格</span>&nbsp;<i class="fa fa-angle-down"></i></li>
+                            <else/>
+                            <li class="now"><span>{$nav.fg}</span>&nbsp;<i class=""></i></li>
+                        </empty>
+
+                        <empty name="nav.kjdp">
+                            <li><span>局部装修</span>&nbsp;<i class="fa fa-angle-down"></i></li>
+                            <else/>
+                            <li class="now"><span>{$nav.kjdp}</span>&nbsp;<i class=""></i></li>
+                        </empty>
+
+                        <empty name="nav.fs">
+                            <li><span>装修风水</span>&nbsp;<i class="fa fa-angle-down"></i></li>
+                            <else/>
+                            <li class="now"><span>{$nav.fs}</span>&nbsp;<i class=""></i></li>
+                        </empty>
+
+                        <empty name="nav.jj">
+                            <li><span>家居生活</span>&nbsp;<i class="fa fa-angle-down"></i></li>
+                            <else/>
+                            <li class="now"><span>{$nav.jj}</span>&nbsp;<i class=""></i></li>
+                        </empty>
+
+                    </ul>
+                </div>
+                <div class="menu-list back-white clearfix">
+                    <ul class="chose-list list-fg">
+                        <volist name="fengge" id="fg">
+                            <eq name="fg.id" value="$cur_category_id">
+                                <li><a href="javascript:;" class="now"> {$fg.classname} </a></li>
+                                <else/>
+                                <li><a href="/zhinan/{$fg.shortname}">{$fg.classname}</a></li>
+                            </eq>
+                        </volist>
+                    </ul>
+                    <ul class="chose-list list-jubu">
+                        <volist name="kongjian" id="kj">
+                            <eq name="kj.id" value="$cur_category_id">
+                                <li class="now"><a href="javascript:;"> {$kj.classname} </a></li>
+                                <else/>
+                                <li><a href="/zhinan/{$kj.shortname}">{$kj.classname}</a></li>
+                            </eq>
+                        </volist>
+                    </ul>
+                    <ul class="chose-list list-fengshui">
+                        <volist name="fengshui" id="fs">
+                            <eq name="fs.id" value="$cur_category_id">
+                                <li class="now"><a href="javascript:;"> {$fs.classname} </a></li>
+                                <else/>
+                                <li><a href="/zhinan/{$fs.shortname}">{$fs.classname}</a></li>
+                            </eq>
+                        </volist>
+
+                    </ul>
+                    <ul class="chose-list list-shenghuo">
+                        <volist name="jiaju" id="jj">
+                            <eq name="jj.id" value="$cur_category_id">
+                                <li class="now"><a href="javascript:;"> {$jj.classname} </a></li>
+                                <else/>
+                                <li><a href="/zhinan/{$jj.shortname}">{$jj.classname}</a></li>
+                            </eq>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <div class="main">
+                <volist name="list" id="vo">
+                    <div class="list-box ">
+                        <div class="list clearfix">
+                            <a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                                <div class="img">
+                                    <img src="{$vo['imgs'][0]}" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="title">{$vo.title}</div>
+                                    <div class="text">{$vo.jianjie}</div>
+                                    <div class="icon">
+                                        <i class="fa fa-eye" style="margin-right: 0.05rem"></i><span
+                                            style="margin-right: 0.25rem">{$vo.pv}</span>
+                                        <span class="collect" data-id="{$vo.likes}">
+                                            <i class="fa fa-heart-o heart" style="margin-right: 0.05rem"></i>
+                                            <span class="heart-no">{$vo.likes}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </volist>
+
+
+            </div>
+        </div>
+
+
+        <div class="page">
+            {$page_tmp}
+        </div>
+
+
+        <div id="gotop"><i class="fa fa-angle-up fa-lg"></i><br>置顶</div>
+    </article>
+    <input type="hidden" name="hide_city_id" value="{$info.cityarea.id}">
+    <input type="hidden" name="search_url" value="{$search_url}">
+
+</block>
+<block name="script">
+    <script type="text/javascript" src="/assets/mobile/zixun/js/jroll-scroll.js?v={:C('STATIC_VERSION')}"></script>
+    <script>
+        var searchList = ["风格", "布局", "户型", "颜色"];
+        $(".chose-list").css("display", "none");
+        $('#menuTitle').on('click', 'li', function () {
+            var flag = $(".chose-list")[$(this).index()].style.display;
+            if (flag == "none") {
+                for (var i = 0; i < $("#menuTitle li i").length; i++) {
+                    $($("#menuTitle li i")[i]).removeClass("active");
+                }
+                $($(this).children('i')[0]).addClass('active');
+                $("#zzc").fadeIn();
+                $(".chose-list").css({"display": "none", "margin-top": "-1000px"});
+                $($(".chose-list")[$(this).index()]).css("display", "block");
+                $($(".chose-list")[$(this).index()]).animate({"margin-top": "-10px"}, 500);
+            } else {
+                $("#zzc").fadeOut();
+                for (var i = 0; i < $("#menuTitles li i").length; i++) {
+                    $($("#menuTitle li i")[i]).removeClass("active");
+                }
+                $(".chose-list").css({"display": "none", "margin-top": "-1000px"});
+            }
+        });
+        /*遮罩层点击*/
+        $("#zzc").click(function () {
+            $(this).fadeOut();
+            for (var i = 0; i < $("#menuTitle li i").length; i++) {
+                $($("#menuTitle li i")[i]).removeClass("active");
+            }
+            $("#menuTitle li").css("color", "#3c3c3c");
+            $(".chose-list").css({"display": "none", "margin-top": "-1000px"});
+        });
+        //筛选条件筛选
+        $('.menu-list li').click(function (event) {
+            $(this).parent().find('.now').removeClass('now');
+            $(this).addClass('now');
+            // 将选中项换至导航显示
+            var wenzith = $(this).parent();
+            var index = wenzith.index();
+            var daohanghuan = $($('#menuTitle li')[index]).children('span')[0];
+            if ($(this).text() != "不限") {
+                $(daohanghuan).text($(this).text());
+            } else {
+                $(daohanghuan).text(searchList[index]);
+            }
+        });
+        // 点击心变色
+        $('.collect').click(function () {
+            $(this).find("i").toggleClass('current');
+            $(this).find("i").toggleClass('fa-heart-o').addClass('fa-heart');
+            var _this = $(this);
+            $.ajax({
+                url: '/dolike/',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    id: _this.attr("data-id")
+                }
+            })
+                .done(function (data) {
+                    if (data.status == 1) {
+                        _this.unbind("click");
+                        var i = _this.find("span").text();
+                        i = parseInt(i) + 1;
+                        _this.find("span").html(i);
+                    }
+                });
+
+            return false;
+        });
+
+        window.onscroll = function () {
+                var top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+                if (top > 103) {
+                    $("#tofixed").addClass('tofixed')
+                } else {
+                    $("#tofixed").removeClass('tofixed')
+                }
+            }
+            // 搜索框文字随机切换
+            + function ($) {
+                var $search = $("#search");
+                var randomNum = 0;
+                var kyw = ["客厅墙漆颜色", "卧室墙漆颜色", "热水器漏水", "高层窗户漏风的小窍门", "合格地板", "浴霸灯", "圆柱空调", "马桶", "小空间创意装饰", "隔音毡"];
+                randomNum = Math.floor(Math.random() * 10);
+                $search.attr("placeholder", kyw[randomNum]);
+            }(jQuery)
+
+            // 搜索跳转
+            + function ($) {
+                var $search = $("#search");
+                var kyw = ""
+                var submitKyw = function () {
+                    kyw = $search.val();
+                    if (!kyw) {
+                        kyw = kyws[randomNum];
+                    }
+                    location.href = "http://m.qizuang.com/search?keyword=" + kyw;
+                };
+                // document.getElementById('search_form').onsubmit = function(){
+                //     submitKyw();
+                // }
+                $("#search").blur(function () {
+                    submitKyw();
+                })
+                document.addEventListener("keyup", function (evnet) {
+                    if (event.keyCode == 13) {
+                        submitKyw();
+                    }
+                    return false;
+                }, false)
+            }(jQuery)
+
+        window.onscroll = function () {
+            var top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if (top > 103) {
+                $("#tofixed").addClass('tofixed')
+            } else {
+                $("#tofixed").removeClass('tofixed')
+            }
+        }
+    </script>
+    <script language="javascript">
+
+        // 置顶
+        $(window).on("scroll", function () {
+            if ($(document).scrollTop() >= "1000") {
+                $('#gotop').addClass('show');
+            } else {
+                $('#gotop').removeClass('show');
+            }
+        });
+
+
+    </script>
+    <script type="text/javascript"
+            src="//api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="/assets/mobile/common/js/geolocation.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="//{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="/assets/mobile/js/jroll.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/mobile/common/js/qzCitySelect.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript">
+        // var jroll = new JRoll(".tab-menus", {scrollX:true,scrollY:false});
+        // 城市选择插件
+        selectQz.init({
+            province: $("input[name=province]").attr("data-id"),
+            city: $("input[name=city]").attr("data-id"),
+            area: $("input[name=area]").attr("data-id")
+        });
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+            "appid": "1575859058891466",
+            "title": "{$basic.head.title}",
+            "images": [],
+            "pubDate": ""
+        }
+    </script>
+</block>

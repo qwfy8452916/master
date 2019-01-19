@@ -1,0 +1,23 @@
+.weui-dialog__bd{
+    padding: 2.7em 20px 1.7em !important;
+    text-align: center !important;
+}
+.weui-dialog__ft{
+    height: 48px !important;
+    line-height: 48px !important;
+    padding: 0 !important;
+    font-size: 15px !important;
+    border-top: 1px solid #ebebec;
+}
+.weui-dialog__ft a{
+    display: inline-block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 50%;
+    text-align: center;
+    float: left;
+    font-size: 18px;
+}
+.weui-dialog__ft a:first-child{
+    border-right: 1px solid #ebebec;
+}

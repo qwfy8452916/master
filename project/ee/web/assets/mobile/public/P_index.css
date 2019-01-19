@@ -1,0 +1,247 @@
+*{ box-sizing: border-box }
+html,body{
+    height: 100%;
+}
+ul,li,ol{ marigin:0px; padding: 0px; list-style: none}
+input, button{
+    border:none;
+    outline: none;
+}
+a{ display: block; width: 100%; height: 100%;}
+::-moz-selection{ background:#b7b59b; color:#fff; text-shadow: none; }
+::selection { background:#b7b59b; color:#fff; text-shadow: none; }
+::-moz-placeholder { color: #6F809C; font-family: "Microsoft Yahei"; }
+::-webkit-input-placeholder { color:#6F809C; font-family: "Microsoft Yahei"; }
+:-ms-input-placeholder { color:#6F809C; font-family: "Microsoft Yahei"; }
+@font-face {
+    font-family: 'iconfont';  /* project id 815704 */
+    src: url('//at.alicdn.com/t/font_815704_2fxtlok0jwk.eot');
+    src: url('//at.alicdn.com/t/font_815704_2fxtlok0jwk.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_815704_2fxtlok0jwk.woff') format('woff'),
+    url('//at.alicdn.com/t/font_815704_2fxtlok0jwk.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_815704_2fxtlok0jwk.svg#iconfont') format('svg');
+}
+.abs{position: absolute} .rel{ position: relative }
+                         .top-middle{ position: absolute; top: 50%; transform: translateY(-50%)}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:14px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/**user**/
+.icon-user:before { content: "\e614"; }
+/*lock*/
+.icon-lock:before { content: "\e645"; }
+/*齿轮*/
+.icon-gear:before { content: "\e611"; }
+/*列*/
+.icon-list:before { content: "\e693"; }
+/*左箭头*/
+.icon-angle-left:before { content: "\e600"; }
+/*右箭头*/
+.icon-angle-right:before { content: "\e6af"; }
+/*note*/
+.icon-note:before { content: "\e60e"; }
+/*circle close*/
+.icon-circle-close:before { content: "\e606"; }
+/* close*/
+.icon-close:before { content: "\e612"; }
+/*add*/
+.icon-add:before { content: "\e681"; }
+/*Magnifier*/
+.icon-magnifier:before { content: "\e607"; }
+/*plus*/
+.icon-plus:before { content: "\e61c"; }
+.m-wrap{
+    max-width: 640px;
+    min-width: 320px;
+    overflow:hidden;
+    margin: 0 auto;
+    height: 100%;
+}
+.mt1{ margin-top: 1rem;}
+.pl1{ padding-left: 1rem; } .pr1{ padding-right: 1rem; }
+.orange{ color:#EFB013} .white{ color: white !important;} .c9{ color: #999 !important;} .c2ce{ color: #C2CEE1 !important;} .blue{ color: #1890FF}
+.bg-deepblue{ background-color: #19283D} .bg-c1{background-color: #29CFAB !important;} .bg-c2{ background-color: #EB7038 !important;} .bg-c3{background-color:
+        #E35252 !important;} .bg-c4{background-color: #F8F8F8;}
+.c1{ color: #C2CEE1 !important;} .c2{ color: #E31919 !important; } .c3{ color: #999 !important; } .c4{ color: #CCC !important;} .orange{ color: #EFB013 !important; }
+.f15h{font-size: 1.5rem}
+.text-left{text-align: left !important;} .text-center{text-align: center !important;} .text-right{ text-align: right !important; }
+.l{float: left;} .r{ float: right;}
+.btn{background-color: #DCDCDC; color:white; padding: 0.5em 1em; border-radius: 0.3em;}
+.btn-blue{background-color: #0E94EA;} .btn-white{background-color: white; color: #999} .btn-green{ background-color: #29CFAB; } .btn-orange{ background-color:
+        #EB7038; }
+.rows{
+    margin: 0 -0.15em;
+}
+.sim-table{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0;
+}
+.sim-table>div{
+    display: table-cell;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    word-break: break-all;
+}
+.public-header{
+    background-color: #19283D;
+    color: #C2CEE1;
+    height: 45px;
+}
+.public-header > div{
+    font-size: 0.85rem !important;
+    line-height: initial;
+}
+.public-header>div:nth-child(1){
+    width: 25%;
+}
+.public-header>div:nth-child(2){
+    width: 50%;
+    text-align: center;
+    font-size: 0.95rem !important;
+}
+.public-header>div:nth-child(3){
+    width: 25%;
+    text-align: right;
+}
+.public-header>div:nth-child(3) a{
+    display: inline;
+}
+.public-top-nav{
+    position: fixed;
+    left: 0.5rem;
+    top: 2.2rem;
+    width: 10.3rem;
+    background-color: white;
+    padding: 1rem;
+    z-index: 9;
+    display: none;
+}
+.public-top-nav::before{
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    transform: rotate(45deg);
+}
+.public-top-nav ul li{
+    padding: 0.5rem 0;
+}
+.public-top-nav ul li .icon{
+    float: left;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    background-position: center center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+.public-top-nav ul li .text{
+    overflow: hidden;
+    height: 3rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #D9D9D9;
+}
+.public-top-nav ul li .text a{
+    color: #142030;
+}
+.public-top-nav ul li .i1{
+    background-image: url("../img/i5-0.png");
+}
+.public-top-nav ul li .i2{
+    background-image: url("../img/i2-0.png");
+}
+.public-top-nav ul li .i3{
+    background-image: url("../img/i1-0.png");
+}
+.public-top-nav ul li .i4{
+    background-image: url("../img/i3-0.png");
+}
+.public-top-nav ul li .i5{
+    background-image: url("../img/i6-0.png");
+}
+.public-top-nav ul li .i6{
+    background-image: url("../img/i4-0.png");
+}
+/*添加进销材料等页面用到*/
+.public-s1{
+    height: 2.3rem;
+    line-height: 2.3rem;
+}
+.public-s1 input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    text-align: right;
+    color: #999;
+}
+.public-s1 .first{
+    width: 30%;
+    word-wrap: none;
+}
+.public-s1 .second{
+    width: 60%;
+}
+.public-s1 .third{
+    width: 10%;
+    text-align: right;
+}
+
+.public-sidebar-container{
+    position: fixed;
+    left: 0;
+    top: 6%;
+    height: 94%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99;
+    display: none;
+}
+.public-sidebar-container .sidebar{
+    position: absolute;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    background-color: white;
+}
+
+.input-line{
+    border-bottom: 1px solid #6F809C;
+    margin-bottom: 1.5rem;
+    color: #C2CEE1;
+}
+.input-line .iconfont{
+    font-size: 1.2rem;
+    color: #6F809C;
+}
+.input-line input{
+    height: 1.3rem;
+    line-height: 1.5rem;
+    width: 14rem;
+    vertical-align: text-bottom;
+    background-color: transparent;
+    font-size: 0.8rem;
+    padding-left: 0.2rem;
+    color: #6F809C !important;
+}
+
+.public-beautify-upload{
+    position: relative;
+}
+.public-beautify-upload input[type="file"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}

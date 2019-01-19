@@ -1,0 +1,450 @@
+<extend name="Common:basic"/>
+<block name="link">
+    <!--样式表-->
+    <script src="/assets/mobile/js/750rem.js?v={:C('STATIC_VERSION')}"></script>
+    <link href="/assets/mobile/zixun/css/swiper-3.3.1.min.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="http://www.qizuang.com{$_SERVER['REQUEST_URI']}"/>
+    <link href="{$static_host}/assets/mobile/common/css/m-version.two.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css"/>
+</block>
+<block name="top">
+    <div class="m-header-his">
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <a href="/" class="m-header-left"></a>
+    <div class="m-header-tit">装修攻略</div>
+</block>
+<block name="content">
+    <div class="search">
+        <form action="http://{:C('MOBILE_DONAMES')}/search">
+            <input type="search" placeholder="客厅墙漆颜色" id="search" name="keyword">
+            <!-- <iframe name='frameFile' style="display: none;"></iframe> -->
+            <i class="fa fa-search"></i>
+        </form>
+    </div>
+    <div class="main">
+        <!-- 装修流程 -->
+        <div class="zx-process pb3" id="zx-process">
+            <h2 class="common-title">装修流程</h2>
+            <div class="tab">
+                <div><span class="active">装修准备</span></div>
+                <div><span>装修施工</span></div>
+                <div><span>收尾入住</span></div>
+            </div>
+            <div class="swiper-container swiper-container-horizontal swiper-process">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-process-zb clearfix">
+                        <a href="/gonglue/shoufang/">
+                            <img src="/assets/mobile/common/img/fangchan.png" alt="" >
+                            <span>验房</span>
+                        </a>
+                        <a href="/gonglue/gongsi/">
+                            <img src="/assets/mobile/common/img/zxgongsi.png" alt="">
+                            <span>选公司</span>
+                        </a>
+                        <a href="/gonglue/shejiyusuan/">
+                            <img src="/assets/mobile/common/img/yusuan.png" alt="">
+                            <span>设计预算</span>
+                        </a>
+                        <a href="/gonglue/liangfang/">
+                            <img src="/assets/mobile/common/img/liangfang.png" alt="">
+                            <span>量房</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide swiper-process-sg clearfix">
+                        <a href="/gonglue/xuancai/">
+                            <img src="/assets/mobile/common/img/xuancai.png" alt="">
+                            <span>选材</span>
+                        </a>
+                        <a href="/gonglue/chagai/">
+                            <img src="/assets/mobile/common/img/chaigai.png" alt="">
+                            <span>拆改</span>
+                        </a>
+                        <a href="/gonglue/shuidian/">
+                            <img src="/assets/mobile/common/img/shuidian.png" alt="">
+                            <span>水电</span>
+                        </a>
+                        <a href="/gonglue/fangshui/">
+                            <img src="/assets/mobile/common/img/fangshui.png" alt="">
+                            <span>防水</span>
+                        </a>
+                        <a href="/gonglue/niwa/">
+                            <img src="/assets/mobile/common/img/niwa.png" alt="">
+                            <span>泥瓦</span>
+                        </a>
+                        <a href="/gonglue/mugong/">
+                            <img src="/assets/mobile/common/img/mugong.png" alt="">
+                            <span>木工</span>
+                        </a>
+                        <a href="/gonglue/youqi/">
+                            <img src="/assets/mobile/common/img/youqi.png" alt="">
+                            <span>油漆</span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide swiper-process-rz clearfix">
+                        <a href="/gonglue/jianche/">
+                            <img src="/assets/mobile/common/img/yanshou.png" alt="">
+                            <span>验收</span>
+                        </a>
+                        <a href="/gonglue/baoyang/">
+                            <img src="/assets/mobile/common/img/baoyang.png" alt="">
+                            <span>保养</span>
+                        </a>
+                        <a href="/gonglue/peishi/">
+                            <img src="/assets/mobile/common/img/peishi.png" alt="">
+                            <span>配饰</span>
+                        </a>
+                        <a href="/gonglue/jjsh/">
+                            <img src="/assets/mobile/common/img/jiaju.png" alt="">
+                            <span>家居</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination" style="opacity: 0"></div>
+            </div>
+        </div>
+
+        <!-- 装修攻略 -->
+        <div class="zx-gonglue pb3" id="zx-gonglue">
+            <h2 class="common-title">装修攻略</h2>
+            <div class="tab">
+                <div class="active"><span>装修指南</span></div>
+                <div><span>免费设计</span></div>
+                <div><span>选材导购</span></div>
+            </div>
+            <div class="zxgl zx-guide block">
+                <volist name="data.zxzn" id="zxzn">
+                        <div class="item">
+                            <div class="thumb-pic">
+                                <a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$zxzn.shortname}/{$zxzn.id}.html"><img src="http://{:C('QINIU_DOMAIN')}/{$zxzn.face}-w400.jpg" alt="{$zxzn.title}"
+                                     title="{$zxzn.title}"></a>
+                            </div>
+                            <div class="item-main">
+                                <div class="title text-nowrap"><a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$zxzn.shortname}/{$zxzn.id}.html">{$zxzn.title}</a></div>
+                                <div class="desc">
+                                    <a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$zxzn.shortname}/{$zxzn.id}.html">{$zxzn.subtitle}</a>
+                                </div>
+                                <div class="action">
+                                    <i class="fa fa-eye"></i>
+                                    <span class="mr2">{$zxzn.pv}</span>
+                                    <span class="approve" data-id="{$zxzn.likes}">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>{$zxzn.likes}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                </volist>
+
+
+                <div class="more">
+                    <a href="/zhinan">查看更多装修指南</a>
+                </div>
+            </div>
+            <div class="zxgl free-design">
+                <volist name="data.mfsj" id="mfsj">
+
+                        <div class="item">
+                            <div class="thumb-pic">
+                                <a href="http://{:C('MOBILE_DONAMES')}/meitu/p{$mfsj.id}.html"><img src="http://{:C('QINIU_DOMAIN')}/{$mfsj.img_path}-w400.jpg" alt="{$mfsj.title}"
+                                     title="{$mfsj.title}"></a>
+                            </div>
+                            <div class="title text-nowrap"><a href="http://{:C('MOBILE_DONAMES')}/meitu/p{$mfsj.id}.html">{$mfsj.title}</a></div>
+                            <div class="other clearfix">
+                                <div class="tag" style="display: none;">
+                                    <span>布局</span>
+                                    <span>风格</span>
+                                    <span>户型</span>
+                                    <span>颜色</span>
+                                </div>
+                                <div class="collect">
+                                    <span class="approve" data-id="{$mfsj.likes}">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>{$mfsj.likes}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                </volist>
+                <div class="more">
+                    <a href="/gonglue/sheji/">查看更多免费设计</a>
+                </div>
+            </div>
+            <div class="zxgl zx-material">
+                <volist name="data.xcdg" id="xcdg">
+
+
+                        <div class="item">
+                            <div class="thumb-pic">
+                                <a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$xcdg.shortname}/{$xcdg.id}.html"><img src="http://{:C('QINIU_DOMAIN')}/{$xcdg.face}-w400.jpg" alt="{$xcdg.title}"></a>
+                            </div>
+                            <div class="item-main">
+                                <div class="title text-nowrap"><a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$xcdg.shortname}/{$xcdg.id}.html">{$xcdg.title}</a></div>
+                                <div class="desc">
+                                    <a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$xcdg.shortname}/{$xcdg.id}.html">{$xcdg.subtitle}</a>
+                                </div>
+                                <div class="action">
+                                    <i class="fa fa-eye"></i>
+                                    <span class="mr2">{$xcdg.pv}</span>
+                                    <span class="approve" data-id="{$xcdg.likes}">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>{$xcdg.likes}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                </volist>
+
+                <div class="more">
+                    <a href="/gonglue/xcdg/">查看更多选材导购</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 发单入口 -->
+        <div class="tiny-link clearfix">
+            <a href="/baojia/">
+                <img src="/assets/mobile/common/img/zxbj.png" alt="">
+                <span>装修比价</span>
+            </a>
+            <a href="/sheji/">
+                <img src="/assets/mobile/common/img/srdz.png" alt="">
+                <span>私人定制</span>
+            </a>
+            <a href="/meitu/meituztlist">
+                <img src="/assets/mobile/common/img/mtzt.png" alt="">
+                <span>美图专题</span>
+            </a>
+        </div>
+
+        <!-- 视频学装修 -->
+        <div class="zx-video pb3">
+            <h2 class="common-title">视频学装修</h2>
+            <a href="http://{:C('MOBILE_DONAMES')}/video/v{$data.spxzx.id}.html">
+                <div class="preview">
+                    <img src="/assets/mobile/common/img/play.png" class="play ">
+                    <img src="http://{:C('QINIU_DOMAIN')}/{$data.spxzx.cover_img}-w400.jpg" class="thumb-pic ">
+                </div>
+                <div class="title text-nowrap">{$data.spxzx.title}</div>
+                <div class="desc">
+                    {$data.spxzx.description|mbstr=0,45}
+                </div>
+            </a>
+
+            <div class="more">
+                <a href="/video">查看更多装修视频</a>
+            </div>
+        </div>
+
+        <!-- 百科知识点 -->
+        <div class="baike pb3">
+            <h2 class="common-title">百科知识点</h2>
+            <volist name="data.bkzsd" id="bkzsd">
+                    <div class="item">
+                        <div class="thumb-pic">
+                            <a href="http://{:C('MOBILE_DONAMES')}/baike/{$bkzsd.id}.html"><img src="http://{:C('QINIU_DOMAIN')}/{$bkzsd.thumb}-w400.jpg" alt=""></a>
+                        </div>
+                        <div class="item-main">
+                            <div class="title text-nowrap"><a href="http://{:C('MOBILE_DONAMES')}/baike/{$bkzsd.id}.html">{$bkzsd.title}</a></div>
+                            <div class="desc">
+                                <a href="http://{:C('MOBILE_DONAMES')}/baike/{$bkzsd.id}.html">{$bkzsd.description}</a>
+                            </div>
+                            <div class="action">
+                                <i class="fa fa-eye"></i>
+                                <span class="mr2">{$bkzsd.views}</span>
+                                <span class="approve" data-id="{$bkzsd.favorites}">
+                                    <i class="fa fa-heart fa-heart-o"></i>
+                                    <span>{$bkzsd.favorites}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+            </volist>
+
+            <div class="more">
+                <a href="/baike">查看更多百科知识</a>
+            </div>
+        </div>
+
+        <!-- 看问答 -->
+        <div class="qa pb3">
+            <h2 class="common-title">看问答</h2>
+            <volist name="data.wd" id="wd">
+                <a href="http://{:C('MOBILE_DONAMES')}/wenda/x{$wd.id}.html">
+                    <div class="item">
+                        <div class="avatar-qt">
+                            <img src="{$wd.user_logo}" class="avatar ">
+                            <div class="question">{$wd.user_name}</div>
+                        </div>
+                        <div class="answer">
+                            {$wd.title}
+                        </div>
+                        <div class="other clearfix">
+                            <div class="date">{$wd.post_time|date="Y-m-d",###}</div>
+                            <div class="tag">
+                                <span>{$wd.sub_category_name}</span>
+                                <span>{$wd.anwsers}人回答</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </volist>
+            <div class="more">
+                <a href="/wenda">查看更多回答</a>
+            </div>
+        </div>
+    </div>
+    <div id="gotop" style="display: none;"><i class="fa fa-angle-up fa-lg"></i><br>置顶</div>
+    <include file="Common/footfadantcjs"/>
+</block>
+<block name="script">
+    <!--脚本-->
+    
+    <script type="text/javascript" src="/assets/mobile/zixun/js/swiper-3.3.1.min.js?v={:C('STATIC_VERSION')}"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            // 三个全局变量用于搜索
+            var randomNum = 0;
+            var kyws = ["客厅墙漆颜色", "卧室墙漆颜色", "热水器漏水", "高层窗户漏风的小窍门", "合格地板", "浴霸灯", "圆柱空调", "马桶", "小空间创意装饰", "隔音毡"];
+            var timer = null;
+
+            // 装修流程轮播效果
+            +function ($) {
+                var $zxprocess = $("#zx-process");
+                var $tab = $zxprocess.find(".tab>div");
+                var switchTab = function (index) {
+                    index = index ? index - 1 : 0;
+                    $tab.find("span").removeClass("active");
+                    $tab.eq(index).find("span").addClass('active');
+                }
+                var mySwiper = new Swiper('.swiper-container', {
+                    //移动端轮播
+                    pagination: '.swiper-pagination',
+                    autoplay: 3000,//可选选项，自动滑动
+                    initialSlide: 0,
+                    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                    observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                    paginationType: 'custom',
+                    paginationCustomRender: function (swiper, current, total) {
+                        switchTab(current);
+                        return current + ' of ' + total;
+                    }
+                });
+                $tab.on("click", function () {
+                    var index = $(this).index();
+                    $tab.find("span").removeClass("active");
+                    $(this).find("span").addClass('active');
+                    mySwiper.slideTo(index, 1000, false);
+                });
+            }(jQuery)
+
+            // 装修攻略模块选项卡切换
+            + function ($) {
+                var $zxGongLue = $("#zx-gonglue");
+                var $tab = $zxGongLue.find(".tab>div")
+                var $zxgl = $zxGongLue.find(".zxgl");
+                $tab.on("click", function () {
+                    var index = $(this).index()
+                    $tab.removeClass("active");
+                    $(this).addClass("active");
+                    $zxgl.removeClass("block");
+                    $zxgl.eq(index).addClass("block");
+                });
+            }(jQuery)
+
+            +function(){
+                // 点击心变色
+                $('.approve').click(function () {
+                    $(this).find("i").toggleClass('cf53');
+                    $(this).find("i").toggleClass('fa-heart-o').addClass('fa-heart');
+                    var _this = $(this);
+                    $.ajax({
+                        url: '/dolike/',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data:{
+                            id:_this.attr("data-id")
+                        }
+                    })
+                    .done(function(data) {
+                        if(data.status == 1){
+                            _this.unbind("click");
+                            var i = _this.find("span").text();
+                            i = parseInt(i)+1;
+                            _this.find("span").html(i);
+                        }
+                    });
+
+                    return false;
+                });
+            }(jQuery)
+
+            // 搜索框文字随机切换
+            + function ($) {
+                kywRandom();
+                $("#search").blur(function(){
+                    kywRandom();
+                });
+            }(jQuery)
+
+            // 搜索跳转
+            + function ($) {
+                var $search = $("#search");
+                var kyw = ""
+                var submitKyw = function () {
+                    kyw = $search.val();
+                    if (!kyw) {
+                        kyw = kyws[randomNum];
+                    }
+                    location.href = "http://m.qizuang.com/search?keyword=" + kyw;
+                };
+                // document.getElementById('search_form').onsubmit = function(){
+                //     submitKyw();
+                // }
+                document.addEventListener("keyup", function(evnet){
+                    if(event.keyCode == 13){
+                        clearInterval(timer);
+                        submitKyw();
+                    }
+                    return false;
+                }, false)
+            }(jQuery)
+
+            // 回到顶部
+            +function(){
+                $(window).on("scroll", function(){
+                      if($(document).scrollTop()>="1000"){
+                          $('#gotop').css('display',"block");
+                      }else{
+                          $('#gotop').css('display',"none");
+                      }
+                  });
+                $("#gotop").click(function(){
+                    $('body,html').animate({scrollTop:0},1000);
+                    return false;
+                });
+            }()
+
+            function kywRandom(){
+                var $search = $("#search");
+                randomNum = Math.floor(Math.random() * 10);
+                $search.attr("placeholder", kyws[randomNum]);
+            }
+
+        })
+    </script>
+
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+            "appid": "1575859058891466",
+            "title": "{$basic.head.title}",
+            "images": [],
+            "pubDate": ""
+        }
+    </script>
+</block>

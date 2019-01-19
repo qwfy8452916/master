@@ -1,0 +1,131 @@
+<extend name="Common:basic"/>
+<block name="title">
+	<title>搜索结果页 - 齐装网装修问答</title>
+</block>
+<block name="link">
+	<link rel="stylesheet" type="text/css" href="/assets/mobile/wenda/css/index.css?v={:C('STATIC_VERSION')}">
+	<link href="/assets/mobile/css/top-sj-bj.css?v={:C('STATIC_VERSION')}" rel="stylesheet" />
+</block>
+<block name="top-fadan">
+	<div class="top-fadan">
+		<a href="http://{:C('MOBILE_DONAMES')}/baojia/">
+			<div class="top-fadan-img"><img src="/assets/mobile/article/images/top-jisuan.png"></div>
+			<div class="top-fadan-center">
+				<div class="top-fadan-info">
+					<p class="zx-money">装修该花多少钱？</p>
+					<p class="zx-sheji"><span class="red-color">8秒</span>免费获取报价</p>
+				</div>
+			</div>
+			<div class="top-fadan-btn">立即获取</div>
+		</a>
+	</div>
+</block>
+<block name="top">
+    <a href="/" class="m-header-left"></a>
+    <div class="m-header-title">装修问答</div>
+</block>
+<block name="content">
+	<div class="zx-ask-list">
+		<volist name="list" id="v">
+		<div class="zx-ask-item">
+			<div class="item-content">
+				<div class="item-top oflow">
+					<div class="user-img fl"><img src="{$v.logo}" alt="{$v.username}" /></div>
+					<div class="user-name fl">{$v.username}</div>
+				</div>
+				<p class="item-body">
+					<a href="/wenda/x{$v.id}.html" <if condition="$v.anwsers EQ 0">rel="nofollow"</if>>{$v.title}</a>
+				</p>
+				<div class="item-foot">
+					<span class="fl">{$v.post_time|date="Y-m-d",###}</span>
+					<span class="fr"><a href="/wenda/ask-{$v.cid}">{$v.name}</a>|&nbsp;&nbsp;<i>{$v.anwsers}</i>人回答</span>
+				</div>
+			</div>
+		</div>
+        </volist>
+	</div>
+</block>
+
+<block name="script">
+<script>
+$(function(){
+
+	var boolState = true;
+    var baseUrl = '/wenda/search?keyword={$info.keyword}';
+    var isEmpty = false;
+    var page = 1;
+    var nextPage = 0;
+    var url = '';
+
+	$(window).on("scroll", function(){
+		if(boolState){
+			if ($(document).height() - $(this).scrollTop() - $(this).height() < 220){
+	            getNextPage();
+	            boolState = false;
+	        }else{
+	        	boolState = true;
+	        }
+		}
+    });
+
+    getNextPage = function(){
+
+        if(isEmpty == false){
+            nextPage = page + 1;
+            url = baseUrl + "&p=" + nextPage;
+
+            $.ajax({
+                url: url + '&act=ajax',
+                type: 'POST',
+                dataType: 'html',
+            })
+            .done(function(result) {
+                if(result == 'empty'){
+                    isEmpty == true;
+                    alert('没有更多了!');
+                    return false;
+                }
+
+                $('.zx-ask-list').append(result);
+                page = nextPage;
+                boolState = true;
+            })
+            .fail(function(xhr) {
+                alert("加载失败,请刷新再试！");
+                boolState = false;
+            });
+        }
+    }
+
+
+
+	// footer样式设置
+	if($('.zx-ask-item').length && $('.zx-ask-item').length<=1){
+		$('#feeter').css({
+			'padding-bottom':'80px',
+			'position':'fixed',
+			'left':'0',
+			'bottom':'0',
+			'z-index':'0'
+		});
+		$('.zb-link-bottom').css({'z-index':'1'})
+	}else{
+		$('#feeter').css({
+			'padding-bottom':'100px',
+			'position':'',
+			'left':'none',
+			'bottom':'none',
+			'z-index':'none'
+		});
+		$('.zb-link-bottom').css({'z-index':'1'})
+	}
+	// 列表touch效果
+	$('.zx-ask-item').on('touchstart',function(event){
+		$(this).css({'background':'#f5f5f5'})
+	});
+	$('.zx-ask-item').on('touchend',function(event){
+		$(this).css({'background':''})
+	});
+});
+</script>
+</block>

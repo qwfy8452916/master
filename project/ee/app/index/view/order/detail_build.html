@@ -1,0 +1,38 @@
+{extend name="common:basic" /}
+{block name="title"}
+    施工管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/js/Plugin/erpswiper/erpswiper.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/pc/css/Private/edit-build.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>施工管理/详情</span>
+<ul class="tabbiaot">
+	<li class="active"><a href="#">施工信息</a></li>
+	<li><a href="http://{:config('pc_host')}/shigong/material/detail?order_no={$order_no}">材料进销</a></li>
+</ul>
+
+{/block}
+{block name="content"}
+ <div class="p-panel">
+   <div class="yezhu-title">施工历史</div>
+   <div class="shigonghistory">
+     <input class="getorder" type="hidden" value="{$order_no}">
+     {include file="order/detail_build_list" /}
+    </div>
+     {if($total_page >=2) }
+     <div class="loadmorewk">
+         <span class="moreload" data-page="2">加载更多</span>
+     </div>
+     {/if}
+ </div>
+    <div class="footwk">
+    <a class="p-btn b-fr p-padding p-primary cancelbtn" href="/order">返回</a>
+   </div>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/assets/pc/js/Plugin/erpswiper/erpswiper.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Private/edit-build.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

@@ -1,0 +1,811 @@
+.m-main{
+    background-color: #f8f8f8;
+}
+.search-box{
+    background-color: white;
+    padding: 0.5rem 1rem;
+    position: relative;
+    margin:-1.5rem -1.5rem 0;
+    border: 0;
+}
+.search-box input{
+    width: 100%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border:1px solid #CCCCCC;
+    border-radius: 1.5em;
+    padding-left: 1.5rem;
+    margin-left: 0;
+}
+.search-box i{
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+/*登录界面*/
+.login-container{
+    padding:0 1.5rem;
+    color: #6F809C;
+    background-color: #19283D;
+}
+.login-container .caption{
+    font-size: 0.95rem;
+    color: white;
+    text-align: center;
+    margin: 4rem 0;
+}
+.login-container .input-line .sign{
+    background-color: #0E94EA;
+    letter-spacing: 1rem;
+    text-align: center;
+    padding-left: 1.5rem;
+}
+.login-container .getback-password-text{
+    margin-top: -1rem;
+    text-align: right;
+    height: 1rem;
+    line-height: 1rem;
+}
+.login-container .getback-password-text a{
+    width: 3.6rem;
+    float: right;
+    color: #6F809C;
+    text-decoration: underline;
+}
+.login-container .error-container{
+    color: #DB3030;
+    margin-top: -2rem;
+    margin-bottom: 0.5rem;
+    height: 2.5rem;
+    opacity: 0;
+}
+
+/*找回密码 第一步*/
+.get-password-one, .get-password-two{
+    padding: 0 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+.get-password-one .error-container, .get-password-two .error-container{
+    position: absolute;
+    top: -1.5rem;
+    font-size: 0.6rem;
+    color: #DB3030;
+    display: none;
+}
+.get-password-one .input-line{
+    padding-bottom: 0.5rem;
+}
+.get-password-one .label{
+    font-size: 0.8rem;
+    display: inline-block;
+    width: 4.5rem;
+}
+.get-password-one input{
+    width: 8rem;
+    vertical-align: baseline;
+    font-size: 0.7rem;
+}
+.get-password-one .code-phone{
+    width: 6.5rem;
+}
+.get-password-one .get-code{
+    background-color: transparent;
+    color:#EFB013;
+    font-size: 0.8rem;
+}
+/*找回密码 第二步*/
+.get-password-two .input-line>div:nth-child(1){
+    width: 25%;
+}
+.get-password-two .input-line>div:nth-child(2){
+    width: 75%;
+}
+.get-password-two .input-line{
+    padding-bottom: 0.5rem;
+}
+.get-password-two .input-line .label{
+    font-size: 0.8rem;
+}
+.get-password-two .input-line input{
+    width: 100%;
+    vertical-align: baseline;
+    font-size: 0.7rem;
+}
+
+/*设置中心*/
+.avatar-box{
+    height: 94%;
+    background-color: black;
+    position: relative;
+}
+.avatar-box img{
+    position: absolute;
+    width: 8rem;
+    /*height: 8rem;*/
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.upavatar{
+    position: relative;
+}
+.upavatar input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+/*首页*/
+.company-index{
+    padding: 1rem 1rem 0;
+    background-color: #F8F8F8;
+}
+.company-head-area{
+    height: 3.75rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.company-head-area .first{
+    width: 3.75rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.company-head-area .first img{
+    width: 100%;
+    height: 100%;
+}
+.company-head-area .second{
+    position: relative;
+}
+.company-head-area .second h1, .company-head-area .second p{
+    padding-left: 0.5rem;
+}
+.company-head-area .second h1{
+    font-size: 0.95rem;
+}
+.company-head-area .second p{
+    font-size: 0.7rem;
+}
+.company-head-area .second .setting{
+    position: absolute;
+    right: 0;
+    bottom: 0.5rem;
+    color: #6F809C;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+}
+.company-head-area .second .setting i{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.coi-container{
+    height: 4rem;
+    border-radius: 0.2em;
+    margin-bottom: 1rem;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0px -1px 10px grey;
+}
+.company-operation-item{
+    height: 4rem;
+    line-height: 3.5rem;
+}
+.company-operation-item .line{
+    width: 0.25rem;
+    height: 100%;
+    background-color: #0E94EA;
+}
+.company-operation-item .icon{
+    width: 6rem;
+}
+.company-operation-item .icon img{
+    margin-left: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    vertical-align: middle;
+}
+.company-operation-item .text{
+    font-size: 1.2rem;
+    color: #212121;
+}
+/*设置中心页*/
+.set-index-container{
+    padding: 1.5rem 1.5rem 0;
+    height: 100%;
+    background-color: #F8F8F8;
+}
+.set-head-area{
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #6F809C;
+}
+.set-head-area .second{
+    width: 10rem;
+}
+.set-base{
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #6F809C;
+}
+.set-base-item .first{
+    width: 2rem;
+    text-align: left;
+}
+.set-base-item .first i{
+    font-size: 1rem;
+}
+.sign-out{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    margin: 0 auto;
+    width: 17rem;
+    height: 2rem;
+    color: white;
+    background-color: #C2CEE1;
+    font-size: 0.85rem;
+    border-radius: 0.2em;
+}
+/*个人信息设置*/
+.set-person-container{
+    padding: 1.5rem 1.5rem 0;
+    height: 100%;
+}
+.set-person-item{
+    color: #212121;
+}
+.set-person-item .third{
+    width: 1rem;
+}
+/*详细信息设置*/
+.set-detail-box{
+    padding-top: 0.5rem;
+    height: 100%;
+}
+.detail-info{
+    background-color: white;
+    height: 2rem;
+}
+.detail-info .first{
+    width: 4rem;
+}
+.detail-info .third{
+    width: 3rem;
+}
+.detail-info .detail-info-input{
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    color: #212121;
+}
+.detail-info .third i{
+    font-size: 1rem;
+    color: #6F809C;
+}
+/*意见反馈*/
+.suggestion-box{
+    padding: 1rem;
+}
+.suggestion-box textarea{
+    width: 100%;
+    height: 10rem;
+    border:1px solid #999999;
+    background-color: #F8F8F8;
+    outline: none;
+}
+/*跟单管理首页，跟单管理和施工管理列表页共用样式*/
+.forder-container{
+    padding: 1.5rem 1.5rem 0;
+}
+.forder-container .without-ret{
+    color: red;
+    display: none;
+}
+.forder-container .add-forder{
+    text-align: center;
+    padding: 0.5rem 0;
+    color: #212121;
+}
+.forder-container .add-forder i{
+    font-size: 1rem;
+    color: #DCDCDC;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+}
+.forder-item-container{
+    border-bottom: 1px solid transparent;
+}
+.forder-item{
+    margin:0 -1.5rem;
+    background-color: white;
+    margin-bottom: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+}
+.forder-item .infos{
+    height: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0 1rem;
+    color: #212121;
+}
+.forder-item .forder-action{
+    text-align: right;
+    border-top: 1px solid #E6E6E6;
+    padding: 0.5rem 1rem;
+}
+.forder-item .forder-action button{
+    margin-left: 0.6rem;
+    position: inherit;
+}
+.forder-item .forder-action .detail-btn{
+    border:1px solid #999;
+}
+/*跟单管理-添加*/
+.forder-add-container{
+    padding: .5rem 1.5rem 0;
+}
+.forder-add-container .items{
+    border-bottom: 1px solid #6F809C;
+}
+.forder-add-container .items input, .forder-add-container .items textarea{
+    color: #212121;
+}
+.forder-add-container .items textarea{
+    width: 100%;
+    height: 100%;
+    border:none;
+    outline: none;
+    text-align: right;
+    background-color: transparent;
+    vertical-align: bottom;
+    padding-top: 0.7rem;
+}
+.forder-add-container .items .first{
+    vertical-align: top;
+    white-space:nowrap;
+}
+.forder-add-container .items .second{
+    vertical-align: bottom;
+}
+.hide-status{
+    display: none
+}
+.toolbar a{
+    display: inline;
+    width: auto
+}
+/*跟单管理-编辑*/
+.order-number-box{
+    padding: 0 1.5rem;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: #F2F2F2;
+}
+/*跟单管理-详情*/
+.history-container{
+    padding: 0.75rem;
+}
+.history-content{color:#999}
+.right20{padding-right: 20px}
+.forder-detail-box .detail{
+    background-color: white;
+    border-radius: 0.3em;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 16px grey;
+}
+.forder-detail-box .detail .pos-right{
+    position: absolute;
+    right: 10px;
+}
+.forder-detail-box .detail ul li{
+    line-height: 2rem;
+    padding-left: 1rem;
+    font-size: 0.8rem;
+}
+.history-addtime{
+    text-align: right;
+    color:#999999;
+    padding:0.35rem 0.75rem;
+    border-top:1px solid #F4F4F4
+}
+.order-history-item{
+    background: #ffffff;
+    position: relative;
+    /*margin-bottom: 0.5rem;*/
+}
+.order-history-item .history-container > li{
+    padding-left: 1.4rem;
+}
+.order-history-item .serial-box{
+    position: absolute;
+    padding-top: 0.8rem;
+    left: 0.5rem;
+    height: 100%;
+    border-right: 2px solid #EB7038;
+    color: #EB7038;
+}
+.order-history-item .serial-box .serial{
+    width: 0.75rem;
+    display: inline-block;
+    text-align: right;
+}
+.order-history-item .serial-box .dot{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #EB7038;
+    border-radius: 50%;
+    vertical-align: 1px;
+    margin-right: -6px;
+}
+.order-follow-list-box .order-history-item:first-of-type .fix-top{
+    position: absolute;
+    width: 0.8rem;
+    height: 1.2rem;
+    top: 0px;
+    left: 0.9rem;
+    background-color: white;
+}
+.order-follow-list-box .order-history-item:last-of-type .fix-bottom{
+    position: absolute;
+    width: 1rem;
+    height: 1.2rem;
+    bottom: 0px;
+    left: 0.5rem;
+}
+
+/*跟单管理-设计图*/
+.forder-design-box{
+    padding: 0rem 1.5rem;
+}
+.forder-design-box .order-prief{
+    padding-top: 0.5rem;
+}
+.forder-design-box .order-prief p{
+    line-height: 1.8rem;
+}
+.forder-design-box .order-prief p span{
+    display: inline-block;
+    width: 4rem;
+    margin-right: 1rem;
+}
+.forder-design-box .design-pic{
+    background-color: white;
+    margin:0 -1.5rem;
+    padding: 1rem 1rem 0;
+}
+.forder-design-box .design-pic img{
+    width: 100%;
+}
+.forder-design-box .design-pic p{
+    color: #E31919;
+}
+.history-stat{color: #1890FF}
+
+.desgindraw-box{
+    background-color: white;
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+}
+.desgindraw-box > .item{
+    display: block;
+    border-bottom: 1px solid #CCC;
+}
+.desgindraw-box .second{
+    text-align: right;
+}
+
+/*施工管理-施工图*/
+.forder-construct-box{
+    border-bottom: 1px solid transparent;
+    padding: 0rem 1.5rem;
+}
+.forder-construct-box .order-prief{
+    padding-top: 0.5rem;
+}
+.forder-construct-box .order-prief p{
+    line-height: 1.8rem;
+}
+.forder-construct-box .order-prief p span{
+    display: inline-block;
+    width: 4rem;
+    margin-right: 1rem;
+}
+.forder-construct-box .construct-item-box{
+    margin:0 -1.52rem;
+}
+.forder-construct-box .construct-item{
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-bottom: 1px solid #CCC;
+}
+.forder-construct-box .construct-item .title, .forder-construct-box .construct-item .action{
+    height: 2rem;
+    line-height: 2rem;
+}
+.forder-construct-box .construct-item .action .l {
+    font-size: 0.6rem;
+}
+.forder-construct-box .construct-item .action .r {
+    font-size: 0.7rem;
+}
+.forder-construct-box .desc{
+    margin-bottom: 0.5rem;
+    word-break: break-all;
+}
+.red {
+    color:#E31919;
+}
+.green {
+    color: #29CFAB;
+}
+.forder-construct-box .construct-item .pics{
+    font-size: 0;
+}
+.forder-construct-box .construct-item .pics img{
+    display: inline-block;
+    width: 5rem;
+    height: 4.25rem;
+    margin:0 0.2rem 0.2rem;
+    background-color: gray;
+    /*margin-right: 0.75rem;*/
+}
+.forder-construct-box .construct-item .pics img:last-child {
+    margin-right: 0;
+}
+/*跟单管理-业主反馈*/
+.forder-feedback-box{
+    height: 100%;
+    padding: 0rem 1.5rem;
+}
+.forder-feedback-box .order-prief{
+    padding-top: 0.5rem;
+}
+.forder-feedback-box .order-prief p{
+    line-height: 1.8rem;
+}
+.forder-feedback-box .order-prief p span{
+    display: inline-block;
+    width: 4rem;
+    margin-right: 1rem;
+}
+.forder-feedback-box .feedback-item-container{
+    height: 100%;
+    background-color: white;
+    margin: 0 -1.5rem;
+}
+.forder-feedback-box .feedback-item{
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-bottom: 1px solid #CCC;
+}
+.forder-feedback-box .feedback-item .title, .forder-feedback-box .feedback-item .action{
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.7rem;
+}
+.forder-feedback-box .feedback-item .desc{
+    font-size: 0.6rem;
+    margin-bottom: 0.5rem;
+}
+.forder-feedback-box .feedback-item .action .l {
+    font-size: 0.6rem;
+}
+.forder-feedback-box .feedback-item .action .r {
+    font-size: 0.7rem;
+}
+.forder-feedback-box .feedback-item .pics{
+    font-size: 0;
+}
+.forder-feedback-box .feedback-item .pics span{
+    display: inline-block;
+    width: 5rem;
+    height: 4.25rem;
+    margin:0 0.2rem;
+    background-color: gray;
+}
+.forder-feedback-box .feedback-item .pics span:last-child {
+    margin-right: 0;
+}
+/* 跟单管理-上传施工图*/
+.forder-uldconstruct-box{
+    padding: 0rem 1.5rem;
+}
+.forder-uldconstruct-box .construct-desc{
+    width: 100%;
+    border-color: #999;
+    outline: none;
+    padding:0.2em;
+}
+.forder-uldconstruct-box .example{
+    display: inline;
+    color: #0D5AA9;
+    text-decoration: underline;
+    font-size: 0.6rem;
+}
+/* 跟单管理-上传施工图*/
+.epic-box{
+ padding: 1rem;
+}
+.epic-box img{
+    width: 100%;
+}
+/* 跟单管理-上传设计图*/
+.forder-ulddesign-box{
+    padding: 0rem 1.5rem;
+}
+/*材料进销首页*/
+.material-container{
+    padding: 1.5rem 1.5rem 0;
+    border-bottom: 1px solid transparent;
+}
+.material-container .add-material{
+    text-align: center;
+    padding: 0.5rem 0;
+    color: #212121;
+}
+.material-container .add-material i{
+    font-size: 1rem;
+    color: #DCDCDC;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+}
+
+.material-container .material-item{
+    margin:0 -1.5rem;
+    background-color: white;
+    margin-bottom: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+}
+.material-container .material-item .close{
+    border: 1px solid transparent;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.2rem;
+    text-align: center;
+    top: 0;
+    right: 1.5rem;
+}
+.material-container .material-item .infos{
+    line-height: 1.1rem;
+    padding: 0 1rem;
+    color: #212121;
+    width: 92%;
+}
+.material-container .material-item .material-action{
+    text-align: right;
+    border-top: 1px solid #E6E6E6;
+    padding: 0.5rem 1rem;
+}
+.material-container .material-item .material-action button{
+    margin-left: 0.6rem;
+}
+.material-container .material-item .material-action .detail-btn{
+    border:1px solid #999;
+}
+/*材料进销详情*/
+.material-detail-container{
+    height: 100%;
+}
+.material-detail-container .items{
+    background-color: white;
+    border-bottom: 1px solid #E6E6E6;
+    padding: 0.5rem 0;
+    font-size: 0.7rem;
+}
+.material-detail-container .items .infos{
+    line-height: 1.2rem;
+    padding-left: 1rem;
+    color: #212121;
+}
+/*材料进销添加*/
+.material-add-container{
+    height: 100%;
+    padding: 1.5rem 1.5rem 0;
+}
+.material-add-container .added-item{
+     border-bottom: 1px solid #6F809C;
+}
+.material-add-container .added-item .icon-close{
+    font-size: 1rem;
+    color: #ccc;
+}
+.material-add-container .items{
+    border-bottom: 1px solid #6F809C;
+}
+.material-add-container .add-btn-area{
+    margin-top: 1rem;
+    font-weight: bold;
+}
+#materials .weui-popup__modal{
+    background-color: #F8F8F8;
+}
+#materials .materials-container{
+    padding: 0 1.5rem 0.5rem;
+}
+#materials .materials-container .items{
+    border-bottom: 1px solid #6F809C;
+}
+#materials .materials-container .items .first{
+    color: #212121;
+}
+#materials .toolbar{
+    background-color: transparent;
+    padding: 0 1.5rem;
+}
+#materials .toolbar-inner .picker-button{
+    position: relative;
+    float: left;
+    text-align: left;
+    padding: 0;
+    color: #999;
+}
+#materials .toolbar-inner .title{
+    position: relative;
+    float: right;
+    text-align: right;
+    color: #EFB013;
+}
+/*材料进销编辑*/
+.material-edit-contianer{
+    height: 100%;
+    padding: 1.5rem 1.5rem 0;
+}
+.material-edit-contianer .edit-item{
+    height: 1.8rem;
+    line-height: 1.8rem;
+    color: #666;
+}
+.material-edit-contianer .edit-item .t{
+    width: 30%;
+}
+.material-edit-contianer .edit-item .c{
+    width: 70%;
+    text-align: right;
+}
+.material-edit-contianer .materials-box{
+    margin: 0 -1.5rem;
+    padding: 0 1.5rem;
+    background-color: white;
+    height: 100%;
+}
+.material-edit-contianer .material-apply{
+    border-bottom: 1px solid #6F809C;
+}
+.material-edit-contianer .material-apply .second{
+    font-size: 0.7rem;
+}
+.material-edit-contianer .add-area{
+    padding-top: 1rem;
+}
+.material-edit-contianer .add-area .caption{
+    font-weight: bold;
+    border-bottom: 1px solid #6F809C;
+}
+.material-edit-contianer .add-area .materials{
+    border-bottom: 1px solid #6F809C;
+}
+.material-edit-contianer .add-area .materials .first{
+    font-style: italic;
+}
+
+/*插件修正*/
+.weui-uploader__input-box{
+    margin-right: 5px !important;
+}
+.weui-picker__item > span.one{
+    padding-left: 20px;
+    float: left;
+}
+.weui-picker__item > span.two{
+    float: right;
+    padding-right: 20px;
+}

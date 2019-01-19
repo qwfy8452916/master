@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <link href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$info.article.shortname}/{$info.article.id}.html" rel="canonical" />
+    <title>{$keys.title}{$title}</title>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/mobile/index/css/index.css?v={:C('STATIC_VERSION')}">
+</head>
+
+<body>
+    <include file="SubIndex:header" />
+        <div class="banxin">
+            <div class="white-box mar-t20">
+                <div class="wenz-text">
+                    <h1>{$info.article.title}</h1>
+                    <span>{$info.article.addtime|date="Y-m-d",###}</span>
+                    {$info.article.content}
+                </div>
+                <div class="fastapply mar-t20">
+                    <h2 class="title">不麻烦了，让齐装网给我提供装修服务</h2>
+                    <div class="content">
+                        <form class="secbox_form" onsubmit="return false;">
+                        <input type="text" name="name" placeholder="您的称呼">
+                        <input type="number" name="tel" placeholder="联系方式">
+                        <button id="btnSub" type="button">给我提供免费装修服务</button>
+                        </form>
+                        <input id="safecode" type="hidden" value="{$safecode}" />
+                        <input id="safekey" type="hidden" value="{$safekey}" />
+                    </div>
+                </div>
+                <div class="white-box mar-t20">
+                    <h2 class="title">新推荐</h2>
+                    <ul class="tj-list">
+                        <volist name="info.topArticle" id="vo">
+                            <li><a href="/gonglue/{$vo.shortname}/{$vo.id}.html">{$vo.title}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="white-box mar-t20">
+                    <div class="wenz-text">
+                        找苏州装修公司就上苏州齐装网，为您提供苏州装修公司大全及苏州装修公司排名，免费设计！
+                    </div>
+                </div>
+            </div>
+        </div>
+      <include file="SubIndex:footer" />
+</body>
+<script type="text/javascript">
+    $("#btnSub").click(function(event) {
+        App.pop.reset();
+        if (!App.validate.run($(".fastapply input[name=tel]").val(),"moblie")) {
+            $(".fastapply input[name=tel]").focus();
+            App.pop.run($(".fastapply input[name=tel]"),"请填写正确的手机号码");
+            return false;
+        }
+
+        $.ajax({
+            url: '/fb_order/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                cs: "000001",
+                name:$(".fastapply input[name=name]").val(),
+                tel:$(".fastapply input[name=tel]").val(),
+                source: '305',
+                safecode:$("#safecode").val(),
+                safekey: $("#safekey").val(),
+                ssid:"{$ssid}"
+            }
+        })
+        .done(function(data) {
+            $("#safecode").val(data.data.safecode);
+            $("#safekey").val(data.data.safekey);
+            if(data.status == 1){
+                $(".secbox_form")[0].reset();
+                alert("您的订单已经发布成功，齐装网客服会尽快与您联系为您推荐最适合你的装修公司");
+            }else{
+                alert(data.info);
+            }
+        })
+        .fail(function(xhr) {
+            alert("发生了未知的错误,请稍后再试！");
+        });
+    });
+</script>
+</html>

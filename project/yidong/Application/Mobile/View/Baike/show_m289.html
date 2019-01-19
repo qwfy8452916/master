@@ -1,0 +1,214 @@
+<extend name="Common:basic"/>
+<block name="link">
+    <link href="http://{:C('QZ_YUMINGWWW')}/baike/{$info.id}.html" rel="canonical" />
+    <link href="{$static_host}/assets/mobile/baike/css/baike-content_m289.css?v={:C('STATIC_VERSION')}" rel="stylesheet" />
+    <link href="{$static_host}/assets/mobile/baike/css/baike-content.css?v={:C('STATIC_VERSION')}" rel="stylesheet" />
+    <link href="/assets/mobile/article/css/index.css?v={:C('STATIC_VERSION')}" rel="stylesheet" />
+    <link href="/assets/mobile/css/top-sj-bj.css?v={:C('STATIC_VERSION')}" rel="stylesheet" />
+    <link href="/assets/mobile/common/css/qzCitySelect.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <script src="//msite.baidu.com/sdk/c.js?appid=1575859058891466"></script>
+    <link rel="stylesheet" href="{$static_host}/assets/mobile/common/css/img-zoom.css?v={:C('STATIC_VERSION')}" />
+</block>
+<block name="top">
+    <div class="m-header-his">
+        <i class="fa fa-angle-left"></i>
+    </div>
+    <a class="m-header-left" href="http://{:C('MOBILE_DONAMES')}/"></a>
+    <div class="m-header-tit">装修百科</div>
+</block>
+<block name="content">
+<article>
+    <div class="m-bread">
+        <a href="/baike/">装修百科</a> &gt;
+        <a href="/baike/{$info.bigCateUrl}/">{$info.bigCate}</a> &gt;
+        <a href="/baike/{$info.categoryUrl}/">{$info.categoryName}</a> &gt;
+        {$info.title}
+    </div>
+    <div data-name="bdcambrian"><script>cambrian.render('head')</script></div>
+
+    <div class="bk-brief">
+        <div class="bk-brief-main">
+            <div class="bk-brief-img"><img src="http://{:C('QINIU_DOMAIN')}/{$info.thumb}" alt="{$info.item}" title="{$info.item}"></div>
+            <div class="bk-brief-info">
+                <h1 class="bk-brief-tit">{$info.item}</h1>
+                <p class="bk-brief-content">{$info.description|mbstr=0,84}</p>
+                <p class="bk-brief-time">{$info.post_time|date="Y-m-d H:i:s", ###}</p>
+            </div>
+        </div>
+    </div>
+    <div class="bk-article">
+        <div class="bk-article-box">
+            {$info.content}
+        </div>
+        <div class="all_text">
+            <span class="check-all">阅读全文 <i class="fa fa-angle-down"></i></span>
+        </div>
+    </div>
+    <div class="bk-baojia">
+        <a href="/baojia/" rel="nofollow"><img src="/assets/mobile/common/img/baojia.jpg"></a>
+    </div>
+    <!--<div class="bk-about">
+        <div class="bk-about-box">
+            <div class="bk-about-word"><span class="red-block"></span>相关词条</div>
+            <div class="bk-word-list">
+                <volist name="info.other" id="vi">
+                    <span><a href="/baike/{$vi.id}.html">{$vi.item}</a></span>
+                </volist>
+            </div>
+        </div>
+    </div>-->
+    <div id="imgswrap" class="bd mui-content">
+        <ul class="mui-content-padded">
+        </ul>
+    </div>
+    <div class="other-article">
+        <div class="other-article-box">
+            <div class="other-article-word"><span class="red-block"></span>推荐阅读</div>
+            <div class="other-article-list">
+                <volist name="otherBaike" id="vo">
+                    <div class="other-article-item">
+                        <a href="/baike/{$vo.id}.html">
+                            <div class="other-article-img"><img src="http://{:C('QINIU_DOMAIN')}/{$vo.thumb}-w240.jpg" title="{$vo.title}" alt="{$vo.title}"></div>
+                            <div class="other-article-text"><p>{$vo.title}</p></div>
+                        </a>
+                    </div>
+                    <!--推荐数据大于1条-->
+                    <if condition="$countKey gt 1">
+                        <if condition="$key eq 0">
+                            <div class="other-article-item" id="baojiafd">
+                                <div class="other-article-img"><img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FidIBj5PeBZ0dDXb8Aj4TJXJGV81.png"></div>
+                                <div class="other-article-text"><p>买了房子想装修成什么样?点击立即免费获取4份装修设计图!</p></div>
+                            </div>
+                        </if>
+                        <if condition="$key eq 1">
+                            <div class="other-article-item" id="shejifd">
+                                <div class="other-article-img"><img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FlSDXY3CfSqNo88CoJ_htyH5xliT.png"></div>
+                                <div class="other-article-text"><p>不看后悔一辈子,2018装修吉日是哪几天?点击立即测算您的装修吉日!</p></div>
+                            </div>
+                        </if>
+                    <else />
+                        <!--推荐数据为一条或者没有推荐数据-->
+                        <div class="other-article-item" id="baojiafd">
+                            <div class="other-article-img"><img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FidIBj5PeBZ0dDXb8Aj4TJXJGV81.png"></div>
+                            <div class="other-article-text"><p>买了房子想装修成什么样?点击立即免费获取4份装修设计图!</p></div>
+                        </div>
+                        <div class="other-article-item" id="shejifd">
+                            <div class="other-article-img"><img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FlSDXY3CfSqNo88CoJ_htyH5xliT.png"></div>
+                            <div class="other-article-text"><p>不看后悔一辈子,2018装修吉日是哪几天?点击立即测算您的装修吉日!</p></div>
+                        </div>
+                    </if>
+                </volist>
+            </div>
+        </div>
+    </div>
+
+</article>
+<!-- <include file="Common:float-sj" /> -->
+    <include file="Common:baojia" />
+    <include file="Common:sheji-3" />
+    <include file="Common/footfadantc"/>
+</block>
+
+<block name="script">
+    <!-- <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="/assets/mobile/common/js/geolocation.js?v={:C('STATIC_VERSION')}"></script> -->
+    <script type="text/javascript" src="//{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="/assets/mobile/js/jroll.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/mobile/common/js/qzCitySelect.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/mobile/common/js/fixed.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="{$static_host}/assets/mobile/common/js/mui.min.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="{$static_host}/assets/mobile/common/js/mui.zoom.js?v={:C('STATIC_VERSION')}"></script>
+    <script src="{$static_host}/assets/mobile/common/js/mui.previewimage.js?v={:C('STATIC_VERSION')}"></script>
+    <script>
+     $(function(){
+         // 城市选择插件
+         /*selectQz.init({
+             province:$("input[name=province]").attr("data-id"),
+             city:$("input[name=city]").attr("data-id"),
+             area:$("input[name=area]").attr("data-id")
+         });
+*/
+          $('.bk-article .check-all').on('click',function(){
+              var neirong=$(this).parent().parent('.bk-article');
+              if(neirong.hasClass('freeheight')){
+                  neirong.removeClass('freeheight')
+                  $(this).html('阅读全文 <i class="fa fa-angle-down"></i>')
+              }else{
+                  neirong.addClass('freeheight')
+                  $(this).html('收起 <i class="fa fa-angle-up"></i>');
+              }
+
+          })
+
+         //推荐文章中第二条和第四条数据跳转报价发单和设计发单
+         $('#baojiafd').click(function() {
+
+             $('#calculator').find('input').val("");
+             $('#calculator').show();
+         });
+
+         $("#shejifd").on("click",function(){
+             $("#calculator3").fadeIn();
+             $("body").css("position","fixed");
+         });
+     })
+    $(function () {
+        // 熊掌号悬浮
+        var $bdcambrian = $("div[data-name='bdcambrian']"),
+            top = $bdcambrian.offset().top;
+        $(window).on("scroll", function () {
+            if($(this).scrollTop()>top){
+                $bdcambrian.css({
+                    "position" : "fixed",
+                    "top" : 0,
+                    "left" : 0,
+                    "width" : "100%",
+                    "z-index" : 99
+                });
+            }else{
+                $bdcambrian.css({
+                    "position":"static"
+                })
+            }
+        });
+    })
+    $(function () {
+        $('.bk-article-box img').attr({
+            "data-preview-src" :"" ,
+            "data-preview-group" : "1"
+        })
+        mui.previewImage();
+        mui('body').on( 'tap' , 'a' , function(){
+            document.location.href=this.href;
+        } )
+    })
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+
+            "@id": "{$baidu.url}",
+             "appid": "1575859058891466",
+
+        "title": "{$basic.head.title}",
+
+            "images": [
+
+                "{$baidu['images'][0]}",
+
+                "{$baidu['images'][1]}",
+
+                "{$baidu['images'][2]}"
+
+                ],
+
+            "description":"{$baidu.str}",
+
+            "pubDate": "{$baidu.optime}"
+
+        }
+    </script>
+
+
+</block>

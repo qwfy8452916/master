@@ -1,0 +1,51 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link href="/assets/mobile/team/css/worker.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css"/>
+{/block}
+{block name="content"}
+<header class="header">
+    <div class="back" id="back">
+        <img src="/assets/mobile/common/img/back.png" alt="">
+    </div>
+    <h1>详情</h1>
+</header>
+<div class="wrapper">
+    <div class="item">
+        <span>{$list.group_name|default=''}</span>
+    </div>
+    <div class="manager">
+        <div class="manager-name">项目经理: {$list.contact_mame|default=''}</div>
+        <div class="phone">手机号：{$list.contact_tel|default=''}</div>
+        <div class="wechat">微 信：{$list.contact_wx|default=''}</div>
+        <div class="job">工 种：{$list.p_worktype_name|default=''}</div>
+    </div>
+    <!-- 添加下属工人 -->
+    <div class="add clearfix">
+        <div class="add-box">
+            <a href="javascript:;">
+                <div class="add-worker fl">下属工人</div>
+            </a>
+        </div>
+        {volist name='list.work_users' id='v'}
+        <div class="worker">
+            <div class="list clearfix">
+                <div class="close{if (!btnRule('/worker/del/'))} btn_hide{/if}" id="close" data-id="{$v.worker_id}" data-gid="{$list.id}">
+                    <img src="/assets/mobile/common/img/close.png" alt="">
+                </div>
+
+                <div class="info fl">
+                    <div class="name">{$v.name|default=''}</div>
+                    <div class="phone">手机号：{$v.tel|default=''}</div>
+                    <div class="wechat">微信号：{$v.wx_num|default=''}</div>
+                    <div class="worker-name"><span>{$v.worktype_name|default=''}</span></div>
+                </div>
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <input type="hidden" class="worker_count" value="{:count($list['work_users'])}">
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/team/js/worker.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

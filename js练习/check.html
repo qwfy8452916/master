@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多选框</title>
+</head>
+<body>
+	<div class="biger">大大<input type="checkbox"></div>
+	<div class="small">
+		小小<input type="checkbox">
+	    小小<input type="checkbox" checked>
+        小小<input type="checkbox">
+    </div>
+
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+    	
+      $(function(){
+
+       var check=$('.small input[type=checkbox]')
+
+        var num=0;
+
+       $(check).each(function(index){
+           if(this.checked==true){
+           	num++;
+           	if(num>0){
+	          $('.biger input[type=checkbox]').prop("checked",true)
+	       	 }
+           }else{
+           	if(num<=0){
+           		$('.biger input[type=checkbox]').prop("checked",false)
+           	}
+           }
+       	 })
+
+
+       
+       $('.small input[type=checkbox]').click(function(){
+       	// var num2=0;
+         if(this.checked==true){
+
+           	$('.biger input[type=checkbox]').prop("checked",true)
+           }else{
+
+           	 for(var i =0; i<check.length;i++){
+
+           	 	if(check[i].checked==true){
+
+           	 		return;
+           	 	}
+           	 }
+             $('.biger input[type=checkbox]').prop("checked",false)	
+
+       	}
+       })
+
+
+         
+
+      })
+
+
+
+    </script>
+</body>
+</html>

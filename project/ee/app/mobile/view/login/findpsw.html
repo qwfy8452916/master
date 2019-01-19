@@ -1,0 +1,34 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap bg-deepblue">
+    <header class="sim-table public-header">
+        <div><a href="/login" class="c1 pl1 rel" data-name="cancel"><span class="top-middle">取消</span></a></div>
+        <div>找回密码</div>
+        <div><a href="javascript:void(0);" class="c2ce pr1" data-name="next" data-href="/login/newpsw">下一步</a></div>
+    </header>
+    <div class="get-password-one">
+        <div class="error-container" data-name="error-container">验证码错误，请重新输入</div>
+        <div class="input-line">
+            <span class="label">账号</span>
+            <input type="text" placeholder="请输入账号" data-name="account">
+        </div>
+        <div class="input-line">
+            <span class="label">手机验证</span>
+            <input type="text" maxlength="11" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入手机号" class="code-phone" data-name="phone">
+            <button class="get-code c2ce" data-name="get-code" disabled="disabled">发送验证码</button>
+        </div>
+        <div class="input-line">
+            <span class="label">验证码</span>
+            <input type="number" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="请输入验证码" data-name="code">
+        </div>
+    </div>
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript" src="/assets/mobile/common/js/store.everything.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/login/js/findpsw.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

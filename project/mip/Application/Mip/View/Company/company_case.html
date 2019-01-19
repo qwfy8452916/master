@@ -1,0 +1,45 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">{$basic.body.title}</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/company/css/content.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/company/css/company-case.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <include file="content" />
+    <notempty name="info.cases">
+        <volist name="info.cases" id="vo">
+            <div class="change_img">
+                <a data-type="mip" href="http://{:C('MIP_DONAMES')}/{$cityInfo.bm}/caseinfo/{$vo.id}.shtml">
+                    <if condition="$robot">
+                        <if condition="$vo['img_host'] EQ 'qiniu'">
+                            <mip-img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" ></mip-img>
+                        <else/>
+                            <mip-img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}"></mip-img>
+                        </if>
+                    <else/>
+                        <if condition="$vo['img_host'] EQ 'qiniu'">
+                            <mip-img alt="{$vo.title}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" class="scrollLoading"></mip-img>
+                        <else/>
+                            <mip-img alt="{$vo.title}" data-url="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" class="scrollLoading"></mip-img>
+                        </if>
+                    </if>
+                    <div class="change_present clearfix">
+                        <span class="c_left"> <i class="fa fa-map-marker"></i> &nbsp;{$vo.title}</span>
+                        <span class="c_right">{$vo.fg}</span>
+                    </div>
+                </a>
+            </div>
+        </volist>
+        {$info.page}
+        <else />
+        <img class="ch-blank" src="/assets/mobile/common/img/blank.png" alt="暂无相关数据">
+        <p class="ch-blank-text">该公司还没有上传案例哦~</p>
+    </notempty>
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+</block>
+

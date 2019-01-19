@@ -1,0 +1,47 @@
+<div class="pub-top">
+    <div class="wrap">
+        <div class="city">
+            <i class="fa fa-map-marker mr-10"></i><strong>苏州</strong>
+            <a class="city-link" href="http://{:C('QZ_YUMINGWWW')}/city/">[切换]</a>
+        </div>
+        <ul class="menu">
+            <if condition="!isset($_SESSION['id'])">
+                <li><a href="http://u.qizuang.com" target="_blank">登录</a></li>
+                <li><a href="http://u.qizuang.com/reg/" target="_blank">注册</a></li>
+            <else/>
+                <li><a href="http://u.qizuang.com/home/" target="_blank">用户中心</a>
+                <li><a class="loginout" href="/loginout/" >退出</a></li>
+            </if>
+            <li><a href="http://{:C('QZ_YUMINGWWW')}/ruzhu" rel="nofollow">商家入驻</a></li>
+            <li><a class="active" href="http://{:C('QZ_YUMINGWWW')}/zhaobiao/" rel="nofollow">我要装修</a></li>
+            <li class="guanzhuli"><a href="javascript:void(0);" rel="nofollow"><span class="guanzhupic"></span><span>关注有礼</span><div class="erweimawk"><img src="/assets/common/img/topyouhuama.png" alt="关注有礼二维码"><div class="guanzhums">关注微信</div><div class="guanzhums">随身看攻略</div></div></a></li>
+            <li>全国统一服务热线：{:OP('QZ_CONTACT_TEL400')}</li>
+        </ul>
+    </div>
+</div>
+
+<div class="zt-head">
+    <div class="zt-logo">
+        <a href="www.qizuang.com"><img src="{$static_host}/assets/home/zt/images/logo.png" width="435" height="112" alt=""/></a>
+    </div>
+    <ul class="zt-nav">
+        <li><a href="http://{:C('QZ_YUMINGWWW')}/">首页</a></li>
+        <li><a href="http://{:C('QZ_YUMINGWWW')}/zhaobiao/">设计与报价</a></li>
+        <li><a href="http://{:C('QZ_YUMINGWWW')}/company/">装修公司</a></li>
+        <li class="zt-nav-list"><a href="http://meitu.{:C('QZ_YUMING')}/">装修效果图</a>
+            <dl>
+                <dd><a href="http://meitu.{:C('QZ_YUMING')}/list/">家居美图</a></dd>
+                <dd><a href="http://{:C('QZ_YUMINGWWW')}/xgt/">装修案例</a></dd>
+            </dl>
+        </li>
+        <li class="zt-nav-list"><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/">装修攻略</a>
+            <dl>
+                <dd><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/lc/">装修流程</a></dd>
+                <dd><a href="http://{:C('QZ_YUMINGWWW')}/wenda/">装修问答</a></dd>
+                <dd><a href="http://{:C('QZ_YUMINGWWW')}/riji/">装修日记</a></dd>
+                <dd><a href="http://{:C('QZ_YUMINGWWW')}/baike/">装修百科</a></dd>
+                <dd><a href="http://{:C('QZ_YUMINGWWW')}/gonglue/xcdg/">选材导购</a></dd>
+            </dl>
+        </li>
+    </ul>
+</div>

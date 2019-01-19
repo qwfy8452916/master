@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="http://{:C('QZ_YUMINGWWW')}{$info['canonical']}" rel="canonical" />
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-meitu.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/jquery.smint.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/TouchSlide.1.1.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<link rel="stylesheet" href="/assets/home/diary/css/font-awesome.min.css?v={:C('STATIC_VERSION')}">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/assets/mobile/css/font-awesome-ie7.min.css?v={:C('STATIC_VERSION')}">
+<![endif]-->
+<title>{$info.title}</title>
+</head>
+<body>
+<div class="m-wrap">
+    <div class="m-nav">
+    <div class="m-back"><a href="/"><span></span>后退</a></div>
+    <div class="m-title">装修百科</div>
+    <include file="Index:topMenu" />
+    </div>
+  <div class="m-logo">
+    <div class="logo-main"></div>
+    <div class="logo-s"></div>
+  </div>
+
+<div class="neckad-into" href="#"><img src="/assets/mobile/images/hl33.jpg" alt=""/></div>
+
+<div class="meitu-chouse">
+    <div class="meitu-chouse-row">
+        <select id="type">
+            <option value="{$info['select']['location']}">全部类型</option>
+            <volist name="info.wz" id="v">
+            <option value="{$v.link}" <if condition="$info['navParams']['location'] EQ $v.id ">selected</if>>{$v.name}</option>
+            </volist>
+        </select>
+    </div>
+    <div class="meitu-chouse-row">
+        <select id="fengge">
+            <option value="{$info['select']['fengge']}">全部风格</option>
+            <volist name="info.fg" id="v">
+            <option value="{$v.link}" <if condition="$info['navParams']['fengge'] EQ $v.id ">selected</if> >{$v.name}</option>
+            </volist>
+        </select>
+    </div>
+    <div class="meitu-chouse-row">
+        <select id="huxing">
+            <option value="{$info['select']['huxing']}">全部户型</option>
+            <volist name="info.hx" id="v">
+            <option value="{$v.link}" <if condition="$info['navParams']['huxing'] EQ $v.id ">selected</if>>{$v.name}</option>
+            </volist>
+        </select>
+    </div>
+    <div class="meitu-chouse-row">
+        <select id="color">
+            <option value="{$info['select']['color']}">全部颜色</option>
+            <volist name="info.ys" id="v">
+            <option value="{$v.link}" <if condition="$info['navParams']['color'] EQ $v.id ">selected</if>>{$v.name}</option>
+            </volist>
+        </select>
+    </div>
+</div>
+
+    <ul class="meitu-list">
+        <volist name="info.meitu" id="v">
+        <li>
+            <h1>{$v.title}</h1>
+            <a href="/meitu/p{$v.id}.html"><img src="http://{:C('QINIU_DOMAIN')}/{$v.img_path}-w300.jpg" alt=""/></a>
+            <div class="meitu-list-info">
+                <span><i class="icon-magic"></i>{$v.wz}</span>
+                <span><i class="icon-home"></i>{$v.hx}</span>
+                <span><i class="icon-leaf"></i>{$v.ys}</span>
+            </div>
+            <a href="/meitu/p{$v.id}.html" class="meitu-click-into">点击查看..</a>
+        </li>
+        </volist>
+    </ul>
+    <div class="loading-more"><a href="javascript:;">加载更多..</a></div>
+    <input name="pageid" id="pageid" type="hidden" value="{$info.pageid}">
+</div>
+
+<script language="javascript">
+$(function() {
+
+    $("#type").change(function(){
+        var p1 = $(this).children('option:selected').val();
+        window.location.href = p1;
+    });
+    $("#fengge").change(function(){
+        var p1 = $(this).children('option:selected').val();
+        window.location.href = p1;
+    });
+    $("#huxing").change(function(){
+        var p1 = $(this).children('option:selected').val();
+        window.location.href = p1;
+    });
+    $("#color").change(function(){
+        var p1 = $(this).children('option:selected').val();
+        window.location.href = p1;
+    });
+
+    var urlStr = window.location.href;
+    var isNextStatus = false;
+    $(".loading-more").click(function(event){
+        var page = $("#pageid").val();
+        var thisPage = 'a1p' + page;
+        var nextPage = 'a1p' + (parseInt(page) + 1);
+        var isNext = parseInt(page) % 5 ;
+        if(isNextStatus == true){
+            window.location.href = $(".loading-more a").attr("href");
+            return false;
+        }
+        if(page !== '0'){
+            if(urlStr.indexOf("a1p") == -1 ){
+                if(urlStr.indexOf("?") == -1 ){
+                    var url = urlStr + "a1p" + (parseInt(page) + 1);
+                }else{
+                    var url = urlStr + "&p=" + (parseInt(page) + 1);
+                }
+
+            }else{
+                url = urlStr.replace(thisPage,nextPage);
+            }
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'html',
+            })
+            .done(function(result) {
+                $(".meitu-list").append(result);
+                if(isNext == 0){
+                    $(".loading-more").html('<a href="' + url + '">下一页</a>');
+                    isNextStatus = true;
+                }
+                urlStr = url;
+                $("#pageid").val(parseInt(page) + 1);
+            })
+            .fail(function(xhr) {
+                alert("加载失败,请刷新再试！");
+            });
+        }
+    });
+});
+</script>
+
+
+<include file="Index:newFooter" />
+</body>
+</html>

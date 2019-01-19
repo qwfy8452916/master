@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="http://{:C('QZ_YUMINGWWW')}{$today.canonical}" rel="canonical" />
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-hl.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/jquery.smint.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/TouchSlide.1.1.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<link rel="stylesheet" href="/assets/home/diary/css/font-awesome.min.css?v={:C('STATIC_VERSION')}">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/assets/mobile/css/font-awesome-ie7.min.css?v={:C('STATIC_VERSION')}">
+<![endif]-->
+<title>{$today.title}装修吉日 - 装修黄历</title>
+</head>
+
+<body>
+<div class="m-wrap">
+  <div class="m-nav"> <a href="/huangli/" class="m-back"><span></span>后退</a>
+	<div class="m-title">装修黄历</div>
+	<include file="Index:topMenu" />
+</div>
+
+<div class="m-logo"><div class="logo-main"></div><div class="logo-s"></div></div>
+
+<a class="neckad-into" href="#"><img src="/assets/mobile/images/hl.jpg" width="640" height="142" alt=""/></a>
+<div class="hl-list">
+<h1></h1>
+<ul>
+<volist name="monthList" id="v">
+<li><p><span><i class="icon-calendar"></i>{$v.y}年{$v.m}月{$v.d}日</span><span>农历九月初三 星期{$v.week}</span></p>
+<p><span class="hl-yi"><i class="icon-book"></i>{$v.yi}</span></p></li>
+</volist>
+
+</ul>
+<p class="hl-sm">关于装修黄历的声明： 暂无科学依据支持黄历的说法及其保证其准确性，请网友自行判断，齐装网不保证此装修黄历与其它黄历相符，黄历资料均为网络收集仅供参考，不代表齐装网立场及意见。</p>
+</div>
+</div>
+ <include file="Index:newFooter" />
+</body>
+</html>

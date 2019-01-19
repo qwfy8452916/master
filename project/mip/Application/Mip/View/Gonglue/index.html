@@ -1,0 +1,233 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修攻略</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/gonglue/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="http://m.qizuang.com/gonglue/">
+</block>
+<block name="style">
+    <style mip-custom>
+       .mip-carousel-indicator-wrapper{position: absolute; width: 100%; margin-top: -20px}
+       .mip-carousel-indecator-item{width:8px !important; height: 8px !important;background: #000 !important; opacity: 0.3}
+       .mip-carousel-activeitem{background: #007aff !important; opacity: 1;}
+       mip-vd-tabs .mip-vd-tabs-nav-li{height: 33px !important; line-height: 33px;}
+       mip-vd-tabs .mip-vd-tabs-nav{height: 32px; border-bottom: 1px solid #DEDEDE;}
+       .mip-vd-tabs-nav-selected{border-bottom: 2px solid #ff5659 !important; color:#333 !important;}
+       mip-vd-tabs .mip-vd-tabs-nav{padding:0px; margin:0px 16px;}
+    </style>
+</block>
+<block name="content">
+
+    <div class="bg-white">
+        <mip-carousel
+                defer="1000"
+                layout="responsive"
+                width="600"
+                height="221"
+                indicatorId="mip-carousel-example">
+                <volist name="info.lunbo" id="vo">
+                    <a href="http://{:C('MOBILE_DONAMES')}/zhuanti/{$vo.id}/">
+                        <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.cover_bigimg}-slt930.jpg" alt="{$vo.title}"></mip-img>
+                    </a>
+                </volist>
+            </mip-carousel>
+            <div class="mip-carousel-indicator-wrapper">
+                <div class="mip-carousel-indicatorDot" id="mip-carousel-example">
+                    <div class="mip-carousel-activeitem mip-carousel-indecator-item"></div>
+                    <?php for($i=0; $i<$lunboCount-1; $i++){ ?>
+                        <div class="mip-carousel-indecator-item"></div>
+                    <?php } ?>
+                </div>
+            </div>
+            <mip-vd-tabs>
+                <section>
+                    <li>装修前</li>
+                    <li>装修中</li>
+                    <li>装修后</li>
+                </section>
+                <div class="hidetab">
+                    <ul>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/shoufang/">
+                                <p class="bjtplogo tpimg"></p>
+                                <p>收房验房</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/gongsi/">
+                                <p class="bjtplogo tpimg3"></p>
+                                <p>找装修公司</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/shejiyusuan/">
+                                <p class="bjtplogo tpimg2"></p>
+                                <p>设计与预算</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/xuancai/">
+                                <p class="bjtplogo tpimg4"></p>
+                                <p>装修选材</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidetab">
+                    <ul>
+                         <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/shuidian/">
+                                <p class="bjtplogo tpimg5"></p>
+                                <p>水电</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/niwa/">
+                                <p class="bjtplogo tpimg6"></p>
+                                <p>泥瓦</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/mugong/">
+                                <p class="bjtplogo tpimg7"></p>
+                                <p>木工</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/youqi/">
+                                <p class="bjtplogo tpimg8"></p>
+                                <p>油漆</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidetab">
+                    <ul>
+                         <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/jianche/">
+                                <p class="bjtplogo tpimg9"></p>
+                                <p>检测验收</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/peishi/">
+                                <p class="bjtplogo tpimg10"></p>
+                                <p>后期配饰</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/baoyang/">
+                                <p class="bjtplogo tpimg11"></p>
+                                <p>装修保养</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a type-data="mip" href="http://{:C('MIP_DONAMES')}/gonglue/jjsh/">
+                                <p class="bjtplogo tpimg12"></p>
+                                <p>家居生活</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </mip-vd-tabs>
+            <div class="jrzxlc">
+                <a type-data="mip" href="/gonglue/lc/">进入装修流程<span>&gt;</span></a>
+            </div>
+    </div>
+    <div class="bg-white">
+        <!--<a mip-type="mip" href="http://{:C('MIP_DONAMES')}/hl/">-->
+        <a mip-type="mip" href="http://m.qizuang.com/hl?src=mip">
+            <mip-img src="http://staticqn.qizuang.com/qzmbbanner/20171113/5a095239506f7-w1210c2.jpg" alt="开工吉日"></mip-img>
+        </a>
+    </div>
+
+    <div class="zhuagnxiuxg">
+        <ul>
+            <div class="zxstyle">
+                <span>选材导购</span>
+                <a href="http://{:C('MIP_DONAMES')}/gonglue/xcdg/">更多></a>
+            </div>
+            <volist name="info.xcdg" id="vo">
+                <li class="new_style_list">
+                    <a href="http://{:C('MIP_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                        <div class="new_style_img">
+                            <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w400.jpg" alt="{$vo.title}"></mip-img>
+                        </div>
+                        <div class="new_style_content">
+                            <p class="xdjyfg new_style_title">{$vo.title}</p>
+                            <p class="xdjyfg_xq new_style_xq">{$vo.subtitle}</p>
+                        </div>
+                    </a>
+                </li>
+            </volist>
+        </ul>
+       </div>
+
+       <div class="zhuagnxiuxg">
+           <ul>
+               <div class="zxstyle">
+                   <span>局部装修</span>
+                   <a href="http://{:C('MIP_DONAMES')}/gonglue/jubu/">更多></a>
+               </div>
+               <volist name="info.jbzx" id="vo">
+                   <li class="new_style_list">
+                       <a href="http://{:C('MIP_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                           <div class="new_style_img">
+                               <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w400.jpg" alt="{$vo.title}"></mip-img>
+                           </div>
+                           <div class="new_style_content">
+                               <p class="xdjyfg new_style_title">{$vo.title}</p>
+                               <p class="xdjyfg_xq new_style_xq">{$vo.subtitle}</p>
+                           </div>
+                       </a>
+                   </li>
+               </volist>
+           </ul>
+           </div>
+           <div class="zhuagnxiuxg">
+               <ul>
+                   <div class="zxstyle">
+                       <span>装修风格</span>
+                       <a href="http://{:C('MIP_DONAMES')}/gonglue/fg/">更多></a>
+                   </div>
+                   <volist name="info.zxfg" id="vo">
+                       <li class="new_style_list">
+                           <a href="http://{:C('MIP_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                               <div class="new_style_img">
+                                   <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w400.jpg" alt="{$vo.title}"></mip-img>
+                               </div>
+                               <div class="new_style_content">
+                                   <p class="xdjyfg new_style_title">{$vo.title}</p>
+                                   <p class="xdjyfg_xq new_style_xq">{$vo.subtitle}</p>
+                               </div>
+                           </a>
+                       </li>
+                   </volist>
+               </ul>
+            </div>
+            <div class="zhuagnxiuxg">
+                <ul>
+                    <div class="zxstyle">
+                        <span>装修风水</span>
+                        <a href="http://{:C('MIP_DONAMES')}/gonglue/fs/">更多></a>
+                    </div>
+                    <volist name="info.zxfs" id="vo">
+                        <li class="new_style_list">
+                            <a href="http://{:C('MIP_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">
+                                <div class="new_style_img">
+                                    <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.face}-w400.jpg" alt="{$vo.title}"></mip-img>
+                                </div>
+                                <div class="new_style_content">
+                                    <p class="xdjyfg new_style_title">{$vo.title}</p>
+                                    <p class="xdjyfg_xq new_style_xq">{$vo.subtitle}</p>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+</block>
+<block name="script">
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+</block>

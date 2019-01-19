@@ -1,0 +1,56 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+
+    <header class="sim-table public-header">
+        <div class="back" id="back" style="width: 0.5rem;">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <div>业主反馈</div>
+        <div></div>
+    </header>
+    <div class="forder-feedback-box bg-c4">
+        <div class="order-prief">
+            <p><span>订单编号</span>12212221</p>
+            <p><span>业主姓名</span>12212221</p>
+        </div>
+        <div class="feedback-item-container">
+            <div class="feedback-item">
+            <div class="title">
+                <div class="l"><span>施工状态：</span>水电整改（二次检验）</div>
+                <div class="r"><span class="red">不合格</span></div>
+            </div>
+            <div class="desc">压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改压根没整改</div>
+            <div class="pics">
+                <span class="pb1"></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="action">
+                <span class="l c3">2018-08-10 16:00:00</span>
+            </div>
+        </div>
+            <div class="feedback-item">
+            <div class="title">
+                <div class="l"><span>业主描述：</span></div>
+            </div>
+            <div class="desc">压根没整改</div>
+            <div class="pics">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="action">
+                <span class="l c3">2018-08-10 16:00:00</span>
+            </div>
+        </div>
+        </div>
+    </div>
+
+{/block}
+{block name='script'}
+
+{/block}

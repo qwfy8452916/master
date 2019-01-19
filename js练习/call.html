@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>call</title>
+	<style>
+		.dianji{width: 100px;height: 50px;background: blue;color: #fff;line-height: 50px;
+			text-align: center;font-size: 14px;cursor:pointer;}
+	</style>
+</head>
+<body>
+	<div class="dianji">点击</div>
+
+	<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		
+       $(function(){
+
+
+             var funcTest2 = function() {
+		        this.name = "wangji";
+		        alert(this);//当前上下文（object）
+		    };
+		    //XXX.aply("上下文"，[参数数组]);
+		    //这里传null代表为全局的window
+		    //这里传入objectName对象，改变funcTest2的执行上下文
+		    //所以funcTest2中的上下文为当前objectName
+		    //所以objectName能够调用之前funcTest2拥有的对象的方法。
+		    var objectName = {};
+		    funcTest2.apply(objectName);
+		    alert(objectName.name);
+
+
+       //   $('.dianji').on('click',function(event) {
+
+     	 // var aa=1,
+     	 // that=this;
+       //   bb=2;
+       //   var cnf=null;
+       //   if(aa==1){
+       //     cnf=function(){
+       //     	console.log("函数执行")
+       //     }
+       //     console.log("继续走下去")
+       //     if(bb==2){
+       //       console.log("满足条件")
+
+       //       cnf.call(that)
+       //     }
+
+       //   }
+
+
+       //   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+       })
+
+	</script>
+</body>
+</html>

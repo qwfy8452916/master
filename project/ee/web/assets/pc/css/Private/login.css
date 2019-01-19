@@ -1,0 +1,24 @@
+html,body{width: 100%;height: 100%;margin: 0;}
+.loginbj{width: 100%;height: 100%;background:url(/assets/pc/img/Private/loginpic.jpg) no-repeat center;
+background-size: 100% 100%;position: relative;}
+.loginbj .contentmid{width: 510px;height: 507px;background: #61899f;border-radius: 5px;
+position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+.hangitem{overflow: hidden;text-align: center;}
+.hangitem .phototx{width:72px;height: 72px;border-radius: 50%;display: inline-block;
+}
+.midneirong{overflow: hidden;margin-top: 55px;}
+.midneirong .loginms-jianjv{margin-top: 20px;margin-bottom: 30px;}
+.hangitem .loginms{font-size: 40px;color: #fff;}
+.divinput{width: 350px;height: 45px;display: inline-block;position: relative;}
+.divinput input{width: 100%;height: 100%;outline: none;border-radius: 5px;
+border: 0;text-indent: 3em;}
+.hangitem .tishi{height: 24px;font-size: 12px;color: #ff5353;text-align: left;
+width: 350px;display: inline-block;}
+.divinput .loginbj{position: absolute;width: 21px;height: 21px;display: inline-block;
+background: url(/assets/pc/img/Private/zhanghaopic.png) no-repeat center;top: 12px;left: 10px;}
+.divinput .loginbj2{position: absolute;width: 25px;height: 25px;display: inline-block;
+background: url(/assets/pc/img/Private/paddpic.png) no-repeat center;top: 10px;left: 8px;}
+.divinput .loginniu{width: 100%;height: 100%;background: #1890ff;text-align: center;color: #fff;
+border:0;outline: none;cursor:pointer;text-indent:0 !important;}
+.forget-pass{text-align: right;margin-top: 20px;}
+.forget-pass a{color: #fff;font-size: 12px;text-decoration: none;}

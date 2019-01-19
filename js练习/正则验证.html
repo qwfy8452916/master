@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<input class="ddd" type="text">
+	<span class="dianji">点击</span>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+     
+	<script type="text/javascript">
+		
+       $(function(){
+
+       $('.dianji').click(function(event) {
+       	   
+       	   var zhival=parseInt($('.ddd').val());
+           var reg=/^[\d\s-]{1,}$/;
+            console.log(reg.test(zhival))
+            console.log(typeof zhival)
+            if (!reg.test(zhival)) {
+            	console.log(11)
+                // piaoju.focus();
+                // piaoju.after("<div class='tishi' style='margin-left:10px;height:0px; text-align:left;'>只能输入数字, 横杠或空格</div>");
+                // mpiaoju=false;
+                // return false;
+            }
+
+
+       });
+
+       
+       
+
+       })
+
+
+	</script>
+
+
+
+</body>
+</html>

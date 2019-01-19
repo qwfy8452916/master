@@ -1,0 +1,40 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div><a href="http://{:config('m_host')}/order" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a></div>
+    <div>设计图</div>
+    <div></div>
+</header>
+<div class="forder-design-box bg-c4">
+    <div class="order-prief">
+        <p><span>订单编号</span>{$order.order_no}</p>
+        <p><span>业主姓名</span>{$order.consumer_name}</p>
+    </div>
+    <div class="desgindraw-box">
+        <a href="http://{:config('m_host')}/order/house/design?order_no={$order.order_no}&type=1" class="item">
+            <div class="sim-table public-s1">
+                <div class="first">设计图</div>
+                <div class="second"></div>
+                <div class="third"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </a>
+        <a href="http://{:config('m_host')}/order/house/design?order_no={$order.order_no}&type=2" class="item">
+            <div class="sim-table public-s1">
+                <div class="first">效果图</div>
+                <div class="second"></div>
+                <div class="third"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </a>
+    </div>
+
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/manager/js/swiper.min.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/manager/js/photos.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/order/js/designdraw.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

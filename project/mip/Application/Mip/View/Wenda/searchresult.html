@@ -1,0 +1,37 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修问答</div>
+</block>
+<block name="title">
+	<title>搜索结果页 - 齐装网装修问答</title>
+</block>
+<block name="link">
+	<link rel="stylesheet" type="text/css" href="{$static_host}/assets/wenda/css/index.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="top">
+    <a href="{$global_basehost}/" class="m-header-left"></a>
+    <div class="m-header-title">装修问答</div>
+</block>
+<block name="content">
+	<div class="zx-ask-list">
+		<volist name="list" id="v">
+		<div class="zx-ask-item">
+			<div class="item-content">
+				<div class="item-top oflow">
+					<div class="user-img fl"><mip-img src="{$v.logo}" alt="{$v.username}" ></mip-img></div>
+					<div class="user-name fl">{$v.username}</div>
+				</div>
+				<p class="item-body">
+					<a data-type="mip" href="{$global_basehost}/wenda/x{$v.id}.html" <if condition="$v.anwsers EQ 0">rel="nofollow"</if>>{$v.title}</a>
+				</p>
+				<div class="item-foot">
+					<span class="fl">{$v.post_time|date="Y-m-d",###}</span>
+					<span class="fr"><a data-type="mip" href="{$global_basehost}/wenda/ask-{$v.cid}">{$v.name}</a>|&nbsp;&nbsp;<i>{$v.anwsers}</i>人回答</span>
+				</div>
+			</div>
+		</div>
+        </volist>
+        <include file="Common:freeDesign"/>
+	</div>
+</block>
+

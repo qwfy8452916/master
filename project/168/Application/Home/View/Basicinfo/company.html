@@ -1,0 +1,437 @@
+<extend name="Main:baseTemplate"/>
+<block name="style">
+    <link rel="stylesheet" href="{:C('168NEW_URL')}/assets/common/js/plugins/select2/select2.min.css?v={:C('STATIC_VERSION')}">
+    <link href="{:C('168NEW_URL')}/assets/home/basicinfo/css/company.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+</block>
+<block name="content">
+    <section class="content-header">
+        <h1>
+            <span>
+                会员公司管理
+            </span>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="row">
+                            <form class="form-horizontal">
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2 reset-padding">
+                                        <div>会员名称：</div>
+                                        <input type="text" name="jc" class="form-control clear-target" placeholder="会员ID/会员简称" value="{$Think.get.jc}">
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div>城市：</div>
+                                        <select id="city" name="city" type="text" class="form-control">
+                                            <option value="0">请选择</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div>区域：</div>
+                                        <select id="area" name="area" type="text" class="form-control">
+                                            <option value="0">请选择</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <div>经纬度：</div>
+                                        <select id="location" name="zuobiao" type="text" class="form-control">
+                                            <option value="0">请选择</option>
+                                            <option value="1" <if condition="$Think.get.zuobiao EQ 1">selected</if>>无</option>
+                                            <option value="2" <if condition="$Think.get.zuobiao EQ 2">selected</if>>有</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <div>半包/全包：</div>
+                                        <select id="type" name="bao" type="text" class="form-control">
+                                            <option value="0">请选择</option>
+                                            <option value="1" <if condition="$Think.get.bao EQ 1">selected</if>>半包</option>
+                                            <option value="2" <if condition="$Think.get.bao EQ 2">selected</if>>全包</option>
+                                            <option value="3" <if condition="$Think.get.bao EQ 3">selected</if>>半包/全包</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <div>公装/家装：</div>
+                                        <select id="style" name="zhuang" type="text" class="form-control">
+                                            <option value="0">请选择</option>
+                                            <option value="1" <if condition="$Think.get.zhuang EQ 1">selected</if>>家装</option>
+                                            <option value="2" <if condition="$Think.get.zhuang EQ 2">selected</if>>公装</option>
+                                            <option value="3" <if condition="$Think.get.zhuang EQ 3">selected</if>>公装/家装</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <button type="submit" id="search" class="btn btn-info">查询</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">会员公司列表</h3>
+                        <div class="button">
+                            <div class="btn btn-info" data-toggle="modal" data-target="#modal">批量导入</div>
+                            <a href="/basicinfo/dowmmodule/" class="hideLoading"><div class="btn btn-info">模版下载</div></a>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <table class="table table-hover table-bordered" id="tablelist">
+                            <thead>
+                                <tr>
+                                    <th>会员ID</th>
+                                    <th>会员简称</th>
+                                    <th>所属城市</th>
+                                    <th>所在区域</th>
+                                    <th>详细地址</th>
+                                    <th>坐标</th>
+                                    <th>半包/全包</th>
+                                    <th>公装/家装</th>
+                                    <th>对立公司ID</th>
+                                    <th>所属销售</th>
+                                    <th>会员状态</th>
+                                    <th>是否有效</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <volist name="list" id="vo">
+                                <tr>
+                                    <td>{$vo.id}</td>
+                                    <td>{$vo.jc}</td>
+                                    <td>{$vo.cname}</td>
+                                    <td>{$vo.qz_area}</td>
+                                    <td>{$vo.dz}</td>
+                                    <td>
+                                        <if condition="($vo['lng'] NEQ '') AND ($vo['lat'] NEQ '')">
+                                            {$vo.lng},{$vo.lat}
+                                        </if>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            if($vo['contract'] == 1){
+                                                echo "半包";
+                                            }else if($vo['contract'] == 2){
+                                                echo "全包";
+                                            }else{
+                                                echo "半包/全包";
+                                            }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                         if($vo['lx'] == 1){
+                                                echo "家装";
+                                            }else if($vo['lx'] == 2){
+                                                echo "公装";
+                                            }else{
+                                                echo "家装/公装";
+                                            }
+                                        ?>
+                                    </td>
+                                    <td>{$vo.other_id}</td>
+                                    <td>{$vo.saler}</td>
+                                    <td>VIP</td>
+                                    <td>是</td>
+                                    <td>
+                                        <div class="edit" data-id="{$vo.id}" data-toggle="modal" data-target="#myModal">编辑</div>
+                                    </td>
+                                </tr>
+                                </volist>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="page">
+                           {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--编辑模态框-->
+            <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <form id="form1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                </button>
+                                <h4 class="modal-title">编辑</h4>
+                            </div>
+                            <div class="modal-body common-model-content">
+                                <div class="form-group">
+                                    <span class="span">会员ID:</span><span id="vip_id">123456</span>
+                                    <input type="hidden" name="id">
+                                </div>
+                                <div class="form-group">
+                                    <span class="span">会员简称:</span><span id="vip_jc">赣州新居缘装饰</span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="span">所属城市/区域:</span>
+                                    <select name="model-city" id="model-city" style="width: 150px;">
+                                        <option value="0">请选择城市</option>
+                                    </select>
+                                    <select name="model-area" id="model-area" style="width: 150px;">
+                                        <option value="0">请选择区域</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <span class="span">详细地址:</span>
+                                    <input type="text" class="address" name="dz">
+                                </div>
+                                <div class="form-group">
+                                    <span class="span">坐标:</span>
+                                    <input type="text" class="zuobiao" name="jingwei">
+                                    <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank"><i class="fa fa-map-marker"></i></a>
+                                </div>
+                                <div class="form-group">
+                                    <span class="span">半包/全包:</span>
+                                    <label><input name="qb" type="radio" value="1">半包</label>
+                                    <label><input name="qb" type="radio" value="2">全包</label>
+                                    <label><input name="qb" type="radio" value="3">半包/全包</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="span">公装/家装:</span>
+                                    <label><input name="zx" type="radio" value="1">家装</label>
+                                    <label><input  name="zx" type="radio" value="2">公装</label>
+                                    <label><input name="zx" type="radio" value="3">公装/家装</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="span">对立公司ID:</span>
+                                    <input type="text" name="other_id">
+                                    <p class="tips">注：如果需要填写多个对立公司ID，请用“,”做区分</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="save" class="btn btn-info">保存</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 批量导入模态框 -->
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">批量导入</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                            <div class="form-group">
+                                <label class=" control-label">选择文件:</label>
+                                <div class=" file-group">
+                                        <input id="fileUp" name="excel" type="file" />
+                                </div>
+                            </div>
+                            </form>
+                            <div class="form-group">
+                            <p>注意事项：</p>
+                            <p>1.点击右侧模板下载，按规范填写信息</p>
+                            <p>2.请上传文件EXCEL格式文档</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</block>
+<block name="script">
+<script src="{:C('168NEW_URL')}/assets/common/js/plugins/select2/select2.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/common/js/Alert.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    //搜索框城市区域显示
+    $("#city").val('{$_GET["city"]}');
+    $("#area").val('{$_GET["area"]}');
+
+    $("#fileUp").fileinput({
+        language: 'zh', //设置语言,
+        allowedFileExtensions:['xls','xlsx'],
+        uploadUrl:"/basicinfo/companyUploadExcel/",
+        browseClass:"btn btn-primary",
+        uploadClass:"btn btn-info",
+        removeClass:"btn btn-danger",
+        showPreview:false,
+        uploadAsync:true,
+        showRemove:true,
+        showCancel:false,
+        showUpload:true,
+        maxFileCount:1,
+        dropZoneEnabled:false
+    }).on('fileuploaded', function(event, data) {
+        if(0 == data.status){
+            window.location.href =  window.location.href;
+        }else{
+            $("#modal").Alert({
+                msg:'上传失败！',
+                level:2
+            });
+        }
+    });
+
+    $("#tablelist").on('click','.edit',function () {
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/basicinfo/getvipcompany/',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                id: id
+            }
+        })
+        .done(function(data) {
+            if (data.status == 0) {
+                var info = data.data;
+                $("#vip_id").text(info.id);
+                $("input[name=id]").val(info.id);
+                $("#vip_jc").text(info.jc);
+                $("select[name=model-city]").select2("val", info.cs);  // 城市
+                if($("select[name=model-city]")){
+                    var modelCityId = info.cs;
+                    if (modelCityId==0){
+                        return
+                    }
+                    var modelArea = [{id:0,text:"请选择"}];
+                    shi[modelCityId].forEach(function(ele,index){
+                        var item = {id:ele.qz_areaid, text:ele.oldName};
+                        modelArea.push(item);
+                    });
+                    $("#model-area").html("");
+                    $("#model-area").select2({
+                        data:modelArea
+                    });
+                }
+                $("select[name=model-area]").select2("val", info.qx); // 区域
+                $(".address").val(info.dz);
+                $(".zuobiao").val(info.zuobiao);
+                $("input[name=qb][value="+info.contract+"]").attr('checked',"checked"); // 半包
+                $("input[name=zx][value="+info.lx+"]").attr('checked',"checked"); // 全包
+                $("input[name=other_id]").val(info.other_id);
+            }else{
+                alert( data.info);
+            }
+        });
+
+
+    })
+    $("#save").click(function(){
+        //验证不为空
+        //城市
+        if($.trim($('select[name=model-city]').val()) == '' || $.trim($('select[name=model-city]').val()) == 0){
+            alert('城市不能为空');
+            return false;
+        }
+        //区域
+        if($.trim($('select[name=model-area]').val()) == '' || $.trim($('select[name=model-area]').val()) == 0){
+            alert('区域不能为空');
+            return false;
+        }
+        console.log($('input[name=dz]').val());
+        //地址
+        if($.trim($('input[name=dz]').val()) == ''){
+            alert('地址不能为空');
+            return false;
+        }
+        //坐标
+        if($.trim($('input[name=jingwei]').val()) == ''){
+            alert('坐标不能为空');
+            return false;
+        }
+
+
+        var data = $("#form1").serializeArray();
+        $.ajax({
+            url: '/basicinfo/savevipcompany/',
+            type: 'POST',
+            dataType: 'JSON',
+            data:data
+        })
+                .done(function(data) {
+                    alert( data.info);
+                    if (data.status == 0) {
+                        window.location.href = '/basicinfo/company/'
+                    }
+                })
+    })
+
+
+        var citys=JSON.parse('{$citys}');
+        var arr = [];
+        var shen = null, shi = null;
+        shen = citys["shen"];
+        shi = citys["shi"];
+        shen.forEach( function(element, index) {
+                element.text = element.cname;
+        });
+        $("#city").select2({
+            data:shen
+        });
+        $("#city").change(function(){
+            var id = $(this).val();
+            if (id == 0 || id == null){
+                $(this).val('0')
+                $("#area").val('0')
+                return
+            }
+            var area = [{id:0,text:"请选择"}];
+            shi[id].forEach(function(ele,index){
+                var item = {id:ele.qz_areaid, text:ele.oldName};
+                area.push(item);
+            });
+            $("#area").html("");
+            $("#area").select2({
+                data:area
+            });
+        })
+        initCity(citys);
+        function initCity(citys){
+            var cityShi='{$shi}';
+            if(cityShi!="" ){
+                $("#city").select2("val", cityShi);
+                // $("#location").val('{$zuobiao}');
+                $.each(citys.shi,function(i,value){
+                    if(i === cityShi){
+                        for(var j = 0; j < value.length; j++){
+                            var oPt =  "<option value="+value[j].qz_areaid+">"+value[j].oldName+"</option>"
+                            $('select[name=area]').append(oPt);
+                        }
+                    }
+                })
+                if('{$area}'!='' && '{$area}'!= 0){
+                    $("#area").select2("val", '{$area}');
+                }
+            }else{
+                $('#area').val('0');
+            }
+        }
+        $("#model-city").select2({
+            data:shen
+        });
+
+        $("#model-city").change(function(){
+            var id = $(this).val();
+            if (id==0){
+                return
+            }
+            var area = [{id:0,text:"请选择"}];
+            shi[id].forEach(function(ele,index){
+                var item = {id:ele.qz_areaid, text:ele.oldName};
+                area.push(item);
+            });
+            $("#model-area").html("");
+            $("#model-area").select2({
+                data:area
+            });
+        })
+})
+</script>
+</block>

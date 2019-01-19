@@ -1,0 +1,25 @@
+<ul class="box-width-css com-nav">
+    <li class="active"><a href="/{$cityInfo.bm}/company_home/{$info.user.id}">公司首页</a></li>
+    <li><a href="/{$cityInfo.bm}/company_case/{$info.user.id}">装修案例</a></li>
+    <li><a href="/{$cityInfo.bm}/company_team/{$info.user.id}">设计团队</a></li>
+    <li><a href="/{$cityInfo.bm}/company_message/{$info.user.id}">业主牛评</a></li>
+</ul>
+<dl class="box-width-css company-hd-wrap">
+    <dt class="company-pho-wrap fl-l">
+        <div class="company-pho">
+        <img src="{$info.user.logo}" alt="{$info.user.qc}">
+        </div>
+    </dt>
+    <dd>
+        <p>{$info.user.qc}</p>
+        <p>已经有&nbsp;&nbsp;<span>{$info.user.pv}</span>&nbsp;&nbsp;人咨询</p>
+        <if condition="$info['user']['on'] EQ 2 AND $info['user']['fake'] EQ 0">
+            <i></i>
+        </if>
+    </dd>
+</dl>
+<script type="text/javascript">
+  $(function(){
+      $(".com-nav > li").removeClass('active').eq({$tabIndex}).addClass('active');
+  });
+</script>

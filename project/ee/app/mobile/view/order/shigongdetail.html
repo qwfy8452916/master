@@ -1,0 +1,59 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+
+    <header class="sim-table public-header">
+        <div>
+            {if $Think.get.type == 1 }
+            <a href="http://{:config('m_host')}/order" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a>
+            {else}
+            <a href="http://{:config('m_host')}/shigong" class="c2ce rel"><i class="iconfont icon-angle-left pl1 top-middle" style="font-size: 1rem"></i></a>
+            {/if}
+        </div>
+        <div>详情</div>
+        <div></div>
+    </header>
+    <div class="forder-detail-box bg-c4">
+        <div class="detail">
+            <ul>
+                <li>• 订单编号：{$order.order_no}</li>
+                <li>• 业主姓名：{$order.consumer_name}</li>
+                <li>• 手机号：{$order.consumer_tel}</li>
+                <li>• 微信号：{$order.consumer_wx_no}</li>
+                <li>• 户型：{$order.huXing.name|default=''}</li>
+                <li>• 面积：{$order.house_area}m²</li>
+                <li>• 小区：{$order.xiaoqu|default=""}</li>
+                <li>• 装修地址：{$order.build_address}</li>
+                <li>• 现联系地址：{$order.link_address}</li>
+                <li>• 接待客服：{$order.receptionAccount.contact_name|default=''}</li>
+                <li>• 设计师：{$order.designerAccount.contact_name|default=''}</li>
+                <li>• 添加时间：{$order.add_time}</li>
+            </ul>
+        </div>
+        {if !empty($order.manage.worker_type) && ($order.manage.worker_type == 1)}
+        <div class="detail">
+        <ul>
+            <li>施工人员</li>
+            <li>项目经理：{volist name='order.orderAccountLink' id='ov'}{$ov.contact_name}{/volist}</li>
+        </ul>
+        </div>
+        {else/}
+        <div class="detail">
+            <ul>
+                <li>施工人员</li>
+                <li>施工班组</li>
+                <li>水电工：{volist name='order.orderAccountLink' id='oa'}{if $oa.work_type == 1}{$oa.contact_name}、{/if}{/volist}</li>
+                <li>瓦工：{volist name='order.orderAccountLink' id='oa'}{if $oa.work_type == 2}{$oa.contact_name}、{/if}{/volist}</li>
+                <li>木工：{volist name='order.orderAccountLink' id='oa'}{if $oa.work_type == 3}{$oa.contact_name}、{/if}{/volist}</li>
+                <li>油漆工：{volist name='order.orderAccountLink' id='oa'}{if $oa.work_type == 4}{$oa.contact_name}、{/if}{/volist}</li>
+            </ul>
+        </div>
+        {/if}
+    </div>
+{/block}
+{block name='script'}
+
+{/block}

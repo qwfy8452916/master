@@ -1,0 +1,159 @@
+<table class="table table-bordered " style="min-width: 100px; width: 100%; font-size: 12px;">
+    <thead>
+        <tr>
+            <th class="no-padding" style="width: 80px;">录音时间</th>
+            <th class="no-padding" style="width: 100px;">callSid</th>
+            <th class="no-padding">通话录音</th>
+            <th class="no-padding" style="width: 80px;">操作人</th>
+        </tr>
+    </thead>
+    <tbody>
+        <volist name="list" id="vo">
+        <if condition="$vo['action'] EQ '挂断'">
+        <tr>
+            <td class="no-padding" style="width: 80px; word-break:break-all">{$vo.time_add}</td>
+            <td class="no-padding" style="width: 100px; word-break:break-all">{$vo.callsid}</td>
+            <td class="no-padding">
+                <EQ name='vo.TelCenter_Channel' value='cuct'>
+                    <EQ name='vo.action' value='挂断'>
+                        <button class="play-record" data-orders-id="{$vo.orders_id}" data-callsid='{$vo.callsid}' onclick="shiting($(this));" title="点击播放 和 下载">
+                            <img src="/assets/home/img/imgother/u95.png">
+                        </button>
+                        {$vo.duration_human}
+                    </EQ>
+                </EQ>
+                <EQ name='vo.TelCenter_Channel' value='ytx'>
+                    <neq name="vo.recordurl" value="">
+                        <audio data-orders-id="{$vo.orders_id}" data-callsid="{$vo.callsid}" controls="controls" onplay="record_log($(this))" data-on="0" style="width: 200px;">
+                            <source src="{$vo.recordurl}"  />
+                        </audio>
+                    </neq>
+                </EQ>
+            </td>
+            <td class="no-padding" style="width: 80px;">{$vo.admin_user}</td>
+        </tr>
+        </if>
+        </volist>
+    </tbody>
+</table>
+<!-- 弹窗 -->
+
+<div id="box" style="background: rgba(255,255,255,1); border:1px solid #efefef; position: absolute; right:-150%; margin-left:-200px; opacity: 1; display: none;">
+    <div class="box-prompt"><span>提示</span>
+        <input type="button" name="" value="×">
+    </div>
+    <div id="pic">
+        <!--content-->
+    </div>
+    <div class="auto-record hidden-record">
+        <audio class="player" src="" autoplay="" preload="auto" controls="" onplay="record_log($(this))" data-on="0">
+        </audio>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //下载
+    function download(e) {
+        var callid = e.attr("data-callsid");
+        var data_content = {
+            "callid": callid
+        };
+        $.post("cuctcallRecordUrl", data_content, function(data, status) {
+            if (data.status == 0) {
+              window.location.href = data.data;
+            } else {
+              alert(data.info);
+            }
+        });
+    }
+    //试听
+    function shiting(e) {
+        var orders_id = e.attr("data-orders-id");
+        var callid = e.attr("data-callsid");
+
+        //设置属性订单ID和callsid属性
+        $(".player").attr("data-orders-id", orders_id);
+        $(".player").attr("data-callsid", callid);
+        //设置默认没有记录过日志,已记录过日志则该数值为0
+        $(".player").attr("data-on", '0');
+
+        var data_content = {
+            "callid": callid
+        };
+        $.post("/telcenter/cuctcallRecordUrl", data_content, function(data, status) {
+            audio(data.data, data.status);
+        },'json');
+        //弹窗(试听)
+        function audio(url, status) {
+            if (status == 1) {
+                //打开弹窗
+                $("#box").show();
+                $("#box-content button").addClass("hidden-record");
+                $(".box-prompt span").html("录音播放");
+                $("#pic").addClass("hidden-record")
+                $(".auto-record").removeClass("hidden-record");
+
+                //设置录音路径
+                $(".player").attr("src", url);
+
+                //取消
+                $(".box-prompt input").on("click", function() {
+                    $("#box").hide();
+                    $("#box-content button").removeClass("hidden-record");
+                    $(".box-prompt span").html("提示");
+                    $("#pic").removeClass("hidden-record");
+                    $(".auto-record").addClass("hidden-record");
+                    $(".player").removeAttr("src");
+                });
+            } else {
+                //打开弹窗
+                $("#box").show();
+                $("#box-content button").addClass("hidden-record");
+                $("#pic").html("播放录音失败");
+
+                $(".box-prompt input").on("click", function() {
+                    $("#box").hide();
+                    $("#box-content button").removeClass("hidden-record");
+                });
+            }
+        }
+    }
+
+    function record_log (event) {
+        if (event.attr('data-on') == '1') {
+            return false;
+        };
+        var orders_id = event.attr('data-orders-id');
+        var callSid = event.attr('data-callsid')
+        $.ajax({
+            url: '/logtelcenterlistenordercall/addlistenordercalllog/',
+            type: 'POST',
+            async:false,
+            dataType: 'JSON',
+            data: {
+                orders_id:orders_id,
+                callSid:callSid
+            }
+        })
+        .done(function(data) {
+            if(data.status == '1'){
+                event.attr('data-on', '1');
+            } else {
+                alert('ERROR录音错误！请及时联系技术部');
+            }
+        })
+        .fail(function(xhr) {
+            alert('录音网络错误！');
+        })
+    }
+    $("#box").on({
+        mousedown: function(e){
+            var el=$(this);
+            var os = el.offset(); dx = e.pageX-os.left, dy = e.pageY-os.top;
+            $(document).on('mousemove.drag', function(e){ el.offset({top: e.pageY-dy, left: e.pageX-dx}); });
+        },
+        mouseup: function(e){
+                $(document).off('mousemove.drag');
+        }
+    });
+</script>

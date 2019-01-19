@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调函数</title>
+</head>
+<body>
+    <script>
+       //定义主函数，回调函数作为参数
+        // var aa=0
+        // function A(callback) {
+        //     aa=2
+        //     // setTimeout(function(){
+        //     //    aa=1
+        //     // //    callback(aa); 
+        //     // },3000)
+        //     callback(aa)
+
+        // }
+
+        // //定义回调函数
+        // function B(){
+        //     console.log('我是回调函数')
+        //     return 12
+        //     // setTimeout("console.log('我是回调函数')", 3000);//模仿耗时操作  
+        // }
+
+        //调用主函数，将函数B传进去
+        // A(function(aa){
+        //     console.log(aa)
+        
+        // });
+
+     //定义主函数，回调函数作为参数
+
+        // function A(callback) {
+        //     // c()
+        // callback(); 
+        // console.log('我是主函数');
+        
+        // }
+
+        // //定义回调函数
+        // function B(){
+        //     console.log("回调打印")
+        // // setTimeout("console.log('我是回调函数')", 3000);//模仿耗时操作 
+        // }
+        
+        // function c(){
+        //     setTimeout(function(){
+        //         console.log("执行完毕")
+        //     }, 4000);//模仿耗时操作
+        // }
+        // //调用主函数，将函数B传进去
+        // A(B);
+        // A()
+
+        // function a(){
+        //     b();
+        //     console.log('hello world');
+        // }
+        // function b(){
+        //     var n = 0;
+        //     for(var i = 0;i < 1000000000;i++){
+        //         n++;
+        //     }
+        //     return n;
+        // }
+        // a(); //hello world
+     
+
+     function a(callback){   
+        callback.call(this);
+        console.log('hello world');
+        
+        
+    }
+    function b(){
+        var n = 0;
+        for(var i = 0;i < 2000000000;i++){
+        }
+        console.log(1);
+    }
+
+    a(b); 
+    
+    </script>
+</body>
+</html>

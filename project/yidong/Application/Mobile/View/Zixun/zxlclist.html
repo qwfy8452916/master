@@ -1,0 +1,190 @@
+<extend name="Common:basic"/>
+<block name="link">
+    <link href="/assets/mobile/common/css/m-reset.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link href="/assets/mobile/common/css/m-public.new.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/assets/mobile/common/fonts/font-awesome.min.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="http://www.qizuang.com{$info.canonical}">
+    <link href="/assets/mobile/zixun/css/gl-step-list.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link href="/assets/mobile/zixun/css/gl-base.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+    <link href="/assets/mobile/zixun/css/redbox.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <link href="/assets/mobile/common/css/qzCitySelect.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <link href="/assets/mobile/css/top-sj-bj.css?v={:C('STATIC_VERSION')}" rel="stylesheet" />
+    <link href="/assets/mobile/zixun/css/flow-list.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+
+
+</block>
+
+<block name="content">
+
+    <!-- <style>body{overflow-x: hidden;}</style> -->
+    <article>
+        <div class="head">
+            <div class=" head-search">
+                <form action="http://{:C('MOBILE_DONAMES')}/search">
+                    <i class="fa fa-search"></i><input type="text" placeholder="电视机背景墙" id="search" name="keyword">
+                </form>
+            </div>
+        </div>
+        <div id="tab">
+            <div class="tab-menus">
+                <ul id="menuTitle">
+                    <volist name="nav" id="vo">
+                        <eq name="vo.shortname" value="$cur_category_shortname">
+                            <li ><a class="cur" href="http://{:C('MOBILE_DONAMES')}/gonglue/{$vo.shortname}/">{$vo.classname}</a></li>
+                            <else/>
+                            <li><a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$vo.shortname}/">{$vo.classname}</a></li>
+                        </eq>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <volist name="list" id="article">
+                <div class="list-box ">
+                    <div class="list clearfix">
+                        <a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$article.shortname}/{$article.id}.html">
+                            <div class="img">
+                                <img src="http://{:C('QINIU_DOMAIN')}/{$article.face}-w400.jpg" alt="">
+                            </div>
+                            <div class="info" style="height: 0.9rem; width: 1.7rem;">
+                                <div class="title">{$article.title}</div>
+                                <div class="text">{$article.jianjie}</div>
+                                <div class="icon">
+                                    <i class="fa fa-eye" style="margin-right: 0.05rem"></i><span style="margin-right: 0.25rem">{$article.pv}</span>
+                                    <span class="collect" data-id="{$article.likes}">
+                                        <i class="fa fa-heart-o heart" style="margin-right: 0.05rem"></i>
+                                        <span class="heart-no">{$article.likes}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </volist>
+
+        </div>
+            <div class="page">
+                {$page_tmp}
+            </div>
+            <include file="Common/footfadantc"/>
+    </article>
+    <input type="hidden" name="hide_city_id" value="{$info.cityarea.id}">
+    <input type="hidden" name="search_url" value="{$search_url}">
+
+    <div id="gotop"><i class="fa fa-angle-up fa-lg"></i><br>置顶</div>
+
+    
+
+</block>
+<block name="script">
+    <script type="text/javascript" src="/assets/mobile/zixun/js/jroll-scroll.js?v={:C('STATIC_VERSION')}"></script>
+
+    <script language="javascript">
+       
+
+        var jroll = new JRoll(".tab-menus", {scrollX:true,scrollY:false});
+
+        var leftWidth  = $('.cur').parent().offset().left;
+        if($("#menuTitle li").find('a').hasClass('cur')){
+            if($('.cur').parent().offset().left > 677) {
+                jroll.scrollTo(-leftWidth+320, 0, 300, false);
+            }else {
+                jroll.scrollTo(-leftWidth+10, 0, 300, true);
+            }
+
+        }
+
+         
+
+
+
+        // jroll.options.bounce = false;
+        // 置顶
+        $(window).on("scroll", function(){
+            if($(document).scrollTop()>="1000"){
+                $('#gotop').addClass('show');
+            }else{
+                $('#gotop').removeClass('show');
+            }
+        });
+        $('#calculator-closed').click(function () {
+            $(this).hide();
+            return false;
+        })
+        $('#menuTitle li').on('click','a',function(){
+            $(this).addClass('cur').parent().siblings('li').children('a').removeClass('cur');
+        })
+        // 点击心变色
+        $('.collect').click(function () {
+            $(this).find("i").toggleClass('current');
+            $(this).find("i").toggleClass('fa-heart-o').addClass('fa-heart');
+            var _this = $(this);
+            $.ajax({
+                url: '/dolike/',
+                type: 'POST',
+                dataType: 'JSON',
+                data:{
+                    id:_this.attr("data-id")
+                }
+            })
+            .done(function(data) {
+                if(data.status == 1){
+                    _this.unbind("click");
+                    var i = _this.find("span").text();
+                    i = parseInt(i)+1;
+                    _this.find("span").html(i);
+                }
+            });
+
+            return false;
+        });
+    // 搜索框文字随机切换
+    +function($){
+        var $search = $("#search");
+        var randomNum = 0;
+        var kyw = ["客厅墙漆颜色","卧室墙漆颜色","热水器漏水","高层窗户漏风的小窍门","合格地板","浴霸灯","圆柱空调","马桶","小空间创意装饰","隔音毡"];
+        randomNum = Math.floor(Math.random() * 10);
+        $search.attr("placeholder",kyw[randomNum]);
+    }(jQuery)
+
+    // 搜索跳转
+    + function ($) {
+        var $search = $("#search");
+        var kyw = ""
+        var submitKyw = function () {
+            kyw = $search.val();
+            if (!kyw) {
+                kyw = kyws[randomNum];
+            }
+            location.href = "http://m.qizuang.com/search?keyword=" + kyw;
+        };
+        // document.getElementById('search_form').onsubmit = function(){
+        //     submitKyw();
+        // }
+        $("#search").blur(function(){
+            submitKyw();
+        })
+        document.addEventListener("keyup", function(evnet){
+            if(event.keyCode == 13){
+                submitKyw();
+            }
+            return false;
+        }, false)
+    }(jQuery)
+    </script>
+    <!-- <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script> -->
+    <!-- <script type="text/javascript" src="/assets/mobile/common/js/geolocation.js?v={:C('STATIC_VERSION')}"></script> -->
+    <script type="text/javascript" src="//{:C('QINIU_DOMAIN')}/{:OP('ALL_REAL_VIP_PCA_JSON')}"></script>
+    <script type="text/javascript" src="/assets/mobile/js/jroll.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="text/javascript" src="/assets/mobile/common/js/qzCitySelect.js?v={:C('STATIC_VERSION')}"></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+            "appid": "1575859058891466",
+            "title": "{$basic.head.title}",
+            "images": [],
+            "pubDate": ""
+        }
+    </script>
+</block>

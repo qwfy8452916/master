@@ -1,0 +1,59 @@
+/*
+* @Author: jsb
+* @Date:   2018-08-31 11:43:22
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-10-13 15:13:44
+*/
+.wrapper {
+    height: 100%;
+}
+.detail {
+    padding: 0.8rem;
+}
+.list-box {
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px #ccc;
+    border-radius: 0.2rem;
+}
+.list-box ul {
+    padding: 0.75rem 1rem;
+}
+.list-box ul li {
+    padding-bottom: 0.75rem;
+    position: relative;
+}
+.list-box ul li span {
+    word-break: break-all;
+}
+.yuan {
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    display: block;
+    width: 0.2rem;
+    height: 0.2rem;
+    background: #000;
+    border-radius: 50%;
+}
+.ml {
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+.pay-box {
+    margin-top: 0.75rem;
+    background: #fff;
+    padding: 0.5rem 0.4rem;
+    box-shadow: 0px 0px 10px 0px #ccc;
+    border-radius: 0.2rem;
+}
+.pay-way {
+    padding-bottom: 0.75rem;
+}
+.pay-box ul li {
+    position: relative;
+    word-break: break-all;
+    padding-bottom: 0.75rem;
+}
+.list-box ul li .style {
+    word-break: break-all;
+}

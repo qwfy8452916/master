@@ -1,0 +1,7 @@
+.ie-tips{
+  padding:10px;
+  background:#ff5353;
+}
+#closed-tips{
+  cursor: pointer;
+}

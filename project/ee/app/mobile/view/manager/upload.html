@@ -1,0 +1,50 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/manager/css/upload.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="fl cancel" id="back">取消</div>
+        <div class="fr publish">发布</div>
+    </header>
+    <div class="wrapper">
+        <div class="box">
+            <div class="construct clearfix">
+                <span class="fl">施工状态</span>
+                <div class="status fl">
+                    <div id="status">请选择</div>
+                    <i class="right"></i>
+                </div>
+            </div>
+            <div>
+                <textarea  name="" id="describe" cols="30" rows="10" placeholder="添加描述，限制100字以内" ></textarea>
+            </div>
+            <div class="weui-cells weui-cells_form" id="uploaderCustom">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <div class="weui-uploader">
+                            <div class="weui-uploader__bd">
+                                <ul class="weui-uploader__files" id="uploaderCustomFiles"></ul>
+                                <div class="weui-uploader__input-box">
+                                    <input id="uploaderCustomInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="example clearfix">
+                <div class="fl zuiduo">最多上传3张</div>
+                <a href="example" class="fr">查看示例</a>
+            </div>
+        </div>
+    </div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/manager/js/upload.js?v={:config('STATIC_VERSION')}"></script>
+<script>
+    if(isWechat && mobileSystem().toLowerCase() == "android"){
+        $("#uploaderCustomInput").attr("capture", "camera");
+    }
+</script>
+{/block}

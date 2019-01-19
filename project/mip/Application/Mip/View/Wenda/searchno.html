@@ -1,0 +1,60 @@
+<extend name="Common:basic"/>
+<block name="link">
+	<link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+	<link rel="stylesheet" href="{$static_host}/assets/wenda/css/index.css?v={:C('STATIC_VERSION')}">
+	<link rel="canonical" href="{$global_yuming_m}/wenda">
+</block>
+<block name="title">
+	<title>搜索结果页 - 齐装网装修问答</title>
+</block>
+<block name="link">
+	<link rel="stylesheet" type="text/css" href="{$static_host}/assets/wenda/css/index.css?v={:C('STATIC_VERSION')}">
+	<link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+</block>
+<block name="top">
+    <a data-type="mip" href="{$global_basehost}/" class="m-header-left"></a>
+    <div class="m-header-title">装修问答</div>
+</block>
+<block name="content">
+	<div class="box">
+        <div class="form_control">
+            <mip-form method="get" url="http://mip.qizuang.com/wenda/search/">
+                <input type="text" name="keyword" value="" placeholder="请输入您的装修问题" validatetarget="keyword" validatetype="must">
+                <div target="keyword">关键词不能为空</div>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </mip-form>
+        </div>
+    </div>
+	<div class="kong-img">
+		<mip-img src="{$global_yuming_m}/assets/mobile/wenda/img/kong.png"></mip-img>
+	</div>
+
+	<br>
+	<div class="about-kong">
+		<div class="about-kong-box">
+			<p class="about-kong-title">相关问题</p>
+		</div>
+		<div class="about-kong-list">
+			<volist name="hotAsk" id="v">
+			<div class="about-kong-item">
+				<div class="fl wen-icon">问</div>
+				<div class="fr about-kong-main">
+					<div class="about-kong-head"><a href="{$global_basehost}/wenda/x{$v.id}.html">{$v.title}</a></div>
+					<div class="about-kong-body">{$v.content|mbstr=0,30}</div>
+					<div class="about-kong-foot">
+						<span class="about-kong-time fl">{$v.post_time|timeFormat}</span>
+						<span class="about-kong-style fr"><i>{$v.name}</i>|&nbsp;&nbsp;<i>{$v.anwsers}</i>人回答</span>
+					</div>
+				</div>
+			</div>
+			</volist>
+		</div>
+	</div>
+	<include file="Common:freeDesign"/>
+</block>
+
+
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-form/mip-form.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-showmore/mip-showmore.js"></script>
+</block>

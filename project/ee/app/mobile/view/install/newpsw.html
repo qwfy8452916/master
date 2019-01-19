@@ -1,0 +1,27 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap bg-deepblue">
+    <header class="sim-table public-header">
+        <div><a href="javascript:void(0);" class="pl1 c2ce" data-name='cancel'><span class="top-middle">取消</span></a></div>
+        <div>密码更改</div>
+        <div><a href="javascript:void(0);" class="c2ce pr1" data-name="save">保存</a></div>
+    </header>
+    <div class="get-password-two">
+        <div class="error-container" data-name="error-container"></div>
+        <div class="sim-table input-line">
+            <div><span class="label">新密码</span></div>
+            <div><input type="password" placeholder="请填写新密码" oninput="if(value.length>24)value=value.slice(0,24)" data-name="psw"></div>
+        </div>
+        <div class="sim-table input-line">
+            <div><span class="label">确认密码</span></div>
+            <div><input type="password" placeholder="请输入确认密码" oninput="if(value.length>24)value=value.slice(0,24)" data-name="psw-confirm"></div>
+        </div>
+    </div>
+{/block}
+{block name='script'}
+    <script type="text/javascript" src="/assets/mobile/install/js/changepswtwo.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

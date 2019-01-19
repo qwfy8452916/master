@@ -1,0 +1,48 @@
+/*
+* @Author: Administrator
+* @Date:   2018-09-14 20:07:02
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-09-26 18:38:21
+*/
+.sw-mask{width:100%; height: 100%; position: fixed; left:0px;top: 0px; background:rgba(0,0,0,0.7); display: none;z-index: 10}
+.img-list{width:1200px; height: 300px; overflow: hidden;}
+.img-list li{float: left; width:150px; height:150px; background: red; list-style: none; margin: 10px;}
+.sw-container{
+    height: 100%;
+    margin:0px auto;
+    overflow: hidden;
+    position: relative;
+}
+.sw-close{
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    right: 100px;top:100px;
+    font-size: 30px;
+    cursor: pointer;
+    background:url("/assets/pc/img/Common/cancel.png");
+}
+.sw-item-box{ height: 100%; overflow: hidden}
+.sw-item-box li{ height: 100%; list-style:none; float:left;text-align: center; display: table}
+.sw-item-box li .img{
+    width:100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.sw-item-box li .img img{
+    width:80%;
+    border-radius: 5px;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;  /* Firefox 4 */
+    -webkit-transition: all 0.5s;   /* Safari 和 Chrome */
+    -o-transition: all 0.5s;    /* Opera */
+}
+.sw-item-box li .img p{color:#fff;  width:100%; margin-top:15px;}
+.sw-item-box li .img p.shilims{margin-bottom: 15px;margin-top: 0 !important;font-size: 18px;}
+.sw-item-box .sw-active .img img{width:100% !important;  }
+.sw-dir{position: absolute; width:40px; height: 120px; background:#fff; top:50%;
+    margin-top: -60px; background-repeat:no-repeat; cursor: pointer;}
+#sw-left{left:0px; background:url("/assets/pc/img/Common/left.png") no-repeat center center;}
+#sw-right{right:0px;background:url("/assets/pc/img/Common/right.png")  no-repeat center center;}

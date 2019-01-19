@@ -1,0 +1,105 @@
+{extend name="common:basic" /}
+{block name="title"}
+    岗位管理
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/post/post.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>岗位管理/{if (!empty($Think.get.edit_id))}编辑{else/}添加{/if}岗位</span>
+
+{/block}
+{block name="content"}
+<div class="p-panel">
+    <div class="p-form-box b-owf">
+        <div class="p-form-column">
+            <span class="p-form-title">岗位名称：</span>
+            <input type="text" class="p-input" placeholder="请输入岗位名称"
+                   id="post_name" value="{$stationInfo.name|default=''}" maxlength="12"
+                   {if (isset($stationInfo.default) and $stationInfo.default== 1)}disabled{/if}>
+            <span class="p-no-null">*</span>
+            <div class="tishi"></div>
+        </div>
+    </div>
+</div>
+<div class="p-panel">
+    <p class="b-mbt20">权限设置</p>
+    {volist name='menu' id='vo'}
+    <!--第一级 start-->
+        <table class="set-table">
+            <tr>
+                <td class="one-title">
+                    <!--第一级选中-->
+                    {if (isset($stationInfo.menus_array) and (in_array($vo.id,$stationInfo.menus_array)))}
+                    <span data-check='1' data-level='0' data-name='xtsz' class="hasChecked"  data-id="{$vo.id|default=''}" >
+                        <i class="fa fa-check" data-parent="{$vo.parent_id|default=''}"></i>{$vo.name|default=''}
+                    </span>
+                    {else/}
+                    <span data-check='0' data-level='0' data-name='xtsz' data-id="{$vo.id|default=''}">
+                        <i class="fa"  data-parent="{$vo.parent_id|default=''}"></i>{$vo.name|default=''}
+                    </span>
+                    {/if}
+                </td>
+                <td>
+                    {present name='vo["children"]'}
+                    {volist name='vo.children' id='v'}
+                    <!--第二级-->
+                        <table class="set-two-table">
+                        <tr>
+                            <td class="two-title">
+                                <!--第二级选中-->
+                                {if (isset($stationInfo.menus_array) and (in_array($v.id,$stationInfo.menus_array)))}
+                                <span data-check='1' data-level='1' data-name='gwsz' class="hasChecked" data-id="{$v.id|default=''}" >
+                                    <i class="fa fa-check" data-parent="{$v.parent_id|default=''}"></i>{$v.name|default=''}
+                                </span>
+                                {else/}
+                                <span data-check='0' data-level='1' data-name='gwsz' data-id="{$v.id|default=''}">
+                                    <i class="fa"  data-parent="{$v.parent_id|default=''}"></i>{$v.name|default=''}
+                                </span>
+                                {/if}
+                            </td>
+                            <td>
+                                <table class="set-three-table">
+                                    <tr>
+                                        {present name='v["children"]'}
+                                        <td>
+                                            {volist name='v.children' id='d'}
+                                            <!--第三级选中-->
+                                            {if (isset($stationInfo.menus_array) and (in_array($d.id,$stationInfo.menus_array)))}
+                                            <span data-check='1' data-level='2' data-name='g1' class="hasChecked" data-id="{$d.id|default=''}">
+                                                <i class="fa fa-check"
+                                                   data-parent="{$d.parent_id|default=''}"></i>{$d.name|default=''}
+                                            </span>
+                                            {else/}
+                                            <span data-check='0' data-level='2' data-name='g1' data-id="{$d.id|default=''}">
+                                                <i class="fa"
+                                                   data-parent="{$d.parent_id|default=''}"></i>{$d.name|default=''}
+                                            </span>
+                                            {/if}
+                                            {/volist}
+                                        </td>
+                                        {/present}
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    {/volist}
+                    {/present}
+                </td>
+            </tr>
+        </table>
+    {/volist}
+</div>
+<div class="b-owf">
+    <div class="b-fr bottom-btn">
+        <span class="p-btn p-primary" id="save-btn">保存</span>
+        <a class="p-btn p-white" href="/station">取消</a>
+    </div>
+</div>
+<input type="hidden" class="edit_id" value="{$Think.get.edit_id|default=''}">
+{/block}
+{block name="script"}
+<script src="/assets/pc/js/Private/station/post_add.js?v={:config('STATIC_VERSION')}"></script>
+
+{/block}

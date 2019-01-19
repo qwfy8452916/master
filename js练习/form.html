@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form输出</title>
+</head>
+<body>
+	<form id="formbd" action="">
+		<input type="text" name="aa">
+		<input type="text" name="bb">
+		<select name="cc" id="">
+			<option value="11">11</option>
+			<option value="22">22</option>
+		</select>
+		<input type="checkbox" name="dd">
+		<button type="button" class="tijiao">提交</button>
+	</form>
+	<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		$(function(){
+
+			console.log($('#formbd').serializeArray());
+            
+            $('.tijiao').click(function(event) {
+            	var xx={};
+            	var shujv=$('#formbd').serializeArray()
+            	console.log(shujv)
+            	$.each(shujv,function(){
+                  xx[this.name]=this.value;
+            	})
+            	console.log(xx.aa)
+            	console.log(JSON.stringify(xx))
+            });
+		})
+	</script>
+</body>
+</html>

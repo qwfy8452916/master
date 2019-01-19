@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单提交刷新</title>
+    <style>
+    	.ttt{display: none;}
+    </style>
+</head>
+<body>
+	<form id="biaodan" action="">	
+		<input type="text" name="yy" value="">
+		<span class="yyxx">提交</span>
+		<div class="ttt">sdafasdf</div>
+		<textarea maxlength="10" cols="30" rows="10" style="width: 200px;height: 200px;">111dsfasdf</textarea>
+	</form>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+	<script>
+		$(function(){
+
+          $('.yyxx').click(function(event) {
+          	$('.ttt').show();
+          	 $('#biaodan').submit();
+          	 return false;
+          });
+
+
+		})
+	</script>
+</body>
+</html>

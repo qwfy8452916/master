@@ -1,0 +1,482 @@
+<extend name="Index:basic"/>
+<block name="meta">
+    <title>{$info.title}</title>
+    <meta name="keywords" content="{$info.keywords}" />
+    <meta name="description" content="{$info.description}" />
+    <meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/baike/{$info.id}.html" />
+    <notempty name="info.header.canonical">
+        <link rel="canonical" href="{$info.header.canonical}"/>
+    </notempty>
+</block>
+<block name="style">
+    <notempty name="info.canonical">
+        <link rel="canonical" href="http://{:C('QZ_YUMINGWWW')}/video/{$info.canonical}/"/>
+    </notempty>
+    <link rel="stylesheet" type="text/css" href="/assets/home/baike/css/bk-tagend.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" type="text/css" href="/assets/home/baike/css/newbk-tagend.css?v={:C('STATIC_VERSION')}">
+    <style type="text/css">
+        .citiaoml_right2 img{width: 100%;height: 100%;}
+        .bk-td-msg {right:0px !important;top:-20px;}
+        .zhengwen a{color:blue !important;}
+        .zhengwen a:hover {color:red !important;}
+    </style>
+    <!--[if IE]>
+    <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js?v={:C('STATIC_VERSION')}"></script>
+    <![endif]-->
+</block>
+<block name="content">
+    <div class="wrap oflow">
+        <div class="bread revise">
+            <a href="/">齐装网</a> &gt;
+            <a href="/baike/">装修百科</a> &gt;
+            <a href="/baike/{$info.bigCateUrl}/">{$info.bigCate}</a> &gt;
+            <a href="/baike/{$info.categoryUrl}/">{$info.categoryName}</a> &gt;
+            <!--{$info.item}-->
+            正文
+        </div>
+        <div class="ls-banner">
+            <h3 class="clearfix">
+               <div class="pull-left">
+                   装修开工必须吉利！<span class="red">10秒</span>测算您的装修<span class="red">吉日</span>！
+               </div>
+               <div class="pull-left baike-mianze" style="margin-top: 28px">
+                   <!--S-免责申明-->
+                        <include file="Common@Order/disclamer"/>
+                    <!--E-免责申明-->
+               </div>
+            </h3>
+            <p>
+                <select class="selet" name="xztime">
+                    <option value="1">一个月内装修</option>
+                    <option value="2">半年内装修</option>
+                    <option value="3">半年后装修</option>
+                </select>
+                <input placeholder="请输入免费领取的手机号" name="top_hl_tel" type="text" maxlength="11">
+                <input type="hidden" name="top_hl_fb_type" value="huangli">
+                <select class="selet" id="top_hl_cs" name="top_hl_cs"></select>
+                <select class="selet" id="top_hl_qx" name="top_hl_qx"></select>
+                <input class="butt" id="top-hl-butt" type="submit" value="测算吉日">
+            </p>
+        </div>
+        <div class="leftsider clearfix">
+            <div class="ls-box clearfix">
+                <div class="ls-box-main">
+                    <div class="bk-td-msg">
+                        <div class="bk-td-share">
+                            <div class="bdsharebuttonbox bk_share bdshare-button-style0-16" data-bd-bind="1471336900907">
+                                <a href="#" class="bds_more" data-cmd="more"></a>
+                                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"> </a>
+                                <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                            </div>
+                            <script>
+                                window._bd_share_config = {
+                                    "common": {
+                                        "bdSnsKey": {},
+                                        "bdText": "{$info.item}",
+                                        "bdMini": "2",
+                                        "bdPic": "",
+                                        "bdStyle": "0",
+                                        "bdSize": "16"
+                                    },
+                                    "share": {}
+                                };
+                                with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+                            </script>
+                        </div>
+                    </div>
+                    <div class="bk-td-imgtopic">
+                        <div class="td-img"><img src="http://{:C('QINIU_DOMAIN')}/{$info.thumb}" alt="{$info.item}" title="{$info.item}"></div>
+                        <div class="item_wz">
+                            <h1 class="baike-title">{$info.item}</h1>
+                            <p class="description">{$info.description}</p>
+                            <div class="item-bottom">
+                                <span>{:date('Y-m-d H:i:s', $info['post_time'])}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mulu_xq">
+                <empty name="main.catalog">
+                    {$info.content}
+                    <else />
+                    <div class="lemma-catalog">
+                        <div class="muluwaikz">
+                            <div class="mululeft">目录</div>
+                            <ul class="muluright">
+                                <volist name="main.catalog" id="vi">
+                                    <li data-scroll-nav="{$key}">
+                                        <span class="index">
+                                            {$key + 1}、
+                                        </span>
+                                        <span class="text">
+                                            <a href="javascript:void(0)">
+                                                {$vi}
+                                            </a>
+                                        </span>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                    <notempty name="main.brief">
+                        <div class="citiaoml">
+                            {$main.brief}
+                        </div>
+                    </notempty>
+                    <volist name="main.catalog" id="vi">
+                        <div class="citiaoml">
+                            <div class="citiaoml_left addkuandu" data-scroll-index="{$key}">
+                                <h2 class="titlecitiao"><span class="liredstyle">{$key + 1}</span>{$vi}</h2>
+                                <div class="zhengwen">{$main['content'][$key]}</div>
+
+                                    <div class="js_flag" style="display: none;">
+                                        <div class="moregengd">
+                                            <span class="zhankai">展开<i class="fa fa-angle-double-down"></i></span>
+                                        </div>
+                                        <div class="moregengd">
+                                            <span class="shouqi">收起<i class="fa fa-angle-double-up"></i></span>
+                                        </div>
+                                    </div>
+                            </div>
+                            <notempty name="main['imgs'][$key]">
+                                <div class="citiaoml_right2"><img src="{$main['imgs'][$key]}" alt="{$vi}" title="{$vi}"></div>
+                            </notempty>
+                        </div>
+                    </volist>
+                </empty>
+                <!--固定广告位-->
+                <div class="citiaoml">
+                    <div class="citiaoml_left">
+                        <a href="javascript:;" rel="nofollow" id="baojia_text"><div class="titlecitiao"><span class="liredstyle"><?php echo count($main['catalog'])+1;?></span>装修一个新家大概要花多少钱？装修预算怎么定才合理</div></a>
+                        <a href="javascript:;" rel="nofollow" id="baojia_content"><div class="zhengwen3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装修一个美美的新家要花多少要钱呢?点击文字或右侧图片让我们来为您算算新房装修预算价格,旧房装修价格由实际工程量决定,稍后会有装修管家致电您,为您提供免费的装修咨询服务和详情的装修报价明细。</div></a>
+                    </div>
+                    <a href="javascript:;" rel="nofollow" id="baojia_img"><div class="baojiatan"></div></a>
+                </div>
+                <!--固定广告位-->
+            </div>
+            <!--新相关百科-->
+            <notempty name="otherBaike">
+                <div class="wrapwkzxgbk">
+                    <div class="aboutbk">相关百科</div>
+                    <volist name="otherBaike" id="v" key="k">
+                        <div class="tuwenkz">
+                            <div class="tupbj"><a href="/baike/{$v.id}.html" target="_blank"><img src="http://{:C('QINIU_DOMAIN')}/{$v.thumb}" alt="{$v.title}" title="{$v.title}" style="width: 100%;height: 100%;"></a></div>
+                            <div class="wenzhangms">
+                                <div class="tuwenbt"><a href="/baike/{$v.id}.html" target="_blank">{$v.title}</a></div>
+                                <div class="tuwennr"><a href="/baike/{$v.id}.html" target="_blank">{$v.des}</a></div>
+                            </div>
+                        </div>
+                        <if condition="$k EQ 1">
+                            <div class="tuwenkz">
+                                <a href="javascript:;" rel="nofollow" id="sheji_img"><div class="tupbjsjtk"></div></a>
+                                <div class="wenzhangms">
+                                    <a href="javascript:;" rel="nofollow" id="sheji_text"><div class="tuwenbt">买了房子想装修成什么样？点击立即免费获取4份装修设计图！</div></a>
+                                    <a href="javascript:;" rel="nofollow" id="sheji_content"><div class="tuwennr">齐装网装修设计大礼包，知名设计师，为您定制4份设计方案，全面PK，不满意重新设计，点击图片或文字立即获取。</div></a>
+                                </div>
+                            </div>
+                            <elseif condition="$k EQ 2"/>
+                            <div class="tuwenkz">
+                                <a href="javascript:;" rel="nofollow" id="hl_img"><div class="tupbjzxjr"></div></a>
+                                <div class="wenzhangms">
+                                    <a href="javascript:;" rel="nofollow" id="hl_text"><div class="tuwenbt">不看后悔一辈子，2018装修吉日是哪几天？点击立即测算您的装修吉日！</div></a>
+                                    <a href="javascript:;" rel="nofollow" id="hl_content"><div class="tuwennr">2018年，爱房装修开工哪天好？点击图片或文字立即填写信息，10秒钟获取您的装修吉日，轻松解决装修小烦恼！装修找齐装，全程工程监理，保障施工品质，让装修更省心！</div></a>
+                                </div>
+                            </div>
+                        </if>
+                    </volist>
+                </div>
+            </notempty>
+        </div>
+        <div class="rightsider clearfix">
+            {$orderTmp}
+            <div class="bk-new-tag">
+                <div><a href="javascript:;">相关文章推荐</a></div>
+                <div class="new-tag-name">
+                    <volist name="other.article" id="vi">
+                        <a target="_blank" title="{$vi.title}" href="http://{:C('QZ_YUMINGWWW')}/gonglue/{$vi.shortname}/{$vi.id}.html">{$vi.title}</a>
+                    </volist>
+                </div>
+            </div>
+
+            <div class="bk-new-tag">
+                <div>
+                    <a href="javascript:;">相关问题</a>
+                    <a target="_blank" href="/wenda/addquestion/" class="question">提问</a>
+                </div>
+                <div class="new-tag-name">
+                    <volist name="other.ask" id="vi">
+                        <a target="_blank" title="{$vi.title}" href="http://{:C('QZ_YUMINGWWW')}/wenda/x{$vi.id}.html">{$vi.title}</a>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="article_menu_box">
+            <div class="list-head">
+                <ul>
+                    <volist name="info.tags" id="tags" key="k">
+                        <li id="{$k}" class="">
+                            <a>{$tags.name}</a>
+                            <span>
+                            <i class="fa fa-sort-up"></i>
+                        </span>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="gray-back">
+                <volist name="info.tags" id="tags" key="k">
+                    <div class="back_item">
+                        <volist name="tags.sub_tags" id="tag">
+                            <a target="_blank" href="{$tag.url}" class="sub_tag">{$tag.name}</a>
+                        </volist>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <include file="Common@Friendlink/index"/>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="/assets/common/js/scrollIt/js/scrollIt.min.js?v={:C('STATIC_VERSION')}"></script>
+    <if condition="$open">
+        <script>$("#s-zxsj").trigger('click');</script>
+    </if>
+    <script>
+        $(".zhengwen").each( function(element, index) {
+            var p=$(index).children('p');
+            var pheight=0;
+            p.each(function(ele,thisIndex){
+                if($(thisIndex).text()==""){
+                    $(thisIndex).remove();
+                }else{
+                    pheight=pheight+$(thisIndex).height();
+                }
+            });
+            if(pheight>180){
+                $(index).next(".js_flag").css("display","block")
+            }
+
+
+        });
+
+        $(function () {
+            //默认选中效果
+            $(".article_menu_box li:eq(0)").addClass('head-active');
+            $(".gray-back .back_item:eq(0)").addClass('item_active');
+            $(".sub_tag").on('mouseover', function () {
+                $(this).attr('style', 'color:#ff5353 !important;');
+            }).on('mouseout', function () {
+                $(this).attr('style', 'color:#333 !important;');
+            })
+
+            $(".list-head ul li").hover(function(){
+                var index=$(this).index();
+                $(this).addClass("head-active");
+                $(this).siblings().removeClass("head-active");
+                $($(".back_item")[index]).addClass("item_active");
+                $($(".back_item")[index]).siblings().removeClass("item_active");
+            });
+
+        });
+
+        $(document).ready(function(){
+            var shen, shi;
+            shen = citys["shen"];
+            shi = citys["shi"];
+
+            initCity('{$theCityId}');
+            function initCity(cityId){
+                App.citys.init("#top_hl_cs","#top_hl_qx",shen,shi,cityId);
+            }
+
+            $.scrollIt({
+                topOffset : -100 //偏移量（距离顶部）100px
+            });
+
+            $("#top-hl-butt").click(function(event){
+
+                var _this = $(this);
+                window.order({
+                    wrap:'.ls-banner',
+                    extra:{
+                        tel: $("input[name=top_hl_tel]").val(),
+                        fb_type: $("input[name=top_hl_fb_type]").val(),
+                        hltime: $("select[name=xztime]").val(),
+                        source: '179',
+                        cs:$("select[name=top_hl_cs]").val(),
+                        qx:$("select[name=top_hl_qx]").val(),
+                        ssid:"",
+                        step:99
+                    },
+                    error:function(){
+                        $.pt({
+                            target: _this,
+                            content: '发布失败,请刷新页面！',
+                            width: 'auto'
+                        });
+                    },
+                    success:function(data, status, xhr){
+                        if (data.status == 1) {
+                            $("body").append(data.data.tmp);
+                        } else {
+                            $.pt({
+                                target: _this,
+                                content: data.info,
+                                width: 'auto'
+                            });
+                        }
+                    },
+                    validate:function(item, value, method, info){
+                        if ('tel' == item && 'notempty' == method) {
+                            $("input[name=top_hl_tel]").focus();
+                            $.pt({
+                                target: $("input[name=top_hl_tel]"),
+                                content: '请填写您的电话',
+                                width: 'auto'
+                            });
+                            return false;
+                        };
+                        if ('tel' == item && 'ismobile' == method) {
+                            $("input[name=top_hl_tel]").focus();
+                            $("input[name=top_hl_tel]").val('');
+                            $.pt({
+                                target: $("input[name=top_hl_tel]"),
+                                content: '请填写正确的手机号码 ^_^!',
+                                width: 'auto'
+                            });
+                            return false;
+                        };
+                        if(!checkDisclamer(".baike-mianze")){
+                            return false;
+                        }
+
+                        return true;
+                    }
+                });
+            });
+
+            $("#baojia_text,#baojia_img,#baojia_content").on('click',function(){
+                var _this = $(this);
+                $.ajax({
+                    url: '/dispatcher/',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        type:"bj",
+                        source:'18010828',
+                        action:"load"
+                    }
+                })
+                    .done(function(data) {
+                        if (data.status == 1) {
+                            $("body").append(data.data);
+                            if(navigator.appName == "Microsoft Internet Explorer"){
+                                $(".zxfb").show();
+                                _this.hide();
+                            }else{
+                                $(".zxfb").fadeIn(400,function(){
+                                    $(this).find("input[name='bj-xiaoqu']").focus();
+                                });
+                                $(".zxbj_content").removeClass('smaller');
+                            }
+                        }
+                    });
+            });
+
+            $("#sheji_text,#sheji_img,#sheji_content").on('click',function(){
+                var _this = $(this);
+                $.ajax({
+                    url: '/dispatcher/',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        type: "sj",
+                        source:'18010854',
+                        action: "load"
+                    }
+                })
+                    .done(function(data) {
+                        if (data.status == 1) {
+                            $("body").append(data.data);
+                            $(".zb_box_sj").fadeIn(400, function() {
+                                $(this).find("input[name=lf-name]").focus();
+                            });
+                        }
+                    });
+            });
+
+            $("#hl_img,#hl_text,#hl_content").on('click',function(){
+                var _this = $(this);
+                $.ajax({
+                    url: '/dispatcher/',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        type: "hl",
+                        source:'18010843',
+                        action: "load"
+                    }
+                })
+                    .done(function(data) {
+                        if (data.status == 1) {
+                            $("body").append(data.data);
+                            $(".zb_box_sj").fadeIn(400, function() {
+                                $(this).find("input[name=lf-name]").focus();
+                            });
+                        }
+                    });
+            });
+
+            $('.muluwaikz .mululeft').height($('.muluwaikz').height());
+            $('.moregengd .zhankai').click(function(){
+                $(this).parent().parent().parent().find('.zhengwen').addClass('zhankaigaodu');
+                // $('.citiaoml_left .zhengwen').addClass('zhankaigaodu');
+                $(this).hide();
+                $(this).parent().siblings().find('.shouqi').show();
+            });
+            $('.moregengd .shouqi').click(function(){
+                $(this).parent().parent().parent().find('.zhengwen').removeClass('zhankaigaodu');
+                // $('.citiaoml_left .zhengwen').addClass('zhankaigaodu');
+                $(this).parent().siblings().find('.zhankai').show();
+                $(this).hide();
+            });
+
+            $('.wrapwkzxgbk .tuwenkz .tupbjzxjr').click(function(){
+                $('.yinying').show();
+                $('.zxjrkz').show();
+            });
+
+            $('.zxjrkz .closegb').click(function(){
+                $('.yinying').hide();
+                $('.zxjrkz').hide();
+            });
+
+            // 设计报价滚动到1282px 悬浮
+            $(window).scroll(function(event) {
+                if($(window).scrollTop() >= 1150){
+                    $('.secbox_form').css({
+                        "width":"260px",
+                        "margin-top":"0",
+                        "position":"fixed",
+                        "top":"85px",
+                        "zIndex":2
+                    });
+                    }else{
+                        $('.secbox_form').css({
+                        "margin-top":"15px",
+                        "position":"",
+                        "top":"",
+                        "zIndex":''
+                    });
+                }
+            });
+        })
+    </script>
+</block>

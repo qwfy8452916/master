@@ -1,0 +1,8 @@
+.rulesyiny{width: 100%;height: 100%;position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin: auto;
+background: rgba(0,0,0,0.7);z-index: 9;}
+.rulesneirogn{width: 2.814rem;height: 2.576rem;background: #fff;position: fixed;top: 0;left: 0;right: 0;bottom: 0;
+margin: auto;z-index: 11;border-radius: 8px;overflow: hidden;padding: 0 0.22rem;box-sizing: border-box;}
+.rulesneirogn .rules-title{text-align: center;font-size:0.167rem;font-weight: bold;margin-top: 0.325rem;margin-bottom: 0.185rem;}
+.rulesneirogn .rulesnr{font-size: 0.114rem;width: 100%;text-align: justify;margin-top: 0.114rem;}
+.rulesneirogn .knowniu{width: 1.758rem;height: 0.352rem;margin: auto;background: #ff5353;color: #fff;
+font-size: 0.132rem;text-align: center;line-height: 0.352rem;border-radius: 20px;margin-top: 0.22rem;}

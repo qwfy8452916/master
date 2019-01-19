@@ -1,0 +1,77 @@
+/*
+* @Author: qz_xsc
+* @Date:   2018-01-23 13:51:11
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-01-23 15:33:22
+*/
+.company_box{border-top:1px solid #CFCFCF ;}
+.company_img {
+    text-align: center;
+    width: 100%;
+    padding-top: 1em;
+}
+.company_img .company_size {
+    width: 5.3em;
+    height: 3em;
+    padding: 8px;
+    margin: 0 auto;
+    background: url(../images/frame.png) no-repeat;
+    background-size: 100% 100%;
+}
+.company_img mip-img {
+    width: 4.8em;
+    margin: 0.16em 0 0 0.3em;
+}
+.company_title {
+    margin-top: 5px;
+    text-align: center;
+}
+.company_title h4 {
+    font-weight: normal;
+    letter-spacing: .1em;
+}
+.company_title h4 em {
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+}
+.company_title h4 em mip-img {
+    width: 85%; margin-top: 7px;
+}
+.company_title p {
+    font-size: 0.7em;
+    position: relative;
+    margin-top: 6px;
+    color: #727272;
+}
+.company_title p em {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 0.9em;
+}
+.company_title p em mip-img {
+    width: 100%;
+    padding-top: 2px;
+}
+.company_active{ border-bottom: 2px solid #f53535;}
+.company_active a{color: #f53535}
+.tab-title ul{ font-size: 0px; padding:0px 0.1rem; border-bottom: 1px solid #CCCCCC;}
+.tab-title ul li{display: inline-block; font-size: 0.103rem;  width:25%; text-align: center; line-height: 3.3em}
+.comment_box {
+    background-color: #fff;
+    padding-top: 0.1%;
+    padding-bottom: 0.1%;
+}
+.ch-blank {
+    width: 32%;
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+p.ch-blank-text {
+    text-align: center;
+    font-size: 0.8em;
+    margin-bottom: 30px;
+}

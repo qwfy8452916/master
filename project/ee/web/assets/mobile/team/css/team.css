@@ -1,0 +1,215 @@
+/*
+* @Author: jsb
+* @Date:   2018-08-31 14:49:50
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-28 09:42:15
+*/
+.navbar-item {
+    float: left;
+    width: 50%;
+    background: #fff;
+    text-align: center;
+}
+.navbar-item span {
+    display: block;
+    width: 6rem;
+    margin: 0 auto;
+    height: 100%;
+    line-height: 2rem;
+    font-weight: 500;
+}
+.on {
+    color:#EFB013;
+    border-bottom: 1px solid #EFB013;
+}
+.add {
+    display: block;
+}
+.add-box {
+    width: 6rem;
+    margin: 0.5rem auto;
+    height: 0.85rem;
+    line-height: 0.85rem;
+    padding: 0;
+}
+.add-box .img {
+    float: left;
+    height: 100%;
+    width: 0.85rem;
+    margin-right: 0.3rem;
+}
+.add-box .img img {
+    display: block;
+    width: 100%;
+}
+.add-box .add-member {
+    float: left;
+}
+
+.member, .group {
+    background: #fff;
+    font-size: 0.7rem;
+    color:#212121;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 0.8rem;
+    padding-top: 0.5rem;
+    box-sizing: border-box;
+}
+.list .close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
+}
+.list .close img {
+    display: block;
+    width: 100%;
+}
+.list .avator {
+    width: 3.4rem;
+    height: 3.4rem;
+    margin-right: 0.5rem;
+}
+.list .avator img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.list .info {
+    font-size: 0.7rem;
+}
+.list .info > div {
+    margin-bottom: 0.1rem;
+}
+.info .department {
+    margin-right: 0.5rem;
+}
+.info .department span {
+    display: block;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    border: 1px solid #EB7038;
+    border-radius: 0.35rem;
+    padding: 0.1rem;
+    font-size: 0.6rem;
+    color: #EB7038;
+}
+.info .job span {
+    display: block;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    border: 1px solid #29CFAB;
+    border-radius: 0.35rem;
+    padding: 0.1rem;
+    font-size: 0.6rem;
+    color: #29CFAB;
+}
+.edit {
+    margin-top: 4rem;
+    border-top: 1px solid #E6E6E6;
+}
+.edit .edit-btn {
+    margin-right: 0.8rem;
+    width: 2.5rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    background: #0E94EA;
+    color: #fff;
+    font-size: 0.7rem;
+    text-align:center;
+    border-radius: 0.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.group-div {
+    position: relative;
+}
+.group-div .name {
+    margin-right: 0.6rem;
+}
+.build {
+    margin-top: 0.1rem;
+    color: #29CFAB;
+    line-height: 0.75rem;
+    border: 1px solid #29CFAB;
+    border-radius: 0.35rem;
+    font-size: 0.6rem;
+    width: 4.25rem;
+    text-align: center;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+.sg-group-build {
+    margin-top: 0.1rem;
+    color: #29CFAB;
+    line-height: 0.75rem;
+    border: 1px solid #29CFAB;
+    border-radius: 0.35rem;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+    text-align: center;
+    margin-right: 0.1rem;
+}
+.sg-group > div{
+    line-height: 1.2rem;
+}
+.sg-workspace-data{
+    padding-right: 0.5rem;
+}
+.sg-workspace-data > a{
+    color: #0E94EA;
+}
+.sg-workspace-data a.disabled{
+    color: #9D9D9D;
+}
+.sg-workspace-data .l{
+    float: left;
+}
+.sg-workspace-data .r{
+    float: right;
+}
+.worker {
+    margin-right: 0.8rem;
+    width: 2.5rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    background: #fff;
+    color: #999;
+    border: 1px solid #999;
+    font-size: 0.7rem;
+    text-align:center;
+    border-radius: 0.2rem;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+}
+#searchBar .department, .role, .constructor{
+    margin-top: 1.6rem;
+    margin-left: 1rem;
+}
+
+#searchBar select {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    width: 7.5rem;
+    font-size: 0.65rem;
+    color: #212121;
+    padding-bottom: 0.25rem;
+    outline: none;
+}
+.yuangong {
+    display: block;
+}
+.shigongzu {
+    display: none;
+}
+.no-supplier {
+    display: none;
+    color: #E31919;
+    padding-left: 1.5rem;
+    background: #fff;
+}

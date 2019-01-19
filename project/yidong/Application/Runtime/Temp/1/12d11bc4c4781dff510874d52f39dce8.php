@@ -1,0 +1,3 @@
+<?php
+//000000000900a:19:{s:2:"id";s:3:"549";s:5:"title";s:43:"日尝 ：可爱又美味腐皮五目寿司";s:11:"description";s:43:"日尝 ：可爱又美味腐皮五目寿司";s:4:"type";s:1:"1";s:6:"author";s:0:"";s:4:"logo";s:0:"";s:9:"cover_img";s:28:"vedio/20180904/5b8e3338d7400";s:3:"url";s:139:"http://player.video.iqiyi.com/060f55a44116ea208404bb88fedd3649/0/0/v_19rqzfddhc.swf-albumId=1300408300-tvId=1300408300-isPurchase=0-cnId=21";s:10:"mobile_url";s:139:"http://player.video.iqiyi.com/060f55a44116ea208404bb88fedd3649/0/0/v_19rqzfddhc.swf-albumId=1300408300-tvId=1300408300-isPurchase=0-cnId=21";s:2:"pv";s:2:"32";s:5:"likes";s:3:"716";s:5:"istop";s:1:"0";s:8:"isdelete";s:1:"0";s:3:"uid";s:1:"4";s:5:"uname";s:9:"齐装网";s:4:"time";s:10:"1536045887";s:5:"theme";N;s:7:"teacher";s:1:"1";s:9:"wxapp_url";s:0:"";}
+?>

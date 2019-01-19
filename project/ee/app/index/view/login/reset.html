@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>齐装云管家</title>
+    <link rel="stylesheet" href="/assets/pc/css/Private/reset.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/css/Public/P_public.css?v={:config('STATIC_VERSION')}">
+</head>
+<body>
+   <div class="loginbj">
+   	   <div class="contentmid">
+   	   	<div class="midneirong">
+   	   	   <div class="hangitem">
+   	   	   	  <span class="phototx">
+   	   	   	  	 <img src="/assets/pc/img/Private/logindl.png" alt="头像">
+   	   	   	  </span>
+   	   	   </div>
+   	   	   <div class="hangitem loginms-jianjv">
+   	   	   	  <span class="loginms">齐装云管家-重置密码</span>
+   	   	   </div>
+   	   	   <div class="hangitem">
+   	   	   	  <div class="divinput">
+   	   	   	  	<input class="zhanghaonum" type="text" placeholder="请输入登录账号">
+   	   	   	  </div>
+   	   	   	  <div class="tishi zhanghao-tishi"></div>
+   	   	   </div>
+               <div class="hangitem">
+                    <div class="divinput">
+                     <input class="phonenum" type="text" maxlength="11" placeholder="请输入绑定的手机号">
+                    </div>
+                    <div class="tishi phonenum-tishi"></div>
+               </div>
+               <div class="hangitem">
+                    <div class="divinput">
+                     <input class="yanzhengm" type="number" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="请输入手机验证码">
+                     <button class="getyanzm">获取验证码</button>
+                    </div>
+                    <div class="tishi getyanzm-tishi"></div>
+               </div>
+   	   	   <div class="hangitem">
+   	   	   	  <div class="divinput">
+   	   	   	  	<input class="newpass" type="password" placeholder="请输入新密码">
+   	   	   	  </div>
+   	   	   	  <div class="tishi newpass-tishi"></div>
+   	   	   </div>
+               <div class="hangitem">
+                    <div class="divinput">
+                     <input class="surepass" type="password" placeholder="请确认新密码">
+                    </div>
+                    <div class="tishi surepass-tishi"></div>
+               </div>
+   	   	   <div class="hangitem">
+   	   	   	  <div class="divinput">
+   	   	   	  	<input class="resetniu" type="button" value="重置密码" >
+   	   	   	  </div>
+   	   	   </div>
+   	   	   <div class="hangitem">
+   	   	   	  <div class="divinput forget-pass">
+   	   	   	  	 <a id="wagnjipass" href="/index/" >返回登录</a>
+   	   	   	  </div>
+   	   	   </div>
+   	   	 </div>
+   	   </div>
+   </div>
+   <script type="text/javascript" src="/assets/pc/js/Common/jquery1.11.3.min.js?v={:config('STATIC_VERSION')}"></script>
+   <script type="text/javascript" src="/assets/pc/js/Common/B_basic.js?v={:config('STATIC_VERSION')}"></script>
+   <script type="text/javascript" src="/assets/pc/js/Private/reset.js?v={:config('STATIC_VERSION')}"></script>
+
+</body>
+</html>

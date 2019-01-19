@@ -1,0 +1,119 @@
+.m-bread {
+    width: 95%;
+    height: 2.2em;
+    overflow: hidden;
+    padding:0px 0.1rem;
+    top: 50px;
+    left: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #fff;
+    box-sizing: border-box;
+    line-height: 2.2em;
+    font-size:0.1rem;
+}
+.article {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding-top: .6em;
+    padding-bottom: 1em;
+}
+.article {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding-top: .6em;
+    padding-bottom: 1em;
+}
+.article-info {
+    margin:0px 0.1rem;
+}
+.article-info .article-tit {
+    font-size: 0.15rem;
+    font-weight: 800;
+}
+.article-info p {
+    padding-bottom: .6em;
+    text-indent: 0 !important;
+}
+.article-time {
+    font-size: 0.8em;
+}
+.article-box, .article-info {
+    margin: 0px  0.1rem;
+}
+.article-box p {
+    line-height: 25px;
+    color: #666;
+    padding-bottom: .8em;
+    text-indent: 0 !important;
+}
+.assist {
+    width: 4.5em;
+    height: 1.5em;
+    border-radius: 0.9em;
+    border: 1px solid #ff565d;
+    background: #fff;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.5em;
+    margin-top: 1em;
+}
+.assist i {
+    display: block;
+    width: 1.55em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #ff565d;
+    float: left;
+    text-align: center;
+    line-height: 1.4em;
+    color: #fff;
+    margin-left: -1px;
+}
+.assist span {
+    font-size: 0.9em;
+    color: #ff565d;
+}
+.other-article {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+.other-article-box {
+    padding: .75em;
+}
+.other-article-word {
+    font-size: 1em;
+    font-weight: 800;
+    line-height: 1.1em;
+}
+.red-block {
+    width: .2em;
+    height: 1.2em;
+    background-color: #ff5659;
+    display: block;
+    float: left;
+    margin-right: .4em;
+}
+.other-article-list {
+    margin-top: .6em;
+    overflow: hidden;
+}
+.other-article-item {
+    width: 100%;
+    height: 4.3em;
+    padding: .5em 0;
+    border-bottom: 1px solid #ccc;
+}
+.other-article-img {
+    width: 6em;
+    height: 4em;
+    float: left;
+    margin-right: .6em;
+}
+.other-article-img img {
+    width: 100%;
+    height: 100%;
+}

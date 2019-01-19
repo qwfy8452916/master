@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <title>{$keys.title}{$title}</title>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <link rel="stylesheet" type="text/css" href="{$static_host}/assets/mobile/index/css/reset.css?v={:C('STATIC_VERSION')}" />
+    <link rel="stylesheet" type="text/css" href="{$static_host}/assets/mobile/zb/css/mobile.css?v={:C('STATIC_VERSION')}">
+	<link rel="Shortcut Icon" href="{$static_host}/favicon.ico" type="image/x-icon" />
+	<script type="text/javascript" src="{$static_host}/assets/mobile/index/js/TouchSlide.1.1.js?v={:C('STATIC_VERSION')}"></script>
+	<script type="text/javascript" src="{$static_host}/assets/mobile/index/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+	<script type="text/javascript" src="{$static_host}/assets/mobile/index/js/index.js?v={:C('STATIC_VERSION')}"></script>
+	<script type="text/javascript" src="{$static_host}/assets/common/js/App.js?v={:C('STATIC_VERSION')}"></script>
+	<script type="text/javascript" src="{$cityfile}"></script>
+	<script type="text/javascript">
+	$(function ($) {
+		$(window).scroll(function(){
+		    if($(window).scrollTop() > 450)
+		    {
+				$(".fx-bar").show();//当高度大于450的时候说明滚动条拉到下面了 让下面的浮动层显示出来
+		    }else
+		    {
+				$(".fx-bar").hide();//当高度小于450的时候说明滚动条在上面 需要让下面的浮动层隐藏
+		    }
+        });
+        //点击免费报价滚动条滚到上面去
+		$(".fx-bar").click(function(){
+			$('html,body').animate({ scrollTop: '0px'}, 800);//以动画的效果让滚动条滚上去
+	    });
+	 });
+	</script>
+</head>
+<body>
+	<div class="navtop">
+		<header class="rela">
+			<a href="javascript:window.history.go(-1)" class="nav-back">后退</a>
+			<div class="nav-tit">免费获取服务</div>
+			<a href="http://m.{:C('QZ_YUMING')}/{$cityInfo.bm}/" class="nav-main">首页</a>
+		</header>
+	</div>
+	<header>
+		<img src="/assets/mobile/zb/images/2_03.gif">
+		<div class="tit">已有<span class="red">{:releaseCount('user')}</span>位业主享受过齐装网的装修服务</div>
+		<article>
+			<form class="secbox_form" onsubmit="return false;">
+				<ul class="fastapply">
+					<li><input type="text" placeholder="您的称呼" name="name" /></li>
+					<li><input type="number" placeholder="联系方式" name="tel" /></li>
+					<li><input type="number" placeholder="房屋面积" name="mianji" /><label>平方米</label></li>
+					<li>
+						<select name="yusuan">
+							<option value="">请选择装修预算</option>
+							<volist name="jiage" id="vo">
+								<option value="{$vo.id}">{$vo.name}</option>
+							</volist>
+						</select>
+					</li>
+					<li>
+		    			<input id="safecode" type="hidden" value="{$safecode}" />
+		    			<input id="safekey" type="hidden" value="{$safekey}" />
+						<button type="button" id="subBtn">立即申请</button>
+					</li>
+					<li style="margin:0">或拨打电话：{:OP('QZ_CONTACT_TELNUM400')}咨询</li>
+					<li>
+					<a href="tel:{:OP('QZ_CONTACT_TELNUM400')}">立刻拨打</a>
+					</li>
+				</ul>
+			</form>
+		</article>
+		<!-- <div class="mt20"><img src="/assets/mobile/Zb/images/1_01.gif"></div> -->
+		<!-- <div class="mt20"><img src="/assets/mobile/Zb/images/1_02.gif"></div> -->
+	</header>
+	<!-- <a href="javascript:;" class="fx-bar"><i></i>免费报价</a> -->
+	<include file="Index:footer" />
+	<script type="text/javascript">
+		$("#subBtn").click(function() {
+			App.pop.reset();//将所有错误重置归零
+			// if (!App.validate.run($(".fastapply input[name='name']").val())) {
+			// 	$(".fastapply input[name='name']").focus();
+			// 	App.pop.run($(".fastapply input[name='name']"),"请别忘记填写您的称呼噢 ^_^!");
+			// 	return false;
+			// }
+			if (!App.validate.run($(".fastapply input[name='tel']").val(),"moblie")) {
+				$(".fastapply input[name='tel']").focus();
+				App.pop.run($(".fastapply input[name='tel']"),"请填写正确的手机号码 ^_^!");
+				return false;
+			}
+
+			//修改提交按钮状态 为提交中
+			$("#subBtn").text('正在申请中...');
+
+			$.ajax({
+	            url: '/fb_order/',
+	            type: 'POST',
+	            dataType: 'JSON',
+	            data: {
+	                name:$(".fastapply input[name=name]").val(),
+	                tel:$(".fastapply input[name=tel]").val(),
+	                mianji:$(".fastapply input[name=mianji]").val(),
+	                yusuan:$(".fastapply select[name=yusuan]").val(),
+	                source: '302',
+	                safecode:$("#safecode").val(),
+	                safekey: $("#safekey").val(),
+	                ssid:"{$ssid}"
+	            }
+	        })
+	        .done(function(data) {
+	            $("#safecode").val(data.data.safecode);
+            $("#safekey").val(data.data.safekey);
+	            //修改提交按钮状态  恢复
+				$("#subBtn").text('立即申请');
+	            if(data.status == 1){
+	            	alert("您的订单已经发布成功，齐装网客服会尽快与您联系为您推荐最适合你的装修公司");
+	            	window.location.href = "http://m.{:C('QZ_YUMING')}/{$cityInfo.bm}/";
+	            }else{
+	            	alert(data.info);
+	            }
+	        })
+	        .fail(function(xhr) {
+	        	alert("发生了未知的错误,请稍后再试！");
+	        });
+	    });
+	</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div class="menu" id="menu" style="width: 0.85rem">
+        <img src="/assets/mobile/common/img/menu.png" alt="">
+    </div>
+    <div>跟单管理</div>
+    <div></div>
+</header>
+
+<div class="forder-container bg-c4">
+    <div style="background-color: white; margin: 0 -1.5rem;padding: 0 1.5rem;">
+        <div class="search-box">
+            <form action="http://merp.qizuang.com/managerorder/" onsubmit="return false;" id="">
+                <input type="search" id="search" maxlength="30" autocomplete="off" placeholder="业主姓名/手机号/订单编号">
+                <i class="iconfont icon-magnifier"></i>
+            </form>
+        </div>
+    </div>
+    <div class="add-forder"><a href="addorder"><i class="iconfont icon-add"></i>添加订单</a></div>
+    <p class="without-ret">未找到符合的订单</p>
+    <div class="forder-item-container">
+        <div class="forder-item-box">
+            <div class="forder-item">
+                <p class="infos">
+                    <span class="l">订单编号：订单编号：152142125411</span>
+                    <span class="r orange">接洽中</span>
+                </p>
+                <p class="infos">订单生成时间：2016-9-8</p>
+                <p class="infos">业主姓名：xxx</p>
+                <p class="infos">手机号：13402515810</p>
+                <p class="infos">施工状态：<span>水电整改</span></p>
+                <div class="forder-action">
+                    <button class="btn btn-orange">
+                        <a href="managerconstructdraw" class="white">施工图</a>
+                    </button>
+                    <button class="btn btn-green">
+                        <a href="designdraw" class="white">设计图</a>
+                    </button>
+                    <button class="btn btn-blue">
+                        <a href="manageredit" class="white">编辑</a>
+                    </button>
+                    <button class="btn btn-white detail-btn">
+                        <a href="managerdetail" class="c9">详情</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="weui-loadmore">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+    </div>
+</div>
+<!-- 侧边栏 -->
+<div class="panel-overlay"></div>
+<div class="panel panel-right panel-cover active">
+    <div class="content-block">
+        <!-- 这是右侧栏 -->
+        <div class="searchBar" id="searchBar">
+            <!-- 施工组筛选 -->
+            <div class="choose-group">
+                <form action="#">
+                    <div class="search-box">
+                        <i class="weui-icon-search"></i>
+                        <input type="search" class="" id="searchInput" placeholder="项目经理/手机号" required="">
+                    </div>
+                    <div class="constructor">
+                        <div>订单状态</div>
+                        <select name="" id="" data-name="order-status">
+                            <option value="0">请选择</option>
+                            <option value="1">获取后台订单状态2</option>
+                            <option value="2">获取后台订单状态3</option>
+                        </select>
+                    </div>
+                    <div class="constructor">
+                        <div>施工状态</div>
+                        <select name="" id="" data-name="build-status">
+                            <option value="0">请选择</option>
+                            <option value="1">获取后台订单状态2</option>
+                            <option value="2">获取后台订单状态3</option>
+                        </select>
+                    </div>
+                    <div class="choose-time">
+                        <div>订单生成时间</div>
+                        <input type="text" name="start_time" class="start-time" placeholder="起始时间">
+                        <input type="text" name="end_time" class="end-time" placeholder="结束时间">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="searchbtn">
+            <button class="reset" data-name="reset">重置</button>
+            <button class="ensure">搜索</button>
+        </div>
+    </div>
+</div>
+
+<script id="tmpl" type="text/x-handlebars-template">
+    {{each data as value}}
+        <div class="forder-item">
+            <p class="infos">
+                <span class="l">订单编号：订单编号：152142125411</span>
+                <span class="r orange">接洽中</span>
+            </p>
+            <p class="infos">订单生成时间：2016-9-8</p>
+            <p class="infos">业主姓名：xxx</p>
+            <p class="infos">手机号：13402515810</p>
+            <p class="infos">施工状态：<span>水电整改</span></p>
+            <div class="forder-action">
+                <button class="btn btn-orange">
+                    <a href="managerconstructdraw" class="white">施工图</a>
+                </button>
+                <button class="btn btn-green">
+                    <a href="designdraw" class="white">设计图</a>
+                </button>
+                <button class="btn btn-blue">
+                    <a href="manageredit" class="white">编辑</a>
+                </button>
+                <button class="btn btn-white detail-btn">
+                    <a href="managerdetail" class="c9">详情</a>
+                </button>
+            </div>
+        </div>
+    {{/each}}
+</script>
+
+{/block}
+{block name='script'}
+<script src="/assets/mobile/common/js/template.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/manager/js/managerorder.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

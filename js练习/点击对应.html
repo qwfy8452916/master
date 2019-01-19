@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击对应</title>
+	<style>
+	body{background: #eee;}
+		ul li{list-style: none;width: 80px;height: 35px;line-height: 35px;text-align: center;background:blue;color: #fff;
+			cursor: pointer;}
+		.active{color: #ff5353 !important;}
+		.iebeijing{background: rgba(0,0,0,0.7);height: 50px;line-height: 50px;text-align: center;color:#fff;
+			background: #000\0 !important;filter:alpha(opacity=70) !important;}
+	</style>
+</head>
+<body>
+	<div class="iebeijing">ie单独样式测试</div>
+	<ul class="dianji">
+		<li>点击1</li>
+		<li>点击2</li>
+		<li>点击3</li>
+	</ul>
+	<ul class="duiying">
+		<li>对应1</li>
+		<li>对应2</li>
+		<li>对应3</li>
+	</ul>
+
+	<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		 
+		 $(function(){
+           
+           $('.dianji li').click(function(event) {
+           	  var that=this;
+           	  $(this).addClass('active');
+           	  $(this).siblings().removeClass('active')
+           	  var dianjisuoyin=$(this).index();
+           	  $('.duiying li').eq(dianjisuoyin).addClass('active')
+           	  $('.duiying li').eq(dianjisuoyin).siblings().removeClass('active');
+
+           });
+           
+
+            $('.duiying li').click(function(event) {
+            	$(this).addClass('active');
+            	$(this).siblings().removeClass('active')
+            	var duiyingsuoyin=$(this).index();
+            	$('.dianji li').eq(duiyingsuoyin).addClass('active')
+           	    $('.dianji li').eq(duiyingsuoyin).siblings().removeClass('active');
+            });
+
+		 })
+
+
+
+	</script>
+</body>
+</html>

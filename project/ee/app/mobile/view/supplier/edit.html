@@ -1,0 +1,101 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/common/css/add.css?v={:config('STATIC_VERSION')}">
+<link href="/assets/mobile/supplier/css/supplier-edit.css?v={:config('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="content"}
+    <header class="header">
+        <div class="back" id="back">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <h1 class="supplier">编辑</h1>
+        <div class="save">保存</div>
+    </header>
+    <div class="wrapper">
+        <ul class="add-box">
+            <li>
+                <span>供应商</span>
+                <input type="text" class="gongying" maxlength="30" value="XXX公司">
+            </li>
+            <li>
+                <span>联系人</span>
+                <input type="text" class="lianxi" maxlength="12" value="王经理">
+            </li>
+            <li>
+                <span>手机号</span>
+                <input type="tel" class="tel" maxlength="11" value="13111111111">
+            </li>
+            <li>
+                <span>微信</span>
+                <input type="text" class="wechat" value="13111111111">
+            </li>
+            <li>
+                <span>邮箱</span>
+                <input type="email" class="email" value="123456@qq.com">
+            </li>
+            <li class="clearfix">
+                <span class="fl">类型</span>
+                <div class="style fr" id="style" data-values="">瓷砖</div>
+                <i class="right"></i>
+            </li>
+            <li class="clearfix">
+                <span class="fl">结算方式</span>
+                <div class="balance-way fr" id="balance-way">月结</div>
+                <i class="right"></i>
+            </li>
+            <li class="pay-way">
+                <a href="payway">
+                    <span>付款方式</span>
+                    <i class="right"></i>
+                </a>
+            </li>
+            <li>
+                <span>支付宝</span>
+                <input class="zhifubao-way" value="13111111111">
+            </li>
+            <li>
+                <span>微信</span>
+                <input class="we-way" value="13111111111">
+            </li>
+            <li>
+                <div class="clearfix">
+                    <span>银行账号</span>
+                    <input class="bank-num" value="12345678998774773664">
+                </div>
+                <div class="clearfix">
+                    <span>账号名称</span>
+                    <input class="bank-user" value="王浩">
+                </div>
+                <div class="clearfix">
+                    <span>开户行</span>
+                    <input class="bank-name" value="中国工商银行苏州文化宫支行">
+                </div>
+            </li>
+        </ul>
+        <!-- 右侧类型选择栏 -->
+        <div class="panel-overlay"></div>
+        <div class="panel panel-right panel-cover active">
+            <div class="content-block">
+                <div class="style-div">类型</div>
+                <ul class="style-ul clearfix">
+                    <li class="current" data-values="1">水泥</li>
+                    <li data-values="2">水电材料</li>
+                    <li data-values="3">瓷砖</li>
+                    <li data-values="4">水泥</li>
+                    <li data-values="5">水电材料</li>
+                    <li data-values="6">瓷砖</li>
+                    <li data-values="7">水泥</li>
+                    <li data-values="8">水电材料</li>
+                    <li data-values="9">瓷砖</li>
+                </ul>
+                <div class="searchbtn">
+                    <button class="reset">重置</button>
+                    <button class="ensure">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/supplier/js/supplier-edit.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

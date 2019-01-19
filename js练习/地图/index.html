@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度地图</title>
+	<style>
+		.btn-primary {
+		    background-color: #3c8dbc;
+		    border-color: #367fa9;
+		}
+
+/*		#container{height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    background-color: rgb(243, 241, 236);
+    color: rgb(0, 0, 0);
+    text-align: left;}*/
+
+	</style>
+</head>
+<body>
+			   <div class="col-sm-3 pull-right">
+			        <br/>
+			        <button id="tack" type="button" class="btn btn-primary"><i class="fa fa-thumb-tack"></i> &nbsp;测距</button>
+			        <button id="marker" type="button" class="btn btn-primary"><i class="fa fa-map-marker"></i> &nbsp;标记</button>
+			        <select name="" id="xuanzcity">
+			        	<option value="苏州">苏州</option>
+			        	<option value="上海">上海</option>
+			        	<option value="淮南">淮南</option>
+			        	<option value="南通">南通</option>
+			        	<option value="盐城">盐城</option>
+			        	<option value="合肥">合肥</option>
+			        	<option value="蚌埠">蚌埠</option>
+			        	<option value="南京">南京</option>
+			        	<option value="北京">北京</option>
+			        	<option value="广州">广州</option>
+			        	<option value="西安">西安</option>
+			        </select>
+			    </div>
+
+                <div id="container" class="col-sm-9" style="height: 600px;">
+
+               </div>
+
+	<script type="text/javascript" src="baidu/jquery.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+ <script type="text/javascript" src="baidu/DistanceTool_min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="baidu/EventWrapper.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="baidu/MarkerTool.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="baidu/\MapBaidu.js?r=2"></script>
+<script type="text/javascript">
+
+
+
+    var city=$('#xuanzcity').val();
+
+   var map = MapBaidu('container',city);
+
+	$('#xuanzcity').change(function(){
+		city=$('#xuanzcity').val();
+		map = MapBaidu('container', city);
+	})
+	// console.log(city)
+
+	
+	$("#tack").click(function(event) {
+		console.log(city)
+        map.startDis();
+    });
+
+    $("#marker").click(function(event) {
+        map.startMark();
+    });
+</script>
+</body>
+</html>

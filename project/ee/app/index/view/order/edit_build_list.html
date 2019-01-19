@@ -1,0 +1,92 @@
+{foreach $list as $key=>$vo}
+
+<div class="shigongwk kbj">
+    <span class="index">{$count-$listPageIndex  * $listPageCount - $key}</span>
+    <input class="shigongjilid" type="hidden" value="{$vo.id}">
+    {switch $vo.check_state }
+    {case 1 }
+    <span class="yuanwk noyanshou-border">
+              <i class="smallyuan noyanshou-back"></i>
+          </span>
+    {/case}
+    {case 2}
+    <span class="yuanwk nohege-border">
+              <i class="smallyuan nohege-back"></i>
+          </span>
+    {/case}
+    {case 3}
+    <span class="yuanwk yiyanshou-border">
+              <i class="smallyuan yiyanshou-back"></i>
+          </span>
+    {/case}
+    {default /}
+    {/switch}
+
+    <div class="anniiuwk">
+        {if($vo.check_state == 1) }
+        <div class="editcheck">删除</div>
+        {/if}
+        <div class="savecancelwk"><span class="savebaocun">保存</span><span class="cancelniu">取消</span></div>
+    </div>
+    <div class="shigongwk-title">
+        <span>{$vo.add_time}</span>
+    </div>
+    <div class="shigong-work">
+        <span>水电工</span>
+        <span>刘工</span>
+    </div>
+    <div class="shigongwk-title2">
+        <span class="miaos-tit">施工状态：</span><span class="shuidainzg">{$vo.state}</span>
+        {switch $vo.check_state }
+        {case 1 }
+        <span class="jianjvlef noyanshou">未验收</span>
+        {/case}
+        {case 2}
+        <span class="jianjvlef nohege" data-id="{$vo.id}">验收不合格</span>
+        {/case}
+        {case 3}
+        <span class="jianjvlef yiyanshou">验收合格</span>
+        {/case}
+        {default /}
+        {/switch}
+    </div>
+    <div class="hangwk">
+        {if(!empty($vo['remark'])) }
+        <span class="miaos-tit">描&nbsp;&nbsp;述：</span>
+        <!-- <textarea class="remarkms" cols="30" rows="10" placeholder="请输入备注,字数不超过100字。">{$vo.remark}</textarea> -->
+        <div class="newms remarkms divnoedit">{$vo.remark}</div>
+        {/if}
+    </div>
+    <!-- <div class="chuan-title">单张图片大小不能超过6MB,支持jpg、png、bmp格式</div> -->
+    <input class="getdata" type="hidden" value="{$vo.buildDesign|json_encode}">
+    <div class="uploadpicwk">
+        <div class="uploader-demo" class="controls">
+            <div class="uploader-list fileList-{$vo.id}">
+                
+            </div>
+            <div class="filePicker-{$vo.id} defalutaddpic " data-index='{$vo.id}'>
+                <span class="hengxian"></span>
+                <span class="suxian"></span>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="zhangshuxz">共<span class="canupload">0</span>张,还能上传<span class="yuupload">9</span>张</div> -->
+</div>
+<!-- 不合格弹框 -->
+<div class="modal fade" id="unqualified" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">验收记录</h4>
+            </div>
+            <div class="modal-body fail-modal">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/foreach}

@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="keywords" content="{$keys.keywords}">
+<meta name="description" content="{$keys.description}">
+<link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}" rel="canonical" />
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-index.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/common/js/App.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/TouchSlide.1.1.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/jquery.smint.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/common/js/jquery.scrollLoading-min.js?v={:C('STATIC_VERSION')}"></script>
+<link rel="stylesheet" href="/assets/home/diary/css/font-awesome.min.css?v={:C('STATIC_VERSION')}">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/assets/mobile/css/font-awesome-ie7.min.css?v={:C('STATIC_VERSION')}">
+<![endif]-->
+<title>{$keys.title}{$title}</title>
+</head>
+<body>
+<div class="m-wrap">
+  <div class="m-nav">
+	<div class="m-city"><a href="/city/"><i class="icon-map-marker icon-large"></i>{$cityInfo.name}<i class="icon-angle-down"></i></a></div>
+	<include file="Index:topMenu" />
+  </div>
+  <div class="m-logo">
+	<div class="logo-main"></div>
+	<div class="logo-s"></div>
+  </div>
+
+<!-- 焦点图部分 -->
+  <div id="focus" class="focus">
+	<div class="hd">
+	  <ul>
+	  </ul>
+	</div>
+	<div class="bd">
+	  <ul>
+		<volist name="info.adv" id="vo">
+		<li>
+			<a href="{$vo.href}">
+				<if condition="$vo['host'] EQ 'qiniu'">
+					<img alt="{$cityInfo.name}装修" src="http://{:C('QINIU_DOMAIN')}/{$vo.img}" >
+					<else/>
+					<img alt="{$cityInfo.name}装修"  src="http://{:C('STATIC_HOST1')}/{$vo.img}" >
+				</if>
+			</a>
+		</li>
+		</volist>
+	  </ul>
+	</div>
+  </div>
+	<div class="m-index-menu">
+	<ul>
+		<li><a href="/zhaobiao/?bm={$cityInfo.bm}"><span class="m1">
+		<img src="/assets/mobile/images/m1.png" width="80" height="80" alt=""/></span> 免费量房 </a></li>
+		<li><a href="/sheji/"><span class="m2">
+		<img src="/assets/mobile/images/m2.png" width="80" height="80" alt=""/></span> 免费设计 </a></li>
+		<li><a href="/zhaobiao/?bm={$cityInfo.bm}"><span class="m3">
+		<img src="/assets/mobile/images/m3.png" width="80" height="80" alt=""/></span> 免费报价 </a></li>
+		<li><a href="/{$cityInfo.bm}/company/"><span class="m4">
+		<img src="/assets/mobile/images/m4.png" width="80" height="80" alt=""/></span> 找装修公司 </a></li>
+		<li><a href="/gonglue/lc/"><span class="m5">
+		<img src="/assets/mobile/images/m5.png" width="80" height="80" alt=""/></span> 装修流程 </a></li>
+		<li><a href="/{$cityInfo.bm}/xgt/"> <span class="m6">
+		<img src="/assets/mobile/images/m6.png" width="80" height="80" alt=""/></span> 装修案例 </a></li>
+		<li><a href="/gonglue/"><span class="m7">
+		<img src="/assets/mobile/images/m7.png" width="80" height="80" alt=""/></span> 装修必知 </a></li>
+		<li><a href="/meitu/"> <span class="m8">
+		<img src="/assets/mobile/images/m8.png" width="80" height="80" alt=""/></span> 装修效果图 </a></li>
+		<li><a href="/wenda/"><span class="m9">
+		<img src="/assets/mobile/images/m9.png" width="80" height="80" alt=""/></span> 装修问答 </a></li>
+		<li><a href="/riji/"><span class="m10">
+		<img src="/assets/mobile/images/m10.png" width="80" height="80" alt=""/></span> 装修日记 </a></li>
+		<li><a href="/baike/"><span class="m11">
+		<img src="/assets/mobile/images/m11.png" width="80" height="80" alt=""/></span> 装修百科 </a></li>
+		<li><a href="/huangli/"><span class="m12">
+		<img src="/assets/mobile/images/m12.png" width="80" height="80" alt=""/></span> 装修黄历 </a> </li>
+	</ul>
+	</div>
+	<div class="content-box">
+		<div class="box-tit">10秒钟快速申请</div>
+		<form class="secbox_form" onsubmit="return false;">
+		<ul class="index-input fastapply">
+			<li><input type="text" name="name" placeholder="您的称呼"></li>
+			<li><input type="text" name="tel"  placeholder="接收方案的手机"></li>
+			<li><button id="btnSub" type="button">立刻获得4份装修设计与报价</button></li>
+		</ul>
+		</form>
+		<input id="safecode" type="hidden" value="{$safecode}" />
+		<input id="safekey" type="hidden" value="{$safekey}" />
+	</div>
+
+	<div class="content-box">
+		<div class="box-tit">{$cityInfo.name}新招标<span class="box-tips">本月已有<i class="red">{:releaseCount("fbzrs")}</i>人申请了装修服务</span></div>
+		<ul class="new-qd">
+		<volist name="info.orders" id="vo">
+			<li><p>{$vo.time}</p><p>{$vo.name}{$vo.sex}</p><p>获得了4份免费设计与报价</p></li>
+		</volist>
+		</ul>
+		<a href="/zhaobiao/" class="box-more">查看更多..</a>
+	</div>
+
+	<div class="content-box">
+		<div class="box-tit">{$cityInfo.name}装修公司推荐</div>
+		<ul class="comp-logo">
+		<volist name="info.logos" id="vo">
+		<li><p><a href="http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/company_home/{$vo.id}"><if condition="$robot">
+		<img alt="{$vo.jc}" src="{$vo.logo}"/>
+		<else/>
+		<img alt="{$vo.jc}" data-url="{$vo.logo}" src="/assets/common/pic/pixel.gif" class="scrollLoading" />
+		</if></a></p>{$vo.jc}</li>
+		</volist>
+		</ul>
+		<a href="/{$cityInfo.bm}/company/" class="box-more">查看更多</a>
+	</div>
+
+
+	<div class="content-box">
+		<div class="box-tit">装修效果图</div>
+			<dl class="xgt-list">
+			<volist name="info.cases" id="vo">
+			<dt>
+				<a href="/{$cityInfo.bm}/caseinfo/{$vo.id}.shtml">
+				<if condition="$robot">
+					<if condition="$vo['img_host'] EQ 'qiniu'">
+						<img alt="{$vo.fname}-{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" >
+					<else/>
+						<img alt="{$vo.fname}-{$vo.title}" src="http://{:C('STATIC_HOST1')}/{$vo.img_path}s_{$vo.img}">
+					</if>
+				<else/>
+					<if condition="$vo['img_host'] EQ 'qiniu'">
+						<img alt="{$vo.fname}-{$vo.title}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" src="/assets/common/pic/pixel.gif" class="scrollLoading">
+					<else/>
+						<img alt="{$vo.fname}-{$vo.title}" data-url="http://{:C('STATIC_HOST1')}/{$vo.img_path}s_{$vo.img}" src="/assets/common/pic/pixel.gif" class="scrollLoading">
+					</if>
+				</if>
+				<i class="icon-picture icon-large"></i>
+				{$vo.fname}
+				</a>
+			</dt>
+			</volist>
+			<dd><volist name="info.fengge" id="vo"><a href="/{$cityInfo.bm}/xgt/?fengge={$vo.id}">{$vo.name}</a></volist></dd>
+		</dl>
+		<a href="/{$cityInfo.bm}/xgt/" class="box-more">查看更多..</a>
+	</div>
+
+	<div class="content-box">
+		<div class="box-tit">装修攻略</div>
+		<volist name="info.article" id="vo">
+		<dl class="gl-list">
+		<dt class="gl1"><a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$vo.shortname}/">{$vo.classname}</a></dt>
+		<dd>
+		<a href="http://{:C('MOBILE_DONAMES')}/gonglue/{$vo.shortname}/{$vo.id}.html">{$vo.title}</a>
+		<p>{$vo.subtitle}</p>
+		</dd>
+		</dl>
+		</volist>
+		<a href="/gonglue/" class="box-more">查看更多..</a>
+	</div>
+
+	<div class="content-box">
+		<p class="qz-info">齐装网{$cityInfo.name}站致力于为广大业主提供省力省心更省钱的装修服务!提供{$cityInfo.name}装修公司排名、装修效果图大全、全新装修资讯等信息，免费为业主提供4份装修户型设计与报价，免费量房，了解全新{$cityInfo.name}装修预算就上齐装网！</p>
+	</div>
+
+	<div class="btfd">
+		<div class="btfd-left">
+			<img src="/assets/mobile/images/bt.png" alt=""/>
+			<p class="tit">免费在线报价</p><p>10秒极速获取装修预算</p>
+		</div>
+		<a href="/zhaobiao/?bm={$cityInfo.bm}" class="btfd-right">获取报价</a>
+	</div>
+
+</div>
+<include file="Index:newFooter" />
+</body>
+<script type="text/javascript">
+	$(function(){
+		$(".scrollLoading").scrollLoading();
+		$("#btnSub").click(function(event) {
+			App.pop.reset();
+			if (!App.validate.run($(".fastapply input[name=tel]").val(),"moblie")) {
+				$(".fastapply input[name=tel]").focus();
+				App.pop.run($(".fastapply input[name=tel]"),"请填写正确的手机号码");
+				return false;
+			}
+
+			$.ajax({
+				url: '/fb_order/',
+				type: 'POST',
+				dataType: 'JSON',
+				data: {
+					cs: "{$cityInfo.id}",
+					name:$(".fastapply input[name=name]").val(),
+					tel:$(".fastapply input[name=tel]").val(),
+					source: '310',
+					safecode:$("#safecode").val(),
+					safekey: $("#safekey").val(),
+					ssid:"{$ssid}"
+				}
+			})
+			.done(function(data) {
+				$("#safecode").val(data.data.safecode);
+			$("#safekey").val(data.data.safekey);
+				if(data.status == 1){
+					$(".secbox_form")[0].reset();
+					alert("您的订单已经发布成功，齐装网客服会尽快与您联系为您推荐适合你的装修公司");
+				}else{
+					alert(data.info);
+				}
+			})
+			.fail(function(xhr) {
+				alert("发生了未知的错误,请稍后再试！");
+			});
+		});
+	});
+</script>
+</html>

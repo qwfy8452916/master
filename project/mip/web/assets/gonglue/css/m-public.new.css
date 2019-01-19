@@ -1,0 +1,27 @@
+/*公共分页*/
+.page{
+    display: block;
+    text-align: center;
+    background-color: #fff;
+    width: 90%;
+    font-size: .6em;
+    line-height: 2em;
+    /*margin: 2em auto;*/
+    margin:1em auto 2em;
+    border: 1px solid #ccc;
+}
+.page a{
+    display: inline-block;
+    width: 31.5%;
+    height: 2em;
+    color:#666666;
+    font-size: 1.5em;
+    line-height: 2em;
+}
+.page span{
+    font-size: 1.5em;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    display: inline-block;
+    width: 31.5%;
+}

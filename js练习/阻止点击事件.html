@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>阻止点击事件</title>
+	<style>
+		.dianji{display: inline-block;width: 150px;height: 50px;line-height: 50px;
+			text-align: center;background: blue;color: #fff;}
+	</style>
+</head>
+<body>
+	<span class="dianji">点击</span>
+	<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+             
+           $('.dianji').click(function(event) {
+           	// $(this).attr("pointer-events","none")
+           	$(this).css("pointer-events","none");
+           	console.log(11)
+
+           });
+ 
+           
+
+
+		})
+	</script>
+</body>
+</html>

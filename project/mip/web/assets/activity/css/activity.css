@@ -1,0 +1,40 @@
+.activity_box {
+    border-top: 1px solid #EDEDED;
+    background: #F5F5F5;
+}
+.activity_box ul li {
+    margin-bottom: 0.1rem;
+    padding: 0.12rem 0.08rem;
+    padding-bottom: 0.02rem;
+    background: #fff;
+}
+.act_stat {
+    font-size: 0.14rem;
+    padding-bottom: 0.05rem;
+}
+.ongoing {
+    color: #F72B2B;
+}
+.begining {
+    color: #F17837;
+}
+.over {
+    color: #9D9D9D;
+}
+.act_name {
+    padding-top: 0.02rem;
+    font-size: 0.126rem;
+    padding-bottom: 0.08rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+.ongoing-list {
+    display: block;
+    padding-bottom: 0.01rem;
+    margin-bottom: 0.15rem;
+    border-bottom: 1px solid #EDEDED;
+}
+.over-list{width: 100px}

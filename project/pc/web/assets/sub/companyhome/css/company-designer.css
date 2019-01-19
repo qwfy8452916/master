@@ -1,0 +1,18 @@
+.c-designer-info{ overflow:hidden; border:1px solid #ddd; padding:20px 20px 0 20px}
+.c-long-zb{color:#fff; background:#3b4d63 url(../images/zbbg1.png) no-repeat 8px bottom ; padding:33px 33px 0 33px; line-height:34px}
+.c-long-zb p.form{ text-align:right;}
+.c-long-zb p.form *{ margin-left:22px}
+.c-long-zb p.form span{font-family: "Microsoft Yahei"; font-size:18px}
+.c-long-zb p.form input{ height:34px; border:0; width:146px; padding:0 10px}
+.c-long-zb p.form button{height:34px; border:0; width:156px; color:#fff; background:#ff5659; font-family: "Microsoft Yahei"; cursor:pointer; font-size:14px}
+.c-long-zb p.bottom-tip{ text-align:right; }
+
+.c-designer-info-tit{font-family: "Microsoft Yahei";font-size:20px; margin-bottom:20px}
+.c-designer-info ul{ width:1100px;}
+.c-designer-info ul li{ width:110px;text-align:center; float:left; margin-right:97px; margin-bottom:30px}
+.c-designer-info ul li .c-designer-info-img{  width:110px; height:110px; position:relative; border-radius:50%; overflow:hidden}
+.c-designer-info ul li .c-designer-info-img a{ display:none; position:absolute; background:rgba(0,0,0,.5); top:0;left:0;  color:#fff; height:110px; box-sizing:border-box; padding-top:40px; width:100%}
+.c-designer-info ul li .c-designer-info-img img{ min-width:100%; width:auto; max-height:100%; height:auto}
+.c-designer-info ul li .c-designer-info-img:hover a{ display:block}
+.c-designer-info ul li .c-designer-info-img a em{ display:block; font-size:16px}
+.c-designer-info ul li > a{font-family: "Microsoft Yahei"; display:block; font-size:14px; margin-top:10px; line-height:25px}

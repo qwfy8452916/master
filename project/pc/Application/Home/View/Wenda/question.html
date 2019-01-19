@@ -1,0 +1,664 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{$ask.title}-齐装网装修问答</title>
+<meta name="keywords" content="{$ask.keywords}" />
+<meta name="description" content="{$ask.description}" />
+<meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/wenda/x{$ask.id}.html" />
+<notempty name="info.header.canonical">
+<link rel="canonical" href="{$info.header.canonical}"/>
+</notempty>
+
+<include file="Index:resource" />
+<link rel="stylesheet" href="{$static_host}/assets/home/ask/css/ask.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" href="{$static_host}/assets/home/diary/css/font-awesome.min.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" href="{$static_host}/assets/common/css/step.css?v={:C('STATIC_VERSION')}" />
+<!--[if IE 7]>
+<link rel="stylesheet" href="{$static_host}/assets/home/diary/css/font-awesome-ie7.min.css?v={:C('STATIC_VERSION')}">
+<![endif]-->
+</head>
+<body>
+{$headerTmp}
+<div class="wrap oflow">
+    <div class="bread position"><a href="/wenda/">在线问答</a> &gt;
+    <a href="/wenda/ask-{$ask.cid}">{$ask.category_name}</a> &gt; <notempty name="ask.sub_category" ><a href="/wenda/ask-{$ask.sub_category}">{$ask.sub_category_name}</a> &gt; </notempty>
+        <!--{$ask.title}-->正文
+    </div>
+  <div class="leftsider">
+  {$hlBaoJia}
+    <div class="qestion-main">
+        <h1>{$ask.title}</h1>
+        <div class="bdsharebuttonbox fx" style="float:right">
+            <a href="javascript:void(0)" class="bds_more" data-cmd="more"></a>
+            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        </div>
+        <script>
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {},
+                "bdText": "{$articleInfo.article.now.title}",
+                "bdMini": "2",
+                "bdPic": "",
+                "bdStyle": "0",
+                "bdSize": "16"
+            },
+            "share": {}
+        };
+        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+        </script>
+        <div class="clearfix"></div>
+        <if condition="$ask.is_modify eq '1'">
+        <ul class="question-info">
+            <li>地点：{$ask.area} - {$ask.city}</li>
+            <li>浏览次数：{$ask.views}</li>
+            <li>提问时间：{$ask.post_time}</li>
+            {$ask.modify_time}
+        </ul>
+            <p class="img">
+        <volist name="qImg" id="v">
+            <img src="http://{:C('QINIU_DOMAIN')}/{$v.path}" alt="{$ask.title}" >
+        </volist>
+        </p>
+        <div class="answer-edit">
+            <h2>修改问题内容</h2>
+            <textarea id="contents">{$ask.content}</textarea>
+            <input type="hidden" name="qid" id="qid" value="{$ask.id}">
+            <p>
+                <span class="info">还可以输入<i>1500</i>个字</span><a href="javascript:;" id="addAskBtn" >确定修改</a>
+                <div id="popup-captcha"></div>
+            </p>
+        </div>
+        <else />
+        <p>{$ask.content}</p>
+        <p class="img">
+        <volist name="qImg" id="v">
+            <img src="http://{:C('QINIU_DOMAIN')}/{$v.path}" alt="{$ask.title}" >
+        </volist>
+        </p>
+
+        <ul class="question-info">
+            <li>提问者：{$ask.username}</li>
+            <if condition="$ask['bm'] neq ''">
+                <li>地点：<a href="http://{$ask['bm']}.{:C('QZ_YUMING')}" title="{$ask.city}装修网" target="_blank">{$ask.area} - {$ask.city}</a></li>
+            <else/>
+                <li>地点：{$ask.area} - {$ask.city}</li>
+            </if>
+            <li>浏览次数：{$ask.views}</li>
+            <li>提问时间：{$ask.post_time}</li>
+        </ul>
+        <p>{$ask.modify_note}</p>
+        <egt name="ask.is_anwser" value="1">
+        <div class="answer-edit">
+            <h2>我来帮他解答</h2>
+            <textarea id="contents"></textarea>
+            <input type="hidden" name="qid" id="qid" value="{$ask.id}">
+            <p>
+                <span class="info">还可以输入<i>1500</i>个字</span><a href="javascript:;" id="addAskBtn" >提交</a>
+                <div id="popup-captcha"></div>
+            </p>
+        </div>
+        </egt>
+        </if>
+    </div>
+    <present name="bestAnwser">
+    <div class="best-answer-box">
+        <div class="h1">精选答案</div>
+        <div class="tips"></div>
+        <div class="anwser-user-box">
+            <div class="user-head"><a href="{$bestAnwser.url}" target="_blank"><img src="{$bestAnwser.logo}"></a></div>
+            <p><a href="{$bestAnwser.url}" target="_blank">{$bestAnwser.name}</a></p>
+            <p><em>回答数：{$bestAnwser.ask_anwsers}</em><em>被采纳数：{$bestAnwser.ask_adopts}</em><i class="pull-right">{$bestAnwser.post_time}</i></p>
+        </div>
+        <p class="ask-one-p">{$bestAnwser.content}</p>
+        <p class="imgbox">
+        <volist name="bestAnwser['img']" id="vo">
+        <a href="http://{:C('QINIU_DOMAIN')}/{$vo.path}" target="_blank" title="{$ask.title}">
+        <img src="http://{:C('QINIU_DOMAIN')}/{$vo.path}" alt="{$ask.title}" ></a>
+        </volist>
+        </p>
+        <p class="send-p">
+            <span onclick="showCommentBox('{$bestAnwser.name}',{$bestAnwser.id});"><i class="icon-comments-alt mr10"></i>回复
+                <if condition="$bestAnwser.comments NEQ '0'">（{$bestAnwser.comments}）</if></span>&nbsp;{$bestAnwser.is_agree}
+        </p>
+        <div class="resend" id="commentBox_{$bestAnwser.id}" style="display:none">
+            <textarea class="commentText" id="commentContent_{$bestAnwser.id}"></textarea>
+            <p><a href="javascript:;" id="reply_{$bestAnwser.id}">确认回复</a>
+            <div id="popup_captcha_{$bestAnwser.id}"></div></p>
+        </div>
+        <volist name="bestAnwserComments" id="v">
+        <dl class="de-mydairy-mes">
+            <dt><span class="user-head pull-left"><img src="{$v.logo}"></span>
+                <div class="diary-message">
+                <p><span class="blue mr10">
+                <if condition="$v.jc neq 'null' ">{$v.jc}<else />{$v.name}</if>
+                </span>{$v.post_time} </p><p class="gray">{$v.content}</p>
+                </div>
+            </dt>
+        </dl>
+        </volist>
+        </div>
+    </present>
+
+        <egt name="ask.anwserCount" value="1">
+        <div class="other-answer-box">
+            <div class="h1">已有回答<span>({$ask.anwsers}条)</span></div>
+            <ul class="other-answer-list">
+                <volist name="anwserList" id="v">
+                    <notempty name="v.content">
+                        <li>
+                            <div class="anwser-user-box">
+                            <div class="user-head"><a rel="nofollow" href="{$v.url}" target="_blank"><img src="{$v.logo}"></a></div>
+                                <p><a rel="nofollow" href="{$v.url}"  target="_blank">{$v.name}</a></p>
+                                <p><em>回答数：{$v.ask_anwsers}</em><em>被采纳数：{$v.ask_adopts}</em><i class="pull-right">{$v.post_time}</i></p>
+                            </div>
+                            <p class="ask-one-p">{$v.content}</p>
+                            <p class="imgbox">
+                                <volist name="v[img]" id="vo">
+                                    <a href="http://{:C('QINIU_DOMAIN')}/{$vo.path}" target="_blank" title="{$ask.title}">
+                                    <img src="http://{:C('QINIU_DOMAIN')}/{$vo.path}" alt="{$ask.title}" ></a>
+                                </volist>
+                            </p>
+                            <p class="send-p"><span onclick="showCommentBox('{$v.name}',{$v.id});"><i class="icon-comments-alt mr10"></i>回复<if condition="$v.comments NEQ '0'">（{$v.comments}）</if></span>&nbsp;
+                            {$v.is_agree}
+                            <span class="pull-right">{$v.adopt_btn}</span>
+                            </p>
+                            <div class="resend" id="commentBox_{$v.id}" style="display:none">
+                                <textarea class="commentText" id="commentContent_{$v.id}"></textarea>
+                                <p><a href="javascript:;" id="reply_{$v.id}">确认回复</a>
+                                <div id="popup_captcha_{$v.id}"></div>
+                                </p>
+                            </div>
+                            <volist name="v[comment_list]" id="vo">
+                            <dl class="de-mydairy-mes">
+                                <dt><span class="user-head pull-left"><img src="{$vo.logo}"></span>
+                                <div class="diary-message">
+                                <p><span class="blue mr10">
+                                    <if condition="$vo.jc neq 'null' ">{$vo.jc}<else />{$vo.name}</if>
+                                </span>{$vo.post_time}
+                                <!--<a class="pull-right" href="#">回复</a>--></p>
+                                <p class="gray">{$vo.content}</p>
+                                </div>
+                                </dt>
+                            </dl>
+                            </volist>
+                        </li>
+                    </notempty>
+                </volist>
+            </ul>
+        </div>
+        </egt>
+
+        <div class="ask-tit mt50">相关问题</div>
+        <ul class="same-list">
+        <volist name="relatedAnwser" id="v">
+            <li>
+                <a href="/wenda/x{$v.id}.html" target="_blank">{$v.title}</a>
+                <div class="pull-right">
+                    <b>已有 <em class="red">{$v.anwsers}</em> 个回答</b>
+                    <b class="ml20">{$v.post_time|timeFormat}</b>
+                </div>
+            </li>
+        </volist>
+        </ul>
+    </div>
+
+    <div class="rightsider">
+        <div class="wenwen">
+            <span class="h1">没有想要的回答？试试这里</span>
+            <form class="form-horizontal" action="/wenda/addquestion" method="post" id="quickAskFrom">
+                <textarea name="title" type="text" placeholder="快速提问，10分钟获取答案"></textarea>
+                <input type="hidden" name="quickask" value="id_{$ask.id}">
+                <p id="quickTextCount">还可以输入<i>30</i>字<a id="quickAsk" href="javascript:void(0)">确定</a></p>
+            </form>
+        </div>
+        <div class="mt20">
+        {$orderTmp}
+        </div>
+
+        <div class="ask_hot mt20">
+        <div class="ask_hot_tit"><span>热门问答</span></div>
+        <div class="ask_hot_list">
+            <ul>
+                <volist name="info.hotAsk" id="v">
+                <li><i class="circle_point"></i><a href="/wenda/x{$v.id}.html" target="_blank">{$v.title}</a></li>
+                </volist>
+            </ul>
+        </div>
+        </div>
+
+        <div class="right-box mt20">
+            <div class="right-tit">大家都在问</div>
+            <ul class="wait-ask">
+            <volist name="anLeastOneAnswerAsk" id="v">
+                <li>
+                    <a href="/wenda/x{$v.id}.html" target="_blank">{$v.title}</a>
+                </li>
+            </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="pt pt-down" id="tipbox">
+    <div class="cont" style="width: auto; height: auto;"></div>
+    <b class="out" style="bottom: -8px; left: 83.5px; top: auto; right: auto;"></b>
+    <b class="in" style="top: auto; left: 84.5px; bottom: -7px; right: auto;"></b>
+</div>
+<input id="safecode" type="hidden" value="{$safecode}" />
+<input id="safekey" type="hidden" value="{$safekey}" />
+{$freetel}
+<include file="Index:footer" />
+</body>
+</html>
+<script src="{$static_host}/assets/common/js/gt.js?v={:C('STATIC_VERSION')}"></script>
+
+<script type="text/javascript">
+    // 设计报价滚动到1450px 悬浮
+      $(window).scroll(function(event) {
+          if($(window).scrollTop() >= 1400){
+              $('.secbox_form').css({
+                  "width":"260px",
+                  "margin-top":"0",
+                  "position":"fixed",
+                  "top":"85px",
+                  "zIndex":2
+              });
+          }else{
+              $('.secbox_form').css({
+                  "margin-top":"15px",
+                  "position":"",
+                  "top":"",
+                  "zIndex":''
+              });
+          }
+      });
+var shen = null,
+shi = null;
+shen = citys["shen"];
+shi = citys["shi"];
+
+function showCommentBox(username,aid){
+    var commit = $("#commentBox_" + aid);
+    if (commit.css('display') == 'none'){
+        commit.show();
+        commit.find('.commentText').focus();
+    } else {
+        commit.hide();
+    }
+
+    $.ajax({
+      // 获取id，challenge，success（是否启用failback）
+        url: "/gtverify/getstartverify/?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+            }, handlerPopupReply);
+        }
+    });
+
+    var handlerPopupReply = function (captchaObj) {
+        // 弹出式需要绑定触发验证码弹出按钮
+        captchaObj.bindOn("#reply_"+aid);
+        // 将验证码加到id为captcha的元素里
+        captchaObj.appendTo("#popup_captcha_"+aid);
+        $("#reply_"+aid).click(function () {
+            if(isNaN(aid)){
+                alert('参数不正确');
+            }
+            var contents = $("#commentContent_" + aid).val();
+            if(contents == ""){
+                alert("说点什么吧？");
+                return false;
+            }
+            if(contents.length > 1500){
+                alert('内容超出限制！');
+                return false;
+            }
+
+            var validate = captchaObj.getValidate();
+            if (!validate) {
+                alert('请先完成验证！');
+                return;
+            }
+
+            $.ajax({
+                url: "/gtverify/verifylogin/", // 进行二次验证
+                type: "post",
+                dataType: "json",
+                data: {
+                    // 二次验证所需的三个值
+                    geetest_challenge: validate.geetest_challenge,
+                    geetest_validate: validate.geetest_validate,
+                    geetest_seccode: validate.geetest_seccode,
+                },
+                success: function (result) {
+                    if (result.status == 1) {
+                        submitComment(aid,contents);
+                    }
+                }
+            });
+        });
+    };
+}
+
+function submitComment(id,contents){
+
+    $.ajax({
+        url: '/wenda/addcomment/',
+        type: 'POST',
+        dataType: 'html',
+        timeout:3000,
+        data:{
+            id:id,
+            contents:contents
+        },
+        success:function(msg){
+            if(msg == "true" ){
+                window.location.reload();
+            }else{
+                if(msg == 'login'){
+                    loginBox();
+                }else{
+                    alert(msg);
+                }
+        }
+    },
+    error:function() {
+        alert("系统异常！");
+    }
+    });
+}
+
+function loginBox(){
+    $.ajax({
+        url: '/login/',
+        type: 'POST',
+        dataType: 'JSON',
+        data:{
+            ssid:"{$ssid}"
+        }
+    })
+    .done(function(data){
+        if(data.status == 1){
+            $("body").append(data.data);
+            $(".win_login").fadeIn(400);
+            return false;
+        }
+    }).fail(function(xhr) {
+        alert('操作失败,请稍后再试！');
+    });
+}
+
+$(document).ready(function(){
+    //确定修改、提交的滑动验证
+    $.ajax({
+      // 获取id，challenge，success（是否启用failback）
+        url: "/gtverify/getstartverify/?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+            }, handlerPopup);
+        }
+    });
+
+    var handlerPopup = function (captchaObj) {
+        // 弹出式需要绑定触发验证码弹出按钮
+        captchaObj.bindOn("#addAskBtn");
+        // 将验证码加到id为captcha的元素里
+        captchaObj.appendTo("#popup-captcha");
+        $("#addAskBtn").click(function () {
+            <if condition="$ask.is_login eq 'needlogin' ">
+                loginBox();
+                return false;
+            </if>
+            //TODO 验证JS
+            var contents = $("#contents").val();
+            var qid = $("#qid").val();
+            if(contents == ""){
+                alert("说点什么吧？");
+                return false;
+            }
+            if(contents.length > 5000){
+                alert('内容超出限制！');
+                return false;
+            }
+
+            var validate = captchaObj.getValidate();
+            if (!validate) {
+                alert('请先完成验证！');
+                return;
+            }
+
+            $.ajax({
+                url: "/gtverify/verifylogin/", // 进行二次验证
+                type: "post",
+                dataType: "json",
+                data: {
+                    // 二次验证所需的三个值
+                    geetest_challenge: validate.geetest_challenge,
+                    geetest_validate: validate.geetest_validate,
+                    geetest_seccode: validate.geetest_seccode
+                },
+                success: function (result) {
+                    if (result.status == 1) {
+
+                        $.ajax({
+                            url: '/wenda/addanwser/',
+                            type: 'POST',
+                            dataType: 'html',
+                            timeout:3000,
+                            data:{
+                                id:qid,
+                                contents:contents
+                            },
+                            success:function(msg){
+                                if(msg == "true" ){
+                                    window.location.reload();
+                                }else{
+                                    if(msg == 'login'){
+                                        //TODO
+                                        alert('请先登录。');
+                                    }else{
+                                        alert(msg);
+                                    }
+                            }
+                        },
+                        error:function() {
+                            alert("系统异常！");
+                        }
+                        })
+
+                    }
+                }
+            });
+        });
+    };
+
+    //提交
+    $("#quickAsk").click(function(){
+        var title = $("#title").val();
+        if(title == ''){
+            alert('要填写标题哦');
+        }else{
+            $('#quickAskFrom').submit();
+        }
+    });
+
+    // //@回复功能
+    // $('.comment-reply-link').click(function() {
+    //  $("#comment").attr("value","@" + $(this).parent().find('.name').text() + ' ').focus();
+    //  $("#commentId").val($(this).attr("id"));
+    // });
+
+    $("#contents").bind("input propertychange",function(){
+        var length = $(this).val().length;
+        if(length >1500){
+            var offset = length - 1500;
+            $(".answer-edit p span").html('<span style="color:red">您已经超出了 '+offset+" 字</span>");
+        }else{
+            $(".answer-edit p span i").html(1500 - length);
+        }
+    });
+
+<if condition="$ask.is_login eq 'needlogin' ">
+    $("#contents").click(function(){
+        loginBox();
+    });
+</if>
+
+    $("textarea[name=title]").bind("input propertychange",function(){
+        var length = $(this).val().length;
+        if(length >30){
+            var offset = 30 - length;
+            $("#quickTextCount i").html('<span style="color:red"> '+offset+' </span>');
+        }else{
+            $("#quickTextCount i").html(30 - length);
+        }
+    });
+
+
+    //提交回答
+    /*$("#addAskBtn").click(function(){
+        <if condition="$ask.is_login eq 'needlogin' ">
+        loginBox();
+        return false;
+        <else />
+        //TODO 验证JS
+        var contents = $("#contents").val();
+        var qid = $("#qid").val();
+        if(contents == ""){
+            alert("说点什么吧？");
+            return false;
+        }
+        if(contents.length > 5000){
+            alert('内容超出限制！');
+            return false;
+        }
+        $.ajax({
+            url: '/wenda/addanwser',
+            type: 'POST',
+            dataType: 'html',
+            timeout:3000,
+            data:{
+                id:qid,
+                contents:contents
+            },
+            success:function(msg){
+                if(msg == "true" ){
+                    window.location.reload();
+                }else{
+                    if(msg == 'login'){
+                        //TODO
+                        alert('请先登录。');
+                    }else{
+                        alert(msg);
+                    }
+            }
+        },
+        error:function() {
+            alert("系统异常！");
+        }
+        })
+        </if>
+});*/
+
+    //赞同
+    $(".agree_act").click(function(){
+        var aid = $(this).attr('id');
+        if(aid == ""){
+            alert("系统异常！");
+            return false;
+        }
+        var new_agree = $(this).find('span').html();
+
+        if(new_agree == undefined){
+            return false;
+        }
+
+        var agreeBox = $(this);
+        $.ajax({
+            url: '/wenda/askaction/',
+            type: 'POST',
+            dataType: 'html',
+            timeout:3000,
+            data:{
+                id:aid,
+                act:'agree'
+            },
+            success:function(msg){
+                if(msg == "true" ){
+                    agreeBox.addClass('red');
+                    new_agree = parseInt(new_agree) + 1;
+                    agreeBox.html('<i class="icon-heart"></i> 已赞（' + new_agree  + '）</span>');
+                }else{
+                    if(msg == 'login'){
+                        loginBox();
+                    }else{
+                        alert(msg);
+                    }
+            }
+        },
+        error:function() {
+            alert("系统异常！");
+        }
+        })
+    });
+
+    //采纳
+    $(".adopt_act").click(function(){
+        var aid = $(this).attr('id');
+        if(aid == ""){
+            alert("系统异常！");
+            return false;
+        }
+        $.ajax({
+            url: '/wenda/askaction/',
+            type: 'POST',
+            dataType: 'html',
+            timeout:3000,
+            data:{
+                id:aid,
+                act:'adopt'
+            },
+            success:function(msg){
+                if(msg == "true" ){
+                    window.location.reload();
+                }else{
+                    if(msg == 'login'){
+                        //TODO
+                        loginBox();
+                    }else{
+                        alert(msg);
+                    }
+            }
+        },
+        error:function() {
+            alert("系统异常！");
+        }
+        })
+    });
+
+});
+
+</script>

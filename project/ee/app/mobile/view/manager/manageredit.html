@@ -1,0 +1,109 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap">
+    <header class="sim-table public-header">
+        <div class="back" id="back" style="width: 0.5rem;">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <div>添加</div>
+        <div><span class="orange pr1" data-name="save">保存</span></div>
+    </header>
+    <div class="order-number-box">
+        <div class="l">订单编号</div>
+        <div class="r">1251252122</div>
+    </div>
+    <div class="forder-add-container bg-c4">
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">业主名字</div>
+                <div class="second"><input type="text" placeholder="请输入" data-name="householder"></div>
+                <div class="third"></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">手机号</div>
+                <div class="second"><input type="text" placeholder="请输入" data-name="phone"></div>
+                <div class="third"></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">微信号</div>
+                <div class="second"><input type="text" placeholder="请输入" data-name="wechat"></div>
+                <div class="third"></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">户型</div>
+                <div class="second"><input type="text" placeholder="请输入" data-name="layout"></div>
+                <div class="third"></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">面积</div>
+                <div class="second"><input type="text" placeholder="请输入" data-name="area"></div>
+                <div class="third">m²</div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">装修地址</div>
+                <div class="second"><input type="text" placeholder="请输入" data-name="house-address"></div>
+                <div class="third"></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">现联系地址</div>
+                <div class="second"><input type="text" placeholder="请输入" data-name="contact-address"></div>
+                <div class="third"></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">订单状态</div>
+                <div class="second"><input type="text" placeholder="请选择" data-name="order-status" readonly></div>
+                <div class="third"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">施工状态</div>
+                <div class="second"><input type="text" placeholder="请选择" data-name="build-status" readonly></div>
+                <div class="third"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">接待客服</div>
+                <div class="second"><input type="text" placeholder="请选择" data-name="servicer" readonly></div>
+                <div class="third"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">设计师</div>
+                <div class="second"><input type="text" placeholder="请选择" data-name="designer" readonly></div>
+                <div class="third"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="items">
+            <div class="sim-table public-s1">
+                <div class="first">项目经理</div>
+                <div class="second"><input type="text" placeholder="请选择" data-name="manager" readonly></div>
+                <div class="third"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name='script'}
+<script src="/assets/mobile/order/js/add.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

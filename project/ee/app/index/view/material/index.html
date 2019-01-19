@@ -1,0 +1,107 @@
+{extend name="common:basic" /}
+{block name="title"}
+    材料进销
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/material/index.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>材料进销</span>
+{/block}
+{block name="content"}
+<form id="dataform" action="/material/" method="get">
+    <div class="p-panel  b-owf input-container">
+        <div class="p-form-box b-owf b-mbt20">
+            <div class="p-form-column">
+                <span class="p-form-title">订单编号：</span>
+                <input type="text" class="p-input" value="{$Think.get.ordercode}" name="ordercode" maxlength="30" placeholder="请输入">
+            </div>
+            <div class="p-form-column">
+               <span class="p-form-title">业主姓名：</span>
+               <input type="text" class="p-input" name="yzname"  value="{$Think.get.yzname}"  maxlength="12" name="" placeholder="请输入">
+            </div>
+            <div class="p-form-column">
+               <span class="p-form-title">供应商：</span>
+               <input type="text" class="p-input" name="gys" value="{$Think.get.gys}" maxlength="30" placeholder="请输入">
+            </div>
+             <div class="p-form-column">
+               <span class="p-form-title">材料名称：</span>
+               <input type="text" class="p-input" name="cl" value="{$Think.get.cl}" maxlength="30" placeholder="请输入">
+            </div>
+        </div>
+        <div class="p-form-box b-owf">
+            <div class="p-form-column">
+                <span class="p-form-title">票据单号：</span>
+                <input type="text" class="p-input" value="{$Think.get.piaoju}" name="piaoju" placeholder="请输入">
+            </div>
+            <div class="b-fr btn-box">
+                <button type="submit" class="p-btn p-primary">搜索</button>
+                <a class="p-btn p-primary p-blue b-mt20 {if (!btnRule('/material/add'))} btn_hide{/if}" id="add" href="/material/add">添加</a>
+            </div>
+        </div>
+    </div>
+</form>
+<div id="addHtml">
+    {volist name="list" id="vo"}
+        <div class="p-panel">
+            <table class="panel-title">
+                <tr>
+                    <td><span>订单编号：</span><a href="/order?order_no={$vo.erp_id}" class="p-eidt" target="_blank">{$vo.erp_id}</a></td>
+                    <td><span>业主姓名：</span>{$vo.consumer_name}</td>
+                    <td><span>供应商：</span>{$vo.supplier_name}</td>
+                </tr>
+            </table>
+            <table class="p-suppliertab">
+                <thead>
+                    <tr>
+                        <td>材料名称</td><td>数量</td><td>单价(元)</td><td>总价(元)</td><td>采购时间</td>
+                        <td>送货时间</td><td>票据单号</td><td>状态</td><td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {present name="vo.list"}
+                {volist name="vo.list" id="v"}
+                <tr data-value="{$v.id}"  data-id='{$v.id}'>
+                    <td>{$v.name}</td> <td>{$v.amount}</td><td>{$v.price}</td><td>{$v.price*$v.amount}</td><td>{$v.buy_time}</td>
+                    <td>{$v.send_time} </td><td>{$v.note}</td>
+                    <td>
+                        {if($v['state'] == 1) }
+                        未到货
+                        {else/}
+                        已到货
+                        {/if}
+                    </td>
+                    <td>
+                        {if($v['state'] == 1) }
+                        <span class="p-eidt getHuo{if (!btnRule('/material/editstate/'))} btn_hide{/if}" >到货</span>
+                        {/if}
+                    </td>
+                </tr>
+                {/volist}
+                {/present}
+                </tbody>
+            </table>
+            <div class="panel-foot">
+                <a href='/material/detail/?id={$vo.id}' class="p-eidt">详情</a>
+                <a href='/material/add?edit_id={$vo.id}' class="p-eidt{if (!btnRule('/material/edit'))} btn_hide{/if}">编辑</a>
+                <span class="p-delete{if (!btnRule('/material/del'))} btn_hide{/if}" data-id="{$vo.id}">删除</span>
+            </div>
+        </div>
+        {/volist}
+</div>
+
+
+    <div class="load-more" >
+        {if($page == 0)}
+        <span>没有更多了~</span>
+        {else/}
+        <span id="more_span" data-page='{$page}'>加载更多</span><i class="fa fa-spinner" id="wait" style="display: none;"></i>
+        {/if}
+    </div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+
+<!-- 页面私有方法 -->
+<script type="text/javascript" src="/assets/pc/js/Private/material/index.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

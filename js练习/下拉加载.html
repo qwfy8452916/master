@@ -1,0 +1,59 @@
+<!DOCTYPE=html>  
+<html>  
+<head>  
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script> 
+</head>  
+<body>  
+    <div>下拉加载更多</div>  
+    <div class="main" style="height:2000px;">  
+        <div class="child" style='border:1px solid red;margin-top:20px;color:grey;height:800px' ></div>  
+    </div>  
+</body>  
+<script  type="text/javascript">  
+// $(document).ready(function(){  
+//     $(".main").unbind("scroll").bind("scroll", function(e){  
+//         var sum = this.scrollHeight;  
+//         if (sum <= $(this).scrollTop() + $(this).height()) {  
+//             $(".main").append($(".child").clone());  
+//         }  
+//     });  
+// });  
+
+
+
+
+
+ var Global_Goods_Url = "{:url('index/indexAjaxList')}";
+    var $favoriteList = $(".favorite-list");
+    var flag = false;
+    var loadingFlag = $(".loading-container");
+    var clientHeight = $(window).height();
+    // 滚动加载
+    $(window).on("scroll",function(event){
+
+        var scrollHeight = $("body").height(),
+            scrollTop = $(window).scrollTop();
+        if( scrollHeight - (clientHeight+scrollTop) < 100 && !flag ){
+            loadingFlag.css("display","block");
+            flag = !flag;
+            ajaxAction({
+                url : Global_Goods_Url,
+                method : "get",
+                data : {
+                    p : 1
+                },
+                successCallback : function(res) {
+                    console.log(res);
+                    $favoriteList.append(res.data);
+                    flag = !flag;
+                    loadingFlag.css("display","none");
+                },
+                failCallback : function(res) {
+                    flag = !flag;
+                    loadingFlag.text("加载失败，请稍后重试");
+                }
+            });
+        }
+    });
+</script>  
+</html>  

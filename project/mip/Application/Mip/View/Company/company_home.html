@@ -1,0 +1,136 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">{$basic.body.title}</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/company/css/content.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/company/css/company-home.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <include file="content" />
+    <div class="grade clearfix">
+        <div class="grade_gd">
+            <div class="grade_left">
+                <p>综合评分: <i>{$info.user.evaluation|default=0}分</i></p>
+                <p class="p2">好评率: <i><if condition="$info['user']['avgsj'] NEQ 0 AND $info['user']['avgfw'] AND $info['user']['avgsg'] ">
+                    {$info.user.good}%
+                    <else/>
+                    {$info.user.oldgood}%
+                </if></i></p>
+            </div>
+        </div>
+        <div class="grade_xing">
+            <div class="grade_right">
+                <p>设计水平:
+                    <for start="1" end="6">
+                        <if condition="($i - 1) ELT ($info['user']['avgsj'] / 2)">
+                            <i class="fa fa-star"></i>
+                        <else/>
+                            <i class="fa fa-star star-empty"></i>
+                        </if>
+                    </for>
+                </p>
+                <p>服务态度:
+                    <for start="1" end="6">
+                        <if condition="($i - 1) ELT ($info['user']['avgfw'] / 2)">
+                            <i class="fa fa-star"></i>
+                        <else/>
+                            <i class="fa fa-star star-empty"></i>
+                        </if>
+                    </for>
+                </p>
+                <p>施工水平:
+                    <for start="1" end="6">
+                        <if condition="($i - 1) ELT ($info['user']['avgsg'] / 2)">
+                            <i class="fa fa-star"></i>
+                        <else/>
+                            <i class="fa fa-star star-empty"></i>
+                        </if>
+                    </for>
+                </p>
+            </div>
+        </div>
+       <div class="btn_left">
+            <a data-type="mip" rel="nofollow" href="{$global_yuming_m}/sheji?src=mip">免费帮我做设计</a>
+       </div>
+        <div class="btn_right">
+            <a data-type="mip" rel="nofollow" href="{$global_yuming_m}/baojia?src=mip">免费帮我出报价</a>
+        </div>
+    </div>
+
+    <volist name="info.cases" id="vo">
+        <div class="change_img">
+            <a data-type='mip' href="http://{:C('MIP_DONAMES')}/{$cityInfo.bm}/caseinfo/{$vo.id}.shtml">
+                <if condition="$robot">
+                    <if condition="$vo['img_host'] EQ 'qiniu'">
+                        <mip-img alt="{$vo.title}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" ></mip-img>
+                    <else/>
+                        <mip-img alt="{$vo.title}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}"></mip-img>
+                    </if>
+                <else/>
+                    <if condition="$vo['img_host'] EQ 'qiniu'">
+                        <mip-img alt="{$vo.title}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w640.jpg" class="scrollLoading"></mip-img>
+                    <else/>
+                        <mip-img alt="{$vo.title}" data-url="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" src="http://{:C('STATIC_HOST1')}{$vo.img_path}m_{$vo.img}" class="scrollLoading"></mip-img>
+                    </if>
+                </if>
+                <div class="change_present clearfix">
+                    <span class="c_left"> <i class="fa fa-map-marker"></i> &nbsp;{$vo.title}</span>
+                    <span class="c_right">{$vo.fg}</span>
+                </div>
+            </a>
+        </div>
+    </volist>
+    <include file="Common:freeDesign"/>
+    <br>
+    <div class="firm">
+        <h4 class="f_title">公司简介</h4>
+        <mip-showmore maxheight='70' animatetime='.3' id="showmore01">
+            <div class="company_text">{$info.user.jianjie}</div>
+        </mip-showmore>
+        <div on="tap:showmore01.toggle" data-closetext="点击收起" class="mip-showmore-btn"><a data-type='mip' href="#">...</a>点击展开</div>
+
+        <span> <i class="fa fa-map-marker"></i> {$info.user.dz}</span>
+    </div>
+    <notempty name="info.imgs">
+    <div class="firm">
+        <h4 class="f_title">公司荣誉</h4>
+        <div class="company_text">
+            <mip-carousel
+                defer="1000"
+                layout="responsive"
+                width="600"
+                height="400"
+                buttonController
+                >
+                <volist name="info.imgs" id="vo">
+                    <div class="swiper-slide">
+                        <if condition="$robot">
+                            <if condition="$vo['img_host'] EQ 'qiniu'">
+                                <mip-img alt="{$info.user.qc}" src="http://{:C('QINIU_DOMAIN')}/{$vo.img}-w660.jpg"></mip-img>
+                            <else/>
+                                <mip-img alt="{$info.user.qc}" src="http://{:C('STATIC_HOST1')}/upload/company/m_{$vo.img}"></mip-img>
+                            </if>
+                        <else/>
+                            <if condition="$vo['img_host'] EQ 'qiniu'">
+                                <mip-img alt="{$info.user.qc}" data-url="http://{:C('QINIU_DOMAIN')}/{$vo.img}-w660.jpg" src="http://{:C('QINIU_DOMAIN')}/{$vo.img}-w660.jpg" class="scrollLoading"></mip-img>
+                            <else/>
+                                <mip-img alt="{$info.user.qc}" data-url="http://{:C('STATIC_HOST1')}/upload/company/m_{$vo.img}" src="http://{:C('STATIC_HOST1')}/upload/company/m_{$vo.img}" class="scrollLoading"></mip-img>
+                            </if>
+                        </if>
+                    </div>
+                </volist>
+            </mip-carousel>
+        </div>
+        <br>
+    </div>
+    </notempty>
+
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-showmore/mip-showmore.js"></script>
+
+</block>
+

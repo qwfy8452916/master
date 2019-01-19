@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<title>{$keys.title}-{$title}</title>
+<meta name="keywords" content="{$keys.keywords}" />
+<meta name="description" content="{$keys.description}" />
+<link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_about/{$userInfo.user.id}/" rel="canonical" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-pub.css?v={:C('STATIC_VERSION')}" />
+<link rel="stylesheet" type="text/css" href="{$static_host}/assets/sub/companyhome/css/company-about.css?v={:C('STATIC_VERSION')}" />
+<include file="Companyhome:headerbar" />
+
+<div class="c-wrap">
+    <div class="c-bread">
+        <a href="/">{$cityinfo.name}装修</a> >
+        <a href="/company/">{$cityinfo.name}装修公司</a> >
+        <a href="/company_home/{$userInfo.user.id}/"  title="{$userInfo.user.qc}">公司详情</a> >
+        <span>关于我们</span>
+    </div>
+    <div class="c-about-box">
+        <div class="c-titimg">
+            <if condition="$userInfo['user']['video_type'] NEQ 'jw' ">
+                <embed src="{$userInfo.user.video}" height="233" width="311" loop=true autostart="true" quality="high" allowScriptAccess="always" allowFullScreen="true" mode="transparent" type="application/x-shockwave-flash"/>
+            <else/>
+                <script type="text/javascript" src="{$static_host}/assets/common/plugin/jwplayer/jwplayer.js?v={:C('STATIC_VERSION')}"></script>
+                <script type="text/javascript" src="{$static_host}/assets/common/plugin/jwplayer/jwpsrv.js?v={:C('STATIC_VERSION')}"></script>
+                <div id="videoplay"></div>
+                <script type="text/javascript">
+                jwplayer("videoplay").setup({
+                    flashplayer: "{$static_host}/assets/common/plugin/jwplayer/jwplayer.flash.swf",
+                    file: "{$userInfo.user.video}",
+                    height: 233,
+                    width: 311,
+                    autostart:"{$userInfo.user.isautoplay}",
+                    image: "{$userInfo.user.video_image}"
+                });
+                </script>
+            </if>
+            </div>
+        <ul class="c-about-info">
+            <li><span>联系方式：</span><if condition="$userInfo['user']['cals'] NEQ ''">
+              {$userInfo.user.cals|default=""} -
+            </if>
+            {$userInfo.user.cal|default=""}</li>
+            <li><span>公司地址：</span>{$userInfo.user.dz|default=""}</li>
+            <li><span>服务类型：</span>{$userInfo.user.fw|default="暂时没有数据"}</li>
+            <li><span>设计专长：</span>{$userInfo.user.fg|default="暂时没有数据"}</li>
+            <li><span>承接地区：</span>{$userInfo.user.area|default="暂时没有数据"}</li>
+            <li><span>承接价位：</span>{$userInfo.user.jiawei|default="暂无"}万以上</li>
+            <li><span>公司规模：</span>{$userInfo.user.gm|default="暂暂时没有数据无"}</li>
+            <li><span>成立时间：</span>{$userInfo.user.chengli|default="暂时没有数据"}</li>
+        </ul>
+        <dl class="c-about-main">
+            <dt>公司简介</dt>
+            <dd> <volist name="userInfo.user.jianjie" id="vo" empty="暂时没有数据">
+                    <p>
+                        {$vo}
+                    </p>
+                </volist></dd>
+            <dt>荣誉资质</dt>
+            <dd class="c-about-zs">
+                <if condition="$userInfo['user']['pictures']">
+                <volist name="userInfo.user.pictures" id="vo">
+                    <if condition="$vo['img_host'] EQ 'qiniu'">
+                        <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img}-w660" />
+                        <else/>
+                        <img src="http://{:C('STATIC_HOST1')}/upload/company/m_{$vo.img}" />
+                    </if>
+                </volist>
+                <else/>
+                <p>
+                    <em>这个装修公司很懒,什么都没有留下！</em>
+                </p>
+            </if>
+            </dd>
+        </dl>
+    </div>
+</div>
+<include file="footerbar" />
+<include file="Index:footer" />
+</body>
+</html>

@@ -1,0 +1,69 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/manager/css/draw.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<header class="sim-table public-header">
+    <div class="back" id="back" style="width: 0.5rem;">
+        <img src="/assets/mobile/common/img/back.png" alt="">
+    </div>
+    <div>施工图</div>
+    <div class="upload-pic">
+        <a href="upload">
+            <span class="orange pr1" >上传照片</span>
+            <!-- <input type="file" id="upload" id="upload" value="上传照片" > -->
+        </a>
+    </div>
+
+</header>
+<div class="forder-construct-box bg-c4">
+    <div class="order-prief">
+        <p><span>订单编号</span>12212221</p>
+        <p><span>业主姓名</span>12212221</p>
+    </div>
+    <div class="construct-item-box">
+        <div class="construct-item">
+        <div class="title">
+            <div class="l"><span>施工状态：</span>水电整改（二次检验）</div>
+            <div class="r"><span class="orange">未验收</span></div>
+        </div>
+        <div class="pics clearfix">
+            <span class="pb" id="pb1"></span>
+            <span class="pb"></span>
+            <span class="pb"></span>
+        </div>
+        <div class="action">
+            <span class="l c3">2018-08-10 16:00:00</span>
+            <span class="r c2" data-name="del">删除</span>
+        </div>
+    </div>
+        <div class="construct-item">
+        <div class="title">
+            <div class="l"><span>施工状态：</span>水电整改（二次检验）</div>
+            <div class="r"><a href="unqualified" class="c2">不合格</a></div>
+        </div>
+        <div class="pics clearfix">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="action">
+            <span class="l c3">2018-08-10 16:00:00</span>
+            <a href="upload"><span class="r c2">重新上传</span></a>
+        </div>
+    </div>
+        <div class="weui-loadmore">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+    </div>
+</div>
+
+{/block}
+{block name='script'}
+<script src="/assets/mobile/manager/js/swiper.min.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/manager/js/photos.js?v={:config('STATIC_VERSION')}"></script>
+<script src="/assets/mobile/manager/js/constructdraw.js?v={:config('STATIC_VERSION')}"></script>
+{/block}

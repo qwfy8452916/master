@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title>联系齐装网-{$title}</title>
+    <meta name="keywords" content="联系齐装网" />
+    <meta name="description" content="为您提供齐装网总部以及各分部的联系方式、地址和交通路线查询！" />
+    <include file="Index:resource" />
+    <link href="{$static_host}/assets/home/about/css/default.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=12a80d1749e9de182e12c6201d5e191c"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js?v={:C('STATIC_VERSION')}"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css?v={:C('STATIC_VERSION')}" />
+</head>
+
+<body>
+    <include file="Index:header" />
+    <div class="wrap oflow">
+    <div class="bread"><a href="/">首页</a>>联系我们</div>
+        <include file="About:nav" />
+        <div class="aboutmain">
+            <div class="abouttit">联系我们<span>Contact Us</span></div>
+            <div class="dzbox">
+                <p>
+                    <strong>公司名称:</strong> 苏州云网通信息科技有限公司
+                    <br>
+                    <strong>全国统一商务热线:</strong>{:OP('QZ_CONTACT_TEL400')}
+                    <br>
+                    <strong>全国统一客服QQ:</strong><a href="http://wpa.qq.com/msgrd?v=3&uin={:OP('QZ_CONTACT_QQ1')}&site=qq&menu=yes"><img src="{$static_host}/assets/common/img/QQ5.png" width="77" height="22"></a>
+                    <br>
+                    <strong>苏州总部座机: </strong>{:OP('QZ_CONTACT_TEL')}
+                    <br>
+                    <strong>电子邮箱: </strong>{:OP('QZ_CONTACT_EMAIL')}
+                    <br>
+                    <strong>苏州总部地址: </strong>{:OP('QZ_CONTACT_ADDRESS')}
+                    <br>
+                    <strong> 路线1：</strong>公交车到“来凤桥”站下车步行10米至西环路与枫桥路交叉口，再向东直走300米至枫桥路电动自行车大市场内到达；
+                    <br>
+                    <strong>路线2：</strong>公交车到“何山大桥东”站下车，步行5米至金门路高架北边的新元路上沿北直走300米至枫桥路上，再右转（向东）50米至枫桥路电动自行车大市场内到达。
+                    <br>
+                </p>
+                <div id="allmap" style="width:917px; height:542px; margin-bottom:10px;"></div>
+                <div class="abouttit">齐装网全国主要分布<span>Agency</span></div>
+                <img src="{$static_host}/assets/home/about/img/mapsubcitys.png" width="917" height="542">
+
+                <h3>各城市办事处导航查询</h3>
+                <ul class="aboutcity">
+                    <volist name="list" id="vo" key="key">
+                        <li><a href="#{$key}">{$vo.city}</a></li>
+                    </volist>
+                </ul>
+                注：其他地区可与齐装网总部取得联系
+                <h3>齐装网各办事处信息</h3>
+                <ul class="citylist">
+                    <volist name="list" id="vo" key="key">
+                        <li id="{$key}">
+                            <strong>{$vo.substation_name} </strong>
+                            <br> 城市： {$vo.city}
+                            <br> 联系电话： {$vo.tel}
+                            <br> 联系人：{$vo.contact_name}
+                            <br> 地址：{$vo.address}
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <include file="Index:footer" />
+</body>
+<script type="text/javascript">
+    var shen = null,shi = null;
+    shen = citys["shen"];
+    shi = citys["shi"];
+
+    function init() {
+        var map = new BMap.Map("allmap");            // 创建Map实例
+        var point = new BMap.Point(120.584756,31.317547); // 创建点坐标
+        map.centerAndZoom(point,20);
+        map.enableScrollWheelZoom();                 //启用滚轮放大缩小
+        //添加标注
+        var marker = new BMap.Marker(point);
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+        var searchInfoWindow = null;
+        var tel1 = {$tel1};
+        var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+                    '<img src="/assets/home/about/img/map_logo.jpg" alt="" style="float:right;zoom:1;overflow:hidden;width:120px;height:100px;margin-left:3px;"/>' +
+                    '地址：苏州市金阊区枫桥路698号齐装网1号楼3层（枫桥路电动自行车大市场内）<br/>电话：'+tel1+' <br/>简介：齐装网隶属于苏州云网通信息科技有限公司，成立于2012年，总部位于中国苏州。' +
+                  '</div>';
+        searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+                title  : "苏州云网通信息科技有限公司",      //标题
+                width  : 290,             //宽度
+                height : 145,              //高度
+                panel  : "panel",         //检索结果面板
+                enableAutoPan : true,     //自动平移
+                searchTypes   :[
+                    BMAPLIB_TAB_TO_HERE,  //到这里去
+                    BMAPLIB_TAB_FROM_HERE //从这里出发
+                ]
+            });
+        marker.addEventListener("click", function(e){
+            searchInfoWindow.open(marker);
+        })
+        searchInfoWindow.open(marker);
+        map.addOverlay(marker);
+        var menu = new BMap.ContextMenu();
+        var txtMenuItem = [
+            {
+                text:'显示',
+                callback:function(){searchInfoWindow.open(marker);}
+            }
+        ];
+        for(var i=0; i < txtMenuItem.length; i++){
+            menu.addItem(new BMap.MenuItem(txtMenuItem[i].text,txtMenuItem[i].callback,100));
+        }
+        map.addContextMenu(menu);
+
+        var bottom_right_control = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT});
+        map.addControl(bottom_right_control);
+    }
+    window.onload = init;  //异步加载地图
+
+
+</script>
+</html>

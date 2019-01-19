@@ -1,0 +1,129 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修百科</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_list.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/baike/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+     <!--MIP 专有熊掌号-->
+    <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js" async></script>
+
+</block>
+<block name="style">
+    <style mip-custom>
+        .bk-article{
+            width: 94%;
+            padding: 1em 3%;
+            line-height: 21px;
+        }
+        .mip-showmore-btn {
+            padding:15px 0;
+            color: #d86761;
+            border: none;
+            width: 100%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .bk-article p{
+            text-indent: 2em; text-align: left;
+        }
+    </style>
+</block>
+<block name="content">
+    <div class="m-bread">
+        <a data-type="mip" href="{$global_basehost}/baike/">装修百科</a> &gt;
+        <a data-type="mip" href="{$global_basehost}/baike/{$menu_url.one}/">{$info.bigCate}</a> &gt;
+        <a data-type="mip" href="{$global_basehost}/baike/{$menu_url.two}/">{$info.categoryName}</a> &gt;
+        {$info.title}
+    </div>
+    <mip-cambrian site-id="1575859058891466"></mip-cambrian>
+    <div class="bk-brief">
+        <div class="bk-brief-main">
+            <div class="bk-brief-img"><mip-img src="http://{:C('QINIU_DOMAIN')}/{$info.thumb}"></mip-img></div>
+            <div class="bk-brief-info">
+                <p class="bk-brief-tit"> {$info.item}</p>
+                <p class="bk-brief-content">{$info.description|mbstr=0,84}</p>
+                <p class="bk-brief-time">{$info.post_time|date="Y-m-d H:i:s", ###}</p>
+            </div>
+
+        </div>
+
+    </div>
+    <mip-showmore maxheight='400' animatetime='.3' id="showmore" class="bk-article">
+        {$info.content}
+    </mip-showmore>
+    <div on="tap:showmore.toggle" data-closetext="收起内容" class="mip-showmore-btn">点击显示</div>
+
+    <div class="bk-baojia">
+        <a data-type='mip' href="{$global_yuming_m}/baojia?src=mip" rel="nofollow"><mip-img src="{$global_yuming_m}/assets/mobile/common/img/baojia.jpg"></mip-img></a>
+    </div>
+    <include file="Common:freeDesign"/>
+
+    <div class="other-article">
+        <div class="other-article-box">
+            <div class="other-article-word"><span class="red-block"></span>推荐阅读</div>
+            <div class="other-article-list">
+                <if condition="$countKey gt 1">
+                    <volist name="otherBaike" id="vo">
+                        <div class="other-article-item">
+                            <a data-type="mip" href="{$global_basehost}/baike/{$vo.id}.html">
+                                <div class="other-article-img"><mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.thumb}-w240.jpg" title="{$vo.title}" alt="{$vo.title}"></mip-img></div>
+                                <div class="other-article-text"><p>{$vo.title}</p></div>
+                            </a>
+                        </div>
+
+                        <if condition="$key eq 0">
+                            <div class="other-article-item" id="baojiafd">
+                                <div class="other-article-img"><mip-img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FidIBj5PeBZ0dDXb8Aj4TJXJGV81.png"></mip-img></div>
+                                <div class="other-article-text"><p>买了房子想装修成什么样?点击立即免费获取4份装修设计图!</p></div>
+                            </div>
+                        </if>
+                        <if condition="$key eq 1">
+                            <div class="other-article-item" id="shejifd">
+                                <div class="other-article-img"><mip-img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FlSDXY3CfSqNo88CoJ_htyH5xliT.png"></mip-img></div>
+                                <div class="other-article-text"><p>不看后悔一辈子,2018装修吉日是哪几天?点击立即测算您的装修吉日!</p></div>
+                            </div>
+                        </if>
+                    </volist>
+                <else/>
+                    <div class="other-article-item" id="baojiafd">
+                        <div class="other-article-img"><mip-img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FidIBj5PeBZ0dDXb8Aj4TJXJGV81.png"></mip-img></div>
+                        <div class="other-article-text"><p>买了房子想装修成什么样?点击立即免费获取4份装修设计图!</p></div>
+                    </div>
+                    <div class="other-article-item" id="shejifd">
+                        <div class="other-article-img"><mip-img src="http://{:C('QINIU_DOMAIN')}/file/20180327/FlSDXY3CfSqNo88CoJ_htyH5xliT.png"></mip-img></div>
+                        <div class="other-article-text"><p>不看后悔一辈子,2018装修吉日是哪几天?点击立即测算您的装修吉日!</p></div>
+                    </div>
+                </if>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+     <!--搜索框-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-form/mip-form.js"></script>
+    <!--下拉菜单切换-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+    <!--显示更多-->
+    <script src="https://c.mipcdn.com/static/v1/mip-showmore/mip-showmore.js"></script>
+
+</block>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+            "@id": "{$baidu.url}",
+             "appid": "1575859058891466",
+            "title": "{$head.title}",
+            "images": [
+                "{$baidu.images.0}",
+                "{$baidu.images.1}",
+                "{$baidu.images.2}"
+                ],
+            "pubDate": "{$baidu.optime}"
+        }
+    </script>
+</block>

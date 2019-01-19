@@ -1,0 +1,43 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">{$basic.body.title}</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/company/css/content.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/company/css/company-team.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <include file="content" />
+    <notempty name="info.team">
+        <volist name="info.team" id="vo">
+            <div class="plan_box">
+                <div class="plan_img">
+                    <mip-img src="{$vo.caseimg.url|default='/assets/mobile/companyhome/img/pic.gif'}" alt="{$vo.caseimg.alt|default='默认设计图片'}"></mip-img>
+                    <a data-type="mip" rel="nofollow" class="mask-a" href="http://{:C('MIP_DONAMES')}/{$cityInfo.bm}/blog/{$vo.uid}">
+                        <div class="mask_box">
+                            <a data-type="mip" rel="nofollow" class="mask_box_sj" href="{$global_yuming_m}/baojia/">免费报价</a>
+                            <div class="head">
+                                <a data-type="mip" rel="nofollow" href="http://{:C('MIP_DONAMES')}/{$cityInfo.bm}/blog/{$vo.uid}">
+                                    <mip-img src="{$vo.logo}" alt="{$vo.name}"></mip-img>
+                                </a>
+                            </div>
+                            <div class="pre">
+                                <a data-type="mip" href="http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/blog/{$vo.uid}">{$vo.name}</a> <br>
+                                <em>从业时间：{$vo.jobtime} &nbsp; {$vo.zw}</em>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dase"></div>
+                </div>
+            </div>
+        </volist>
+        {$info.page}
+        <else />
+        <img class="ch-blank" src="/assets/mobile/common/img/blank.png" alt="暂无相关数据">
+        <p class="ch-blank-text">该公司还没有注册设计师哦~</p>
+    </notempty>
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-vd-tabs/mip-vd-tabs.js"></script>
+</block>

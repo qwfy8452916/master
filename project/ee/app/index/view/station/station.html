@@ -1,0 +1,95 @@
+{extend name="common:basic" /}
+{block name="title"}
+    岗位管理
+{/block}
+{block name='link'}
+{/block}
+{block name='bread_title'}
+<span>岗位管理</span>
+{/block}
+{block name='content'}
+<div class="p-panel">
+    <form>
+        <div class="p-form-box b-owf yz-box">
+            <div class="p-form-column">
+                <span class="p-form-title">岗位名称：</span>
+                <input type="text" class="p-input" name="name" placeholder="请输入" value="{$Think.get.name|default=''}"
+                       maxlength="12">
+            </div>
+            <div class="p-form-column">
+                <span class="p-form-title">状态：</span>
+                <select name="status" id="" class="p-input">
+                    <option value="0">请选择</option>
+                    <option value="1" {if ($Think.get.status== 1)}selected{/if}>已启用</option>
+                    <option value="2" {if ($Think.get.status== 2)}selected{/if}>未启用</option>
+                </select>
+            </div>
+            <div class="b-owf b-fr">
+                <span class="p-btn p-blue b-fr {if (!btnRule('/station/add'))} btn_hide{/if}"><a
+                        href="/station/add">添加岗位</a></span>
+                <button type="submit" class="p-btn p-primary b-fr b-mt20">搜索</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="p-panel">
+    <table class="p-suppliertab">
+        <thead>
+        <tr>
+            <td>岗位名称</td>
+            <td>关联人员</td>
+            <td>添加时间
+                <a href="/station?{$order|default=''}">
+                    <i class="fa {if ($Think.get.order == 'desc')}fa-caret-down{else/}fa-caret-up{/if} paixu"
+                       aria-hidden="true"></i>
+                </a>
+            </td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        {present name='list["list"]'}
+        {volist name='list.list' id='vo'}
+        <tr>
+            <td>{$vo.name|default=''}</td>
+            <td>{if (isset($vo.iid) and !empty($vo.iid))}<a class="users-{$vo.id|default=''} p-eidt"
+                                                            href="/employee?station={$vo.id} " target="_blank">{:count(explode(',',$vo.iid))}</a>{else/}<a
+                    class="users-{$vo.id|default=''} p-eidt" href="javascript:;">0</a>{/if}
+            </td>
+            <td>{if (isset($vo.default) and $vo.default==2)}{$vo.create_time|default=''|date='Y-m-d H:i:s'}{/if}</td>
+            <td>{if (isset($vo.status) and $vo.status==1)}已启用{else/}未启用{/if}</td>
+            <td>
+                <a href="/station/edit?edit_id={$vo.id|default=''}"
+                   class="p-eidt{if (!btnRule('/station/edit'))} btn_hide{/if}">编辑</a>
+                {if (isset($vo.default) and $vo.default==2)}
+                <!--默认岗位无法删除/禁用-->
+                {if (isset($vo.status) and $vo.status==1)}
+                <span class="p-nouse change-status{if (!btnRule('/station/change'))} btn_hide{/if}"
+                      data-status="{$vo.status|default=''}" data-id="{$vo.id|default=''}">禁用</span>
+                {else/}
+                <span class="p-use change-status{if (!btnRule('/station/change'))} btn_hide{/if}"
+                      data-status="{$vo.status|default=''}"
+                      data-id="{$vo.id|default=''}">启用</span>
+                {/if}
+                <span data-id="{$vo.id|default=''}"
+                      class="p-delete{if (!btnRule('/station/del'))} btn_hide{/if}">删除</span>
+                {/if}
+            </td>
+        </tr>
+        {/volist}
+        {/present}
+        </tbody>
+    </table>
+    {$list.page|raw|default=''}
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
+
+<!-- 页面私有方法 -->
+<script type="text/javascript" src="/assets/pc/js/Private/station/post.js?v={:config('STATIC_VERSION')}"></script>
+{/block}
+
+

@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="用户中心">
+    <meta name="description" content="用户中心">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>用户中心-齐装网</title>
+    <include file="Index:resource" />
+    <include file="Designer:resource" />
+    <link href="{$static_host}/assets/user/designer/css/de-info.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css">
+</head>
+    <body>
+        <include file="Designer:header" />
+        <div class="ht-wrap oflow">
+            <include file="Designer:desnavleft" />
+            <div class="yh-main">
+                <h1 class="yh-tit">修改资料信息</h1>
+                <form id="myForm" onsubmit="return false;">
+                <ul class="ht-moreinfo">
+                    <li>
+                        <span><i class="red">*</i>所在地区：</span>
+                        <select name="" class="select mr10" disabled>
+                            <option value="{$info.citys.shen.id}">{$info.citys.shen.oldname}</option>
+                        </select>
+                        <select name="qx" class="select">
+                            <volist name="info.citys.shi" id="vo">
+                                <if condition="$info['designer']['qx'] EQ $vo['qz_areaid']">
+                                    <option value="{$vo.qz_areaid}" selected="selected">{$vo.oldName}</option>
+                                    <else/>
+                                    <option value="{$vo.qz_areaid}">{$vo.oldName}</option>
+                                </if>
+                            </volist>
+                        </select>
+                    </li>
+                    <li>
+                        <span><i class="red">*</i>昵称：</span>
+                        <input name="name" type="text" value="{$info.designer.name}" placeholder="昵称">
+                    </li>
+                    <li>
+                        <span><i class="red">*</i>性别：</span>
+                        <if condition="$info['designer']['sex'] EQ '' OR $info['designer']['sex'] EQ '先生'">
+                            <input name="sex" type="radio" class="icheck" value="先生" checked>&nbsp;先生
+                            <input name="sex" type="radio" class="icheck" value="女士">&nbsp;女士
+                            <else/>
+                            <input name="sex" type="radio" class="icheck" value="先生">&nbsp;先生
+                            <input name="sex" type="radio" class="icheck" value="女士" checked>&nbsp;女士
+                        </if>
+                    </li>
+                    <li>
+                        <span>毕业学校：</span>
+                        <input name="school" type="text" placeholder="毕业学校" value="{$info.designer.school}">
+                        <i class="red err-tips"></i>
+                    </li>
+                    <li>
+                        <span><i class="red">*</i>联系电话：</span>
+                        <input name="tel" type="text" placeholder="联系电话" value="{$info.designer.tel}">
+                        <i class="red err-tips"></i>
+                    </li>
+                    <li>
+                        <span><i class="red">*</i>电子邮箱：</span>
+                        <input name="mail" type="text" placeholder="电子邮箱" value="{$info.designer.mail}">
+                        <i class="red err-tips"></i>
+                    </li>
+                    <li>
+                        <span>联系QQ：</span>
+                        <input name="qq" type="text" placeholder="QQ" value="{$info.designer.qq}">
+                        <i class="red err-tips"></i>
+                    </li>
+                    <li>
+                        <span>设计收费:</span>
+                        <input name="cost" value="{$info.designer.cost}" type="text" placeholder="设计收费">元/平米
+                        <i class="red err-tips"></i>
+                    </li>
+                    <li>
+                        <span><i class="red">*</i>从业时间：</span>
+                        <select name="jobtime" class="select">
+                            <volist name="info.jobtime" id="vo">
+                                <if condition="$vo EQ $info['designer']['jobtime']">
+                                    <option value="{$vo}" selected="selected">{$vo}</option>
+                                    <else/>
+                                    <option value="{$vo}">{$vo}</option>
+                                </if>
+                            </volist>
+                        </select>
+                    </li>
+                    <li>
+                        <span class="vtop">擅长风格：</span>
+                        <input name="all" data-area="fengge" type="checkbox" class="all">&nbsp;全部
+                        <volist name="info.fengge" id="vo">
+                            <if condition="mb_strpos($info['designer']['fengge'],$vo['name']) nheq false">
+                                <input name="fengge[]" value="{$vo.name}" type="checkbox" class="icheck" checked>&nbsp;{$vo.name}
+                                <else/>
+                                <input name="fengge[]" value="{$vo.name}" type="checkbox" class="icheck">&nbsp;{$vo.name}
+                            </if>
+                        </volist>
+                    </li>
+                    <li>
+                        <span class="vtop">擅长领域：</span>
+                        <input data-area="lingyu" value="{$vo.id}" type="checkbox" class="all">&nbsp;全部
+                        <volist name="info.lingyu" id="vo">
+                            <if condition="mb_strpos($info['designer']['lingyu'],$vo) nheq false">
+                                <input name="lingyu[]" value="{$vo}" type="checkbox" class="icheck" checked>&nbsp;{$vo}
+                                <else/>
+                                <input name="lingyu[]" value="{$vo}" type="checkbox" class="icheck">&nbsp;{$vo}
+                            </if>
+                        </volist>
+                    </li>
+                    <li>
+                        <span><i class="red">*</i>简介：</span>
+                        <textarea class="jianjiemain" name="text" placeholder="个人简介">{$info.designer.text}</textarea>
+                    </li>
+                    <li>
+                        <span class="vtop">设计理念</span>
+                        <textarea placeholder="设计理念" class="jianjiemain" name="linian">{$info.designer.linian}</textarea>
+                    </li>
+                    <!-- <li>
+                        <span class="vtop">代表作</span>
+                        <textarea placeholder="代表作" class="jianjiemain" name="case">{$info.designer.cases}</textarea>
+                    </li> -->
+                </ul>
+                <div class="change-head">
+                    <span><i class="red">*</i>上传头像：</span>
+                    <div class="meitu">
+                        <if condition="$info['designer']">
+                            <img src="{$info.designer.logo}" idth="658" height="658" />
+                        <else/>
+                            <img src="{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}" />
+                        </if>
+                    </div>
+                    <div class="userlogo" style="width:100px; display:inline; float:left;">
+                    <button type="button" id="uplogo" class="meitu-up" >上传头像</button>
+                    <button type="button" id="reset" class="reset meitu-up">重置</button>
+                    <input type="hidden" name="logo" value="{$info.designer.logo}" />
+                    </div>
+                    <div class="ht-yes">
+                      <a href="javascript:void(0)"><i class="icon-ok mr10"></i>保存资料</a>
+                      <input name="id" type="hidden" value="{$info.designer.id}" />
+                      <i class="red err-tips"></i>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <include file="Index:footer" />
+        <div class="win_box dialog_form">
+            <div class="win_box_bg"></div>
+            <div class="win_box_content">
+                <div id="logo_form"></div>
+                <script src="http://open.web.meitu.com/sources/xiuxiu.js?v={:C('STATIC_VERSION')}" type="text/javascript"></script>
+                <script type="text/javascript">
+                xiuxiu.setLaunchVars("quality", 100);
+                //图片生成大小
+                xiuxiu.setLaunchVars("maxFinalWidth", "180");
+                xiuxiu.setLaunchVars("maxFinalHeight", "180");
+                //裁剪尺寸
+                xiuxiu.setLaunchVars("cropPresets", "180x180");
+                //设置上传URL
+                xiuxiu.setUploadURL("http://u.qizuang.com/uplogo/");
+                //设置上传类型
+                xiuxiu.setUploadType(2);
+                //加载文件
+                xiuxiu.embedSWF("logo_form", 5, 600, 500, "xiuxiuForm");
+                xiuxiu.onInit = function(id) {
+
+                };
+                //上传图片前调用
+                xiuxiu.onBeforeUpload = function(data, id) {
+                        var types = "jpg,png,gif";
+                        if (types.indexOf(data.type) < 0) {
+                            return false;
+                        }
+                        return true;
+                    }
+                    //上传响应
+                xiuxiu.onUploadResponse = function(data, id) {
+                    if (typeof data == "string") {
+                        data = eval("(" + data + ")");
+                    }
+
+                    if (data.status == 1) {
+                        var src = "//{:C('QINIU_DOMAIN')}/" + data.data.key;
+                        $(".meitu img").attr("src", src);
+                    } else {
+                        $(".meitu img").html(data.info);
+                    }
+                    $(".dialog_form").hide();
+                }
+
+                //调试
+                xiuxiu.onDebug = function(data) {
+
+                }
+
+                $(".dialog_form .win_box_bg").click(function(event) {
+                    $(".dialog_form").hide();
+                });
+                </script>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+    $('.all').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red',
+        increaseArea: '' // optional
+    }).on("ifChecked", function(event) {
+        var target = $(event.target);
+        target.iCheck('check');
+        var area = target.attr("data-area");
+        $('input[name=' + area + '\\[\\]]').iCheck("check");
+    }).on("ifUnchecked", function(event) {
+        var target = $(event.target);
+        target.iCheck('uncheck');
+        var area = target.attr("data-area");
+        $('input[name=' + area + '\\[\\]]').iCheck("uncheck");
+    });
+
+    $('.icheck').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red',
+        increaseArea: '' // optional
+    }).on("ifChecked", function(event) {
+        var target = $(event.target);
+        target.attr("checked", "checked");
+    }).on("ifUnchecked", function(event) {
+        var target = $(event.target);
+        target.attr("checked", false);
+        target.parent().parent().find(".all").iCheck("uncheck");
+    });
+    $("#uplogo").click(function(event) {
+        $(".dialog_form").show();
+    });
+
+    $(".dialog_content").click(function(event) {
+        $(".dialog_form").hide();
+    });
+
+    $("#reset").click(function(event) {
+        if(App.validate.run($("input[name=logo]").val())){
+          $(".meitu img").attr("src",$("input[name=logo]").val());
+        }else{
+          $(".meitu img").attr("src","//{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}");
+        }
+    });
+
+     $(".ht-yes a").click(function(event) {
+          $(".focus").removeClass('focus');
+          $(".err-tips").html('');
+          var _this = $(this);
+          if(!App.validate.run($("input[name=name]").val())){
+              $("input[name=name]").focus();
+              $("input[name=name]").addClass('focus');
+              $("input[name=name]").parent().find(".err-tips").html("请填写昵称");
+              return false;
+          }
+
+
+          if(App.validate.run($("input[name=tel]").val())){
+              if(!App.validate.run($("input[name=tel]").val(),"tel")){
+                $("input[name=tel]").focus();
+                $("input[name=tel]").addClass('focus');
+                $("input[name=tel]").parent().find(".err-tips").html("无效的手机号码");
+                 return false;
+              }
+          }
+
+          if(App.validate.run($("input[name=mail]").val())){
+              if(!App.validate.run($("input[name=mail]").val(),"email")){
+                $("input[name=mail]").focus();
+                $("input[name=mail]").addClass('focus');
+                $("input[name=mail]").parent().find(".err-tips").html("无效的电子邮箱");
+               return false;
+              }
+          }
+
+          if(App.validate.run($("input[name=qq]").val())){
+              if(!App.validate.run($("input[name=qq]").val(),"num")){
+                $("input[name=qq]").focus();
+                $("input[name=qq]").addClass('focus');
+                $("input[name=qq]").parent().find(".err-tips").html("无效的qq号码");
+                return false;
+              }
+          }
+
+          if(App.validate.run($("input[name=cost]").val())){
+              if(!App.validate.run($("input[name=cost]").val(),"num")){
+                $("input[name=cost]").focus();
+                $("input[name=cost]").addClass('focus');
+                $("input[name=cost]").parent().find(".err-tips").html("无效的收费数据");
+                return false;
+              }
+          }
+          var data = $("#myForm").serializeArray();
+          data.push({name:"logo",value: $(".meitu img").attr("src")});
+          var lingyu = "";
+          var fengge = "";
+          for (var i  in data) {
+              if(data[i].name.indexOf("lingyu") != -1){
+                  lingyu += data[i]["value"]+",";
+                  continue;
+              }
+
+              if(data[i].name.indexOf("fengge") != -1){
+                  fengge += data[i]["value"]+",";
+                  continue;
+              }
+          };
+          data.push({name:"lingyu",value:lingyu});
+          data.push({name:"fengge",value: fengge});
+
+          $.ajax({
+            url: '/desinfo/',
+            type: 'POST',
+            dataType: 'JSON',
+            data:data,
+          })
+          .done(function(data) {
+              if(data.status == 1){
+                  window.location.href="/success/designer/"
+              }else{
+                _this.parent().find(".err-tips").html(data.info);
+              }
+          })
+          .fail(function(xhr) {
+              _this.parent().find(".err-tips").html("发生了未知的错误,请刷新重试！");
+          });
+      });
+
+
+    </script>
+
+</html>

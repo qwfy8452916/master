@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="mobile-agent" content="format=html5;url=http://{:C('MOBILE_DONAMES')}/{$cityInfo.bm}/blog/{$userInfo.designer.uid}" />
+    <title>{$keys.title}{$title}</title>
+    <meta name="keywords" content="{$keys.keywords}" />
+    <meta name="description" content="{$keys.description}" />
+    <notempty name="info.head.canonical">
+        <link href="{$info.head.canonical}" rel="canonical" />
+    </notempty>
+    <include file="Index:resource" />
+    <link href="{$static_host}/assets/sub/company/css/home.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <include file="Blog:header" />
+    <div class="wrap">
+        <div class="bread">
+            <a href="/">首页</a>><a href="/designer/">设计师列表</a>&gt;{$userInfo.designer.name}
+        </div>
+    </div>
+    <div class="wrap oflow mt20">
+        <div class="compleft">
+            <div class="lxfs">
+               <!--  <h1>在线咨询</h1> -->
+                <div class="tele_l">
+                    <div class="tele_free"></div>
+                    <span class="zbtitle">免费获得4份不同
+                        <br/>户型设计及预算方案
+                    </span
+                    <form class="secbox_form" onsubmit="return false;">
+                        <div class="int order-wrap">
+                            <input class="order-item" data-order-name="tel" type="text" name="tel" placeholder="请输入您的手机号" maxlength="11" >
+                            <input class="order-item" data-order-name="fb_type" type="hidden" name="fb_type" value="sheji">
+                            <a id="btnSub" href="javascript:void(0)">申请</a>
+                        </div>
+                    </form>
+                    <div class="int">*{:date("Y")}新设计预算,审核图纸报价 避陷阱风险 </div>
+                   <!--  <div class="int">
+                        今日已有<i>{:releaseCount('fbzrs')}</i>人提交
+                    </div> -->
+                    <ul class="bottips">
+                        <li class="none">
+                            <img src="{$static_host}/assets/common/img/bottips1.gif" width="35" height="32">
+                            <p><a rel="nofollow" href="/zhaobiao/" target="_blank">免费量房验房</a></p>
+                        </li>
+                        <li><img src="{$static_host}/assets/common/img/bottips2.gif" width="35" height="32">
+                            <p><a rel="nofollow" href="/zhaobiao/" target="_blank">设计规范化</a></p>
+                        </li>
+                        <li><img src="{$static_host}/assets/common/img/bottips3.gif" width="35" height="32">
+                            <p><a rel="nofollow" href="/zhaobiao/" target="_blank">预算一步到位</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="mt20">{$userInfo.designer.name}的博客</h1>
+                <ul class="designrq">
+                    <li><i>{$userInfo.designer.pv}</i>人气</li>
+                    <li><i>{$userInfo.count|default=0}</i>案例作品<i>{$userInfo.designer.acount|default=0}</i>文章</li>
+                </ul>
+            </div>
+        </div>
+        <div class="compright">
+            <div class="designborder">
+                <div class="toprightbg"></div>
+                <div class="designbolg">
+                    <div class="userhead">
+                        <if condition="$userInfo['designer']['logo'] NEQ ''">
+                            <img src="{$userInfo.designer.logo}">
+                            <else/>
+                            <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}">
+                        </if>
+                        <a href="javascript:void(0)" class="designer_wt" data-des="{$userInfo.designer.userid}">委托设计</a>
+                    </div>
+                    <ul class="designinfo">
+                        <li><strong>姓名：</strong>{$userInfo.designer.name}</li>
+                        <li><strong>毕业学校：</strong>{$userInfo.designer.school}</li>
+                        <li><strong>现就职公司：</strong>
+                        <if condition="$userInfo['designer']['qc'] NEQ  ''">
+                            <a href="http://{$userInfo.designer.bm}.{:C('QZ_YUMING')}/company_home/{$userInfo.designer.comid}/" target="_blank">{$userInfo.designer.qc}</a>
+                        </if>
+                        </li>
+                        <li><strong>从业时间：</strong>{$userInfo.designer.jobtime}</li>
+                        <li><strong>设计师类型：</strong>{$userInfo.designer.job}</li>
+                        <li><strong>擅长风格：</strong>{$userInfo.designer.fengge}</li>
+                        <li><strong>擅长领域：</strong>{$userInfo.designer.lingyu}</li>
+                        <if condition="$userInfo['designer']['cost'] NEQ ''">
+                            <li><strong>收费标准：</strong>{$userInfo.designer.cost}/平米</li>
+                        </if>
+                        <li><strong>设计理念：</strong>
+                            <if condition="$userInfo['designer']['linian'] NEQ ''">
+                                {$userInfo.designer.linian}
+                                <else/> 这个人很懒,什么都没有留下!
+                            </if>
+                        </li>
+                        <!-- <li>&nbsp;&nbsp;&nbsp;<strong>代表作：</strong>{$userInfo.designer.cases|default='暂时没有推荐作品'}</li> -->
+                        <li><strong>个人简介：</strong>{$userInfo.designer.text}</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="tab">
+                <div class="tab-nav j-tab-nav designtit">
+                    <a href="javascript:void(0);" class="current">作品展示</a>
+                    <a href="javascript:void(0);">设计文章</a>
+                </div>
+                <div class="designerzp tab-con">
+                    <div class="j-tab-con">
+                        <div class="tab-con-item" style="display:block;">
+                            <if condition="$userInfo['cases']">
+                                <ul class="companli" style="overflow:hidden;">
+                                    <volist name="userInfo.cases" id="vo">
+                                        <li>
+                                            <div class="tu">
+                                                <a href="/caseinfo/{$vo.cid}.shtml" target="_blank">
+                                                    <if condition="$vo['img_host'] EQ 'qiniu'">
+                                                        <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}-w240.jpg" width="200" height="300" alt="{$vo.title}">
+                                                        <else/>
+                                                        <img src="http://{:C('STATIC_HOST1')}{$vo.img_path}s_{$vo.img}" width="200" height="300" alt="{$vo.title}">
+                                                    </if>
+                                                </a>
+                                            </div>
+                                            <span><a href="/caseinfo/{$vo.cid}.shtml" target="_blank">{$vo.title}</a></span>
+                                            <p>{$vo.zj} | {$vo.mianji}m² | {$vo.fg}</p>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                {$userInfo.page}
+                                <else/>
+                                <div class="no-item">
+                                    暂时没有发布的案例
+                                </div>
+                            </if>
+                        </div>
+                        <div class="tab-con-item">
+                            <if condition="$userInfo['article']">
+                                <ul class="zxlist">
+                                    <volist name="userInfo.article" id="vo">
+                                        <li>
+                                            <h1><a href="/article_info/{$vo.id}.html">{$vo.title}</a></h1>
+                                            <span>{$vo.time|date="Y-m-d",###}</span>
+                                            <p></p>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                {$userInfo.articlePage}
+                                <else/>
+                                <div class="no-item">
+                                    暂时没有发布的文章
+                                </div>
+                            </if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Index:footer" />
+    <input id="safecode" type="hidden" value="{$safecode}" />
+    <input id="safekey" type="hidden" value="{$safekey}" />
+</body>
+<script type="text/javascript">
+var shen = null,
+    shi = null;
+shen = citys["shen"];
+shi = citys["shi"];
+$(function() {
+    $("#tab").rTabs({
+        bind: 'click',
+        animation: 'fadein',
+        auto: false
+    });
+    $(".j-tab-nav").find("a").eq({$extra}-1).trigger('click');
+    $(".designer_wt").click(function(event) {
+        var des = $(this).attr("data-des");
+        $.ajax({
+                url: '/dispatcher/',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    type: 'sj',
+                    action: "load",
+                    cs: "{$cityInfo.id}",
+                    source: 158,
+                    select_desid : des,
+                    display_type : '1',
+                    des: des
+
+                }
+            })
+            .done(function(data) {
+                if (data.status == 1) {
+                    $("body").append(data.data);
+                    $(".zb_box_sj").fadeIn(400,function(){
+                        $(this).find("input[name=lf-name]").focus();
+                    });
+                }
+            });
+    });
+
+    $("#btnSub").click(function(event) {
+        var _this = $(this);
+        window.order({
+            wrap:'.order-wrap',
+            extra:{
+                source: '168' ,//这里额外参数只有source，获取的是wrap属性下的class包含order-item的参数的值
+                step: 2
+            },
+            success:function(data, status, xhr){
+                console.log(data);
+                if (data.status == 1) {
+                    $("body").append(data.data.tmp);
+                } else {
+                    $.pt({
+                        target: $(this),
+                        content: data.info,
+                        width: 'auto'
+                    });
+                }
+            },
+            validate:function(item, value, method, info){
+                if (!App.validate.run($("input[name=tel]").val())) {
+                    $.pt({
+                        target: _this,
+                        content: "请填写正确的手机号码 ^_^!",
+                        width: 'auto'
+                    });
+                    return false;
+                } else {
+                    var reg = new RegExp("^(13|14|15|17|18)[0-9]{9}$");
+                    if (!reg.test($("input[name=tel]").val())) {
+                        $("input[name=tel]").focus();
+                        $("input[name=tel]").val('');
+                        $.pt({
+                            target: _this,
+                            content: "请填写正确的手机号码 ^_^!",
+                            width: 'auto'
+                        });
+                        return false;
+                    }
+                }
+                return true;
+            }
+        });
+    });
+    $(".tele_l input[name=tel]").focus();
+});
+</script>
+
+</html>

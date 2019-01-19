@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="http://{:C('QZ_YUMINGWWW')}/huangli/" rel="canonical" />
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-hl.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/jquery.smint.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/TouchSlide.1.1.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<link href="/assets/common/css/step.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/common/js/tooltips/tooltips.css?v={:C('STATIC_VERSION')}" rel="stylesheet" />
+
+<script type="text/javascript" src="/assets/common/js/placeholders.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/common/js/tooltips/jquery.pure.tooltips.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/common/js/App.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/common/js/cors.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="{$cityfile}"></script>
+<title>装修黄历</title>
+</head>
+<body>
+<div class="m-wrap">
+	<div class="m-nav">
+	<div class="m-back"><a href="/"><span></span>后退</a></div>
+	<div class="m-title">装修黄历</div>
+	<include file="Index:topMenu" />
+	</div>
+  <div class="m-logo">
+	<div class="logo-main"></div>
+	<div class="logo-s"></div>
+  </div>
+
+<div class="neckad-into"><img src="/assets/mobile/images/hl.jpg" width="640" height="142" alt=""/></div>
+
+<div class="hl-main">
+<h1>测测你的开工吉日</h1>
+	<ul>
+		<li><input type="text" name="name" placeholder="您的姓名"></li>
+		<li><select id="fb-cs" name="cs" class="hl-diz"></select></li>
+		<li><select id="fb-qy" class="hl-diz" name="qy"></select></li>
+		<li>
+		<select  class="hl-diz" name="xztime">
+		<option value="1">一个月内装修</option>
+		<option value="2">半年内装修</option>
+		<option value="3">半年后装修</option>
+		</select>
+		</li>
+		<li><input type="text" name="tel" placeholder="请输入您的手机号"></li>
+		<li><button id="btnstepSave" >立即测算</button></li>
+	</ul>
+</div>
+
+</div>
+
+<input id="safecode" type="hidden" value="{$safecode}" />
+<input id="safekey" type="hidden" value="{$safekey}" />
+<script type="text/javascript">
+var shen = null,shi = null;
+shen = citys["shen"];
+shi = citys["shi"];
+App.citys.init("#fb-cs","#fb-qy",shen,shi,"{$cityid}");
+
+$("#btnstepSave").click(function(event){
+	$(".input-error").html("");
+	$(".focus").removeClass("focus");
+	var _this = $(this);
+	if(!App.validate.run($(".hl-main input[name=name]").val())){
+		$(".hl-main input[name=name]").focus();
+		$.pt({
+			target: $(".hl-main input[name=name]"),
+			content: '请填写您的称呼',
+			width: 'auto'
+		});
+		return false;
+	}
+
+	if(!App.validate.run($(".hl-main input[name=tel]").val())){
+		$(".hl-main input[name=tel]").focus();
+		$.pt({
+			target: $(".hl-main input[name=tel]"),
+			content: '请填写您的电话',
+			width: 'auto'
+		});
+		return false;
+	}
+
+	if(!App.validate.run($(".hl-main input[name=tel]").val(),"moblie")){
+		$(".hl-main input[name=tel]").focus();
+		$.pt({
+			target: $(".hl-main input[name=tel]"),
+			content: '无效的电话',
+			width: 'auto'
+		});
+		return false;
+	}
+
+	if(!App.validate.run($(".hl-main select[name=cs]").val())){
+		$(".hl-main select[name=cs]").focus();
+		$.pt({
+			target: $(".hl-main select[name=cs]"),
+			content: '请选择您的所在城市',
+			width: 'auto'
+		});
+		return false;
+	}
+
+	if(!App.validate.run($(".hl-main select[name=qy]").val())){
+		$(".hl-main select[name=qy]").focus();
+		$.pt({
+			target: $(".hl-main select[name=qy]"),
+			content: '请选择您的所在区域',
+			width: 'auto'
+		});
+		return false;
+	}
+
+	$.ajax({
+		url: '/fb_order/',
+		type: 'POST',
+		dataType: 'JSON',
+		data: {
+			tel: $(".hl-main input[name=tel]").val(),
+			name: $(".hl-main input[name=name]").val(),
+			cs: $(".hl-main select[name=cs]").val(),
+			qx: $(".hl-main select[name=qy]").val(),
+			hltime: $(".hl-main select[name=xztime]").val(),
+			source: '402',
+			safecode:$("#safecode").val(),
+			safekey: $("#safekey").val(),
+			ssid:"{$ssid}",
+			module:'moblie',
+			step:99
+		}
+	})
+	.done(function(data) {
+		$("#safecode").val(data.data.safecode);
+		$("#safekey").val(data.data.safekey);
+		if (data.status == 1) {
+			$("body").append(data.data.tmp);
+		} else {
+			$.pt({
+				target: _this,
+				content: data.info,
+				width: 'auto'
+			});
+		}
+	})
+	.fail(function(xhr) {
+		$.pt({
+			target: _this,
+			content: '发布失败,请刷新页面！',
+			width: 'auto'
+		});
+	 });
+});
+</script>
+
+<include file="Index:newFooter" />
+</body>
+</html>

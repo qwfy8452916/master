@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       ::-moz-placeholder { color: #999; font-family: "Microsoft Yahei"; }
+        ::-webkit-input-placeholder { color:#999; font-family: "Microsoft Yahei"; }
+        :-ms-input-placeholder { color:#999; font-family: "Microsoft Yahei"; }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="123">
+    <input type="text" placeholder="456">
+    <script src="../../common/js/jquery.min.js"></script>
+    <script src="../../common/js/placeholders.min.js"></script>
+    <script src="../../common/js/placeholder-color-fix.js"></script>
+    <script>
+       $(function(){
+        
+        $("input").each(function (index, item) {
+        fixPlaceholder($(item));
+            });
+
+
+       })
+     
+    </script>
+</body>
+</html>

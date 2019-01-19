@@ -1,0 +1,77 @@
+{extend name="common:basic" /}
+
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap company-index">
+    <div class="sim-table company-head-area">
+        <div class="first">
+            {if ($accountinfo['image'] neq '' AND !empty($accountinfo['image']))}
+                <span style="width: 3.75rem; height: 3.75rem; overflow: hidden; display: block;"><img src="{$accountinfo.image}" alt=""></span>
+            {else/}
+                <span style="width: 3.75rem; height: 3.75rem; overflow: hidden; display: block;"><img src="/assets/mobile/common/img/avatar.png" alt=""></span>
+            {/if}
+        </div>
+        <div class="second">
+            <h1 class="cname">{$accountinfo.companyjc}</h1>
+            <p class="permission">{$accountinfo.name}</p>
+            <p class="role">{$accountinfo.account}</p>
+            <a href="/userset" class="setting"><i class="iconfont icon-gear"></i></a>
+        </div>
+    </div>
+    <div class="coi-container {if (!btnRule('/order/'))} btn_hide{/if}">
+        <a href="http://{:config('m_host')}/order">
+            <div class="sim-table company-operation-item">
+                <div class="line"></div>
+                <div class="icon"><img src="/assets/mobile/common/img/orderlist.png" alt=""></div>
+                <div class="text">跟单管理</div>
+            </div>
+        </a>
+    </div>
+    <div class="coi-container {if (!btnRule('/order/'))} btn_hide{/if}">
+        <a href="http://{:config('m_host')}/shigong">
+            <div class="sim-table company-operation-item">
+                <div class="line"></div>
+                <div class="icon"><img src="/assets/mobile/common/img/construction.png" alt=""></div>
+                <div class="text">施工管理</div>
+            </div>
+        </a>
+    </div>
+    <div class="coi-container{if (!btnRule('/material/'))} btn_hide{/if}">
+        <a href="http://{:config('m_host')}/material/">
+            <div class="sim-table company-operation-item">
+                <div class="line bg-c1"></div>
+                <div class="icon"><img src="/assets/mobile/common/img/material.png" alt=""></div>
+                <div class="text">材料进销</div>
+            </div>
+        </a>
+    </div>
+    <div class="coi-container{if (!btnRule('/supplier/'))} btn_hide{/if}">
+        <a href="http://{:config('m_host')}/supplier/">
+            <div class="sim-table company-operation-item">
+                <div class="line bg-c2"></div>
+                <div class="icon"><img src="/assets/mobile/common/img/suppier.png" alt=""></div>
+                <div class="text">供应商管理</div>
+            </div>
+        </a>
+    </div>
+    <!--如果有员工管理权限和施工组管理权限,默认显示员工,否则显示有权限的-->
+    <div class="coi-container{if (!btnRule('/employee/') && !btnRule('/workgroup/'))} btn_hide{/if}">
+        <!--路由同理-->
+        <a href="http://{:config('m_host')}{if (btnRule('/employee/'))}/employee/{else/}/workgroup/{/if}">
+            <div class="sim-table company-operation-item">
+                <div class="line bg-c3"></div>
+                <div class="icon"><img src="/assets/mobile/common/img/team.png" alt=""></div>
+                <div class="text">团队管理</div>
+            </div>
+        </a>
+    </div>
+</div>
+{/block}
+{block name='script'}
+
+{/block}
+
+

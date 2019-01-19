@@ -1,0 +1,70 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap">
+    <header class="sim-table public-header">
+        <div class="back" id="back" style="width: 0.5rem;">
+            <img src="/assets/mobile/common/img/back.png" alt="">
+        </div>
+        <div>个人信息</div>
+        <div></div>
+    </header>
+    <div class="set-person-container bg-c4">
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">头像</div>
+                <div class="second text-right"><img src="/assets/mobile/common/img/avatar.png" alt="" style="width: 4rem; height: 4rem;"></div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">名字</div>
+                <div class="second text-right">王二</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">手机号</div>
+                <div class="second text-right">13111111111</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">微信号</div>
+                <div class="second text-right">13111111111</div>
+                <div class="third text-right"><i class="iconfont icon-angle-right"></i></div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">账号</div>
+                <div class="second text-right">王二</div>
+                <div class="third text-right"></div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">角色</div>
+                <div class="second text-right">项目经理</div>
+                <div class="third text-right"></div>
+            </div>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-person-item">
+                <div class="first">工种</div>
+                <div class="second text-right">木工</div>
+                <div class="third text-right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name='script'}
+
+{/block}

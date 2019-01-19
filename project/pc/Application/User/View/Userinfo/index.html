@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="用户中心">
+    <meta name="description" content="用户中心">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>用户中心-齐装网</title>
+    <include file="Index:resource" />
+    <include file="User:resource" />
+    <link rel="stylesheet" href="/assets/common/css/step.css?v={:C('STATIC_VERSION')}">
+    <link rel="stylesheet" href="{$static_host}/assets/user/userinfo/css/yh-userinfo.css?v={:C('STATIC_VERSION')}">
+</head>
+
+<body>
+    <include file="User:header" />
+    <div class="ht-wrap oflow">
+        <include file="User:usernavleft" />
+        <div class="yh-main">
+            <h1 class="yh-tit">修改个人资料</h1>
+            <form id="myForm">
+            <ul class="userinfo-edit">
+                <li>
+                  <span>所在城区：</span>
+                    <select id="cs" name="cs">
+                    </select>
+                    <select id="qx" name="qx">
+                    </select>
+                </li>
+                <li><span>昵称：</span>
+                    <input name="name" type="text" placeholder="昵称" value="{$info.user.name}">
+                    <em class="red err-tips"></em>
+                </li>
+                <li>
+                    <span>性别：</span>
+                    <if condition="$info['user']['sex'] EQ '' OR $info['user']['sex'] EQ '先生'">
+                    <input name="sex" class="icheck" type="radio" value="先生" checked><em class="ml10">先生</em>
+                    <input class="ml20 icheck"  name="sex" type="radio" value="女士"><em class="ml10">女士</em>
+                    <else/>
+                    <input name="sex" class="icheck" type="radio" value="先生" ><em class="ml10">先生</em>
+                    <input class="ml20 icheck"  name="sex" type="radio" value="女士" checked><em class="ml10">女士</em>
+                    </if>
+                    </li>
+                <li><span>联系电话：</span>
+                    <input name="tel" type="text" placeholder="联系电话"  value="{$info.user.tel}">
+                    <em class="red err-tips"></em>
+                </li>
+                <li><span>邮箱：</span>
+                    <input name="mail" type="text" placeholder="邮箱"  value="{$info.user.mail}">
+                    <em class="red err-tips"></em>
+                </li>
+                <li><span>联系QQ：</span>
+                    <input name="qq" type="text" placeholder="QQ"  value="{$info.user.qq}">
+                    <em class="red err-tips"></em>
+                </li>
+            </ul>
+            <div class="change-head">
+                <span>上传头像：</span>
+                <div class="meitu">
+                  <if condition="$info['user']['logo'] NEQ ''">
+                  <img src="{$info.user.logo}" width="658" height="658">
+                  <else/>
+                  <img src="http://{:C('QINIU_DOMAIN')}/{:OP('DEFAULT_LOGO')}-h100" width="658" height="658">
+                  </if>
+                </div>
+                <div class="meitu-group">
+                  <a class="meitu-up changelogo" href="javascript:void(0)">选择头像</a>
+                  <a class="meitu-up dialog" href="javascript:void(0)">自定义上传</a>
+                </div>
+            </div>
+            <div class="ht-yes">
+              <a  href="javascript:void(0)"><i class="icon-ok mr10"></i>保存资料</a>
+              <em class="red err-tips"></em>
+            </div>
+            </form>
+        </div>
+    </div>
+    <include file="Index:footer" />
+     <div class="win_box step logo_box">
+        <div class="win_box_bg">
+        </div>
+        <div class="win_box_content">
+          <div class="zb_box_in">
+              <div class="zb_box_title">
+                <div class="zb_box_info">
+                    设置头像
+                </div>
+                <span class="win_box_close" title="关闭">
+                </span>
+              </div>
+              <div class="zb_box_form">
+                <ul class="ht-logos">
+                  <volist name="info.logos" id="vo">
+                    <li>
+                      <a class="logo-item" href="javascript:void(0)" title="{$vo.name}">
+                        <img src="{$vo.src}" width="150" height="150" />
+                      </a>
+                    </li>
+                  </volist>
+                </ul>
+                <div class="input">
+                   <button id="stepSave" type="button" class="button">选择</button>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="win_box dialog_form">
+      <div class="win_box_bg"></div>
+      <div class="win_box_content">
+        <div id="logo_form"></div>
+        <script src="http://open.web.meitu.com/sources/xiuxiu.js?v={:C('STATIC_VERSION')}" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(".dialog_form .win_box_bg").click(function(event) {
+                $(".dialog_form").hide();
+            });
+            xiuxiu.setLaunchVars("quality", 100);
+            //图片生成大小
+            xiuxiu.setLaunchVars("maxFinalWidth","180");
+            xiuxiu.setLaunchVars("maxFinalHeight","180");
+            //裁剪尺寸
+            xiuxiu.setLaunchVars("cropPresets","180x180");
+            //设置上传URL
+            xiuxiu.setUploadURL("http://u.qizuang.com/uplogo/");
+            //设置上传类型
+            xiuxiu.setUploadType (2);
+            //加载文件
+            xiuxiu.embedSWF("logo_form",5,600,500,"xiuxiuForm");
+            xiuxiu.onInit = function(id){
+
+            };
+            //上传图片前调用
+            xiuxiu.onBeforeUpload = function(data, id) {
+                var types="jpg,png,gif";
+                if(types.indexOf(data.type) < 0){
+                  return false;
+                }
+                return true;
+            }
+            //上传响应
+            xiuxiu.onUploadResponse= function(data,id) {
+                if(typeof data == "string"){
+                   data = eval("("+data+")");
+                }
+
+                if(data.status == 1){
+                  var src = "//{:C('QINIU_DOMAIN')}/"+data.data.key;
+                  $(".meitu img").attr("src",src);
+                }else{
+                  $(".meitu img").html(data.info);
+                }
+                $(".dialog_form").hide();
+            }
+
+            //调试
+            xiuxiu.onDebug = function (data){
+
+            }
+
+
+        </script>
+      </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var shen = null,
+        shi = null;
+    shen = citys["shen"];
+    shi = citys["shi"];
+
+    $(function(){
+      App.citys.init("#cs","#qx",shen,shi,"{$info.user.cs}",'{$info.user.qx}');
+      $('.icheck').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red',
+        increaseArea: '' // optional
+      });
+
+      $(".win_box_close").click(function(event) {
+          $(".logo_box").hide();
+      });
+
+      $(".changelogo").click(function(event) {
+          $(".logo_box").show();
+      });
+
+      $(".logo-item").click(function(event) {
+        $(".ht-logos .active").removeClass('active');
+        $(this).addClass('active');
+      });
+
+      $("#stepSave").click(function(event) {
+          if($(".ht-logos .active").length == 0){
+            return false;
+          }
+          var src = $(".ht-logos .active img").attr("src");
+          $(".meitu img").attr("src",src);
+          $(".logo_box").hide();
+      });
+
+      $(".dialog").click(function(event) {
+        $(".dialog_form").show();
+      });
+
+      $(".ht-yes a").click(function(event) {
+          $(".err-tips").html("");
+          $(".focus").removeClass('focus');
+          var _this = $(this);
+          if(!App.validate.run($("input[name=name]").val())){
+            $("input[name=name]").focus().addClass('focus').parent().find(".err-tips").html("请填写昵称");
+              return false;
+          }
+
+          if(App.validate.run($("input[name=tel]").val())){
+              if(!App.validate.run($("input[name=tel]").val(),"moblie")){
+                  $("input[name=tel]").focus().addClass('focus').parent().find(".err-tips").html("无效的电话");
+                return false;
+              }
+          }
+
+          if(App.validate.run($("input[name=mail]").val())){
+              if(!App.validate.run($("input[name=mail]").val(),"email")){
+                  $("input[name=mail]").focus().addClass('focus').parent().find(".err-tips").html("无效的邮箱");
+                return false;
+              }
+          }
+
+          if(App.validate.run($("input[name=qq]").val())){
+              if(!App.validate.run($("input[name=qq]").val(),"num")){
+                  $("input[name=qq]").focus().addClass('focus').parent().find(".err-tips").html("无效的QQ");
+                return false;
+              }
+          }
+          var data = $("#myForm").serializeArray();
+          data.push({name:"sex",value:$("input[name=sex]:checked").val()});
+          data.push({name:"logo",value:$(".meitu img").attr("src")});
+          $.ajax({
+             url: '/editInfo/',
+             type: 'POST',
+             dataType: 'JSON',
+             data: data,
+          })
+          .done(function(data) {
+              if(data.status == 1){
+                window.location.href= window.location.href;
+                //window.location.href="/success/userinfo/";
+              }else{
+                _this.parent().find(".err-tips").html(data.info);
+              }
+          })
+          .fail(function(xhr) {
+            _this.parent().find(".err-tips").html("发生了未知的错误,请刷新再试！");
+          });
+      });
+    });
+</script>
+</html>

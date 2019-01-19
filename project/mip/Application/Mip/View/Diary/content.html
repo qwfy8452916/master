@@ -1,0 +1,93 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修日记</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/diary/css/index.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <div class="riji-detail-hd under-line">
+        <div class="detail-img">
+            <a data-type="mip" href="">
+                <mip-img src="http://staticqn.qizuang.com/meitu/20170710/piaochuangsheji-674468"></mip-img>
+                <div class="detail-info">
+                    <span>{$info.meitu.title}</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="detail-person">
+        <div class="person-img"><mip-img src="{$info.user_info.logo}"></mip-img></div>
+        <span class="person-name">{$info.user_info.name}</span>
+    </div>
+    <div class="home-address">
+        <a data-type="mip" href="">
+            <i class="home-icon bg-icon"></i>
+            <span>{$info.xiaoqu}</span>
+        </a>
+    </div>
+    <if condition="($info.company_name neq '') and ($info.company.id neq '')">
+        <div class="company-address">
+            <a data-type="mip" href="http://{:C('MIP_DONAMES')}/company_home/{$info.company.id}">
+                <i class="company-icon bg-icon"></i>
+                <span>{$info.company_name}</span>
+                <i class="fr fa fa-angle-right"></i>
+            </a>
+        </div>
+    </if>
+    <div class="detail-list">
+        <div class="detail-item">
+            <div class="detail-date">
+                <span>{$info.diary_time|timeFormat}</span>
+            </div>
+            <div class="detail-text">
+                <!--如果有图片就  添加收起/全文 否则直接展示-->
+                <notempty name="info.img_list">
+                    <div class="detail-text-main">
+                        <mip-showmore maxheight='75' animatetime='.3' id="showmore01">{$info.content}
+                            <div class="detail-img-list">
+                                <volist name="info['img_list']" id="vo">
+                                    <div class="detail-item-img">
+                                        <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}" alt=""></mip-img>
+                                    </div>
+                                </volist>
+                            </div>
+                        </mip-showmore>
+                    </div>
+                    <div on="tap:showmore01.toggle" data-closetext="收起" class="mip-showmore-btn">全文</div>
+                    <else/>
+                    {$info.content}
+                </notempty>
+            </div>
+            <include file="Common:freeDesign"/>
+            <!--<div class="detail-img-list">
+                <volist name="info['img_list']" id="vo">
+                    <div class="detail-item-img">
+                        <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}" alt=""></mip-img>
+                    </div>
+                </volist>
+            </div>-->
+        </div>
+
+    </div>
+</block>
+<block name="script">
+    <script src="https://c.mipcdn.com/static/v1/mip-showmore/mip-showmore.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "{$baidu.url}",
+            "appid": "1575859058891466",
+            "title": "{$head.title}",
+            "images": [
+                <?php foreach($baidu['img'] as $key => $value){
+                    if(!empty($value)){
+                        echo $value . ",";}}?>
+            ],
+            "pubDate": "{$baidu.pubDate}",
+        }
+    </script>
+</block>

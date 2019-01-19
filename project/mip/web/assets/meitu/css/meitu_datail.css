@@ -1,0 +1,71 @@
+/*
+* @Author: qz_xsc
+* @Date:   2017-12-15 11:55:39
+* @Last Modified by:   qz_xsc
+* @Last Modified time: 2018-03-10 15:49:43
+*/
+html{height: 100% !important}
+body{background: #f5f5f5; height: 100% !important}
+html.mip-i-android-scroll, body.mip-i-android-scroll{height: 100%!important}
+.mip-layout-size-defined .mip-fill-content{margin:auto; width:100%;}
+.imgView,.no-cou{height:calc(100% - 50px); display: table;width: 100%;position: relative; }
+.center_view{display: table-cell; vertical-align: middle;width: 100%}
+.mip-carousel-indicatorbox{width:100%;  bottom:0px; color:#000; right:0px; text-align: right; background: #fff;}
+.mip-carousel-indicatorBoxwrap{height: 40px; line-height: 40px; padding-right: 10px; width:50px; float: right;}
+#footer{display: none;}
+.img_title{height: 40px; margin-top: -48px; line-height: 40px; padding-left: 10px; position: absolute;
+    font-size: 0.8em;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.page-box{
+    background: #F5F5F5;
+    margin:8px auto;
+    padding:0px;
+}
+.btn {
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    z-index: 888;
+    width: 100%;
+    width: 100vw;
+    font-size: 0px;
+}
+
+.btn a {
+    display: inline-block;
+    font-size: 14px;
+    background: #ff5353;
+    color:#fff;
+    height: 44px;
+    text-align: center;
+    line-height: 36px;
+    width: 50%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border:5px solid #fff;
+}
+.btn_box{
+    display: inline-block;
+}
+.btn mip-img{
+    float: left;
+    position: relative !important;
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+}
+.btn mip-img img{width:15px !important; height: 15px !important; min-width: auto!important; max-width: auto!important; margin-top: 3px}
+.btn  span{float: left; margin-top: -1px;margin-left: 10px; }
+
+.m-wrap{height: 100%}
+.img_title{ background: #fff; width: 100%; padding-left:0px; text-indent: 10px; margin-top: -40px !important}
+.mip-fill-content{display: inline-block;}
+.page_fenye{
+  position: fixed;
+  width: 100%;
+  bottom: 37px;
+}

@@ -1,0 +1,102 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修美图</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/meitu/css/meitu_datail.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <!-- 多图 -->
+    <if condition="$count gt 1">
+    <div class="imgView">
+        <div class="center_view">
+             <mip-carousel
+               defer="3000"
+               layout="responsive"
+               height="300"
+               width="400"
+               indicator
+               >
+               <volist name="info.now.child" id="v">
+                   <mip-img src="http://{:C('QINIU_DOMAIN')}/{$v.img_path}-s3.jpg" alt="{$v.title}" data-preview-src="" data-preview-group="1"></mip-img>
+               </volist>
+           </mip-carousel>
+
+            <div class="page-box">
+                <div class="img_title">
+                    {$info.now.title}
+                </div>
+                <div class="page-box-container">
+                    <div id="prev-page">
+                        <a data-type="mip" href="{$url.prev}" class="page-change">上一图集</a>
+                    </div>
+                    <div id="next-page" class="red-active">
+                        <a data-type="mip" href="{$url.next}" class="page-change">下一图集</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </if>
+
+    <!-- 单图 -->
+    <if condition="$count eq 1">
+    <div class="no-cou">
+        <div class="center_view">
+            <volist name="info.now.child" id="v">
+                <mip-img  src="http://{:C('QINIU_DOMAIN')}/{$v.img_path}-s3.jpg" alt="{$v.title}" data-preview-src="" data-preview-group="1"></mip-img>
+            </volist>
+        </div>
+    </div>
+    <div class="page_fenye">
+            <div class="img_title">
+                {$info.now.title}
+            </div>
+            <div class="page-box">
+                <div class="page-box-container">
+                    <div id="prev-page">
+                        <a data-type="mip" href="{$url.prev}" class="page-change">上一图集</a>
+                    </div>
+                    <div id="next-page" class="red-active">
+                        <a data-type="mip" href="{$url.next}" class="page-change">下一图集</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </if>
+
+
+
+    <div class="btn">
+        <a data-type="mip" href="http://{:C('MOBILE_DONAMES')}/sheji/">
+            <div class="btn_box">
+                <mip-img src="/assets/meitu/images/details/icon11.png"></mip-img><span>免费设计</span>
+            </div>
+        </a>
+        <a data-type="mip" href="http://{:C('MOBILE_DONAMES')}/baojia/">
+            <div class="btn_box">
+                <mip-img src="/assets/meitu/images/details/icon22.png"></mip-img><span>免费报价</span>
+            </div>
+        </a>
+    </div>
+</block>
+
+<block name="script">
+     <!--搜索框-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-form/mip-form.js"></script>
+    <!--下拉菜单切换-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+            "appid": "1575859058891466",
+            "title": "{$basic.head.title}",
+            "images": [],
+            "pubDate": "{$baidu['optime']}"
+        }
+    </script>
+</block>

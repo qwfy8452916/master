@@ -1,0 +1,49 @@
+input,select{outline: none;}
+
+
+.btn-addfl{background: #1890ff;color: #fff;}
+.tabwaik{overflow: hidden;margin-bottom: 50px;
+width: 60%;display: inline-block;}
+.addtanchuang{width: 600px;height: 326px;display: none;}
+
+.puthangwk{overflow: hidden;}
+.puthangwk .spantitle{display: inline-block;width: 80px;text-align: right;line-height: 40px;}
+.puthangwk .inputwk{width: 340px;height: 40px;display: inline-block;}
+.puthangwk .redxing{color: #f5222d;margin-left: 14px;}
+.puthangwk .selectwk{width: 348px;}
+.footwk{overflow: hidden;}
+.cancelbtn{margin-left: 20px;background: #fff;border:0;}
+.tishi{color: #f5222d;font-size: 12px;margin-left: 80px;height: 24px;}
+.resetpass{padding: 10px 30px;margin-left: 16px;}
+.passwaik{overflow: hidden;padding: 40px 0 18px 0;border-bottom: 1px solid #e6e6e6;}
+.p-tancfl .contentnr{margin-bottom: 0;border-bottom: 0;padding-bottom: 0;margin-top: 0;}
+.passtishi{text-align: left;margin-left: 190px;color: #f5222d;font-size: 12px;height: 24px;}
+
+.gongzhongwk{display: inline-block;height: 40px;margin-left: 35px;}
+.gongz-title{line-height: 40px;display: inline-block;}
+.gongzhongwk .gongzinput{width: 120px;display: inline-block;}
+
+.touxiangwk{overflow: hidden;width: 37%;height: 400px;display: inline-block;
+vertical-align:top;text-align: center;
+}
+.touxiangwk .photowk{overflow: hidden;}
+.photowk .photowk-title{vertical-align: top;font-size: 12px;color: #333;margin-top: 12px;margin-left: 5px;
+display: inline-block;}
+.photowk .photopic{display: inline-block;text-align: center;}
+.photopic .photopic-wrap{width: 148px;height: 148px;border-radius: 5px;overflow: hidden;}
+.photopic .photopic-wrap img{width: 100%;height: 100%;}
+.photopic .genghuan{margin-top: 16px;cursor:pointer;}
+.photowk .proposal{display: inline-block;vertical-align: top;margin-top: 12px;margin-left: 15px;
+color: #999;}
+
+.touxiangkz{width: 630px;height: 480px;position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin: auto;
+background: #fff;display: none;z-index: 10;padding-top: 20px;}
+.closequx{width: 15px;height: 15px;display: inline-block;
+position: absolute;top: 5px;right: 5px;padding: 10px;cursor: pointer;
+background: url(/assets/pc/img/Private/closegb.png) no-repeat center center;}
+
+.passsurewk{width: 450px;height: 150px;background: #fff;border-radius: 5px;position: fixed;top: 0;
+bottom: 0;left: 0;right: 0;margin: auto;z-index: 99;display: none;}
+.passsurewk .passsurems{text-align: center;margin-top: 10px;margin-top: 40px;font-size: 20px;}
+.passsurewk .suresave{width: 100px;height: 30px;line-height: 30px;text-align: center;background: #1890FF;color: #fff;
+display: block;border-radius: 5px;margin:auto;margin-top: 25px;cursor: pointer;outline: none;}

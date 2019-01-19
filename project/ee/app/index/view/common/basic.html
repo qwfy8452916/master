@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+
+    <title>齐装云管家-
+        {block name="title"}{/block}
+    </title>
+
+    <link rel="stylesheet" href="/assets/pc/css/Common/B_base.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/css/Public/P_public.css?v={:config('STATIC_VERSION')}">
+    <link rel="stylesheet" href="/assets/pc/css/Common/font-awesome.min.css?v={:config('STATIC_VERSION')}">
+    <script src="/assets/pc/js/Common/jquery1.11.3.min.js?v={:config('STATIC_VERSION')}"></script>
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" type="text/css" href="/assets/pc/css/Common/B_forIE.css?v={:config('STATIC_VERSION')}"/>
+        <script src="/assets/pc/js/Common/B_forIE.js?v={:config('STATIC_VERSION')}"></script>
+    <![endif]-->
+    {block name="link"}
+    <!-- 私有样式引入 -->
+    {/block}
+</head>
+<body>
+    <div class="b-container">
+        <div class="b-header">
+            <a class="erplogo" href="/"><img src="/assets/pc/img/Common/logo.png?v={:config('STATIC_VERSION')}" alt=""></a>
+            <div class="exitwk">
+               <div class="touxiangname">
+                    <span class="touxiang">
+                        {if isset($accinfo['accountimg']) and $accinfo['accountimg'] != '' }
+                            <img src="http://{$accinfo.accountimg}" alt="">
+                        {else}
+                            <img src="/assets/pc/img/Private/setphoto.png" alt="">
+                        {/if}
+                    </span>
+                    <span class="namecheghu">
+                        {if isset($accinfo['class_type']) and $accinfo['class_type'] == 1 }
+                            {$accinfo.jc|default=''}
+                        {else}
+                            {$accinfo.contact_name}
+                        {/if}
+                    </span>
+                </div>
+                <span class="tuichuwk"><a href="/login/clearUserInfo"><i class="fa fa-power-off" aria-hidden="true"></i></a></span>
+            </div>
+
+        </div>
+        <div class="b-fl b-menu-box">
+            <ul class="b-menu">
+                <br>
+                <li {if condition="$url eq '//' "} class='b-current-menu'{/if}>
+                    <a href="/" class="b-menu-father">首页</a>
+                </li>
+                {volist name='menus' id='vo'}
+                <li>
+                    <div class="b-owf b-menu-father" data-open="0">
+                        <span class="b-fl">{$vo.name}</span>
+                        <i class="b-fr fa fa-chevron-down"></i>
+                    </div>
+                    <ul>
+                        {present name='vo["children"]'}
+                        {volist name='vo.children' id='v'}
+
+                            <li {if condition="$url eq $v.link"} class='b-current-menu'{/if}>
+                                <a href="{$v.link}">{$v.name}</a>
+                            </li>
+                        {/volist}
+                        {/present}
+                    </ul>
+                </li>
+                {/volist}
+                <li {if condition="$url eq '/userset/' "} class='b-current-menu'{/if}>
+                <a href="/userset/" class="b-menu-father">个人设置</a>
+                </li>
+            </ul>
+        </div>
+        <div class="b-right-content">
+            <div class="b-bread-text">
+                {block name="bread_title"}
+                {/block}
+            </div>
+            <div class="b-main-content">
+                {block name='content'}
+                   <!-- 主体模块 -->
+                {/block}
+            </div>
+
+        </div>
+    </div>
+    <script src="/assets/pc/js/Common/B_basic.js?v={:config('STATIC_VERSION')}"></script>
+    {block name='script'}
+
+    {/block}
+</body>
+</html>

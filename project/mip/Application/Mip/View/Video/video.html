@@ -1,0 +1,64 @@
+<extend name="Common:basic"/>
+<block name="pageTitle">
+   <div class="m-header-tit">装修视频</div>
+</block>
+<block name="link">
+    <link rel="stylesheet" href="{$static_host}/assets/video/css/video.css?v={:C('STATIC_VERSION')}">
+    <link rel="canonical" href="{$canonical}">
+</block>
+<block name="content">
+    <iframe src="{$info.info.mobile_url}" frameborder="0"   allowfullscreen style="width: 100%;"></iframe>
+    <div class="zt-tle clearfix">
+        <span>本期看点</span>
+    </div>
+    <div class="zt-jie">
+        <p>{$info.info.description}</p>
+        <!--<div class="assist like-btn" data-id="342">
+            <i class="fa fa-thumbs-up"></i>
+            <span>{$info.info.likes}</span>
+        </div>-->
+    </div>
+    <div class="zt-tle clearfix">
+        <span>视频推荐</span>
+    </div>
+    <div class="fg-list-box">
+        <volist name="info.recommend" id="vo">
+            <div class="fg-list-box">
+                <div class="fg-list clearfix">
+                    <a data-type="mip" href="{$global_basehost}/video/v{$vo.id}.html">
+                        <div class="fg-img">
+                            <mip-img src="http://{:C('QINIU_DOMAIN')}/{$vo.cover_img}-w400.jpg" alt="{$vo.title}"></mip-img>
+                        </div>
+                        <div class="zt-sent fg-send">
+                            <p class="h2">{$vo.title}</p>
+                            <p>本期讲师: {$vo.author}</p>
+                            <em>第{$vo.time|date="Y-m-d",###}期</em>
+                            <i class="fg-yj fa fa-eye"> {$vo.pv}</i>
+                            <i class="fa fa-video-camera"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </volist>
+
+
+        <include file="Common:freeDesign"/>
+
+    </div>
+
+</block>
+<block name="script">
+
+</block>
+<block name="xiongzhang_script">
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://{$_SERVER['SERVER_NAME']}{$_SERVER["REQUEST_URI"]}",
+            "appid": "1575859058891466",
+            "title": "{$basic.head.title}",
+            "images": [],
+            "pubDate": "{$baidu['optime']}"
+        }
+    </script>
+</block>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{$keys.keywords}">
+    <meta name="description" content="{$keys.description}">
+    <link href="http://{$cityInfo.bm}.{:C('QZ_YUMING')}/company_message/{$info.user.id}" rel="canonical" />
+    <title>{$keys.title}{$title}</title>
+    <include file="Index:resource" />
+    <link rel="stylesheet" type="text/css" href="/assets/mobile/companyhome/css/company.css?v={:C('STATIC_VERSION')}">
+</head>
+
+<body>
+    <include file="SubIndex:header" />
+    <include file="Companyhome:header" />
+    <div class="banxin">
+        <div class="pinjia mar-t20">
+			<ul class="pinjia-left fl-l">
+				<li>设计水平：
+					<i class="star2">
+                     <if condition="(($info['user']['avgsj'] NEQ 0 AND $info['user']['avgsj'] EGT 9) OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 9))">
+                        <i class="star1" style="width:0.32rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgsj'] NEQ 0 AND$info['user']['avgsj'] EGT 8 AND $info['user']['avgsj'] LT 9)OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 8 AND $info['user']['avgcount'] LT 9))" />
+                    <i class="star1"  style="width:0.26rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgsj'] NEQ 0 AND$info['user']['avgsj'] EGT 4 AND $info['user']['avgsj'] LT 8)OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 4 AND $info['user']['avgcount'] LT 8))" />
+                    <i class="star1" style="width:0.20rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgsj'] NEQ 0 AND$info['user']['avgsj'] EGT 2 AND $info['user']['avgsj'] LT 4)OR($info['user']['avgsj'] EQ 0 AND $info['user']['avgcount'] EGT 2 AND $info['user']['avgcount'] LT 4))" />
+                    <i class="star1" style="width:0.14rem;"></i>
+                    <ELSE/>
+                    <i class="star1" style="width:0.07rem;"></i>
+                    </if>
+                    </i>
+					<if condition="$info['user']['avgsj'] NEQ 0">
+                        <em>{$info.user.avgsj}分</em>
+                        <else/>
+                        <em>{$info.user.avgcount}分</em>
+                    </if>
+                </li>
+				<li>服务态度：
+					<i class="star2">
+                     <if condition="(($info['user']['avgfw'] NEQ 0 AND $info['user']['avgfw'] EGT 9) OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 9))">
+                        <i class="star1" style="width:0.32rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgfw'] NEQ 0 AND$info['user']['avgfw'] EGT 8 AND $info['user']['avgfw'] LT 9)OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 8 AND $info['user']['avgcount'] LT 9))" />
+                    <i class="star1"  style="width:0.26rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgfw'] NEQ 0 AND$info['user']['avgfw'] EGT 4 AND $info['user']['avgfw'] LT 8)OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 4 AND $info['user']['avgcount'] LT 8))" />
+                    <i class="star1" style="width:0.20rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgfw'] NEQ 0 AND$info['user']['avgfw'] EGT 2 AND $info['user']['avgfw'] LT 4)OR($info['user']['avgfw'] EQ 0 AND $info['user']['avgcount'] EGT 2 AND $info['user']['avgcount'] LT 4))" />
+                    <i class="star1" style="width:0.14rem;"></i>
+                    <ELSE/>
+                    <i class="star1" style="width:0.07rem;"></i>
+                    </if>
+                    </i>
+					<if condition="$info['user']['avgfw'] NEQ 0">
+                        <em>{$info.user.avgfw}分</em>
+                        <else/>
+                        <em>{$info.user.avgcount}分</em>
+                    </if>
+				</li>
+				<li>施工水平：
+					<i class="star2">
+                     <if condition="(($info['user']['avgsg'] NEQ 0 AND $info['user']['avgsg'] EGT 9) OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 9))">
+                        <i class="star1" style="width:0.32rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgsg'] NEQ 0 AND$info['user']['avgsg'] EGT 8 AND $info['user']['avgsg'] LT 9)OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 8 AND $info['user']['avgcount'] LT 9))" />
+                    <i class="star1"  style="width:0.26rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgsg'] NEQ 0 AND$info['user']['avgsg'] EGT 4 AND $info['user']['avgsg'] LT 8)OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 4 AND $info['user']['avgcount'] LT 8))" />
+                    <i class="star1" style="width:0.20rem;"></i>
+                    <ELSEIF condition="(($info['user']['avgsg'] NEQ 0 AND$info['user']['avgsg'] EGT 2 AND $info['user']['avgsg'] LT 4)OR($info['user']['avgsg'] EQ 0 AND $info['user']['avgcount'] EGT 2 AND $info['user']['avgcount'] LT 4))" />
+                    <i class="star1" style="width:0.14rem;"></i>
+                    <ELSE/>
+                    <i class="star1" style="width:0.07rem;"></i>
+                    </if>
+                    </i>
+					<if condition="$info['user']['avgsg'] NEQ 0">
+                        <em>{$info.user.avgsg}分</em>
+                        <else/>
+                        <em>{$info.user.avgcount}分</em>
+                    </if>
+				</li>
+			</ul>
+			<div class="pinjia-right fl-l">综合评价：<span class="hot"><if condition="$info['user']['avgsj'] NEQ 0">{$info.user.avgscore}<else/>{$info.user.avgcount}</if>
+			分</span>
+			</div>
+		</div>
+    	<volist name="info.comments" id="vo">
+    		<div class="pj-case  mar-t20">
+	            <div class="userhead1">
+	            	<span>
+	            		<img alt="{$vo.name}" src="{$vo.logo}">
+	            	</span>&nbsp;{$vo.name}
+	            </div>
+	            <div class="pj-text">
+	                <div class="mar-b10">综合评价：<i class="hot">{$vo.totalCount}分</i></div>
+	                <p>{$vo.text|default="abcd"}</p>
+	                <span class="timer">{$vo.time|date="Y-m-d H:i:s",###}</span>
+	                <if condition="$vo['rptxt'] NEQ ''">
+			            <div class="pj-re">
+							<p>回复：</p>
+							{$vo.rptxt}
+						</div>
+					</if>
+	            </div>
+        	</div>
+		</volist>
+        {$info.page}
+    </div>
+	<include file="SubIndex:footer" />
+</body>
+
+</html>

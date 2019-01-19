@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计时器</title>
+</head>
+<body>
+    <div class="neirong" id="neirong">0</div>
+    <span class="zhixing" onclick="zhixing1()">执行</span>
+    <span onclick="clear1()">停止</span>
+    <script>
+       var bb=0;
+       var cc;
+       var fudian=true;
+       
+       function time(){ 
+           bb=++bb;
+           document.getElementById('neirong').innerText=bb;
+       }
+
+            function zhixing1(){
+             if(fudian==true){
+                fudian=false;
+                cc=setInterval(time,1000)
+             }     
+        }
+
+      
+
+       function clear1(){
+           fudian=true;
+           window.clearInterval(cc);
+       }
+
+    </script>
+</body>
+</html>

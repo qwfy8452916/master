@@ -1,0 +1,177 @@
+/*
+* @Author: jsb
+* @Date:   2018-08-30 16:21:17
+* @Last Modified by:   qz_dc
+* @Last Modified time: 2018-09-18 09:17:11
+*/
+
+.add {
+    width: 100%;
+}
+.add-box {
+    width: 6rem;
+    margin: 1rem auto;
+    height: 0.85rem;
+    line-height: 0.85rem;
+    padding: 0;
+}
+.add .img {
+    float: left;
+    height: 100%;
+    width: 0.85rem;
+    margin-right: 0.3rem;
+}
+.add .img img {
+    display: block;
+    width: 100%;
+}
+.add .add-supplier {
+    float: left;
+}
+.supplier-list {
+    background: #fff;
+    font-size: 0.7rem;
+    color:#212121;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 0.8rem;
+    box-sizing: border-box;
+}
+.supplier-list .close {
+    position: absolute;
+    top:0.5rem;
+    right:0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
+}
+.supplier-list .close img {
+    display: block;
+    width: 100%;
+}
+.supplier-list .list-box {
+    padding: 0.5rem;
+}
+.supplier-list .list-box > div {
+    margin-top: 0;
+    margin-left: 0;
+}
+.supplier-list .list-box span {
+    float: left;
+}
+.supplier-list .list-btn {
+    border-top: 1px solid #E6E6E6;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.supplier-list .list-btn .edit-detail div {
+    width: 2.5rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    text-align: center;
+    font-size: 0.7rem;
+    float: left;
+    border-radius:0.2rem;
+}
+.supplier-list .list-btn .edit-detail {
+    margin-left: 10rem;
+    margin-right: 1rem;
+}
+.supplier-list .list-btn .edit-detail .edit {
+    background:#0E94EA;
+    color: #fff;
+    border: 1px solid #0E94EA;
+    margin-right: 1.5rem;
+}
+.supplier-list .list-btn .edit-detail .detail {
+    border: 1px solid #999;
+}
+.panel-overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+    opacity: 0.5;
+    z-index: 98;
+}
+.panel {
+    display: none;
+    position:absolute;
+    top: 6%;
+    right: 0;
+    width: 14rem;
+    height: 94%;
+    background:#fff;
+    z-index: 99;
+}
+#searchBar {
+    padding:8px;
+    background: #fff;
+    border:none;
+}
+#searchBar form {
+
+}
+.search-box {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+.search-box i {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+}
+.style {
+    margin-top: 1.6rem;
+    margin-left: 1rem;
+}
+.style > div {
+    color: #212121;
+    word-break: break-all;
+}
+.style select {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    width: 7.5rem;
+    font-size: 0.65rem;
+    color: #212121;
+    padding-bottom: 0.25rem;
+    outline: none;
+}
+.btn {
+    position: absolute;
+    bottom: 20px;
+    padding-left: 0.75rem;
+}
+.btn button {
+    width: 5.75rem;
+    height: 1.9rem;
+    line-height: 1.9rem;
+    border: 1px solid #ccc;
+    background: #ccc;
+    color: #fff;
+    border-radius: 1rem;
+    outline: none;
+}
+.btn .reset {
+    margin-right:0.875rem;
+}
+.btn .ensure {
+    background: #0E94EA;
+}
+
+.search {
+    background: #fff;
+    padding: 0.5rem 1rem;
+}
+
+.no-supplier {
+    color:#E31919;
+    padding-left: 1.5rem;
+    display: none;
+}

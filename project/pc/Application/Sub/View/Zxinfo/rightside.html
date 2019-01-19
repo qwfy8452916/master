@@ -1,0 +1,73 @@
+<div class="wenzright">
+    <div class="rtel">
+        <form class="secbox_form" onsubmit="return false;" autocomplete="off">
+            <p class="title">免费获取4份设计方案</p>
+            <p class="sub-title">今日已有<span data-type="fd-number">{$fbrs}</span>个人获取报价</p>
+            <div class="box-line">
+                <select class="edit-city mr10" name="cs"></select>
+                <select class="edit-quyu" name="qy"></select>
+                <label for=""></label>
+            </div>
+            <div class="box-line">
+                <input type="text" name="address" placeholder="填写小区名称以便精准匹配">
+                <label for=""></label>
+            </div>
+            <div class="box-line">
+                <input type="text" name="area" placeholder="请输入您的房屋面积">
+                <i class="area-symbol">m²</i>
+                <label for=""></label>
+            </div>
+            <div class="box-line">
+                <input type="text" name="tel" maxlength="11" placeholder="输入手机号获取设计方案">
+                <label for=""></label>
+            </div>
+            <div class="box-line disclaimer">
+                <div class="disclamer-line" style="margin-top: 0px;">
+                    <span class="disclamer-check pull-left" data-type="disclaimer" data-checked="true"><i class="fa fa-check"></i></span>
+                    <span class="disclamer-text pull-left">我已阅读并同意齐装网的</span>
+                    <a href="http://www.qizuang.com/about/disclamer" target="_blank" class="pull-left"><span>《免责申明》</span></a>
+                </div>
+            </div>
+            <div class="box-line">
+                <button id="btnSub">免费获得4份设计方案</button>
+            </div>
+        </form>
+    </div>
+    <div class="baojia-banner">
+        <a href="http://{:C('QZ_YUMINGWWW')}/zxbj/"  target="_blank"><img src="{$static_host}/assets/home/article/img/banner.jpg" /></a>
+    </div>
+    <!--装修公司-->
+    <div class="public-side mb30">
+        <div class="caption">
+            <h2>服务优质装修公司</h2>
+            <a href="/company/" target="_blank" class="more">更多>></a>
+        </div>
+        <ul class="rank-company">
+            <volist name="rightlist.company" id="cv" key="ck">
+                <li>
+                    <a href="http://{$cv.bm}.qizuang.com/company_home/{$cv.id}/" target="_blank" class="tiny-logo">
+                        <img src="{$cv.logo|default='http://'.C("QINIU_DOMAIN").'/'.OP("DEFAULT_COMPANY_LOGO")}" alt="{$cv.qc}" width="84" height="42" class="lazy1">
+                    </a>
+                    <a href="http://{$cv.bm}.qizuang.com/company_home/{$cv.id}/" target="_blank" title="{$cv['qc']}" class="company-name">{:mbstr($cv['qc'],0,7,'utf-8',false)}</a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+    <!--设计师-->
+    <div class="public-side">
+        <div class="caption">
+            <h2>{$cityInfo.name}装修设计师排行榜</h2>
+            <a href="/designer/" target="_blank" class="more">更多>></a>
+        </div>
+        <ul class="rank-designer">
+            <volist name="rightlist.designer" id="cv" key="ck">
+                <li>
+                    <a href="http://{$cv.bm}.qizuang.com/blog/{$cv.uid}/" target="_blank" class="avatar" rel="nofollow">
+                        <img src="{$cv.logo|default='http://'.C("QINIU_DOMAIN").'/'.OP("DEFAULT_LOGO")}" alt="{$cv.name}">
+                    </a>
+                    <a href="http://{$cv.bm}.qizuang.com/blog/{$cv.uid}/" target="_blank" class="designer-name">{:mbstr($cv['name'],0,7,'utf-8',false)}</a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</div>

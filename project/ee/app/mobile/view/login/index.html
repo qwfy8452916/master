@@ -1,0 +1,29 @@
+
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap login-container">
+    <h1 class="caption">齐装云管家</h1>
+    <div class="input-line">
+        <i class="iconfont icon-user"></i>
+        <input type="text" placeholder="账号" data-name="username">
+    </div>
+    <div class="input-line" style="margin-bottom: 2.5rem;">
+        <i class="iconfont icon-lock"></i>
+        <input type="password" placeholder="密码" data-name="password">
+    </div>
+    <p class="error-container" data-name="error-container">无此账号，请重新输入</p>
+    <div class="input-line" style="border-bottom: none">
+        <button class="weui-btn sign" data-name="sign">登录</button>
+    </div>
+    <div class="getback-password-text"><a href="/login/findpsw" >找回密码</a></div>
+</div>
+{/block}
+{block name='script'}
+<script type="text/javascript" src="/assets/mobile/common/js/store.everything.min.js?v={:config('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/login/js/sign.js?v={:config('STATIC_VERSION')}"></script>
+{/block}
+

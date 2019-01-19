@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>请求mock</title>
+</head>
+<body>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+       <script>
+         $(function(){
+
+           $.ajax({
+               url:'https://www.easy-mock.com/mock/5b7f7b7d4a96987699e40656/dc/renyuan',
+               type:'get',
+               dataType:'json',
+               success:function(res){
+                 console.log(res.data.name)
+               }
+               
+           })
+
+         }) 
+        
+        </script>
+</body>
+</html>

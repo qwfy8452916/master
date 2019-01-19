@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+		
+      $(function(){
+
+       var data = {    
+                 "李慧慧":145000,
+                 "安杰":135000,
+                 "Jom":15000,
+                 "张公子":1456,
+                 "吴功子":45446,
+                 "钱雨奇":78779,
+                 "王达":25235,
+                 "李萌":4646,
+                 "于成龙":64646,
+
+             }
+
+         // $.each(data,function(key,value){
+         //         console.log("姓名："+key+";"+"对应值："+data[key]);
+
+         //     })
+        var i=0;
+        for(k in data)
+             {
+             	++i;
+                console.log("姓名："+k+";"+"对应值："+data[k]);
+                console.log(i)
+             }
+          console.log(i)
+
+
+      })
+
+	</script>
+</body>
+</html>

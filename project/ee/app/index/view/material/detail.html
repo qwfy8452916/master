@@ -1,0 +1,65 @@
+{extend name="common:basic" /}
+{block name="title"}
+    材料进销
+{/block}
+{block name="link"}
+<link rel="stylesheet" href="/assets/pc/css/Private/material/index.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="bread_title"}
+<span>材料进销/详情</span>
+{/block}
+{block name="content"}
+    <div class="p-panel">
+        <div class="p-header">
+            相关订单
+        </div>
+        <div class="p-body">
+            <table class="detail-table">
+                <tr>
+                    <td><span class="table-title">业主姓名</span>{$orders.consumer_name}</td>
+                    <td><span class="table-title">订单编号</span>{$orders.qz_order}</td>
+                    <td><span class="table-title">ERP单号</span>{$orders.order_no}</td>
+                </tr>
+                <tr>
+                    <td><span class="table-title">装修地址</span>{$orders.build_address}</td>
+                    <td><span class="table-title">户型</span>{$orders.name}</td>
+                    <td><span class="table-title">面积</span>{$orders.house_area} ㎡</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="p-panel">
+        <div class="p-header">
+            材料
+        </div>
+        <div class="p-body">
+            <table class="detail-table detail-gys">
+                <tr><td><span class="table-title">供应商</span>{$info.supplier_name}</td></tr>
+            </table>
+            <table class="p-suppliertab">
+                <thead>
+                    <tr>
+                        <td>材料名称</td><td>数量</td><td>单价(元)</td><td>总价(元)</td><td>采购时间</td>
+                        <td>送货时间</td><td>票据单号</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {volist name="info.list" id="vo"}
+                <tr>
+                    <td>{$vo.name}</td> <td>{$vo.amount}</td><td>{$vo.price}</td><td>{$vo.amount*$vo.price}</td><td>{$vo.buy_time}</td>
+                    <td>{$vo.send_time}</td><td>{$vo.note}</td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="bottom-btn b-fr">
+        <a href="/material/" class="p-btn p-primary">返回</a>
+    </div>
+    <div class="b-cleat-float"></div>
+{/block}
+{block name="script"}
+
+{/block}

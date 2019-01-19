@@ -1,0 +1,38 @@
+{extend name="common:basic" /}
+{block name="link"}
+<link rel="stylesheet" href="/assets/mobile/public/P_index.css?v={:config('STATIC_VERSION')}">
+<link rel="stylesheet" href="/assets/mobile/privite/s1.css?v={:config('STATIC_VERSION')}">
+{/block}
+{block name="content"}
+<div class="m-wrap">
+    <header class="sim-table public-header">
+        <div class="menu" style="width: 0.85rem;" id="menu">
+            <img src="/assets/mobile/common/img/menu.png" alt="">
+        </div>
+        <div>设置</div>
+        <div></div>
+    </header>
+    <div class="set-index-container">
+        <div class="sim-table company-head-area set-head-area">
+            <div class="first"><img src="/assets/mobile/common/img/avatar.png" alt=""></div>
+            <div class="second" style="width: 10rem;">
+                <p class="cname">某某公司</p>
+                <p class="permission">账号：王二</p>
+                <p class="role">角色：项目经理</p>
+            </div>
+            <a href="manageruserset" style="padding-top: 1.25rem;"><div class="third text-right"><i class="iconfont icon-angle-right"></i></div></a>
+        </div>
+        <div class="set-base">
+            <div class="sim-table set-base-item">
+                <div class="first"><i class="iconfont icon-lock"></i></div>
+                <div class="second">密码更改</div>
+                <a href="manageruserpsw"><div class="third text-right"><i class="iconfont icon-angle-right"></i></div></a>
+            </div>
+        </div>
+    </div>
+    <button class="sign-out">退出登录</button>
+</div>
+{/block}
+{block name='script'}
+
+{/block}

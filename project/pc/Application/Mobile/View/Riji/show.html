@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"/>
+<meta content="telephone=no" name="format-detection" />
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="http://{:C('QZ_YUMINGWWW')}/riji/d{$info.id}.html" rel="canonical" />
+<link href="/assets/mobile/css/m-pub.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<link href="/assets/mobile/css/m-diary.css?v={:C('STATIC_VERSION')}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/common/js/jquery.min.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/jquery.smint.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/TouchSlide.1.1.js?v={:C('STATIC_VERSION')}"></script>
+<script type="text/javascript" src="/assets/mobile/js/common.js?v={:C('STATIC_VERSION')}"></script>
+<link rel="stylesheet" href="/assets/home/diary/css/font-awesome.min.css?v={:C('STATIC_VERSION')}">
+<!--[if IE 7]>
+<link rel="stylesheet" href="/assets/mobile/css/font-awesome-ie7.min.css?v={:C('STATIC_VERSION')}">
+<![endif]-->
+<title>{$info.title} - 装修日记</title>
+</head>
+
+<body>
+<div class="m-wrap">
+  <div class="m-nav"> <a href="/riji" class="m-back"><span></span>后退</a>
+	<div class="m-title">装修日记</div>
+	<include file="Index:topMenu" />
+</div>
+
+<div class="m-logo"><div class="logo-main"></div><div class="logo-s"></div></div>
+
+<a class="neckad-into" href="#"><img src="/assets/mobile/images/hl.jpg" width="640" height="142" alt=""/></a>
+
+<div class="diary-main">
+    <if condition="$info['stage'] eq '1' "><div class="diary-t1">准备阶段</div><elseif condition="$info['stage'] eq 2" /><div class="diary-t2">施工阶段</div><else/><div class="diary-t3">入住阶段</div></if>
+    <h2>{$info.title}</h2>
+    <div class="user-info">
+        <img src="{$info.user_info.logo}" alt=""/>
+        <span>{$info.user_info.name}</span>
+        <span>{$info.diary_time|timeFormat} 更新</span>
+    </div>
+    <p>{$info.content}</p>
+    <div class="diary-main-img">
+        <volist name="info['img_list']" id="vo">
+            <img src="http://{:C('QINIU_DOMAIN')}/{$vo.img_path}" width="547" height="380" alt="" />
+        </volist>
+    </div>
+</div>
+
+<dl class="more-links">
+    <dt>相关日记</dt>
+    <volist name="otherDiary" id="v">
+    <dd><a href="/riji/d{$v.id}.html">{$v.title}</a><span>{$v.diary_time|timeFormat}</span></dd>
+    </volist>
+</dl>
+
+</div>
+
+ <include file="Index:newFooter" />
+</body>
+</html>
