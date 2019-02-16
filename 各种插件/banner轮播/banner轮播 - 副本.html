@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>banner轮播</title>
+    <style>
+      html,body{margin:0;padding: 0;}
+      .showkuang{width: 520px;height: 300px;overflow: hidden;border: 1px solid #8aeafe;
+      position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+      .bannerlength{width:2080px;overflow: hidden;margin: 0;padding: 0;}
+      .bannerlength li{float: left;width: 520px;height: 100%;list-style: none;}
+      .bannerlength li img{width: 100%;}
+      .showkuang .niu{display: inline-block;width: 30px;height: 40px;line-height: 40px;
+      text-align: center;font-size: 30px;top: 50%;margin-top: -15px;background: rgba(0,0,0,.5);
+      position: absolute;color: #fff;cursor: pointer;}
+      .showkuang .niu_pre{left: 0;}
+      .showkuang .niu_next{right: 0;}
+
+      .yuandianwk{position: absolute;bottom: 0;width: 100%;text-align: center;}
+      .yuandianwk span{width: 15px;height: 15px;display: inline-block;border-radius: 50%;border: 1px solid #fff;}
+      .yuandianwk .on{background: #f5e922;}
+
+      .showul li{display: inline-block;width: 150px;height: 50px;overflow: hidden;}
+      .showul li img{width: 100%;height: 100%;}
+
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="showul">
+                <li data-id="0">
+                    <img src="http://d.hiphotos.baidu.com/image/pic/item/caef76094b36acaf6d1e855571d98d1000e99c98.jpg" alt="001">
+                </li>
+                <li data-id="1">
+                    <img src="http://d.hiphotos.baidu.com/image/pic/item/9825bc315c6034a84d0cf125c6134954082376a3.jpg" alt="002">
+                </li>
+                <li data-id="2">
+                    <img src="http://c.hiphotos.baidu.com/image/pic/item/2f738bd4b31c870173d4b35d2a7f9e2f0708ff2f.jpg" alt="003">
+                </li>
+                <li data-id="3">
+                    <img src="http://a.hiphotos.baidu.com/image/pic/item/960a304e251f95caf1852c0bc4177f3e6709521e.jpg" alt="004">
+                </li>
+        </ul>
+    </div>
+
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="imgswiper.js"></script>
+
+    <script>
+       $(function(){
+        
+        
+        $('.showul li').click(function(){
+            var imgarr=[],
+                imglenth=$(this).parent().children("li"),
+                imgindex=$(this).index();
+            imglenth.each(function(inex,el){
+               var imginfo={imgpath:"",imgname:""};
+               imginfo.imgpath=$(el).children("img").attr("src");
+               imginfo.imgname=$(el).children("img").attr("alt")
+               imgarr.push(imginfo)
+            })
+             
+           $(this).imgswiper({
+               dewidth:1100,
+               imgarr:imgarr,
+               currindex:imgindex,
+               imgtitle:"默认标题",
+           })
+        })
+
+
+
+       })
+    
+    </script>
+</body>
+</html>
