@@ -1,12 +1,12 @@
 {extend name="common:basic" /}
 {block name="title"}
-    材料进销
+材料使用明细
 {/block}
 {block name="link"}
 <link rel="stylesheet" href="/assets/pc/css/Private/material/index.css?v={:config('STATIC_VERSION')}">
 {/block}
 {block name="bread_title"}
-<span>材料进销</span>
+<span>材料使用明细</span>
 {/block}
 {block name="content"}
 <form id="dataform" action="/material/" method="get">
@@ -49,6 +49,7 @@
                     <td><span>订单编号：</span><a href="/order?order_no={$vo.erp_id}" class="p-eidt" target="_blank">{$vo.erp_id}</a></td>
                     <td><span>业主姓名：</span>{$vo.consumer_name}</td>
                     <td><span>供应商：</span>{$vo.supplier_name}</td>
+                    <td><span>总计金额：</span>{if($vo.sum_money == 0)}--{else/}{$vo.sum_money} 元{/if}</td>
                 </tr>
             </table>
             <table class="p-suppliertab">
@@ -62,8 +63,12 @@
                 {present name="vo.list"}
                 {volist name="vo.list" id="v"}
                 <tr data-value="{$v.id}"  data-id='{$v.id}'>
-                    <td>{$v.name}</td> <td>{$v.amount}</td><td>{$v.price}</td><td>{$v.price*$v.amount}</td><td>{$v.buy_time}</td>
-                    <td>{$v.send_time} </td><td>{$v.note}</td>
+                    <td>{$v.name}</td> <td>{$v.amount}</td><td>{if $v['price'] == 0}--{else/}{$v.price}{/if}</td><td>{if $v['price']*$v['amount'] == 0}--{else/}{$v['price']*$v['amount']}{/if}</td><td>{$v.buy_time}</td>
+                    <td>{$v.send_time} </td><td>{$v.note}
+                    {notempty name="v.note_img"}
+                    <span class="smallpicwk" data-value="http://{$v.note_img}"><img src="/assets/pc/img/Private/smallpic.png"></span>
+                    {/notempty}
+                </td>
                     <td>
                         {if($v['state'] == 1) }
                         未到货
@@ -87,10 +92,14 @@
                 <span class="p-delete{if (!btnRule('/material/del'))} btn_hide{/if}" data-id="{$vo.id}">删除</span>
             </div>
         </div>
-        {/volist}
+    {/volist}
 </div>
 
-
+{if empty($list)}
+    <div class=" p-panel p-no-data ">
+        暂无材料使用明细
+    </div>
+    {else/}
     <div class="load-more" >
         {if($page == 0)}
         <span>没有更多了~</span>
@@ -98,6 +107,13 @@
         <span id="more_span" data-page='{$page}'>加载更多</span><i class="fa fa-spinner" id="wait" style="display: none;"></i>
         {/if}
     </div>
+{/if}
+<div class="maskyiny"></div>
+<div class="bigshowimgwk">
+    <span class="closegbniu">X</span>
+    <img src="//yxbqn.qizuang.com/build/2019/02/15115539e2c664041" alt="">
+</div>
+    
 {/block}
 {block name="script"}
 <script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>

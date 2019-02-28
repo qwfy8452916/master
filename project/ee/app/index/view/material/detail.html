@@ -1,12 +1,12 @@
 {extend name="common:basic" /}
 {block name="title"}
-    材料进销
+材料使用明细
 {/block}
 {block name="link"}
 <link rel="stylesheet" href="/assets/pc/css/Private/material/index.css?v={:config('STATIC_VERSION')}">
 {/block}
 {block name="bread_title"}
-<span>材料进销/详情</span>
+<span>材料使用明细/详情</span>
 {/block}
 {block name="content"}
     <div class="p-panel">
@@ -17,13 +17,17 @@
             <table class="detail-table">
                 <tr>
                     <td><span class="table-title">业主姓名</span>{$orders.consumer_name}</td>
-                    <td><span class="table-title">订单编号</span>{$orders.qz_order}</td>
+                    <td><span class="table-title">装修地址</span>{$orders.build_address}</td>
                     <td><span class="table-title">ERP单号</span>{$orders.order_no}</td>
                 </tr>
                 <tr>
-                    <td><span class="table-title">装修地址</span>{$orders.build_address}</td>
+                    <td><span class="table-title">订单编号</span>{$orders.qz_order}</td>
                     <td><span class="table-title">户型</span>{$orders.name}</td>
-                    <td><span class="table-title">面积</span>{$orders.house_area} ㎡</td>
+                    <td><span class="table-title">面积</span>
+                    {notempty name='$orders.house_area'}
+                    {$orders.house_area} ㎡
+                    {/notempty}
+                    </td>
                 </tr>
             </table>
         </div>
@@ -35,20 +39,23 @@
         </div>
         <div class="p-body">
             <table class="detail-table detail-gys">
-                <tr><td><span class="table-title">供应商</span>{$info.supplier_name}</td></tr>
+                <tr>
+                    <td><span class="table-title">供应商</span>{$info.supplier_name}</td>
+                    <td><span class="table-title">总计金额</span>{if $info.sum_price == 0 }--{else/}{$info.sum_price|number_format=2} 元{/if}</td>
+                </tr>
             </table>
             <table class="p-suppliertab">
                 <thead>
                     <tr>
                         <td>材料名称</td><td>数量</td><td>单价(元)</td><td>总价(元)</td><td>采购时间</td>
-                        <td>送货时间</td><td>票据单号</td>
+                        <td>送货时间</td><td>票据单号</td><td>票据图片</td>
                     </tr>
                 </thead>
                 <tbody>
                 {volist name="info.list" id="vo"}
                 <tr>
-                    <td>{$vo.name}</td> <td>{$vo.amount}</td><td>{$vo.price}</td><td>{$vo.amount*$vo.price}</td><td>{$vo.buy_time}</td>
-                    <td>{$vo.send_time}</td><td>{$vo.note}</td>
+                    <td>{$vo.name}</td> <td>{$vo.amount}</td><td>{if($vo.price == 0)}--{else/}{$vo.price}{/if}</td><td>{if $vo.amount*$vo.price == 0}--{else/}{$vo.amount*$vo.price}{/if}</td><td>{$vo.buy_time}</td>
+                    <td>{$vo.send_time}</td><td>{$vo.note}</td><td>{notempty name='vo.note_img'}<span class="chakanpic" data-url="//{$vo.note_img}">查看</span>{/notempty}</td>
                 </tr>
                 {/volist}
                 </tbody>
@@ -59,7 +66,13 @@
         <a href="/material/" class="p-btn p-primary">返回</a>
     </div>
     <div class="b-cleat-float"></div>
+
+    <div class="maskyiny"></div>
+    <div class="bigshowimgwk">
+        <span class="closegbniu">X</span>
+        <img src="//yxbqn.qizuang.com/build/2019/02/15115539e2c664041" alt="">
+    </div>
 {/block}
 {block name="script"}
-
+<script type="text/javascript" src="/assets/pc/js/Private/material/detail.js?v={:config('STATIC_VERSION')}"></script>
 {/block}

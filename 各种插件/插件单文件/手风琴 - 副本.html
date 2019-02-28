@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手风琴</title>
+	<style>
+		.shoufengq{overflow: hidden;}
+		.shoufengq li{list-style: none;position: relative;width: 800px;
+		}
+		.shoufengq li .lititle{height: 40px;line-height: 40px;text-align: center;background: #229cf1;color: #fff;width: 100%;
+			cursor: pointer;position: relative;
+		}
+		.shoufengq li .zhanshishow{
+			/* height: 140px; */
+            height: auto;
+			background: #f1e178;display: none;width: 100%;
+		}
+		.shoufengq li .xianshi{display: block;}
+		.heightauto{height:40px !important;}
+
+		.defaicon{
+			transition: all 0.5s;
+			-moz-transition: all 0.5s;  /* Firefox 4 */
+			-webkit-transition: all 0.5s; /* Safari 和 Chrome */
+			-o-transition: all 0.5s;  /* Opera */
+		
+			float: right;
+			margin-right:15px;
+			display: inline-block;
+		}
+		.iconbj{
+			transform: rotate(180deg);
+			-webkit-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+		}
+	</style>
+</head>
+<body>
+	
+   <ul class="shoufengq">
+	   	<li>
+	   		<div class="lititle">标题1<span class="defaicon iconbj">V</span></div>
+	   		<div class="zhanshishow xianshi">asfasdfasdfasdfasdfasdfsadf</div>
+	   	</li>
+	   	<li class="heightauto">
+	   		<div class="lititle">标题2<span class="defaicon">V</span></div>
+	   		<div class="zhanshishow">asdfasf</div>
+	   	</li>
+	   	<li class="heightauto">
+	   		<div class="lititle">标题3<span class="defaicon">V</span></div>
+	   		<div class="zhanshishow"></div>
+	   	</li>
+	   	<li class="heightauto">
+	   		<div class="lititle">标题4<span class="defaicon">V</span></div>
+	   		<div class="zhanshishow"></div>
+	   	</li>
+	   	<li class="heightauto">
+	   		<div class="lititle">标题5<span class="defaicon">V</span></div>
+	   		<div class="zhanshishow"></div>
+	   	</li>
+   </ul>
+
+   <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+   <script type="text/javascript">
+   	
+      $(function(){
+         
+         $('.shoufengq li .lititle').click(function(event) {
+            var that=this;
+            if($(this).next(".zhanshishow").hasClass('xianshi')){
+				$(this).children('.defaicon').removeClass('iconbj')
+
+				$(this).next(".zhanshishow").stop().animate({height:"hide"},500,function(){
+					$(that).next(".zhanshishow").removeClass('xianshi');
+				});
+				
+			}else{
+
+                $(this).children('.defaicon').addClass('iconbj')
+				$(this).parent().siblings().find(".defaicon").removeClass('iconbj');
+
+                $(this).next(".zhanshishow").stop().animate({height:"show"},500);
+				$(this).parent().siblings().children(".zhanshishow").hide();
+				
+				$(this).next(".zhanshishow").addClass('xianshi');
+				$(this).parent().siblings().children(".zhanshishow").removeClass('xianshi');
+
+
+				$(this).parent().removeClass('heightauto');
+				$(this).parent().siblings().addClass("heightauto");
+
+			}
+         	
+         });
+
+      })
+
+
+
+   </script>
+
+</body>
+</html>

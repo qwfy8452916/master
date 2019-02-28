@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script src="jquery.js"></script>
+    <script>
+      $(function(){
+       
+    //   闭包
+
+       function zhixing(){
+           var count=0;
+           return function(){
+               count+=1
+               console.log(count)
+           }
+       }
+     
+     var diaoqqu=zhixing();
+     diaoqqu();
+     diaoqqu();
+
+//    字符串
+var str="abc";
+if(typeof str==="string"){
+    console.log(typeof str)
+}
+
+// url切割
+var urldata="http://erp.qizuang.com/order/detail?order_no=M2019021333513931&order_no2=M201902133",
+   urlarr=urldata.split("?")[1],
+   urlshuzu=urlarr.split("&");
+   console.log(urlshuzu)
+   var arr=[];
+   var map={};
+   for(var i=0;i<urlshuzu.length;i++){
+    arr.push(urlshuzu[i].split("="))
+     map[arr[i][0]]=arr[i][1]
+   }
+    console.log(arr)
+    console.log(map)
+
+
+    // 数组排序
+    var  arrval=[8,6,9,1,5,6],
+        // sorearr=arrval.sort(arrval),
+        revarr=arrval.reverse();
+        console.log(revarr)
+
+    // 剔除数组重复
+
+    var arrfu=[1,5,3,8,9,4,6,4,5];
+    var newarrfu=new Array();
+    // for(var i=0;i<arrfu.length;i++){
+    //     if(newarrfu.indexOf(arrfu[i])==-1){
+    //       newarrfu.push(arrfu[i]);
+    //     }
+    // }
+    $.each(arrfu,function(i,el){
+       if(newarrfu.indexOf(el)==-1){
+        newarrfu.push(el)
+       }
+    })
+    console.log(newarrfu)
+
+    // 循环数组
+
+    var xunarray=[6,5,4,1,2,3,8,9,7];
+     
+    //  $.each(xunarray,function(i,el){
+
+    //    if(el==4){
+    //        console.log(el)
+    //        return
+    //    }
+    //  })
+
+    // for(var i=0;i<xunarray.length;i++){
+    //    if(xunarray[i]==4){
+    //      console.log(xunarray[i])
+    //    }
+    // }
+    
+    for(var i in xunarray){
+      if(xunarray[i]==4){
+        console.log(xunarray[i])
+      }
+    }
+
+    // 循环对象
+
+    var obj={a:123,b:"tt",c:"nihao",d:"hello",e:"你好"};
+    
+    //  $.each(obj,function(i,el){
+    //     if(el=="tt"){
+    //       console.log(obj.b)
+    //     }
+    //    console.log(i+':'+el)
+    //  })
+
+    for(var i in obj){
+        if(obj[i]=="nihao"){
+        console.log(obj.c)
+      }
+      console.log(i+":"+obj[i])
+      
+    }
+
+      })
+    
+    </script>
+</body>
+</html>

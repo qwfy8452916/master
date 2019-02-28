@@ -1,32 +1,34 @@
 //  图片webupload 上传
+
 var $list;
 var nowniu;
-var countnum=0;
-
+var inputurl;
 function myUp(picCon,listCon){
-        // console.log(picCon)
-        $list = $(listCon);
-        var $filePicker = $(picCon), // 上传按钮
-        $upimgmax = 9, // 支持上传最大个数
+   
+    var $ = jQuery,
+        // $list = $(listCon),
+        // $filePicker = $(picCon), // 上传按钮
+        $list = listCon,
+        $filePicker = picCon,
+        $upimgmax = 1, // 支持上传最大个数
         // 优化retina, 在retina下这个值是2
         ratio = window.devicePixelRatio || 1,
         // 缩略图大小
-        thumbnailWidth = 150 * ratio,
-        thumbnailHeight = 150 * ratio,
-        //初始化对象
-        initObj={
-             // 自动上传。
+        thumbnailWidth = 100 * ratio,
+        thumbnailHeight = 100 * ratio,
+        // 初始化Web Uploader
+        uploader = WebUploader.create({
+            // 自动上传。
             auto: true,
-            dupliacate:true,
             // swf文件路径
             swf: '/assets/pc/js/Plugin/webuploader/js/Uploader.swf',
             // 文件接收服务端。
-            server:"/build/img/upload",  //  这里是图片上传地址
+            server:"/material/img/upload",  //  这里是图片上传地址
             // 选择文件的按钮。可选。
             // 内部根据当前运行是创建，可能是input元素，也可能是flash
             pick: {
                 id: $filePicker,
-                // multiple: false
+                multiple: false
             },
             duplicate: true,
             fileSingleSizeLimit: 6*1024*1024, //  单个文件大小
@@ -37,8 +39,8 @@ function myUp(picCon,listCon){
                 mimeTypes: 'image/jpg,image/jpeg,image/png,image/bmp' //修改这行
             },
             thumb: {
-                width: 150,
-                height: 150,
+                width: 110,
+                height: 110,
                 // 图片质量，只有type为`image/jpeg`的时候才有效。
                 quality: 70,
                 // 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
@@ -49,27 +51,18 @@ function myUp(picCon,listCon){
                 // 否则强制转换成指定的类型。
                 type: 'image/jpeg'
             }
-        };
-
-        // 初始化Web Uploader
-        var uploader = WebUploader.create(initObj);
-
-
-
+        });
     // 当有文件添加进来的时候
     uploader.on('fileQueued', function(file) {
-        
-
-        
         var $li = $(
-                '<div id="' + file.id + '" class="file-item thumbnail">' + '<input class="nameval" type="hidden" value=""/>'+
-                '<img>' +'<span class = "cancel delimgbtns delshanchu" title="删除"><i class="fa fa-close" aria-hidden="true"></i></span>'+
+                '<div id="' + file.id + '" class="file-item thumbnail">' +
+                '<img>' +
                 // '<div class="info">' + file.name + '</div>' +
-                '<div class = "file-panel" style = "height: 30px;" ><input class="inbiaoti" type="text" maxlength="10" valur="" placeHolder="点击输入标题"></div>' +
+                '<div class = "file-panel" style = "height: 30px;" >' +
+                '<span class = "cancel delimgbtns" title="删除">删除</span></div>' +
                 '</div>'
             ),
-        $img = $li.find('img');
-         
+            $img = $li.find('img');
         $list.append($li);
         removefiles(file); // 文件删除
         // 创建缩略图
@@ -82,24 +75,16 @@ function myUp(picCon,listCon){
         }, thumbnailWidth, thumbnailHeight);
         var uploadfilesNum = uploader.getStats().queueNum; //  共选中几个图片
         // 最多支持 5张
-        if ($list.find('.file-item').length >= $upimgmax) {
-            // $filePicker.hide();
-            $list.parent('.uploader-demo').find('.filePicker').hide()
-            if ($list.find('.file-item').length >= ($upimgmax + 1)) {
+        if ($('.file-item').length >= $upimgmax) {
+            $filePicker.hide();
+            if ($('.file-item').length >= ($upimgmax + 1)) {
                 // 中断 取消 大于  5张图片的对象
                 uploader.removeFile(file, true);
-                $list.find('.file-item').last().remove();
+                // $('.file-item').last().remove();
             }
-            $list.closest(".uploadpicwk").siblings('.zhangshuxz').children('.canupload').text($list.find('.file-item').length);
-            $list.closest(".uploadpicwk").siblings('.zhangshuxz').children('.yuupload').text(9-$list.find('.file-item').length);
         } else {
-            // $filePicker.show();
-            $list.parent('.uploader-demo').find('.filePicker').show()
-            $list.closest(".uploadpicwk").siblings('.zhangshuxz').children('.canupload').text($list.find('.file-item').length);
-            $list.closest(".uploadpicwk").siblings('.zhangshuxz').children('.yuupload').text(9-$list.find('.file-item').length);
-
+            $filePicker.show();
         }
-        setposition()
     });
     // 文件上传过程中创建进度条实时显示。
     uploader.on('uploadProgress', function(file, percentage) {
@@ -113,6 +98,10 @@ function myUp(picCon,listCon){
     });
     // 文件上传成功，给item添加成功class, 用样式标记上传成功。
     uploader.on('uploadSuccess', function(file, response) {
+        console.log(response.data)
+        inputurl.val(response.data)
+        inputurl.siblings('.wrapniuwk').show();
+        inputurl.siblings('.uploader-demo2').hide();
         var $li = $('#' + file.id),
             $img = $li.find('img'),
             $fileUrl = response.data[0].url, // 图片上传地址
@@ -120,8 +109,7 @@ function myUp(picCon,listCon){
             $filesize = (file.size / 1024).toFixed(2); // 上传文件尺寸大小 保留2位
         $li.addClass('upload-state-done');
         // console.log(file);
-
-        $('#' + file.id).find('.nameval').val(response.data)
+        // console.log(response);
         // console.log('图片地址:' + $fileUrl);
         $img.attr('src', $fileUrl);
         removefiles(file); // 删除文件
@@ -132,22 +120,19 @@ function myUp(picCon,listCon){
     });
 
     uploader.on("error", function (type) {
-     if (type == "F_EXCEED_SIZE") {
-        var tishixin="文件大小不能超过6M";
-        tishitip(tishixin,2)
-        totalnumber(countnum);
-        // alert("文件大小不能超过6M");
-    }else {
-           console.log(type)
-            // alert("上传出错！请检查后重新上传！错误代码"+type);
-            // tishitip("上传出错！请检查后重新上传！错误代码"+type,2)
-    }
-});
+        if (type == "F_EXCEED_SIZE") {
+           var tishixin="文件大小不能超过6M";
+           tishitip(tishixin,2)
+           // alert("文件大小不能超过6M");
+       }else {
+              console.log(type)
+               // alert("上传出错！请检查后重新上传！错误代码"+type);
+               // tishitip("上传出错！请检查后重新上传！错误代码"+type,2)
+       }
+   });
 
     // 文件上传失败，显示上传出错。
     uploader.on('uploadError', function(file) {
-        countnum++
-        totalnumber(countnum);
         var $li = $('#' + file.id),
             $error = $li.find('div.error');
         // 避免重复创建
@@ -158,13 +143,12 @@ function myUp(picCon,listCon){
     });
     // 完成上传完了，成功或者失败，先删除进度条。
     uploader.on('uploadComplete', function(file) {
-        countnum++
-        totalnumber(countnum);
         $('#' + file.id).find('.progress').remove();
-        // console.log(file);
-        // uploader.reset();
-        uploader.removeFile(file);
 
+
+
+        uploader.reset();
+        // console.log(file);
         // 获取文件统计信息。返回一个包含一下信息的对象。
         /*successNum 上传成功的文件数
         progressNum 上传中的文件数
@@ -183,15 +167,15 @@ function myUp(picCon,listCon){
     });
     // 删除按钮事件
     function removefiles(file) {
-
-        $('.uploader-list').on('click','.delimgbtns',function(){
+        // 删除本条数据
+        // $('.delimgbtns').each(function(index, el) {
+        $('.delimgbtns').click(function() {
+            // 中断 取消 传图
             uploader.removeFile(file, true);
-            var spthisdiv = $(this);
+            var spthisdiv = $(this).parent();
             spthisdiv.parent('.file-item').remove();
-            // $filePicker.show(); // 上传按钮显示
-             $list.closest(".uploadpicwk").siblings('.zhangshuxz').children('.canupload').text($list.find('.file-item').length);
-             $list.closest(".uploadpicwk").siblings('.zhangshuxz').children('.yuupload').text(9-$list.find('.file-item').length);
-        })
+            $filePicker.show(); // 上传按钮显示
+        });
         // });
     }
     // 删除服务器文件
@@ -200,48 +184,34 @@ function myUp(picCon,listCon){
         // $('.delimgbtns').each(function(index, el) {
         $('.delimgbtns').click(function() {
             // event.preventDefault();
-            var spthisdiv = $(this);
+            var spthisdiv = $(this).parent();
             // 如果上传成功才执行
             var thisimgsrc = spthisdiv.siblings('img').attr('src');
             var geturl = "attach/deleteFlowFile";
-            // $.axpost(
-            //     geturl, {
-            //         url: thisimgsrc,
-            //     },
-            //     //请求成功时处理
-            //     function(data) {
-            //         layer.msg('删除成功');
-            //     });
+            $.axpost(
+                geturl, {
+                    url: thisimgsrc,
+                },
+                //请求成功时处理
+                function(data) {
+                    layer.msg('删除成功');
+                });
         });
-
+        // });
     }
 
-  $("body").on("click",".filePicker",function(){
+}
+
+$("body").on("click",".filePicker",function(){
     nowniu=$(this);
     $list=$(this).prev(".fileList");
+    console.log(this)
     // $('#save-btn').attr("disabled",true)
     $(this).closest('.p-panel').find('.savubaocun').attr("disabled",true)
     countnum=$list.find('.file-item').length;
+    inputurl=$(this).closest('.tdpicwk').children('.picinput')
+
   });
 
-}
-
-for(var i=0; i<$(".shigongwk").length;i++){
-
-              var index=$(".defalutaddpic").eq(i).attr("data-index");
-              var className=".filePicker-"+index;
-
-              myUp(className, ".fileList-"+index);
-              // console.log(className)
-            }
-
-myUp('.filePicker','.uploader-list');
-
-
-function totalnumber(number){
- var getnumber=$list.find('.file-item').length;
-   if(getnumber==number){
-    //  $('#save-btn').attr("disabled",false)
-    $list.closest('.p-panel').find('.savubaocun').attr("disabled",false)
-   }
-}
+// myUp('.filePicker','.uploader-list');
+myUp($('.filePicker'),$('.uploader-list'));

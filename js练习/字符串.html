@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+         var str="abcdefg";
+         console.log(str.charAt(str.length-1))
+         console.log(str.charAt(1))
+
+         console.log(str.indexOf("c")!=-1)
+        //  console,kig(str.search("f")!=-1)
+         var reg=RegExp(/g/);
+         if(str.match(reg)){
+            console.log("有")
+         }
+
+
+
+        })
+    </script>
+</body>
+</html>

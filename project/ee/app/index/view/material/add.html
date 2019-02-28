@@ -1,8 +1,10 @@
 {extend name="common:basic" /}
 {block name="title"}
-    材料进销
+材料使用明细
 {/block}
 {block name="link"}
+<link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/webuploader.css?v={:config('static_version')}">
+<!-- <link rel="stylesheet" href="/assets/pc/js/Plugin/webuploader/css/upload.css?v={:config('static_version')}"> -->
 <link rel="stylesheet" href="/assets/pc/js/Plugin/bootstrap/css/bootstrap.min.css?v={:config('STATIC_VERSION')}">
 <link rel="stylesheet" href="/assets/pc/js/Plugin/select2/css/select2.css?v={:config('STATIC_VERSION')}">
 <link rel="stylesheet" href="/assets/pc/js/Plugin/datetimepicker/datetimepicker.css?v={:config('STATIC_VERSION')}">
@@ -11,9 +13,9 @@
 {block name="bread_title"}
 <span>
     {present name="info['id']"}
-        材料进销/编辑
+    材料使用明细/编辑
     {else/}
-       材料进销/添加
+    材料使用明细/添加
     {/present}
 
 </span>
@@ -29,38 +31,60 @@
                 <tr>
                     <td>
                         <span class="table-title">业主姓名</span>
-                        {present name="info['id']"}
-                            <select id="yzname" name="yzname" class="select p-input" disabled="disabled">
-                                <option value="0">请选择</option>
-                                {volist name="orders" id="vo"}
-                                  <option value="{$vo.order_no}" {if condition="$vo.order_no eq $info['erp_order_id']"} selected {/if} >{$vo.consumer_name}</option>
-                                {/volist}
-                            </select>
+                        <select id="yzname" name="yzname" class="select2 p-input" {present name="info['id']"}disabled{/present}>
+                        <option value="0">请选择</option>
+                        {volist name="orders" id="vo"}
+                        {if $vo.order_no == $info['erp_order_id']}
+                        <option value="{$vo.order_no}" selected >{$vo.consumer_name}</option>
                         {else/}
-                             <select id="yzname" name="yzname" class="select2 p-input">
-                                  <option value="0">请选择</option>
-                                  {volist name="orders" id="vo"}
-                                    <option value="{$vo.order_no}" {if condition="$vo.order_no eq $info['erp_order_id']"} selected {/if} >{$vo.consumer_name}</option>
-                                  {/volist}
-                              </select>
-                        {/present}
+                        <option value="{$vo.order_no}">{$vo.consumer_name}</option>
+                        {/if}
+                        {/volist}
+                        </select>
 
                         <span class="p-no-null">*</span>
-                        <div class="tishi" style="height:0px;margin-left: 106px"></div>
+                        <div class="tishi yezhu" style="height:0px;margin-left: 106px"></div>
                     </td>
                     <td>
-                        <span class="table-title">订单编号</span>
-                        <span id="order_id"></span>
+                        <span class="table-title">装修地址</span>
+                        <select id="address" name="address" class="select2 p-input" {present name="info['id']"}disabled{/present}>
+                            <option value="0">请选择</option>
+                            {volist name="orders" id="vo"}
+                            {notempty name="vo.build_address"}
+                            {if $vo.order_no == $info['erp_order_id']}
+                            <option value="{$vo.order_no}" selected >{$vo.build_address}</option>
+                            {else/}
+                            <option value="{$vo.order_no}">{$vo.build_address}</option>
+                            {/if}
+                            {/notempty}
+                            {/volist}
+                        </select>
+<!-- 
+                        <span class="p-no-null">*</span>
+                        <div class="tishi dizhi" style="height:0px;margin-left: 106px"></div> -->
                     </td>
                     <td>
                         <span class="table-title" >ERP单号</span>
-                        <span id="erp_id"></span>
+                        <select id="erp_id" name="erp_id" class="select2 p-input" {present name="info['id']"}disabled{/present}>
+                            <option value="0">请选择</option>
+                            {volist name="orders" id="vo"}
+                            {if $vo.order_no == $info['erp_order_id']}
+                            <option value="{$vo.order_no}" selected >{$vo.order_no}</option><!--build_address-->
+                            {else/}
+                            <option value="{$vo.order_no}">{$vo.order_no}</option>
+                            {/if}
+                            {/volist}
+                        </select>
+
+                        <span class="p-no-null">*</span>
+                        <div class="tishi danhao" style="height:0px;margin-left: 106px"></div>
                     </td>
                 </tr>
                 <tr>
+                    
                     <td>
-                        <span class="table-title">装修地址</span>
-                        <span id="address"></span>
+                        <span class="table-title">订单编号</span>
+                        <span id="order_id"></span>
                     </td>
                     <td>
                         <span class="table-title">户型</span>
@@ -116,13 +140,12 @@
             <table class="p-suppliertab add-material-table">
                 <thead>
                     <tr>
-                        <td>材料名称</td><td>数量</td><td>单价(元)</td><td>采购时间</td><td>送货时间</td><td>票据单号</td><td>操作</td>
+                        <td style="width:180px;">材料名称</td><td style="width:60px;">数量</td><td style="width:80px;">单价(元)</td><td style="width:255px;">采购时间</td><td style="width:255px;">送货时间</td><td style="width:193px;">票据单号</td><td style="width:150px;">票据图片</td><td style="width:140px;">操作</td>
                     </tr>
                 </thead>
                   <tbody id="mater-list">
                   {present name="info['id']"}
                   {volist name="info.list" id="vo"}
-
                   <tr class="mtr">
                         <td>
                             <input type="text" class="mname" placeholder="请输入材料名称" value="{$vo.name|default=''}" maxlength="20">
@@ -145,11 +168,45 @@
                         <td>
                             <input type="text" placeholder="请输入票据单号" class="piaoju"  value="{$vo.note|default=''}" >
                         </td>
-                        {if($key!=0)}
-                        <td>
-                            <span class='p-delete p-delete-true' data-id="{$vo.id}">删除</span>
+                        <td class="tdpicwk">
+                                {notempty name='vo.note_img'}
+                            <input type="hidden" class="picinput" value="{$vo.note_img}">
+                                <div class="wrapniuwk" style="display:block;">
+                                    <span class="spanstyle lookpic">查看</span><div class="uploader-demo" class="controls">
+                                <div class="filePicker defalutaddpic">       
+                                        <div class="uploadms changepic">更改</div>
+                                    </div>
+                                    </div><span class="spanstyle removepic">移除</span>
+                                </div>
+                                <div class="uploader-demo uploader-demo2" class="controls" style="display:none;">
+                                
+                                        <div class="filePicker defalutaddpic">
+                                            <div class="uploadms">上传</div>
+                                        </div>
+                                    </div>
+                                {else/}
+                            <input type="hidden" class="picinput">
+                            <div class="wrapniuwk">
+                                    <span class="spanstyle lookpic">查看</span><div class="uploader-demo" class="controls">
+                                    <div class="filePicker defalutaddpic">       
+                                            <div class="uploadms changepic">更改</div>
+                                            
+                                        </div>
+                                    </div><span class="spanstyle removepic">移除</span>
+                                </div>
+                                <div class="uploader-demo uploader-demo2" class="controls">
+                                
+                                    <div class="filePicker defalutaddpic">
+                                        <div class="uploadms">上传</div>
+                                    </div>
+                                </div>
+                                {/notempty}
                         </td>
-                        {/if}
+                        <td>
+                             {if($key!=0)}
+                            <span class='p-delete p-delete-true' data-id="{$vo.id}">删除</span>
+                            {/if}
+                        </td>
                     </tr>
                   {/volist}
                   {else/}
@@ -174,6 +231,25 @@
                       <td>
                           <input type="text" placeholder="请输入票据单号" class="piaoju">
                       </td>
+                      <td class="tdpicwk">
+                            <input type="hidden" class="picinput">
+                            <div class="wrapniuwk">
+                                    <span class="spanstyle lookpic">查看</span><div class="uploader-demo" class="controls">
+                            
+                                        <div class="filePicker defalutaddpic">
+                                            
+                                            <div class="uploadms changepic">更改</div>
+                                            
+                                        </div>
+                                    </div><span class="spanstyle removepic">移除</span>
+                            </div>
+                            <div class="uploader-demo uploader-demo2" class="controls">
+                            
+                                <div class="filePicker defalutaddpic">
+                                    <div class="uploadms">上传</div>
+                                </div>
+                            </div>
+                      </td>
                       <td>
 
                       </td>
@@ -186,14 +262,22 @@
                 + 添加
             </p>
         </div>
+
     </div>
     <div class="b-fr">
         <span class="p-btn p-primary" id="save-order">保存</span>
         <a class="p-btn p-white" href="/material/" style="margin-left:10px;">取消</a>
     </div>
     <div class="b-cleat-float"></div>
+    <div class="maskyiny"></div>
+    <div class="bigshowimgwk">
+        <span class="closegbniu">X</span>
+        <img src="//yxbqn.qizuang.com/build/2019/02/15115539e2c664041" alt="">
+    </div>
 {/block}
 {block name="script"}
+<script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/webuploader.js?v={:config('static_version')}"></script>
+<script type="text/javascript" src="/assets/pc/js/Plugin/webuploader/js/materialup.js?v={:config('static_version')}"></script>
 <script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/select2.js?v={:config('STATIC_VERSION')}"></script>
 <script type="text/javascript" src="/assets/pc/js/Plugin/select2/js/zh-CN.js?v={:config('STATIC_VERSION')}"></script>
 <script type="text/javascript" src="/assets/pc/js/Plugin/c_confirm.js?v={:config('STATIC_VERSION')}"></script>
@@ -209,8 +293,8 @@
         language: "zh-CN"
       });
 
-      $("select[name=category]").val("{$info.supplier_category_id|default='0'}");
-      $("select[name=supplier]").val("{$info.supplier_id|default='0'}");
+    //   $("select[name=category]").val("{$info.supplier_category_id|default='0'}");
+    //   $("select[name=supplier]").val("{$info.supplier_id|default='0'}");
 
       //联动
       $("select[name=category]").change(function(event) {
@@ -227,9 +311,11 @@
             data:{"id":that.val()},
             success:function(res){
               if(res.data.length>0){
+                supplier.append("<option value='0'>请选择</option>");
                 for( var i=0; i<res.data.length;i++){
                   supplier.append("<option value="+res.data[i].id+">"+res.data[i].name+"</option>")
                 }
+                supplier.trigger("change")
               }else{
                 var option_html="<option value='0'>请选择</option>";
                 supplier.append(option_html);
@@ -240,43 +326,71 @@
   });
 
 
-
   $("#order_id").text('{$orderinfo["qz_order"]|default=""}');
-  $("#erp_id").text('{$orderinfo["order_no"]|default=""}');
-  $("#address").text('{$orderinfo["build_address"]|default=""}');
   $("#huxing").text('{$orderinfo["name"]|default=""}');
   $("#mianji").text('{$orderinfo["house_area"]|default=""}');
-
+  window.flag = 0
+ //业主姓名
   $('select[name=yzname]').on('change',function(){
-        if($(this).val()){
+      if(window.flag == 0){
+        getordervalue($(this).val());
+      }
+  });
+  //erp单号
+  $('select[name=erp_id]').on('change',function(){
+    if(window.flag == 0){
+        getordervalue($(this).val());
+      }
+  });
+  //装修地址
+  $('select[name=address]').on('change',function(){
+    if(window.flag == 0){
+        getordervalue($(this).val());
+      }
+  });
+ 
+  $('td').on('mousedown',function(){
+      window.flag = 0
+  })
+    function getordervalue(info){
+        if(!(info == ''|| info==0|| info ==  null)){
             $.ajax({
                 url: '/material/getorder/',
                 dataType: 'JSON',
-                data: {erp_id:$(this).val()}
+                data: {erp_id:info}
             })
-            .done(function(data) {
-                if(data.error_code == 0){
-                    var info = data.data;
-                    $("#order_id").text(info.qz_order);
-                    $("#erp_id").text(info.order_no);
-                    $("#address").text(info.build_address);
-                    $("#huxing").text(info.name=info.name == null?"":info.name);
-                    $("#mianji").text(info.house_area);
-                }else{
-                    $("#order_id").text('');
-                    $("#erp_id").text('');
-                    $("#address").text('');
-                    $("#huxing").text('');
-                    $("#mianji").text('');
-                }
-            })
-            .fail(function(xhr) {
-                tishitip('发生未知错误，请稍后重试~',2);
-                return false;
-            })
+                    .done(function(data) {
+                        window.flag = 1
+                        if(data.error_code == 0){
+                            var info = data.data;
+                            $("#order_id").text(info.qz_order);
+                            $("#yzname").val(info.order_no).trigger("change");
+                            $("#erp_id").val(info.order_no).trigger("change");
+                            $("#address").val(info.order_no).trigger("change");
+                            $("#huxing").text(info.name=info.name == null?"":info.name);
+                            $("#mianji").text(info.house_area);
+                        }else{
+                            $("#order_id").text('');
+                            $("#yzname").val('').trigger("change");
+                            $("#erp_id").val('').trigger("change");
+                            $("#address").val('').trigger("change");
+                            $("#huxing").text('');
+                            $("#mianji").text('');
+                        }
+                    })
+                    .fail(function(xhr) {
+                        tishitip('发生未知错误，请稍后重试~',2);
+                        return false;
+                    })
         }else{
-            tishitip('参数有误,请刷新重试',2);
+            window.flag = 1;
+            $("#order_id").text('');
+            $("#yzname").val('').trigger("change");
+            $("#erp_id").val('').trigger("change");
+            $("#address").val('').trigger("change");
+            $("#huxing").text('');
+            $("#mianji").text('');
         }
-    });
+    }
 </script>
 {/block}

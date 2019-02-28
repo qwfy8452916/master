@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+         
+         var arr=["a",1,"c",3,"e",9,"g"],
+             arr2=["xx","zz"],
+             newarr=arr.splice(1,2,5);
+             arr2.splice(1,0,"yy")
+             console.log(newarr)
+             console.log(arr)
+             console.log(arr.concat(arr2))
+             console.log(arr2)
+
+
+        })
+        globalstorage(function(data){
+            console.log(data)
+        })
+
+        function globalstorage(fn){
+          fn(55)
+        }
+
+       function aa(name){ 
+        this.name='123' 
+        this.showname=function(){ 
+        alert(this.name) 
+         } 
+        }  
+
+        
+        // function bb(name){ 
+        // aa.call(this,name) 
+        // } 
+        // var diaoyong=new bb("likui") 
+        // diaoyong.showname()
+        
+        // function abc(name){
+        //     // this.name="小明";
+        //     this.name=name;
+        // }
+        // abc.prototype.say=function(){
+        //     alert(this.name)
+        // }
+        // var x=new abc("小花");
+        // x.say();
+        // var reg=new RegExp('^(13|14|15|17|18|19)[0-9]{9}$')
+        
+        // input.replace("/\s+/g","")
+
+        // for(let i=0;i<10;i++){
+        //     console.log(i)
+        // }
+
+
+
+    //     class Polygon {
+    //     constructor() {
+    //         this.name = "Polygon";
+    //     }
+    //     }
+
+    //     var poly1 = new Polygon();
+
+    //     console.log(poly1.name);
+    //     // expected output: "Polygon"
+
+
+    //    class obj{
+    //        constructor(a,b){
+    //            this.a=a;
+    //            this.b=b;
+    //        }
+    //        add(){
+    //            return this.a+this.b
+    //        }
+    //    }
+
+    //    var newobj=new obj(5,10);
+    //       console.log(newobj.add())
+
+
+
+  class obj{
+      constructor(){
+          this.name="小明"
+      }
+  }
+  class newobj extends obj{}
+  var xinduix=new newobj
+  console.log(xinduix.name)
+
+
+       
+// 一个简单的封装
+    function want() {
+        console.log('这是你想要执行的代码');
+    }
+
+    function fn(want) {
+        console.log('这里表示执行了一大堆各种代码');
+
+        // 其他代码执行完毕，最后执行回调函数
+        want && want();
+    }
+
+    fn(want);
+        
+    </script>
+</body>
+</html>
