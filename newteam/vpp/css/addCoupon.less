@@ -1,0 +1,90 @@
+html{
+  font-size: 75px;
+}
+body{
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after{
+  content:"";
+  height:0;
+  line-height:0;
+  display:block;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix{
+  zoom:1;  //因为IE6不支持:after伪类。它的效果和height:1%一样
+}
+.mainBox{
+  padding-top: 30/75rem;
+  .oneCoupon{
+    padding-left: 20/75rem;
+    color: #808080;
+    margin-bottom: 30/75rem;
+    .receive>div{
+      background-color: white;
+      border-radius: 20/75rem;
+      height: 166/75rem;
+      float: left;
+    }
+    .left{
+      width: 500/75rem;
+      border-right: 1px dotted #C2C2C2;
+      >div{
+        display: inline-block;
+        line-height: 166/75rem;
+      }
+      .money{
+        margin-right: 20/75rem;
+        margin-left: 1.2rem;
+        font-size: 73/75rem;
+        position: relative;
+        font-weight: 900;
+        color: #333333;
+        span{
+          font-size: 22/75rem;
+          position: absolute;
+          font-weight: 400;
+          top: -0.2rem;
+          left: -0.2rem;
+        }
+      }
+      .info{
+        line-height: 45/75rem;
+
+        p:first-child{
+          font-size: 26/75rem;
+          font-weight: 800;
+        }
+        p{
+          text-align: left;
+          font-size: 20/75rem;
+        }
+      }
+    }
+    .right{
+      font-weight: 500;
+      width: 209/75rem;
+      line-height: 166/75rem;
+      font-size: 30/75rem;
+      text-align: center;
+    }
+  }
+  .active{
+    color: #FDF0E1;
+    .receive>div{
+      background-color: #F54232;
+    }
+    .left{
+      border-right: 1px dotted #FDF0E1;
+      .money{
+        color: #FDF0E1;
+      }
+    }
+    .right{
+      color: white;
+    }
+  }
+}

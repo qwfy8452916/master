@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/redpacketList.css?v=" + Date.now()>
+    <title>红包列表</title>
+</head>
+<body>
+    <!-- 红包列表 -->
+    <div id="app">
+        <section class="mainBox">
+            <section class="redList" v-for="item in list">
+               <section class="listTop">
+                  <div class="walletBox">
+                    <div class="wallet">
+                        <p>¥<span>{{item.money}}</span></p>
+                    </div>
+                    <div class="walletInfo">
+                        <p class="walletText">{{item.title}}</p>
+                        <p class="time">有效期至：<span>{{item.valid_end_date}}</span></p>
+                    </div>
+                  </div>
+               </section>
+                <section class="listBottom">
+                    <p class="textDes">{{item.rule}}</p>
+                </section>
+            </section>
+        </section>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../spa/import/js/vue.min.js"></script>
+    <script src="../spa/import/js/axios.min.js?v=" +new Date()></script>
+    <script src="../../js/common.js?v=" +new Date()></script>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                list:[]
+            },
+            methods:{
+
+            },
+            mounted(){
+                var that = this;
+                var token = getData('TOKEN');
+                var url = window.globalResURL + '/coupon/ajax_index?token=' + token;
+                axios({
+                    method:"post",
+                    url:url
+                }).then(function (res) {
+                    that.list=res.data.data;
+                    if(that.list.length==0){
+                        go("no_packet.html");
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>

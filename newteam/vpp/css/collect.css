@@ -1,0 +1,71 @@
+.collect{
+	background: #FFFFFF;
+	padding-left: 15px;
+	margin-top: 20px;
+}
+.collect div.collectBox:last-child{
+	border: none;
+}
+.collectBox{
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.clooectMore i{
+	font-size: 2rem;
+	line-height: 80px;
+	margin-right: 15px;
+	color: #808080;
+}
+.collectMain{
+	display: flex;
+	padding: 15px 0;
+}
+.collectCover img{
+	width: 80px;
+	height: 80px;
+}
+.collectInfo{
+	margin-left: 10px;
+}
+.collectInfo p:first-child{
+	font-weight: bold;
+	font-size: 1.6rem;
+}
+.collectInfo p:nth-child(2){
+	color: #777777;
+}
+.collectInfo p:last-child{
+	color: #7C7C7C;
+	margin-top: 10px;
+}
+.collectInfo p:last-child span{
+	font-weight: bold;
+	margin-left: 20px;
+}
+.clooectMore{
+	padding: 15px 0;
+}
+
+.del{
+	background: #FFA800;
+	color: #FFFFFF;
+	line-height: 30px;
+	font-size: 1.4rem;
+	padding: 15px;
+	padding-top: 20px;
+	transition: all 0.5s;
+	transform: translateX(100%);
+}
+.delShow{
+	transform: translateX(0);
+}
+
+.keywords{
+	word-break: break-all;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}

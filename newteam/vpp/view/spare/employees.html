@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../import/vue/vue.js" ></script>
+	<script type="text/javascript" src="../../import/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="../../import/axios/axios.min.js" ></script>
+	<link rel="stylesheet" href="../../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/employees.css" />
+	<title>个人中心</title>
+</head>
+<body>
+<!--APP-->
+<div id="app" v-cloak>
+	<!--头部-->
+	<div class="head">
+		<img src="../../img/userIcon.png" />
+		<p>来自好友<span>张大三</span>的分享</p>
+		<a class="focus">关注商城</a>
+	</div>
+	<!--项目-->
+	<div class="item">
+		<div class="itemBox distributioner">
+			<img src="../../img/employees1.png" />
+			<p>发展分销者</p>
+		</div>
+		<div class="itemBox viper">
+			<img src="../../img/employees2.png" />
+			<p>发展会员</p>
+		</div>
+		<div class="itemBox" go="workResults.html">
+			<img src="../../img/employees3.png" />
+			<p>我的业绩</p>
+		</div>
+		<div class="itemBox" go="commission.html">
+			<img src="../../img/employees4.png" />
+			<p>我的提成</p>
+		</div>
+		<div class="itemLine itemLineRow">
+			<img src="../../img/employeesLine.png" />
+		</div>
+		<div class="itemLine itemLineCol">
+			<img src="../../img/employeesLine.png" />
+		</div>
+	</div>
+	<!--我的任务-->
+	<div class="myTask" go="aa.html">
+		<p class="active">我的任务<span>0</span></p>
+		<p>当月：发展50位分销商:[已发展30位]，状态未完成！</p>
+		<p>剩余时间10天</p>
+	</div>
+	<!--任务列表-->
+	<div class="task">
+		<div class="taskTab">
+			<a class="active">待经销商审核</a>
+			<a>已完成审核</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../../js/common.js" ></script>
+<script type="text/javascript" src="../../js/employees.js" ></script>
+</body>
+</html>

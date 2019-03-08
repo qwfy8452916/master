@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="../../import/vue/vue.js"></script>
+	<script src="../../import/axios/axios.min.js"></script>
+	<script src="../../js/common.js?v=" + Date.now()></script>
+	<style type="text/css">
+		.product{
+			background: #FFFFFF;
+			padding: 12px 15px;
+			display: flex;
+			justify-content: flex-start;
+			margin-top: 10px;
+		}
+		.cover img{
+			width: 75px;
+			height: 75px;
+			border: 1px solid rgba(0,0,0,0.05);
+			border-radius: 5px;
+		}
+		.info{
+			margin-left: 20px;
+			width: 100%;
+		}
+		.info p:first-child{
+			font-size: 1.6rem;
+			color: #333333;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			width: 230px;
+		}
+		.info p:nth-child(2){
+			font-size: 1.4rem;
+			color: #666666;
+			margin-top: 5px;
+		}
+		.info p:last-child{
+			display: flex;
+			justify-content: space-between;
+			font-size: 1.4rem;
+			margin-top: 15px;
+		}
+		.info span.price{
+			color: red;
+		}
+		.address{
+			padding: 12px 15px;
+			background: #FFFFFF;
+			margin-top: 10px;
+			display: flex;
+			justify-content: flex-start;
+			font-size: 1.4rem;
+			line-height: 25px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.address div{
+			width: 100%;
+		}
+		.address .key{
+			width: 100px;
+		}
+		.address .value p{
+			width: calc(100% - 50px);
+		}
+		.address .key p:first-child{
+			letter-spacing: 5px;
+		}
+		.address .value p:first-child{
+			display: flex;
+			justify-content: space-between;
+		}
+		.order{
+			padding-left: 20px;
+			background: #FFFFFF;
+		}
+		.order p{
+			display: flex;
+			justify-content: space-between;
+			border-top: 1px solid rgba(0,0,0,0.07);
+			padding: 12px 15px;
+			padding-left: 0;
+			font-size: 1.4rem;
+		}
+		.order p:last-child{
+			justify-content: flex-end;
+		}
+		.orderDes{
+			padding: 10px 15px;
+			background: #FFFFFF;
+			margin-top: 10px;
+			line-height: 28px;
+			font-size: 1.4rem;
+			color: #666666;
+		}
+		.btm{
+			width: calc(100% - 30px);
+			padding: 12px 15px;
+			display: flex;
+			justify-content: space-between;
+			font-size: 1.4rem;
+			background: #FFFFFF;
+			margin-top: 10px;
+			position: relative;
+		}
+		.btm p:last-child{
+			color: #FFFFFF;
+			background: #FFA800;
+			border-radius: 20px;
+			padding: 7px 20px;
+			position: absolute;
+			right: 15px;
+			top: 5px;
+		}
+
+		.tipWindow {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+		.tipWindow .tipBox {
+			margin: 50% auto 0;
+			width: 60%;
+			background-color: white;
+			border-radius: 0.2rem;
+
+		}
+		.tipWindow .tipBox .tipInfo {
+			height: 2.5rem;
+			line-height: 2.5rem;
+			text-align: center;
+			border-bottom: 1px solid #CCC;
+			font-size: 1.4rem;
+		}
+		.tipWindow .tipBox .tipInfo i {
+			font-size: 1.06666667rem;
+			color: #ffa800;
+			vertical-align: sub;
+		}
+		.tipWindow .tipBox .tipBtn {
+			font-size: 0;
+		}
+		.tipWindow .tipBox .tipBtn div {
+			width: 49%;
+			display: inline-block;
+			height: 1rem;
+			text-align: center;
+			line-height: 1rem;
+			font-size: 1.4rem;
+		}
+		.tipWindow .tipBox .tipBtn div:first-child {
+			border-right: 1px solid #ccc;
+		}
+		.tipWindow .tipBox .tipBtn div:last-child {
+			color: #ff0000;
+		}
+		.wuliu {
+			background-color: rgba(0, 0, 0, 0.7);
+			color: #3F3F3F;
+		}
+		.wuliu .tipBox {
+			width: 80%;
+			height: 50%;
+			overflow: auto;
+		}
+		.wuliu .tipBox .top {
+			padding: 1.4rem;
+			border-bottom: 2px solid #808080;
+		}
+		.wuliu .tipBox .top p {
+			line-height: 1.8rem;
+			font-size: 1.42666667rem;
+		}
+		.wuliu .tipBox .list {
+			padding: 1.4rem 0;
+		}
+		.wuliu .tipBox .list ul {
+			position: relative;
+		}
+		.wuliu .tipBox .list ul li {
+			position: relative;
+			margin-bottom: 1.5rem;
+		}
+		.wuliu .tipBox .list ul li .round {
+			position: absolute;
+			left: 0.2rem;
+			top: 0;
+			z-index: 9;
+			width: 1rem;
+			height: 1rem;
+			background-color: #cdcdcd;
+			border-radius: 50%;
+		}
+		.wuliu .tipBox .list ul li .state {
+			margin-left: 2.4rem;
+		}
+		.wuliu .tipBox .list ul li .state p {
+			line-height: 1.8rem;
+			font-size: 1.37333333rem;
+			width: 95%;
+		}
+		.wuliu .tipBox .list ul li:first-child .round {
+			background-color: #1BBC1B;
+		}
+		.wuliu .tipBox .list ul li:last-child {
+			margin-bottom: 0;
+		}
+		.wuliu .tipBox .list ul li:last-child::after {
+			content: "";
+			position: absolute;
+			width: 4px;
+			height: 100%;
+			background-color: white;
+			top: 0;
+			left: 0.6rem;
+			z-index: 8;
+		}
+		.wuliu .tipBox .list ul::after {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 1px;
+			top: 0;
+			left: 0.6rem;
+			background-color: #cdcdcd;
+		}
+	</style>
+</head>
+<body>
+<div id="app">
+	<div class="product" v-for="(productItem, index) in orderInfo" :key="index">
+		<div class="cover">
+			<img :src="productItem.product_img" alt="" />
+		</div>
+		<div class="info">
+			<p>{{productItem.product_title}}</p>
+			<p v-if="productItem.standard">规格：{{productItem.standard}}</p>
+			<p v-if="productItem.prepay >0"><span class="price">￥{{productItem.prepay}}</span><span>x {{productItem.num}}</span></p>
+			<p v-else><span class="price">￥{{productItem.product_money}}</span>  <span>x {{productItem.num}}</span></p>
+			<p v-if="productItem.order_state ==0">订单状态：未支付  <span @click="goBuy">去支付</span></p>
+			<p v-if="productItem.order_state ==1">订单状态：待发货  <span @click="txfh">提醒发货</span></p>
+			<p v-if="productItem.order_state ==2">订单状态：待收货
+                <span @click="showWl(productItem.id)">查看物流</span>
+                <span @click="confirmShoping(productItem.id)">确认收货</span>
+			</p>
+			<p v-if="productItem.order_state ==3">订单状态：确认收货</p>
+			<p v-if="productItem.order_state ==4">订单状态：售后中</p>
+			<p v-if="productItem.order_state ==5">订单状态：售后完成</p>
+			<p v-if="productItem.order_state ==6">订单状态：待自提</p>
+		</div>
+	</div>
+
+	<div class="address">
+		<div class="key">
+			<p>收件人：</p>
+			<p>收件地址：</p>
+		</div>
+		<div class="value">
+			<p><span>{{address.name}}</span><span>{{address.mobile}}</span></p>
+			<p>{{address.address}}</p>
+		</div>
+	</div>
+
+	<div class="order">
+		<p>
+			<span><b>配送方式</b></span>
+			<!--<span>{{orderType == 1 ? '快递' : '自提' }} <span v-if="orderType == 1">免邮</span></span>-->
+			<span>国内免费包邮</span>
+		</p>
+		<div>
+			<p><b>留言</b></p>
+			<p v-if="order.remark == ''">无</p>
+			<p v-else>{{order.remark}}</p>
+		</div>
+		<p v-if="order.prepay >0"><b>合计：￥{{parseFloat(order.money)}}(含运费)</b></p>
+		<p v-else><b>合计：￥{{parseFloat(order.money)}}(含运费)</b></p>
+	</div>
+
+	<div class="orderDes">
+		<p>订单编号：{{orderDes.listnum}}</p>
+		<p>创建时间：{{orderDes.addtime}}</p>
+		<p>支付时间：{{orderDes.paytime}}</p>
+	</div>
+
+	<div class="btm">
+		<p v-if="order.prepay >0"><b>共计：￥{{order.money}}</b></p>
+		<p v-else><b>共计：￥{{order.money}}</b></p>
+
+		<p v-if="order.pay_state==0" @click="goBuy">去支付</p>
+		<p v-else-if="order.pay_state==1">支付成功</p>
+		<p v-else-if="order.order_status==2">订单取消</p>
+		<p v-else-if="order.order_status==3">退款中</p>
+		<p v-else-if="order.order_status==4">退款完成</p>
+		<p v-else>订单完成</p>
+	</div>
+
+
+	<div class="tipWindow wuliu" style="display:none;">
+		<div class="tipBox">
+			<div class="top">
+				<p>快递公司：<span v-text="deliver_company"></span></p>
+				<p>运单编号：<span v-text="deliver_no"></span></p>
+			</div>
+			<div class="list">
+				<ul v-for="(item, _index) in deliverData" :key="_index">
+					<li>
+						<div class="round"></div>
+						<div class="state">
+							<p>{{item.context}}</p>
+							<p>{{item.time}}</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+			orderId: getParam('id'),
+			order: {},
+            orderInfo:{},
+			orderStatus: '',
+			address: {},
+			orderType: 0,
+			orderDes: {},
+            deliverData:{},
+            deliver_company:'',
+            deliver_no:''
+		},
+		methods: {
+		    goBuy:function(){
+		    	var that=this;
+		    	getPost(window.globalResURL + "/pay/reset_pay",{order_no: that.order.order_no},function(res){
+                    var code = res.code;
+                    var msg = res.msg;
+                    if(code != "1001"){
+                        go('../order.html');// BASE_URL + '/order';
+                        return false;
+                    }else {
+                        if (typeof WeixinJSBridge == "undefined"){
+                            if( document.addEventListener ){
+                                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                            }else if (document.attachEvent){
+                                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                            }
+                        }else{
+                            onBridgeReady(res.data);
+                        }
+                    }
+				});
+			},
+			txfh: function(){
+				var that = this;
+				//todo 这里要针对没件商品
+                var orderInfo = that.orderInfo[0];
+				ajaxPost(window.globalResURL + '/order/tips_shoping',{order_info_id:orderInfo.id},function(res){
+                    res.code == '1001' ? alert('提醒成功!') : alert('操作失败！');
+				});
+            },
+            showWl:function(id){
+                var url = window.globalResURL + '/order/get_deliver_info';
+                var that = this;
+                ajaxGet(url,{id:id},function(res){
+                    if(res.message =='ok'){
+                        that.deliverData = res.data;
+                        that.deliver_company = getWlName(res.com);
+                        that.deliver_no = res.nu;
+                        $('.wuliu').show();
+                    }
+                });
+			},
+            confirmShoping:function(id){
+                var url = window.globalResURL + '/order/confirm_receipt';
+                ajaxPost(url,{info_id:id},function(res){
+                    alert(res.msg);
+                });
+			}
+		},
+		mounted: function(){
+			var that = this;
+			console.log(window.globalResURL);
+            var params = new URLSearchParams();
+            params.append('id', that.orderId);
+            var token = getData('TOKEN');
+            axios({
+            	method: 'POST',
+            	url: window.globalResURL + '/order/detail?token='+token,
+            	data: params,
+            	headers: {
+            		'Content-Type': 'application/x-www-form-urlencoded'
+            	}
+            }).then(function(res){
+                console.log(res);
+                var resultData = res.data.data;
+				that.order = resultData;
+                that.orderInfo = resultData.orderInfo;
+
+                that.orderType = resultData.order_type;
+                that.orderDes  = {
+                	listnum: resultData.order_no,
+                	addtime: resultData.add_time_str,
+                	paytime: resultData.pay_time_str
+                }
+                that.address = {
+                	name: resultData.consignee,
+                	mobile: resultData.mobile,
+                	address: resultData.province + resultData.city + resultData.area + resultData.address
+                }
+                switch (parseInt(resultData.order_status)){
+                	case 0:
+                		that.orderStatus = '待支付'
+                		break
+                	case 1:
+                		that.orderStatus = '待发货'
+                		break
+                	case 2:
+                		that.orderStatus = '待收货'
+                		break
+                	case 3:
+                		that.orderStatus = '确认收货'
+                		break
+                	case 4:
+                		that.orderStatus = '售后中'
+                		break
+                	case 5:
+                		that.orderStatus= '售后完成'
+                		break
+                	case 6:
+                		that.orderStatus = '待自提'
+                		break
+                	default:
+                		that.orderStatus = '订单错误'
+                		break
+                }
+            })
+		}
+	})
+
+
+function onBridgeReady(sdkConfig) {
+	WeixinJSBridge.invoke(
+		'getBrandWCPayRequest', sdkConfig,
+		function (res) {
+			if (res.err_msg == "get_brand_wcpay_request:ok") {
+				go('../redpacket/fenxiao_packet.html');
+			} else {
+				go('../order.html');
+			}
+		}
+	);
+}
+
+//根据code查询快递公司名称
+function getWlName(code){
+	var wlJson = {
+			'shunfeng':'顺丰',
+			'youzhengguonei':'邮政',
+			'yuantong':'圆通',
+			'shentong':'申通',
+			'yunda':'韵达',
+			'huitongkuaidi':'汇通',
+			'zhongtong':'中通',
+			'tiantian':'天天',
+			'huitongkuaidi':'百世汇通'
+		};
+	if(wlJson.hasOwnProperty(code)){
+		return wlJson[code];
+	}
+}
+</script>
+</body>
+</html>

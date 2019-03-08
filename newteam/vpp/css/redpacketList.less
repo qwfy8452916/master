@@ -1,0 +1,85 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+*{
+  margin:0;
+  padding:0;
+  text-decoration: none;
+}
+//红包列表
+.mainBox{
+  width: 100%;
+  height: 3rem;
+  padding:15/75rem;
+  box-sizing: border-box;
+  .redList{
+    width: 100%;
+    height: 143/75rem;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 15/75rem;
+    .listTop{
+      width: 100%;
+      height: 91/75rem;
+      background: url("../img/redbg.png") no-repeat center;
+      background-size: cover;
+      padding:28/75rem 27/75rem;
+      box-sizing: border-box;
+      .walletBox{
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+        .wallet{
+          color:#fff;
+          font-size: 23/75rem;
+          font-family: 'ArialMT';
+          p{
+            line-height: 0.6rem;
+          }
+          span{
+            font-size: 50/75rem;
+          }
+        }
+        .walletInfo{
+          p{
+            line-height: 0.3rem;
+          }
+          .walletText{
+            font-size: 16/75rem;
+            color:#fff;
+          }
+          .time{
+            font-size: 13/75rem;
+            color:#fff;
+            font-weight:500;
+          }
+        }
+      }
+    }
+    .listBottom{
+      padding:10/75rem 15/75rem;
+      .textDes{
+        font-size: 12/75rem;
+        color:#B8B8B8;
+        font-weight: 500;
+
+      }
+    }
+  }
+}

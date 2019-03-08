@@ -1,0 +1,96 @@
+/*头部*/
+.head{
+	height: 120px;
+	background: url('../img/becomeVipHead.png') no-repeat center;
+	background-size: 100% 120px;
+	display: flex;
+	align-items: flex-start;
+}
+.head img{
+	width: 80px;
+	height: 80px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.head p{
+	height: 20px;
+	line-height: 20px;
+	color: #FFFFFF;
+	font-size: 1.2rem;
+	background: linear-gradient(to right, #F7D727, #F78427);
+	padding: 0 10px;
+	border-radius: 3px;
+	margin-top: 45px;
+	margin-left: 20px;
+}
+/*乐会员*/
+.vip{
+	width: 260px;
+	margin: 20px auto;
+	background: #FFFFFF;
+	box-shadow: 0 5px 40px #ccc;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 70px;
+	position: relative;
+}
+.vipTitle{
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+}
+.vipBox{
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 5px;
+	margin-top: 10px;
+	padding: 10px;
+	line-height: 2rem;
+	z-index: 300;
+}
+.vipBox p{
+	display: flex;
+	justify-content: space-between;
+}
+.vipBox p:first-child{
+	font-size: 1.6rem;
+	color: #333333;
+}
+.vipBox p:first-child span:last-child{
+	color: #F78427;
+	font-size: 1.4rem;
+}
+.vipBox p:last-child{
+	color: #808080;
+}
+/*底部支付*/
+.buy{
+	width: 100%;
+	padding: 10px 0;
+	background: #FFFFFF;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.4rem;
+	max-width: 500px;
+}
+.buy p:first-child{
+	margin-left: 20px;
+}
+.buy p:last-child{
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: #F78427;
+	color: #FFFFFF;
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 20px;
+}
+@media only screen and (min-width: 500px) {
+	.buy{
+		left: 50%;
+		margin-left: -250px;
+	}
+}

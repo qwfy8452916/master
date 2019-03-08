@@ -1,0 +1,78 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: rgba(0, 0, 0, 0.1);
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+.mainBox {
+  position: relative;
+  width: 100%;
+}
+.mainBox .packetBox {
+  position: fixed;
+  width: 98%;
+  height: 4.46666667rem;
+  background: url("../img/packet1.png") no-repeat center;
+  background-size: cover;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+}
+.mainBox .packetBox .cancelBox {
+  width: 0.48rem;
+  height: 0.49333333rem;
+  background: url("../img/cancel1.png") no-repeat center;
+  background-size: 100%;
+  position: absolute;
+  right: 45px;
+  top: -0.6rem;
+}
+.mainBox .packetBox .packetInfo p {
+  color: #fff;
+  font-size: 0.2rem;
+  position: absolute;
+  bottom: 0.93333333rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mainBox .packetBox .packetInfo p span {
+  font-size: 0.64rem;
+  color: #fff;
+  font-family: 'DINAlternate-Bold';
+}
+.mainBox .packetBox .searchPacket {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0.46666667rem;
+  font-size: 0.2rem;
+  color: #FFE71F;
+}
+.mainBox .packetBox .line {
+  width: 1.49333333rem;
+  height: 1px;
+  background-color: #FFE71F;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0.45333333rem;
+}
+/*# sourceMappingURL=shopPacket.css.map */

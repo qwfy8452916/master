@@ -1,0 +1,174 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox .evaluateInfo {
+  background-color: white;
+  padding: 0.5rem 0.2rem 0.4rem 0.4rem;
+  /* 使用webkit内核的浏览器 */
+  /* Firefox版本4-18 */
+  /* Firefox版本19+ */
+  /* IE浏览器 */
+}
+.mainBox .evaluateInfo textarea {
+  border: none;
+  width: 100%;
+  height: 3rem;
+  line-height: 0.6rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .evaluateInfo ::-webkit-input-placeholder {
+  color: #999999;
+  font-family: PingFang-SC-Medium;
+}
+.mainBox .evaluateInfo :-moz-placeholder {
+  color: #999999;
+  font-family: PingFang-SC-Medium;
+}
+.mainBox .evaluateInfo ::-moz-placeholder {
+  color: #999999;
+  font-family: PingFang-SC-Medium;
+}
+.mainBox .evaluateInfo :-ms-input-placeholder {
+  color: #999999;
+  font-family: PingFang-SC-Medium;
+}
+.mainBox .evaluateInfo div {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #999999;
+  border: 1px dashed;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 0.2rem;
+}
+.mainBox .evaluateInfo div i {
+  font-size: 0.6rem;
+}
+.mainBox .evaluateInfo div p {
+  font-size: 0.32rem;
+  text-align: center;
+}
+.mainBox .grade {
+  background-color: white;
+  margin-top: 0.2rem;
+  padding: 0.4rem;
+}
+.mainBox .grade > p {
+  line-height: 1rem;
+  font-size: 0.32rem;
+  color: #333333;
+}
+.mainBox .grade > p i {
+  margin-right: 2px;
+  vertical-align: sub;
+  font-size: 0.5rem;
+  color: #808080;
+}
+.mainBox .grade .dianxingxing {
+  height: 1rem;
+  line-height: 1rem;
+  float: left;
+}
+.mainBox .grade .dianxingxing > div {
+  float: left;
+}
+.mainBox .grade .dianxingxing div:first-child {
+  margin-right: 0.4rem;
+  color: #333333;
+  font-size: 0.32rem;
+}
+.mainBox .grade .dianxingxing div:last-child {
+  margin-left: 0.3rem;
+}
+.mainBox .grade .dianxingxing .xingxing span i {
+  letter-spacing: 0.1rem;
+}
+.mainBox .grade .dianxingxing .xingxing span i:last-child {
+  display: none;
+}
+.mainBox .grade .dianxingxing .xingxing .active i:first-child {
+  display: none;
+}
+.mainBox .grade .dianxingxing .xingxing .active .color_yellow {
+  display: inline;
+}
+.mainBox .btn {
+  height: 1.1rem;
+  line-height: 1.1rem;
+  width: 90%;
+  margin: 0.5rem auto;
+  font-size: 0.4rem;
+  color: white;
+  background-color: #FFA800;
+  text-align: center;
+  border-radius: 0.2rem;
+}
+.tipWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.tipWindow .tipBox {
+  margin: 50% auto 0;
+  width: 60%;
+  background-color: white;
+  border-radius: 0.2rem;
+}
+.tipWindow .tipBox .tipInfo {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid #CCC;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipInfo i {
+  font-size: 1.06666667rem;
+  color: #ffa800;
+  vertical-align: sub;
+}
+.tipWindow .tipBox .tipBtn {
+  font-size: 0;
+}
+.tipWindow .tipBox .tipBtn div {
+  width: 49%;
+  display: inline-block;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipBtn div:first-child {
+  border-right: 1px solid #ccc;
+}
+.tipWindow .tipBox .tipBtn div:last-child {
+  color: #ff0000;
+}
+.color_yellow {
+  color: #ffa800 !important;
+}
+.color_red {
+  color: #ff0000 !important;
+}
+.hide {
+  display: none !important;
+}
+/*# sourceMappingURL=evaluate.css.map */

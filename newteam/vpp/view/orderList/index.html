@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>收货地址</title>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/orderList.css">
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <!--<script src="js/jquery.min.js"></script>-->
+</head>
+<body>
+<div id="app">
+    <div class="mainBox">
+        <header>
+           <ul>
+               <li v-on:click="selectState=1" v-bind:class="{active:selectState==1}"><span>待支付</span></li>
+               <li v-on:click="selectState=2" v-bind:class="{active:selectState==2}"><span>待发货</span></li>
+               <li v-on:click="selectState=3" v-bind:class="{active:selectState==3}"><span>待收货</span></li>
+               <li v-on:click="selectState=4" v-bind:class="{active:selectState==4}"><span>交易完成</span></li>
+           </ul>
+        </header>
+        <div>
+           <div class="orderListOne pintuan">
+               <div class="orderOne">
+                   <div class="orderTitle">
+                       拼团
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <div class="selectIcon">
+                               <div class="selectRound active">
+                                   <div class="selectRoundMini"></div>
+                               </div>
+                           </div>
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃 <span>拼团</span></h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                       </div>
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <div class="selectIcon">
+                               <div class="selectRound active">
+                                   <div class="selectRoundMini"></div>
+                               </div>
+                           </div>
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃 <span>拼团</span></h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                       </div>
+                   </div>
+                   <div class="settings">
+                       <div class="lineBox">
+                           <div class="total">
+                               共计：&nbsp;<span>￥26.00</span>
+                           </div>
+                           <div class="btnBox">
+                               <div v-on:click="showRemoveOrder=true" class="orderBtn">取消订单</div>
+                               <div class="orderBtn active">去支付</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="orderListOne ">
+               <div class="orderOne">
+                   <div class="orderTitle">
+                       众筹
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <div class="selectIcon">
+                               <div class="selectRound">
+                                   <div class="selectRoundMini"></div>
+                               </div>
+                           </div>
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃</h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                       </div>
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <div class="selectIcon">
+                               <div class="selectRound">
+                                   <div class="selectRoundMini"></div>
+                               </div>
+                           </div>
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃</h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                       </div>
+                   </div>
+                   <div class="settings">
+                       <div class="lineBox">
+                           <div class="total">
+                               共计：&nbsp;<span>￥26.00</span>
+                           </div>
+                           <div class="btnBox">
+                               <div class="orderBtn">提醒发货</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="orderListOne">
+               <div class="orderOne">
+                   <div class="orderTitle">
+                       普通订单
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <div class="selectIcon">
+                               <div class="selectRound active">
+                                   <div class="selectRoundMini"></div>
+                               </div>
+                           </div>
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃</h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                       </div>
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <div class="selectIcon">
+                               <div class="selectRound active">
+                                   <div class="selectRoundMini"></div>
+                               </div>
+                           </div>
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃</h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                       </div>
+                   </div>
+                   <div class="settings">
+                       <div class="lineBox">
+                           <div class="total">
+                               共计：&nbsp;<span>￥26.00</span>
+                           </div>
+                           <div class="btnBox">
+                               <div  v-on:click="showWuLiu=true" class="orderBtn">查看物流</div>
+                               <div v-on:click="sureHaveSuccess=true" class="orderBtn active">确认收货</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="orderListOne danweifuli">
+               <div class="orderOne">
+                   <div class="orderTitle">
+                       单位福利
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <!--<div class="selectIcon">-->
+                               <!--<div class="selectRound active">-->
+                                   <!--<div class="selectRoundMini"></div>-->
+                               <!--</div>-->
+                           <!--</div>-->
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃</h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                           <div class="hide shouhouchuli">售后处理中...</div>
+                           <div class="btnBox pingjia">去评价</div>
+                           <div class="btnBox shouhou">申请售后</div>
+                       </div>
+                   </div>
+                   <div class="orderOneInfo clearfix">
+                       <div class="productLeft">
+                           <!--<div class="selectIcon">-->
+                               <!--<div class="selectRound active">-->
+                                   <!--<div class="selectRoundMini"></div>-->
+                               <!--</div>-->
+                           <!--</div>-->
+                           <div class="productImg">
+                               <img src="../../img/apple.jpg" alt="">
+                           </div>
+                       </div>
+                       <div class="productInfo">
+                           <h5>山西大樱桃</h5>
+                           <p>绿色无污染&nbsp;&nbsp;果园采摘</p>
+                           <p><span>￥24.00</span>/500g <i>X2</i></p>
+                           <div class="shouhouchuli">售后处理中...</div>
+                           <div class="hide pingjia">去评价</div>
+                           <div class="hide shouhou">申请售后</div>
+                       </div>
+                   </div>
+                   <div class="settings" style="display: none">
+                       <div class="lineBox">
+                           <div class="total">
+                               共计：&nbsp;<span>￥26.00</span>
+                           </div>
+                           <div class="btnBox">
+                               <div v-on:click="showWuLiu=true" class="orderBtn">查看物流</div>
+                               <div class="orderBtn active">确认收货</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="nothing">
+            <img src="../../img/none.png" alt="">
+            <p>没有订单！</p>
+        </div>
+    </div>
+    <div class="tipWindow" v-show="showRemoveOrder">
+        <div class="tipBox">
+            <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+            <div class="tipBtn">
+                <div>确定</div>
+                <div v-on:click="showRemoveOrder=false" class="ffa_color">取消</div>
+            </div>
+        </div>
+    </div>
+    <div class="tipWindow querenshouhuo" v-show="sureHaveSuccess">
+        <div class="tipBox">
+            <div class="tipInfo"><i class="iconfont icon-wenhao-yuankuang"></i>确定收货（待收货商品）成功?</div>
+            <div class="tipBtn">
+                <div v-on:click="sureHaveSuccess=false">取消</div>
+                <div  class="ffa_color">确定</div>
+            </div>
+        </div>
+    </div>
+    <div class="tipWindow wuliu" v-show="showWuLiu" v-on:click="showWuLiu=false">
+        <div class="tipBox">
+            <div class="top">
+                <p>快递公司：<span>百世快递</span></p>
+                <p>运单编号：<span>70724077921926</span></p>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="round"></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="round"></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="round "></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="round"></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //selectState 当前选中状态
+    //1 待支付
+    //2 待发货
+    //3 待收货
+    //4 交易完成
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selectState:1,
+            showRemoveOrder: false,
+            sureHaveSuccess:false,
+            showWuLiu:false,
+
+        },
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            },
+            addImgOne:function (that) {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

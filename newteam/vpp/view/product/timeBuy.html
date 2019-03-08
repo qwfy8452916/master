@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <script type="text/javascript" src="../../import/swiper/swiper-4.3.2.min.js"></script>
+    <script type="text/javascript" src="../../import/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_763110_m6tt1h9mxc.css"/>
+    <link rel="stylesheet" href="../../import/swiper/swiper-4.3.2.min.css"/>
+    <link rel="stylesheet" href="../../import/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../../css/common.css"/>
+    <link rel="stylesheet" href="../../css/timeBuy.css"/>
+    <title>立刻购买</title>
+</head>
+<body>
+<!--APP-->
+<div id="app" v-cloak>
+    <!--轮播-->
+    <div class="swiper-container banner">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href=""><img :src="productInfo.logo"/></a>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!--剩余时间-->
+    <div class="timeLess" v-show="showTime">
+        <div><img src="../../img/timeBuyHead.png"/></div>
+        <div>
+            <p>剩下时间</p>
+            <p>
+                <span>99</span>时
+                <span>99</span>分
+                <span>99</span>秒
+            </p>
+        </div>
+    </div>
+    <!--产品标题-->
+    <div class="title">
+        <p>{{productInfo.title}}</p>
+        <p v-html="productInfo.description"></p>
+    </div>
+    <!--价格-->
+    <div class="price">
+        <p><span>￥{{productInfo.pt_price}}</span></p>
+        <p>￥{{productInfo.price}}</p>
+    </div>
+    <!--产品信息-->
+    <div class="info">
+        <div>
+            <p>产地</p>
+            <p>{{productInfo.origin}}</p>
+        </div>
+        <div class="infoSpace"></div>
+        <div>
+            <p>规格</p>
+            <p>{{productInfo.standard}}</p>
+        </div>
+        <div class="infoSpace"></div>
+        <div>
+            <p>重量</p>
+            <p>{{productInfo.weight}}克</p>
+        </div>
+    </div>
+    <!--图文详情-->
+    <div class="mainTitle">
+        — — 图文详情 — —
+    </div>
+    <div class="main">
+        <!--<img src="../../img/banner1.jpg" />-->
+        <img :src="productInfo.logo"/>
+    </div>
+    <!--底部购买按钮-->
+    <div class="buy">
+        <div>
+            <p class="icon_img"><img :src="is_collect == true ? '../../img/fav2.png' :'../../img/fav1.png'" @click="collect" ></p>
+            <p>收藏</p>
+        </div>
+        <div @click="toBuy(productID)">立即购买</div>
+    </div>
+</div>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/timeBuy.js"></script>
+</body>
+</html>

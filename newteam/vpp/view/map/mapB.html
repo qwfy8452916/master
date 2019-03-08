@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		iframe{
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<iframe width="100%" height="60%!important" src="" id="ifm"></iframe>
+	<script type="text/javascript">
+		var api = 'http://apis.map.qq.com/tools/poimarker?type=0&marker=';
+		var coord = '31.308320,120.603350';
+		var title = '金阊文化教育大厦';
+		var addr = '江苏省苏州市姑苏区爱河桥路9号';
+		var ifm = document.getElementById('ifm');
+		ifm.setAttribute('src',api+'coord:'+coord+';title:'+title+';addr:'+addr+';'+'&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp');
+		ifm.height = document.documentElement.clientHeight - 5;
+	</script>
+</body>
+</html>

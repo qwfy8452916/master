@@ -1,0 +1,189 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.firstModule {
+  width: 100%;
+  background-color: #fff;
+  padding: 0.4rem;
+  box-sizing: border-box;
+  margin-bottom: 0.33333333rem;
+  overflow: hidden;
+}
+.firstModule .goodsNum {
+  color: #333;
+  font-size: 0.48rem;
+  font-weight: bold;
+}
+.firstModule .huibaoText {
+  font-size: 0.4rem;
+  color: #808080;
+  font-weight: 400;
+  margin-top: 0.4rem;
+}
+.firstModule .imgBox {
+  width: 2.4rem;
+  height: 1.86666667rem;
+  margin-top: 0.26666667rem;
+}
+.firstModule .imgBox img {
+  width: 100%;
+  height: 100%;
+}
+.secondModule {
+  padding: 0.4rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-bottom: 0.33333333rem;
+}
+.secondModule .supportNum {
+  display: inline-block;
+  font-size: 0.4rem;
+  margin-top: 0;
+}
+.secondModule select {
+  border: none;
+  font-size: 0.4rem;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.secondModule .sanjiao {
+  width: 0.36rem;
+  height: 0.24rem;
+  display: inline-block;
+}
+.secondModule .sanjiao img {
+  width: 100%;
+  height: 100%;
+}
+.secondModule p {
+  font-size: 0.4rem;
+  margin-top: 0.46666667rem;
+}
+.secondModule p input {
+  border: none;
+  width: 18%;
+  font-size: 0.4rem;
+}
+.thirdModule {
+  background-color: #fff;
+  padding: 0.4rem;
+  box-sizing: border-box;
+  margin-bottom: 0.33333333rem;
+}
+.thirdModule .beizhuText {
+  font-size: 0.4rem;
+  color: #333;
+  font-weight: 400;
+}
+.thirdModule .beizhuContent {
+  width: 9.13333333rem;
+  height: 2.26666667rem;
+  background-color: #F3F3F3;
+  resize: none;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 0.13333333rem;
+  color: #999;
+  font-size: 0.32rem;
+  line-height: 0.8rem;
+  padding-left: 0.26666667rem;
+  margin-top: 0.29333333rem;
+}
+.fourthModule {
+  padding: 0.4rem;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.fourthModule .tishiText {
+  font-size: 0.4rem;
+  color: #333;
+  font-weight: 400;
+}
+.fourthModule .contentBox {
+  margin-top: 0.45333333rem;
+}
+.fourthModule .contentBox p {
+  font-size: 0.32rem;
+  color: #333;
+  line-height: 0.53333333rem;
+}
+.xieyiBox {
+  width: 100%;
+  height: 0.85333333rem;
+  background-color: #F3F3F3;
+  box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.1), 0px -2px 5px 0px rgba(6, 0, 1, 0.06);
+  box-sizing: border-box;
+  padding: 0 0.4rem;
+  overflow: hidden;
+}
+.xieyiBox .fangkuang {
+  width: 0.37333333rem;
+  height: 0.37333333rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 0.02666667rem solid #FFA800;
+  border-radius: 0.05333333rem;
+  margin-top: 0.24rem;
+  display: inline-block;
+}
+.xieyiBox .fangkuang i {
+  display: block;
+  color: #FF9000;
+  text-align: center;
+  line-height: 0.32rem;
+}
+.xieyiBox .xieyiText {
+  display: inline-block;
+  margin-left: 0.21333333rem;
+  font-size: 0.32rem;
+}
+.xieyiBox .xieyiText span {
+  color: #FF9000;
+}
+footer {
+  width: 100%;
+  height: 1.30666667rem;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+footer .priceBox {
+  float: right;
+  padding-right: 0.4rem;
+}
+footer .priceBox .priceText {
+  display: inline-block;
+  margin-right: 0.26666667rem;
+  margin-top: 0.42666667rem;
+}
+footer .priceBox .priceText span {
+  color: #FF0202;
+  font-size: 0.4rem;
+}
+footer .priceBox .btnBox {
+  width: 1.86666667rem;
+  height: 0.77333333rem;
+  background-color: #FF9000;
+  border-radius: 0.4rem;
+  border: none;
+  font-size: 0.37333333rem;
+  color: #fff;
+}
+/*# sourceMappingURL=payment.css.map */

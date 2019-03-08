@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/deposit.css" />
+    <title>提现</title>
+</head>
+
+<body>
+    <div id="app">
+        <section class="mainBox">
+        <div class="moneyBox">
+                <p class="moneyText">请输入提现金额</p>
+                <div class="inputBox">
+                    <span>￥</span>
+                    <input type="number" v-model="money">
+                </div>
+        </div> 
+        <button class="submit" @click="apply">提交</button>
+        <div class="ruleBox">
+            <p>
+                提现规则：
+            </p> 
+            <p>将在1-3个工作日内审核该笔提现申请。</p>
+            <p>审核通过后提现金额将转入微信钱包，请注意查收。</p>
+        </div>
+        </section>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+    <script type="text/javascript" src="../../import/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+    <script type="text/javascript" src="../../js/deposit.js"></script>
+</body>
+
+</html>

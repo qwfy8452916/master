@@ -1,0 +1,111 @@
+html{
+  font-size: 75px;
+}
+body{
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after{
+  content:"";
+  height:0;
+  line-height:0;
+  display:block;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix{
+  zoom:1;  //因为IE6不支持:after伪类。它的效果和height:1%一样
+}
+.listBox{
+  width: 100%;
+  height: 329/75rem;
+  box-sizing: border-box;
+  padding:0 30/75rem 30/75rem 30/75rem;
+  background-color: #fff;
+  margin-bottom: 20/75rem;
+  .boxTop{
+    width: 100%;
+    height: 249/75rem;
+    box-sizing: border-box;
+    border-bottom:1/75rem solid #E6E6E6;
+    padding:25/75rem 0;
+    display: flex;
+    justify-content: space-between;
+    .imgBox{
+      width: 200/75rem;
+      height: 200/75rem;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .infoBox{
+      width: 60%;
+      height: 100%;
+      .goodsName{
+        font-size: 34/75rem;
+        font-weight: 500;
+        color:#333333;
+        margin-top:28/75rem;
+        span{
+          margin-left:35/75rem;
+        }
+      }
+      .lastTime{
+        font-size: 28/75rem;
+        color:#5E5E5E;
+        font-weight: 500;
+        margin-top:14/75rem;
+      }
+      .nowPrice{
+        color:#FF0000;
+        font-size: 34/75rem;
+        margin-top:14/75rem;
+        .originPrice{
+          color:#6C6C6C;
+          font-size: 24/75rem;
+          text-decoration: line-through;
+          margin-left:18/75rem;
+        }
+      }
+      .joinText{
+        color:#999999;
+        font-size: 24/75rem;
+        font-weight: 500;
+        margin-top:14/75rem;
+      }
+    }
+  }
+  .boxBottom{
+    width: 100%;
+    height: 80/75rem;
+    box-sizing: border-box;
+    .restTime{
+      color:#333333;
+      font-size: 28/75rem;
+      font-weight: 500;
+      display: inline-block;
+      line-height: 80/75rem;
+      .timeNum{
+        font-weight: 500;
+      }
+    }
+    .btnBox{
+      width: 140/75rem;
+      height: 50/75rem;
+      background-color: #FFA800;
+      text-align: center;
+      line-height: 50/75rem;
+      display: inline-block;
+      float: right;
+      margin-top:12/75rem;
+      border-radius: 10/75rem;
+      .kanjiaText{
+        font-size: 28/75rem;
+        color:#fff;
+        font-weight: 500;
+      }
+    }
+  }
+}

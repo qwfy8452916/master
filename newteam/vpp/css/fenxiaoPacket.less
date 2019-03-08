@@ -1,0 +1,94 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: rgba(0,0,0,0.1);
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+*{
+  margin:0;
+  padding:0;
+  text-decoration: none;
+}
+//购买后红包
+.mainBox{
+  position: relative;
+  width: 100%;
+  .packetBox{
+    position: fixed;
+    width: 100%;
+    height: 350/75rem;
+    background: url("../img/packet.png") no-repeat center;
+    background-size: cover;
+    left:50%;
+    transform: translateX(-50%);
+    top:20%;
+    .cancelBox{
+      width: 36/75rem;
+      height: 35/75rem;
+      background: url("../img/cancel1.png") no-repeat center;
+      background-size: 100%;
+      position: absolute;
+      right:45px;
+      top:-0.6rem;
+    }
+    .packetInfo{
+      p{
+        color:#FFF000;
+        font-size: 40/75rem;
+        position: absolute;
+        bottom:120/75rem;
+        left:50%;
+        transform: translateX(-50%);
+        span{
+          font-size: 40/75rem;
+          color:#FFF000;
+          font-family:'DINAlternate-Bold';
+        }
+      }
+    }
+    .use{
+      position: absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom:50/75rem;
+      width: 260/75rem;
+      height: 50/75rem;
+      background-color: #FFEB01;
+      border-radius: 25px;
+      border:none;
+      color:#FF000B;
+      font-size: 18/75rem;
+      font-weight: 500;
+    }
+    .searchPacket{
+      position: absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom:15/75rem;
+      font-size: 15/75rem;
+      color:#FFE71F;
+    }
+    .line{
+      width: 112/75rem;
+      height: 1px;
+      background-color: #FFE71F;
+      position: absolute;
+      left:50%;
+      transform: translateX(-50%);
+      bottom:14/75rem;
+    }
+  }
+}

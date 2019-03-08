@@ -1,0 +1,501 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox > div {
+  margin-bottom: 0.26666667rem;
+  background-color: white;
+}
+.mainBox .peisong {
+  height: 1.1rem;
+  line-height: 1.1rem;
+  text-align: center;
+}
+.mainBox .peisong > div {
+  display: inline-block;
+  font-size: 0.45333333rem;
+  padding: 0 0.1rem;
+  font-weight: 600;
+}
+.mainBox .peisong .active {
+  color: #FFA800;
+  border-bottom: 2px solid #FFA800;
+}
+.mainBox .addressInfo {
+  height: 2rem;
+  padding: 0.2rem 0;
+}
+.mainBox .addressInfo > div {
+  height: 100%;
+  float: left;
+  line-height: 74px;
+}
+.mainBox .addressInfo > div:first-child {
+  width: 10%;
+  text-align: center;
+}
+.mainBox .addressInfo > div:first-child i {
+  font-size: 0.48rem;
+}
+.mainBox .addressInfo .dizhi {
+  width: 80%;
+}
+.mainBox .addressInfo .dizhi p {
+  line-height: 0.8rem;
+  font-size: 0.4rem;
+  color: #808080;
+}
+.mainBox .addressInfo .dizhi p span {
+  color: #3F3F3F;
+}
+.mainBox .addressInfo .dizhi p i {
+  color: #3F3F3F;
+  font-size: 0.37333333rem;
+  margin-left: 2rem;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing {
+  line-height: 0.8rem;
+  font-size: 0.37333333rem;
+  overflow: hidden;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing > div {
+  float: left;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing .left {
+  width: 25%;
+  color: #808080;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing .right {
+  width: 73%;
+  height: 1.2rem;
+  line-height: 0.6rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .addressInfo > div:last-child {
+  width: 8%;
+  text-align: center;
+}
+.mainBox .addressInfo > div:last-child i {
+  font-size: 0.6rem;
+}
+.mainBox .peisongfangshi {
+  height: 3rem;
+}
+.mainBox .peisongfangshi > p {
+  padding-left: 0.2rem;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  color: #333333;
+  font-weight: 600;
+}
+.mainBox .peisongfangshi .selectMode {
+  color: #999999;
+}
+.mainBox .peisongfangshi .selectMode .active {
+  color: #FFA800;
+}
+.mainBox .peisongfangshi .selectMode .active span {
+  display: inline-block;
+}
+.mainBox .peisongfangshi .selectMode .active::before {
+  content: "";
+  background-color: #FFA800;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: -0.5rem;
+  left: -0.6rem;
+  transform: rotate(-50deg);
+}
+.mainBox .peisongfangshi .selectMode span {
+  position: absolute;
+  top: -0.3rem;
+  left: 0.05rem;
+  color: white;
+  height: 0.5rem;
+}
+.mainBox .peisongfangshi .selectMode > div {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 36%;
+  height: 1.1rem;
+  margin-left: 8%;
+  border: 1px solid;
+  border-radius: 0.2rem;
+  line-height: 1.1rem;
+}
+.mainBox .peisongfangshi .selectMode > div i {
+  font-size: 0.6rem;
+  display: inline-block;
+  height: 100%;
+  line-height: 1.1rem;
+  padding: 0 0.4rem;
+  float: left;
+}
+.mainBox .peisongfangshi .selectMode > div > div {
+  padding-top: 0.1rem;
+  font-size: 0.32rem;
+  display: inline-block;
+  height: 100%;
+  line-height: 0.5rem;
+}
+.mainBox .imgAndInfo {
+  position: relative;
+  height: 2.66666667rem;
+  box-sizing: border-box;
+  padding: 0.6rem 0.26666667rem;
+  border-bottom: 1px solid #ddd;
+}
+.mainBox .imgAndInfo > div {
+  float: left;
+  height: 100%;
+}
+.mainBox .imgAndInfo div:first-child {
+  max-width: 30%;
+}
+.mainBox .imgAndInfo div:first-child img {
+  height: 100%;
+}
+.mainBox .imgAndInfo div:nth-child(2) {
+  padding-left: 0.53333333rem;
+  width: 60%;
+}
+.mainBox .imgAndInfo div:nth-child(2) h5 {
+  line-height: 0.7rem;
+  font-weight: 400;
+  font-size: 0.4rem;
+}
+.mainBox .imgAndInfo .shuliang {
+  position: absolute;
+  top: 1.3rem;
+  right: 0.5rem;
+}
+.mainBox .imgAndInfo .shuliang i {
+  font-size: 0.37333333rem;
+}
+.mainBox .imgAndInfo .shuliang i span {
+  font-size: 0.4rem;
+}
+.mainBox .orderConfig .leaving {
+  padding: 0.3rem 0.4rem 0;
+  font-size: 0.4rem;
+}
+.mainBox .orderConfig .leaving p {
+  line-height: 0.6rem;
+  color: #333333;
+  font-size: 0.32rem;
+}
+.mainBox .orderConfig .leaving p span {
+  float: right;
+  color: #ff0000;
+}
+.mainBox .orderConfig .leaving p:last-child {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+.mainBox .orderConfig .total {
+  color: #1b1b1b;
+  font-size: 0.4rem;
+  padding: 0.4rem;
+}
+.mainBox .orderConfig .total span {
+  float: right;
+}
+.mainBox .orderConfig .coupon {
+  padding: 0.4rem;
+  height: 0.6rem;
+}
+.mainBox .orderConfig .coupon p {
+  color: #1b1b1b;
+  font-size: 0.4rem;
+  float: left;
+}
+.mainBox .orderConfig .coupon .couponNum {
+  color: #7A7A7A;
+  font-size: 0.32rem;
+  margin-left: 0.3rem;
+  line-height: 0.5rem;
+}
+.mainBox .orderConfig .coupon span {
+  float: right;
+}
+.mainBox .orderNumber {
+  padding: 0.3rem 0.5rem;
+  color: #808080;
+  line-height: 0.7rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .nowPinTuan p {
+  line-height: 0.8rem;
+}
+.mainBox .nowPinTuan .touxiangList {
+  height: 2rem;
+  padding: 0 0.4rem;
+}
+.mainBox .nowPinTuan .touxiangList .touxiang {
+  width: 1.7rem;
+  height: 100%;
+  margin-right: 0.35rem;
+  float: left;
+}
+.mainBox .nowPinTuan .touxiangList .touxiang img {
+  width: 100%;
+  height: 100%;
+}
+.mainBox .nowPinTuan .touxiangList .touxiang:first-child {
+  position: relative;
+}
+.mainBox .nowPinTuan .touxiangList .touxiang:first-child::after {
+  content: '拼主';
+  position: absolute;
+  top: 0;
+  right: -0.3rem;
+  padding: 0.08rem 0.18rem;
+  color: white;
+  background-color: #FFA800;
+  border-radius: 0.18rem;
+}
+.mainBox .nowPinTuan .touxiangList div:last-child {
+  height: 2rem;
+  line-height: 1.4rem;
+}
+.mainBox .nowPinTuan .touxiangList div:last-child span {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #b3b3b3;
+  letter-spacing: 0.1rem;
+  margin-right: 0.3rem;
+}
+.mainBox .nowPinTuan .touxiangList div:last-child i {
+  padding: 0.25rem;
+  border-radius: 0.15rem;
+  line-height: 2rem;
+  color: #FFA800;
+  border: 1px solid #FFA800;
+}
+.mainBox .orderAmount {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+  color: #1b1b1b;
+  font-size: 0.4rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  margin-bottom: 0;
+}
+.mainBox .orderAmount i {
+  float: right;
+  display: inline-block;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  padding: 0 0.4rem;
+  margin: 0.15rem 0 0 0.3rem;
+  border-radius: 0.45rem;
+}
+.mainBox .orderAmount .yellow {
+  color: white;
+  background-color: #FFA800;
+}
+.mainBox .orderAmount .gray {
+  color: #808080;
+  border: 1px solid;
+}
+.mainBox .showPackage {
+  width: 100%;
+  height: 7.26666667rem;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: -10px;
+  display: none;
+}
+.mainBox .showPackage .packageTop {
+  padding: 0.4rem;
+  box-sizing: border-box;
+}
+.mainBox .showPackage .ticketText {
+  font-size: 0.45333333rem;
+  color: #333;
+  font-weight: 500;
+}
+.mainBox .showPackage .listitem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.mainBox .showPackage .listitem p {
+  font-size: 0.37333333rem;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.17333333rem;
+}
+.mainBox .showPackage .listitem .check {
+  width: 0.45333333rem;
+  height: 0.45333333rem;
+  border-radius: 5px;
+  border: 1px solid #B3B3B3;
+  margin-top: 12px;
+}
+.mainBox .showPackage .listitem .check p {
+  font-size: 0.5rem;
+  color: #FFA800;
+  text-align: center;
+  line-height: 17px;
+}
+.mainBox .showPackage .listitem1 {
+  border: none;
+}
+.mainBox .showPackage .cancel {
+  width: 100%;
+  height: 1.2rem;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  font-size: 0.37333333rem;
+  color: #FFA800;
+  line-height: 1.2rem;
+}
+.tipWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.tipWindow .tipBox {
+  margin: 50% auto 0;
+  width: 60%;
+  background-color: white;
+  border-radius: 0.2rem;
+}
+.tipWindow .tipBox .tipInfo {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid #CCC;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipInfo i {
+  font-size: 1.06666667rem;
+  color: #ffa800;
+  vertical-align: sub;
+}
+.tipWindow .tipBox .tipBtn {
+  font-size: 0;
+}
+.tipWindow .tipBox .tipBtn div {
+  width: 49%;
+  display: inline-block;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipBtn div:first-child {
+  border-right: 1px solid #ccc;
+}
+.tipWindow .tipBox .tipBtn div:last-child {
+  color: #ff0000;
+}
+.wuliu {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #3F3F3F;
+}
+.wuliu .tipBox {
+  width: 80%;
+  height: 50%;
+  overflow: auto;
+}
+.wuliu .tipBox .top {
+  padding: 0.4rem;
+  border-bottom: 2px solid #808080;
+}
+.wuliu .tipBox .top p {
+  line-height: 0.8rem;
+  font-size: 0.42666667rem;
+}
+.wuliu .tipBox .list {
+  padding: 0.4rem 0;
+}
+.wuliu .tipBox .list ul {
+  position: relative;
+}
+.wuliu .tipBox .list ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.wuliu .tipBox .list ul li .round {
+  position: absolute;
+  left: 0.4rem;
+  top: 0;
+  z-index: 9;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: #cdcdcd;
+  border-radius: 0.2rem;
+}
+.wuliu .tipBox .list ul li .state {
+  margin-left: 1.2rem;
+}
+.wuliu .tipBox .list ul li .state p {
+  line-height: 0.55rem;
+  font-size: 0.37333333rem;
+  width: 95%;
+}
+.wuliu .tipBox .list ul li:first-child .round {
+  background-color: #1BBC1B;
+}
+.wuliu .tipBox .list ul li:last-child {
+  margin-bottom: 0;
+}
+.wuliu .tipBox .list ul li:last-child::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background-color: white;
+  top: 0;
+  left: 0.6rem;
+  z-index: 8;
+}
+.wuliu .tipBox .list ul::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  top: 0;
+  left: 0.6rem;
+  background-color: #cdcdcd;
+}
+.color_yellow {
+  color: #ffa800 !important;
+}
+.color_red {
+  color: #ff0000 !important;
+}
+.hide {
+  display: none !important;
+}
+/*# sourceMappingURL=pintuan.css.map */

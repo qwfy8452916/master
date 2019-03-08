@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/addCoupon.css">
+    <title>我的优惠券</title>
+</head>
+<body>
+<!--APP-->
+<div id="app">
+  <div class="mainBox">
+      <div class="oneCoupon clearfix " v-for="item in list" >
+          <div class="receive">
+              <div class="left">
+                  <div class="money"><span>￥</span>{{item.money}}</div>
+                  <div class="info"><p>优惠券</p><p>{{item.rule}}</p></div>
+              </div>
+              <div class="right" @click="receive(item.id)">领取</div>
+          </div>
+      </div>
+      <div class="oneCoupon clearfix active">
+          <div class="receive">
+              <div class="left">
+                  <div class="money"><span>￥</span>50</div>
+                  <div class="info"><p>优惠券</p><p>仅用于水蜜桃</p></div>
+              </div>
+              <div class="right">已领取</div>
+          </div>
+      </div>
+  </div>
+</div>
+<script type="text/javascript" src="../../js/common.js?v=" + Date.now() ></script>
+<script type="text/javascript" src="../../js/addCoupon.js?v=" + Date.now() ></script>
+</body>
+</html>

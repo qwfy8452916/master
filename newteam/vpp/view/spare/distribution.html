@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../import/vue/vue.js" ></script>
+	<script type="text/javascript" src="../../import/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="../../import/axios/axios.min.js" ></script>
+	<link rel="stylesheet" href="../../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/distribution.css" />
+	<title>我的分销</title>
+</head>
+<body>
+<!--APP-->
+<div id="app" v-cloak>
+	<!--分销头部-->
+	<div class="head">
+		<div class="headMoney">
+			<p>待结算：120.00元</p>
+			<p>可提现：88.00元</p>
+		</div>
+		<div class="getMoney">立即提现</div>
+		<div class="ruleText">规则说明 <i class="iconfont icon-gengduo"></i></div>
+	</div>
+	<!--金额来源-->
+	<div class="money">
+		<div class="moneyTab">
+			<a class="active" @click="moneyTab">商品推广</a>
+			<a @click="moneyTab">绑定用户</a>
+		</div>
+		<div class="moneyList">
+			<div class="moneyProduct" v-if="moneyProduct">
+				<div class="moneyBox" v-for="item in list">
+					<img src="../../img/apple.jpg" class="moneyCover" />
+					<p>佣金：120元</p>
+					<p @click="showCode">
+						<a>复制链接</a>
+						<img src="../../img/qrcode.jpg" class="qrcode" />
+					</p>
+				</div>
+			</div>
+			<div class="moneyUser" v-if="moneyUser">
+				<div class="moneyUserBox" v-for="item in list">
+					<div>
+						<img src="../../img/userIcon.png" />
+					</div>
+					<div>
+						<p>微信昵称</p>
+						<p>绑定时间：2017-11-08</p>
+					</div>
+					<div>
+						+12.00
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../../js/common.js" ></script>
+<script type="text/javascript" src="../../js/distribution.js" ></script>
+</body>
+</html>

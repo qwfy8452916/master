@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>去评价</title>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/evaluate.css">
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <!--<script src="js/jquery.min.js"></script>-->
+</head>
+<body>
+<div id="app">
+    <div class="mainBox">
+        <div class="evaluateInfo">
+            <textarea name="info" id="info" cols="30" rows="10" placeholder="宝贝满足你的期待吗？说说你的使用心得，分享给想买的他们吧。"></textarea>
+            <div><i class="iconfont icon-paizhao-xianxing"></i><p>添加图片</p></div>
+        </div>
+        <div class="grade clearfix">
+            <p><i class="iconfont icon-dianpu-xianxing"></i>店铺评分</p>
+            <div class="dianxingxing">
+                <div>描述相符</div>
+                <div class="xingxing">
+                    <span v-bind:class="{active:dianpu>=1}" v-on:click="dianpu=1" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:dianpu>=2}" v-on:click="dianpu=2" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:dianpu>=3}" v-on:click="dianpu=3" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:dianpu>=4}" v-on:click="dianpu=4" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:dianpu>=5}" v-on:click="dianpu=5" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                </div>
+                <div><span>{{grade[dianpu]}}</span></div>
+            </div>
+            <div class="dianxingxing">
+                <div>物流服务</div>
+                <div class="xingxing">
+                    <span v-bind:class="{active:wuliu>=1}" v-on:click="wuliu=1" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:wuliu>=2}" v-on:click="wuliu=2" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:wuliu>=3}" v-on:click="wuliu=3" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:wuliu>=4}" v-on:click="wuliu=4" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:wuliu>=5}" v-on:click="wuliu=5" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                </div>
+                <div><span>{{grade[wuliu]}}</span></div>
+            </div>
+            <div class="dianxingxing">
+                <div>服务态度</div>
+                <div class="xingxing">
+                    <span v-bind:class="{active:service>=1}" v-on:click="service=1" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:service>=2}" v-on:click="service=2" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:service>=3}" v-on:click="service=3" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:service>=4}" v-on:click="service=4" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                    <span v-bind:class="{active:service>=5}" v-on:click="service=5" ><i class="iconfont icon-shoucang-xianxing"></i><i class="color_yellow iconfont icon-shoucang"></i></span>
+                </div>
+                <div><span>{{grade[service]}}</span></div>
+            </div>
+        </div>
+        <div class="btn">
+            确定
+        </div>
+    </div>
+    <div class="tipWindow" style="display: none">
+        <div class="tipBox">
+            <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+            <div class="tipBtn">
+                <div>确定</div>
+                <div class="color_yellow">取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            dianpu:0,
+            wuliu:0,
+            service:0,
+            grade:[
+                "",
+                "非常差",
+                "差",
+                "一般",
+                "好",
+                "非常好"
+            ],
+            productName: '王庄大西瓜',
+            imgList:[
+                {
+                    src:"img/topbg01.jpg"
+                }
+            ],
+            showUpImage : false
+        },
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            },
+            addImgOne:function (that) {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

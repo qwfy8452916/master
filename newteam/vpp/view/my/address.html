@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="../../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/address.css" />
+	<title>我的收货地址</title>
+</head>
+
+<body>
+	<!--APP-->
+	<div id="app" v-cloak>
+		<!--地址列表-->
+		<section class="address">
+			<div class="addressBox" :data-id="item.id"
+	v-for="(item,index) in list" @click="choseAddress(item,index);">
+				<div class="addressTop">
+					<div class="infoBox">
+						<span>{{item.real_name}}</span>
+						<span>{{item.mobile}}</span>
+					</div>
+					<p class="addressInfo">{{''+item.province+item.city+item.area+item.address}}</p>
+				</div>
+				<div class="addressBottom">
+					<div class="bottomLeft">
+						<div class="circle" @click.stop="searchaddress(item.id,index);searchindex=index" :class="index==searchindex ? 'select':''">
+							<img src="../../img/check.png" alt="" v-show="showcheck" >
+						</div>
+						<p>设为默认地址</p>
+					</div>
+					<div class="bottomRight">
+						<div class="edit" @click.stop="addressEdit(item)">
+							编辑
+						</div>
+						<div class="del" @click.stop="addressDel(item.id)">
+							删除
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--新增地址-->
+		<div class="addressBtmBtn" @click="addressAdd">
+			<a>新增收货地址</a>
+		</div>
+
+
+		<!--确认删除弹窗-->
+		<div class="deleteShadow" v-show="showDelete">
+			<div class="delCheck">
+				<div class="delCheckMain">确定要删除该地址吗？</div>
+				<div class="delCheckBtn">
+					<a @click="cancelDelete">取消</a>
+					<a @click="confirmDelete">删除</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../import/vue/vue.js"></script>
+	<script type="text/javascript" src="../../import/layui/layui.all.js"></script>
+	<script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+	<script type="text/javascript" src="../../js/address.js?v=" + Date.now()></script>
+</body>
+
+</html>

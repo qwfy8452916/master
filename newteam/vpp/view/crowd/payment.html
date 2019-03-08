@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <script src="../../js/flexible.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/payment.css" />
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <title>众筹付款</title>
+</head>
+<body>
+    <div id="app">
+        <div class="mainBox">
+            <div class="firstModule">
+                <p class="goodsNum">{{activity.title}}</p>
+                <p class="huibaoText huibaoDes" v-html="activity.keywords"></p>
+                <p class="huibaoText">回报内容：</p>
+                <p class="huibaoText huibaoDes" v-html="activity.activity_des">
+                <div class="imgBox">
+                    <img :src="activity.img_url" alt="">
+                </div>
+            </div>
+            <div class="secondModule">
+                <p class="supportNum">支持金额:</p>
+                <select v-model="mySelect" @change="getMySelected">
+                    <option :value="item.id" v-for="item in gearList"  >{{item.price}}元</option>
+                </select>
+                <div class="sanjiao">
+                    <img src="../../img/sanjiao.png" alt="">
+                </div>
+                <p>自定义金额：￥<input type="number" v-model="customMoney" placeholder="0">      元</p>
+            </div>
+
+            <div class="fourthModule">
+                <p class="tishiText">风险提示：</p>
+                <div class="contentBox">
+                    <p v-html="activity.activity_des"></p>
+                </div>
+            </div>
+            <div class="xieyiBox">
+                <div class="fangkuang"  @click="select">
+                    <i v-show="isSelect">✔</i>
+                </div>
+                <p class="xieyiText">阅读并同意<span>《支持者协议》</span></p>
+            </div>
+            <footer>
+                <div class="priceBox">
+                    <p class="priceText">总计金额：<span>{{totalMoney}}</span>元</p>
+                    <button class="btnBox" @click="goBuy()">去支付</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="../../js/math.js"></script>
+    <script type="text/javascript" src="../../js/common.js?v=" + Date.now() ></script>
+    <script type="text/javascript" src="../../js/payment.js?v=" + Date.now()></script>
+</body>
+</html>

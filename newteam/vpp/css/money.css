@@ -1,0 +1,79 @@
+.head{
+	text-align: center;
+	padding: 20px 0;
+	background: #FFFFFF;
+	font-size: 1.4rem;
+	line-height: 2.4rem;
+	border-bottom: 1px solid rgba(125,125,125,0.2);
+}
+.head p:last-child{
+	font-size: 2rem;
+}
+
+.tab{
+	background: #FFFFFF;
+	display: flex;
+	justify-content: space-around;
+}
+.tab a{
+	display: block;
+	padding: 10px;
+	border-bottom: 2px solid transparent;
+}
+.tab a.active{
+	border-color: #FFA530;
+	color: #FFA530;
+}
+
+.list{
+	background: #FFFFFF;
+	margin-top: 10px;
+	padding:0 15px;
+}
+
+.listItem{
+	padding: 10px 0;
+	display: flex;
+	border-bottom: 1px solid rgba(125,125,125,0.2);
+	position: relative;
+}
+.listItem p img{
+	width: 20px;
+	height: 23px;
+	padding-top:10px;
+	padding-left: 10px;
+}
+.listItem .imgBox1 img{
+	width: 27px;
+	height: 31px;
+	padding-top:7px;
+	padding-left:7px;
+}
+.listItem p:first-child{
+	line-height: 40px;
+}
+.listItem p:first-child i{
+	font-size: 2.4rem;
+}
+.listItem p:last-child{
+	position: absolute;
+	right: 4px;
+	line-height: 48px;
+	color:#999;
+	font-weight: 500;
+}
+.listItem p:nth-child(2){
+	margin-left: 15px;
+	font-size: 1.5rem;
+	line-height: 44px;
+	font-weight: bold;
+}
+.listItem .price:nth-child(2){
+	margin-left:20px;
+}
+.listAdd i{
+	color: #1CBC1C;
+}
+.listMinus i{
+	color: #FF9600;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/bargain/index.css" />
+    <title>砍价列表</title>
+</head>
+<body>
+    <section id="app">
+        <section class="mainBox">
+            <section class="list"  v-for="item in list">
+                    <section class="listItem" @click="toBargin(item.id,item.product_id)">
+                            <div class="listTop">
+                                <div class="imgBox">
+                                    <img :src="item.logo" alt="">
+                                </div>
+                                <div class="contentBox">
+                                    <p class="title">{{item.title}}</p>
+                                    <p class="time">{{item.keywords}}</p>
+                                    <p class="nowPrice">￥<span>{{item.price}}</span><span class="originPrice">原价:<i>40.00</i>元</span></p>
+                                    <p>还可以{{item.merge_buy_num}}人参加</p>   
+                                </div>
+                            </div>
+                            <div class="listBottom">
+                                <p>剩余时间：<span>10:15:09</span></p>
+                                <button class="bargain">去砍价</button>
+                            </div>
+                        </section>
+            </section>
+            
+        </section>
+    </section>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+    <script type="text/javascript" src="../../import/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+    <script type="text/javascript" src="../../js/bargain/index.js"></script>
+</body>
+</html>

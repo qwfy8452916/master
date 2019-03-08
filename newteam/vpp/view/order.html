@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+	<script src="../js/flexible.js"></script>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/iconfont/iconfont.css">
+	<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../import/vue/vue.js" ></script>
+	<script type="text/javascript" src="../import/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="../import/axios/axios.min.js" ></script>
+	<link rel="stylesheet" href="../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/orderList.css">
+	<title>订单</title>
+</head>
+<body>
+<!--APP-->
+<div id="app">
+	<div class="mainBox">
+		<header>
+			<ul>
+				<li v-on:click="status=1" v-bind:class="{active:status==1}" @click="status=1"><span>待支付</span></li>
+				<li v-on:click="status=2" v-bind:class="{active:status==2}" @click="status=2"><span>待发货</span></li>
+				<li v-on:click="status=3" v-bind:class="{active:status==3}" @click="status=3"><span>待收货</span></li>
+				<li v-on:click="status=4" v-bind:class="{active:status==4}" @click="status=4"><span>交易完成</span></li>
+			</ul>
+		</header>
+		<div>
+			<div class="orderListOne pintuan">
+				<div class="orderOne" v-for="(value,key) in allList" >
+					<div class="orderTitle">
+						 {{typeList[key]}}
+					</div>
+					<div class="orderOneInfo clearfix" v-for="item in value" @click="detail(item.orderInfo[0].order_id)">
+						<div class="productLeft">
+							<div class="selectIcon">
+								<div class="selectRound active">
+									<div class="selectRoundMini"></div>
+								</div>
+							</div>
+							<div class="productImg">
+								<img  :src="item.orderInfo[0].product_img" alt="">
+							</div>
+						</div>
+						<div class="productInfo">
+							<h5>{{item.orderInfo[0].product_title}} </h5>
+							<p></p>
+							<p v-if="item.orderInfo[0].prepay >0"><span>￥{{item.orderInfo[0].prepay}}</span><i>X{{item.orderInfo[0].num}}</i></p>
+							<p v-else><span>￥{{item.orderInfo[0].product_money}}</span><i>X{{item.orderInfo[0].num}}</i></p>
+						</div>
+					</div>
+					
+					<div class="settings">
+						<div class="lineBox">
+							<div class="total">
+								共计：&nbsp;<span>￥{{getAllMoney(value)}}</span>
+							</div>
+							<!--<div class="btnBox">
+								<div v-on:click="showRemoveOrder=true" v-show="status==1" class="orderBtn">取消订单</div>
+								<div class="orderBtn active" v-show="status==1">去支付</div>
+								<div class="orderBtn" @click="remind(value[0])" v-show="status==2">提醒发货</div>
+								<div v-on:click="lookLogistics(value[0])" class="orderBtn"  v-show="status==3">查看物流</div>
+								<div v-on:click="confirmReceipt(value[0])" class="orderBtn active"  v-show="status==3">确认收货</div>
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="nothing" v-show="allList&&allList.length==0">
+			<img src="../img/none.png" alt="">
+			<p>没有订单！</p>
+		</div>
+	</div>
+	<div class="tipWindow" v-show="showRemoveOrder">
+		<div class="tipBox">
+			<div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+			<div class="tipBtn">
+				<div>确定</div>
+				<div v-on:click="showRemoveOrder=false" class="ffa_color">取消</div>
+			</div>
+		</div>
+	</div>
+	<div class="tipWindow oneTip" v-show="showTip">
+		<div class="tipBox">
+			<div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>{{tipInfo}}</div>
+			<div class="tipBtn">
+				<div v-on:click="showTip=false">确定</div>
+			</div>
+		</div>
+	</div>
+	<div class="tipWindow querenshouhuo" v-show="sureHaveSuccess">
+		<div class="tipBox">
+			<div class="tipInfo"><i class="iconfont icon-wenhao-yuankuang"></i>确定收货（待收货商品）成功?</div>
+			<div class="tipBtn">
+				<div v-on:click="sureHaveSuccess=false">取消</div>
+				<div  class="ffa_color">确定</div>
+			</div>
+		</div>
+	</div>
+	<div class="tipWindow wuliu" v-show="showWuLiu" v-on:click="showWuLiu=false">
+		<div class="tipBox">
+			<div class="top">
+				<p>快递公司：<span>百世快递</span></p>
+				<p>运单编号：<span>70724077921926</span></p>
+			</div>
+			<div class="list">
+				<ul>
+					<li>
+						<div class="round"></div>
+						<div class="state">
+							<p>快递状态描述</p>
+							<p>2017-09-16 15:42:26</p>
+						</div>
+					</li>
+					<li>
+						<div class="round"></div>
+						<div class="state">
+							<p>快递状态描述</p>
+							<p>2017-09-16 15:42:26</p>
+						</div>
+					</li>
+					<li>
+						<div class="round "></div>
+						<div class="state">
+							<p>快递状态描述</p>
+							<p>2017-09-16 15:42:26</p>
+						</div>
+					</li>
+					<li>
+						<div class="round"></div>
+						<div class="state">
+							<p>快递状态描述</p>
+							<p>2017-09-16 15:42:26</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="bottomSpace"></div>
+	<!--底部固定导航-->
+	<footer-nav :footer-nav-list="footerNavList"></footer-nav>
+</div>
+<script src="../js/math.js"></script>
+<script type="text/javascript" src="../js/common.js?v=" + Date.now() ></script>
+<script type="text/javascript" src="../js/order.js?v=" + Date.now() ></script>
+</body>
+</html>

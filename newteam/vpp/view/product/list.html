@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../import/vue/vue.js" ></script>
+	<script type="text/javascript" src="../../import/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="../../import/axios/axios.min.js" ></script>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_763110_iz2ggyyo4or.css" />
+	<link rel="stylesheet" href="../../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/list.css" />
+	<title>产品列表</title>
+</head>
+<body>
+<!--APP-->
+<div id="app" v-cloak>
+	<!--搜索功能-->
+	<div class="search">
+		<input placeholder="搜索商品" v-model="keywords">
+		<span @click="searchGoods">搜索</span>
+	</div>
+	<!--头部筛选-->
+	<div class="listHead">
+		<a class="active" @click.stop="sortOrigin">综合</a>
+		<a @click.stop="sortBuy">销售</a>
+		<a @click.stop="sortPrice">价格</a>
+		<!--<a>筛选<i class="iconfont icon-iconfontzhizuobiaozhun023125"></i></a>-->
+	</div>
+	<!--列表-->
+	<div class="list">
+		<div class="listBox" v-for="item in list" :key="item.id" @click="toBuy(item.id)">
+			<div>
+				<img :src="item.logo" />
+			</div>
+			<div>
+				<p>{{item.title}}</p>
+				<p><span>￥{{item.xs_price}}</span>/箱</p>
+				<p>原价：<span>￥{{item.price}}/箱</span></p>
+			</div>
+			<div>
+				<i class="iconfont icon-gouwuche"></i>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+<script type="text/javascript" src="../../js/product/list.js?v=" + Date.now() ></script>
+</body>
+</html>

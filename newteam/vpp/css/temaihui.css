@@ -1,0 +1,114 @@
+/* tab */
+.tab{
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #E6E6E6;
+	margin-top: 15px;
+	overflow: hidden;
+	overflow-x: scroll;
+	white-space: nowrap;
+	line-height: 48px;
+}
+.tab::-webkit-scrollbar{
+	display: none;
+}
+.tab span{
+	color:#666;
+	font-size: 1.5rem;
+	font-weight: bold;
+	padding:12px;
+	border-bottom: 2px solid transparent;
+	
+}
+.tab .active{
+	color:#FFA800;
+	border-color: #FFA800;
+}
+/*列表*/
+.list{
+	padding-left: 10px;
+	background: #FFFFFF;
+	border-bottom: 1px solid rgba(125,125,125,0.2);
+}
+.list div.box:last-child{
+	border: none;
+}
+/*内容*/
+.box{
+	border-bottom: 1px solid #E6E6E6;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	padding: 15px 10px;
+	padding-left: 0;
+}
+.boxCover{
+	width: 114px;
+	height: 114px;
+
+}
+.boxCover img{
+	width: 100%;
+	height: 100%;
+}
+.boxMain{
+	width: 66%;
+	line-height: 2rem;
+	padding:10px 0;
+}
+.boxMain p:first-child{
+	color: #333333;
+	font-weight: bold;
+	font-size: 1.4rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.boxMain p:nth-child(2){
+	margin-top: 7px;
+}
+.boxMain .marketprice{
+	color:#B3B3B3;
+}
+.boxMain p:nth-child(2) span{
+	color: #B3B3B3;
+}
+.boxMain p:nth-child(3){
+	color: #333;
+	font-weight: 500;
+}
+.boxMain p:nth-child(4){
+	color: #333;
+}
+/*.boxMain p:nth-child(4) span{
+	text-decoration: line-through;
+}*/
+.boxBtn{
+	border-radius: 5px;
+	border: 1px solid #FFA800;
+	color: #FFA800;
+	padding: 5px 10px;
+	position: absolute;
+	right: 10px;
+	bottom: 50px;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+/*底线*/
+.bottomLine{
+	text-align: center;
+	padding: 10px 0;
+}
+.bottomLine p{
+	display: inline-block;
+	padding: 0 10px;
+	color: rgba(125,125,125,0.5);
+}
+.bottomLine span{
+	display: inline-block;
+	width: 80px;
+	height: 1px;
+	border-bottom: 1px dashed rgba(125,125,125,0.3);
+	position: relative;
+	top: -4px;
+}

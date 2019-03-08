@@ -1,0 +1,513 @@
+html{
+  font-size: 75px;
+}
+body{
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after{
+  content:"";
+  height:0;
+  line-height:0;
+  display:block;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix{
+  zoom:1;  //因为IE6不支持:after伪类。它的效果和height:1%一样
+}
+.mainBox{
+  padding-bottom: 1.2rem;
+  >div{
+    margin-bottom: 20/75rem;
+    background-color: white;
+  }
+  .peisong{
+    height: 1.1rem;
+    line-height: 1.1rem;
+    text-align: center;
+    >div{
+      display: inline-block;
+      font-size: 34/75rem;
+      padding: 0 0.1rem;
+      font-weight: 600;
+    }
+    >div:first-child{
+      margin-right: 2rem;
+    }
+    .active{
+      color: #FFA800;
+      border-bottom: 2px solid #FFA800;
+    }
+  }
+  .addressInfo{
+    height: 2rem;
+    padding: 0.2rem 0;
+    >div{
+      height: 100%;
+      float: left;
+    }
+    >div:first-child{
+      line-height: 2rem;
+      width: 10%;
+      text-align: center;
+      i{
+        font-size: 36/75rem;
+      }
+    }
+    >div:last-child{
+      float: right;
+      margin-right: 0.4rem;
+    }
+    .noSelectDiZhi{
+      line-height: 2rem;
+      font-size: 32/75rem;
+      span{
+        color: #FFA800;
+      }
+    }
+    .dizhi{
+      width: 80%;
+      p{
+        line-height: 0.8rem;
+        font-size: 30/75rem;
+        color: #808080;
+        span{
+          color: #3F3F3F;
+        }
+        i{
+          color: #3F3F3F;
+          font-size: 28/75rem;
+          margin-left: 2rem;
+        }
+      }
+      .dizhixiangqing{
+          line-height: 0.8rem;
+          font-size: 28/75rem;
+          overflow: hidden;
+          >div{
+            float: left;
+          }
+          .left{
+            width: 25%;
+            color: #808080;
+          }
+          .right{
+            width: 73%;
+          height: 1.2rem;
+          line-height: 0.6rem;
+          font-size: 28/75rem;
+        }
+      }
+    }
+    >div:last-child{
+      line-height: 2.4rem;
+      width: 8%;
+      text-align: center;
+      i{
+        font-size: 45/75rem;
+      }
+    }
+  }
+  .peisongfangshi{
+    height: 3rem;
+    >p{
+      padding-left: 0.2rem;
+      height: 1rem;
+      line-height: 1rem;
+      font-size: 30/75rem;
+      color: #333333;
+      font-weight: 600;
+    }
+    .selectMode{
+      color: #999999;
+      .active{
+        color: #FFA800;
+        span{
+          display: inline-block;
+        }
+      }
+      .active::before{
+        content: "";
+        background-color: #FFA800;
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        top: -0.5rem;
+        left: -0.6rem;
+        transform: rotate(-50deg);
+      }
+      span{
+        //display: none;
+        position: absolute;
+        top: -0.3rem;
+        left: 0.05rem;
+        color: white;
+        height: 0.5rem;
+      }
+      >div{
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        width: 36%;
+        height: 1.1rem;
+        margin-left: 8%;
+        border: 1px solid;
+        border-radius: 0.2rem;
+        line-height: 1.1rem;
+        i{
+          font-size: 0.6rem;
+          display: inline-block;
+          height: 100%;
+          line-height: 1.1rem;
+          padding:  0 0.4rem;
+          float: left;
+        }
+        >div{
+          padding-top: 0.1rem;
+          font-size: 24/75rem;
+          display: inline-block;
+          height: 100%;
+          line-height: 0.5rem;
+        }
+      }
+
+    }
+  }
+  .imgAndInfo{
+    position: relative;
+    height: 200/75rem;
+    box-sizing: border-box;
+    padding: 0.6rem 20/75rem;
+    border-bottom: 1px solid #ddd;
+    >div{
+      float: left;
+      height: 100%;
+    }
+    div:first-child{
+      max-width: 30%;
+      img{
+        height: 100%;
+      }
+    }
+    div:nth-child(2){
+      padding-left: 40/75rem;
+      h5{
+        line-height: 0.7rem;
+        font-weight: 400;
+        font-size: 30/75rem;
+      }
+    }
+    .shuliang{
+      position: absolute;
+      top: 1.3rem;
+      right: 0.5rem;
+      i{
+        font-size: 28/75rem;
+        span{
+          font-size: 30/75rem;
+        }
+      }
+    }
+  }
+  .orderConfig{
+    .leaving{
+      padding: 0.3rem 0.4rem 0;
+      font-size: 30/75rem;
+      p{
+        line-height: 0.6rem;
+        color: #333333;
+        font-size: 24/75rem;
+        span{
+          float: right;
+          color: #ff0000;
+        }
+      }
+      p:last-child{
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 0.3rem;
+      }
+    }
+    .total{
+      color: #1b1b1b;
+      font-size: 30/75rem;
+      padding: 0.4rem;
+      span{
+        float: right;
+      }
+    }
+  }
+  .orderNumber{
+    padding: 0.3rem 0.5rem;
+    color: #808080;
+    line-height: 0.7rem;
+    font-size: 28/75rem;
+  }
+  .nowPinTuan{
+    p{
+      line-height: 0.8rem;
+    }
+    .touxiangList{
+      height: 1.7rem;
+      padding: 0 0.4rem;
+      .touxiang{
+        width: 1.7rem;
+        height: 100%;
+        margin-right: 0.35rem;
+        float: left;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .touxiang:first-child{
+        position: relative;
+      }
+      .touxiang:first-child::after{
+        content: '拼主';
+        position: absolute;
+        top: 0;
+        right: -0.3rem;
+        padding: 0.08rem 0.18rem;
+        color: white;
+        background-color: #FFA800;
+        border-radius: 0.18rem;
+      }
+      div:last-child{
+        height: 2rem;
+        line-height: 1.4rem;
+        span{
+          font-weight: 700;
+          font-size: 1rem;
+          //margin-top: -0.2rem;
+          color: #b3b3b3;
+          letter-spacing: 0.1rem;
+          margin-right: 0.3rem;
+        }
+        i{
+          //float: right;
+          //height: 0.6rem;
+          padding: 0.25rem;
+          border-radius: 0.15rem;
+          line-height: 2rem;
+          color: #FFA800;
+          border: 1px solid #FFA800;
+        }
+      }
+    }
+  }
+  .orderAmount{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    color: #1b1b1b;
+    font-size: 36/75rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    margin-bottom: 0;
+    i{
+      float: right;
+      display: inline-block;
+      height: 0.9rem;
+      line-height: 0.9rem;
+      padding:  0 0.4rem;
+      margin: 0.15rem 0 0 0.3rem;
+      border-radius: 0.45rem;
+    }
+    .yellow{
+      color: white;
+      background-color: #FFA800;
+    }
+    .gray{
+      color: #808080;
+      border: 1px solid;
+    }
+  }
+  .vip{
+    padding-left: 0.4rem;
+    font-size: 32/75rem;
+    >p{
+      height: 1rem;
+      line-height: 1rem;
+    }
+    p:first-child{
+      border-bottom: 1px solid #ccc;
+      b{
+        margin-left: 0.2rem;
+      }
+      i{
+        display: inline-block;
+        line-height: 0.2rem;
+        box-sizing: border-box;
+        height: 0.5rem;
+        color: #21C94D;
+        border: 1px solid #cccccc;
+        float: right;
+        margin-right: 0.4rem;
+        margin-top: 0.2rem;
+        font-size: 56/75rem;
+        width: 0.5rem;
+      }
+    }
+    p:last-child{
+      span{
+        margin-left: 0.4rem;
+        font-size: 24/75rem;
+        color: #7a7a7a;
+      }
+      i{
+        float: right;
+        margin-right: 0.4rem;
+        font-size: 36/75rem;
+      }
+    }
+  }
+  .pickUp{
+    >div:first-child{
+      font-size: 30/75rem;
+      color: #333333;
+      line-height: 0.8rem;
+      padding: 0.2rem 0.4rem;
+      border-bottom: 1px solid #cccccc;
+    }
+    >div:last-child{
+      height: 1.2rem;
+      line-height: 1.2rem;
+      color: #FFA800;
+      font-size: 30/75rem;
+      padding: 0 0.4rem;
+      i:last-child{
+        font-size: 36/75rem;
+        float: right;
+      }
+    }
+  }
+}
+.tipWindow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0,0,0,0.5);
+  .tipBox{
+    margin: 50% auto 0;
+    width: 60%;
+    background-color: white;
+    border-radius: 0.2rem;
+    .tipInfo{
+      height: 2.5rem;
+      line-height: 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid #CCC;
+      font-size: 30/75rem;
+      i{
+        font-size: 80/75rem;
+        color: #ffa800;
+        vertical-align: sub;
+      }
+    }
+    .tipBtn{
+      font-size: 0;
+      div{
+        width: 49%;
+        display: inline-block;
+        height: 1rem;
+        text-align: center;
+        line-height: 1rem;
+        font-size: 30/75rem;
+      }
+      div:first-child{
+        border-right: 1px solid #ccc;
+      }
+      div:last-child{
+        color: #ff0000;
+      }
+    }
+  }
+}
+.wuliu{
+  background-color: rgba(0,0,0,0.7);
+  color: #3F3F3F;
+  .tipBox{
+    width: 80%;
+    height: 50%;
+    overflow: auto;
+    .top{
+      padding: 0.4rem;
+      border-bottom: 2px solid #808080;
+      p{
+        line-height: 0.8rem;
+        font-size: 32/75rem;
+      }
+    }
+    .list{
+      padding: 0.4rem 0;
+      ul{
+        position: relative;
+        li{
+          position: relative;
+          margin-bottom: 0.5rem;
+          .round{
+            position: absolute;
+            left: 0.4rem;
+            top: 0;
+            z-index: 9;
+            width: 0.4rem;
+            height: 0.4rem;
+            background-color: #cdcdcd;
+            border-radius: 0.2rem;
+          }
+          .state{
+            margin-left: 1.2rem;
+            p{
+              line-height: 0.55rem;
+              font-size: 28/75rem;
+              width: 95%;
+            }
+          }
+        }
+        li:first-child{
+          .round{
+            background-color: #1BBC1B;
+          }
+        }
+        li:last-child{
+          margin-bottom: 0;
+        }
+        li:last-child::after{
+          content: "";
+          position: absolute;
+          width: 4px;
+          height: 100%;
+          background-color: white;
+          top: 0;
+          left: 0.6rem;
+          z-index: 8;
+        }
+      }
+      ul::after{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 1px;
+        top: 0;
+        left: 0.6rem;
+        background-color: #cdcdcd;
+      }
+    }
+  }
+}
+.color_yellow{
+  color: #ffa800 !important;
+}
+.color_red{
+  color: #ff0000 !important;
+}
+.hide{
+  display: none !important;
+}

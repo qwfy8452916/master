@@ -1,0 +1,450 @@
+/*头部*/
+.top{
+	width: 100%;
+	height: 50px;
+	background: url(../img/top.png) no-repeat center;
+	background-size: cover;
+	position: relative;
+}
+.focus{
+	font-size: 1.2rem;
+	background: #FFFFFF;
+	color: #FFBA00;
+	border: none;
+	width: 65px;
+	height: 25px;
+	border-radius: 3px;
+	position: absolute;
+	right: 10px;
+	top: 12px;
+}
+.closeTop{
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	top: 17px;
+	left: 17px;
+}
+.logo{
+	width: 45px;
+	height: 24px;
+	position: absolute;
+	left: 40px;
+	top: 13px;
+}
+.topWelcome{
+	font-size: 1.4rem;
+	color: #FFFFFF;
+	position: absolute;
+	left: 90px;
+	top: 15px;
+}
+/*轮播*/
+.banner{
+	width: 100%;
+}
+.banner img{
+	width: 100%;
+	height: 180px;
+}
+
+/*搜索*/
+.search{
+	width: 100%;
+	height: 45px;
+	background: rgba(255,255,255,0.6);
+	position: absolute;
+	top: 50px;
+	left: 0;
+	z-index: 200;
+}
+.search input{
+	width: 90%;
+	height: 31px;
+	margin-left: 5%;
+	margin-top: 7px;
+	background: url(../img/searchBg.png) no-repeat center left #FFFFFF;
+	background-position-x: 10px;
+	border: none;
+	border-radius: 20px;
+	text-indent: 35px;
+	color: #999999;
+}
+
+/*菜单*/
+.menu{
+	background: #FFFFFF;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding:0 15px;
+	box-sizing: border-box;
+}
+.menuItem{
+	width: 25%;
+	margin-top: 10px;
+}
+.menuItem img{
+	width: 70%;
+	margin-left: 15px;
+}
+.menuItem p{
+	padding-bottom: 5px;
+	text-align: center;
+	color: #333333;
+	margin-top: 5px;
+}
+
+/*特麦会入口*/
+.ad{
+	position: relative;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	background: #FFFFFF;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.ad div{
+	width: 50%;
+	text-align: center;
+}
+.ad div img{
+	height: 70px;
+}
+/*通用标题*/
+.commonTitle{
+	background: #FFFFFF;
+	padding: 10px 0;
+}
+.commonTitle img{
+	width: 100px;
+	margin-left: 15px;
+}
+.commonTitle i{
+	position: relative;
+	top: 1px;
+	right: 3px;
+}
+
+/*限时抢购*/
+.timeBuy{
+	background: #FFFFFF;
+	display: flex;
+	padding-bottom: 10px;
+}
+.timeBuyBox{
+	width: 40%;
+	padding: 0 5%;
+}
+.timeBuyBox img{
+	width: 80%;
+	height: 80px;
+	padding: 10%;
+	border: 1px solid rgba(0,0,0,0.05);
+	border-radius: 5px;
+}
+.timeBuyBox p:first-child{
+	font-size: 1.4rem;
+}
+.timeBuyBox p:first-child span{
+	background: #FFA800;
+	color: #FFFFFF;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	margin: 0 2px;
+	font-size: 1.2rem;
+	border-radius: 3px;
+}
+.timeBuyBox p:nth-child(2){
+	margin-top: 10px;
+}
+.timeBuyBox p:nth-child(3){
+	margin-top: 5px;
+	font-size: 1.4rem;
+}
+.timeBuyBox p:nth-child(4){
+	margin-top: 5px;
+	color: #FF0000;
+}
+.timeBuyBox p:nth-child(4) span{
+	font-size: 1.4rem;
+}
+.timeBuyBox p:nth-child(5){
+	text-decoration: line-through;
+	color: #B1B1B1;
+}
+.timeBuyBox p:nth-child(5) span{
+	font-size: 1.4rem;
+}
+
+/*热度专题*/
+.hot{
+	margin-top: 10px;
+	background: #FFFFFF;
+}
+.hotBox{
+	padding: 0 15px;
+}
+.hotBanner{
+	width: 100%;
+}
+.hotBanner img{
+	width: 100%;
+}
+
+.hotItem{
+	padding: 15px;
+}
+.hotList{
+	padding: 0 15px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+.hotLi{
+	width: 48%;
+}
+.hotCover{
+	width: 100%;
+	overflow: hidden;
+	height: 10rem;
+	text-align: center;
+}
+.hotCover img{
+	height: 100%;
+	border-radius: 5px;
+	line-height: 100%;
+}
+.hotTitle{
+	font-size: 1.4rem;
+}
+.hotDo{
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.4rem;
+	line-height: 30px;
+	color: #FF0000;
+	padding-bottom: 10px;
+}
+.hotDo span{
+	font-size: 1.2rem;
+}
+.hotDo i{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	color: #FFFFFF;
+	border-radius: 50%;
+	margin-left: 5px;
+}
+.hotDo i:first-child{
+	background: #FFA530;
+}
+.hotDo i:last-child{
+	background: #1CBC1C;
+}
+/*优选精品*/
+.uchose{
+	margin-top: 10px;
+	background: #FFFFFF;
+}
+.uchose .commonTitle{
+	padding-right: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.uchose .commonTitle p{
+	color: #1CBC1C;
+	font-size: 1.4rem;
+}
+.uBox{
+	padding: 10px 15px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	display: flex;
+	justify-content: space-around;
+	position: relative;
+}
+.uchose .uBox:last-child{
+	border: none;
+}
+.uBoxCover{
+	display: flex;
+	align-items: center;
+	width: 150px;
+}
+.uBox img{
+	width: 100%;
+}
+.uBoxDes{
+	padding-top: 15px;
+	line-height: 2rem;
+}
+.uBoxDes p:nth-child(1){
+	font-size: 1.6rem;
+	font-weight: bold;
+}
+.uBoxDes p:nth-child(2){
+	font-size: 1.4rem;
+	color: #808080;
+}
+.uBoxDes p:nth-child(3){
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: #FF0000;
+}
+.uBoxDes p:nth-child(4){
+	font-size: 1.4rem;
+	color: #FF0000;
+}
+.uBoxDes p:nth-child(5){
+	font-size: 1.4rem;
+	color: #9E9E9E;
+	text-decoration: line-through;
+}
+.uBoxDes span{
+	display: inline-block;
+	color: #FFFFFF;
+	font-size: 1.2rem;
+	border-radius: 3px;
+	transform: scale(0.8);
+	position: relative;
+}
+.uBoxDes span.svip{
+	background: linear-gradient(to right, #F78427, #F74927);
+	padding: 0 13px;
+}
+.uBoxDes span.svip span{
+	display: block;
+	width: 10px;
+	height: 10px;
+	background: #F78427;
+	position: absolute;
+	left: -4px;
+	top: 6px;
+	transform: rotate(45deg);
+	z-index: 2;
+}
+.uBoxDes span.vip{
+	background: linear-gradient(to right, #F7D727, #F78427);
+	padding: 0 13px;
+}
+.uBoxDes span.vip span{
+	display: block;
+	width: 10px;
+	height: 10px;
+	background: #F7D727;
+	position: absolute;
+	left: -4px;
+	top: 6px;
+	transform: rotate(45deg);
+	z-index: 2;
+}
+.uBoxIndex{
+	background: #FFFFFF;
+	width: 70px;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	color: #FFFFFF;
+	top: 15px;
+	left: 15px;
+}
+.uBoxIndex span{
+	display: block;
+	position: absolute;
+}
+.uBoxIndex span:first-child{
+	width: 55px;
+	height: 20px;
+	background: #FF0000;
+	left: 0;
+	top: 0;
+	padding-left: 5px;
+}
+.uBoxIndex span:last-child{
+	width: 20px;
+	height: 20px;
+	background: #FFFFFF;
+	right: 0;
+	top: 0;
+	transform: rotate(45deg);
+}
+/*猜你喜欢*/
+.likeTitle{
+	background: #FFFFFF;
+	margin-top: 10px;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 1.4rem;
+	color: #FFA530;
+}
+.likeTitle span{
+	width: 120px;
+	height: 1px;
+	display: inline-block;
+	border-bottom: 1px solid #FFA530;
+	position: relative;
+	top: -3px;
+}
+.like{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	background: #FFFFFF;
+	padding: 0 15px;
+}
+.likeBox{
+	margin-top: 15px;
+	width: 48%;
+}
+.likeCover{
+	height: 12rem;
+	text-align: center;
+}
+.likeCover img{
+	width: 10rem;
+
+	border-radius: 5px;
+}
+.likeBoxTitle{
+	font-size: 1.4rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.likeDo{
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.4rem;
+	color: #FF0000;
+	margin-top: 5px;
+	line-height: 25px;
+	padding-bottom: 10px;
+}
+.likeDo span{
+	font-size: 1.2rem;
+}
+.likeDo i{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	color: #FFFFFF;
+	border-radius: 50%;
+	margin-left: 5px;
+}
+.likeDo i:first-child{
+	background: #FFA530;
+}
+.likeDo i:last-child{
+	background: #1CBC1C;
+}

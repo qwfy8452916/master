@@ -1,0 +1,57 @@
+body{
+    background-color: #fff;
+}
+.list{
+    padding:15px;
+    box-sizing: border-box;
+}
+.listItem{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
+.listItem:last-child{
+    margin-bottom: 15px;
+}
+.applyBox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.applyText{
+    font-size: 1.5rem;
+    color:#333;
+    font-weight: 500;
+}
+.applyMoney{
+    font-size: 1.5rem;
+    color:#333;
+    font-weight: bold;
+}
+.applyTime{
+    font-size: 1.5rem;
+    color:#999999;
+    font-weight: 500;
+    line-height: 40px;
+}
+.more{
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    position: fixed;
+    bottom:0;
+    left:0;
+}
+.moreBox{
+    font-size: 1.5rem;
+    color:#FFA800;
+    font-weight: 500;
+   text-align: center
+}
+.moreBox p{
+    text-align: center;
+    display: inline-block;
+}
+.moreBox img{
+    width: 13px;
+    height: 10px;
+}

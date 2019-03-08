@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>助他返现</title>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/fanxian.css">
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <!--<script src="js/jquery.min.js"></script>-->
+</head>
+<body>
+<div id="app">
+    <div class="mainBox">
+        <div class="fanxian">
+            <div class="touxiang"><img src="../../img/apple.jpg" alt="">
+            <p>微信昵称</p>
+            </div>
+            <p>您的好友正在参加优果季购商品返现金活动，需要您助他一臂之力。</p>
+        </div>
+        <div class="btn">
+            <div>助他返现</div>
+            <div>我也要参加</div>
+        </div>
+    </div>
+    <div class="tipWindow" style="display: none">
+        <div class="tipBox">
+            <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+            <div class="tipBtn">
+                <div>确定</div>
+                <div class="color_yellow">取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            productName: '王庄大西瓜',
+            imgList:[
+                {
+                    src:"img/topbg01.jpg"
+                }
+            ],
+            showUpImage : false
+        },
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            },
+            addImgOne:function (that) {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../import/vue/vue.js" ></script>
+	<script type="text/javascript" src="../import/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="../import/axios/axios.min.js" ></script>
+	<link rel="stylesheet" href="../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/my.css" />
+	<title>个人中心</title>
+</head>
+<body>
+<!--APP-->
+<div id="app" v-cloak>
+	<!--头部-->
+	<div class="head">
+		<img :src="userInfo.head_img || '../img/userIcon.png'"  class="userIcon" />
+		<p class="userName">{{userInfo.username || '七乐乐'}}</p>
+		<!--<div class="leVip" v-if="isLevip"><img src="img/leVip.png" />乐会员</div>
+		<div class="internal" v-if="isInternal">内部员工</div>-->
+	</div>
+	<!--我的账户-->
+	<div class="myAccount">
+		<div class="myAccountHead">
+			<img src="../img/myAccount.png" class="icon" style="top: -4px;" /> 我的账户
+		</div>
+		<div class="myAccountMain">
+			<div @click="gotoMoney">
+				<p>{{userInfo.user_money}}</p>
+				<p>积分</p>
+			</div>
+			<div class="myAccountMainLine"></div>
+			<div @click="gotoCoupon">
+				<p>0</p>
+				<p>优惠券</p>
+			</div>
+		</div>
+	</div>
+	<!--菜单-->
+	<div class="menu menuOne">
+		<div class="menuItem" @click="goCollect">
+			<p>
+				<img src="../img/shoucang.png" class="icon" /> 收藏
+			</p>
+			<p>
+				<i class="lele icon-gengduo"></i>
+			</p>
+		</div>
+		<div class="menuItem">
+			<p>
+				<img src="../img/dingdan.png" class="icon" /> 我的订单
+			</p>
+			<p>
+				<i class="lele icon-gengduo"></i>
+			</p>
+		</div>
+		<div class="menuItem">
+			<p>
+				<img src="../img/dizhi.png" class="icon" /> 地址管理
+			</p>
+			<p>
+				<i class="lele icon-gengduo"></i>
+			</p>
+		</div>
+		<div class="menuItem">
+				<p>
+					<img src="../img/yong.png" class="icon" /> 我的佣金
+				</p>
+				<p>
+					<i class="lele icon-gengduo"></i>
+				</p>
+			</div>
+		<!--<div class="menuItem">
+			<p>
+				<img src="../img/huodong.png" class="icon" /> 我的活动
+			</p>
+			<p>
+				<i class="iconfont icon-gengduo"></i>
+			</p>
+		</div>-->
+	</div>
+	<!--菜单-->
+	<!--<div class="menu menuTwo">-->
+		<!--<div class="menuItem">-->
+			<!--<p>-->
+				<!--<img src="../img/fenxiang.png" class="icon" /> 个人分销-->
+			<!--</p>-->
+			<!--<p>-->
+				<!--<i class="iconfont icon-gengduo"></i>-->
+			<!--</p>-->
+		<!--</div>-->
+		<!--<div class="menuItem">-->
+			<!--<p>-->
+				<!--<img src="../img/employees.png" class="icon" /> 内部员工-->
+			<!--</p>-->
+			<!--<p>-->
+				<!--<i class="iconfont icon-gengduo"></i>-->
+			<!--</p>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="bottomSpace"></div>-->
+	<!--底部固定导航-->
+	<footer-nav :footer-nav-list="footerNavList"></footer-nav>
+</div>
+
+<script type="text/javascript" src="../js/common.js?v=" + Date.now() ></script>
+<script type="text/javascript" src="../js/my.js?v=" + Date.now() ></script>
+</body>
+</html>

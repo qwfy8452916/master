@@ -1,0 +1,178 @@
+/*轮播*/
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox {
+  width: 100%;
+}
+.mainBox .bannerBox {
+  width: auto;
+  height: 4.93333333rem;
+  position: relative;
+}
+.mainBox .bannerBox img {
+  width: 100%;
+  height: 100%;
+}
+.mainBox .bannerBox .zongchouBox {
+  width: 2.04rem;
+  height: 0.73333333rem;
+  position: absolute;
+  top: 0.37333333rem;
+  left: 0.96rem;
+  z-index: 999;
+}
+.mainBox .bannerBox .zongchouBox img {
+  width: 100%;
+  height: 100%;
+}
+.mainBox .banner {
+  position: relative;
+}
+.mainBox .banner img {
+  width: 100%;
+}
+.mainBox .contentBox {
+  width: 100%;
+  padding: 0.16rem 0.45333333rem 0.4rem;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.mainBox .contentBox .goodsName {
+  color: #1E1E1E;
+  font-size: 0.45333333rem;
+  font-weight: 500;
+  display: inline-block;
+}
+.mainBox .contentBox .crowdBox {
+  width: 1.2rem;
+  height: 0.46666667rem;
+  box-sizing: border-box;
+  border: 0.01333333rem solid #FFA800;
+  text-align: center;
+  line-height: 0.46666667rem;
+  color: #FFA800;
+  display: inline-block;
+  margin-left: 0.12rem;
+}
+.mainBox .contentBox .crowdNum {
+  color: #FFA800;
+  font-size: 0.37333333rem;
+  font-weight: 400;
+  display: inline-block;
+  float: right;
+}
+.mainBox .contentBox .goodsDes {
+  color: #797979;
+  font-size: 0.37333333rem;
+  font-weight: 400;
+  margin-top: 0.24rem;
+}
+.mainBox .contentBox .goodsPrice {
+  color: #878787;
+  font-size: 0.37333333rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 0.29333333rem;
+}
+.mainBox .contentBox .goodsPrice em {
+  color: #FF0000;
+  font-size: 0.48rem;
+  font-weight: 500;
+}
+.mainBox .contentBox .originPrice {
+  color: #8D8D8D;
+  font-size: 0.32rem;
+  text-decoration: line-through;
+  margin-left: 1.10666667rem;
+}
+.mainBox .contentBox .infoBox {
+  width: 98%;
+  height: 1.6rem;
+  background-color: #F3F3F3;
+  margin: 0.48rem auto 0.33333333rem;
+  border-radius: 0.13333333rem;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  line-height: 0.53333333rem;
+  padding-top: 0.29333333rem;
+}
+.mainBox .contentBox .infoBox .futurePrice {
+  color: #333;
+  font-size: 0.45333333rem;
+  font-weight: bold;
+}
+.mainBox .contentBox .infoBox .priceText {
+  color: #808080;
+  font-size: 0.32rem;
+  text-align: center;
+}
+.mainBox .contentBox .infoBox .peopleNum {
+  color: #333;
+  font-size: 0.45333333rem;
+  font-weight: bold;
+}
+.mainBox .contentBox .infoBox:nth-child(2) {
+  margin-top: 0;
+}
+.mainBox .gearBox {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 0.32rem;
+  padding: 0.34666667rem 0.4rem 0.53333333rem;
+  box-sizing: border-box;
+}
+.mainBox .gearBox p {
+  font-size: 0.37333333rem;
+  color: #333;
+  font-weight: normal;
+}
+.mainBox .gearBox .iconBox {
+  width: 100%;
+  height: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.73333333rem;
+}
+.mainBox .gearBox .iconBox .imgBox {
+  width: 0.65333333rem;
+  height: 0.65333333rem;
+  padding-top: 0.06666667rem;
+}
+.mainBox .gearBox .iconBox .imgBox img {
+  width: 100%;
+  height: 100%;
+}
+.mainBox .gearBox .iconBox .imgBox1 {
+  width: 0.72rem;
+  height: 0.72rem;
+}
+.mainBox .gearBox .iconBox .supportBox {
+  width: 4.10666667rem;
+  height: 0.8rem;
+  background-color: #FFA800;
+}
+.mainBox .gearBox .iconBox .supportBox p {
+  font-size: 0.37333333rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.8rem;
+}
+/*# sourceMappingURL=crowdDetail.css.map */

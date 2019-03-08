@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/goodsList.css">
+
+    <title>商品列表</title>
+</head>
+<body>
+<div id="app">
+    <div class="mainbox">
+        <!--商品item-->
+        <!--<div class="tabBar">-->
+            <!--<p class="itemName" v-for="(item,index) in tabs"-->
+               <!--:class="{active:index == num}"-->
+               <!--@click="tab(index)">{{item}}</p>-->
+        <!--</div>-->
+        <!--商品列表-->
+        <div class="listBox">
+            <div class="listItem" v-for="item in list" :key="item.id" @click="toBuy(item.id)">
+                <div class="listTop">
+                    <div class="imgBox">
+                        <img :src="item.logo" alt="">
+                    </div>
+                </div>
+                <div class="listBottom">
+                    <p class="goodsName">{{item.title}}</p>
+                    <div class="memberBox">
+                        <span class="goodsPrice">￥{{item.price}}</span>
+                        <img src="../../img/lehui.png" alt="">
+                    </div>
+                    <div class="memberBox">
+                        <span class="goodsPrice goodsPrice1">￥{{item.product_price}}</span>
+                        <img src="../../img/puhui.png" alt="" class="puImg">
+                    </div>
+                    <p class="originPrice">￥{{item.price}}</p>
+                    <div class="carBox" @click.stop="addNum(item.product_id)">
+                        <img src="../../img/xg.png" alt="" class="carImg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--购物车-->
+        <div class="shopCar" @click="toShopCar">
+            <img src="../../img/dg.png" alt="">
+            <div class="numBox" v-show="shopNum">
+                <p class="shopNum">{{shopNum}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="../spa/import/js/axios.min.js" ></script>
+<script type="text/javascript" src="../spa/import/js/vue.min.js" ></script>
+<script type="text/javascript" src="../../js/common.js" ></script>
+<script type="text/javascript" src="../../js/goodsList.js"></script>
+</body>
+</html>

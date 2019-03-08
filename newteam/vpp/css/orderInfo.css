@@ -1,0 +1,320 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox {
+  height: 100%;
+  overflow: auto;
+}
+.mainBox > div {
+  margin-bottom: 0.26666667rem;
+  background-color: white;
+}
+.mainBox .orderState {
+  height: 1.2rem;
+  line-height: 1.2rem;
+  font-size: 0.42666667rem;
+  padding-left: 0.42666667rem;
+  color: #2e2e2e;
+}
+.mainBox .orderAmount {
+  margin-bottom: 0;
+}
+.mainBox .imgAndInfo {
+  height: 2.66666667rem;
+  box-sizing: border-box;
+  padding: 0.4rem 0.26666667rem;
+}
+.mainBox .imgAndInfo > div {
+  display: inline-block;
+  height: 100%;
+}
+.mainBox .imgAndInfo div:first-child {
+  width: 20%;
+}
+.mainBox .imgAndInfo div:first-child img {
+  width: 100%;
+  height: 100%;
+}
+.mainBox .imgAndInfo div:last-child {
+  width: 72%;
+  padding-left: 0.53333333rem;
+}
+.mainBox .imgAndInfo div:last-child h5 {
+  line-height: 0.7rem;
+  font-size: 0.42666667rem;
+}
+.mainBox .imgAndInfo div:last-child p {
+  line-height: 0.7rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .imgAndInfo div:last-child p:last-child i {
+  font-size: 0.42666667rem;
+  float: right;
+}
+.mainBox .orderConfig {
+  padding: 0.26666667rem 0 0 0.26666667rem;
+}
+.mainBox .orderConfig .addressInfo {
+  height: 2rem;
+  padding-bottom: 0.2rem;
+}
+.mainBox .orderConfig .addressInfo > div {
+  height: 100%;
+  float: left;
+}
+.mainBox .orderConfig .addressInfo > div:first-child {
+  line-height: 2.4rem;
+  width: 10%;
+  text-align: center;
+}
+.mainBox .orderConfig .addressInfo > div:first-child i {
+  font-size: 0.48rem;
+}
+.mainBox .orderConfig .addressInfo .dizhi {
+  width: 80%;
+}
+.mainBox .orderConfig .addressInfo .dizhi p {
+  line-height: 0.8rem;
+  font-size: 0.4rem;
+  color: #808080;
+}
+.mainBox .orderConfig .addressInfo .dizhi p span {
+  color: #3F3F3F;
+}
+.mainBox .orderConfig .addressInfo .dizhi p i {
+  color: #3F3F3F;
+  font-size: 0.37333333rem;
+  float: right;
+}
+.mainBox .orderConfig .addressInfo .dizhi .dizhixiangqing {
+  line-height: 0.8rem;
+  font-size: 0.37333333rem;
+  overflow: hidden;
+}
+.mainBox .orderConfig .addressInfo .dizhi .dizhixiangqing > div {
+  float: left;
+}
+.mainBox .orderConfig .addressInfo .dizhi .dizhixiangqing .left {
+  width: 25%;
+  color: #808080;
+}
+.mainBox .orderConfig .addressInfo .dizhi .dizhixiangqing .right {
+  width: 73%;
+  height: 1.2rem;
+  line-height: 0.6rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .orderConfig .addressInfo > div:last-child {
+  line-height: 2.4rem;
+  width: 8%;
+  text-align: center;
+}
+.mainBox .orderConfig .addressInfo > div:last-child i {
+  font-size: 0.6rem;
+}
+.mainBox .orderConfig > div {
+  border-bottom: 1px solid #ddd;
+}
+.mainBox .orderConfig .other {
+  height: 1.1rem;
+  line-height: 1.1rem;
+  padding: 0 0.4rem 0 0.1rem;
+  font-size: 0.4rem;
+  color: #1b1b1b;
+}
+.mainBox .orderConfig .other span {
+  color: #7B7B7B;
+  float: right;
+}
+.mainBox .orderConfig .leaving {
+  line-height: 0.6rem;
+  padding: 0.1rem;
+  font-size: 0.4rem;
+}
+.mainBox .orderConfig .leaving p {
+  line-height: 0.5rem;
+  color: #808080;
+  font-size: 0.32rem;
+}
+.mainBox .orderConfig .total {
+  height: 1.2rem;
+  line-height: 1.2rem;
+  color: #1b1b1b;
+  font-size: 0.4rem;
+  padding-right: 0.4rem;
+  text-align: right;
+  margin-bottom: 2rem;
+}
+.mainBox .orderNumber {
+  padding: 0.3rem 0.5rem;
+  color: #808080;
+  line-height: 0.7rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .orderAmount {
+  width: 100%;
+  padding: 0 0.5rem;
+  color: #1b1b1b;
+  font-size: 0.4rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  position: fixed;
+  bottom: 0;
+}
+.mainBox .orderAmount i {
+  display: inline-block;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  padding: 0 0.4rem;
+  margin: 0.15rem 0 0 0.3rem;
+  border-radius: 0.45rem;
+}
+.mainBox .orderAmount .yellow {
+  float: right;
+  margin-right: 1rem;
+  color: white;
+  background-color: #FFA800;
+}
+.mainBox .orderAmount .gray {
+  color: #808080;
+  border: 1px solid;
+}
+.tipWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.tipWindow .tipBox {
+  margin: 50% auto 0;
+  width: 60%;
+  background-color: white;
+  border-radius: 0.2rem;
+}
+.tipWindow .tipBox .tipInfo {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid #CCC;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipInfo i {
+  font-size: 1.06666667rem;
+  color: #ffa800;
+  vertical-align: sub;
+}
+.tipWindow .tipBox .tipBtn {
+  font-size: 0;
+}
+.tipWindow .tipBox .tipBtn div {
+  width: 49%;
+  display: inline-block;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipBtn div:first-child {
+  border-right: 1px solid #ccc;
+}
+.tipWindow .tipBox .tipBtn div:last-child {
+  color: #ff0000;
+}
+.wuliu {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #3F3F3F;
+}
+.wuliu .tipBox {
+  width: 80%;
+  height: 50%;
+  overflow: auto;
+}
+.wuliu .tipBox .top {
+  padding: 0.4rem;
+  border-bottom: 2px solid #808080;
+}
+.wuliu .tipBox .top p {
+  line-height: 0.8rem;
+  font-size: 0.42666667rem;
+}
+.wuliu .tipBox .list {
+  padding: 0.4rem 0;
+}
+.wuliu .tipBox .list ul {
+  position: relative;
+}
+.wuliu .tipBox .list ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.wuliu .tipBox .list ul li .round {
+  position: absolute;
+  left: 0.4rem;
+  top: 0;
+  z-index: 9;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: #cdcdcd;
+  border-radius: 0.2rem;
+}
+.wuliu .tipBox .list ul li .state {
+  margin-left: 1.2rem;
+}
+.wuliu .tipBox .list ul li .state p {
+  line-height: 0.55rem;
+  font-size: 0.37333333rem;
+  width: 95%;
+}
+.wuliu .tipBox .list ul li:first-child .round {
+  background-color: #1BBC1B;
+}
+.wuliu .tipBox .list ul li:last-child {
+  margin-bottom: 0;
+}
+.wuliu .tipBox .list ul li:last-child::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background-color: white;
+  top: 0;
+  left: 0.6rem;
+  z-index: 8;
+}
+.wuliu .tipBox .list ul::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  top: 0;
+  left: 0.6rem;
+  background-color: #cdcdcd;
+}
+.color_yellow {
+  color: #ffa800 !important;
+}
+.color_red {
+  color: #ff0000 !important;
+}
+.hide {
+  display: none !important;
+}
+/*# sourceMappingURL=orderInfo.css.map */

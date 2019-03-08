@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../view/spa/import/css/swiper.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/bargain/help.css" />
+    <title>好友砍价</title>
+</head>
+
+<body>
+    <!-- 好友砍价 -->
+    <section id="app">
+        <!-- 由谁分享 -->
+        <section class="shareperson">
+            <div class="photoBox">
+                <img :src="user.head_img" alt="">
+            </div>
+            <span>由<i>“{{user.username}}”</i>分享</span>
+        </section>
+        <!-- banner -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="../../img/banner1.jpg" alt="" style="opacity:1;">
+                </div>
+                <div class="swiper-slide">
+                    <img src="../../img/banner2.jpg" alt="" style="opacity:1;">
+                </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- 内容部分 -->
+        <section class="contentBox">
+            <section class="content">
+                <div class="titleBox">
+                    <div class="titleContent">
+                        <span class="title">{{activity.title}}</span>
+                        <div class="circle"></div>
+                        <span>好友砍价</span>
+                    </div>
+                    <p>￥<span>{{activityprice}}</span></p>
+                </div>
+                <div class="des">
+                    {{activity.keywords}}
+                </div>
+            </section>
+            <!-- 参加信息 -->
+            <section class="joinBox">
+                <div class="joinTop">
+                    <p><span>45456</span>人正在参加</p>
+                    <div class="headBox">
+                        <img src="../../img/head.png" alt="">
+                    </div>
+                    <div class="circleBox">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="joinBottom">
+                    <div class="joinLeft">
+                        <div class="icon">
+
+                        </div>
+                        <p>总共<span>500</span>份</p>
+                        <p>已领<span>89</span>份</p>
+                    </div>
+                    <div class="joinRight">
+                        <p>还剩<span>411</span>份</p>
+                    </div>
+
+                </div>
+            </section>
+            <!-- 详情信息 -->
+            <div class="deatil">
+                <p>详情页</p>
+            </div>
+        </section>
+        <!-- 底部 -->
+        <footer>
+            <div class="priceBox">
+                <P>价格<span>￥<i>{{activityprice}}</i></span></p>
+                <p class="help" @click="helpBargain(user.id=uesrid)">
+                    帮他砍价
+                </p>
+            </div>
+        </footer>
+        <!-- 模态窗 -->
+        <div class="mask" v-show="showtoast" @click="helpBargain">
+           <div class="toastBox">
+                <div class="imgBox">
+                    <img src="../../img/help.png" alt="">
+                </div>
+                <div class="toastBottom">
+                    <p>恭喜</p>
+                    <p>恭喜您成功帮好友砍了<span>{{bargainprice}}</span>元</p>
+                    <button>知道了</button>
+                </div>
+           </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../view/spa/import/js/swiper.min.js"></script>
+    <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+    <script type="text/javascript" src="../../import/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+    <script type="text/javascript" src="../../js/bargain/help.js"></script>
+</body>
+
+</html>

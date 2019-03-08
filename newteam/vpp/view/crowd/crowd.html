@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <script src="../../js/flexible.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/crowd.css" />
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <title>抢先众筹</title>
+</head>
+<body>
+    <div id="app">
+        <div class="mainBox">
+            <!--众筹列表-->
+            <div class="listBox">
+                <div class="listItem" v-for="item in list">
+                        <div class="imgBox" @click="goDetail(item.id)">
+                            <img :src="item.img_url" alt="">
+                        </div>
+                        <div class="textBox" @click="goDetail(item.id)">
+                            <p class="goodsName">{{item.title}}</p>
+                            <p class="goodsDes">{{item.keywords}}</p>
+                            <!--<p class="goodsWeight"><span>500</span>g/盒</p>-->
+                            <p class="goodsPrice">￥{{item.price}}</p>
+                            <p class="goodsDetail">查看详情</p>
+                            <!--<p>开始时间:{{item.start_date}}</p>-->
+                            <!--<p>结束时间:{{item.end_date}}</p>-->
+                            <!--<p class="originPrice">￥24.00</p>-->
+                            <!--<span class="haopingNum"><em>10</em>条好评</span>-->
+                            <!--<span class="haoping haopingNum">好评率<em>100%</em></span>-->
+                        </div>
+                        <!--<div class="carBox" @click.stop="addNum(item.id)">-->
+                            <!--<img src="../../img/xg.png" alt="">-->
+                        <!--</div>-->
+                    </div>
+            </div>
+            <!--<div class="bigcarBox" @click="toShopCar">-->
+                <!--<img src="../../img/dg.png" alt="">-->
+                <!--<div class="numBox" v-show="shopNum">-->
+                    <!--<p class="shopNum">{{shopNum}}</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/common.js?v=" + Date.now() ></script>
+    <script type="text/javascript" src="../../js/crowd.js?v=" + Date.now()></script>
+</body>
+</html>

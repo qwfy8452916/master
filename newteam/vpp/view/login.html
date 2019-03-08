@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+
+<body>
+<div style="margin-left: auto; margin-right: auto; text-align:center; width: 100%; padding-top: 50%; font-size: 2.5rem; ">努力加载中。。。</div>
+</body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    function setToken(token){
+        var backUrl = decodeURIComponent(getData('BACK_URL'));
+        if(isStrStr(backUrl,'token')){
+            var redirect_url = changeUrlArg(backUrl,'token',token);
+        }else{
+            if(backUrl.indexOf("?") !=-1){
+                var redirect_url = backUrl + '&token='+token;
+            }else{
+                var redirect_url = backUrl + '?token='+token;
+            }
+        }
+        //setTimeout(function(){
+            window.location.href = redirect_url;
+        //},1000)
+    }
+
+    /**
+     * 替换参数值
+     * @param url
+     * @param arg
+     * @param val
+     * @returns {string}
+     */
+    function changeUrlArg(url, arg, val){
+        var pattern = arg+'=([^&]*)';
+        var replaceText = arg+'='+val;
+        return url.match(pattern) ? url.replace(eval('/('+ arg+'=)([^&]*)/gi'), replaceText) : (url.match('[\?]') ? url+'&'+replaceText : url+'?'+replaceText);
+    }
+
+    /**
+     * 判斷字符串中是否包某个字符
+     * @param str
+     * @returns {boolean}
+     */
+    function isStrStr(str,arg){
+        return (str.indexOf(arg)!=-1);
+    }
+
+    function GetQueryString(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+    function setData(key,value){
+        localStorage.setItem(key,value);
+    }
+
+    function getData(key){
+        return localStorage.getItem(key);
+    }
+
+
+    function getLoginToken(){
+        var code = GetQueryString("code");
+        var url = "http://xinbingtuan.sevenlele.com/login/oauth_callback?code="+code+"&state=STATE";
+        $.ajax({
+             type: "GET",
+             url: url,
+             dataType: 'json',
+             success: function(res) {
+                 setData('TOKEN', res.data);
+                 setToken(res.data);
+            }
+        });
+    }
+
+    $(function(){
+        getLoginToken();
+    })
+</script>
+</html>

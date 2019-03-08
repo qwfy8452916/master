@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <link rel="stylesheet" href="./import/css/init.css" />
+    <link rel="stylesheet" href="./import/css/swiper.min.css" />
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_999391_560e0zodez7.css" />
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>特麦会</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="product">
+            <img :src="detail.banner1" :alt="detail.banner1">
+            <input type="text" :placeholder="detail.title" v-mode="detail.title" />
+        </div>
+
+        <div class="msg">
+            <p>推荐理由</p>
+            <textarea v-model="msg" :placeholder="detail.title" onfocus="this.placeholder=''"></textarea>
+        </div>
+
+        <div class="price">
+            <p>
+                <span class="org">规格</span>
+                <span>默认</span>
+            </p>
+            <p>
+                <span class="org">拿货价</span>
+                <span>￥{{detail.tz_price}}</span>
+            </p>
+            <p>
+                <span class="org">可销售区间</span>
+                <span>￥{{detail.tz_price}} ~ ￥{{detail.price}}</span>
+            </p>
+        </div>
+
+        <div class="saleprice">
+            <p class="xiao">销售价</p>
+            <p>
+                ￥ <input type="number" v-model="saleprice" :placeholder="detail.tz_price" onfocus="this.placeholder=''"/>
+            </p>
+        </div>
+
+        <button @click="submit">确认创建</button>
+    </div>
+    <style type="text/css">
+        .product {
+            display: flex;
+            justify-content: flex-start;
+            background: #FFFFFF;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .product img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .product input {
+            width: 100%;
+            height: 30px;
+            margin-top: 10px;
+            border-radius: 3px;
+            margin-left: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 1.4rem;
+            border: 0;
+        }
+
+        .msg {
+            background: #FFFFFF;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .msg p {
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+
+        .msg textarea {
+            border: none;
+            width: 100%;
+            height: 100px;
+            resize: none;
+            font-size: 1.2rem;
+            color: #ccc;
+            font-family: 'microsoft yahei';
+            line-height: 1.8rem;
+        }
+
+        .price {
+            background: #FFFFFF;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .price p {
+            font-size: 1.4rem;
+            line-height: 2.2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .price p .org {
+            font-weight: bold;
+        }
+
+        .price p span:last-child {
+            color: #808080;
+        }
+
+        .saleprice {
+            width: 100%;
+            margin: 10px auto;
+            background: #FFFFFF;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            box-sizing: border-box;
+        }
+
+        .saleprice .xiao {
+            font-weight: bold;
+        }
+
+        .saleprice input {
+            width: 50px;
+            text-align: center;
+            margin-left: 5px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 3px;
+            padding: 3px;
+        }
+
+        .saleprice input::-webkit-input-placeholder {
+            color:#333;
+        }
+
+        button {
+            display: block;
+            width: 90%;
+            background: #FFA800;
+            color: #FFFFFF;
+            border-radius: 5px;
+            padding: 10px 0;
+            border: none;
+            margin: 14rem auto 0;
+        }
+    </style>
+    <script src="./import/js/vue.min.js"></script>
+    <script src="./import/js/axios.min.js?v=" +new Date()></script>
+    <script src="./import/js/swiper.min.js"></script>
+    <script src="./import/js/init.js"></script>
+    <script src="../../js/common.js?v=" +new Date()></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                detail: {},
+                msg: '',
+                saleprice: '',
+
+            },
+            methods: {
+                submit: function () {
+                    var that = this;
+                    if (that.msg == '') {
+                        alert('请输入推荐理由')
+                        return false;
+                    }
+                    
+                    if (that.saleprice <= that.detail.tz_price) {
+                        alert('销售价不能小于拿货价')
+                        return false;
+                    }
+                    if(that.saleprice>parseInt(that.detail.price)){
+                        alert('销售价不能大于市场价')
+                        return false;
+                    }
+                    var row = {
+                        id: getParam('id'),
+                        price: that.saleprice,
+                        stock_price: that.detail.tz_price,
+                        title: that.detail.title,
+                        keywords: that.msg,
+                        product_img: that.detail.banner1
+                    }
+                    dataEncode = function (data) {
+                        var params = new URLSearchParams();
+                        for (var k in data) {
+                            params.append(k, data[k]);
+                        }
+                        return params;
+                    }
+                    axios({
+                        method: 'post',
+                        url: window.globalResURL + '/activityshare/add_share?token=' + getParam('token'),
+                        data: dataEncode(row)
+                    }).then(function (res) {
+                        res.data.code == '1001' ? go('share.html?share_id=' + res.data.data.id) : alert('创建失败！');
+                    })
+
+                }
+            },
+            mounted: function () {
+                var that = this;
+                var id = getParam('id');
+                var token = getData('TOKEN');
+                axios.get(window.globalResURL + '/activityshare/thematic?id=' + id + '&token=' + token).then(function (res) {
+                    console.log(res.data)
+                    that.detail = res.data.data;
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

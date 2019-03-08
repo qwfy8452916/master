@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="../../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/coupon.css" />
+	<title>我的优惠券</title>
+</head>
+<body>
+<!--APP-->
+<div id="app" v-cloak>
+	<!--切换-->
+	<div class="tab">
+		<a class="active" @click.stop="Used(1)">未使用</a>
+		<a @click.stop="Used(2)">已使用</a>
+		<a @click.stop="Used(3,1)">已过期</a>
+	</div>
+	<!--券列表-->
+	<div class="list" v-for="item in list">
+		<section class="box" v-if="isOverends==1">
+				<div class="boxLeft">
+					<p class="ticketMoney public">￥<span>{{item.money}}</span></p>
+					<p class="ticketText public">优惠券</p>
+				</div>
+				<div class="boxRight">
+					<p class="discount public">{{item.title}}</p>
+					<p class="rule public" v-html="item.rule">仅限特权免单商品</p>
+					<p class="timeEnd public">有效期至：{{item.valid_end_date}}</p>
+				</div>
+				<div class="timeendImg">
+					<img src="../../img/timed.png" alt="">
+				</div>
+		</section>
+		<section class="box" v-else>
+				<div class="boxLeft">
+					<p class="ticketMoney">￥<span>{{item.money}}</span></p>
+					<p class="ticketText">优惠券</p>
+				</div>
+				<div class="boxRight">
+					<p class="discount">{{item.title}}</p>
+					<p class="rule" v-html="item.rule">仅限特权免单商品</p>
+					<p class="timeEnd">有效期至：{{item.valid_end_date}}</p>
+				</div>
+		</section>
+	</div>
+</div>
+<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="../../import/vue/vue.js" ></script>
+<script type="text/javascript" src="../../import/layui/layui.all.js" ></script>
+<script type="text/javascript" src="../../import/axios/axios.min.js" ></script>
+<script type="text/javascript" src="../../js/common.js?v=" + Date.now() ></script>
+<script type="text/javascript" src="../../js/coupon.js?v=" + Date.now() ></script>
+</body>
+</html>

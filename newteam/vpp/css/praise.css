@@ -1,0 +1,222 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox {
+  width: 100%;
+  height: auto;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+.mainBox .first {
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 0.14666667rem 0.2rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 0.2rem;
+}
+.mainBox .first .infoBox {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.mainBox .first .infoBox .photoBox {
+  width: 0.53333333rem;
+  height: 0.53333333rem;
+}
+.mainBox .first .infoBox .photoBox img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.mainBox .first .infoBox .mainInfo .nickName {
+  font-size: 0.2rem;
+  color: #333;
+}
+.mainBox .first .infoBox .mainInfo .time {
+  color: #999;
+  font-size: 0.18666667rem;
+}
+.mainBox .first .desBox {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 0.1rem;
+}
+.mainBox .first .desBox .title {
+  color: #666;
+  font-size: 0.18666667rem;
+}
+.mainBox .first .fullText {
+  font-size: 0.18666667rem;
+  color: #576B95;
+  line-height: 0.5rem;
+}
+.mainBox .first .imgBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+.mainBox .first .imgBox .img {
+  width: 1.34666667rem;
+  height: 1.34666667rem;
+}
+.mainBox .first .functionBox {
+  width: 66%;
+  height: 0.46666667rem;
+  float: right;
+  margin-top: 0.26666667rem;
+  display: flex;
+  justify-content: space-between;
+}
+.mainBox .first .functionBox .copyBox {
+  width: 1.29333333rem;
+  background-color: #F7F7F7;
+  padding: 0.13333333rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  border: none;
+}
+.mainBox .first .functionBox .copyBox img {
+  width: 0.18666667rem;
+  height: 0.18666667rem;
+}
+.mainBox .first .functionBox .copyBox p {
+  line-height: 0.2rem;
+  color: #576B95;
+  font-size: 0.18666667rem;
+  font-weight: 500;
+}
+.mainBox .first .functionBox .saveBox {
+  width: 1.29333333rem;
+  background-color: #F7F7F7;
+  padding: 0.13333333rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.mainBox .first .functionBox .saveBox img {
+  width: 0.17333333rem;
+  height: 0.17333333rem;
+}
+.mainBox .first .functionBox .saveBox p {
+  line-height: 0.2rem;
+  color: #576B95;
+  font-size: 0.18666667rem;
+  font-weight: 500;
+}
+.mainBox .toast {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+  padding: 30px 35px;
+  box-sizing: border-box;
+  display: none;
+}
+.mainBox .toast img {
+  width: 0.66666667rem;
+  height: 0.46666667rem;
+}
+.mainBox .toast .copyText {
+  font-size: 0.17333333rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.5rem;
+}
+.mainBox .toast1 {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+  padding: 47px;
+  box-sizing: border-box;
+  display: none;
+}
+.mainBox .toast1 img {
+  width: 0.33333333rem;
+  height: 0.33333333rem;
+}
+.mainBox .toast2 {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+  padding: 30px 35px;
+  box-sizing: border-box;
+  display: none;
+}
+.mainBox .toast2 img {
+  width: 0.66666667rem;
+  height: 0.46666667rem;
+}
+.mainBox .toast2 .copyText {
+  font-size: 0.17333333rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.5rem;
+}
+.mainBox .second .imgBox {
+  width: 100%;
+  height: 2.57333333rem;
+  position: relative;
+}
+.mainBox .second .imgBox img {
+  width: 100%;
+  height: 100%;
+}
+.mainBox .second .circleBox {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: rgba(93, 93, 93, 0.5);
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translateX(-50%);
+  padding: 0.24rem 0.28rem;
+  box-sizing: border-box;
+}
+.mainBox .second .circleBox img {
+  width: 0.28rem;
+  height: 0.33333333rem;
+}
+.mainBox .third .imgBox .img {
+  width: 2.01333333rem;
+  height: 2.01333333rem;
+}
+/*# sourceMappingURL=praise.css.map */

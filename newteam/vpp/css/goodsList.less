@@ -1,0 +1,205 @@
+html{
+  font-size: 75px;
+}
+body{
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after{
+  content:"";
+  height:0;
+  line-height:0;
+  display:block;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix{
+  zoom:1;  //因为IE6不支持:after伪类。它的效果和height:1%一样
+}
+.mainbox{
+  width: 100%;
+  height: auto;
+  .tabBar{
+    width: 100%;
+    height: 90/75rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    .itemName{
+      font-size: 28/75rem;
+      color:#333;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      padding:32/75rem 12/75rem;
+    }
+    .itemName.active{
+      color:#FFA530;
+      border-color: #FFA530;
+    }
+  }
+  .listBox{
+    width: 100%;
+    height: 500/75rem;
+    margin-top:19/75rem;
+    .listItem{
+      position: relative;
+      width: 364/75rem;
+      height: 488/75rem;
+      background-color: #fff;
+      margin-right:21/75rem;
+      float: left;
+      margin-bottom: 20/75rem;
+      .listTop{
+        width: 100%;
+        height: 300/75rem;
+        box-sizing: border-box;
+        border-bottom: 1px solid #CBCBCB;
+        padding:24/75rem 55/75rem;
+        .imgBox{
+          width: 254/75rem;
+          height: 254/75rem;
+          //background-color: yellowgreen;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .listBottom{
+        padding:20/75rem 30/75rem;
+        .goodsName{
+          color:#444;
+          font-size: 28/75rem;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+        }
+        .memberBox{
+          width: 100%;
+          height: 30/75rem;
+          margin-top:13/75rem;
+          .goodsPrice{
+            color:#FF0000;
+            font-size: 28/75rem;
+            font-weight: 500;
+            float: left;
+          }
+          .goodsPrice1{
+            font-size: 26/75rem;
+          }
+          img{
+            width: 80/75rem;
+            height: 30/75rem;
+            margin-left:23/75rem;
+          }
+          .puImg{
+            width: 98/75rem;
+            height: 30/75rem;
+          }
+        }
+        .originPrice{
+          font-size: 24/75rem;
+          color:#9E9E9E;
+          font-weight: 500;
+          margin-top:14/75rem;
+          text-decoration-line: line-through;
+        }
+        .carBox{
+          width: 48/75rem;
+          height: 48/75rem;
+          position: absolute;
+          right:30/75rem;
+          bottom:17/75rem;
+          .carImg{
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .listItem:nth-child(2n){
+      margin-right: 0;
+    }
+  }
+  .shopCar{
+    position: fixed;
+    width: 80/75rem;
+    height: 80/75rem;
+    left:30/75rem;
+    bottom:30/75rem;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    .numBox{
+      position: absolute;
+      width: 40/75rem;
+      height: 40/75rem;
+      background-color: #FF0000;
+      box-sizing: border-box;
+      border:4/75rem solid #fff;
+      border-radius: 50%;
+      top:-18/75rem;
+      right:-5/75rem;
+      .shopNum{
+        color:#fff;
+        text-align: center;
+        font-size: 20/75rem;
+        padding:4/75rem 0;
+      }
+    }
+  }
+  @keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+      -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9);
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+      opacity: 1;
+      -webkit-transform: scale3d(1.03, 1.03, 1.03);
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+      -webkit-transform: scale3d(0.97, 0.97, 0.97);
+      transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+      opacity: 1;
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  .bounceIn {
+    -webkit-animation-duration: 0.75s;
+    animation-duration: 0.75s;
+    -webkit-animation-name: bounceIn;
+    animation: bounceIn 1s forwards;
+  }
+}

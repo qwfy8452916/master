@@ -1,0 +1,198 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainbox {
+  width: 100%;
+  height: auto;
+}
+.mainbox .tabBar {
+  width: 100%;
+  height: 1.2rem;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.mainbox .tabBar .itemName {
+  font-size: 0.37333333rem;
+  color: #333;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  padding: 0.42666667rem 0.16rem;
+}
+.mainbox .tabBar .itemName.active {
+  color: #FFA530;
+  border-color: #FFA530;
+}
+.mainbox .listBox {
+  width: 100%;
+  height: 6.66666667rem;
+  margin-top: 0.25333333rem;
+}
+.mainbox .listBox .listItem {
+  position: relative;
+  width: 4.85333333rem;
+  height: 6.50666667rem;
+  background-color: #fff;
+  margin-right: 0.28rem;
+  float: left;
+  margin-bottom: 0.26666667rem;
+}
+.mainbox .listBox .listItem .listTop {
+  width: 100%;
+  height: 4rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #CBCBCB;
+  padding: 0.32rem 0.73333333rem;
+}
+.mainbox .listBox .listItem .listTop .imgBox {
+  width: 3.38666667rem;
+  height: 3.38666667rem;
+}
+.mainbox .listBox .listItem .listTop .imgBox img {
+  width: 100%;
+  height: 100%;
+}
+.mainbox .listBox .listItem .listBottom {
+  padding: 0.26666667rem 0.4rem;
+}
+.mainbox .listBox .listItem .listBottom .goodsName {
+  color: #444;
+  font-size: 0.37333333rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mainbox .listBox .listItem .listBottom .memberBox {
+  width: 100%;
+  height: 0.4rem;
+  margin-top: 0.17333333rem;
+}
+.mainbox .listBox .listItem .listBottom .memberBox .goodsPrice {
+  color: #FF0000;
+  font-size: 0.37333333rem;
+  font-weight: 500;
+  float: left;
+}
+.mainbox .listBox .listItem .listBottom .memberBox .goodsPrice1 {
+  font-size: 0.34666667rem;
+}
+.mainbox .listBox .listItem .listBottom .memberBox img {
+  width: 1.06666667rem;
+  height: 0.4rem;
+  margin-left: 0.30666667rem;
+}
+.mainbox .listBox .listItem .listBottom .memberBox .puImg {
+  width: 1.30666667rem;
+  height: 0.4rem;
+}
+.mainbox .listBox .listItem .listBottom .originPrice {
+  font-size: 0.32rem;
+  color: #9E9E9E;
+  font-weight: 500;
+  margin-top: 0.18666667rem;
+  text-decoration-line: line-through;
+}
+.mainbox .listBox .listItem .listBottom .carBox {
+  width: 0.64rem;
+  height: 0.64rem;
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.22666667rem;
+}
+.mainbox .listBox .listItem .listBottom .carBox .carImg {
+  width: 100%;
+  height: 100%;
+}
+.mainbox .listBox .listItem:nth-child(2n) {
+  margin-right: 0;
+}
+.mainbox .shopCar {
+  position: fixed;
+  width: 1.06666667rem;
+  height: 1.06666667rem;
+  left: 0.4rem;
+  bottom: 0.4rem;
+}
+.mainbox .shopCar img {
+  width: 100%;
+  height: 100%;
+}
+.mainbox .shopCar .numBox {
+  position: absolute;
+  width: 0.53333333rem;
+  height: 0.53333333rem;
+  background-color: #FF0000;
+  box-sizing: border-box;
+  border: 0.05333333rem solid #fff;
+  border-radius: 50%;
+  top: -0.24rem;
+  right: -0.06666667rem;
+}
+.mainbox .shopCar .numBox .shopNum {
+  color: #fff;
+  text-align: center;
+  font-size: 0.26666667rem;
+  padding: 0.05333333rem 0;
+}
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.mainbox .bounceIn {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-name: bounceIn;
+  animation: bounceIn 1s forwards;
+}
+/*# sourceMappingURL=goodsList.css.map */

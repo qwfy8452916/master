@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../view/spa/import/css/swiper.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/bargain/detail.css" />
+    <title>好友砍价</title>
+</head>
+
+<body>
+    <!-- 好友砍价 -->
+    <section id="app">
+        <!-- banner -->
+        <!-- 轮播 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img :src="productinfo.logo" alt="" style="opacity:1;">
+                </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- 内容部分 -->
+        <section class="contentBox">
+            <section class="content">
+                <div class="titleBox">
+                    <div class="titleContent">
+                        <span class="title">{{productinfo.title}}</span>
+                        <div class="circle"></div>
+                        <span>好友砍价</span>
+                    </div>
+                    <p>￥<span>{{productinfo.pt_price}}</span></p>
+                </div>
+                <div class="des" v-html="activityinfo.keywords">
+                    
+                </div>
+            </section>
+            <!-- 参加信息 -->
+            <section class="joinBox">
+                <div class="joinTop">
+                    <p><span>45456</span>人正在参加</p>
+                    <div class="headBox">
+                        <img src="../../img/head.png" alt="">
+                    </div>
+                    <div class="circleBox">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="joinBottom">
+                    <div class="joinLeft">
+                        <div class="icon">
+
+                        </div>
+                        <p>总共<span>500</span>份</p>
+                        <p>已领<span>89</span>份</p>
+                    </div>
+                    <div class="joinRight">
+                        <p>还剩<span>411</span>份</p>
+                    </div>
+
+                </div>
+            </section>
+            <!-- 详情信息 -->
+            <div class="deatil">
+                <p v-html="productinfo.description"></p>
+            </div>
+        </section>
+        <!-- 底部 -->
+        <footer>
+            <div class="priceBox">
+                <P>价格<span>￥{{productinfo.pt_price}}<i></i></span></p>
+                <p class="help" @click="showMask">
+                    请好友砍价
+                </p>
+                <p @click="buy">立即购买</p>
+            </div>
+        </footer>
+        <!-- 模态窗 -->
+        <div class="mask" v-show="showtoast" @click="showMask">
+            <div class="share">
+                <img src="../../img/jian.png" alt="">
+            </div>
+            <p>你已砍<span>{{addbargain.price}}</span>元啦，邀请好友来帮砍吧</p>
+            <div class="helpBox">
+                <p>点击右上角，分享给好友</p>
+                <p>可以<span>多砍一刀</span>哦</p>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../view/spa/import/js/swiper.min.js"></script>
+    <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+    <script type="text/javascript" src="../../import/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+    <script type="text/javascript" src="../../js/bargain/detail.js"></script>
+</body>
+
+</html>

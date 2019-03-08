@@ -1,0 +1,98 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox{
+  width: 100%;
+  padding:0 30/75rem;
+  background-color: #fff;
+  .listItem{
+    width: 92%;
+    box-sizing: border-box;
+    padding:50/75rem 0;
+    border-bottom: 1/75rem solid #E6E6E6;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    .imgBox{
+      width: 200/75rem;
+      height: 200/75rem;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .textBox{
+      width: 70%;
+      height: 100%;
+      //background-color: #2D93CA;
+      h1{
+        color:#333;
+        font-size: 28/75rem;
+        text-align: left;
+
+      }
+      p{
+        color:#FF0000;
+        font-size: 28/75rem;
+        font-weight: 400;
+        margin-top:75/75rem;
+      }
+      .originPrice{
+        color:#999;
+        font-size: 24/75rem;
+        font-weight: 400;
+        margin-top: 10/75rem;
+        span{
+          text-decoration: line-through;
+        }
+      }
+      .duihuanBtn{
+        position: absolute;
+        padding:12/75rem 17/75rem;
+        font-size: 24/75rem;
+        color:#FFA800;
+        font-weight: 500;
+        border:2/75rem solid rgba(255,168,0,1);
+        border-radius:10/75rem;
+        bottom:62/75rem;
+        right:0;
+      }
+    }
+  }
+}
+.line{
+  width: 92%;
+  height: 1px;
+  display: flex;
+  justify-content: space-between;
+  margin:0 auto;
+  margin-top:60/75rem;
+  .lineLeft{
+    width: 226/75rem;
+    height: 1/75rem;
+    border:1/75rem dotted #ccc;
+  }
+  p{
+    color:#ccc;
+    font-size: 24/75rem;
+    font-weight: 400;
+    line-height: 5/75rem;
+  }
+}
+

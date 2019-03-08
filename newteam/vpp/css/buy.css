@@ -1,0 +1,380 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox > div {
+  margin-bottom: 0.26666667rem;
+  background-color: white;
+}
+.mainBox .addressInfo {
+  padding-top: 0.4rem;
+  height: 2rem;
+  padding-bottom: 0.2rem;
+}
+.mainBox .addressInfo > div {
+  height: 100%;
+  float: left;
+}
+.mainBox .addressInfo > div:first-child {
+  line-height: 2.4rem;
+  width: 10%;
+  text-align: center;
+}
+.mainBox .addressInfo > div:first-child i {
+  font-size: 0.48rem;
+}
+.mainBox .addressInfo .dizhi {
+  width: 80%;
+}
+.mainBox .addressInfo .dizhi p {
+  line-height: 0.8rem;
+  font-size: 0.4rem;
+  color: #808080;
+}
+.mainBox .addressInfo .dizhi p span {
+  color: #3F3F3F;
+}
+.mainBox .addressInfo .dizhi p i {
+  color: #3F3F3F;
+  font-size: 0.37333333rem;
+  float: right;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing {
+  line-height: 0.8rem;
+  font-size: 0.37333333rem;
+  overflow: hidden;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing > div {
+  float: left;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing .left {
+  width: 25%;
+  color: #808080;
+}
+.mainBox .addressInfo .dizhi .dizhixiangqing .right {
+  width: 73%;
+  height: 1.2rem;
+  line-height: 0.6rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .addressInfo > div:last-child {
+  line-height: 2.4rem;
+  width: 8%;
+  text-align: center;
+}
+.mainBox .addressInfo > div:last-child i {
+  font-size: 0.6rem;
+}
+.mainBox .orderList {
+  padding-left: 0.4rem;
+}
+.mainBox .orderList .imgAndInfo {
+  height: 2.66666667rem;
+  box-sizing: border-box;
+  padding: 0.4rem 0.26666667rem;
+  border-bottom: 1px solid #c4c4c4;
+}
+.mainBox .orderList .imgAndInfo > div {
+  display: inline-block;
+  height: 100%;
+}
+.mainBox .orderList .imgAndInfo div:first-child {
+  width: 20%;
+}
+.mainBox .orderList .imgAndInfo div:first-child img {
+  width: 100%;
+  height: 100%;
+}
+.mainBox .orderList .imgAndInfo div:last-child {
+  width: 72%;
+  padding-left: 0.53333333rem;
+  color: #808080;
+}
+.mainBox .orderList .imgAndInfo div:last-child h5 {
+  line-height: 0.7rem;
+  font-size: 0.42666667rem;
+  color: #3F3F3F;
+}
+.mainBox .orderList .imgAndInfo div:last-child p {
+  line-height: 0.7rem;
+  font-size: 0.37333333rem;
+}
+.mainBox .orderList .imgAndInfo div:last-child p:last-child b {
+  font-weight: 500;
+}
+.mainBox .orderList .imgAndInfo div:last-child p:last-child span {
+  font-size: 0.42666667rem;
+}
+.mainBox .orderList .imgAndInfo div:last-child p:last-child i {
+  font-size: 0.4rem;
+  float: right;
+}
+.mainBox .orderList .totalPrice {
+  padding-right: 0.3rem;
+  overflow: hidden;
+}
+.mainBox .orderList .totalPrice p {
+  float: left;
+  width: 100%;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  color: #2a2a2a;
+  font-size: 0.37333333rem;
+}
+.mainBox .orderList .totalPrice p span {
+  float: right;
+  font-size: 0.32rem;
+}
+.mainBox .orderList .totalPrice p:last-child {
+  margin-top: -0.3rem;
+}
+.mainBox .orderAmount {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+  color: #1b1b1b;
+  font-size: 0.4rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+.mainBox .orderAmount i {
+  float: right;
+  display: inline-block;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  padding: 0 0.4rem;
+  margin: 0.15rem 0 0 0.3rem;
+  border-radius: 0.45rem;
+}
+.mainBox .orderAmount span {
+  color: #FF8F15;
+}
+.mainBox .orderAmount .yellow {
+  color: white;
+  background-color: #FF8F15;
+}
+.mainBox .orderAmount .gray {
+  color: #808080;
+  border: 1px solid;
+}
+.tipWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.tipWindow .tipBox {
+  margin: 50% auto 0;
+  width: 60%;
+  background-color: white;
+  border-radius: 0.2rem;
+}
+.tipWindow .tipBox .tipInfo {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid #CCC;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipInfo i {
+  font-size: 1.06666667rem;
+  color: #ffa800;
+  vertical-align: sub;
+}
+.tipWindow .tipBox .tipBtn {
+  font-size: 0;
+}
+.tipWindow .tipBox .tipBtn div {
+  width: 49%;
+  display: inline-block;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  font-size: 0.4rem;
+}
+.tipWindow .tipBox .tipBtn div:first-child {
+  border-right: 1px solid #ccc;
+}
+.tipWindow .tipBox .tipBtn div:last-child {
+  color: #ff0000;
+}
+.wuliu {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #3F3F3F;
+}
+.wuliu .tipBox {
+  width: 80%;
+  height: 50%;
+  overflow: auto;
+}
+.wuliu .tipBox .top {
+  padding: 0.4rem;
+  border-bottom: 2px solid #808080;
+}
+.wuliu .tipBox .top p {
+  line-height: 0.8rem;
+  font-size: 0.42666667rem;
+}
+.wuliu .tipBox .list {
+  padding: 0.4rem 0;
+}
+.wuliu .tipBox .list ul {
+  position: relative;
+}
+.wuliu .tipBox .list ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.wuliu .tipBox .list ul li .round {
+  position: absolute;
+  left: 0.4rem;
+  top: 0;
+  z-index: 9;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: #cdcdcd;
+  border-radius: 0.2rem;
+}
+.wuliu .tipBox .list ul li .state {
+  margin-left: 1.2rem;
+}
+.wuliu .tipBox .list ul li .state p {
+  line-height: 0.55rem;
+  font-size: 0.37333333rem;
+  width: 95%;
+}
+.wuliu .tipBox .list ul li:first-child .round {
+  background-color: #1BBC1B;
+}
+.wuliu .tipBox .list ul li:last-child {
+  margin-bottom: 0;
+}
+.wuliu .tipBox .list ul li:last-child::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background-color: white;
+  top: 0;
+  left: 0.6rem;
+  z-index: 8;
+}
+.wuliu .tipBox .list ul::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  top: 0;
+  left: 0.6rem;
+  background-color: #cdcdcd;
+}
+.payWindow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.payWindow .payBox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+}
+.payWindow .payBox .title {
+  text-align: center;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.48rem;
+  color: #797979;
+  border-bottom: 1px solid #D2D2D2;
+}
+.payWindow .payBox .title i {
+  float: left;
+  font-size: 0.58666667rem;
+}
+.payWindow .payBox .selectPay {
+  padding-left: 0.2rem;
+  color: #1b1b1b;
+}
+.payWindow .payBox .selectPay div {
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.42666667rem;
+}
+.payWindow .payBox .selectPay div i {
+  float: right;
+  margin-right: 0.3rem;
+  color: #73BA2D;
+  font-size: 0.6rem;
+}
+.payWindow .payBox .selectPay div span {
+  font-size: 0.32rem;
+  color: #7a7a7a;
+  margin-left: 0.2rem;
+}
+.payWindow .payBox .selectPay div:first-child {
+  border-bottom: 1px solid #D2D2D2;
+}
+.payWindow .payBox .confirm p:first-child {
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+  font-size: 0.69333333rem;
+  color: #000000;
+}
+.payWindow .payBox .confirm p:nth-child(2) {
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.42666667rem;
+  color: #797979;
+  padding-left: 0.4rem;
+}
+.payWindow .payBox .confirm p:nth-child(2) span {
+  float: right;
+  margin-right: 0.2rem;
+  color: #1b1b1b;
+}
+.payWindow .payBox .confirm p:nth-child(2) span i {
+  color: #797979;
+  margin-left: 0.1rem;
+}
+.payWindow .payBox .confirm div {
+  margin-top: 0.8rem;
+  font-size: 0.48rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+  color: white;
+  background-color: #FFA800;
+}
+.color_yellow {
+  color: #ffa800 !important;
+}
+.color_red {
+  color: #ff0000 !important;
+}
+.hide {
+  display: none !important;
+}
+/*# sourceMappingURL=buy.css.map */

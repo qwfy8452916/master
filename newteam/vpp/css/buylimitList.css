@@ -1,0 +1,116 @@
+html {
+  font-size: 75px;
+}
+
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.listBox {
+  width: 100%;
+  height: 4.61333333rem;
+  box-sizing: border-box;
+  padding: 0 0.4rem 0.53333333rem 0.4rem;
+  background-color: #fff;
+  margin-bottom: 0.4rem;
+}
+.listBox .boxTop {
+  width: 100%;
+  height: 3.32rem;
+  box-sizing: border-box;
+  padding: 0.46666667rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.listBox .boxTop .imgBox {
+  width: 2.66666667rem;
+  height: 2.66666667rem;
+  margin-top: 0.46666667rem;
+}
+.listBox .boxTop .imgBox img {
+  width: 100%;
+  height: 100%;
+}
+.listBox .boxTop .infoBox {
+  width: 60%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.listBox .boxTop .infoBox .goodsName {
+  font-size: 0.45333333rem;
+  font-weight: 500;
+  color: #333333;
+}
+.listBox .boxTop .infoBox .goodsName span {
+  margin-left: 0.46666667rem;
+}
+.listBox .boxTop .infoBox .lastTime {
+  font-size: 0.37333333rem;
+  color: #5E5E5E;
+  font-weight: 500;
+  margin-top: 0.18666667rem;
+}
+.listBox .boxTop .infoBox .nowPrice {
+  color: #FF0000;
+  font-size: 0.45333333rem;
+  margin-top: 0.18666667rem;
+}
+.listBox .boxTop .infoBox .nowPrice .originPrice {
+  color: #6C6C6C;
+  font-size: 0.32rem;
+  text-decoration: line-through;
+  margin-left: 0.24rem;
+}
+.listBox .boxTop .infoBox .restTimeBox {
+  margin-top: 0.21333333rem;
+}
+.listBox .boxTop .infoBox .restTimeBox span {
+  display: block;
+  float: left;
+  font-size: 0.33333333rem;
+  color: #000;
+  font-weight: 500;
+  line-height: 0.48rem;
+}
+.listBox .boxTop .infoBox .restTimeBox .timeBox {
+  width: 0.48rem;
+  height: 0.48rem;
+  background-color: #FFA800;
+  border-radius: 0.13333333rem;
+  float: left;
+}
+.listBox .boxTop .infoBox .restTimeBox .timeBox p {
+  color: #fff;
+  font-size: 0.32rem;
+  font-weight: 500;
+  line-height: 0.48rem;
+  text-align: center;
+}
+.listBox .boxTop .infoBox .restTimeBox .maohao {
+  margin: 0 10px;
+}
+.listBox .boxTop .infoBox .pindanBtn {
+  width: 2.18666667rem;
+  height: 0.89333333rem;
+  background-color: #FFA800;
+  font-size: 0.4rem;
+  text-align: center;
+  line-height: 0.89333333rem;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 0.13333333rem;
+  margin-top: 1.06666667rem;
+}
+/*# sourceMappingURL=buylimitList.css.map */

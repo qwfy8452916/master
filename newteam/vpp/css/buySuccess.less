@@ -1,0 +1,119 @@
+html{
+  font-size: 75px;
+}
+body{
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #fff;
+}
+.clearfix:after{
+  content:"";
+  height:0;
+  line-height:0;
+  display:block;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix{
+  zoom:1;  //因为IE6不支持:after伪类。它的效果和height:1%一样
+}
+.mainBox{
+  .success{
+    padding: 3rem 1rem 1rem 2rem;
+    height: 2rem;
+    .left{
+      float: left;
+      height: 2rem;
+      i{
+        font-size: 2rem;
+        color: #2AAF3D;
+      }
+    }
+    .right{
+      margin-left: 2rem;
+      padding: 0.2rem 0 0 0.3rem;
+      h5{
+        font-size: 0.5rem;
+        line-height: 1rem;
+      }
+      p{
+        font-size: 0.5rem;
+      }
+    }
+  }
+  .btn{
+    text-align: center;
+    div{
+      height: 80/75rem;
+      display: inline-block;
+      //padding: 0.4rem 0.8rem;
+      width: 217/75rem;
+      box-sizing: border-box;
+      line-height: 80/75rem;
+      text-align: center;
+    }
+    div:first-child{
+      color: white;
+      background-color: #FFA800;
+      margin-right: 0.5rem;
+    }
+    div:last-child{
+      color: #FFA800;
+      border: 1px solid;
+    }
+  }
+}
+.tipWindow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0,0,0,0.5);
+  .tipBox{
+    margin: 50% auto 0;
+    width: 60%;
+    background-color: white;
+    border-radius: 0.2rem;
+    .tipInfo{
+      height: 2.5rem;
+      line-height: 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid #CCC;
+      font-size: 30/75rem;
+      i{
+        font-size: 80/75rem;
+        color: #ffa800;
+        vertical-align: sub;
+      }
+    }
+    .tipBtn{
+      font-size: 0;
+      div{
+        width: 49%;
+        display: inline-block;
+        height: 1rem;
+        text-align: center;
+        line-height: 1rem;
+        font-size: 30/75rem;
+      }
+      div:first-child{
+        border-right: 1px solid #ccc;
+      }
+      div:last-child{
+        color: #ff0000;
+      }
+    }
+  }
+}
+
+.color_yellow{
+  color: #ffa800 !important;
+}
+.color_red{
+  color: #ff0000 !important;
+}
+.hide{
+  display: none !important;
+}

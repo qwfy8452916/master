@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>购物车</title>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/shoppingCart.css">
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <!--<script src="js/jquery.min.js"></script>-->
+</head>
+<body>
+<div id="app">
+    <div class="mainBox">
+        <div class="productAll">
+            <div class="topSelect">
+                <span class="selectRound"><i>✔</i></span>
+                全部商品
+                <i class="iconfont icon-xiayiyeqianjinchakangengduo"></i>
+            </div>
+            <div class="productList">
+                <div class="productOne">
+                    <div><span class="selectRound"><i>✔</i></span></div>
+                    <div><img src="../../img/apple.jpg" alt=""></div>
+                    <div class="productInfo">
+                        <h5>山西大樱桃5kg/箱</h5>
+                        <p>绿色无污染 果园采摘</p>
+                        <p>￥60.00 <span>乐会员</span></p>
+                        <p>￥80.00 <span>普通会员</span></p>
+                        <p>￥120.00 </p>
+                        <div class="addOrSub">
+                            <span>-</span>
+                            <i>1</i>
+                            <span>+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="productOne">
+                    <div><span class="selectRound"><i>✔</i></span></div>
+                    <div><img src="../../img/apple.jpg" alt=""></div>
+                    <div class="productInfo">
+                        <h5>山西大樱桃5kg/箱</h5>
+                        <p>绿色无污染 果园采摘</p>
+                        <p>￥60.00 <span>乐会员</span></p>
+                        <p>￥80.00 <span>普通会员</span></p>
+                        <p>￥120.00 </p>
+                        <div class="addOrSub">
+                            <span>-</span>
+                            <i>1</i>
+                            <span>+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="invalidProduct">
+            <div class="invalidTitle">
+                <span>---</span>
+                <span>---</span>
+                <span>-</span>
+                <i>失效宝贝</i>
+                <span>-</span>
+                <span>---</span>
+                <span>---</span>
+            </div>
+            <div class="invalidList">
+                <div class="invalidOne productOne">
+                    <div><span>失效</span></div>
+                    <div><img src="../../img/apple.jpg" alt=""></div>
+                    <div class="invalidInfo productInfo">
+                        <h5>山西大樱桃</h5>
+                        <p>绿色无污染 果园采摘</p>
+                        <p>库存不足</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vip">
+            优享乐会员 <span>已节省89.00元</span>
+        </div>
+        <div class="total">
+            <div class="selectAll"> <span class="selectRound"><i>✔</i></span>全选</div>
+            <div class="right">
+                合计：<i>￥0</i>
+                <span>去结算</span>
+            </div>
+        </div>
+    </div>
+    <div class="tipWindow" style="display: none">
+        <div class="tipBox">
+            <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+            <div class="tipBtn">
+                <div>确定</div>
+                <div class="color_yellow">取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            productName: '王庄大西瓜',
+            imgList:[
+                {
+                    src:"img/topbg01.jpg"
+                }
+            ],
+            showUpImage : false
+        },
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            },
+            addImgOne:function (that) {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

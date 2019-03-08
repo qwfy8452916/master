@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../import/vue/vue.js" ></script>
+	<script type="text/javascript" src="../import/swiper/swiper-4.3.2.min.js"></script>
+	<script type="text/javascript" src="../import/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="../import/axios/axios.min.js" ></script>
+	<link rel="stylesheet" href="../import/swiper/swiper-4.3.2.min.css" />
+	<link rel="stylesheet" href="../import/layui/css/layui.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/index.css" />
+	<title>七乐乐优鲜生活</title>
+</head>
+<body>
+<!--APP-->
+<div id="app" v-cloak>
+	<!--头部关注商城-->
+	<div class="top">
+		<img src="../img/close.png" class="closeTop" />
+		<img src="../img/logo.png" class="logo" />
+		<p class="topWelcome">欢迎进入七乐乐单位好福利</p>
+		<button class="focus">关注商城</button>
+	</div>
+	<!--轮播-->
+	<div class="swiper-container banner">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" v-for="(item,index) in slide" @click="showProduct('轮播')" :key="index">
+				<a><img :src="item.logo" /></a>
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	<!--搜索-->
+	<div class="search" @click="goList">
+		<input placeholder="搜索商品" />
+	</div>
+	<!--菜单-->
+	<div class="menu">
+		<div class="menuItem" v-for="item in menu" :key="item.id" @click="toDetals(item.link)" >
+			<img :src="item.icon" />
+			<p>{{item.name}}</p>
+		</div>
+	</div>
+	<!--特麦会入口-->
+	<div class="ad">
+		<div @click="temaihui">
+			<img src="../img/temaihui.png" />
+		</div>
+		<div @click="coupon">
+			<img src="../img/coupon.png" />
+		</div>
+	</div>
+	<!--通用标题-->
+	<div class="commonTitle">
+		<img src="../img/timeLimitBuy.png" />
+	</div>
+	<!--限时抢购-->
+	<div class="timeBuy">
+		<div class="timeBuyBox" v-for="item in timeLess" @click="timeBuy(item.id)">
+			<p>剩<span class="timeH">{{item.time.h}}</span>:<span class="timeM">{{item.time.m}}</span>:<span class="timeS">{{item.time.s}}</span>结束</p>
+			<p><img :src="item.logo" /></p>
+			<p>{{item.title}}</p>
+			<p>￥<span>{{item.price}}</span></p>
+			<p>￥<span>{{item.product_price}}</span></p>
+		</div>
+	</div>
+	
+	<!--公益助农-->
+	<div class="hot">
+		<div class="commonTitle">
+			<img src="../img/welfare.png" />
+		</div>
+		<div class="hotBox">
+			<div class="hotBanner"><img src="../img/gif2.gif" /></div>
+		</div>
+		<div class="hotList">
+			<div class="hotLi" @click="showProduct(item.id)" v-for="item in hot">
+				<div class="hotCover">
+					<img :src="item.logo" />
+				</div>
+				<div class="hotTitle">
+					{{item.title}}
+				</div>
+				<div class="hotDo">
+					<p><span>￥</span>{{item.price}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--优选精品-->
+	<div class="uchose">
+		<div class="commonTitle">
+			<img src="../img/uchose.png" />
+			<p @click="showList">更多<i class="lele icon-gengduo"></i></p>
+		</div>
+		<div class="uBox" v-for="(item,index) in list" :key="item.id"  @click="showProduct(item.id)">
+			<div class="uBoxIndex">
+				<span>TOP{{index + 1}}</span>
+				<span></span>
+			</div>
+			<div class="uBoxCover">
+				<img :src="item.logo" />
+			</div>
+			<div class="uBoxDes">
+				<p>{{item.title}}</p>
+				<p v-if="item.standard !='' && item.standard>0">{{item.standard}}</p>
+				<p><span>￥</span>{{item.cx_price}}<span class="svip"><span></span>乐会员</span></p>
+				<p><span>￥</span>{{item.price}}<span class="vip"><span></span>普通会员</span></p>
+				<p><span>￥</span>{{item.price}}</p>
+			</div>
+		</div>
+	</div>
+	<!--猜你喜欢-->
+	<div class="likeTitle">
+		<span></span>
+		猜你喜欢
+		<span></span>
+	</div>
+	<div class="like">
+		<div class="likeBox" v-for="item in like" @click="showProduct(item.id)">
+			<div class="likeCover">
+				<img :src="item.logo" />
+			</div>
+			<div class="likeBoxTitle">{{item.title}}</div>
+			<div class="likeDo">
+				<p><span>￥</span>{{item.price}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="bottomSpace"></div>
+	<footer-nav></footer-nav>
+
+	<!--悬浮红包-->
+	<div class="">
+
+	</div>
+</div>
+<script type="text/javascript" src="../js/common.js?v=" + Date.now() ></script>
+<script type="text/javascript" src="../js/index.js?v=" + Date.now() ></script>
+</body>
+</html>

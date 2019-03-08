@@ -1,0 +1,30 @@
+.depositBox{
+    padding:70px 25px;
+    box-sizing: border-box;
+}
+.contentBox img{
+    width: 82px;
+    height: 82px;
+    display: block;
+    margin:0 auto;
+}
+.successText{
+    font-size: 1.6rem;
+    color:#333333;
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+}
+.search{
+    font-size: 1.3rem;
+    color:#FFA800;
+    text-align: center;
+    line-height: 200px;
+    font-weight: bold;
+}
+.ruleBox p{
+    font-size: 1.4rem;
+    color:#999;
+    font-weight: 500;
+    line-height: 20px;
+}

@@ -1,0 +1,41 @@
+.rechargeBox{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding:12px 15px;
+}
+.rechargeNum{
+    color:#333;
+    font-weight: 400;
+    font-size: 15px;
+}
+.rechargeItem{
+    margin-top:17px;
+    display: flex;
+    justify-content: space-between;
+}
+.rechargeItem .imgBox{
+    width: 75px;
+    height: 40px;
+}
+.rechargeItem .imgBox1{
+    background: url("../img/zeng .png") no-repeat;
+    background-size: cover;
+}
+.rechargePrice{
+    color:#FF7E00;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 40px;
+    margin-left:30px;
+}
+.rechargePrice1{
+    margin-left: 25px;
+}
+.chongzhiDes{
+    color:#999;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top:20px;
+}

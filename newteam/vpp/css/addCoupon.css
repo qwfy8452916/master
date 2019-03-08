@@ -1,0 +1,90 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+.mainBox {
+  padding-top: 0.4rem;
+}
+.mainBox .oneCoupon {
+  padding-left: 0.26666667rem;
+  color: #808080;
+  margin-bottom: 0.4rem;
+}
+.mainBox .oneCoupon .receive > div {
+  background-color: white;
+  border-radius: 0.26666667rem;
+  height: 2.21333333rem;
+  float: left;
+}
+.mainBox .oneCoupon .left {
+  width: 6.66666667rem;
+  border-right: 1px dotted #C2C2C2;
+}
+.mainBox .oneCoupon .left > div {
+  display: inline-block;
+  line-height: 2.21333333rem;
+}
+.mainBox .oneCoupon .left .money {
+  margin-right: 0.26666667rem;
+  margin-left: 1.2rem;
+  font-size: 0.97333333rem;
+  position: relative;
+  font-weight: 900;
+  color: #333333;
+}
+.mainBox .oneCoupon .left .money span {
+  font-size: 0.29333333rem;
+  position: absolute;
+  font-weight: 400;
+  top: -0.2rem;
+  left: -0.2rem;
+}
+.mainBox .oneCoupon .left .info {
+  line-height: 0.6rem;
+}
+.mainBox .oneCoupon .left .info p:first-child {
+  font-size: 0.34666667rem;
+  font-weight: 800;
+}
+.mainBox .oneCoupon .left .info p {
+  text-align: left;
+  font-size: 0.26666667rem;
+}
+.mainBox .oneCoupon .right {
+  font-weight: 500;
+  width: 2.78666667rem;
+  line-height: 2.21333333rem;
+  font-size: 0.4rem;
+  text-align: center;
+}
+.mainBox .active {
+  color: #FDF0E1;
+}
+.mainBox .active .receive > div {
+  background-color: #F54232;
+}
+.mainBox .active .left {
+  border-right: 1px dotted #FDF0E1;
+}
+.mainBox .active .left .money {
+  color: #FDF0E1;
+}
+.mainBox .active .right {
+  color: white;
+}
+/*# sourceMappingURL=addCoupon.css.map */

@@ -1,0 +1,155 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+*{
+  margin:0;
+  padding:0;
+  text-decoration: none;
+}
+//分销商
+.mainBox{
+  width: 100vw;
+  height: 100vh;
+  background: url("../img/fbg.png") no-repeat center;
+  background-size: cover;
+  position: relative;
+  .person{
+    width: 50%;
+    height: 3rem;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    top:30%;
+    .ptop{
+      width: 165/75rem;
+      height: 135/75rem;
+      background: url("../img/head.png") no-repeat center;
+      background-size: cover;
+      position: absolute;
+      top:0;
+      left: 50%;
+      margin-left: -165/75/2rem;
+      z-index: 10;
+      animation: spin 1.5s infinite linear;
+
+    }
+    .pbottom{
+      width: 220/75rem;
+      height: 130/75rem;
+      background: url("../img/body.png") no-repeat center;
+      background-size: cover;
+      position: absolute;
+      top:34%;
+      left:50%;
+      transform: translateX(-50%);
+      z-index: 9;
+    }
+  }
+  .starBox{
+    width:80%;
+    height: 128/75rem;
+    position: absolute;
+    left:10%;
+    top:30%;
+    background: url("../img/star.png") no-repeat center;
+    background-size: 100% auto;
+    animation: scaler 1s infinite linear;
+    opacity:1;
+
+  }
+  .congratulate{
+    width: 90%;
+    height: 100/75rem;
+    position: absolute;
+    bottom:24%;
+    left:50%;
+    transform: translateX(-50%);
+   img{
+     width: 100%;
+     height: 100%;
+   }
+  }
+  .confirm{
+    width: 113/75rem;
+    height: 113/75rem;
+    background: url("../img/confirm.png") no-repeat center;
+    background-size: cover;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    bottom:10%;
+    .confirmText{
+      font-size: 20/75rem;
+      color:#fff;
+      text-align: center;
+      font-weight: bold;
+      line-height: 113/75rem;
+    }
+  }
+  .shareMoney{
+    font-size: 15/75rem;
+    color:#FFE861;
+    position: absolute;
+    bottom: 3%;
+    left:50%;
+    transform: translateX(-50%);
+  }
+}
+@keyframes spin{
+
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(12deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+  70%{
+    transform: rotate(-12deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+@keyframes scaler{
+
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }
+  25%{
+    transform: scale(1.03);
+    opacity: 0.5;
+  }
+  50%{
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%{
+    transform: scale(0.97);
+    opacity: 0.5;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>订单详情</title>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/pintuan.css">
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style type="text/css">
+        .inputAddress{
+            padding: 15px;
+            font-size: 14px;
+        }
+        .inputAddress p{
+            padding: 10px 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .inputAddress p span{
+            display: inline-block;
+            width: 70px;
+            text-align: right;
+        }
+        .inputAddress input{
+            width: 100%;
+            padding: 5px 10px;
+            border: 0;
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+            position: relative;
+            top: -5px;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="mainBox">
+        <div class="peisong">
+            <div v-bind:class="{active : isDeliver}" @click="isDeliver=1">配送</div>
+            <!--<div v-bind:class="{active : !isDeliver}" @click="isDeliver=0">自提</div>-->
+        </div>
+
+        <div class="inputAddress" v-if="productInfo.is_address==0">
+            <p class="right">
+                <span>姓名</span>：<input type="text" placeholder="请输入您的姓名" name="consignee" v-model="addressInfo.real_name">
+            </p>
+
+            <p class="right">
+                <span>手机号</span>：<input type="number" placeholder="请输入您的手机号码" name="mobile" v-model="addressInfo.mobile">
+            </p>
+        </div>
+        <div class="addressInfo" v-else>
+            <div class="color_yellow"><i class="lele icon-weizhi"></i></div>
+            <div class="dizhi">
+                <p><span>{{addressInfo.real_name}}</span><i>{{addressInfo.mobile}}</i></p>
+                <div class="dizhixiangqing">
+                    {{addressInfo.province + ' ' + addressInfo.city + ' ' + addressInfo.area + ' ' + addressInfo.address}}
+                </div>
+            </div>
+            <div @click="toAddress"><i class="iconfont icon-xiayiyeqianjinchakangengduo"></i></div>
+        </div>
+
+        <div class="peisongfangshi">
+            <p>配送方式</p>
+            <div class="selectMode">
+                <div class="left" v-bind:class="{active : selectDeliverType}" @click="selectDeliverType=1" >
+                    <i class="lele icon-qiyeyuanquwuye-xianxing"></i>
+                    <div>
+                        国内包邮 <br/>
+                        免费
+                    </div>
+                    <span>✔</span>
+                </div>
+                <!--<div class="right" v-bind:class="{active : !selectDeliverType}" @click="selectDeliverType=0">
+                    <i class="iconfont icon-chandizhicai"></i>
+                    <div>
+                        原产地送 <br/>
+                        20元/盒
+                    </div>
+                    <span>✔</span>
+                </div>-->
+            </div>
+        </div>
+        <div class="orderConfig">
+            <div class="imgAndInfo">
+                <div><img :src="productInfo.logo" alt=""></div>
+                <div>
+                    <h5>{{productInfo.title}}</h5>
+                </div>
+                <div class="shuliang">
+                    <i>x&nbsp;<span>{{productInfo.num}}</span></i>
+                </div>
+            </div>
+            <div class="leaving">
+                <p>商品价格 <span>￥{{productInfo.cx_price}}</span></p>
+                <p>运费 <span>￥{{selectDeliverType?'0.00':'20.00'}}</span></p>
+            </div>
+            <div class="total">
+                合计：<span class="color_red">￥{{parseFloat(productInfo.cx_price)*parseInt(productInfo.num)+parseInt(selectDeliverType?'0.00':'18.00')}}</span>
+            </div>
+        </div>
+        <div class="orderAmount">
+            共计：<span>￥{{parseFloat(productInfo.cx_price)*parseInt(productInfo.num)+parseInt(selectDeliverType?'0.00':'20.00')}}</span>
+            <i class=" yellow" @click="buy">去支付</i>
+        </div>
+    </div>
+    <div class="tipWindow" style="display: none">
+        <div class="tipBox">
+            <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+            <div class="tipBtn">
+                <div>确定</div>
+                <div class="color_yellow">取消</div>
+            </div>
+        </div>
+    </div>
+    <div class="tipWindow wuliu" style="display: none">
+        <div class="tipBox">
+            <div class="top">
+                <p>快递公司：<span>百世快递</span></p>
+                <p>运单编号：<span>70724077921926</span></p>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="round"></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="round"></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="round "></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="round"></div>
+                        <div class="state">
+                            <p>快递状态描述</p>
+                            <p>2017-09-16 15:42:26</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../js/common.js?v=" + Date.now() ></script>
+<script src="../../js/orderShare.js?v=" + Date.now()></script>
+</body>
+</html>

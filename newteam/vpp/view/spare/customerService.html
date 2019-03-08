@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>售后信息</title>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/customerService.css">
+    <script type="text/javascript" src="../../import/vue/vue.js" ></script>
+    <!--<script src="js/jquery.min.js"></script>-->
+</head>
+<body>
+<div id="app">
+    <div class="mainBox">
+        <div class="customerInfo">
+            <p>联系人：<span>王丽萍</span> <i>13812345678</i></p>
+            <p class="hide">售后结果：<span>拒绝。拒绝原因。</span></p>
+        </div>
+        <div class="describe">
+            <textarea>实际收货的产品和销售的不符合，希望商家实事求是卖东西</textarea>
+            <div class="imgList clearfix">
+                <div class="imgOne"><img src="../../img/apple.jpg" alt=""></div>
+                <div class="imgOne"><img src="../../img/apple.jpg" alt=""></div>
+                <div class="imgOne"><img src="../../img/apple.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="tipWindow" style="display: none">
+        <div class="tipBox">
+            <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+            <div class="tipBtn">
+                <div>确定</div>
+                <div class="color_yellow">取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            productName: '王庄大西瓜',
+            imgList:[
+                {
+                    src:"img/topbg01.jpg"
+                }
+            ],
+            showUpImage : false
+        },
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName);
+                }
+            },
+            addImgOne:function (that) {
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>暂无红包</title>
+	<style>
+		html {
+			font-size: 75px;
+		}
+		body {
+			font-family: "PingFang-SC-Medium";
+			color: #4F4F4F;
+			background: #F3F3F3;
+		}
+		.clearfix:after {
+			content: "";
+			height: 0;
+			line-height: 0;
+			display: block;
+			clear: both;
+			visibility: hidden;
+		}
+		.clearfix {
+			zoom: 1;
+		}
+		*{
+			margin:0;
+			padding:0;
+			text-decoration: none;
+		}
+		.mainBox{
+			position: relative;
+		}
+		.nopacketBox{
+			position: fixed;
+			left:50%;
+			transform: translateX(-50%);
+			top:30%;
+			width: 90px;
+		}
+		.nopacketBox img{
+			width: 90px;
+			height: 95px;
+		}
+		.packetText{
+			font-size: 0.23rem;
+			color:#CECECE;
+			text-align: center;
+
+		}
+	</style>
+</head>
+<body>
+	<!--暂无红包-->
+	<div id="app">
+		<div class="mainBox">
+			<div class="nopacketBox">
+				<img src="../../img/nopacket.png" alt="">
+				<p class="packetText">暂无红包</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

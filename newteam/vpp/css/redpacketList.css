@@ -1,0 +1,82 @@
+html {
+  font-size: 75px;
+}
+body {
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+.mainBox {
+  width: 100%;
+  height: 3rem;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+.mainBox .redList {
+  width: 100%;
+  height: 1.90666667rem;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 0.2rem;
+}
+.mainBox .redList .listTop {
+  width: 100%;
+  height: 1.21333333rem;
+  background: url("../img/redbg.png") no-repeat center;
+  background-size: cover;
+  padding: 0.37333333rem 0.36rem;
+  box-sizing: border-box;
+}
+.mainBox .redList .listTop .walletBox {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+.mainBox .redList .listTop .walletBox .wallet {
+  color: #fff;
+  font-size: 0.30666667rem;
+  font-family: 'ArialMT';
+}
+.mainBox .redList .listTop .walletBox .wallet p {
+  line-height: 0.6rem;
+}
+.mainBox .redList .listTop .walletBox .wallet span {
+  font-size: 0.66666667rem;
+}
+.mainBox .redList .listTop .walletBox .walletInfo p {
+  line-height: 0.3rem;
+}
+.mainBox .redList .listTop .walletBox .walletInfo .walletText {
+  font-size: 0.21333333rem;
+  color: #fff;
+}
+.mainBox .redList .listTop .walletBox .walletInfo .time {
+  font-size: 0.17333333rem;
+  color: #fff;
+  font-weight: 500;
+}
+.mainBox .redList .listBottom {
+  padding: 0.13333333rem 0.2rem;
+}
+.mainBox .redList .listBottom .textDes {
+  font-size: 0.16rem;
+  color: #B8B8B8;
+  font-weight: 500;
+}
+/*# sourceMappingURL=redpacketList.css.map */

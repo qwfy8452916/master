@@ -1,0 +1,240 @@
+
+.swiper-container{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.swiper-container img{
+    width: 100%;
+    height: 230px;
+}
+/* 内容部分 */
+.content{
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+/* 参加信息 */
+.joinBox{
+    width: 100%;
+    background-color: #fff;
+}
+.joinTop{
+    width: 100%;
+    padding:15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.headBox{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border:1px solid #00C400;
+    box-sizing: border-box;
+}
+.headBox img{
+    width: 100%;
+    height: 100%;
+    
+}
+.joinBottom{
+    padding:15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+.joinLeft{
+    display: flex;
+    justify-content: space-evenly;
+}
+.joinLeft p{
+    font-size: 1.5rem;
+    color:#666;
+    font-weight: 500;
+}
+.joinRight p{
+    font-size: 1.5rem;
+    color:#666;
+    font-weight: 500;
+}
+.joinLeft p:last-child{
+    margin-left:5px;
+}
+.joinRight p span{
+    color:#FF0000;
+}
+.circleBox{
+    display: flex;
+    justify-content: space-around;
+    padding:12px 0;
+    box-sizing: border-box;
+}
+.joinTop p{
+    font-size: 1.5rem;
+    color:#666;
+    font-weight: 500;
+    line-height: 40px;
+}
+.joinTop p span{
+   color:#FF0000;
+}
+.circleBox .circle{
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #999;
+
+}
+.titleBox{
+    padding:15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+.title{
+    font-size: 1.6rem;
+    color:#333;
+    font-weight: bold;
+}
+.titleContent{
+    display: flex;
+    justify-content: space-evenly;
+}
+.circle{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #FF0000;
+    margin:5px;
+}
+.titleContent span:last-child{
+    font-size: 1.6rem;
+    color:#FF0000;
+    font-weight: 600;
+}
+.titleBox p{
+    font-size: 1.2rem;
+    color:#FF0000;
+}
+.titleBox p span{
+    font-size: 1.6rem;
+}
+.des{
+    padding:0px 15px 15px;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    color:#666;
+    font-weight: 500;
+}
+/* 详情信息 */
+.deatil{
+    width: 100%;
+    padding:20px 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 50px;
+}
+.deatil p{
+    font-size: 1.5rem;
+    color:#666;
+    font-weight: 500;
+} 
+/* 底部 */
+footer{
+    position: fixed;
+    width: 100%;
+    height: 49px;
+    background-color: #fff;
+    bottom:0;
+    left:0;
+    border-top:1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+.priceBox{
+    display: flex;
+    justify-content:space-between;    
+}
+.priceBox p:first-child{
+    width: 45%;
+    font-size: 1.8rem;
+    color:#333;
+    font-weight: 500;
+    padding:15px;
+    box-sizing: border-box;
+}
+.priceBox p:first-child span{
+    font-size: 1.8rem;
+    color:#FF0000;
+    font-weight: bold;
+}
+.priceBox p:first-child span i{
+    font-style: normal;
+    margin-left:5%;
+}
+.priceBox .help{
+    width: 30%;
+    padding:15px;
+    box-sizing: border-box;
+    background-color: #FFC439;
+    font-size: 1.5rem;
+    color:#fff;
+    text-align: center;  
+}
+.priceBox p:last-child{
+    width: 25%;
+    background-color: #FFA400;
+    padding:15px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.4rem;
+    color:#fff;
+}
+/* 遮罩层 */
+.mask{
+    width: 100%;
+    height: 100%;  
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index:1;
+} 
+.share{
+    width:47px; 
+    height: 76px;  
+    position: absolute;
+    right:20px;
+    top:0;
+}
+.share img{
+    width: 100%;
+    height: 100%;
+}
+.helpBox{
+    width: 90%;
+    padding:28px 73px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #fff;
+    margin:10px auto;
+}
+.mask p{
+    font-size: 1.6rem;
+    color:#fff;
+    font-weight: 500;
+    margin:76px 0 0 0;
+    text-align: center;
+}
+.mask p span{
+    color:#CE3E36;
+}
+.helpBox p{
+    color:#000;
+    margin:0;
+}
+.deatil img{
+    width: 100%;
+}

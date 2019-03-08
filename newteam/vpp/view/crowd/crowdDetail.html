@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <script src="../../js/flexible.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../import/swiper/swiper-4.3.2.min.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css"/>
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../import/swiper/swiper-4.3.2.min.css"/>
+    <link rel="stylesheet" href="../../css/crowdDetail.css">
+    <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <title>众筹详情</title>
+</head>
+<body>
+<div id="app">
+    <div class="mainBox">
+        <!--轮播-->
+        <!--<div class="swiper-container banner">-->
+        <!--<div class="swiper-wrapper">-->
+        <!--<div class="swiper-slide">-->
+        <!--<a href=""><img src="../../img/banner1.jpg" /></a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="swiper-pagination"></div>-->
+        <!--<div class="zongchouBox">-->
+        <!--<img src="../../img/zong.png" alt="">-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="bannerBox">
+            <img :src="list.img_url" alt="">
+            <div class="zongchouBox">
+                <img src="../../img/zong.png" alt="">
+            </div>
+        </div>
+        <!--内容部分-->
+        <div class="contentBox">
+            <div class="titleBox">
+                <p class="goodsName">{{list.title}}</p>
+                <div class="crowdBox">
+                    众筹中
+                </div>
+                <p class="crowdNum">已筹<span>{{list.order_num}}</span>份</p>
+            </div>
+            <p class="goodsDes">{{list.keywords}}</p>
+            <span class="goodsPrice"><em>￥{{list.price}}</em></span>
+            <div class="infoBox" v-for="item in dangwei">
+                <div class="infoLeft">
+                    <p class="futurePrice">￥{{item.target_amount}}</p>
+                    <p class="priceText">目 标 金 额</p>
+                </div>
+                <div class="infoRight">
+                    <p class="peopleNum"><span>{{item.order_num}}</span>人</p>
+                    <p>支 持 人 数</p>
+                </div>
+            </div>
+        </div>
+        <!--档位部分-->
+        <div class="gearBox">
+            <p>热门档位:</p>
+            <div class="iconBox">
+                <div class="imgBox datasetconfig" data-title="" data-url="" data-pic="" data-sites="weibo,weixin,qzone">
+                    <img src="../../img/share.png" alt="">
+                </div>
+                <div class="imgBox imgBox1" @click.stop="collection()">
+                    <img :src="is_collect == true ? '../../img/fav2.png' :'../../img/fav1.png'" alt="">
+                </div>
+                <div class="supportBox" @click.stop="goselectGear(list.id)">
+                    <p>去支持</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+<script type="text/javascript" src="../../js/crowdDetail.js?v=" + Date.now()></script>
+</body>
+</html>

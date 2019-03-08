@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>订单详情</title>
+    <script src="../../js/flexible.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../../css/orderInfo.css">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <!--<script src="js/jquery.min.js"></script>-->
+</head>
+
+<body>
+    <div id="app">
+        <div class="mainBox">
+            <!--<div class="orderState">
+                订单状态：
+                <span class="hide">待评价</span>
+                <span class="hide">已发货</span>
+                <span class="hide">待发货</span>
+                <span class="hide">待支付</span>
+            </div>-->
+            <div class="imgAndInfo" v-for="item in list">
+                <div><img :src="item.logo" alt=""></div>
+                <div>
+                    <h5>{{item.title}}</h5>
+                    <p>规格：<span>默认</span></p>
+                    <p><span class="color_red">￥{{item.share_price}}</span><i>X{{item.num}}</i></p>
+                </div>
+            </div>
+            <div class="orderConfig">
+                <div class="addressInfo clearfix">
+                    <div class="color_yellow"><i class="iconfont icon-weizhi"></i></div>
+                    <div class="dizhi">
+                        <p>收件人：<span>{{address.real_name}}</span><i>{{address.mobile}}</i></p>
+                        <div class="dizhixiangqing">
+                            <div class="left">收件地址：</div>
+                            <div class="right">{{address.province}}{{address.city}}{{address.area}}{{address.address}}</div>
+                        </div>
+                    </div>
+                    <div @click="goAddress"><i class="iconfont icon-xiayiyeqianjinchakangengduo"></i></div>
+                </div>
+                <!--<div class="other">-->
+                <!--购买数量 <span>1</span>-->
+                <!--</div>-->
+                <div class="other">
+                    规格 <span>默认</span>
+                </div>
+                <div class="other">
+                    配送方式 <span><i>快递</i><i>免邮</i></span>
+                </div>
+                <div class="leaving">
+                    留言
+                    <p>请周日送货</p>
+                </div>
+                <div class="total">
+                    合计：<span>￥{{total}}(含运费)</span>
+                </div>
+            </div>
+            <div class="orderAmount">
+                共计：<span>￥{{total}}</span>
+                <i class="yellow">去支付</i>
+            </div>
+        </div>
+        <div class="tipWindow" style="display: none">
+            <div class="tipBox">
+                <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
+                <div class="tipBtn">
+                    <div>确定</div>
+                    <div class="color_yellow">取消</div>
+                </div>
+            </div>
+        </div>
+        <div class="tipWindow wuliu" style="display: none">
+            <div class="tipBox">
+                <div class="top">
+                    <p>快递公司：<span>百世快递</span></p>
+                    <p>运单编号：<span>70724077921926</span></p>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="round"></div>
+                            <div class="state">
+                                <p>快递状态描述</p>
+                                <p>2017-09-16 15:42:26</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="round"></div>
+                            <div class="state">
+                                <p>快递状态描述</p>
+                                <p>2017-09-16 15:42:26</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="round "></div>
+                            <div class="state">
+                                <p>快递状态描述</p>
+                                <p>2017-09-16 15:42:26</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="round"></div>
+                            <div class="state">
+                                <p>快递状态描述</p>
+                                <p>2017-09-16 15:42:26</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/math.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/orderInfo.js"></script>
+</body>
+
+</html>

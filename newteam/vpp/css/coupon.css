@@ -1,0 +1,85 @@
+.tab{
+	background: #FFFFFF;
+	display: flex;
+	justify-content: space-around;
+}
+.tab a{
+	display: block;
+	padding: 10px;
+	border-bottom: 2px solid transparent;
+	color:#999;
+}
+.tab a.active{
+	color: #FFA800;
+	border-color: #FFA800;
+}
+.list{
+	margin-top:16px;
+}
+.box{
+	width: 320px;
+	height: 100px;
+	background: url('../img/hbg.png') no-repeat center;
+	background-size: cover;
+	margin:0 auto 16px;
+	display: flex;
+	justify-content: space-between;
+	padding:0 60px 0 11px;
+	box-sizing: border-box;
+	position: relative;
+}
+.boxLeft{
+	height: 100%;
+	padding:20px 0;
+	box-sizing: border-box;
+	
+}
+.ticketMoney{
+	font-size: 2rem;
+	color:#FFA800;
+	font-weight: bold;
+}
+.ticketMoney span{
+	font-size: 2.6rem;
+}
+.ticketText{
+	font-size: 1.2rem;
+	color:#FFA800;
+	text-align: center;
+}
+.boxRight{
+	height: 100%;
+	padding: 15px 0;
+	box-sizing: border-box;
+}
+.discount{
+	color:#333;
+	font-size: 1.7rem;
+	font-weight: bold;
+}
+.rule{
+	font-size: 1.4rem;
+	color:#666;
+	font-weight: 400;
+	line-height: 36px;
+}
+.timeEnd{
+	font-size: 1.2rem;
+	color:#999;
+	font-weight: 400;
+	line-height: 5px;
+}
+.public{
+	color:#969696;
+}
+.timeendImg{
+	position: absolute;
+	right: 12px;
+	top:19px;
+	width: 55px;
+	height: 55px;
+}
+.timeendImg img{
+	width: 100%;
+	height: 100%;
+}

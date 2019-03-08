@@ -1,0 +1,179 @@
+html{
+  font-size: 75px;
+}
+body{
+  font-family: "PingFang-SC-Medium";
+  color: #4F4F4F;
+  background: #F3F3F3;
+}
+.clearfix:after{
+  content:"";
+  height:0;
+  line-height:0;
+  display:block;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix{
+  zoom:1;  //因为IE6不支持:after伪类。它的效果和height:1%一样
+}
+.mainBox{
+  .evaluateInfo{
+    background-color: white;
+    padding: 0.5rem 0.2rem 0.4rem 0.4rem;
+    textarea{
+      border: none;
+      width: 100%;
+      height: 3rem;
+      line-height: 0.6rem;
+      font-size: 28/75rem;
+    }
+    ::-webkit-input-placeholder{
+      color: #999999;
+      font-family: PingFang-SC-Medium;
+    }    /* 使用webkit内核的浏览器 */
+    :-moz-placeholder{
+      color: #999999;
+      font-family: PingFang-SC-Medium;
+    }                  /* Firefox版本4-18 */
+    ::-moz-placeholder{
+      color: #999999;
+      font-family: PingFang-SC-Medium;
+    }                  /* Firefox版本19+ */
+    :-ms-input-placeholder{
+      color: #999999;
+      font-family: PingFang-SC-Medium;
+    }           /* IE浏览器 */
+    div{
+      width: 1.6rem;
+      height: 1.6rem;
+      color: #999999;
+      border: 1px dashed;
+      text-align: center;
+      box-sizing: border-box;
+      padding-top: 0.2rem;
+      i{
+        font-size: 0.6rem;
+      }
+      p{
+        font-size: 24/75rem;
+        text-align: center;
+      }
+    }
+  }
+  .grade{
+    background-color: white;
+    margin-top: 0.2rem;
+    padding: 0.4rem;
+    >p{
+      line-height: 1rem;
+      font-size: 24/75rem;
+      color: #333333;
+      //font-weight: 100;
+      i{
+        margin-right: 2px;
+        vertical-align: sub;
+        font-size: 0.5rem;
+        color: #808080;
+      }
+    }
+    .dianxingxing{
+      height: 1rem;
+      line-height: 1rem;
+      float: left;
+      >div{
+        float: left;
+      }
+      div:first-child{
+        margin-right: 0.4rem;
+        color: #333333;
+        font-size: 24/75rem;
+      }
+      div:last-child{
+         margin-left: 0.3rem;
+      }
+      .xingxing{
+        span{
+          i{
+            letter-spacing: 0.1rem;
+          }
+          i:last-child{
+            display: none;
+          }
+        }
+        .active{
+          i:first-child{
+            display: none;
+          }
+          .color_yellow{
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+  .btn{
+    height: 1.1rem;
+    line-height: 1.1rem;
+    width: 90%;
+    margin: 0.5rem auto;
+    font-size: 30/75rem;
+    color: white;
+    background-color: #FFA800;
+    text-align: center;
+    border-radius: 0.2rem;
+  }
+}
+.tipWindow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0,0,0,0.5);
+  .tipBox{
+    margin: 50% auto 0;
+    width: 60%;
+    background-color: white;
+    border-radius: 0.2rem;
+    .tipInfo{
+      height: 2.5rem;
+      line-height: 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid #CCC;
+      font-size: 30/75rem;
+      i{
+        font-size: 80/75rem;
+        color: #ffa800;
+        vertical-align: sub;
+      }
+    }
+    .tipBtn{
+      font-size: 0;
+      div{
+        width: 49%;
+        display: inline-block;
+        height: 1rem;
+        text-align: center;
+        line-height: 1rem;
+        font-size: 30/75rem;
+      }
+      div:first-child{
+        border-right: 1px solid #ccc;
+      }
+      div:last-child{
+        color: #ff0000;
+      }
+    }
+  }
+}
+.color_yellow{
+  color: #ffa800 !important;
+}
+.color_red{
+  color: #ff0000 !important;
+}
+.hide{
+  display: none !important;
+}
