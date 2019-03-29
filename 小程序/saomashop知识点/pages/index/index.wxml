@@ -1,0 +1,53 @@
+<!--index.wxml-->
+<view class='page' id='{{getsign}}'>
+ <button open-type="getUserInfo">点击</button> 
+<view bindtap='xinxi'>获取信息</view>
+
+<view class='topbanner' bindtap='setdata'>
+  <image src='../../img/bannersy.jpg'></image>
+</view>
+<view class='wrap'>
+ <view class='addresswrap'>
+   <view class='areatext'><text class='iconfont icondingwei'></text><text class='marleft10'>江苏省/苏州市/姑苏区</text></view>
+   <view class='marleft40'>石路街道金阊文化教育大厦1511室</view>
+     <text bindtap="phoneCall" class='iconfont icontel'></text>
+ </view>
+ <view class='chenghao' bindtap='tiaozhuan'><icon class='iconfont iconjiangbei'></icon>2019年获得"最佳酒店"称号</view>
+ <view class='commoditywrap'>
+
+   <view class='commodityitem'>
+       <image class='commodityimg' src='../../img/shangp.jpg'></image>
+       <view class='commoditymswrap'>
+          <text>泡吧小脆薯片50G*12袋装鸡肉烧烤多口味薄脆饼膨化饼干食品零食</text>
+          <view class='tastewrap'>
+             <text class='taste'>番茄味1袋</text>
+          </view>
+          <view class='buywrap'>
+             <text class='price hengjin'><text class='danwei'>￥</text>5.00</text>
+             <view bindtap='lingqu' class='buypay {{yanse?"buypay"+"-default":""}}'>免费领取</view>
+          </view>
+       </view>
+    </view>
+
+    <view class='commodityitem' wx:for="{{shangpin}}" wx:key="{{item}}">
+       <image class='commodityimg' src='../../img/shangp.jpg'></image>
+       <view class='commoditymswrap'>
+          <text>泡吧小脆薯片50G*12袋装鸡肉烧烤多口味薄脆饼膨化饼干食品零食</text>
+          <view class='tastewrap'>
+             <text class='taste'>番茄味1袋</text>
+          </view>
+          <view class='buywrap'>
+             <text class='price'><text class='danwei'>￥</text>5.00</text>
+             <view class='buypay buypay-default01'>立即购买</view>
+          </view>
+          
+       </view>
+    </view>
+ 
+ </view>
+</view>
+</view>
+
+
+
+

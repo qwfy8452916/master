@@ -1,0 +1,3 @@
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" circles="{{circles}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width:100%; height:300px;" 
+bindtap=''></map>
+<view class='wzy' bindtap='daohang' data-wd="113.34276084609373" data-jd="23.159665001332776" data-name="闻钟苑">闻钟苑</view>

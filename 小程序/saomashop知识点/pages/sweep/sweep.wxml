@@ -1,0 +1,2 @@
+<!--pages/sweep/sweep.wxml-->
+<view bindtap='sao'>点击扫一扫</view>

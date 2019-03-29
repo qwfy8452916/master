@@ -1,0 +1,4 @@
+.buypay-default{background: green !important;}
+#yanse01 .buypay-default01{background: #6720B3;}
+#yanse01 .chenghao{color: #e60505;}
+#yanse01 .buywrap .price{color: #056fe6;}

@@ -1,0 +1,4 @@
+/* pages/shaix/shaix.wxss */
+.boxdianji{display: inline-block;float: left;margin-left: 20rpx;
+padding: 5rpx 20rpx;border: 1px solid #aaaaaa;}
+.active{border: 1px solid #ff5353 !important;}

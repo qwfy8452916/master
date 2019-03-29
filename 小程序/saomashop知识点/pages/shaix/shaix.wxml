@@ -1,0 +1,11 @@
+<!--pages/shaix/shaix.wxml-->
+<view>筛选条件_单选</view>
+<view class='wrap'>
+   <view class='boxdianji {{item.checked==true?"active":""}}' wx:for="{{items01}}" wx:key bindtap='boxdianji01' data-id="{{index}}" data-value="{{item.value}}">{{item.name}}</view>
+</view>
+
+
+<view style='clear:both;'>筛选条件_多选</view>
+<view class='wrap'>
+   <view wx:for="{{items02}}" wx:key class='boxdianji {{item.checked==true?"active":""}}' bindtap='boxdianji02' data-id="{{index}}" data-value="{{item.value}}">{{item.name}}</view>
+</view>

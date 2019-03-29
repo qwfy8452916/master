@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "使用组件",
+  "usingComponents": {
+    "i-button": "../../dist/button/index",
+    "i-modal": "../../dist/modal/index"
+  }
+}
