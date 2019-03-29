@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<title></title>
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+	<body>
+		<div id="app" class="bigbox" v-cloak>
+			<div class="bgbox">
+				<div class="imgBox indexImg1"><img src="img/index-img1.png" /></div>
+				<div class="imgBox logoImg"><img src="img/logo.png" /></div>
+				<div class="imgBox img-bt"><img src="img/index-img2.png" /></div>
+				<div class="imgBox img-tx"><img :src="head_img" /></div>
+				<div class="textcenter font-name">{{username}}</div>
+				<div class="lineBox">
+					<span class="textcenter fonttext">恭喜成为特约群主</span>
+					<div class="line"></div>
+				</div>
+				<div class="imgBox qrcodeBox"><img src="img/qrcode.png" /></div>
+				<div class="textcenter font-text1">扫描上面二维码</div>
+				<div class="textcenter font-text2">免 / 费 / 获 / 取</div>
+				<div class="textcenter font-text2">价值198000元的社群营销课</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../import/jq/jquery.2.1.4.min.js" ></script>
+	<script type="text/javascript" src="../../import/vue/vue.js"></script>
+	<script type="text/javascript" src="../../import/axios/axios.min.js" +new Date()></script>
+	<script type="text/javascript" src="../../js/common.js?v=" +new Date()></script>
+	<script type="text/javascript" src="js/index.js" ></script>
+</html>

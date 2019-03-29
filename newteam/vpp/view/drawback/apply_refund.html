@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/common.css" />
+    <!-- <link href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_763110_6t11jdvtbnb.css" />
+    <link rel="stylesheet" href="../../css/drawback/apply_refund.css" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <title>申请退款</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .el-upload-list--picture-card .el-upload-list__item {
+            overflow: hidden;
+            background-color: #fff;
+            border: 1px solid #c0ccda;
+            border-radius: 6px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 30%;
+            height: 105px;
+        }
+        .el-upload--picture-card {
+            background-color: #fbfdff;
+            border: 1px dashed #c0ccda;
+            border-radius: 6px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 30%;
+            height: 105px;
+            cursor: pointer;
+            line-height: 112px;
+            vertical-align: top;
+        }        
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <section class="mainBox">
+            <!-- 订单信息 -->
+            <div class="product">
+                <div class="cover">
+                    <img :src="list.product_img" alt="" />
+                </div>
+                <div class="info">
+                    <p>{{list.product_title}}</p>
+                    <p><span class="price">￥{{list.product_money}}</span> <span>x {{list.num}}</span></p>
+                    <p v-if="list.order_state==1">订单状态:待发货</p>
+                </div>
+            </div>
+            <!-- 退款原因 -->
+            <div class="reason">
+                <p>退款原因</p>
+                <div class="select" @click="showMask">
+                    <p class="selectText">{{content}}</p>
+                    <i class="lele icon-gengduo"></i>
+                </div>
+
+            </div>
+            <!-- 退款金额 -->
+            <div class="moneyBox">
+                <p>退款金额</p>
+                <p>￥{{list.product_money}}</p>
+            </div>
+            <!-- 退款说明 -->
+            <div class="desBox">
+                <p>退款说明</p>
+                <textarea name="" placeholder="选填(填写内容请控制在30字以内)" v-model="refund.des"></textarea>
+            </div>
+            <!-- 上传凭证 -->
+            <div class="upload">
+                <div class="textBox">
+                    <p>上传凭证</p>
+                    <p>上传凭证(最多三张)</p>
+                </div>
+                <el-upload :action="url" list-type="picture-card" multiple :limit="3" :on-preview="handlePreview"
+                    :on-exceed="handleExceed" :on-success="handleAvatarSuccess" :file-list="fileList"
+                    :on-remove="handleRemove">
+                    <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+            <!-- 提交 -->
+            <button @click="apply">提交</button>
+            <!-- 模态窗 -->
+            <div class="mask" v-show="showToast">
+                <div class="toast">
+                    <div class="toastTop">
+                        <p>退款原因</p>
+                    </div>
+                    <div class="listBox">
+                        <div class="list" v-for="(item,index) in select">
+                            <p>{{item}}</p>
+                            <div class="img" @click="choose(item,index)">
+                                <img :src="searchIndex === index?'../../img/checked1.png':'../../img/nocheck.png'"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="do">
+                        <div class="cancle" @click="cancel">
+                            取消
+                        </div>
+                        <div class="confirm" @click="confirm">
+                            确定
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+    <script src="../spa/import/js/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="../spa/import/js/axios.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/drawback/apply_refund.js"></script>
+</body>
+
+</html>

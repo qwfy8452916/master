@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_763110_6t11jdvtbnb.css" />
+    <link rel="stylesheet" href="../../css/drawback/service_type.css" />
+    <title>选择服务类型</title>
+</head>
+
+<body>
+    <div id="app">
+        <section class="mainBox">
+            <!-- 订单信息 -->
+            <div class="product">
+                <div class="cover">
+                    <img :src="list.product_img" alt="" />
+                </div>
+                <div class="info">
+                    <p>{{list.product_title}}</p>
+                    <p><span class="price">￥{{list.product_money}}</span> <span>x {{list.num}}</span></p>
+                    <p v-if="list.order_state==2">订单状态:待收货</p>
+                </div>
+            </div>
+            <!-- 退款类型 -->
+            <div class="typeBox">
+                <div class="typeList" @click="goDraw">
+                    <div class="icon">
+                        <img src="../../img/tui.png" alt="">
+                    </div>
+                    <div class="returnText">
+                        <p>仅退款</p>
+                        <p>未收到货(包含未签收)，或卖家协商同意情况下</p>
+                    </div>
+                    <i class="lele icon-gengduo"></i>
+                </div>
+                <div class="typeList" @click="goDrawgoods">
+                    <div class="icon">
+                        <img src="../../img/tui1.png" alt="">
+                    </div>
+                    <div class="returnText">
+                        <p>退货退款</p>
+                        <p>已收到货，需要退换已收到的货物</p>
+                    </div>
+                    <i class="lele icon-gengduo"></i>
+                </div>
+                <div class="typeList" @click="goExchange">
+                    <div class="icon">
+                        <img src="../../img/huan.png" alt="">
+                    </div>
+                    <div class="returnText">
+                        <p>换货</p>
+                        <p>已收到货，需要更换已收到的货</p>
+                    </div>
+                    <i class="lele icon-gengduo"></i>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../spa/import/js/vue.min.js"></script>
+    <script src="../spa/import/js/axios.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/drawback/service_type.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_763110_6t11jdvtbnb.css" />
+    <link rel="stylesheet" href="../../css/drawback/only_draw.css" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>仅退款</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .el-upload-list--picture-card .el-upload-list__item {
+            overflow: hidden;
+            background-color: #fff;
+            border: 1px solid #c0ccda;
+            border-radius: 6px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 30%;
+            height: 105px;
+        }
+
+        .el-upload--picture-card {
+            background-color: #fbfdff;
+            border: 1px dashed #c0ccda;
+            border-radius: 6px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 30%;
+            height: 105px;
+            cursor: pointer;
+            line-height: 112px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <section class="mainBox">
+            <!-- 订单信息 -->
+            <div class="product">
+                <div class="cover">
+                    <img :src="goodsInfo.product_img" alt="" />
+                </div>
+                <div class="info">
+                    <p>{{goodsInfo.product_title}}</p>
+                    <p><span class="price">￥{{goodsInfo.product_money}}</span> <span>x {{goodsInfo.num}}</span></p>
+                    <p v-if="goodsInfo.order_state==2">订单状态:待收货</p>
+                </div>
+            </div>
+            <!-- 货物状态 -->
+            <div class="reason" @click="showMask1">
+                <p>货物状态</p>
+                <div class="select">
+                    <p class="selectText">{{content1}}</p>
+                    <i class="lele icon-gengduo"></i>
+                </div>
+
+            </div>
+            <!-- 退款原因 -->
+            <div class="reason reason1" @click="showMask">
+                <p>退款原因</p>
+                <div class="select">
+                    <p class="selectText">{{content}}</p>
+                    <i class="lele icon-gengduo"></i>
+                </div>
+
+            </div>
+            <!-- 退款金额 -->
+            <div class="moneyBox">
+                <p>退款金额</p>
+                <p>￥{{goodsInfo.product_money}}</p>
+            </div>
+            <!-- 退款说明 -->
+            <div class="desBox">
+                <p>退款说明</p>
+                <textarea name="" placeholder="选填(填写内容请控制在30字以内)" v-model="refund.des"></textarea>
+            </div>
+            <!-- 上传凭证 -->
+            <div class="upload">
+                <div class="textBox">
+                    <p>上传凭证</p>
+                    <p>上传凭证(最多三张)</p>
+                </div>
+                <el-upload :action="url" list-type="picture-card" multiple :limit="3" :on-exceed="handleExceed"
+                    :on-success="handleAvatarSuccess" :file-list="fileList" :on-remove="handleRemove">
+                    <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+            <!-- 提交 -->
+            <button @click="apply">提交</button>
+            <!-- 模态窗 -->
+            <!-- 未收到货退款原因 -->
+            <div class="mask" v-show="showToast" v-if="searchIndex1==0">
+                <div class="toast">
+                    <div class="toastTop">
+                        <p>退款原因</p>
+                    </div>
+                    <div class="listBox" v-for="(item,index) in list">
+                        <div class="list">
+                            <p>{{item}}</p>
+                            <div class="img" @click="select(item,index)">
+                                <img :src="searchIndex == index?'../../img/checked1.png':'../../img/nocheck.png'"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="do">
+                        <div class="cancle" @click="cancleMask">
+                            取消
+                        </div>
+                        <div class="confirm" @click="confirm">
+                            确定
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 已收到货退款原因 -->
+            <div class="mask" v-show="showToast" v-else>
+                <div class="toast  toast2">
+                    <div class="toastTop">
+                        <p>退款原因</p>
+                    </div>
+                    <div class="listBox" v-for="(item,index) in goodslist">
+                        <div class="list">
+                            <p>{{item}}</p>
+                            <div class="img" @click="select(item,index)">
+                                <img :src="searchIndex == index?'../../img/checked1.png':'../../img/nocheck.png'"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="do">
+                        <div class="cancle" @click="cancleMask">
+                            取消
+                        </div>
+                        <div class="confirm" @click="confirm">
+                            确定
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mask1" v-show="showToast1">
+                <div class="toast toast1">
+                    <div class="toastTop">
+                        <p>货物状态</p>
+                    </div>
+                    <div class="listBox1" v-for="(item,index) in goods">
+                        <div class="list">
+                            <p>{{item}}</p>
+                            <div class="img" @click="select1(item,index)">
+                                <img :src="searchIndex1 == index?'../../img/checked1.png':'../../img/nocheck.png'"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="do">
+                        <div class="cancle" @click="cancleMask1">
+                            取消
+                        </div>
+                        <div class="confirm" @click="confirm1">
+                            确定
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../spa/import/js/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="../spa/import/js/axios.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/drawback/only_draw.js"></script>
+</body>
+
+</html>

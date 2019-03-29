@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>狗粮代理</title>
+    <link rel="stylesheet" href="../../import/swiper/swiper-4.3.2.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="bigbox" id="app">
+        <div class="music-img" :class="{'musicimg-ani':musictype}" @click="music_stop">
+            <img src="img/music.png" class="img-box" />
+        </div>
+        <audio controls id="audio_player" autoplay="autoplay" style="display:none"  loop="loop"> 
+            <source src="audio/bg.mp3" > 
+        </audio>
+        <div class="swiper-container swiperBox">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox" :class="{'disNone':!swiper_type1}">
+                        <div class="absolutebox" :class="{'tablebox':swiper_type1}">
+                            <img src="img/swiper1-bg2.png" class="img-box" />
+                        </div>
+                        <div class="absolutebox" :class="{'bowlbox':swiper_type1}">
+                            <img src="img/swiper1-img5.png" class="img-box" />
+                        </div>
+                        <div class="absolutebox" :class="{'dogbox':swiper_type1}">
+                            <img src="img/swiper1-img2.png" class="img-box" />
+                        </div>
+                        <div class="absolutebox" :class="{'topbox':swiper_type1}">
+                            <div class="topbox-bg">
+                                <img src="img/swiper1-img1.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'topbox-bt':swiper_type1}">
+                                <img src="img/swiper1-img1-2.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'topbox-bt2':swiper_type1}">
+                                <img src="img/swiper1-img1-3.png" class="img-box" />
+                            </div>
+                        </div>
+                        <div class="absolutebox" :class="{'dogbgbox':swiper_type1}">
+                            <img src="img/swiper1-bg1.png" class="img-box" />
+                        </div>
+                        <div class="absolutebox" :class="{'sloganbox':swiper_type1}">
+                            <div class="sloganbox-l">
+                                <img src="img/swiper1-img3.png" class="img-box" />
+                            </div>
+                            <div class="sloganbox-r">
+                                <img src="img/swiper1-img4.png" class="img-box" />
+                            </div>
+                        </div>
+                        <div class="absolutebox btmbox">
+                            <div class="fl" :class="{'btmbox-l':swiper_type1}">
+                                <img src="img/swiper1-img6.png" class="img-box" />
+                            </div>
+                            <div class="fr" :class="{'btmbox-r':swiper_type1}">
+                                具有营养全面、消化吸收率高、配方科学、质量标准、饲喂方便以及可预防某些疾病
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox" :class="{'disNone':!swiper_type2}">
+                        <div class="absolutebox" :class="{'swiper2bgbox1':swiper_type2}">
+                            <img src="img/swiper2-bg1.png" class="img-box" />
+                            <div class="absolutebox" :class="{'btimgbox':swiper_type2}">
+                                <img src="img/swiper2-img1.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'catbox':swiper_type2}">
+                                <img src="img/swiper2-img2.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox libox libox-1">
+                                <div class="absolutebox" :class="{'libox-l':swiper_type2}">
+                                    <img src="img/swiper2-bg3.png" class="img-box" />
+                                    <div class="absolutebox" :class="{'numbox':swiper_type2}">
+                                        <img src="img/swiper2-num1.png" class="img-box" />
+                                    </div>
+                                </div>
+                                <div class="absolutebox" :class="{'libox-r':swiper_type2}">
+                                    <img src="img/swiper2-bg4.png" class="img-box" />
+                                    <div class="absolutebox" :class="{'textbox':swiper_type2}">
+                                        <img src="img/swiper2-text1.png" class="img-box" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolutebox libox libox-2">
+                                <div class="absolutebox" :class="{'libox-l':swiper_type2}">
+                                    <img src="img/swiper2-bg3.png" class="img-box" />
+                                    <div class="absolutebox" :class="{'numbox':swiper_type2}">
+                                        <img src="img/swiper2-num2.png" class="img-box" />
+                                    </div>
+                                </div>
+                                <div class="absolutebox" :class="{'libox-r':swiper_type2}">
+                                    <img src="img/swiper2-bg4.png" class="img-box" />
+                                    <div class="absolutebox" :class="{'textbox':swiper_type2}">
+                                        <img src="img/swiper2-text2.png" class="img-box" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolutebox libox libox-3">
+                                <div class="absolutebox" :class="{'libox-l':swiper_type2}">
+                                    <img src="img/swiper2-bg3.png" class="img-box" />
+                                    <div class="absolutebox" :class="{'numbox':swiper_type2}">
+                                        <img src="img/swiper2-num3.png" class="img-box" />
+                                    </div>
+                                </div>
+                                <div class="absolutebox" :class="{'libox-r':swiper_type2}">
+                                    <img src="img/swiper2-bg4.png" class="img-box" />
+                                    <div class="absolutebox" :class="{'textbox':swiper_type2}">
+                                        <img src="img/swiper2-text3.png" class="img-box" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolutebox" :class="{'swiper2bgbox2':swiper_type2}">
+                            <img src="img/swiper2-bg2.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox" :class="{'disNone':!swiper_type3}">
+                        <div class="absolutebox" :class="{'swiper2bgbox1':swiper_type3}">
+                            <img src="img/swiper2-bg1.png" class="img-box" />
+                            <div class="absolutebox btimgbox2 clearfix">
+                                <div class="fl" :class="{'btimgbox2-box1':swiper_type3}">
+                                    <img src="img/swiper3-img1.png" class="img-box" />
+                                </div>
+                                <div class="absolutebox fl" :class="{'btimgbox2-box2':swiper_type3}">
+                                    <img src="img/swiper3-img3.png" class="img-box" />
+                                </div>
+                                <div class="fr" :class="{'btimgbox2-box3':swiper_type3}">
+                                    <img src="img/swiper3-img2.png" class="img-box" />
+                                </div>
+                            </div>
+                            <div class="absolutebox" :class="{'textbox2':swiper_type3}">
+                                <div :class="{'fontbox':swiper_type3}">
+                                    <div class="font1">1.宠粮一件代发！</div>
+                                </div>
+                                <div :class="{'fontbox':swiper_type3}">
+                                    <div class="font1">2.只要不开包，随时可以换货或者退货！</div>
+                                </div>
+                                <div :class="{'fontbox':swiper_type3}">
+                                    <div class="font1">3.我们会通过媒体资源帮你招代理商以及最终客户！</div>
+                                </div>
+                                <div :class="{'fontbox':swiper_type3}">
+                                    <div class="font1">4.利润可观，在家有手机即可操作！</div>
+                                </div>
+                                <div :class="{'fontbox':swiper_type3}">
+                                    <div class="font1">5.与厂家直接合作，保证产品品质以及供货渠道通畅！</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolutebox" :class="{'swiper2bgbox2':swiper_type3}">
+                            <img src="img/swiper2-bg2.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox" :class="{'disNone':!swiper_type4}">
+                        <div class="absolutebox" :class="{'swiper2bgbox1':swiper_type4}">
+                            <img src="img/swiper2-bg1.png" class="img-box" />
+                            <div class="absolutebox" :class="{'btimgbox3':swiper_type4}">
+                                <img src="img/swiper4-img1.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'bowlbox2':swiper_type4}">
+                                <img src="img/swiper4-img4.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'qrcodebox':swiper_type4}">
+                                <img src="img/swiper4-img3.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'dogbox2':swiper_type4}">
+                                <img src="img/swiper4-img2.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'bowlfontbox':swiper_type4}">
+                                <img src="img/swiper4-img5.png" class="img-box" />
+                            </div>
+                            <div class="absolutebox" :class="{'btm-fontbox':swiper_type4}">
+                                <div class="font1">电话：17751431690</div>
+                                <div class="font1">地址：苏州市姑苏区广济南路19号永 捷峰汇1511室</div>
+                            </div>
+                        </div>
+                        <div class="absolutebox" :class="{'swiper2bgbox2':swiper_type4}">
+                            <img src="img/swiper2-bg2.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox" :class="{'disNone':!swiper_type5}">
+                        <div class="absolutebox" :class="{'swiper2bgbox1':swiper_type5}">
+                            <img src="img/swiper2-bg1.png" class="img-box" />
+                            <div class="absolutebox" :class="{'btimgbox3':swiper_type5}">
+                                <img src="img/swiper5-img1.png" class="img-box" />
+                            </div>
+                        </div>
+                        <div class="absolutebox" :class="{'swiper2bgbox2':swiper_type5}">
+                            <img src="img/swiper2-bg2.png" class="img-box" />
+                        </div>
+                        <div class="absolutebox formbox">
+                            <div :class="{'formimg':swiper_type5}"><img src="img/swiper4-img2-1.png" class="img-box" /></div>
+                            <input name="username" type="text" :class="{'username':swiper_type5}" placeholder="姓名" placeholder-class="placeholderclass" onblur="Iosback" v-model="namevalue" />
+                            <input name="tel" type="tel" :class="{'tel':swiper_type5}" placeholder="手机" placeholder-class="placeholderclass" onblur="Iosback" v-model="telvalue" />
+                            <textarea class="remarks" :class="{'remarks-view':swiper_type5}" placeholder="备注" placeholder-class="placeholderclass" name="remarks" onblur="Iosback" v-model="remarkvalue"></textarea>
+                            <button :class="{'btnbox':swiper_type5}" @click="checkForm">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../import/jq/jquery.2.1.4.min.js" ></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
+<script type="text/javascript" src="../../import/vue/vue.js"></script>
+<script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+<script type="text/javascript" src="../../import/swiper/swiper-4.3.2.min.js"></script>
+<script type="text/javascript" src="../../js/common.js?v=" +new Date()></script>
+<script type="text/javascript" src="js/index.js" ></script>
+</html>

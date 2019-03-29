@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/drawback/back_detail.css" />
+    <title>退款详情</title>
+</head>
+<body>
+    <div id="app">
+        <section class="mainBox">
+            <!-- 审核状态 -->
+            <div class="state" style="display: none;">
+                <div class="icon">
+                    <img src="../../img/dai.png" alt="">
+                </div>
+                <p>商家待审核！</p>
+                <p>您已成功发起退款申请，请等待商家处理。</p>
+            </div>
+            <div class="state" style="display: none;">
+                <div class="icon">
+                    <img src="../../img/ju.png" alt="">
+                </div>
+                <p>商家拒绝退款</p>
+                <p>商家拒绝了您的申请，理由为“啦啦啦啦啦啦啦啦啦啦啦啦啦啦”</p>
+            </div>
+            <div class="state">
+                <div class="icon" v-if="list.state==0">
+                    <img src="../../img/dai.png" alt="">
+                </div>
+                <div class="icon" v-if="list.state==1">
+                    <img src="../../img/tong.png" alt="">
+                </div>
+                <div class="icon" v-if="list.state==2">
+                    <img src="../../img/ju.png" alt="">
+                </div>
+                <p>{{list.title}}</p>
+                <p>{{list.desc}}</p>
+            </div>
+            <!-- 退款信息 -->
+            <div class="backInfo">
+                <h1>退款信息</h1>
+                <div class="infoBox">
+                    <div class="imgBox">
+                        <img :src="list.product_img" alt="">
+                    </div>
+                    <div class="textBox">
+                        <p>{{list.product_title}}</p>
+                        <p><span>￥{{list.order_money}}</span><span>x{{list.num}}</span></p>
+                    </div>   
+                </div>
+                <div class="goodsInfo">
+                    <p>退款原因:<span>{{list.reason}}</span></p>
+                    <p>退款金额:<span>￥{{list.order_money}}</span></p>
+                    <p>申请时间:<span>{{list.add_date}}</span></p>
+                    <p>退款编号:<span>{{list.order_no}}</span></p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../spa/import/js/vue.min.js"></script>
+    <script src="../spa/import/js/axios.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/drawback/back_detail.js"></script>
+</body>
+</html>

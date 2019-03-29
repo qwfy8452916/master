@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_763110_6t11jdvtbnb.css" />
+    <link rel="stylesheet" href="../../css/drawback/exchange_goods.css" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>换货</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .el-upload-list--picture-card .el-upload-list__item {
+            overflow: hidden;
+            background-color: #fff;
+            border: 1px solid #c0ccda;
+            border-radius: 6px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 30%;
+            height: 105px;
+        }
+
+        .el-upload--picture-card {
+            background-color: #fbfdff;
+            border: 1px dashed #c0ccda;
+            border-radius: 6px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 30%;
+            height: 105px;
+            cursor: pointer;
+            line-height: 112px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <section class="mainBox">
+            <!-- 订单信息 -->
+            <div class="product">
+                <div class="cover">
+                    <img :src="list.product_img" alt="" />
+                </div>
+                <div class="info">
+                    <p>{{list.product_title}}</p>
+                    <p><span class="price">￥{{list.product_money}}</span> <span>x {{list.num}}</span></p>
+                    <p v-if="list.order_state==2">订单状态:待收货</p>
+                </div>
+            </div>
+            <!-- 退款原因 -->
+            <div class="reason">
+                <p>换货原因</p>
+                <div class="select">
+                    <p class="selectText">{{content}}</p>
+                </div>
+
+            </div>
+            <!-- 收货地址 -->
+            <div class="addressBox">
+                <div class="addressTop">
+                    收货地址
+                </div>
+                <div class="addressInfo">
+                    <div class="addressBottom">
+                        <div class="bottomBox">
+                            <p>收货人:{{addressInfo.consignee}}</p>
+                            <p>{{addressInfo.mobile}}</P>
+                        </div>
+                        <p>{{addressInfo.province}}{{addressInfo.city}}{{addressInfo.area}}{{addressInfo.address}}</p>
+                    </div>
+                    <!-- <i class="lele icon-gengduo"></i> -->
+                </div>
+
+            </div>
+            <!-- 退款说明 -->
+            <div class="desBox">
+                <p>换货说明</p>
+                <textarea name="" placeholder="选填(填写内容请控制在30字以内)" v-model="refund.des"></textarea>
+            </div>
+            <!-- 上传凭证 -->
+            <div class="upload">
+                <div class="textBox">
+                    <p>上传凭证</p>
+                    <p>上传凭证(最多三张)</p>
+                </div>
+                <el-upload :action="url" list-type="picture-card" multiple :limit="3" :on-preview="handlePreview"
+                    :on-exceed="handleExceed" :on-success="handleAvatarSuccess" :file-list="fileList"
+                    :on-remove="handleRemove">
+                    <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+            <!-- 提交 -->
+            <button @click="apply">提交</button>
+        </section>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../spa/import/js/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="../spa/import/js/axios.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/drawback/exchange_goods.js"></script>
+</body>
+
+</html>

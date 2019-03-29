@@ -1,0 +1,436 @@
+body,div,ul,li,a,input,h1,h2,h3,h4,p,dl,dt,dd{ margin:0; padding:0;font-family:'微软雅黑', Helvetica, sans-serif;}
+*{ outline:none;}
+img{ border:none;}
+li{ list-style:none;}
+body{ color:#333; background:#FFF;}
+a{ color:#666666; text-decoration:none;outline:none;}
+h1,h2,h3,h4,h5{font-weight:normal;}
+html{/*font-size=62.5%;*/height: 100%;}
+body{height: 100%;}
+.clearboth{*zoom:1;}
+.clearboth:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+.imgBox img{display: block;width: 100%;}
+.textcenter{text-align: center;}
+
+[v-cloak] {
+    display: none !important;
+}
+
+.bigbox{
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg-img.jpg) no-repeat bottom center;
+    background-size: 100%;
+    position: relative;
+    z-index: 1;
+}
+.height100{
+    height: 100% !important;
+}
+  .swiperBox{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .fl{float: left;}
+  .fr{float: right;} 
+  .absolutebox{
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+  }
+  .disNone{
+    display: none;
+  }
+  .disBlock{
+    display: block;
+    opacity: 1 !important;
+  }
+  .img-box{
+    display:block;
+    width: 100%;
+  }
+  .music-img{
+    width: 10%;
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    z-index: 9;  
+  }
+  .musicimg-ani{
+    animation: music-img-ani 4s linear infinite;
+  }
+  @keyframes music-img-ani {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+  }
+  .logBox{
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    width: 25%;
+    z-index: 9;
+  }
+  .swiper-itembox{
+    position: relative;
+  }
+  .index1{
+    top: 15%;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    animation: index1-ani 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index1-ani {
+    from {opacity: 0; transform:scale(1,0);}
+    to {opacity: 1; transform:scale(1,1);}
+  }
+  .index-left{
+    width: 30%;
+    top: 40%;
+    left: 10%;
+    opacity: 0;
+    animation: index-left-ani 0.5s;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index-left-ani {
+    from {opacity: 0; left: -750px;}
+    to {opacity: 1; left: 10%;}
+  }
+  .index-right{
+    width: 20%;
+    top: 24%;
+    right: 10%;
+    opacity: 0;
+    animation: index-right-ani 0.5s;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index-right-ani {
+    from {opacity: 0; right: -750px;}
+    to {opacity: 1; right: 10%;}
+  }
+  .arrow{
+    width: 8%;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    opacity: 0;
+    animation: arrow-ani 1s infinite linear;
+  }
+  @keyframes arrow-ani {
+    from {opacity: 0; bottom: 3%;}
+    to {opacity: 1; bottom: 15%;}
+  }
+  .index2-bt1{
+    top: 15%;
+    left: 0;
+    opacity: 0;
+    animation: index2-bt1-ani 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index2-bt1-ani {
+    from {opacity: 0; top: 0%;}
+    to {opacity: 1; top: 15%;}
+  }
+  .index2-bt2{
+    top: 20%;
+    left: 0;
+    opacity: 0;
+    animation: index2-bt2-ani 0.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index2-bt2-ani {
+    from {opacity: 0; top: 0%;}
+    to {opacity: 1; top: 20%;}
+  }
+  .index2img3{
+    top: 28%;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+    animation: index2img3-ani 0.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index2img3-ani {
+    from {opacity: 0; transform:scale(0.5,0.5);transform:rotate(-180deg);}
+    to {opacity: 1; transform:scale(1,1);transform:rotate(0deg);}
+  }
+  .indexTextL{
+    width: 30%;
+    top: 55%;
+    left: 8%;
+    z-index: 3;
+    opacity: 0;
+    animation: indexTextL-ani 0.5s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes indexTextL-ani {
+    from {opacity: 0; left: -10%;}
+    to {opacity: 1; left: 8%;}
+  }
+  .indexTextR{
+    width: 35%;
+    top: 35%;
+    right: 5%;
+    opacity: 0;
+    z-index: 3;
+    animation: indexTextR-ani 0.5s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes indexTextR-ani {
+    from {opacity: 0; right: -10%;}
+    to {opacity: 1; right: 5%;}
+  }
+  .index3img2{
+    top: 25%;
+    left: 0; 
+    opacity: 0;
+    z-index: 1;
+    animation: index3img2-ani 0.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index3img2-ani {
+    from {opacity: 0; transform:scale(0,0);transform:rotate(180deg);}
+    to {opacity: 1; transform:scale(1,1);transform:rotate(0deg);}
+  }
+  .index3img3box{
+    width: 30%;
+  }
+  .index3img3-1,.index3img3-2,.index3img3-3,.index3img3-4{
+      width: 30%;
+  }
+  .index3img3-1{
+    top: 30%;
+    left: 12%;
+    opacity: 0;
+    animation: index3img3-ani 0.5s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+  }
+  .index3img3-3{
+    top: 55%;
+    left: 12%;
+    opacity: 0;
+    animation: index3img3-ani 0.5s;
+    animation-delay: 1.9s;
+    animation-fill-mode: forwards;
+  }
+  .index3img3-2{
+    top: 30%;
+    right: 12%;
+    opacity: 0;
+    animation: index3img3-ani 0.5s;
+    animation-delay: 1.7s;
+    animation-fill-mode: forwards;
+  }
+  .index3img3-4{
+    top: 55%;
+    right: 12%;
+    opacity: 0;
+    animation: index3img3-ani 0.5s;
+    animation-delay: 2.1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index3img3-ani {
+    from {opacity: 0; transform:scale(0,0);}
+    to {opacity: 1; transform:scale(1,1);}
+  }
+  .index4imgbox{
+    left: 0;
+  }
+  .index4img-1{
+    top: 35%;
+    opacity: 0;
+    animation: index4img-ani 0.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  .index4img-2{
+    top: 45%;
+    
+    opacity: 0;
+    animation: index4img-ani 0.5s;
+    animation-delay: 1.2s;
+    animation-fill-mode: forwards;
+  }
+  .index4img-3{
+    top: 55%;
+    opacity: 0;
+    animation: index4img-ani 0.5s;
+    animation-delay: 1.4s;
+    animation-fill-mode: forwards;
+  }
+  .index4img-4{
+    top: 65%;
+    opacity: 0;
+    animation: index4img-ani 0.5s;
+    animation-delay: 1.6s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index4img-ani {
+    from {opacity: 0; transform:scale(1,0);}
+    to {opacity: 1; transform:scale(1,1);}
+  }
+  .index5img1{
+    top: 25%;
+    left: 0;
+    opacity: 0;
+    animation: index5img1-ani 0.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index5img1-ani {
+    from {opacity: 0; top: 55%;}
+    to {opacity: 1; top: 25%;}
+  }
+  .index5img2{
+    top: 63%;
+    left: 0;
+    opacity: 0;
+    animation: index5img2-ani 0.5s;
+    animation-delay: 1.3s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index5img2-ani {
+    from {opacity: 0; top: 80%;}
+    to {opacity: 1; top: 63%;}
+  }
+  .index5img3{
+    top: 68%;
+    left: 0;
+    opacity: 0;
+    animation: index5img3-ani 0.5s;
+    animation-delay: 1.6s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes index5img3-ani {
+    from {opacity: 0; top: 100%;}
+    to {opacity: 1; top: 68%;}
+  }
+  .formbox{
+    top: 25%;
+    width: 70%;
+    height: 45%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  .inpBox{
+    width: 90%;
+    border: 1px solid #fff;
+    padding: 10px 5%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 5px;
+  }
+  .placeholderclass{
+    color: #ACACAC;
+  }
+  .textBox{
+    font-size: 16px;
+    color: #fff;
+    width: 20%;
+    margin-top: 4px;
+  }
+  .inp{
+    width: 79%;
+    font-size: 16px;
+    color: #fff;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    border: none;
+    background: none;
+  }
+  .remarks{
+    width: 70%;
+    font-size: 16px;
+    color: #ACACAC;
+    height: 100px;
+  }
+  .submitBox{
+    background: #ffe099;
+    color: #082849;
+    opacity: 0;
+    animation: inpBox-ani 0.5s;
+    animation-delay: 1.9s;
+    animation-fill-mode: forwards;
+    bottom: -10%;
+    border: none;
+    height: 1.5rem;
+    font-size: 0.7rem;
+    border-radius: 5px 5px;
+  }
+  .textBox2{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    bottom: 18%;
+    opacity: 0;
+    animation: inpBox-ani 0.5s;
+    animation-delay: 2.2s;
+    animation-fill-mode: forwards;
+  }
+  .inpBox1{
+    top: 0;
+    opacity: 0;
+    animation: inpBox-ani 0.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  .inpBox2{
+    top: 23%;
+    opacity: 0;
+    animation: inpBox-ani 0.5s;
+    animation-delay: 1.3s;
+    animation-fill-mode: forwards;
+  }
+  .inpBox3{
+    opacity: 0;
+    animation: inpBox-ani 0.5s;
+    animation-delay: 1.6s;
+    animation-fill-mode: forwards;
+    top: 46%;
+    height: 4.5rem;
+  }
+  @keyframes inpBox-ani {
+    from {opacity: 0; transform:scale(0,1);}
+    to {opacity: 1; transform:scale(1,1);}
+  }
+  .remarks-color{
+    color: #fff;
+    margin-top: 2px;
+    opacity: 1 !important;
+    margin-left: 18%;
+    border: none;
+    background: none;
+  }
+  .logBox{
+    position:fixed;
+    top:2%;
+    left:2%;
+    width:25%;
+    z-index:9;
+  }

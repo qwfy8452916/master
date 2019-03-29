@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>群主招募令</title>
+    <link rel="stylesheet" href="../../import/swiper/swiper-4.3.2.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="bigbox" id="app">
+        <div class="logBox">
+            <img src='img/log-img.png' class='img-box' />
+        </div>
+        <div class='music-img' :class="{'musicimg-ani':musictype}" @click='music_stop'>
+            <img src='img/music.png' class='img-box' />
+        </div>
+        <audio controls id="audio_player" autoplay="autoplay" style="display:none"  loop="loop"> 
+            <source src="audio/bg.mp3" > 
+        </audio>
+        <div class="swiper-container swiperBox">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox">
+                        <div class="absolutebox" :class="{'index1':swiper_type1}">
+                            <img src="img/index-img3.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index-left':swiper_type1}">
+                            <img src="img/index-img1.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index-right':swiper_type1}">
+                            <img src="img/index-img2.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'arrow':swiper_type1}">
+                            <img src="img/arrow.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox">
+                        <div  class="absolutebox" :class="{'index2-bt1':swiper_type2}">
+                            <img src="img/index2-img1.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index2-bt2':swiper_type2}">
+                            <img src="img/index2-img2.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index2img3':swiper_type2}">
+                            <img src="img/index2-img3.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'indexTextL':swiper_type2}">
+                            <img src="img/index2-textl.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'indexTextR':swiper_type2}">
+                            <img src="img/index2-textr.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'arrow':swiper_type2}">
+                            <img src="img/arrow.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox">
+                        <div  class="absolutebox" :class="{'index2-bt1':swiper_type3}">
+                            <img src="img/index3-img1.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index3img2':swiper_type3}">
+                            <img src="img/index3-img2.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index3img3-1':swiper_type3}">
+                            <img src="img/index3-img3-1.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index3img3-2':swiper_type3}">
+                            <img src="img/index3-img3-2.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index3img3-3':swiper_type3}">
+                            <img src="img/index3-img3-3.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index3img3-4':swiper_type3}">
+                            <img src="img/index3-img3-4.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'arrow':swiper_type3}">
+                            <img src="img/arrow.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox">
+                        <div  class="absolutebox" :class="{'index2-bt1':swiper_type4}">
+                            <img src="img/index4-img1.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index4img-1':swiper_type4}">
+                            <img src="img/index4-img2.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index4img-2':swiper_type4}">
+                            <img src="img/index4-img3.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index4img-3':swiper_type4}">
+                            <img src="img/index4-img4.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index4img-4':swiper_type4}">
+                            <img src="img/index4-img5.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'arrow':swiper_type4}">
+                            <img src="img/arrow.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox">
+                        <div  class="absolutebox" :class="{'index2-bt1':swiper_type5}">
+                            <img src="img/index5-img1.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index5img1':swiper_type5}">
+                            <img src="img/index5-img2.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index5img2':swiper_type5}">
+                            <img src="img/index5-img3.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'index5img3':swiper_type5}">
+                            <img src="img/index5-img4.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox" :class="{'arrow':swiper_type5}">
+                            <img src="img/arrow.png" class="img-box" />
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="height100 swiper-itembox">
+                        <div  class="absolutebox" :class="{'index2-bt1':swiper_type6}">
+                            <img src="img/index6-img1.png" class="img-box" />
+                        </div>
+                        <div  class="absolutebox formbox" :style='{"opacity": swiper_type6?"1":"0"}'>
+                            <div  class="absolutebox inpBox" :class="{'inpBox1':swiper_type6}">
+                                <div class="textBox">姓名</div>
+                                <input name="name" type="text" class="inp inp_name" placeholder="姓名" placeholder-class="placeholderclass" v-model="namevalue" onblur="Iosback" />
+                            </div>
+                            <div  class="absolutebox inpBox" :class="{'inpBox2':swiper_type6}">
+                                <div class="textBox">电话</div>
+                                <input name="tel" type="tel" class="inp inp_tel" placeholder="电话" placeholder-class="placeholderclass" v-model="telvalue" onblur="Iosback" />
+                            </div>
+                            <div  class="absolutebox inpBox" :class="{'inpBox3':swiper_type6}">
+                                <div class="textBox">留言</div>
+                                <textarea  class="absolutebox remarks remarks-color" placeholder="留言" placeholder-class="placeholderclass" name="remarks" onblur="Iosback" v-model="remarkvalue"></textarea>
+                            </div>
+                            <button class="absolutebox" :class="{'submitBox':swiper_type6}" @click="checkForm">确定</button>
+                        </div>
+                        <div  class="absolutebox" :class="{'textBox2':swiper_type6}">收到留言后，我们会第一时间给您反馈!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../import/jq/jquery.2.1.4.min.js" ></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
+<script type="text/javascript" src="../../import/vue/vue.js"></script>
+<script type="text/javascript" src="../../import/axios/axios.min.js"></script>
+<script type="text/javascript" src="../../import/swiper/swiper-4.3.2.min.js"></script>
+<script type="text/javascript" src="../../js/common.js?v=" +new Date()></script>
+<script type="text/javascript" src="js/index.js" ></script>
+</html>
