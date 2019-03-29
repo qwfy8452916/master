@@ -25,10 +25,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="../../img/banner1.jpg" alt="" style="opacity:1;">
-                </div>
-                <div class="swiper-slide">
-                    <img src="../../img/banner2.jpg" alt="" style="opacity:1;">
+                    <img :src="productinfo.logo" alt="" style="opacity:1;">
                 </div>
             </div>
             <!-- 如果需要分页器 -->
@@ -52,9 +49,9 @@
             <!-- 参加信息 -->
             <section class="joinBox">
                 <div class="joinTop">
-                    <p><span>45456</span>人正在参加</p>
-                    <div class="headBox">
-                        <img src="../../img/head.png" alt="">
+                    <p><span>{{helpers.length}}</span>人正在参加</p>
+                    <div class="headBox" v-for="item in helpers">
+                        <img :src="item.head_img" alt="">
                     </div>
                     <div class="circleBox">
                         <div class="circle"></div>
@@ -67,31 +64,34 @@
                         <div class="icon">
 
                         </div>
-                        <p>总共<span>500</span>份</p>
-                        <p>已领<span>89</span>份</p>
+                        <p>总共<span>{{productinfo.stock}}</span>份</p>
+                        <p>已领<span>{{productinfo.sell_stock}}</span>份</p>
                     </div>
                     <div class="joinRight">
-                        <p>还剩<span>411</span>份</p>
+                        <p>还剩<span>{{parseInt(productinfo.stock)-parseInt(productinfo.sell_stock)}}</span>份</p>
                     </div>
 
                 </div>
             </section>
             <!-- 详情信息 -->
             <div class="deatil">
-                <p>详情页</p>
+                <p v-html="productinfo.description"></p>
             </div>
         </section>
         <!-- 底部 -->
         <footer>
             <div class="priceBox">
                 <P>价格<span>￥<i>{{activityprice}}</i></span></p>
-                <p class="help" @click="helpBargain(user.id=uesrid)">
+                <p class="help" v-if="user.id !=login_user_id" @click="helpBargain">
                     帮他砍价
+                </p>
+                <p class="help" v-else @click="shareBargain()">
+                    分享好友
                 </p>
             </div>
         </footer>
         <!-- 模态窗 -->
-        <div class="mask" v-show="showtoast" @click="helpBargain">
+        <div class="mask" v-show="showtoast" @click="showMask">
            <div class="toastBox">
                 <div class="imgBox">
                     <img src="../../img/help.png" alt="">
@@ -102,6 +102,17 @@
                     <button>知道了</button>
                 </div>
            </div>
+        </div>
+        <!-- 自己砍价弹窗 -->
+        <div class="mask1" v-show="showtoast1" @click="shareBargain">
+            <div class="share">
+                <img src="../../img/jian.png" alt="">
+            </div>
+            <!-- <p>你已砍<span>1</span>元啦，邀请好友来帮砍吧</p> -->
+            <div class="helpBox">
+                <p>点击右上角，分享给好友</p>
+                <p>可以<span>多砍一刀</span>哦</p>
+            </div>
         </div>
     </section>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>

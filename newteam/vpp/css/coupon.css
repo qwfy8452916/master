@@ -56,6 +56,9 @@
 	color:#333;
 	font-size: 1.7rem;
 	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .rule{
 	font-size: 1.4rem;

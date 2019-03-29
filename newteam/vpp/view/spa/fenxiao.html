@@ -30,19 +30,19 @@
                 <span>默认</span>
             </p>
             <p>
-                <span class="org">拿货价</span>
+                <span class="org">分享价</span>
                 <span>￥{{detail.tz_price}}</span>
             </p>
             <p>
                 <span class="org">可销售区间</span>
-                <span>￥{{detail.tz_price}} ~ ￥{{detail.price}}</span>
+                <span>￥{{detail.tz_price}} ~ ￥{{detail.sc_price}}</span>
             </p>
         </div>
 
         <div class="saleprice">
             <p class="xiao">销售价</p>
             <p>
-                ￥ <input type="number" v-model="saleprice" :placeholder="detail.tz_price" onfocus="this.placeholder=''"/>
+                ￥ <input type="number" v-model="saleprice" :placeholder="detail.sc_price" @click="change_null()" onfocus="this.placeholder='';"/>
             </p>
         </div>
 
@@ -182,12 +182,12 @@
                         return false;
                     }
                     
-                    if (that.saleprice <= that.detail.tz_price) {
+                    if (parseInt(that.saleprice)< parseInt(that.detail.tz_price)) {
                         alert('销售价不能小于拿货价')
                         return false;
                     }
-                    if(that.saleprice>parseInt(that.detail.price)){
-                        alert('销售价不能大于市场价')
+                    if(that.saleprice>parseFloat(that.detail.sc_price)){
+                        alert('销售价不能大于特卖价')
                         return false;
                     }
                     var row = {
@@ -213,6 +213,9 @@
                         res.data.code == '1001' ? go('share.html?share_id=' + res.data.data.id) : alert('创建失败！');
                     })
 
+                },
+                change_null(){
+                    this.saleprice = '';
                 }
             },
             mounted: function () {
@@ -222,6 +225,8 @@
                 axios.get(window.globalResURL + '/activityshare/thematic?id=' + id + '&token=' + token).then(function (res) {
                     console.log(res.data)
                     that.detail = res.data.data;
+                    that.saleprice = res.data.data.sc_price;
+                    that.msg = res.data.data.title
                 })
             }
         })

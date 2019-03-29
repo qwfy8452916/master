@@ -57,10 +57,13 @@ body {
 }
 .mainBox header ul {
   height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding:0 5px;
+  box-sizing: border-box;
 }
 .mainBox header ul li {
-  float: left;
-  width: 25%;
+
   box-sizing: border-box;
   text-align: center;
 }
@@ -69,7 +72,7 @@ body {
   box-sizing: border-box;
   height: 1rem;
   line-height: 1rem;
-  padding: 0 0.2rem;
+  padding: 0 0.1rem;
   font-size: 0.42666667rem;
 }
 .mainBox header ul .active span {
@@ -78,7 +81,7 @@ body {
 }
 .mainBox .orderListOne {
   background-color: white;
-  margin-top: 0.4rem;
+  margin-top: .4rem;
 }
 .mainBox .orderListOne .orderOne {
   margin-bottom: 0.4rem;
@@ -93,12 +96,13 @@ body {
 .mainBox .orderListOne .orderOne .orderOneInfo {
   height: 3.33333333rem;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  height: auto;
 }
 .mainBox .orderListOne .orderOne .orderOneInfo > div {
   display: inline-block;
   height: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 .mainBox .orderListOne .orderOne .orderOneInfo .productLeft {
   width: 38%;
@@ -407,4 +411,3 @@ body {
 .ffa_color {
   color: #ffa800 !important;
 }
-/*# sourceMappingURL=orderList.css.map */

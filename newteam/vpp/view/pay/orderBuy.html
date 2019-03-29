@@ -33,6 +33,11 @@
             position: relative;
             top: -5px;
         }
+        .mainBox .addressInfo .dizhi .add{
+            text-align: center;
+            line-height: 72px;
+            color:#333;
+        }
     </style>
 </head>
 <body>
@@ -49,7 +54,10 @@
         </div>
         <div class="addressInfo" v-else @click="toAddress">
             <div class="color_yellow"><i class="lele icon-weizhi"></i></div>
-            <div class="dizhi">
+            <div class="dizhi" v-if="addressInfo==''">
+                    <p class="add">新增地址</p> 
+            </div>
+            <div class="dizhi" v-else>
                 <p><span>{{addressInfo.real_name}}</span><i>{{addressInfo.mobile}}</i></p>
                 <div class="dizhixiangqing">
                    {{addressInfo.province + ' ' + addressInfo.city + ' ' + addressInfo.area + ' ' + addressInfo.address}}
@@ -112,68 +120,20 @@
 		        <p class="ticketText">优惠券</p>
 		        <div class="listitem" v-for="(item,index) in list">
 			        <p >{{item.title}}：{{item.money}}</p>
-			        <div class="check" @click="select=1;searchindex=index;money=item.money;couponid=item.id;title=item.title">
-				        <p v-show="select" :class="index==searchindex? 'active':''">√</p>
+			        <div class="check" @click="selectChange(index, item)">
+				        <p v-show="searchIndex === index" :class="{'active': searchIndex === index}">√</p>
 			        </div>
 		        </div>
-		        <!-- <div class="listitem listitem1">
+		        <div class="listitem listitem1" >
 			        <p>不使用优惠券</p>
-			        <div class="check">
+			        <div class="check" @click="noChange('no_change')">
+				        <p v-show="searchIndex === 'no_change'" :class="{'active': searchIndex === 'no_change'}">√</p>
 			        </div>
-		        </div> -->
+		        </div>
 	        </div>
-	        <div class="cancel" @click="show()">
+	        <div class="cancel" @click="colseButton()">
 				关闭
 	        </div>
-        </div>
-    </div>
-    <div class="tipWindow" style="display: none">
-        <div class="tipBox">
-            <div class="tipInfo"><i class="iconfont icon-gantanhao-sanjiaokuang"></i>确定取消该订单吗?</div>
-            <div class="tipBtn">
-                <div>确定</div>
-                <div class="color_yellow">取消</div>
-            </div>
-        </div>
-    </div>
-    <div class="tipWindow wuliu" style="display: ">
-        <div class="tipBox">
-            <div class="top">
-                <p>快递公司：<span>百世快递</span></p>
-                <p>运单编号：<span>70724077921926</span></p>
-            </div>
-            <div class="list">
-                <ul>
-                    <li>
-                        <div class="round"></div>
-                        <div class="state">
-                            <p>快递状态描述</p>
-                            <p>2017-09-16 15:42:26</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="round"></div>
-                        <div class="state">
-                            <p>快递状态描述</p>
-                            <p>2017-09-16 15:42:26</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="round "></div>
-                        <div class="state">
-                            <p>快递状态描述</p>
-                            <p>2017-09-16 15:42:26</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="round"></div>
-                        <div class="state">
-                            <p>快递状态描述</p>
-                            <p>2017-09-16 15:42:26</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

@@ -33,14 +33,14 @@
 			overflow: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
-			width: 230px;
+			width: 180px;
 		}
 		.info p:nth-child(2){
 			font-size: 1.4rem;
 			color: #666666;
 			margin-top: 5px;
 		}
-		.info p:last-child{
+		.info p:nth-child(3){
 			display: flex;
 			justify-content: space-between;
 			font-size: 1.4rem;
@@ -49,6 +49,19 @@
 		.info span.price{
 			color: red;
 		}
+		.product .info .return{
+			font-size: 1.2rem;
+			color:#FFA800;
+			font-weight: 500;
+			line-height: 2rem;
+			text-align: center;
+			border:1px solid #FFA800;
+			border-radius: 12px;
+			width: 15%;
+			position: absolute;
+			top:15px;
+			right:15px;
+		} 
 		.address{
 			padding: 12px 15px;
 			background: #FFFFFF;
@@ -109,7 +122,7 @@
 			margin-top: 10px;
 			position: relative;
 		}
-		.btm p:last-child{
+		.btm .buy{
 			color: #FFFFFF;
 			background: #FFA800;
 			border-radius: 20px;
@@ -118,6 +131,15 @@
 			right: 15px;
 			top: 5px;
 		}
+		/* .btm p:last-child{
+			color: #FFFFFF;
+			background: #FFA800;
+			border-radius: 20px;
+			padding: 7px 20px;
+			position: absolute;
+			right: 15px;
+			top: 5px;
+		} */
 
 		.tipWindow {
 			position: absolute;
@@ -246,16 +268,22 @@
 			<p v-if="productItem.standard">规格：{{productItem.standard}}</p>
 			<p v-if="productItem.prepay >0"><span class="price">￥{{productItem.prepay}}</span><span>x {{productItem.num}}</span></p>
 			<p v-else><span class="price">￥{{productItem.product_money}}</span>  <span>x {{productItem.num}}</span></p>
-			<p v-if="productItem.order_state ==0">订单状态：未支付  <span @click="goBuy">去支付</span></p>
+			<p v-if="productItem.order_state ==0">订单状态：未支付</p>
 			<p v-if="productItem.order_state ==1">订单状态：待发货  <span @click="txfh">提醒发货</span></p>
 			<p v-if="productItem.order_state ==2">订单状态：待收货
                 <span @click="showWl(productItem.id)">查看物流</span>
                 <span @click="confirmShoping(productItem.id)">确认收货</span>
 			</p>
-			<p v-if="productItem.order_state ==3">订单状态：确认收货</p>
+			<p v-if="productItem.order_state ==3">订单状态：交易完成</p>
 			<p v-if="productItem.order_state ==4">订单状态：售后中</p>
 			<p v-if="productItem.order_state ==5">订单状态：售后完成</p>
 			<p v-if="productItem.order_state ==6">订单状态：待自提</p>
+			<div class="return" v-if="productItem.order_state ==0" style="display: none;">退款</div>
+			<div class="return" v-if="productItem.order_state ==1" @click="goRefund">退款</div>
+			<div class="return" v-if="productItem.order_state ==2" @click="goServicetype">退换</div>
+			<div class="return" v-if="productItem.order_state ==7" @click="goRefunddetail">退款中</div>
+			<div class="return" v-if="productItem.order_state ==8" @click="goRefunddetail">退款成功</div>
+			<div class="return" v-if="productItem.order_state ==9" @click="goRefunddetail">退款拒绝</div>
 		</div>
 	</div>
 
@@ -276,11 +304,11 @@
 			<!--<span>{{orderType == 1 ? '快递' : '自提' }} <span v-if="orderType == 1">免邮</span></span>-->
 			<span>国内免费包邮</span>
 		</p>
-		<div>
+		<!-- <div>
 			<p><b>留言</b></p>
 			<p v-if="order.remark == ''">无</p>
 			<p v-else>{{order.remark}}</p>
-		</div>
+		</div> -->
 		<p v-if="order.prepay >0"><b>合计：￥{{parseFloat(order.money)}}(含运费)</b></p>
 		<p v-else><b>合计：￥{{parseFloat(order.money)}}(含运费)</b></p>
 	</div>
@@ -295,12 +323,12 @@
 		<p v-if="order.prepay >0"><b>共计：￥{{order.money}}</b></p>
 		<p v-else><b>共计：￥{{order.money}}</b></p>
 
-		<p v-if="order.pay_state==0" @click="goBuy">去支付</p>
-		<p v-else-if="order.pay_state==1">支付成功</p>
+		<p v-if="order.pay_state==0" @click="goBuy" class="buy">去支付</p>
+		<!-- <p v-else-if="order.pay_state==1">待发货</p>
 		<p v-else-if="order.order_status==2">订单取消</p>
 		<p v-else-if="order.order_status==3">退款中</p>
 		<p v-else-if="order.order_status==4">退款完成</p>
-		<p v-else>订单完成</p>
+		<p v-else>订单完成</p> -->
 	</div>
 
 
@@ -338,18 +366,17 @@
 			orderDes: {},
             deliverData:{},
             deliver_company:'',
-            deliver_no:''
+			deliver_no:'',
+			orderinfoid:'',
+			refundid:''
 		},
 		methods: {
 		    goBuy:function(){
 		    	var that=this;
-		    	getPost(window.globalResURL + "/pay/reset_pay",{order_no: that.order.order_no},function(res){
+		    	ajaxPost(window.globalResURL + "/pay/reset_pay",{order_no: that.order.order_no},function(res){
                     var code = res.code;
-                    var msg = res.msg;
-                    if(code != "1001"){
-                        go('../order.html');// BASE_URL + '/order';
-                        return false;
-                    }else {
+					var msg = res.msg;
+                    if(code == "1001"){
                         if (typeof WeixinJSBridge == "undefined"){
                             if( document.addEventListener ){
                                 document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
@@ -358,9 +385,13 @@
                                 document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
                             }
                         }else{
-                            onBridgeReady(res.data);
+                            var json = JSON.parse(res.data);
+                            console.log(json)
+                            onBridgeReady(json);
                         }
-                    }
+                    }else{
+                        alert(msg);
+					}
 				});
 			},
 			txfh: function(){
@@ -388,6 +419,18 @@
                 ajaxPost(url,{info_id:id},function(res){
                     alert(res.msg);
                 });
+			},
+			// 退款
+			goRefund:function(){
+				go("../drawback/apply_refund.html?order_info_id="+this.orderinfoid);
+			},
+			// 退换
+			goServicetype:function(){
+				go("../drawback/service_type.html?order_info_id="+this.orderinfoid);
+			},
+			// 退款详情
+			goRefunddetail:function(){
+				go('../drawback/back_detail.html?id='+this.refundid);
 			}
 		},
 		mounted: function(){
@@ -404,12 +447,12 @@
             		'Content-Type': 'application/x-www-form-urlencoded'
             	}
             }).then(function(res){
-                console.log(res);
+                //console.log(res);
                 var resultData = res.data.data;
 				that.order = resultData;
-                that.orderInfo = resultData.orderInfo;
-
-                that.orderType = resultData.order_type;
+				that.orderInfo = resultData.orderInfo;
+				that.orderinfoid=resultData.orderInfo[0].id;
+				that.orderType = resultData.order_type;
                 that.orderDes  = {
                 	listnum: resultData.order_no,
                 	addtime: resultData.add_time_str,
@@ -419,7 +462,8 @@
                 	name: resultData.consignee,
                 	mobile: resultData.mobile,
                 	address: resultData.province + resultData.city + resultData.area + resultData.address
-                }
+				}
+				that.refundid=resultData.order_refund.id;
                 switch (parseInt(resultData.order_status)){
                 	case 0:
                 		that.orderStatus = '待支付'
@@ -455,6 +499,7 @@ function onBridgeReady(sdkConfig) {
 	WeixinJSBridge.invoke(
 		'getBrandWCPayRequest', sdkConfig,
 		function (res) {
+		    console.log(res);
 			if (res.err_msg == "get_brand_wcpay_request:ok") {
 				go('../redpacket/fenxiao_packet.html');
 			} else {

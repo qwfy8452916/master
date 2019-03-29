@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="../import/layui/css/layui.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/index.css" />
-	<title>七乐乐优鲜生活</title>
+	<title>七乐乐商城首页</title>
 </head>
 <body>
 <!--APP-->
@@ -25,13 +25,13 @@
 		<img src="../img/close.png" class="closeTop" />
 		<img src="../img/logo.png" class="logo" />
 		<p class="topWelcome">欢迎进入七乐乐单位好福利</p>
-		<button class="focus">关注商城</button>
+		<button class="focus" @click="showQr">关注商城</button>
 	</div>
 	<!--轮播-->
 	<div class="swiper-container banner">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide" v-for="(item,index) in slide" @click="showProduct('轮播')" :key="index">
-				<a><img :src="item.logo" /></a>
+			<div class="swiper-slide" v-for="(item,index) in slide" :key="index">
+				<img :src="item.logo" />
 			</div>
 		</div>
 		<div class="swiper-pagination"></div>
@@ -123,7 +123,7 @@
 		<span></span>
 	</div>
 	<div class="like">
-		<div class="likeBox" v-for="item in like" @click="showProduct(item.id)">
+		<div class="likeBox" v-for="(item,index) in like" :key="item.id"  @click="showProduct(item.id)">
 			<div class="likeCover">
 				<img :src="item.logo" />
 			</div>

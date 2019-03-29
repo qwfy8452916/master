@@ -3,42 +3,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/common.css" />
     <link rel="stylesheet" href="../../css/depositlist.css" />
+    <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css" >
     <title>提现记录</title>
 </head>
 
 <body>
     <!-- 提现记录 -->
     <div id="app">
-        <section class="list">
-            <section class="listItem" v-for="item in list">
-                <div class="applyBox">
-                    <div v-if="item.status == 0">
-                        <p class="applyText">待审核</p>
+
+
+
+
+        <div class="list prdListWrap">
+            <mt-loadmore :top-method="loadTop" @top-status-change="handleTopChange" :bottom-method="loadBottom"
+                @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore"
+                :auto-fill="false">
+
+                <div class="listItem" v-for="item in list">
+                    <div class="applyBox">
+                        <div v-if="item.status == 0">
+                            <p class="applyText">待审核</p>
+                        </div>
+                        <div v-else-if="item.status == 1">
+                            <p class="applyText">申请成功</p>
+                        </div>
+                        <div v-else-if="item.status == 2">
+                            <p class="applyText">申请失败</p>
+                        </div>
+                        <p class="applyMoney"><span>{{item.money}}</span>元</p>
                     </div>
-                    <div v-else-if="item.status == 1">
-                        <p class="applyText">申请成功</p>
-                    </div>
-                    <div v-else-if="item.status == 2">
-                        <p class="applyText">申请失败</p>
-                    </div>
-                    <p class="applyMoney"><span>{{item.money}}</span>元</p>
+                    <p class="applyTime">{{item.created_date}}</p>
                 </div>
-                <p class="applyTime">{{item.created_date}}</p>
-            </section>
-        </section>
-        <section class="more">
-            <div class="moreBox">
-                <p>查看更多</p>
-                <img src="../../img/san.png" alt="">
-            </div>
-        </section>
+                <div slot="top" class="mint-loadmore-top" style="text-align:center">
+                    <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'pull' }">↓</span>
+                    <span v-show="topStatus === 'loading'">
+                        <mt-spinner type="snake"></mt-spinner>
+                    </span>
+                    <span class="mint-loadmore-text">{{ topText }}</span>
+                </div>
+                <div slot="bottom" class="mint-loadmore-bottom">
+                    <span v-show="bottomStatus !== 'loading'" :class="{ 'is-rotate': bottomStatus === 'drop' }">↑</span>
+                    <span v-show="bottomStatus === 'loading'">
+                        <mt-spinner type="snake"></mt-spinner>
+                    </span>
+                    <span class="mint-loadmore-text">{{ bottomText }}</span>
+                </div>
+
+                <div v-if="allLoaded" style="text-align:center;" class="data-none">没有更多数据了</div>
+            </mt-loadmore>
+        </div>
     </div>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../import/axios/axios.min.js"></script>
     <script type="text/javascript" src="../../import/vue/vue.js"></script>
+    <script src="https://unpkg.com/mint-ui/lib/index.js"></script>
     <script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
     <script type="text/javascript" src="../../import/layui/layui.all.js"></script>
     <script type="text/javascript" src="../../import/axios/axios.min.js"></script>

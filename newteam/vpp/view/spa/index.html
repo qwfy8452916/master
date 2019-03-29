@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./import/css/init.css" />
     <link rel="stylesheet" href="./import/css/index.css?v=" + Date.now() />
     <link rel="stylesheet" href="./import/css/swiper.min.css" />
+    <link rel="stylesheet" href="../../import/layui/css/layui.css" />
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_999391_560e0zodez7.css?v=" + Date.now() />
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <title>特麦会</title>
@@ -18,16 +19,10 @@
         <!-- 头部 -->
         <div class="head">
             <!-- 轮播 -->
-            <div class="swiper-container">
+            <div class="swiper-container banner">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-if="detail.banner1">
-                        <img :src="detail.banner1" alt="" style="opacity:1;">
-                    </div>
-                    <div class="swiper-slide" v-if="detail.banner2">
-                        <img :src="detail.banner2" alt="" style="opacity:1;">
-                    </div>
-                    <div class="swiper-slide" v-if="detail.banner3">
-                        <img :src="detail.banner3" alt="" style="opacity:1;">
+                    <div class="swiper-slide" v-for="item in items">
+                        <img :src="item" alt="">
                     </div>
                 </div>
                 <!-- 如果需要分页器 -->
@@ -52,19 +47,21 @@
                 <p>
                     超值优选<span>特惠拼团盛宴</span>
                 </p>
-                <p @click="showRule = 1">
+                <p @click="urlchange">
                     <i class="spa icon-zhuyi"></i> 详细规则
                 </p>
             </div>
 
             <!-- 价格 -->
             <div class="price">
-                市场价：<del style="color: #ccc;">￥{{detail.price}}</del>
+                市场价：
+                <del style="color: #ccc;">￥{{detail.price}}</del>
             </div>
-            <div class="price price1" v-for="(item, index) in detail.pt_price" v-if="Array.isArray(detail.pt_price)==true">
+            <div class="price price1" v-for="(item, index) in detail.pt_price"
+                v-if="Array.isArray(detail.pt_price)==true">
                 {{item.title}}：<p>￥<span>{{item.money}}</span></p>
             </div>
-            <div class="price price1"  v-if="Array.isArray(detail.pt_price)==false">
+            <div class="price price1" v-if="Array.isArray(detail.pt_price)==false">
                 特卖价：<p>￥<span>{{detail.pt_price}}</span></p>
             </div>
             <!--预付款判断-->
@@ -75,11 +72,11 @@
 
             <!-- 优惠券 -->
             <!--<div class="coupons">-->
-                <!--领券：-->
-                <!--<p v-if="detail.coupon_id != ''">-->
-                    <!--<span></span>{{detail.coupon.title}}<span></span>-->
-                <!--</p>-->
-                <!--<p v-if="detail.coupon_id == ''">暂无优惠券</p>-->
+            <!--领券：-->
+            <!--<p v-if="detail.coupon_id != ''">-->
+            <!--<span></span>{{detail.coupon.title}}<span></span>-->
+            <!--</p>-->
+            <!--<p v-if="detail.coupon_id == ''">暂无优惠券</p>-->
             <!--</div>-->
 
             <!-- 选择套餐 -->
@@ -98,16 +95,16 @@
                 <i class="spa icon-chakantiezigengduoshoucang"></i>
                 <p>收藏</p>
             </div>
-            <button @click="showPackage = 1">立即购买</button>
+            <button @click="showDetail">立即购买</button>
         </div>
 
         <!-- 侧边 -->
         <!-- <div class="side">
-        <i class="spa icon-bazi-mubiao" @click="go('fenxiao.html?id=' + detail.id)"></i>
-        <i class="spa icon-fenxiang" @click="showShare=1"></i>
-        <i class="spa icon-iconfonticon5" @click="go('../my.html')"></i>
-        <i class="spa icon-iconfonticon5" @click="go('../praise.html')"></i>
-    </div> -->
+    <i class="spa icon-bazi-mubiao" @click="go('fenxiao.html?id=' + detail.id)"></i>
+    <i class="spa icon-fenxiang" @click="showShare=1"></i>
+    <i class="spa icon-iconfonticon5" @click="go('../my.html')"></i>
+    <i class="spa icon-iconfonticon5" @click="go('../praise.html')"></i>
+</div> -->
 
         <!-- shi.add侧导航 -->
         <div class="rightBar">
@@ -121,11 +118,6 @@
                     <img src="../../img/my.png" alt="">
                 </div>
             </div>
-            <div class="barItem" @click="showShare=1">
-                <div class="itemImg itemImg2">
-                    <img src="../../img/share1.png" alt="">
-                </div>
-            </div>
             <div class="barItem" @click="go('../praise.html')">
                 <div class="itemImg itemImg2">
                     <img src="../../img/koubei.png" alt="">
@@ -135,12 +127,12 @@
 
         <!-- 更多优惠二维码 -->
         <div class="showQrcode" v-if="showQrcode" @click="close($event.target.className)">
-            <img src="./import/img/qrcode.jpg" alt="">
+            <img :src="qr_code" alt="">
         </div>
 
         <!-- 详细规则 -->
         <div class="rule" v-if="showRule" @click="close($event.target.className)">
-            <img src="./import/img/rule.jpg" class="ruleimg" />
+            <img src="./import/img/pin.png" class="ruleimg" />
         </div>
 
         <!-- 分享 -->
@@ -164,8 +156,10 @@
                 </div>
                 <div class="goodsprice">
                     <!-- <p>市场价：￥{{detail.price}}</p> -->
-                    <p class="specialprice" v-if="Array.isArray(detail.pt_price)==true">特卖价:<span>￥{{detail.pt_price[0].money}}</span></p>
-                    <p class="specialprice" v-else>特卖价:<span>￥{{detail.pt_price}}</span></p>
+                    <div class="price price1">
+                        {{data.title}}：<p>￥<span>{{data.money}}</span></p>
+                    </div>
+
                 </div>
                 <div class="goodsnum">
                     <p>数量:</p>
@@ -175,7 +169,8 @@
                         <span @click="num++">+</span>
                     </p>
                 </div>
-                <button @click="go('../pay/orderBuy.html?id=' + detail.id + '&num=' + num + '&type=thematic')">立即购买</button>
+                <button @click="go('../pay/orderBuy.html?id=' + detail.id + '&num=' + num + '&type=thematic')">立即购买
+                </button>
             </div>
         </div>
     </div>
@@ -184,6 +179,7 @@
     <script src="./import/js/axios.min.js?v=" +new Date()></script>
     <script src="./import/js/swiper.min.js"></script>
     <script src="./import/js/init.js"></script>
+    <script type="text/javascript" src="../../import/layui/layui.all.js"></script>
     <script src="../../js/common.js?v=" +new Date()></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js" type="text/javascript" charset="utf-8"></script>
 
@@ -195,23 +191,12 @@
                 showRule: 0,
                 showShare: 0,
                 showPackage: 0,
-                detail: {
-                    title: 'title',
-                    price: 'price',
-                    banner1: 'banner1',
-                    share_img: 'share_img',
-                    share_desc: 'share_desc',
-                    share_title: 'share_title', //分享卡片标题
-                    share_link: 'share_link', //分享卡片标题
-                    pid: 'pid',
-                    pt_price:0,
-                    coupon: {
-                        title: 'coupon title'
-                    },
-                    coupon_id: 0,
-                    description: 'des'
-                },
-                num: 1
+                items: [],
+                detail: [],
+                num: 1,
+                qr_code: '',
+                data: {},
+                userInfo: {},
             },
             methods: {
                 close: function (e) {
@@ -228,22 +213,46 @@
                 },
                 numMinus: function () {
                     this.num <= 1 ? alert('购买数量不能小于1') : this.num--;
+                },
+                showDetail: function () {
+                    var that = this;
+                    that.showPackage = 1;
+                    $.ajax({
+                        type: "GET",
+                        url: window.globalResURL + "/user/get_info",
+                        success: function (data) {
+                            that.userInfo = data.data;
+                            for (i = 0; i < that.detail.pt_price.length; i++) {
+                                if (that.detail.pt_price[i].level == that.userInfo.alias) {
+                                    that.data = that.detail.pt_price[i];
+                                }
+                            }
+                        }
+                    });
+
+
                 }
             },
             mounted: function () {
                 var that = this;
-                var mySwiper = new Swiper('.swiper-container', {
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    }
-                })
                 var id = getParam('id');
                 token = getData('TOKEN');
                 var url = window.globalResURL + '/thematic/detail?id=' + id + '&token=' + token;
                 axios.get(url).then(function (res) {
                     that.detail = res.data.data.first;
+                    console.log(    )
+                    that.items = res.data.data.banner_list;
                     getShare(res.data.data.first);
+                    that.qr_code = res.data.data.qr_code;
+                    that.qr_code = res.data.data.qr_code;
+                });
+                var mySwiper = new Swiper('.swiper-container', {
+                    loop: true,
+                    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+                    observeParents: true,//修改swiper的父元素时，自动初始化swiper
+                    pagination: {
+                        el: '.swiper-pagination',
+                    }
                 })
             }
         })
@@ -257,6 +266,10 @@
                 return unescape(r[2]);
             }
             return null;
+        }
+
+        function urlchange() {
+            window.location.href = "rule.html";
         }
 
         //分享页面

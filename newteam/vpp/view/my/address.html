@@ -32,7 +32,7 @@
 						<p>设为默认地址</p>
 					</div>
 					<div class="bottomRight">
-						<div class="edit" @click.stop="addressEdit(item)">
+						<div class="edit" @click.stop="addressEdit(item,item.id)">
 							编辑
 						</div>
 						<div class="del" @click.stop="addressDel(item.id)">

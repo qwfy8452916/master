@@ -1,14 +1,3 @@
-
-function getParam(name) {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    var search = decodeURIComponent(window.location.search);
-    var r = search.substr(1).match(reg);
-    // console.log(r);
-    if (r != null) {
-        return unescape(r[2]);
-    }
-    return null;
-}
 var app = new Vue({
     el: '#app',
     data: {
@@ -29,7 +18,8 @@ var app = new Vue({
             num: 0,
             cx_price: '',
             is_address: 0,
-            couponCount: ''
+            couponCount: '',
+            is_address:1
         },
         showPackage: false,
         list: [],
@@ -51,7 +41,8 @@ var app = new Vue({
             area: '',
             address: ''
         },
-        couponid:''
+        couponid:'',
+        productInfo:{}
     },
     watch: {
         status(value, oldvalue) {
@@ -78,10 +69,10 @@ var app = new Vue({
         toAddress: function () {
             go("../my/address.html");
         },
-        buy: function () {     
+        buy: function () {
             var that = this;
             if (that.userAddress.real_name == '') {
-                alert('请填写姓名');
+                alert('请填写地址');
                 return false;
             }
             if (that.userAddress.mobile == '') {
@@ -91,10 +82,7 @@ var app = new Vue({
             var address = that.userAddress;
             var product = that.productInfo;
             var order_type = (product.is_address == 0) ? 2 : 1;
-            $.ajax({
-                type: "POST",
-                url: window.globalResURL + "/pay/wx_pay",
-                data: {
+            ajaxPost(window.globalResURL + "/pay/wx_pay",{
                     activity_id: that.productID,
                     consignee: address.real_name,
                     mobile: address.mobile,
@@ -109,8 +97,7 @@ var app = new Vue({
                     coupon_receive_id:that.couponid,  //优惠券ID
                     order_alias: 'companywelfare',
                     order_type: order_type
-                },
-                success: function (res) {
+                },function(res){
                     var code = res.code;
                     var msg = res.msg;
                     if (code != "1001") {
@@ -129,10 +116,8 @@ var app = new Vue({
                             onBridgeReady(json);
                         }
                     }
-                }, error: function () {
-                    console.log('error');
-                }
             });
+
         },
         show: function () {
             this.showPackage = !this.showPackage;
@@ -146,40 +131,31 @@ var app = new Vue({
                 that.list = res.data.data;
             })
 
-        },
-        tiket:function(){
-            var that = this;
-            var token = getData('TOKEN');
-            var url = window.globalResURL + '/coupon/ajax_index?token=' + token;
-            axios({
-                method: 'POST',
-                url: url
-            }).then(function (res) {
-                that.length=res.data.data.length;
-                that.title='有'+res.data.data.length+'张可用优惠券';
-            })
         }
     },
     mounted() {
         var that = this;
         // 获取当前产品ID
         var thisId = getParam('id');
-        var num = getParam('num');
-        var type = getParam('type');
-        that.productID = thisId;   
-            $.ajax({
-                type: "POST",
-                url: window.globalResURL + "/pay/activity_buy",
-                data: {
-                    activity_id: thisId,
-                    category:'companywelfare'
-                },
-                success: function (data) {
-                    that.activityInfo=JSON.parse(data).data.activity.product;
-                    that.userAddress=JSON.parse(data).data.userAddress;
+        that.productID = thisId;
+        var addr_id = getParam('addr_id');
+        var _data   = { activity_id: thisId, category: 'companywelfare' };
+        if (addr_id != null) {
+            _data = { activity_id: thisId, category: 'companywelfare',addr_id: addr_id};
+        }
+
+        ajaxPost(window.globalResURL + "/pay/activity_buy",
+            _data,function(res){
+                if(res.code ==1001){
+                    that.activityInfo = res.data.activity.product;
+                    that.productInfo=res.data.activity;
+                    var address = res.data.userAddress;
+                    if (address) {
+                        that.userAddress = address;
+                    }
                 }
-            });
-      this.tiket();
+            }
+        );
     }
 });
 
@@ -188,11 +164,7 @@ function onBridgeReady(sdkConfig) {
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', sdkConfig,
         function (res) {
-            if (res.err_msg == "get_brand_wcpay_request:ok") {
-                go('../redpacket/fenxiao_packet.html');
-            } else {
-                go('../order.html');
-            }
+            go('../order.html');
         }
     );
 }

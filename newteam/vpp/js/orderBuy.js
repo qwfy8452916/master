@@ -1,14 +1,3 @@
-
-function getParam(name) {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    var search = decodeURIComponent(window.location.search);
-    var r = search.substr(1).match(reg);
-    // console.log(r);
-    if (r != null) {
-        return unescape(r[2]);
-    }
-    return null;
-}
 var app = new Vue({
     el: '#app',
     data: {
@@ -33,9 +22,7 @@ var app = new Vue({
         },
         showPackage: false,
         list: [],
-
-        select: 0,
-        searchindex: 0,
+        searchIndex: '',
         money:0 ,
         length:'',
         title:'',
@@ -66,10 +53,46 @@ var app = new Vue({
         toAddress: function () {
             go("../my/address.html");
         },
-        buy: function () {     
+
+        selectChange(index, item) {
+            this.searchIndex = index;
+            this.money = item.money;
+            this.couponid = item.id;
+            this.title = item.title;
+        },
+        noChange(index) {
+            this.searchIndex = index;
+            this.title = '不使用优惠券';
+            var that = this;
+            // 获取当前产品ID
+            var thisId = getParam('id');
+            var num = getParam('num');
+            var type = getParam('type');
+            that.productID = thisId;
+
+            var addr_id = getParam('addr_id');
+            var _data = { id: thisId, num: num };
+            if (addr_id != null) {
+                _data = { id: thisId, num: num, addr_id: addr_id };
+            }
+            // xu.
+            $.ajax({
+                type: "GET",
+                url: window.globalResURL + "/thematic/add_order",
+                data: _data,
+                success: function (data) {
+                    var p = JSON.parse(data).data.product;
+                    var coupon = JSON.parse(data).data;
+                    console.log(p.show_price)
+                    that.money =0;
+                }
+            });
+            // location.href = location.href;
+        },
+        buy: function () {
             var that = this;
             if (that.addressInfo.real_name == '') {
-                alert('请填写姓名');
+                alert('请填写地址');
                 return false;
             }
             if (that.addressInfo.mobile == '') {
@@ -135,6 +158,10 @@ var app = new Vue({
             })
 
         },
+        colseButton:function(){
+            this.showPackage = !this.showPackage;
+            this.getData();
+        },
         tiket:function(){
             var that = this;
             var token = getData('TOKEN');
@@ -146,16 +173,15 @@ var app = new Vue({
                 that.length=res.data.data.length;
                 that.title='有'+res.data.data.length+'张可用优惠券';
             })
-        }
-    },
-    mounted() {
-        var that = this;
-        // 获取当前产品ID
-        var thisId = getParam('id');
-        var num = getParam('num');
-        var type = getParam('type');
-        that.productID = thisId;
-        if (type == 'thematic') {
+        },
+        getData:function(){
+            var that = this;
+            // 获取当前产品ID
+            var thisId = getParam('id');
+            var num = getParam('num');
+            var type = getParam('type');
+            that.productID = thisId;
+
             var addr_id = getParam('addr_id');
             var _data = { id: thisId, num: num };
             if (addr_id != null) {
@@ -172,6 +198,8 @@ var app = new Vue({
                     var address = JSON.parse(data).data.userAddress;
                     if (address) {
                         that.addressInfo = address;
+                    }else{
+                        that.addressInfo = '';
                     }
                     that.productInfo.logo = p.banner1;
                     that.productInfo.title = p.title;
@@ -183,28 +211,10 @@ var app = new Vue({
 
                 }
             });
-        } else {
-            $.ajax({
-                type: "POST",
-                url: window.globalResURL + "/product/detail",
-                dataType:'json',
-                data: {
-                    id: thisId
-                },
-                success: function (result) {
-                    console.log(result);
-                    var p = result.data.product;
-                    var coupon = '';
-                    var address = result.data.userAddress;
-                    if (address) {
-                        that.addressInfo = address;
-                    }
-                    that.productInfo.num = num;
-                    that.productInfo.cx_price = p.pt_price;
-                    that.productInfo.is_address = p.is_address;
-                }
-            });
         }
+    },
+    mounted() {
+        this.getData();
         this.tiket();
     }
 });

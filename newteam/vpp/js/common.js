@@ -1,7 +1,4 @@
-//定义接口地址及图片地址
-window.globalResURL = "http://xinbingtuan.sevenlele.com";
-window.globalImgURL = "http://xinbingtuan.sevenlele.com";
-
+document.write("<script language=javascript src='/vpp/js/config.js'><\/script>");
 $(function () {
     isLogin();
     attrGo();
@@ -114,7 +111,7 @@ Vue.component('footer-nav', {
         }
     },
     methods: {
-        // 跳转  .ajax仅用于本地测试       
+        // 跳转  .ajax仅用于本地测试
         go(url) {
             var cacheToken = getData('TOKEN');
             if (isUrlWenHao(url)) {
@@ -216,6 +213,7 @@ function tab(father, son) {
  * 登录
  */
 function login() {
+
     setData('BACK_URL', encodeURIComponent(window.location.href));
     getCode();
     /*//保存请求的url，登录成功后跳转
@@ -226,7 +224,8 @@ function login() {
 
 function getCode() {
     var backulr = encodeURIComponent(window.globalResURL + '/vpp/view/login.html');
-    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx008cfa9258561af3&redirect_uri=' + backulr +
+    var appId = window.wxAppId;
+    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appId+'&redirect_uri=' + backulr +
         '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
     window.location.href = url;
 }
@@ -284,4 +283,15 @@ function changeUrlArg(url, arg, val) {
  */
 function isStrStr(str, arg) {
     return (str.indexOf(arg) != -1);
+}
+
+
+// 苹果手机弹框去掉域名网址
+window.alert = function(name){
+    var iframe = document.createElement("IFRAME");
+    iframe.style.display="none";
+    iframe.setAttribute("src", 'data:text/plain,');
+    document.documentElement.appendChild(iframe);
+    window.frames[0].window.alert(name);
+    iframe.parentNode.removeChild(iframe);
 }

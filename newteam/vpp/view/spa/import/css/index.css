@@ -15,6 +15,12 @@
 .swiper-container img{
     width: 100%;
 }
+.banner{
+	width: 100%;
+}
+.banner img{
+	width: 100%;
+}
 .more{
     padding: 4px 15px;
     background: #FFA800;
@@ -427,4 +433,7 @@
     font-size: 1.4rem;
     line-height: 2rem;
     padding: 15px 0;
+}
+.priceBox{
+    display:flex;
 }

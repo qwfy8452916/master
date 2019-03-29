@@ -12,21 +12,6 @@ $(document).ready(function(){
 		top.slideUp(200);
 		search.stop().animate({top: 0},200);
 	})
-
-	// 显示关注商城二维码
-	focus.on('click',function(){
-		// 显示二维码弹窗
-		layer.open({
-			type: 1,
-			title: false,
-			closeBtn: false,
-			shadeClose: true,
-			scrollbar: false,
-			content: '<img src="../img/qrcode.jpg" style="width: 150px; height: 150px; padding: 10px;"/>'
-		});
-	})
-
-
 })
 
 
@@ -45,13 +30,14 @@ var app = new Vue({
 			{name: '抢鲜众筹', icon: '../img/menu4.png', link: 'crowd/crowd.html'},
 			// 红包页面地址：redPacket/redPacket.html
 			{name: '红包', icon: '../img/menu5.png', link: 'redpacket/redpacket.html'},
-			{name: '苏州味道', icon: '../img/menu6.png', link: 'product/list.html'},
-			{name: '新疆特产', icon: '../img/menu7.png', link: 'product/list.html'},
-			{name: '美味零食', icon: '../img/menu8.png', link: 'product/list.html'},
+			{name: '苏州味道', icon: '../img/menu6.png', link: 'product/list.html?alias=SU_SHOU'},
+			{name: '新疆特产', icon: '../img/menu7.png', link: 'product/list.html?alias=XIN_JIANG'},
+			{name: '美味零食', icon: '../img/menu8.png', link: 'product/list.html?alias=LING_SHI'},
 			// {name: '精美礼盒', icon: '../img/menu9.png', link: 'product/list.html'},
-			{name: '时令鲜果', icon: '../img/menu10.png', link: 'product/list.html'}
+			{name: '时令鲜果', icon: '../img/menu10.png', link: 'product/list.html?alias=XIAN_GUO'}
 
 		],
+		gzh_qr:'',
 		ad: {
 			img: '../img/xiangmanghui.png'
 		},
@@ -90,6 +76,17 @@ var app = new Vue({
 		// 产品详情
 		showProduct: function(id){
 			go('product/detail.html?id=' + id);
+		},
+		showQr:function(){
+			var gzh_qr = this.gzh_qr;
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: false,
+                shadeClose: true,
+                scrollbar: false,
+                content: '<img src="'+gzh_qr+'" style="width: 150px; height: 150px; padding: 10px;"/>'
+            });
 		}
 	},
 	mounted: function(){
@@ -102,29 +99,16 @@ var app = new Vue({
 				el: '.swiper-pagination',
 			}
 		})
-		
-        $.ajax({
-            type: "GET",
-            url: window.globalResURL+"/index/home_data",
-            // header: {
-            // 'content-type': 'application/x-www-form-urlencoded'
-            // },
-            success:function (data) {
-                data = JSON.parse(data);
-                console.log(data);
-                // that.slide = data.data.advert.map(function (item) {
-					// item.logo = window.globalImgURL + item.logo;
-					// return item
-                // });
-                //that.slide = data.data.advert;
-                setData('da', JSON.stringify(data.data.qianggou));
-                
-                that.hot = data.data.zhunong;
-                that.list = data.data.youxuan;
-                that.like = data.data.xihuan;
-                // Vue.set(app.slide, 'slide',slide)
-            }
-        });
+
+		ajaxGet(window.globalResURL+"/index/home_data",function(res){
+            console.log(res);
+            setData('da', JSON.stringify(res.data.qianggou));
+            that.gzh_qr = res.data.gzh_qr;
+            console.log(that.gzh_qr);
+            that.hot = res.data.zhunong;
+            that.list = res.data.youxuan;
+            that.like = res.data.xihuan;
+		});
 		
 		that.timeLess = JSON.parse(getData('da'));
         function timeRun(unix){

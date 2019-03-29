@@ -155,7 +155,7 @@ footer .starBox img {
   height: 100%;
 }
 footer .supportBtn {
-  width: 5rem;
+  width: 90%;
   height: 0.93333333rem;
   background-color: #FFA800;
   border-radius: 0.13333333rem;
@@ -167,4 +167,3 @@ footer .supportBtn p {
   text-align: center;
   line-height: 0.93333333rem;
 }
-/*# sourceMappingURL=selectGear.css.map */

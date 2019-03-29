@@ -33,7 +33,8 @@ var app = new Vue({
                 isActive: true,
                 url: 'my.html'
             }
-        ]
+		],
+		length:''
 	},
 	methods: {
 		// 我的余额
@@ -48,7 +49,23 @@ var app = new Vue({
 		//我的收藏
         goCollect:function () {
 			go('my/collect.html');
-        }
+		},
+		coupon:function(){
+		var that=this;
+		$.ajax({
+            type: "POST",
+            url: window.globalResURL + "/coupon/ajax_index",
+            data: {
+                type:1,
+                status:1
+            },
+            success:function (data) {
+                if(data){
+					that.length = data.data.length;
+                }
+            }
+		});
+		}
 
 	},
 	mounted(){
@@ -56,14 +73,12 @@ var app = new Vue({
         $.ajax({
             type: "GET",
             url:window.globalResURL+"/user/get_info",
-            // header: {
-            // 'content-type': 'application/x-www-form-urlencoded'
-            // },
             success:function (data) {
                 console.log(data);
-                that.userInfo = data.data;
+				that.userInfo = data.data;
             }
-        });
+		});
+		this.coupon();
 	}
 })
 

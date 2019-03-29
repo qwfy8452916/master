@@ -1,12 +1,11 @@
-var activeID = getParam('activeid');
-var gearID   = getParam('id');
-var index    = getParam('index');
+var activeID = getParam('id');
+var scaleID   = getParam('scale_id');
 var vm = new Vue({
     el: '#app',
     data: {
         activeID: '',
         list:{},
-        index:"",
+        scale_id:"",
         activity:{},
         selectList:{},
         gearList:[],
@@ -35,22 +34,21 @@ var vm = new Vue({
             var that = this;
             this.gearList.map(function (item) {
                 if(item.id == that.mySelect){
-                    console.log(11);
                     that.supportMoney = item.price;
                     that.totalMoney =  accAdd(Number(item.price),Number(that.customMoney));
                 }
             })
         },goBuy:function(){
-            go("../pay/crowd_order.html?id="+activeID+"&scale_id="+gearID);
+            go("../pay/crowd_order.html?id="+activeID+"&scale_id="+this.mySelect);
         }
     },
     mounted(){
         var that=this;
-        that.mySelect = index;
+        that.mySelect = scaleID;
         ajaxPost(window.globalResURL + "/pay/activity_buy",{
             activity_id:activeID,
             category:'crowdfunding',
-            scale_id:gearID
+            scale_id:scaleID
         },function(result){
             if(result.code == 1001){
                 var activity = result.data.activity;
@@ -59,12 +57,15 @@ var vm = new Vue({
             }
         });
 
-        ajaxPost(window.globalResURL + "/activity/crowdfunding_stalls",{activity_id:activeID},function(result){
+        ajaxPost(window.globalResURL + "/activity/crowdfunding_stalls",{
+            activity_id:activeID,
+            scale_id:scaleID
+        },function(result){
             if(result.code == 1001){
                 that.gearList = result.data;
                 // console.log(that.gearList);
                 result.data.map(function (item) {
-                    if(item.id == index){
+                    if(item.id == scaleID){
                         that.supportMoney = item.price;
                         that.totalMoney =  accAdd(Number(item.price),Number(that.customMoney));
                     }

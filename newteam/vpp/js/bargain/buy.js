@@ -28,7 +28,8 @@ var app = new Vue({
         money:0 ,
         length:'',
         title:'',
-        couponid:''
+        couponid:'',
+        final_price:0
     },
     watch: {
         status(value, oldvalue) {
@@ -157,6 +158,7 @@ var app = new Vue({
             success: function (result) {
                 console.log(result);
                 that.productInfo = result.data.activity;
+                that.final_price=result.data.activity.product_price;
                 var coupon = '';
                 var address = result.data.userAddress;
                 if (address) {
@@ -176,11 +178,7 @@ function onBridgeReady(sdkConfig) {
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', sdkConfig,
         function (res) {
-            if (res.err_msg == "get_brand_wcpay_request:ok") {
-                go('../redpacket/fenxiao_packet.html');
-            } else {
-                go('../order.html');
-            }
+            go('../order.html');
         }
     );
 }

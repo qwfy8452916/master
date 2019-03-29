@@ -5,6 +5,7 @@
 }
 html{
 	font-size: 10px;
+	height: 100%;
 }
 body{
 	width: 100%;
@@ -13,6 +14,7 @@ body{
 	font-family: "PingFang-SC-Medium";
 	color: #4f4f4f;
 	max-width: 500px;
+	min-height: 100%;
 	margin: 0 auto;
 	position: relative;
 }

@@ -1,20 +1,25 @@
-
 var app = new Vue({
     el: '#app',
     data: {
         showTime: false,
         productID: '',
-        productInfo:{
-
-        }
-
+        productInfo: {},
+        activity_id: '',
+        is_collect: false,
+        activity:{}
     },
     methods: {
-        toBuy:function (id) {
+        toBuy: function (id) {
             go('../pay/activity_order.html?id=' + id);
+        },
+        collect: function () {
+            var that = this;
+            var res = collect(that.activity_id, 'activity');
+            res.status == 1 ? that.is_collect = true : that.is_collect = false;
+            alert(res.msg)
         }
     },
-    mounted(){
+    mounted() {
         var that = this;
         // 获取当前产品ID
         var thisId = getParam('id');
@@ -23,7 +28,7 @@ var app = new Vue({
         console.log('当前产品ID是：' + thisId);
 
         // 初始化 swiper
-        var mySwiper = new Swiper ('.swiper-container', {
+        var mySwiper = new Swiper('.swiper-container', {
             loop: true,
             autoplay: true,
             pagination: {
@@ -37,10 +42,15 @@ var app = new Vue({
             url: window.globalResURL + "/activity/detail",
             data: {
                 detail: thisId,
-                category:'activity'
+                category: 'activity'
             },
-            success:function (data) {
-                that.productInfo=JSON.parse(data).data.product;
+            dataType: 'json',
+            success: function (data) {
+                that.productInfo = data.data.product;
+                that.activity    = data.data;
+                that.activity_id = data.data.id;
+                var res = is_collect(that.activity_id, 'activity')
+                res.status == 1 ? that.is_collect = true : that.is_collect = false;
             }
         });
     }

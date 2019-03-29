@@ -20,17 +20,38 @@
 	</div>
 	<div class="redPacketShare">
 		<div class="redPacketShareItem">
-			<div class="redPacketShareBox" v-for="item in 4">
-				<img src="../../img/red-bag.png" class="redPacketShow" />
-				<img src="../../img/userIcon.png" style="display: none;" class="redPacketUserIconShow" />
-				<img src="../../img/kaiqian.png" style="display: none;" class="kaiqian" />
-				<p style="display: none;">祝您步步高升</p>
+			<div class="redPacketShareBox" v-for="(redbag, index) in redbags">
+				<img src="../../img/red-bag.png" v-if="!redbag.open" class="redPacketShow" @click="openRedBag(index+1)" />
+				<img src="../../img/kai.png" v-else class="redPacketShow" @click="openRedBag(index+1)"/>
+				<!--<img src="../../img/userIcon.png" class="redPacketUserIconShow" @click="openRedBag(3)"/>
+				<img src="../../img/kaiqian.png" style="display: none;" class="kaiqian" @click="openRedBag(4)"/>-->
+				<p v-show="redbag.open" >{{redbag.textStr}}</p>
 			</div>
 			<div class="lineCol"></div>
 			<div class="lineRow"></div>
 		</div>
-		<div class="redPacketShareBtn">邀请微信好友一起拆</div>
+		<div class="redPacketShareBtn" v-on:click="ShareBox_show">邀请微信好友一起拆</div>
 	</div>
+	<div class="RedPacketBox">
+		<div class="RedPacketBox-top">
+			<span class="font-span">红包记录</span>
+		</div>
+		<ul id="RedPacketBox-list" class="RedPacketBox-list">
+			<li v-for="redlist in redlists">
+				<div class="HeadPortrait">
+					<img :src="redlist.head_img" />
+				</div>
+				<div class="RedPacketBox-list-right">
+					<div class="RightUserInfo">
+						<span class="color-span">{{redlist.name}}</span>帮您拆得<span class="color-span">{{redlist.money}}</span>元
+					</div>
+					<div class="Timebox">{{redlist.create_at}}</div>
+				</div>
+			</li>
+		</ul>
+		<div id="RedPacketBox-list-font" class="RedPacketBox-list-font" style="display: none;">暂无好友帮您拆红包，还不快叫他们来帮忙！</div>
+	</div>
+	<div id="ShareBox" class="ShareBox" style="display: none;" v-on:click="ShareBox_hide"><img src="../../img/RedPacketBox-img.png" /></div>
 </div>
 <script type="text/javascript" src="../../js/common.js" ></script>
 <script type="text/javascript" src="../../js/redPacket.js" ></script>

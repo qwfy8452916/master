@@ -1,51 +1,85 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-	<script  type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script type="text/javascript" src="../../import/vue/vue.js" ></script>
-	<script type="text/javascript" src="../../import/layui/layui.all.js" ></script>
-	<script type="text/javascript" src="../../import/axios/axios.min.js" ></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../import/vue/vue.js"></script>
+	<script type="text/javascript" src="../../import/layui/layui.all.js"></script>
+	<script type="text/javascript" src="../../import/axios/axios.min.js"></script>
 	<link rel="stylesheet" href="http://at.alicdn.com/t/font_763110_iz2ggyyo4or.css" />
+	<link rel="stylesheet" href="https://img.ybl-group.com/mescroll/1.4.0/mescroll.min.css">
 	<link rel="stylesheet" href="../../import/layui/css/layui.css" />
 	<link rel="stylesheet" href="../../css/common.css" />
 	<link rel="stylesheet" href="../../css/list.css" />
+	<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
 	<title>产品列表</title>
 </head>
+
 <body>
-<!--APP-->
-<div id="app" v-cloak>
-	<!--搜索功能-->
-	<div class="search">
-		<input placeholder="搜索商品" v-model="keywords">
-		<span @click="searchGoods">搜索</span>
-	</div>
-	<!--头部筛选-->
-	<div class="listHead">
-		<a class="active" @click.stop="sortOrigin">综合</a>
-		<a @click.stop="sortBuy">销售</a>
-		<a @click.stop="sortPrice">价格</a>
-		<!--<a>筛选<i class="iconfont icon-iconfontzhizuobiaozhun023125"></i></a>-->
-	</div>
-	<!--列表-->
-	<div class="list">
-		<div class="listBox" v-for="item in list" :key="item.id" @click="toBuy(item.id)">
-			<div>
-				<img :src="item.logo" />
-			</div>
-			<div>
-				<p>{{item.title}}</p>
-				<p><span>￥{{item.xs_price}}</span>/箱</p>
-				<p>原价：<span>￥{{item.price}}/箱</span></p>
-			</div>
-			<div>
-				<i class="iconfont icon-gouwuche"></i>
-			</div>
+	<!--APP-->
+	<div id="app" v-cloak>
+		<!--搜索功能-->
+		<div class="search">
+			<input placeholder="搜索商品" v-model="keywords">
+			<span @click="searchGoods">搜索</span>
 		</div>
-	</div>
-</div>
-<script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
-<script type="text/javascript" src="../../js/product/list.js?v=" + Date.now() ></script>
+		<!--头部筛选-->
+		<div class="listHead">
+			<a class="active" @click.stop="sortOrigin">综合</a>
+			<a @click.stop="sortBuy">销售</a>
+			<a @click.stop="sortPrice">价格</a>
+			<!--<a>筛选<i class="iconfont icon-iconfontzhizuobiaozhun023125"></i></a>-->
+		</div>
+
+        <div class="list prdListWrap">
+			<mt-loadmore :top-method="loadTop"  @top-status-change="handleTopChange"  :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore" :auto-fill="false">
+
+					<div class="listBox" v-for="item in list"  @click="toBuy(item.id)">
+						<div>
+							<img :src="item.logo" />
+						</div>
+						<div>
+							<p>{{item.title}}</p>
+							<p><span>￥{{item.xs_price}}</span>/箱</p>
+							<p>原价：<span>￥{{item.price}}/箱</span></p>
+						</div>
+						<div class="carBox" @click.stop="addNum(item.id)">
+							<img src="../../img/xg.png" alt="" class="carImg">
+						</div>
+					</div>
+					<div class="shopCar" @click="toShopCar">
+						<img src="../../img/dg.png" alt="">
+						<div class="numBox" v-show="shopNum">
+							<p class="shopNum">{{shopNum}}</p>
+						</div>
+					</div>
+
+				<div slot="top" class="mint-loadmore-top" style="text-align:center">
+					<span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'pull' }">↓</span>
+					<span v-show="topStatus === 'loading'">
+                        <mt-spinner type="snake"></mt-spinner>
+                    </span>
+					<span class="mint-loadmore-text">{{ topText }}</span>
+				</div>
+				<div slot="bottom" class="mint-loadmore-bottom">
+					<span v-show="bottomStatus !== 'loading'" :class="{ 'is-rotate': bottomStatus === 'drop' }">↑</span>
+					<span v-show="bottomStatus === 'loading'">
+                        <mt-spinner type="snake"></mt-spinner>
+                    </span>
+					<span class="mint-loadmore-text">{{ bottomText }}</span>
+				</div>
+
+				<div v-if="allLoaded" style="text-align:center;" class="data-none">没有更多数据了</div>
+			</mt-loadmore>
+        </div>
+
+
+    </div>
+    <script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+    <script type="text/javascript" src="../../js/common.js?v=" + Date.now()></script>
+	<script type="text/javascript" src="../../js/product/list.js?v=" + Date.now()></script>
 </body>
+
 </html>

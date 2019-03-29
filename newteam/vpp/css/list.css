@@ -96,11 +96,11 @@
 .listBox div:nth-of-type(2) p:last-of-type span{
 	text-decoration: line-through;
 }
-.listBox div:last-of-type{
+/* .listBox div:last-of-type{
 	position: absolute;
 	right: 20px;
 	bottom: 20px;
-}
+} */
 .listBox div:last-of-type i{
 	display: block;
 	width: 25px;
@@ -110,4 +110,57 @@
 	border-radius: 50%;
 	text-align: center;
 	line-height: 25px;
+}
+.listBox .carBox {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 0.4rem;
+	bottom: 15px;
+  }
+  .listBox .carBox .carImg {
+	width: 100%;
+	height: 100%;
+  }
+  .list .shopCar {
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	left: 0.4rem;
+	bottom: 0.4rem;
+  }
+  .list .shopCar img {
+	width: 100%;
+	height: 100%;
+  }
+  .list .shopCar .numBox {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background-color: #FF0000;
+	box-sizing: border-box;
+	border: 0.05333333rem solid #fff;
+	border-radius: 50%;
+	top: -0.24rem;
+	right: -0.06666667rem;
+  }
+  .list .shopCar .numBox .shopNum {
+	color: #fff;
+	text-align: center;
+	font-size:1rem;
+	padding: 0.05333333rem 0;
+  }
+.is-rotate{
+	color:#946821;
+}
+.prdListWrap{
+	position: absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	padding-top: 20px;
+	box-sizing:border-box;
+	-webkit-overflow-scrolling: touch;
 }

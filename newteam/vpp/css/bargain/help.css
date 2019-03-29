@@ -72,6 +72,7 @@
 .headBox img{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
     
 }
 .joinBottom{
@@ -171,6 +172,7 @@
     padding:20px 0;
     box-sizing: border-box;
     background-color: #fff;
+    margin-bottom: 50px;
 }
 .deatil p{
     font-size: 1.5rem;
@@ -291,4 +293,53 @@ footer{
     background-color: #FFA800;
     border-radius: 5px;
     margin:0 auto;
+}
+
+
+
+
+.mask1{
+    width: 100%;
+    height: 100%;  
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index:1;
+} 
+.share{
+    width:47px; 
+    height: 76px;  
+    position: absolute;
+    right:20px;
+    top:0;
+}
+.share img{
+    width: 100%;
+    height: 100%;
+}
+.helpBox{
+    width: 90%;
+    padding:28px 73px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #fff;
+    margin:75px auto;
+}
+.mask1 p{
+    font-size: 1.6rem;
+    color:#fff;
+    font-weight: 500;
+    margin:76px 0 0 0;
+    text-align: center;
+}
+.mask1 p span{
+    color:#CE3E36;
+}
+.helpBox p{
+    color:#000;
+    margin:0;
+}
+.deatil img{
+    width: 100%;
 }

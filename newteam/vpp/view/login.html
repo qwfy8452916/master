@@ -10,6 +10,8 @@
 </body>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
+    document.write("<script language=javascript src='/vpp/js/config.js'><\/script>");
+
     function setToken(token){
         var backUrl = decodeURIComponent(getData('BACK_URL'));
         if(isStrStr(backUrl,'token')){
@@ -62,10 +64,9 @@
         return localStorage.getItem(key);
     }
 
-
     function getLoginToken(){
         var code = GetQueryString("code");
-        var url = "http://xinbingtuan.sevenlele.com/login/oauth_callback?code="+code+"&state=STATE";
+        var url = window.globalResURL+"/login/oauth_callback?code="+code+"&state=STATE";
         $.ajax({
              type: "GET",
              url: url,

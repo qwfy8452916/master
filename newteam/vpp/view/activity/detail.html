@@ -49,8 +49,8 @@
     </div>
     <!--价格-->
     <div class="price">
-        <p><span>￥{{productInfo.pt_price}}</span></p>
-        <p>￥{{productInfo.price}}</p>
+        <p><span>￥{{activity.price}}</span></p>
+        <p>￥{{productInfo.cx_price}}</p>
     </div>
     <!--产品信息-->
     <div class="info">
@@ -80,7 +80,8 @@
     <!--底部购买按钮-->
     <div class="buy">
         <div>
-            <p><i class="iconfont icon-shoucang"></i></p>
+            <p><img class="star" :src="is_collect == true ? '../../img/collect.png' :'../../img/cancel_collect.png'"
+                @click="collect"></p>
             <p>收藏</p>
         </div>
         <div @click="toBuy(productID)">立即购买</div>

@@ -47,14 +47,12 @@
                 var token = getData('TOKEN');
 				var url = window.globalResURL + '/coupon/send_order_coupon?token=' + token;
 				axios.get(url).then(function(res){
-				var code=res.data.code;				
-				if(code=="2001"){
-					// go("../order.html");
-				}else{
-					that.money=res.data.data;
-				}
-            })
-
+					if(res.data.code == 2001){
+						go("../order.html");
+					}else{
+						that.money=res.data.data;
+					}
+            	})
             }
         })
 	</script>

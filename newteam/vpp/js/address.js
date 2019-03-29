@@ -112,6 +112,7 @@ var app = new Vue({
 				},
                 success:function (data) {
 					if(data){
+						alert('删除成功');
                         location.href = location.href;
 					}
                 }

@@ -5,7 +5,8 @@ var vm = new Vue({
     data: {
         activeID: '',
         index : "",
-        list:{}
+        list:{},
+        is_select:false,
     },
     methods: {
         selectGear:function (id) {
@@ -14,6 +15,7 @@ var vm = new Vue({
             var list = [];
             list =  this.list.map(function (item,index) {
                 item.select = false;
+                that.is_select = true;
                 if(item.id==id){
                     item.select = true;
                     that.index = id;
@@ -22,8 +24,14 @@ var vm = new Vue({
             });
             this.list = list;
         },
-        gopayment:function (id) {
-            go("payment.html?id="+id + '&activeid='+activeID + '&index=' + this.index);
+        gopayment:function () {
+           
+                if(this.is_select == false){
+                    alert('请选择档位');return;
+                }
+                go("payment.html?id="+activeID + '&scale_id=' + this.index);
+
+            
         }
     },
     mounted(){

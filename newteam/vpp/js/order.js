@@ -21,7 +21,8 @@ var app = new Vue({
             'crowdfunding': '众筹',
             'activity_share': '活动分享',
             'distribution': '转发购买',
-            'bargain': '砍价订单'
+            'bargain': '砍价订单',
+            'companywelfare': '单位福利'
         },
         footerNavList: [
             {
@@ -71,22 +72,6 @@ var app = new Vue({
                         that.showNothing = true;
                     }
                     that.allList = allList;
-                    // that.list = data.data.map(function (item) {
-                    // item.logo = window.globalImgURL + item.logo;
-                    // return item
-                    // });
-                    // var allList = data.data.list;
-                    // var seeLsit = that.seeList;
-                    // that.allList = allList;
-                    // if(allList.length>0){
-                    //     allList.map(function (item) {
-                    //     	if(!seeLsit[item.order_alias]){
-                    //             seeLsit[item.order_alias]=[];
-                    // 		}
-                    //         seeLsit[item.order_alias].push(item);
-                    //     })
-                    // }
-                    // console.log(that.seeList);
                 }
             });
         }
@@ -94,21 +79,21 @@ var app = new Vue({
     methods: {
         //金额计算
         getAllMoney: function (list) {
-            var money = 0;
+            var total_money = 0;
             if (list) {
                 list.map(function (item) {
-                    var price = (item.orderInfo[0].prepay >0) ? item.orderInfo[0].prepay : item.orderInfo[0].product_money;
-                    money = accAdd(money, accMul(price, item.orderInfo[0].num));
+                    for (i = 0; i < item.orderInfo.length; i++) {
+                        total_money += parseFloat(item.orderInfo[i].product_money)  
+                    }
                 })
             }
-            return money;
+            return total_money.toFixed(2);
         },
         detail: function (id) {
             go('./pay/orderDetail.html?id=' + id);
         },
         //查看物流
         lookLogistics: function (product) {
-            // console.log(product);
             var that = this;
             // var wuliuInfo = product.orderInfo[0];
             // if(wuliuInfo.deliver_no == ""){

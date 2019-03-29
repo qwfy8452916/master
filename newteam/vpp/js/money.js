@@ -2,7 +2,7 @@
 var app = new Vue({
 	el: '#app',
 	data: {
-		money: '500'
+		money: '0'
 	},
 	methods: {
 

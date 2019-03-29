@@ -1,14 +1,3 @@
-
-function getParam(name) {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    var search = decodeURIComponent(window.location.search);
-    var r = search.substr(1).match(reg);
-    // console.log(r);
-    if (r != null) {
-        return unescape(r[2]);
-    }
-    return null;
-}
 var app = new Vue({
     el: '#app',
     data: {
@@ -101,7 +90,8 @@ var app = new Vue({
                             document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
                         }
                     } else {
-                        onBridgeReady(res.data);
+                        var json = JSON.parse(res.data);
+                        onBridgeReady(json);
                     }
                 }
             });
@@ -138,16 +128,19 @@ var app = new Vue({
         var thisId = getParam('id');
         that.productID = thisId;
         ajaxGet(window.globalResURL + "/product/show_order",{id: thisId},function(result){
-            console.log(result);
-            var p = result.data.product;
+            console.log(result)
+            var p = result.data.product[0];
+            console.log(p)
             var coupon = '';
             var address = result.data.userAddress;
             if (address) {
                 that.addressInfo = address;
+            }else{
+                that.addressInfo = '';
             }
             that.productInfo = p;
             that.productInfo.num = p.num;
-            that.productInfo.cx_price = p.pt_price;
+            that.money = p.pt_price;
             that.productInfo.is_address = p.is_address;
         });
         //this.tiket();
@@ -159,11 +152,7 @@ function onBridgeReady(sdkConfig) {
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', sdkConfig,
         function (res) {
-            if (res.err_msg == "get_brand_wcpay_request:ok") {
-                go('../redpacket/fenxiao_packet.html');
-            } else {
-                go('../order.html');
-            }
+            go('../order.html');
         }
     );
 }

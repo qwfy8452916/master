@@ -174,11 +174,7 @@ function onBridgeReady(sdkConfig) {
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', sdkConfig,
         function (res) {
-            if (res.err_msg == "get_brand_wcpay_request:ok") {
-                go('../redpacket/fenxiao_packet.html');
-            } else {
-                go('../order.html');
-            }
+            go('../order.html');
         }
     );
 }

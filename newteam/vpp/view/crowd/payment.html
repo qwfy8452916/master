@@ -26,12 +26,12 @@
             <div class="secondModule">
                 <p class="supportNum">支持金额:</p>
                 <select v-model="mySelect" @change="getMySelected">
-                    <option :value="item.id" v-for="item in gearList"  >{{item.price}}元</option>
+                    <option :value="item.id" @click="select_money(item.id)"   v-for="item in gearList"  >{{item.price}}元</option>
                 </select>
                 <div class="sanjiao">
                     <img src="../../img/sanjiao.png" alt="">
                 </div>
-                <p>自定义金额：￥<input type="number" v-model="customMoney" placeholder="0">      元</p>
+                <!-- <p>自定义金额：￥<input type="number" v-model="customMoney" placeholder="0">      元</p> -->
             </div>
 
             <div class="fourthModule">

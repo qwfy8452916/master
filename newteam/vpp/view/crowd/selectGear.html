@@ -18,7 +18,7 @@
     <div class="mainBox">
         <div class="itemBox" v-for="item in list">
             <div class="itemTop">
-                <p class="nowPrice">￥{{item.price}}</p>
+                <p class="nowPrice">每份:￥{{item.price}}  &nbsp;&nbsp;&nbsp;  <span style="color: #000; font-weight: normal;">目标:￥{{item.target_amount}}</span></p>
                 <p class="imgBox" @click="selectGear(item.id)"><i v-show="item.select">✔</i></p>
             </div>
             <div class="itemBottom">
@@ -31,15 +31,15 @@
                 <p class="supportDes">非常感谢您的支持非常感谢您的支持非常感谢您的支持非常感谢您的支持非常感谢您的支持非常感谢您的支持</p>
             </div>
             <footer>
-                <div class="starBox">
+                <!-- <div class="starBox">
                     <img src="../../img/fav1.png" alt="">
-                </div>
-                <div class="supportBtn" @click="gopayment(item.id)">
+                </div> -->
+                <div class="supportBtn" @click="gopayment">
                     <p>我要支持</p>
                 </div>
-                <div class="starBox shareBox">
+                <!-- <div class="starBox shareBox">
                     <img src="../../img/share.png" alt="">
-                </div>
+                </div> -->
             </footer>
         </div>
 

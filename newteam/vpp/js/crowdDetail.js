@@ -6,6 +6,7 @@ var vm = new Vue({
         list: {},
         dangwei: [],
         activity_id: '',
+
         is_collect: false
     },
     mounted() {

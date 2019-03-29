@@ -21,13 +21,19 @@ var app = new Vue({
         },
         showPackage: false,
         list: [],
-
         select: 0,
         searchindex: 0,
         money:0 ,
         length:'',
         title:'',
-        couponid:''
+        couponid:'',
+        selectType:[
+            '余额支付',
+            '微信支付'
+        ],
+        searchIndex:0,
+        title:'',
+        showToast:false
     },
     watch: {
         status(value, oldvalue) {
@@ -57,7 +63,7 @@ var app = new Vue({
         buy: function () {
             var that = this;
             if (that.addressInfo.real_name == '') {
-                alert('请填写姓名');
+                alert('请填写地址');
                 return false;
             }
             if (that.addressInfo.mobile == '') {
@@ -66,11 +72,13 @@ var app = new Vue({
             }
             var address = that.addressInfo;
             var product = that.productInfo;
+            that.showToast=true;
             var order_type = (product.is_address == 0) ? 2 : 1;
-            $.ajax({
-                type: "POST",
-                url: window.globalResURL + "/pay/wx_pay",
-                data: {
+            if(that.searchIndex==0){
+                alert(1);
+            }else{
+                alert(2);
+                ajaxPost(window.globalResURL + "/pay/wx_pay",{
                     activity_id: product.id,
                     consignee: address.real_name,
                     mobile: address.mobile,
@@ -85,8 +93,7 @@ var app = new Vue({
                     coupon_receive_id:that.couponid,  //优惠券ID
                     order_alias: 'activity',
                     order_type: order_type
-                },
-                success: function (res) {
+                },function(res){
                     var code = res.code;
                     var msg = res.msg;
                     if (code != "1001") {
@@ -105,10 +112,9 @@ var app = new Vue({
                             onBridgeReady(json);
                         }
                     }
-                }, error: function () {
-                    console.log('error');
-                }
-            });
+                });
+            }
+           
         },
         show: function () {
             this.showPackage = !this.showPackage;
@@ -134,7 +140,17 @@ var app = new Vue({
                 that.length=res.data.data.length;
                 that.title='有'+res.data.data.length+'张可用优惠券';
             })
+        },
+        // 选择支付方式
+        choose: function (item, index) {
+            this.searchIndex = index;
+            this.title = item;
+        },
+        // 取消
+        cancel:function(){
+            this.showToast=false;
         }
+
     },
     mounted() {
         var that = this;
@@ -142,25 +158,27 @@ var app = new Vue({
         var thisId = getParam('id');
         var num    = getParam('num') ? getParam('num') : 1;
         that.productID = thisId;
-        $.ajax({
-            type: "POST",
-            url: window.globalResURL + "/pay/activity_buy",
-            dataType:'json',
-            data: {
-                activity_id: thisId,
-                category: 'activity'
-            },
-            success: function (result) {
-                console.log(result);
-                that.productInfo = result.data.activity;
-                var coupon = '';
-                var address = result.data.userAddress;
-                if (address) {
-                    that.addressInfo = address;
-                }
-                that.productInfo.num = num;
-                that.productInfo.is_address = that.productInfo.is_address;
+
+        var addr_id = getParam('addr_id');
+        var _data   = { activity_id: thisId, category: 'activity' };
+        if (addr_id != null) {
+            _data = { activity_id: thisId, category: 'activity',addr_id: addr_id};
+        }
+
+        ajaxPost(window.globalResURL + "/pay/activity_buy",_data,function(result){
+            console.log(result);
+            var activityInfo = result.data.activity;
+            that.productInfo = activityInfo;
+            var coupon = '';
+            var address = result.data.userAddress;
+            if (address) {
+                that.addressInfo = address;
+            }else{
+                that.addressInfo = '';
             }
+            that.productInfo.pt_price = activityInfo.price;
+            that.productInfo.num = num;
+            that.productInfo.is_address = that.productInfo.is_address;
         });
 
         this.tiket();
@@ -172,11 +190,7 @@ function onBridgeReady(sdkConfig) {
     WeixinJSBridge.invoke(
         'getBrandWCPayRequest', sdkConfig,
         function (res) {
-            if (res.err_msg == "get_brand_wcpay_request:ok") {
-                go('../redpacket/fenxiao_packet.html');
-            } else {
-                go('../order.html');
-            }
+            go('../order.html');
         }
     );
 }

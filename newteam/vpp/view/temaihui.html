@@ -5,64 +5,79 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="../import/layui/css/layui.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+	<link rel="stylesheet" href="./spa/import/css/swiper.min.css">
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/temaihui.css?v=" + Date.now() />
+	<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
 	<title>特麦会</title>
 </head>
-
 <body>
 	<!--APP-->
 	<div id="app" v-cloak>
 		<!-- banner -->
-		<div class="swiper-container">
+		<div class="swiper-container banner">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide"><img src="../img/banner2.jpg" alt=""></div>
-				<div class="swiper-slide"><img src="../img/banner2.jpg" alt=""></div>
-				<div class="swiper-slide"><img src="../img/banner2.jpg" alt=""></div>
+				<div class="swiper-slide"><img src="../img/b1.png" alt=""></div>
+				<div class="swiper-slide"><img src="../img/b2.png" alt=""></div>
+				<div class="swiper-slide"><img src="../img/b3.png" alt=""></div>
 			</div>
 			<!-- 如果需要分页器 -->
 			<div class="swiper-pagination"></div>
 		</div>
 		<!-- tab -->
 		<div class="tab">
-			<span v-for="(item,index) in category" @click="getData(item.id);serachindex=index"
+			<span v-for="(item,index) in category" @click="goTo(item.id,index);serachindex=index"
 				:class="index==serachindex? 'active' :''">{{item.name}}</span>
 		</div>
 		<!--列表-->
-		<div class="list">
-			<!--内容-->
-			<div class="box" v-for="item in list" @click="goDetail(item.id)">
-				<div class="boxCover">
-					<img :src="item.banner1" />
-				</div>
-				<div class="boxMain">
-					<p>{{item.title}}</p>
-					<p v-if="item.prepay >0" style="color: #EB2F2F;">预付款：<span
-							style="color: #EB2F2F;">￥{{item.prepay}}</span></p>
-					<div v-for="moneyItem in item.pt_price">
-						<div v-if="Array.isArray(item.pt_price) == true">
-							<p>{{moneyItem.title}}：<span>￥{{moneyItem.money}}</span></p>
+		<div class="list prdListWrap">
+			<mt-loadmore :top-method="loadTop"  @top-status-change="handleTopChange"  :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore" :auto-fill="false">
+
+				<div class="box" v-for="item in list" @click="goDetail(item.id)">
+					<div class="boxCover">
+						<img :src="item.banner1" />
+					</div>
+					<div class="boxMain">
+						<p>{{item.title}}</p>
+						<p v-if="item.prepay >0" style="color: #EB2F2F;">预付款：<span
+								style="color: #EB2F2F;">￥{{item.prepay}}</span></p>
+						<div v-for="moneyItem in item.pt_price">
+							<div v-if="Array.isArray(item.pt_price) == true">
+								<p>{{moneyItem.title}}：<span>￥{{moneyItem.money}}</span></p>
+							</div>
 						</div>
+						<div v-if="Array.isArray(item.pt_price) == false">
+							<p>特卖价:<span>￥{{item.pt_price}}</span></p>
+						</div>
+						<p><del class="marketprice">市场价：<span>￥{{item.price}}</span></del></p>
 					</div>
-					<div v-if="Array.isArray(item.pt_price) == false">
-						<p>特卖价:<span>￥{{item.pt_price}}</span></p>
-					</div>
-					<p><del class="marketprice">市场价：<span>￥{{item.price}}</span></del></p>
+					<div class="boxBtn">查看详情</div>
 				</div>
-				<!--<div class="boxBtn" onclick="window.location.href = './spa/index.html'">查看详情</div>-->
-				<div class="boxBtn">查看详情</div>
-			</div>
+
+				<div slot="top" class="mint-loadmore-top" style="text-align:center">
+					<span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'pull' }">↓</span>
+					<span v-show="topStatus === 'loading'">
+                        <mt-spinner type="snake"></mt-spinner>
+                    </span>
+					<span class="mint-loadmore-text">{{ topText }}</span>
+				</div>
+				<div slot="bottom" class="mint-loadmore-bottom">
+					<span v-show="bottomStatus !== 'loading'" :class="{ 'is-rotate': bottomStatus === 'drop' }">↑</span>
+					<span v-show="bottomStatus === 'loading'">
+                        <mt-spinner type="snake"></mt-spinner>
+                    </span>
+					<span class="mint-loadmore-text">{{ bottomText }}</span>
+				</div>
+
+				<div v-if="allLoaded" style="text-align:center;" class="data-none">没有更多数据了</div>
+			</mt-loadmore>
 		</div>
-		<!--底线-->
-		<div class="bottomLine">
-			<span></span>
-			<p>我是有底线的</p><span></span>
-		</div>
+
 	</div>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+	<script type="text/javascript" src="./spa/import/js/swiper.min.js"></script>
 	<script type="text/javascript" src="../import/vue/vue.js"></script>
+	<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
 	<script type="text/javascript" src="../import/axios/axios.min.js"></script>
 	<script type="text/javascript" src="../js/common.js?v=" + Date.now()></script>
 	<script type="text/javascript" src="../js/temaihui.js?v=" + Date.now()></script>
@@ -72,9 +87,10 @@
 			// 如果需要分页器
 			pagination: {
 				el: '.swiper-pagination',
+				autoplay:true,
 				clickable: true,
 			},
-		}) 
+		})
 	</script>
 </body>
 

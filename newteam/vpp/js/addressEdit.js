@@ -163,11 +163,12 @@ var app = new Vue({
                 type: "POST",
                 url: window.globalResURL + "/user/address_del",
                 data:{
-                    addr_id: id
+                    addr_id: that.deleteId
                 },
                 dataType:'json',
                 success:function (data) {
                     if(data){
+                        alert('删除成功');
                         $.ajax({
                             type: "POST",
                             url: window.globalResURL + "/user/address_list",
@@ -231,9 +232,11 @@ var app = new Vue({
         }
     },
     mounted(){
+        
         var that = this;
+        that.deleteId = getParam('id');
+
         if(isEdit){
-            var addressid = getParam('id');
             that.showDelBtn = true;
             var select = JSON.parse(localStorage.getItem('selectAddress'));
             that.selectAddress = select;

@@ -6,6 +6,7 @@ var app = new Vue({
         productInfo: {},
         activity_id: '',
         is_collect: false,
+        activityInfo:{}
     },
     methods: {
         toBuy: function (id) {
@@ -28,7 +29,6 @@ var app = new Vue({
 
         // 初始化 swiper
         var mySwiper = new Swiper('.swiper-container', {
-            loop: true,
             autoplay: false,
             pagination: {
                 el: '.swiper-pagination',
@@ -46,6 +46,8 @@ var app = new Vue({
             dataType: 'json',
             success: function (data) {
                 that.productInfo = data.data.product;
+                that.activityInfo=data.data;
+                console.log(that.activityInfo)
                 that.activity_id = data.data.id;
                 var res = is_collect(that.activity_id, 'activity')
                 res.status == 1 ? that.is_collect = true : that.is_collect = false;
