@@ -1,0 +1,31 @@
+<!--pages/delivereddetail/delivereddetail.wxml-->
+ <view class='hangitem roomhao'>房间号 03-1321</view>
+ <view class='hangitem contactinfo'>
+   <view class='lianxihang'>
+      <view class='lianxi'>
+         <text class='lianxi-title'>联系人</text><text>太上老君</text>
+      </view>
+      <text class='phonehao'>18995683626</text>
+   </view>
+   <view class='comment'>
+      <text class='comment-title'>用户留言</text><text>非常棒</text>
+   </view>
+ </view>
+
+<scroll-view class='detailwrap' style='height:840rpx' scroll-y>
+   <view class='detailitem' wx:for="{{10}}" wx:key>
+      <view class='propic'>
+        <image src='../../img/huowu.png'></image>
+      </view>
+      <view class='promiaos'>2019新款夏装女装条纹短袖T恤女潮半袖宽松针织打底衫ins洋气上衣</view>
+      <text class='geshu'>×1</text>
+  </view>
+</scroll-view>
+
+<view class='wraptesting'>
+  <view class='testingniu' bindtap='testingniu'>完成配送</view>
+</view>
+
+
+
+

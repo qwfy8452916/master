@@ -1,0 +1,33 @@
+<!--pages/login/login.wxml-->
+<view class='wrap'>
+  <view class='loginname'>客房宝</view>
+  <text class='logintest'>补货端用户登录</text>
+  <view class='hangitem'>
+    <text class='iconfont iconwode'></text>
+    <input bindinput='Username' class='' placeholder='请输入用户名' placeholder-style='color:#cecece'></input>
+  </view>
+  <view class='hangitem'>
+    <text class='iconfont iconlock'></text>
+    <input password="true" bindinput='Password' class='' placeholder='请输入密码' placeholder-style='color:#cecece'></input>
+  </view>
+  <view class='forgetwrap'>
+     <text class='forgetpassword' bindtap='forgetpassword'>忘记密码？</text>
+  </view>
+  <button class='loginniu' bindgetuserinfo='shouquanlogin' open-type="getUserInfo">登录</button>
+</view>
+
+<!-- 导航 -->
+<view class='tabbarwrap'>
+   <navigator class='tabitem active' url="" redirect>
+      <text class='iconfont iconshouye'></text>
+      <view class='tabitemms'>首页</view>
+   </navigator>
+   <navigator class='tabitem' url="/pages/deliveredlist/deliveredlist" redirect>
+      <text class='iconfont iconshouye'></text>
+      <view class='tabitemms'>配送</view>
+   </navigator>
+   <navigator class='tabitem' url="/pages/personalcenter/personalcenter" redirect>
+      <text class='iconfont iconpeisong'></text> 
+      <view class='tabitemms'>我的</view>
+   </navigator>
+</view>

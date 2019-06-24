@@ -1,0 +1,41 @@
+<!--pages/bindcabinet/bindcabinet.wxml-->
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconlouceng'></text>酒店楼层</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='10' placeholder='请填写酒店楼层' placeholder-class='color:#cecece;' bindinput='Loufloor'></input>
+   </view>
+</view>
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconfanghao'></text>房号</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='10' placeholder='请填写房号' placeholder-class='color:#cecece;' bindinput='Housenumber'></input>
+   </view>
+</view>
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconcard2'></text>物联卡</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='10' placeholder='请填写物联卡号' placeholder-class='color:#cecece;' bindblur='yanzhengcode' bindinput='Iotcart' value='{{cabinethao}}'></input>
+   </view>
+</view>
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconwifiwofi'></text>WiFi名称</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='50' placeholder='请填写WiFi名称' placeholder-class='color:#cecece;' bindinput='wifiname'></input>
+   </view>
+</view>
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconpeiwangWiFimima'></text>WiFi密码</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='50' placeholder='请填写WiFi密码' placeholder-class='color:#cecece;' bindinput='wifipass'></input>
+   </view>
+</view>
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconshuliangshizhong'></text>格子数</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='2' placeholder='请填写格子数' type='number' placeholder-class='color:#cecece;' bindinput='gezishu'></input>
+   </view>
+</view>
+
+<view class='wraptesting'>
+   <view class='testingniu' bindtap='testingniu'>去检测</view>
+</view>

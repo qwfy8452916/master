@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/cabinetlist/cabinetlist",
+    "pages/login/login",
+    
+    "pages/repair/repair",
+    
+    "pages/bindcabinet/bindcabinet",
+    "pages/bindcabinetedit/bindcabinetedit",
+    
+    "pages/hotel/hotel",
+    "pages/index/index",
+    "pages/cabinet/cabinet",
+    
+    
+    "pages/replacerecord/replacerecord",
+    "pages/detailnormal/detailnormal",
+    "pages/repairsuccess/repairsuccess",
+    "pages/lookdetail/lookdetail",
+    "pages/hotellist/hotellist",
+    "pages/user/user",
+    "pages/logs/logs"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

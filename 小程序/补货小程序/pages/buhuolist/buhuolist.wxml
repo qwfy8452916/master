@@ -1,0 +1,56 @@
+<!--pages/buhuolist/buhuolist.wxml-->
+<view class='wraplist'>
+   <view class='itemwrap' bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.oprProductDTO.id}}" data-prodname="{{item.oprProductDTO.productName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}">
+
+     <!-- <view wx:if="{{geziarray[index]==2}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <image src='{{item.oprProductDTO.prodLogoUrl}}'></image>
+       </view>
+       <view wx:else class='imgwk'>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.oprProductDTO.prodLogoUrl}}'></image>
+       </view> -->
+
+       <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.oprProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==2}}" class='imgwk'>
+           
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.oprProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.oprProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+
+        <!-- <view class='imgwk'>
+           <view class='buhuopicwk'>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.oprProductDTO.prodLogoUrl}}'></image>
+         </view> -->
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.oprProductDTO.productName}}</view>
+   </view>
+
+</view>
+
+<view wx:if="{{niuhidden}}">
+  <view class='baoxiuwrap' wx:if='{{!niujudge}}'>注：如果发现锁柜存在问题请点击<text class='baoxiutext' bindtap='repairniu'>报修锁柜</text></view>
+  <view class='completetest' bindtap='bounceniu' hidden='{{!niujudge}}'>开始补货</view>
+  <view class='completetest' bindtap='completeniu' hidden='{{niujudge}}'>补货完成</view>
+</view>
+

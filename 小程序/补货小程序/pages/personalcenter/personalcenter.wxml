@@ -1,0 +1,38 @@
+<!--pages/personalcenter/personalcenter.wxml-->
+<view class='mywrapbj'>
+    <button class='niudj' hidden='{{userInfojudge}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 去提现</button>
+
+    <image class='pictopbj' src='../../img/userbj.png'></image>
+    <image class='touxiang' src='{{userInfo.avatarUrl}}'></image>
+    <text class='ningchegn'>{{userInfo.nickName}}</text>
+   
+</view>
+<view class='replenishment' hidden='{{!userInfojudge}}'>
+  <view class='leftblok'>
+     <text class='iconfont iconicon'></text><text>我的补货费</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou' bindtap='linkmycome'></text>
+  </view>
+</view>
+
+<!-- 导航 -->
+<view class='tabbarwrap'>
+   <navigator class='tabitem' url="/pages/login/login" redirect>
+      <text class='iconfont iconshouye'></text>
+      <view class='tabitemms'>首页</view>
+   </navigator>
+   <navigator class='tabitem' url="" redirect>
+      <text class='iconfont iconshouye'></text>
+      <view class='tabitemms'>配送</view>
+   </navigator>
+   <navigator class='tabitem active' url="" redirect>
+      <text class='iconfont iconpeisong'></text> 
+      <view class='tabitemms'>我的</view>
+   </navigator>
+</view>
+
+
+
+
+

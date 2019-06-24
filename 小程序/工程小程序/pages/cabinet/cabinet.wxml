@@ -1,0 +1,36 @@
+<!--pages/cabinet/cabinet.wxml-->
+<view class='wraplist'>
+  <view class='listitem' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+    <!-- <view wx:if="{{item.checked==1}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+     </view>
+     <view wx:elif="{{item.checked==2}}" class='tuwen'>
+        <view class='mongolia'></view>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+     </view>
+     <view wx:else class='tuwen'>
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view> -->
+  </view>
+</view>
+<view class='cabinettext'>
+  点击上述按钮，对应的柜子打开，关闭柜子，则 对应柜子测试完成，待全部柜子测试完成，点击 测试完成，测试结束。
+</view>
+
+<view class='completetest' bindtap='completetest'>测试完成</view>

@@ -1,0 +1,12 @@
+<!--pages/conplatedelivered/conplatedelivered.wxml-->
+<view class='recordwrap'>
+   <view class='recorditem' wx:for="{{10}}" wx:key>
+     <text class='recordtitle'>2019-05-29 12:00:30</text>
+     <text class='countzj'>共3件</text>
+     <text class='roomcode'>03-1312</text>
+   </view>
+</view>
+
+
+
+

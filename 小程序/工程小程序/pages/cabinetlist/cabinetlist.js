@@ -1,0 +1,612 @@
+// pages/cabinetlist/cabinetlist.js
+const app = getApp()
+let apiUrl = app.getApiUrl();
+let hotelid = app.globalData.hotelId;
+let passid = app.globalData.passId;
+let token = app.globalData.token
+
+
+function alertViewWithCancel(title = "提示", content = "消息提示", confirm) {
+  wx.showModal({
+    title: title,
+    content: content,
+    confirmText: "删除",
+    confirmColor: "#e32121",
+    showCancel: true,
+    cancelColor:"#ff9700",
+    success: function (res) {
+      if (res.confirm) {
+        confirm();
+      }
+    }
+  });
+}
+function alerttishi(title = "提示", content = "消息提示", confirm) {
+  wx.showModal({
+    title: title,
+    content: content,
+    confirmText: "确定",
+    cancelColor: "#ff9700",
+    confirmColor: "#ff9700",
+    showCancel: false,
+    success: function (res) {
+      if (res.confirm) {
+        confirm();
+      }
+    }
+  });
+}
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    cabinetlistdata:[],  //柜子列表数据
+    repairlistdata: [],  //报修列表数据
+    replacelistdata: [],  //更换列表数据
+    hotelfloor:null,   //酒店楼层
+    housenumber:null,   //房间号
+    cabinetid:null,   //柜子id
+    cabinetindex:null,  //柜子索引
+    pagesize:20,      //每页展示条数
+    nowpage:1,        //默认当前页 
+    repairpage:1,    //报修单页码
+    replacepage: 1,    //更换柜子页码
+    sizejudge:0, 
+    sizejudge2: 0,
+    sizejudge3: 0, 
+    hotelid:null,   //酒店id  
+    gaodu:600,    
+    navarray:[true,false,false],
+    navtext: ["安装列表","报修单","更换柜子"],
+    navindex:0, //导航索引
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let hotelId = wx.getStorageSync("hotelid")
+    let that=this;
+    that.setData({
+      hotelid: hotelId
+    })
+    that.getData();
+    that.getrepairdatalist()
+    that.getreplacedatalist()
+    
+    if (options.navindex==1){
+      let index = options.navindex
+      let nownavarray = [false, false,false];
+      nownavarray[index] = true
+      that.setData({
+        navindex:1,
+        navarray: nownavarray,
+      })
+    }
+  },
+
+//获取安装列表
+
+  getData:function(){
+    let that=this;
+    let tempDataSet=[];
+    
+    
+    wx.request({
+      url: apiUrl + '/cabinet',
+      data: {
+        hotelId: that.data.hotelid,
+        pageSize: 20,
+        pageNo: that.data.nowpage
+      },
+      header: {
+        'content-type': 'application/json',
+        'Authorization': wx.getStorageSync("Token")
+      },
+      method: "GET",
+      success: function (res) {
+        if (res.data.code == 0) {
+          wx.showLoading({
+            title: "加载中",
+            duration: 500,
+          })
+
+          if (res.data.data.records.length < 20 && res.data.data.records.length > 0) {
+            that.setData({
+              sizejudge: 0
+            })
+          } else {
+            that.setData({
+              sizejudge: 1
+            })
+          }
+          tempDataSet = that.data.cabinetlistdata.concat(res.data.data.records)
+          that.setData({
+            cabinetlistdata: tempDataSet
+          })
+        }
+      },
+      fail: function (error) {
+        alerttishi("提示", error, function () {
+        });
+      }
+    });
+
+  },
+
+  // 获取报修单列表
+  
+  getrepairdatalist:function(){
+    let that=this;
+    let tempDataSet = [];
+    wx.request({
+      url: apiUrl + '/mal',
+      data: {
+        pageSize: 20,
+        pageNo: that.data.repairpage,
+        hOrgId: wx.getStorageSync("passid"),
+        // horgId: "e06c6ee6",
+        dealStatus:0,
+      },
+      header: {
+        'content-type': 'application/json',
+        'Authorization': wx.getStorageSync("Token")
+      },
+      method: "GET",
+      success: function (res) {
+        if (res.data.code == 0) {
+          wx.showLoading({
+            title: "加载中",
+            duration: 500,
+          })
+
+          if (res.data.data.records.length < 20 && res.data.data.records.length > 0) {
+            that.setData({
+              sizejudge2: 0
+            })
+          } else {
+            that.setData({
+              sizejudge2: 1
+            })
+          }
+          tempDataSet = that.data.repairlistdata.concat(res.data.data.records)
+          that.setData({
+            repairlistdata: tempDataSet
+          })
+        }
+      },
+      fail: function (error) {
+        alerttishi("提示", error, function () {
+        });
+      }
+    });
+  },
+
+  // 获取更换柜子列表
+
+  getreplacedatalist: function () {
+    let that = this;
+    let tempDataSet = [];
+    wx.request({
+      url: apiUrl + '/cab/replace',
+      data: {
+        pageSize: 20,
+        pageNo: that.data.replacepage,
+        hotelOrgId:passid,
+      },
+      header: {
+        'content-type': 'application/json',
+        'Authorization': wx.getStorageSync("Token")
+      },
+      method: "GET",
+      success: function (res) {
+        if (res.data.code == 0) {
+          wx.showLoading({
+            title: "加载中",
+            duration: 500,
+          })
+
+          if (res.data.data.records.length < 20 && res.data.data.records.length > 0) {
+            that.setData({
+              sizejudge3: 0
+            })
+          } else {
+            that.setData({
+              sizejudge3: 1
+            })
+          }
+          tempDataSet = that.data.replacelistdata.concat(res.data.data.records)
+          that.setData({
+            replacelistdata: tempDataSet
+          })
+        }
+      },
+      fail: function (error) {
+        alerttishi("提示", error, function () {
+        });
+      }
+    });
+  },
+
+ //更换柜子
+  replacehuan:function(e){
+    let cabinetstatus=e.currentTarget.dataset['replacestatus']
+    let cabinetid = e.currentTarget.dataset.id
+    if (cabinetstatus==1){
+      wx.showToast({
+        title: '请先清空货物!',
+        icon: 'none',
+        duration: 1200
+      });
+      return false;
+    } else if (cabinetstatus==2){
+      wx.scanCode({
+        success(res) {
+          let nowsaomadata = res.result
+          // let nowsaomadata = JSON.parse(nowsaomadata)
+          wx.request({
+            url: apiUrl + '/cabinet/cabCode',
+            header: {
+              'content-type': 'application/json',
+              'Authorization': wx.getStorageSync("Token")
+            },
+            method: "GET",
+            dataType: 'json',
+            data: {
+              cabCode: nowsaomadata,
+              cabId: cabinetid
+            },
+            success: function (res) {
+               if (res.data.data == 2) {
+              alerttishi("提示","柜子已被使用", function () {
+              });
+            }
+            if (res.data.data == 0) {
+              wx.navigateTo({
+                url: '../bindcabinetedit/bindcabinetedit?guizicode=' + nowsaomadata + '&guiziid=' + cabinetid + '&panudan=' + true
+              })
+            }
+            if (res.data.data == 1){
+              wx.navigateTo({
+                url: '../bindcabinetedit/bindcabinetedit?guizicode=' + nowsaomadata + '&guiziid=' + cabinetid + '&panudan='+false
+              })
+            }
+
+            },
+            fail: function () {
+              console.log("error!!!!");
+            }
+          })
+
+        },
+        fail: function (err) {
+          console.log(err);
+        }
+      })
+    }
+  },
+
+  checkdetail:function(e){
+    wx.redirectTo({
+       url: '../lookdetail/lookdetail?id=' + e.currentTarget.dataset.id,
+     })
+  },
+
+  repairrecord:function(){
+    wx.navigateTo({
+      url: '../repairsuccess/repairsuccess',
+    })
+  },
+  replacerecord: function () {
+    wx.navigateTo({
+      url: '../replacerecord/replacerecord',
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    let that=this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.windowHeight)
+        //设置map高度，根据当前设备宽高满屏显示
+        that.setData({
+          gaodu: res.windowHeight*2-300
+        })
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+   
+  },
+
+  downLoad:function(){
+    let that = this;
+    let page = that.data.nowpage;
+    let page2=that.data.repairpage;
+    let page3 = that.data.replacepage;
+    
+    if (that.data.sizejudge) {
+      that.setData({
+        nowpage: ++page,
+      })
+      that.getData();
+    }
+
+    if (that.data.sizejudge2) {
+      that.setData({
+        repairpage: ++page2
+      })
+      that.getrepairdatalist();
+    }
+
+    if (that.data.sizejudge3) {
+      that.setData({
+        replacepage: ++page3
+      })
+      that.getreplacedatalist();
+    }
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+  showModal(e) {
+    let that=this;
+
+    this.setData({
+      modalName: e.currentTarget.dataset.target,
+      hotelfloor: e.currentTarget.dataset.floor,
+      housenumber: e.currentTarget.dataset.roomid,
+      cabinetid: e.currentTarget.dataset.id,
+      cabinetindex: e.currentTarget.dataset.index
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+  yinying:function(){
+    this.setData({
+      modalName: null
+    })
+  },
+  showxian:function(e){
+
+  },
+
+  //删除柜子
+  delevent:function(e){
+    let that=this;
+
+    alertViewWithCancel("是否删除", "酒店楼层" + that.data.hotelfloor + " / 房间号" + that.data.housenumber + "信息?", function () {
+      wx.request({
+        url: apiUrl + '/cabinet/' + that.data.cabinetid,
+        header: {
+          'content-type': 'application/json',
+          'Authorization': wx.getStorageSync("Token")
+        },
+        method: "DELETE",
+        success: function (res) {
+          if (res.data.code == 0) {
+            let nowcabinetlistdata = that.data.cabinetlistdata
+            for (var i = 0; i < nowcabinetlistdata.length;i++){
+              if (i == that.data.cabinetindex){
+                nowcabinetlistdata.splice(that.data.cabinetindex,1)
+               }
+            }
+            wx.showToast({
+              title: '操作成功',
+              icon: 'none',
+              duration: 1200
+            });
+            that.setData({
+              cabinetlistdata: nowcabinetlistdata,
+              modalName: null
+            })
+            
+          }else{
+            alerttishi("提示", res.data.msg, function () {
+            });
+          }
+        },
+        fail: function (error) {
+          alerttishi("提示", error, function () {
+          });
+        }
+      });
+
+    });
+  },
+
+  //编辑柜子
+  editevent:function(e){
+   let that=this;
+    let cabinetid=e.currentTarget.dataset.id
+    wx.scanCode({
+      success(res) {
+        let nowsaomadata = res.result
+        // let nowsaomadata = JSON.parse(nowsaomadata)
+        wx.request({
+          url: apiUrl + '/cabinet/cabCode',
+          header: {
+            'content-type': 'application/json',
+            'Authorization': wx.getStorageSync("Token")
+          },
+          method: "GET",
+          dataType: 'json',
+          data: {
+            cabCode: nowsaomadata,
+            cabId: cabinetid
+          },
+          success: function (res) {
+            console.log(res.data.message)
+            if (res.data.data == 2) {
+              alerttishi("提示","柜子已被使用", function () {
+              });
+            }
+            if (res.data.data == 0) {
+              wx.navigateTo({
+                url: '../bindcabinetedit/bindcabinetedit?guizicode=' + nowsaomadata + '&guiziid=' + cabinetid + '&panudan=' + true
+              })
+            }
+            if (res.data.data == 1){
+              wx.navigateTo({
+                url: '../bindcabinetedit/bindcabinetedit?guizicode=' + nowsaomadata + '&guiziid=' + cabinetid + '&panudan='+false
+              })
+            }
+          },
+          fail: function () {
+            console.log("error!!!!");
+          }
+        })
+
+      },
+      fail: function (err) {
+        console.log(err);
+      }
+    })
+  },
+
+
+  //编辑柜子
+  // editevent:function(e){
+  //   let that=this;
+  //   wx.scanCode({
+  //     success(res) {
+  //       let nowsaomadata = res.result
+  //       // let nowsaomadata = JSON.parse(nowsaomadata)
+  //       wx.request({
+  //         url: apiUrl + '/cabinet/cabCode',
+  //         header: {
+  //           'content-type': 'application/json',
+  //           'Authorization': wx.getStorageSync("Token")
+  //         },
+  //         method: "GET",
+  //         dataType: 'json',
+  //         data: {
+  //           cabCode: nowsaomadata,
+  //           cabId: ""
+  //         },
+  //         success: function (res) {
+  //           console.log(res.data.message)
+  //           if (res.data.status == 404) {
+  //             alertViewWithCancel("提示", res.data.message, function () {
+  //             });
+  //           }
+  //           if (res.data.data == 0 || res.data.data == 1) {
+  //             wx.navigateTo({
+  //               url: '../bindcabinetedit/bindcabinetedit?guizicode=' + nowsaomadata
+  //             })
+  //           }
+
+  //         },
+  //         fail: function () {
+  //           console.log("error!!!!");
+  //         }
+  //       })
+
+  //     },
+  //     fail: function (err) {
+  //       console.log(err);
+  //     }
+  //   })
+  //   // wx.navigateTo({
+  //   //   url: "../bindcabinetedit/bindcabinetedit?cabinetid=" + that.data.cabinetid,
+  //   // })
+  // },
+
+  continueniu:function(){
+    let that = this;
+    wx.scanCode({
+      success(res) {
+        let nowsaomadata = res.result
+        // let nowsaomadata = JSON.parse(nowsaomadata)
+        wx.request({
+          url: apiUrl + '/cabinet/cabCode',
+          header: {
+            'content-type': 'application/json',
+            'Authorization': wx.getStorageSync("Token")
+          },
+          method: "GET",
+          dataType: 'json',
+          data: {
+            cabCode: nowsaomadata,
+            cabId: ""
+          },
+          success: function (res) {
+            console.log(res.data.message)
+            if (res.data.data == 2) {
+              alerttishi("提示", "柜子已被使用", function () {
+              });
+            }
+            if (res.data.data == 0 || res.data.data == 1) {
+              wx.navigateTo({
+                url: '../bindcabinet/bindcabinet?guizicode=' + nowsaomadata
+              })
+            }
+
+          },
+          fail: function () {
+            console.log("error!!!!");
+          }
+        })
+
+      },
+      fail: function (err) {
+        console.log(err);
+      }
+    })
+  },
+  //导航
+  navevent:function(e){
+    let that=this;
+    let index = e.currentTarget.dataset.index;
+    let nownavarray = [false,false,false];
+    nownavarray[index]=true
+    that.setData({
+      navarray: nownavarray,
+      navindex: index
+    })
+  },
+})

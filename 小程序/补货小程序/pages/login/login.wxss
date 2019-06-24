@@ -1,0 +1,35 @@
+/* pages/login/login.wxss */
+page{background: #ff9700;padding: 0 4%;box-sizing: border-box;}
+.wrap{width: 100%;height: 1013rpx;background: #fff;margin-top: 70rpx;
+border-radius: 20rpx;overflow: hidden;text-align: center;padding: 0 5%;
+box-sizing: border-box;}
+.loginname{font-size: 60rpx;color: #FF9700;text-align: center;
+margin-top: 108rpx;margin-bottom: 26rpx;}
+.logintest{text-align: center;color: #999;font-size: 30rpx;
+position: relative;margin-bottom: 106rpx;overflow: hidden;display: inline-block;}
+text.logintest::before{position: absolute;left: -125rpx;top: 20rpx;
+content: "";height: 2rpx;width: 109rpx;background: #999;}
+text.logintest::after{position: absolute;right: -125rpx;top: 20rpx;
+content: "";height: 2rpx;width: 109rpx;background: #999;}
+.hangitem{margin-bottom: 40rpx;overflow: hidden;position: relative;}
+.hangitem input{font-size: 32rpx;color: #333;border: 1px solid #e4e4e4;
+height: 86rpx;border-radius: 10rpx;text-align: left;padding-left: 88rpx;box-sizing: border-box;background: #f3f3f3;}
+.iconlock{position: absolute;left: 39rpx;top: 26rpx;color: #cecece;}
+.iconwode{position: absolute;left: 39rpx;top: 26rpx;color: #cecece;}
+.forgetwrap{text-align: right;}
+.forgetwrap .forgetpassword{font-size: 28rpx;color: #999;}
+.loginniu{width: 100%;height: 80rpx;background: #ff9700;margin-top: 60rpx;
+color: #fff;line-height: 80rpx;font-size: 32rpx;border-radius: 5rpx;}
+
+
+/* 导航 */
+.tabbarwrap{width: 100%;padding:4rpx 4%;box-sizing: border-box;
+overflow: hidden;position: fixed;bottom: 0;left: 0;
+display: flex;background: #fff;}
+.tabbarwrap .tabitem{flex-grow:1;text-align: center;vertical-align: bottom;
+color: #9c9c9c;}
+.tabitem .iconfont{font-size: 58rpx;}
+.tabbarwrap .tabitem .tabitemms{font-size: 28rpx;position: relative;top: -5rpx;}
+.tabbarwrap .active{color:#ff9100;}
+
+ 

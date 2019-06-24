@@ -1,0 +1,37 @@
+{
+  "pages": [
+    
+    "pages/login/login",
+    "pages/checkdelivered/checkdelivered",
+    "pages/delivereddetail/delivereddetail",
+    "pages/conplatedelivered/conplatedelivered",
+    
+    "pages/deliveredlist/deliveredlist",
+    "pages/housematterlist/housematterlist",
+    
+    
+    "pages/buhuolist/buhuolist",
+    
+    "pages/myincome/myincome",
+    "pages/getcashrecord/getcashrecord",
+    "pages/getcash/getcash",
+    "pages/personalcenter/personalcenter",
+    "pages/user/user",
+    "pages/getcashsuccess/getcashsuccess",
+    "pages/index/index",
+    "pages/housebulist/housebulist",
+    "pages/logs/logs"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

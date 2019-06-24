@@ -1,0 +1,14 @@
+/* pages/bindcabinet/bindcabinet.wxss */
+page{padding: 0 4%;border-top: 1px solid #e5e5e5;box-sizing: border-box;padding-bottom: 50rpx;}
+.hangtiem{overflow: hidden;}
+.hangtiem .titlename{font-size: 36rpx;color: #ff9700;padding: 30rpx 0;
+border-bottom:1px solid #e5e5e5;}
+.hangtiem .iconfont{margin-right: 15rpx;}
+.inputwk{overflow: hidden;padding: 30rpx 0;}
+.hangtiem .iteminput{font-size: 32rpx;height: 30rpx;
+line-height: 30rpx;}
+
+.wraptesting{width: 100%;box-sizing: border-box;
+overflow: hidden;margin-bottom: 30rpx;margin-top: 30rpx;}
+.wraptesting .testingniu{width: 100%;height: 88rpx;line-height: 88rpx;text-align: center;
+background: #ff9700;color: #fff;font-size: 32rpx;border-radius: 10rpx;}

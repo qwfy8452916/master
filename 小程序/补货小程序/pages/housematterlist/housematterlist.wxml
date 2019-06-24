@@ -1,0 +1,66 @@
+<!--pages/housematterlist/housematterlist.wxml-->
+<view class='wrap'>
+  <view class='floorselect' bindtap='selectlouceng' data-type="1">
+    <text class='floortitle'>请选择楼层</text>
+    <text class='iconfont icon-wangyou'></text>
+  </view>
+
+  <!-- <view class='typeselect' bindtap='selectlouceng' data-type="2">
+    <text class='typetitle'>请选择类型</text><text class='typetitle2'>补货</text>
+    <text class='iconfont icon-wangyou'></text>
+  </view> -->
+
+<scroll-view style='height:800rpx;' scroll-y>
+  <view class='hejiwrap' wx:if="{{housedata!=''}}">
+    <view class='bgcolor'></view>
+    <view class='floornumber'>{{floorlc}}
+      <text>L</text>
+    </view>
+
+    <view class='houseselect' wx:for="{{housedata}}" wx:key>
+      <text class='housetitle'>{{item.roomFloor}}-{{item.roomCode}}</text>
+      <text class='iconfont icon-wangyou' bindtap='housedetail' data-roomcode="{{item.roomCode}}"></text>
+    </view>
+
+
+    <view class='totalwk'>
+      <text class='totaltitle'>合计</text>
+      <block wx:for="{{floortotal}}" wx:key>
+        {{item.prodName}}{{item.replCount}}个
+      </block>
+    </view>
+
+  </view>
+ </scroll-view>
+</view>
+
+<view class='yinying' hidden='{{isHide}}' bindtap='yinying'></view>
+<view class="selectfloorbox {{isHide?'transtion-off':'transtion-on'}}">
+
+ <view hidden='{{!showtype}}'>
+  <view class='floormodel'>
+    <text class='selectfloor'>请选择楼层</text>
+    <text class='iconfont icon-' bindtap='yinying'></text>
+  </view>
+  <view class='floorcontent'>
+    <view class='flooritem {{floordataactive[index]?"flooractivity":""}}' bindtap='flooritem' wx:for="{{floordata}}" data-index="{{index}}" data-floor="{{item.roomFloor}}" wx:key>{{item.roomFloor}}</view>
+  </view>
+</view>
+
+<!-- <view hidden='{{showtype}}'>
+<view class='floormodel'>
+    <text class='selectfloor'>请选择类型</text>
+    <text class='iconfont icon-' bindtap='yinying'></text>
+  </view>
+  
+  <view class='typewrap'>
+    <view class='typeitem {{typedataactive[index]?"flooractivity":""}}' wx:for="{{typedata}}" wx:key bindtap='typeitem' data-index="{{index}}">{{item}}</view>
+  </view>
+
+</view> -->
+
+</view>
+
+<view class='wraptesting'>
+  <view class='testingniu' bindtap='testingniu'>扫码</view>
+</view>

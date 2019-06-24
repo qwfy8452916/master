@@ -1,0 +1,8 @@
+/* pages/conplatedelivered/conplatedelivered.wxss */
+page{border-top: 1px solid #e5e5e5;}
+.recordwrap{overflow: hidden;}
+.recordwrap .recorditem{overflow: hidden;border-bottom:1px solid #e5e5e5;
+padding: 30rpx 4%;box-sizing: border-box;font-size: 32rpx;color: #999;}
+.recorditem .recordtitle{float: left;}
+.recorditem .countzj{float: right;font-size: 28rpx;color: #10bbbb;}
+.recorditem .roomcode{float: right;margin-right:25rpx;font-size: 28rpx;}

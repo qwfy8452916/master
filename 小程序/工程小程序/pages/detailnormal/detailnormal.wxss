@@ -1,0 +1,36 @@
+
+page{border-top: 1px solid #e5e5e5;}
+.detailwrap{overflow: hidden;}
+.detailwrap .title{width: 100%;padding: 20rpx 4%;box-sizing: border-box;
+font-size: 32rpx;overflow: hidden;margin-top: 30rpx;border-bottom: 1px solid #e5e5e5;
+}
+.title .title-info{float: left;color: #333;}
+.title .title-status{float: right;color: #ff9700;}
+
+.guzhanginfo{padding: 30rpx 0 30rpx 4%;border-bottom: 1px solid #e5e5e5;
+overflow: hidden;}
+.guzhanginfo .latticenum{display: inline-block;float: left;color: #999;
+font-size:84rpx;padding: 15rpx 42rpx;border: 4rpx solid #999;}
+.guzhanginfo .latticetype{display: inline-block;float: left;margin-left: 30rpx;
+font-size: 24rpx;color: #999;}
+.latticetype .guztype{font-size: 32rpx;}
+.guztype .guztypems{margin-left: 25rpx;}
+.guzhanginfo .applicant{margin-top: 25rpx;}
+.applicant .guztypems{margin-left: 25rpx;}
+
+
+.guzhanginfo .repairtime{margin-top: 10rpx;}
+.repairtime .guztypems{margin-left: 25rpx;}
+
+.handlewrap{overflow: hidden;padding: 30rpx 4% 0 4%;
+border-bottom: 1px solid #e5e5e5;margin-top: 45rpx;}
+.handlewrap .hangitem{margin-bottom: 25rpx;font-size:32rpx;color: #333;}
+.hangitem .hangitemtitle{color: #999;width: 130rpx;display: inline-block;}
+.hangitem .hangitemname{margin-left: 20rpx;display: inline-block;}
+
+.chuliwrap{overflow: hidden;padding: 25rpx 4%;}
+.chuliman{font-size: 24rpx;color: #999;margin-bottom: 15rpx;}
+.chulimantitle{margin-right: 5rpx;}
+.abnormalitem{overflow: hidden;position: relative;}
+.abnormalitem .handlelogo{width: 194rpx;height: 128rpx;position: absolute;
+right: 30rpx;bottom: 40rpx;}

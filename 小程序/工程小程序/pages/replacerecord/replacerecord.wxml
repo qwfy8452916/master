@@ -1,0 +1,21 @@
+<!--pages/replacerecord/replacerecord.wxml-->
+<scroll-view class='wraplist' style='height:{{gaodu}}rpx'  scroll-y bindscrolltolower="downLoad">
+<view class='wrap' wx:if="{{replarececorddata.length>0}}">
+   <view class='huanitem' wx:for="{{replarececorddata}}" wx:key>
+      <view class='huanitemlef'>
+         <view>酒店楼层 {{item.roomFloor}} / 房间号 {{item.roomCode}}</view>
+         <view class='datetime'>{{item.dealAt}}</view>
+      </view>
+      <view class='huanitemrig'>
+        <text wx:if="{{item.replaceStatus==0}}">待处理</text>
+        <text wx:elif="{{item.replaceStatus==1}}">待取货</text>
+        <text wx:elif="{{item.replaceStatus==2}}">待更换</text>
+        <text wx:else="{{item.replaceStatus==3}}">已更换</text>
+      </view>
+   </view>
+</view>
+<view wx:else>
+         <image class='nodataimg' src='../../img/waiterlogo.png'></image>
+         <view class='nodatams'>暂无更换柜子记录哦~</view>
+</view>
+</scroll-view>

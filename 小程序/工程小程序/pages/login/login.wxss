@@ -1,0 +1,30 @@
+/* pages/login/login.wxss */
+page{background: #fff;padding: 0;box-sizing: border-box;}
+.wrap{width: 100%;height: auto;background: #fff;margin-top: 70rpx;
+border-radius: 20rpx;overflow: hidden;text-align: center;padding: 0 5%;
+box-sizing: border-box;}
+.loginname{text-align: center;margin: 0 auto;background: #999;overflow: hidden;
+margin-top: 100rpx;margin-bottom: 90 rpx;width: 350rpx;height: 200rpx;position: relative;}
+.loginname image{height: 100%;}
+.loginname .iconfont{position: absolute;top: 0;right: 5rpx;color: #999;padding: 10rpx 20rpx;}
+.logintest{text-align: center;color: #999;font-size: 30rpx;margin-top:90rpx;
+position: relative;margin-bottom: 50rpx;display: inline-block;}
+.logintest::after{content: "";width: 109rpx;height: 2rpx;background: #999;
+position: absolute;left: -128 rpx;top: 0;}
+
+text.logintest::before{position: absolute;left: -125rpx;top: 20rpx;
+content: "";height: 2rpx;width: 109rpx;background: #999;}
+text.logintest::after{position: absolute;right: -125rpx;top: 20rpx;
+content: "";height: 2rpx;width: 109rpx;background: #999;}
+.hangitem{margin-bottom: 40rpx;overflow: hidden;position: relative;}
+.hangitem input{font-size: 32rpx;color: #333;border: 1px solid #e4e4e4;
+height: 86rpx;border-radius: 10rpx;text-align: left;padding-left: 88rpx;box-sizing: border-box;background: #f3f3f3;}
+.iconlock{position: absolute;left: 39rpx;top: 26rpx;color: #cecece;}
+.iconwode{position: absolute;left: 39rpx;top: 26rpx;color: #cecece;}
+.forgetwrap{text-align: right;}
+.forgetwrap .forgetpassword{font-size: 28rpx;color: #999;}
+.loginniu{width: 100%;height: 80rpx;background: #ff9700;margin-top: 60rpx;
+color: #fff;line-height: 80rpx;font-size: 32rpx;border-radius: 5rpx;}
+
+.botback{width: 100%;overflow: hidden;margin-top: 130rpx;}
+.botback image{height: 152rpx;width: 100%;vertical-align: top;}

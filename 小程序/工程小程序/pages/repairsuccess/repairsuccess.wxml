@@ -1,0 +1,22 @@
+<!--pages/repairsuccess/repairsuccess.wxml-->
+<scroll-view class='wraplist' style='height:{{gaodu}}rpx'  scroll-y bindscrolltolower="downLoad">
+<view wx:if="{{repairlistdata.length>0}}">
+  <view class='repairhangitem' wx:for="{{repairlistdata}}" wx:key>
+              <text class='iconfont iconwangyou' bindtap='handlerecord' data-id="{{item.id}}"></text>
+              <view class='miaosone'>
+                <text class='xuhao'>{{item.roomFloor}}-{{item.roomCode}}-{{item.latticeCode}}柜</text>
+              </view>
+              <view class='miaostwo'><text class='iconfont iconchenggong'></text>
+               <text wx:if="{{item.malType==2}}">柜门打不开</text>
+               <text wx:if="{{item.malType==1}}">扫码失败</text>
+               <text wx:if="{{item.malType==3}}">锁具异常</text>
+               <text wx:if="{{item.malType==4}}">其他</text>
+               <text wx:if="{{item.malType==0}}">初始类型</text>
+              </view>
+        </view>
+     </view>
+     <view wx:else>
+         <image class='nodataimg' src='../../img/waiterlogo.png'></image>
+         <view class='nodatams'>暂无记录哦~</view>
+      </view>
+</scroll-view>

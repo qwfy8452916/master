@@ -1,0 +1,26 @@
+<!--pages/login/login.wxml-->
+<view class='wrap'>
+  <view class='loginname' bindtap='hotel'>
+    <text class='iconfont iconweb-icon-'></text>
+    <image src='../../img/waiterlogo.png'></image>
+  </view>
+  <text class='logintest'>安装检测用户登录</text>
+  <view class='hangitem'>
+    <text class='iconfont iconwode'></text>
+    <input bindinput='Username' class='' placeholder='请输入用户名' placeholder-style='color:#cecece'></input>
+  </view>
+  <view class='hangitem'>
+    <text class='iconfont iconlock'></text>
+    <input bindinput='Password' class='' password="true" placeholder='请输入密码' placeholder-style='color:#cecece'></input>
+  </view>
+  <view class='forgetwrap'>
+     <text class='forgetpassword' bindtap='forgetpassword'>忘记密码？</text>
+  </view>
+  <view class='loginniu' bindtap='loginniu'>登录</view>
+  <!-- <view class='' bindtap='getwifi'>获取wifi</view>
+  <view class='loginniu' bindtap='startWifi'>连接</view> -->
+</view>
+
+<view class='botback'> 
+   <image src='../../img/loginbj.png'></image>
+</view>
