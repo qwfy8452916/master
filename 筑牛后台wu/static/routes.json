@@ -1,0 +1,34 @@
+{
+    "status":1,
+    "msg":"ok",
+    "data":{
+        "list":
+            [
+                {
+                    "children": [
+                        {
+                            "hidden": "true",
+                            "powerkey": "dz_add",
+                            "name": "对账单导入",
+                            "path": "/dz_add" 
+                        },
+                        {   
+                            "children":[{},{},{},{}],
+                            "hasChild": "true",
+                            "powerkey": "dz_tree_wsm",
+                            "name": "微神马",
+                            "path": "/wsm"},
+                        {   "hidden": "true",
+                            "powerkey": "dz_result",
+                            "name": "对账结果",
+                            "path": "dz_result"}],
+                    "name":"对账查询管理",
+                    "iconCls": "el-icon-menu",
+                    "powerkey": "dz_tree_root",
+                    "path": "/",
+                    "hidden": true
+                }
+            ],
+        "count":2
+    }
+}

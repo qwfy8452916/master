@@ -1,0 +1,24 @@
+.theme-dialog .el-dialog__header {
+    background-color: #FF9120;
+    color: #fff;
+    padding: 10px 15px 10px
+  }
+  
+  .theme-dialog .el-dialog__header > span, .theme-dialog .el-dialog__header i {
+    color: #fff
+  }
+  
+  .el-table__row.expanded + tr, .el-table__row.expanded + tr > td {
+    background-color: #f5f7fa!important
+  }
+  
+  .theme-dialog .el-dialog__footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 10px 15px 10px
+  }
+  
+  .el-submenu__title, .el-submenu .el-menu-item {
+    height: 46px;
+    line-height: 46px;
+  }
+  
