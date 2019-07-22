@@ -1,0 +1,21 @@
+<view class='bgfff success-top'>
+  <image src='../../img/success-img2.png' class='iconimg'></image>
+  <view class='font-text1'>提交成功！</view>
+  <view class='font-text2'>您的商品正在整装待发...</view>
+  <view class='successbtnbox'>
+    <view class='successbtn successbtn1' bindtap='backfun'>返回首页</view>
+    <view class='successbtn successbtn2' bindtap='orderdetails'>查看详情</view>
+  </view>
+</view>
+<view class='bgfff'>
+  <view class='paddAll20 btbox'>其他商品推荐</view>
+  <view class='paddAll20 recommendbox'>
+    <block wx:for="{{commoditylist}}" wx:for-item="item" wx:key="index">
+      <view class='recommend-box' bindtap='details' data-hotelProdId='{{item.hotelProdId}}'>
+        <image src='{{item.prodLogoUrl}}' class='recommend-img' mode='aspectFill'></image>
+        <text class='recommend-name'>{{item.prodShowName}}</text>
+        <text class='recommend-price'>￥{{item.prodRetailPrice}}</text>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,159 @@
+.mgB30{
+  margin-bottom: 30rpx;
+}
+.ordertype{
+  padding-top: 15rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.ordertype .ordertype-btn{
+  width: 20%;
+  text-align: center;
+  font-size: 35rpx;
+  color: #333;
+  border-bottom: 2px solid #f6f6f6;
+  line-height: 90rpx;
+}
+.ordertype .ordertype-active{
+  color: #FF9700;
+  border-color: #FF9700;
+}
+.borderT{
+  box-sizing: border-box;
+  border-top: 1px solid #ccc;
+}
+.datanull-font{
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+  margin-top: 200rpx;
+}
+.iconimg1{
+  display: inline-block;
+  width: 25%;
+  margin-bottom: 20rpx;
+}
+.datanull-font text{
+  display: block;
+  width: 100%;
+}
+
+.paddAll{
+  padding: 20rpx 3%;
+  background: #fff;
+}
+.typelist{
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+}
+.typebtn{
+  display: inline-block;
+  padding: 0 25rpx;
+  font-size: 35rpx;
+  color: #999999;
+  background: #F9F6F2;
+  line-height: 70rpx;
+  margin-right: 30rpx;
+  border-radius: 5px;
+  border: 1px solid #F9F6F2;
+  box-sizing: border-box;
+}
+.typelist .typebtn:last-child{
+  margin-right: 0;
+}
+.typeactive{
+  background: #fff;
+  border-color: #FF9700;
+  color: #FF9700;
+}
+.borderT{
+  box-sizing: border-box;
+  border-top: 1px solid #ccc;
+}
+.borderB{
+  box-sizing: border-box;
+  border-bottom: 1px solid #f2f2f2;
+}
+.orderlist{
+  margin-bottom: 25rpx;
+}
+.orderlistbox{
+  padding: 20rpx 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.font-name{
+  font-size: 35rpx;
+  color: #999999;
+}
+.font-name2{
+  font-size: 30rpx;
+  color: #999999;
+}
+.font-color1{
+  color: #10BBBB;
+}
+.font-color2{
+  color: #FF9700;
+}
+.font-color3{
+  color: #EE1E1E;
+}
+.font-color4{
+  color: #999999;
+}
+.font-color5{
+  color: #333333;
+}
+.btnbox{
+  width: 25%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  text-align: center;
+  font-size: 35rpx;
+  color: #fff;
+  background: #FF9700;
+  border-radius: 5px;
+}
+.orderlistbox-c{
+  padding: 20rpx 3%;
+  border-bottom: 1px solid #f2f2f2;
+}
+.contentbox1{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.spimg{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.spimg-mgR{
+  margin-right: 20rpx;
+}
+.typelist .spimg-mgR:last-child{
+  margin-right: 0;
+}
+.font-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 62%;
+  height: 150rpx;
+}
+.font-overflow{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.font-width{
+  width: 10%;
+  text-align: right;
+}

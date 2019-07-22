@@ -1,0 +1,80 @@
+.paysuccess-top{
+  text-align: center;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+}
+.timebox{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto 20rpx;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+}
+.timebox .timebox-view{
+  width: 100%;
+}
+.paysuccess-text1,.paysuccess-text2{
+  display: block;
+}
+.paysuccess-text1{
+  font-size: 0.9rem;
+  color: #E21B35;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.paysuccess-text2{
+  font-size: 0.75rem;
+  color: #333;
+  margin-bottom: 50rpx;
+}
+.shoppingbtn{
+  width: 30%;
+  margin:0 auto;
+  background: #FF9700;
+  font-size: 0.7rem;
+  color: #fff;
+  line-height: 1.8rem;
+  border-radius: 5px;
+}
+.order-box{
+  background: #fff;
+  padding: 20rpx 5%;
+  margin-bottom: 20rpx;
+}
+.order-box-top{
+  font-size: 0.7rem;
+  color: #333;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20rpx;
+}
+.orderdetails{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.orderdetails .orderdetails-text{
+  width: 45%;
+}
+.orderdetails .orderdetails-text1{
+  font-size: 0.7rem;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.3rem;
+}
+.orderdetails .orderdetails-text2{
+  font-size: 0.75rem;
+  color: #333;
+  text-align: right;
+}

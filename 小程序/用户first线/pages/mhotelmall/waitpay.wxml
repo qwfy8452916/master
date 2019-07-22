@@ -1,0 +1,37 @@
+<view>  
+  <block wx:for="{{waitpaydata}}" wx:for-item="item" wx:key="index">
+    <view class='bgfff orderlist'>
+      <view data-orderid="{{item.id}}" data-payendtime="{{item.payEndTime}}" bindtap='details'>
+        <view class='orderlistbox borderB'>
+          <view class='font-name'>订单编号 {{item.orderCode}}</view>
+          <view class='font-name font-color1'>待支付</view>
+        </view>
+        <block wx:if="{{item.orderProdDTOS.length == 1}}">
+          <view class='orderlistbox-c'>
+            <view class='contentbox1'>
+              <image src='{{item.orderProdDTOS[0].hotelProductDTO.prodProductDTO.prodLogoUrl}}' class='spimg' mode='aspectFill'></image>
+                <view class='font-content'>
+                  <view class='font-name font-overflow' style='width: 100%;'>{{item.orderProdDTOS[0].hotelProductDTO.prodProductDTO.prodShowName}}</view>
+                  <view class='font-name2' style='width: 100%;'>¥ {{item.orderProdDTOS[0].hotelProductDTO.prodRetailPrice}}</view>
+                </view>
+              <view class='font-name2 font-width'>x {{item.orderProdDTOS[0].prodCount}}</view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='paddAll borderB'>
+            <scroll-view scroll-x class='typelist'>
+              <block wx:for="{{item.orderProdDTOS}}" wx:for-item="item2" wx:key="index">
+                <image src='{{item2.hotelProductDTO.prodProductDTO.prodLogoUrl}}' class='spimg spimg-mgR' mode='aspectFill'></image>
+              </block>
+            </scroll-view>
+          </view>
+        </block>
+      </view>
+      <view class='orderlistbox'>
+        <view class='font-name'>共<text class='font-color2'>{{item.prodCount}}</text>件商品 合计 <text class='font-color3'>¥{{item.totalAmount}}</text></view>
+        <view class='btnbox' data-orderid="{{item.id}}" bindtap='gopay'>去支付</view>
+      </view>
+    </view>
+  </block>
+</view>

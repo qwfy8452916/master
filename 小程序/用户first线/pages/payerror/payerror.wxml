@@ -1,0 +1,35 @@
+<view>
+  <view class='paysuccess-top'>
+    <view class='timebox'>
+      <view class='timebox-view'>倒计时</view>
+      <view class='timebox-view'>{{timer}}</view>
+    </view>
+    <block wx:if="{{buytype}}">
+      <text class='paysuccess-text1'>订单待支付</text>
+      <text class='paysuccess-text2'>超时未支付，订单自动取消</text>
+    </block>
+    <block wx:else>
+      <text class='paysuccess-text1'>订单已超时</text>
+    </block>
+    <view wx:if="{{buytype}}" class='shoppingbtn' bindtap='buyfun'>去支付</view>
+    <view wx:else class='shoppingbtn' bindtap='index'>继续购物</view>
+  </view>
+  <view class='order-box'>
+    <view class='order-box-top'>商品详情</view>
+    <view class='orderdetails'>
+      <view class='orderdetails-text orderdetails-text1'>{{prodShowName}}</view>
+      <view class='orderdetails-text orderdetails-text2'>￥{{prodRetailPrice}}</view>
+    </view>
+  </view>
+  <view class='order-box'>
+    <view class='order-box-top'>订单详情</view>
+    <view class='orderdetails'>
+      <view class='orderdetails-text orderdetails-text1'>下单时间</view>
+      <view class='orderdetails-text orderdetails-text1 text-right'>2019-02-15 14:02</view>
+    </view>
+    <view class='orderdetails'>
+      <view class='orderdetails-text orderdetails-text1'>支付方式</view>
+      <view class='orderdetails-text orderdetails-text1 text-right'>微信支付</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,90 @@
+.orderlist{
+  background: #fff;
+}
+.orderlist-li{
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 5%;
+}
+.orderlist-li-img{
+  width: 25%;
+}
+.orderlist-li-img image{
+  display: block;
+  width: 100%;
+  height: 160rpx;
+}
+.orderlist-li-info{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.orderlist-li-info-name{
+  font-size: 0.9rem;
+  color: #333333;
+  width: 100%;
+  margin-bottom: 15rpx;
+}
+.orderlist-li-info-price{
+  font-size: 0.8rem;
+  color: #ee1e1e;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 15rpx;
+}
+.orderlist-li-info-time{
+  font-size: 0.8rem;
+  color: #999999;
+  text-align: left;
+  width: 100%;
+}
+.orderlist-li-img2{
+  width: 10%;
+}
+.orderlist-li-img2 image{
+  display: block;
+  width: 100%;
+}
+.afterbtnbox{
+  width: 100%;
+  margin-top: 15rpx;
+  text-align: right;
+}
+.afterbtn{
+  font-size: 1rem;
+  line-height: 2rem;
+  border-radius: 5px;
+  width: 50%;
+  text-align: center;
+}
+.afterbtn1{
+  color: #fff;
+}
+.afterbtn2{
+  border: 1px solid #ccc;
+  color: #333;
+}
+.ordertype{
+  padding-top: 15rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.ordertype .ordertype-btn{
+  width: 20%;
+  text-align: center;
+  font-size: 35rpx;
+  color: #333;
+  border-bottom: 2px solid #f6f6f6;
+  line-height: 90rpx;
+}
+.ordertype .ordertype-active{
+  color: #FF9700;
+  border-color: #FF9700;
+}

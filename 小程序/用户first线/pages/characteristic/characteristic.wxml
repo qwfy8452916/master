@@ -1,0 +1,36 @@
+<view class='pagebox'>
+  <view class='roomservice-top'>
+    <view bindtap='roomservice' class='roomservice-top-btn'>客房服务</view>
+    <view class='roomservice-top-btn' style='color: {{themecolor.skintone}};border-bottom: 2px solid {{themecolor.skintone}};'>客房设施</view>
+    <!-- <view class='roomservice-top-btn'>去订房</view> -->
+  </view>
+  <scroll-view scroll-x="true" style=" white-space: nowrap;position: fixed;top: 3.7rem;height: 3rem;padding-top: 0.5rem;left: 2%;right: 2%;z-index: 9;background: #fff;" >
+    <view class='characteristic-type'>
+      <view class='characteristic-type-btn {{_num==item.id?"characteristic-type-btn-active":""}}' style='background: {{_num==item.id?themecolor.skintone:"#F6F6F6"}}' bindtap='typechange' wx:for="{{typelist}}" data-id="{{item.id}}">{{item.feTypeName}}</view>
+    </view>
+  </scroll-view>
+  <view class='characteristic-list'>
+    <view class='characteristic-listbox' bindtap='details' data-detialid="{{item.id}}" wx:for="{{characteristiclist}}">
+      <image class='characteristic-listbox-img' src='{{item.imageDTOS[0].url}}' mode='widthFix'></image>
+      <view class='characteristic-listbox-name'>{{item.title}}</view>
+    </view>
+  </view>
+  <view class='footerbox'>
+    <view class='footerbox-btn' bindtap='index'>
+      <text class='iconfont icon-zhuye-selected' style='color: #999999;font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;'>迷你吧</view>
+    </view>
+    <view class='footerbox-btn'>
+      <text class='iconfont icon-zuanshi1' style='color: {{themecolor.skintone}};font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: {{themecolor.skintone}};margin-top: 5rpx;'>客房服务</view>
+    </view>
+    <view class='footerbox-btn' bindtap='hotelmall'>
+      <text class='iconfont icon-shangcheng2' style='color: #999999;font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;margin-top: 5rpx;'>酒店商城</view>
+    </view>
+    <view class='footerbox-btn' bindtap='mypage'>
+      <text class='iconfont icon-yduigerenzhongxinxuanzhong' style='color: #999999;font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;'>我的</view>
+    </view>
+  </view>
+</view>

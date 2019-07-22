@@ -1,0 +1,140 @@
+page{
+  padding-bottom: 120rpx;
+}
+.bannerbox{
+  width: 100%;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.slide-image{
+  width: 100%;
+  height: 300rpx;
+}
+.topbtnbox{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  padding-top: 20rpx;
+  border-top: 1px solid #f2f2f2;
+  position: fixed;
+  z-index: 9;
+  top: 300rpx;
+  left: 0;
+  right: 0;
+}
+.topbtn{
+  width: 23%;
+  text-align: center;
+  font-size: 35rpx;
+  color: #999999;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 20rpx;
+}
+.btnactive{
+  color: #FF9700;
+  border-color: #FF9700;
+}
+.commoditylist{
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  position: fixed;
+  z-index: 9;
+  top: 391rpx;
+  /* top: 0; */
+  left: 0;
+  right: 0;
+  background: #f6f6f6;
+  /* background: #fff; */
+}
+.commoditylist-view{
+  display: inline-block;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #999999;
+  border: 1px solid #999999;
+  border-radius: 15px;
+  line-height: 50rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.commoditylist .commoditylist-view:last-child{
+  margin-right: 20rpx;
+}
+.commodityactive{
+  color: #FF9700;
+  border-color: #FF9700;
+}
+.commodity-list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: wrap;
+  width: 96%;
+  margin: 420rpx auto 0;
+  /* margin: 500rpx auto 0; */
+  padding-bottom: 120rpx;
+  /* background: red; */
+  /* height: 100rpx; */
+}
+.commodityview{
+  border-radius: 5px;
+  overflow: hidden;
+  width: 48%;
+  margin-bottom: 15px;
+  background: #fff;
+  padding-bottom: 15rpx;
+  min-height: 450rpx;
+}
+.commodityimg{
+  display: block;
+  width: 100%;
+  height: 320rpx;
+}
+.commodityview-btm{
+   width: 95%;
+   margin: 10rpx auto 0;
+}
+.font-name{
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.font-price{
+  font-size: 20rpx;
+  color: #EE1E1E;
+}
+.font-price text{
+  font-size: 30rpx;
+}
+.shoppingcart{
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  z-index: 9;
+  background: #fff;
+  border-radius: 50%;
+  left: 3%;
+  bottom: 15%;
+  display: flex;
+  align-items: center;
+  border:1px solid #f2f2f2;
+}
+.shoppingcart .shoppingcart-img{
+  display: block;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}

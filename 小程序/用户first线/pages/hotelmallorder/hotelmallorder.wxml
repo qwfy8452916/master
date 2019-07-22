@@ -1,0 +1,86 @@
+<block wx:if="{{deliverytype1}}">
+  <view class='mgB20'>
+    <view wx:if="{{isvirtual}}" class='paddAll hotelmallcar-name'>客房配送</view>
+    <view wx:else class='paddAll hotelmallcar-name'>现场配送</view>
+    <view class='paddAll hoteladdress'>{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+    <block wx:for="{{deliverylist1}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class='commodityprice'>
+            ¥{{item.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.num}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum1}}</text>件商品  小计<text class='text-font2'>￥{{total1}}</text>
+    </view>
+    <view class='remarkbox'>
+        <view class='textarea-font'>留言</view>
+        <textarea class='textareabox' maxlength='250' placeholder-style='color: #999999;' placeholder='选填(对本交易的补充说明)' data-type='1' bindinput="bindTextAreaBlur" auto-height  />
+    </view>
+  </view>
+</block>
+<block wx:if="{{deliverytype2}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>快递到家</view>
+    <view class='paddAll hoteladdress hoteladdress2' bindtap='addressfun'>
+      <view class='font-address' wx:if="{{receipttype}}">请添加收货信息</view>
+      <view class='font-address' wx:else >
+        <view>{{receiptlist.consignee}} {{receiptlist.consigneePhone}}</view>
+        <view>{{receiptlist.addressAll}}</view>
+      </view>
+      <image src='../../img/my-bgimg2.png' class='iconimg' mode='aspectFill'></image>
+    </view>
+    <block wx:for="{{deliverylist2}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class='commodityprice'>
+            ¥{{item.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.num}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum2}}</text>件商品  小计<text class='text-font2'>￥{{total2}}</text>
+    </view>
+    <view class='remarkbox'>
+        <view class='textarea-font'>留言</view>
+        <textarea class='textareabox' maxlength='250' placeholder-style='color: #999999;' placeholder='选填(对本交易的补充说明)' data-type='2' bindinput="bindTextAreaBlur" auto-height  />
+    </view>
+  </view>
+</block>
+
+<view class='totalbox'>合计 <text class='text-font2'>￥{{lumpsum}}</text></view>
+
+<view class='mgB20'>
+  <view class='formbox'>
+    <text class='textW'>联系人</text>
+    <input class='inpbox' type="text" placeholder-style='color: #999999;' placeholder="请填写联系人" bindinput='usernamefun'></input>
+  </view>
+  <view class='formbox'>
+    <text class='textW'>手机号</text>
+    <input class='inpbox' type="number" placeholder-style='color: #999999;' placeholder="请填写手机号" bindinput='telfun'></input>
+  </view>
+</view>
+
+<cover-view class='foottotal' wx:if="{{ deliverytype1 || deliverytype2}}">
+  <cover-view class='costbox'>
+    <cover-view class='cost-font2'>合计:</cover-view>
+    <cover-view class='cost-font3'>￥</cover-view>
+    <cover-view class='cost-font4'>{{lumpsum}}</cover-view>
+    <cover-view class='cost-font1' wx:if="{{deliverytype2}}">不包含运费</cover-view>
+  </cover-view>
+  <cover-view class='settlementbtn' wx:if="{{paytype}}" bindtap='settlementfun'>支付<cover-view wx:if="{{alllength>0}}">({{alllength}})</cover-view></cover-view>
+  <cover-view class='settlementbtn settlementbtn2' wx:else>支付中···</cover-view>
+</cover-view>

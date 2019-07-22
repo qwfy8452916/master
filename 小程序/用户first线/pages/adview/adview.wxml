@@ -1,0 +1,7 @@
+<swiper indicator-dots='true' indicator-color='rgba(204, 204, 204, 0.8)' indicator-active-color='#ffc000' autoplay='true' interval='3000' duration='500' circular='true' display-multiple-items='1' style="height:100%">
+  <block wx:for="{{operatorImageList}}" wx:for-item="item" wx:key="index">
+    <swiper-item>
+      <image src="{{item.url}}" data-id='{{index}}' class="slide-image" mode="widthFix" />
+    </swiper-item>
+  </block>
+</swiper>

@@ -1,0 +1,123 @@
+page{
+  padding-bottom: 120rpx;
+}
+.slide-image{
+  width: 100%;
+  height: auto;
+}
+.detailsinfo{
+  padding: 20rpx 2%;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.detailsinfo-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.font-price{
+  font-size: 20rpx;
+  color: #EE1E1E;
+}
+.font-price text{
+  font-size: 30rpx;
+}
+.font-name{
+  font-size: 30rpx;
+  color: #333333;
+  margin-top: 15rpx;
+}
+.font-stock{
+  font-size: 30rpx;
+  color: #999999;
+}
+.detailsimg{
+  display: block;
+  width: 100%;
+}
+.font-bt{
+  padding: 20rpx 2%;
+  font-size: 30rpx;
+  color: #333333;
+  background: #fff;
+}
+.deliverybox{
+  padding: 20rpx 2%;
+  background: #fff;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.deliverybox-name{
+  font-size: 30rpx;
+  color: #999999;
+  margin-right: 20rpx;
+}
+.deliverybox-type{
+  font-size: 30rpx;
+  color: #333333;
+}
+.footbox{
+  position: fixed;
+  z-index: 9;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buycar{
+  position: relative;
+}
+.joincar{
+  width: 35%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  background: #ffc971;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  line-height: 70rpx;
+}
+.buy{
+  width: 35%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  background: #FF9700;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  line-height: 70rpx;
+}
+.buycarimg{
+  width: 50rpx;
+  height: 50rpx;
+  padding-left: 30rpx;
+}
+.bgcolor{
+  background: #ccc;
+}
+.buycarnum{
+  position: absolute;
+  z-index: 2;
+  top: -15rpx;
+  right: -20rpx;
+  width: 35rpx;
+  height: 35rpx;
+  font-size: 20rpx;
+  line-height: 35rpx;
+  color: #fff;
+  border-radius: 50%;
+  background: red;
+  text-align: center;
+}
+.footbox-r{
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

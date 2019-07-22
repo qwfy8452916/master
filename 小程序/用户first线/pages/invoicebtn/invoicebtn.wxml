@@ -1,0 +1,13 @@
+<view class='orderlist'>
+  <view class='orderlist-li' wx:for="{{orderlist}}">
+    <view class='orderlist-li-info'>
+      <view class='orderlist-li-info-name'>{{item.prodShowName}}</view>
+      <view class='orderlist-li-info-price'>¥ {{item.actualPay}}</view>
+      <view class='orderlist-li-info-time'>x{{item.orderCount}}</view>
+      <view class='orderlist-li-info-time'>{{item.lastUpdatedAt}}</view>
+    </view>
+    <view class='orderlist-li-img2'>
+      <image src='../../img/orderlist-img.png' mode='widthFix'></image>
+    </view>
+  </view>
+</view>

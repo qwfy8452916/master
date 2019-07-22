@@ -1,0 +1,26 @@
+<view class='ordertype'>
+  <view class='ordertype-btn' style='color: {{themecolor.skintone}};border-color: {{themecolor.skintone}};'>扫码购物</view>
+  <view class='ordertype-btn' bindtap='kffw'>客房服务</view>
+  <view class='ordertype-btn' bindtap='mhotelmall'>酒店商城</view>
+  <!-- <view class='ordertype-btn'>周边美食</view>
+  <view class='ordertype-btn'>当地特产</view> -->
+</view>
+<view class='orderlist'>
+  <view class='orderlist-li' wx:for="{{orderlist}}">
+    <view class='orderlist-li-img'>
+      <image src='{{item.prodLogoPath}}' ></image>
+    </view>
+    <view class='orderlist-li-info'>
+      <view class='orderlist-li-info-name'>{{item.prodShowName}}</view>
+      <view class='orderlist-li-info-price'>¥ {{item.prodPrice}}</view>
+      <view class='orderlist-li-info-time'>{{item.orderAt}}</view>
+      <view class='afterbtnbox' wx:if='{{item.createTime == datetime}}'>
+        <view wx:if="{{item.isCsRStatus == 0}}" class='afterbtn afterbtn1' style='background: {{themecolor.skintone}}' data-cabId="{{item.cabId}}" data-orderId="{{item.id}}" data-orderCode="{{item.orderCode}}" data-prodId="{{item.prodId}}"  data-roomCode="{{item.roomCode}}" bindtap='after'>申请售后</view>
+        <view wx:elif="{{item.isCsRStatus == 1}}" class='afterbtn afterbtn2'>已申请售后</view>
+      </view>
+    </view>
+    <view class='orderlist-li-img2'>
+      <image src='../../img/orderlist-img.png' mode='widthFix'></image>
+    </view>
+  </view>
+</view>

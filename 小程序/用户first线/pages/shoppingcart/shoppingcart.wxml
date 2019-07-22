@@ -1,0 +1,20 @@
+<view class='pagebox'>
+  <view class='emptybtnbox'>
+    <view class='emptybtn' bindtap='empty'>清空购物车</view>
+  </view>
+  <view class='roomservice-typeul'>
+    <view class='roomservicedetails-li' wx:for="{{roomservicetype}}">
+      <image class='roomservicedetails-img' src='{{item.imageUrl}}'></image>
+      <view class='roomservicedetails-name'>{{item.name}}</view>
+      <view class='roomservicedetails-price'>{{item.priceDesc}}</view>
+      <view class='roomservicedetails-num'>
+        <view class='roomservicedetails-num-view roomservicedetails-num-img' data-service="{{item}}" bindtap="{{btntype?'changeshopbox_reduce':''}}"><image src='../../img/icon-img2.png'></image></view>
+        <view class='roomservicedetails-num-view roomservicedetails-number'>{{item.amount}}</view>
+        <view class='roomservicedetails-num-view roomservicedetails-num-img' data-service="{{item}}" bindtap="{{btntype?'changeshopbox_add':''}}"><image src='../../img/icon-img1.png'></image></view>
+      </view>
+    </view>
+  </view>
+  <view class='subbtnbox' bindtap='submission'>
+    <view class='subbtn' style='background: {{themecolor.skintone}};'>提交订单</view>
+  </view>
+</view>

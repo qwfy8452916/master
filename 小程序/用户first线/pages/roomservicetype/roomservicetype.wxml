@@ -1,0 +1,31 @@
+<view class='pagebox'>
+  <view class='roomservice-typeul'>
+    <view class='roomservice-typeli' wx:for="{{roomservicetype}}">
+      <view class='libox1' wx:if="{{item.children>0}}" data-id="{{item.id}}" bindtap='next'>
+        <image class='roomservicetypeli-img' src='{{item.imageUrl}}'></image>
+        <view class='roomservicetypeli-name'>{{item.name}}</view>
+        <image class='roomservice-typeli-right' src='../../img/my-bgimg2.png'></image>
+      </view>
+      <view class='libox2' wx:if="{{item.children==0}}">
+        <image class='roomservicedetails-img' src='{{item.imageUrl}}'></image>
+        <view class='roomservicedetails-name'>{{item.name}}</view>
+        <view class='roomservicedetails-price'>{{item.priceDesc}}</view>
+        <block wx:if="{{isNewUser}}">
+        <view class='roomservicedetails-num'>
+          <view class='roomservicedetails-num-view roomservicedetails-num-img' data-service="{{item}}" bindtap="{{btntype?'changeshopbox_reduce':''}}"><image src='../../img/icon-img2.png'></image></view>
+          <view class='roomservicedetails-num-view roomservicedetails-number'>{{item.amount}}</view>
+          <view class='roomservicedetails-num-view roomservicedetails-num-img' data-service="{{item}}" bindtap="{{btntype?'changeshopbox_add':''}}"><image src='../../img/icon-img1.png'></image></view>
+        </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{isNewUser}}">
+  <view class='shoppingcart' bindtap='shoppingcart'>
+    <image class='shoppingcart-img' src='../../img/shoppingcart.png'></image>
+  </view>
+  <view class='footbtn' bindtap='placeorder'>
+    <view class='btnbox' style='background: {{themecolor.skintone}};'>提交订单</view>
+  </view>
+  </block>
+</view>

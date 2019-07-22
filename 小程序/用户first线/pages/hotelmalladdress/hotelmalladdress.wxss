@@ -1,0 +1,134 @@
+page{
+  padding-bottom: 90rpx;
+}
+.formview{
+  border-top: 1px solid #f5f5f5;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background: #fff;
+}
+.liview{
+  border-bottom: 1px solid #F3F3F3;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.formview .liview:last-child{
+  border: none;
+}
+.inpname{
+  font-size: 35rpx;
+  color: #333333;
+  width: 25%;
+}
+.inpval{
+  border: none;
+  background: none;
+  font-size: 35rpx;
+  color: #333333;
+  width: 73%;
+}
+.subbtn{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: none;
+  z-index: 9;
+  border: none;
+  padding: 0;
+  background: #FF9700;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 35rpx;
+  color: #fff;
+}
+.placeholder-font{
+  font-size: 35rpx;
+  color: #CECECE;
+}
+
+.libox{
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.libox-t{
+  padding: 15rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #f3f3f3;
+}
+.libox-t-l{
+  width: 80%;
+}
+.font-text1{
+  font-size: 40rpx;
+  color: #333333;
+  margin-bottom: 25rpx;
+}
+.font-text2{
+  font-size: 35rpx;
+  color: #999999;
+  margin-bottom: 15rpx;
+}
+.libox-t-l .font-text2:last-child{
+  margin-bottom: 0;
+}
+.libox-t-r{
+  font-size: 35rpx;
+  color: #FF9700;
+  padding: 15rpx 25rpx;
+  border: 1px solid #FF9700;
+  border-radius: 5px;
+}
+.libox-b{
+  padding: 20rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.libox-b-l{
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 35rpx;
+  color: #333333;
+}
+.iconimg{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 15rpx;
+}
+.delete{
+  padding: 15rpx 25rpx;
+  text-align: right;
+  font-size: 35rpx;
+  color: #EE1E1E;
+}
+.footbtnbox{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footbtnbox button{
+  flex-grow: 1;
+  width: 50%;
+  background: #FF9700;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 35rpx;
+  color: #fff;
+  border-radius: none;
+}
+.footbtnbox button:first-child{
+  background: #ffc971;
+}

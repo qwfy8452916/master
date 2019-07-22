@@ -1,0 +1,22 @@
+.swiperbox{
+  height: 25rem;
+}
+.swiperitembox .slide-image{
+  width: 100%;
+  height: 100%;
+}
+.widthbox{
+  width: 96%;
+  margin: 20rpx auto;
+}
+.titlebox{
+  font-size: 1.2rem;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.contentbox{
+  font-size: 0.9rem;
+  color: #999999;
+  line-height: 1.5rem;
+}

@@ -1,0 +1,12 @@
+<view>
+  <view class='text-center openfail-font1'>请稍候</view>
+  <view class='text-center openfail-font2'>客房人员正在为您配送...</view>
+  <view class='openfail-img'>
+    <image class='openfailimg' mode='widthFix' src='../../img/u318.png'></image>
+  </view>
+  <view class='text-center openfail-font2'>您也可致电前台电话：0512-12345678</view>
+  <view class='successbtnbox'>
+    <view bindtap='backbtn' class='shoppingbtn'>继续购物</view>
+    <view bindtap='tel' class='shoppingbtn telbtn'>联系前台</view>
+  </view>
+</view>

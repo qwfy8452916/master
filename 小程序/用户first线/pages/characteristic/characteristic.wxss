@@ -1,0 +1,89 @@
+page{
+  background: #fff;
+}
+.roomservice-top{
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  z-index: 9;
+  top:0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-bottom: 1px solid #f3f3f3;
+  border-top: 1px solid #f3f3f3;
+}
+.roomservice-top .roomservice-top-btn{
+  width: 40%;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  line-height: 2.5rem;
+  /* padding-bottom: 10rpx; */
+}
+/* .roomservice-top .roomservice-top-btn:last-child{
+  font-size: 0.8rem;
+  line-height: 1.3rem;
+  width: 20%;
+  border-left: 1px solid #ccc;
+} */
+.roomservice-top  .roomservice-top-btn-active{
+  color: #ff9d00;
+  border-bottom: 2px solid #ff9d00;
+}
+.characteristic-type{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+}
+.characteristic-type .characteristic-type-btn{
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  line-height: 2rem;
+  font-size: 1rem;
+  color: #333;
+  border-radius: 20px;
+  background: #F6F6F6;
+  margin-right: 20rpx;
+}
+.characteristic-type .characteristic-type-btn:last-child{
+  margin-right: 0;
+}
+.characteristic-type .characteristic-type-btn-active{
+  color: #fff;
+}
+.characteristic-list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 7rem;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.characteristic-listbox{
+  width: 47%;
+  margin-bottom: 50rpx;
+  position: relative;
+}
+.characteristic-listbox .characteristic-listbox-img{
+  width: 100%;
+  display: block;
+}
+.characteristic-listbox .characteristic-listbox-name{
+  font-size: 0.9rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  line-height: 2rem;
+  color: #fff;
+  padding-left: 4%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

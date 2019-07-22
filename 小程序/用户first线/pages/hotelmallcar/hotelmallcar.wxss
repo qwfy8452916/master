@@ -1,0 +1,195 @@
+page{
+  padding-bottom: 120rpx;
+}
+.paddAll{
+  padding: 20rpx 3%;
+  background: #fff;
+}
+.hotelmallcar-name{
+  font-size: 40rpx;
+  color: #333333;
+  border-top: 1px solid #f2f2f2;
+}
+.hoteladdress{
+  font-size: 30rpx;
+  color: #999999;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+.hoteladdress2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+.listbox-l{
+  width: 10%;
+}
+.checkboximg{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+}
+.listbox-c{
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: wrap;
+  min-height: 275rpx;
+  overflow: hidden;
+}
+.commodityimg{
+  display: block;
+  width: 205rpx;
+  height: 205rpx;
+  border-radius: 5px;    
+  overflow: hidden;
+  border: 1px solid #f2f2f2;
+}
+.font-btn{
+  width: 95%;
+  font-size: 25rpx;
+  color: #FFFFFF;
+  text-align: center;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  background: #10BBBB;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 15rpx;
+}
+.listbox-r{
+  width: 52%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: 275rpx;
+}
+.commodityname{
+  font-size: 35rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 15rpx;
+  width: 100%;
+  text-align: left;
+}
+.commodityprice{
+  width: 100%;
+  text-align: left;
+  font-size: 35rpx;
+  color: #EE1E1E;
+  margin-bottom: 15rpx;
+}
+.commoditynum{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 5px;
+}
+.btnstyle{
+  height: 60rpx;
+  width: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 33rpx;
+  color: #999999;
+  background: #F6F6F6;
+  border: none;
+  border-radius: 5px;
+}
+.commoditynum-text{
+  width: 100rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #F6F6F6;
+  color: #333333;
+  font-size: 33rpx;
+  text-align: center;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+.mgB20{
+  margin-bottom: 20rpx;
+}
+.font-address{
+  font-size: 30rpx;
+  color: #999999;
+  width: 90%;
+}
+.iconimg{
+  width: 35rpx;
+  height: 35rpx;
+}
+.foottotal{
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.settlementbtn{
+  width: 30%;
+  background: #FF9700;
+  font-size: 35rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+.selectallbtn{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 3%;
+  width: 22%;
+  font-size: 30rpx;
+  color: #999999;
+}
+.costbox{
+  width: 54%;
+  padding-right: 1%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.cost-font1{
+  font-size: 25rpx;
+  color: #999999;
+  margin-right: 10rpx;
+}
+.cost-font2{
+  font-size: 35rpx;
+  color: #333333;
+}
+.cost-font3{
+  font-size: 25rpx;
+  color: #EE1E1E;
+}
+.cost-font4{
+  font-size: 35rpx;
+  color: #EE1E1E;
+}
+.mgR10{
+  margin-right: 10rpx;
+}
+.font-text{
+  font-size: 45rpx;
+  color: #ccc;
+  margin-top: 200rpx;
+  text-align: center;
+}

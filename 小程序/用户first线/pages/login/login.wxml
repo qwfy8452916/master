@@ -1,0 +1,8 @@
+<view class="bgimg" catchtouchmove="noneEnoughPeople">
+  <image class="bgimgbox" src="../../img/loginbgimg.jpg"></image>
+  <image class="imgbox2" src="../../img/btn-img3.png" mode="widthFix"></image>
+  <image class="imgbox3" src="../../img/btn-img2.png" mode="widthFix"></image>
+  <button class='btnbox' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    <image src="../../img/btn-img.png" mode="widthFix"></image>
+  </button>
+</view>

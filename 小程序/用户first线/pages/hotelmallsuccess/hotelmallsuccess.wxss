@@ -1,0 +1,84 @@
+.success-top{
+  text-align: center;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  border-top: 1px solid #f2f2f2;
+  margin-bottom: 20rpx;
+}
+.iconimg{
+  display: inline-block;
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 30rpx;
+}
+.font-text1{
+  font-size: 40rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.font-text2{
+  font-size: 35rpx;
+  color: #999999;
+  margin-bottom: 30rpx;
+}
+.successbtnbox{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.successbtn{
+  width: 45%;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  border-radius: 5px;
+}
+.successbtn1{
+  background: #FF9700;
+  color: #fff;
+}
+.successbtn2{
+  border: 1px solid #FF9700;
+  box-sizing: border-box;
+  color: #FF9700;
+}
+.paddAll20{
+  padding: 20rpx 3%;
+}
+.btbox{
+  font-size: 35rpx;
+  color: #333333;
+  border-bottom: 1px solid #f3f3f3;
+}
+.recommendbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.recommend-box{
+  width: 48%;
+}
+.recommend-img{
+  display: block;
+  width: 100%;
+  height: 350rpx;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+.recommend-name{
+  font-size: 30rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+.recommend-price{
+  display: block;
+  font-size: 30rpx;
+  color: #F7002A;
+}

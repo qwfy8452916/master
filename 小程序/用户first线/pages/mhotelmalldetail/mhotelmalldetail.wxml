@@ -1,0 +1,60 @@
+<view class='bgfff countdownbox'>
+  <text class='countdownbox-font1'>剩余支付时间</text>
+  <text class='countdownbox-font2'>{{timer}}</text>
+</view>
+
+<view class='totalbox'>
+  <view class='totalbox-font'>
+    需支付金额 <text class='text-font2'>￥{{orderinfo.totalAmount}}</text>
+  </view>
+  <view bindtap='gopay' class='btnbox'>去支付</view>
+</view>
+
+<block wx:if="{{deliverytype1}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>客房配送</view>
+    <view class='paddAll hoteladdress'>{{orderinfo.hotelName}} {{orderinfo.roomFloor}}-{{orderinfo.roomCode}}</view>
+    <block wx:for="{{orderlist1}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.hotelProductDTO.prodProductDTO.prodLogoUrl}}' class='commodityimg' mode='center'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.hotelProductDTO.prodProductDTO.prodName}}</view>
+          <view class='commodityprice'>
+            ¥{{item.hotelProductDTO.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.prodCount}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+<block wx:if="{{deliverytype2}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>快递到家</view>
+    <view class='paddAll hoteladdress hoteladdress2'>
+      <view class='font-address'>
+        <view>{{consignee}} {{consigneePhone}}</view>
+        <view>{{addressAll}}</view>
+      </view>
+    </view>
+    <block wx:for="{{orderlist2}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.hotelProductDTO.prodProductDTO.prodLogoUrl}}' class='commodityimg' mode='center'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.hotelProductDTO.prodProductDTO.prodName}}</view>
+          <view class='commodityprice'>
+            ¥{{item.hotelProductDTO.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.prodCount}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+<view class='bgfff footbtn'>
+  <view bindtap='cancel' class='btnbox'>取消订单</view>
+</view>

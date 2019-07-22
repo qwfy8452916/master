@@ -1,0 +1,30 @@
+<view class='pagebox paddB3'>
+  <swiper
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="{{circular}}"
+    indicator-dots="true"
+    indicator-color="#fff"
+    indicator-active-color="#ff9c01"
+    style="height:{{imgheights[current]}}rpx;"
+    bindchange="bindchange"
+  >
+    <block wx:for="{{bannerImageList}}">
+      <swiper-item class="swiperitembox">
+        <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='details-info'>
+    {{prodShowName}}
+    <view class='details-price'>¥ {{prodRetailPrice}}</view>
+  </view>
+  <block wx:for="{{descImageList}}">
+    <image class='details-img' mode='widthFix' src='{{item.imageUrl}}'></image>
+  </block>
+  <block wx:if="{{isNewUser}}">
+    <view wx:if="{{isEmpty!=1}}" class='buybtn' style='background: {{themecolor.skintone}};' bindtap='purchase' data-prodId="{{prodId}}" data-money="{{prodRetailPrice}}" data-isFree="{{isFree}}" data-latticeCode="{{latticeCode}}" data-latticeId='{{latticeId}}' >立即购买</view>
+    <view wx:else class='buybtn buybtnbg'>已售罄</view>
+  </block>
+</view>

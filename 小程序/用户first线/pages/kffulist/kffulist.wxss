@@ -1,0 +1,53 @@
+.ordertype{
+  padding-top: 15rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.ordertype .ordertype-btn{
+  width: 20%;
+  text-align: center;
+  font-size: 35rpx;
+  color: #333;
+  border-bottom: 2px solid #f6f6f6;
+  line-height: 90rpx;
+}
+.ordertype .ordertype-active{
+  color: #FF9700;
+  border-color: #FF9700;
+}
+.bgfff{
+  background: #fff;
+}
+.kffu-li{
+  border-bottom: 1px solid #ccc;
+  padding: 20rpx 3%;
+  display: flex;
+  justify-content: space-between;
+}
+.time-font{
+  font-size: 0.7rem;
+  color: #ccc;
+}
+.type-font{
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+.kffu-li-right{
+  text-align: right;
+}
+.kffu-li-left{
+  width: 60%;
+}
+.forlist{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.font-text{
+  font-size: 0.8rem;
+  width: 30%;
+}

@@ -1,0 +1,130 @@
+<view class='pagebox'>
+  <view class='swiperbox'>
+    <swiper
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      circular="{{circular}}"
+    >
+      <swiper-item class="swiperitembox">
+        <image src="{{hotelAddImagesfirst.url}}" class="slide-image" mode='widthFix' />
+        <view class='jdinfobox'>
+          <view class='banner-img'><image src='../../img/index-img1.png' mode='widthFix'></image></view>
+          <view class='mgL50'>
+            <text class='jd-name'>{{hotelName}}</text>
+            <view>
+              <text wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class='iconfont icon-star_full stars' style='color: {{themecolor.skintone}};'></text>
+            </view>
+            <view class='labellist'>
+                <view class='labelbox'>{{hotelDecorationYear}}年装修</view>
+                <view class='labelbox' wx:if="{{isHasPark==1}}">地下停车位</view>
+                <view class='labelbox'>{{hotelStyle}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item class="swiperitembox" wx:if="{{isInvoice == 1}}"><!-- 开票 -->
+        <image src="../../img/nullimg2.jpg" class="slide-image" mode='widthFix' />
+      </swiper-item>
+      <!-- <swiper-item class="swiperitembox" wx:if="{{wifiSsid != ''}}" bindtap="connect">
+        <image src="../../img/nullimg3.jpg" class="slide-image" mode='widthFix' />
+      </swiper-item> -->
+      <block wx:for="{{hotelAddImages}}" wx:for-item="item" wx:key='index'>
+        <swiper-item class="swiperitembox">
+          <image src="{{item.url}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='jdinfo-bg'>
+    <view class='jdinfo'>
+      <view class='jdinfo-position' bindtap='mabview'>
+        <text class='iconfont icon-dingwei position-img' style='color: {{themecolor.skintone}};'></text>
+        <text class='position-text'>{{city}}/{{area}}\n{{hotelAddress}}</text>
+      </view>
+      <view class="jdinfoR">
+        <view class='jdinfo-tel' bindtap='tel'>
+          <text class='iconfont icon-tel jdinfo-telimg' style='color: {{themecolor.skintone}};'></text>
+        </view>
+        <view wx:if="{{wifiSsid != ''}}" class='jdinfo-wifi' bindtap='connect'>
+          <image class="icon-wifi" src="../../img/wifi.png" mode=""></image>
+        </view>
+      </view>
+    </view>
+    <view class='honorbox'>
+      <text class='iconfont icon-jiangbei honorbox-img' style='color: {{themecolor.skintone}};'></text>
+      <text class='honorbox-text' style='color: {{themecolor.skintone}};'>{{hotelHonor}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{cabinetStatus == 1}}">
+    <view class='commoditybox-bg' bindtap='details' data-prodId="{{item.prodId}}" data-latticeId='{{item.latticeId}}' data-cabId='{{item.cabId}}' wx:for="{{commoditylist}}" wx:for-item="item" wx:key='index' wx:if="{{item.isFree==1}}">
+      <view class='commoditybox'>
+        <view class='commoditybox-img'>
+          <image class='commodityboximg' src='{{item.prodLogoPath}}'></image>
+        </view>
+        <view class='commoditybox-right'>
+          <view class='commoditybox-right-info'>
+            <!-- <text class='commoditybox-right-text'>橙心环保</text> -->
+            {{item.prodShowName}}
+          </view>
+          <!-- <view class='commoditybox-right-label'>一次性用品</view> -->
+          <view class='commoditybox-right-btm'>
+            <view class='commoditybox-right-btm-price commoditybox-right-btm-pricemf'>
+              ￥{{item.prodRetailPrice}}
+            </view>
+            <block wx:if="{{isNewUser}}">
+              <view wx:if="{{item.isEmpty!=1}}" class='buybtn' style='background: {{themecolor.skintone}};' data-prodId="{{item.prodId}}" data-money="{{item.prodRetailPrice}}" data-isFree="{{item.isFree}}" data-latticeCode="{{item.latticeCode}}" data-latticeId='{{item.latticeId}}' data-cabId='{{item.cabId}}' catchtap="purchase">免费领取</view>
+              <view wx:else class='buybtn buybtnbg'>已售罄</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='commoditybox-bg' bindtap='details' data-prodId="{{item.prodId}}"  data-prodId="{{item.prodId}}" data-latticeId='{{item.latticeId}}' data-cabId='{{item.cabId}}' data-latticeCode="{{item.latticeCode}}" wx:for="{{commoditylist}}" wx:for-item="item" wx:key='index' wx:if="{{item.isFree==0}}">
+      <view class='commoditybox'>
+        <view class='commoditybox-img'>
+          <image class='commodityboximg' src='{{item.prodLogoPath}}'></image>
+        </view>
+        <view class='commoditybox-right'>
+          <view class='commoditybox-right-info'>
+            <!-- <text class='commoditybox-right-text'>橙心环保</text> -->
+            {{item.prodShowName}}
+          </view>
+          <!-- <view class='commoditybox-right-label'>一次性用品</view> -->
+          <view class='commoditybox-right-btm'>
+            <view class='commoditybox-right-btm-price'>￥{{item.prodRetailPrice}}</view>
+            <block wx:if="{{isNewUser}}">
+              <view wx:if="{{item.isEmpty!=1}}" class='buybtn' style='background: {{themecolor.skintone}};' data-prodId="{{item.prodId}}" data-money="{{item.prodRetailPrice}}" data-isFree="{{item.isFree}}" data-latticeCode="{{item.latticeCode}}" data-latticeId='{{item.latticeId}}' data-cabId='{{item.cabId}}' catchtap="purchase">立即购买</view>
+              <view wx:else class='buybtn buybtnbg'>已售罄</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class='faultbox'>
+    <image src='../../img/u485.png' mode='widthFix'></image>
+    柜子故障，不能购买...
+  </view>
+
+  
+  <view class='footerbox'>
+    <view class='footerbox-btn'>
+      <text class='iconfont icon-zhuye-selected' style='color: {{themecolor.skintone}};font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: {{themecolor.skintone}};'>迷你吧</view>
+    </view>
+    <view v-if="{{isSupportRmsvc == 1}}" class='footerbox-btn' bindtap='roomservice'>
+      <text class='iconfont icon-zuanshi1' style='color: #999999;font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;margin-top: 5rpx;'>客房服务</view>
+    </view>
+    <view v-if="{{isSupportDelivery == 1}}" class='footerbox-btn' bindtap='hotelmall'>
+      <text class='iconfont icon-shangcheng2' style='color: #999999;font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;margin-top: 5rpx;'>酒店商城</view>
+    </view>
+    <view class='footerbox-btn' bindtap='mypage'>
+      <text class='iconfont icon-yduigerenzhongxinxuanzhong' style='color: #999999;font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;'>我的</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,196 @@
+swiper{
+  min-height: 12rem;
+}
+.swiperbox,.swiperitembox{
+  position: relative;
+}
+.jdinfobox{
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.banner-img{
+  width: 31%;
+  margin-left: -10rpx;
+  margin-top: 40rpx;
+  
+}
+.banner-img image{
+  display: block;
+  width: 100%;
+  height: 55rpx;
+}
+.jd-name{
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
+  margin-top: 4.5rem;
+  margin-bottom: 0.3rem;
+}
+.stars{
+  font-size: 50rpx;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+.labellist{
+  display: flex;
+  justify-content: flex-start;
+}
+.labelbox{
+  font-size: 0.75rem;
+  color: #fff;
+  margin-right: 0.5rem;
+  background: rgba(255,255,255,0.3);
+  border-radius: 25px;
+  padding: 0.1rem 0.5rem;
+}
+.jdinfo-bg{
+  background: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-bottom: 0.5rem;
+}
+.jdinfo{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jdinfo-position{
+  display: flex;
+  justify-content: flex-start;
+  width: 70%;
+}
+.jdinfoR{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 29%;
+}
+.position-img{
+  display: block;
+  font-size: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+.position-text{
+  font-size: 0.85rem;
+  color: 333333;
+}
+.jdinfo-tel{
+  text-align: left;
+  padding-right: 20rpx;
+  margin-right: 15rpx;
+  border-right: 1px solid #ccc;
+}
+.jdinfo-tel .jdinfo-telimg{
+  display: inline-block;
+  font-size: 80rpx;
+}
+.icon-wifi{
+  display: block;
+  width: 65rpx;
+  height: 70rpx;
+}
+.honorbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.honorbox .honorbox-img{
+  font-size: 50rpx;
+  margin-right: 10rpx;
+}
+.honorbox .honorbox-text{
+  font-size: 0.85rem;
+}
+.commoditybox-bg{
+  background: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #dddddd;
+}
+.commoditybox{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+.commoditybox-img{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 5px 5px;
+  overflow: hidden;
+}
+.commoditybox-img .commodityboximg{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.commoditybox-right{
+  width: 65%;
+}
+.commoditybox-right-info{
+  font-size: 0.85rem;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+.commoditybox-right-info .commoditybox-right-text{
+  color: #ff9700;
+}
+.commoditybox-right-label{
+  font-size: 0.75rem;
+  color: #999;
+  border-radius: 25px;
+  border: 1px solid #999999;
+  display: inline-block;
+  padding: 5rpx 15rpx;
+  margin-bottom: 20rpx;
+}
+.commoditybox-right-btm{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.commoditybox-right-btm-price{
+  font-size: 0.85rem;
+  color: #e21b35;
+  font-weight: bold;
+}
+.buybtn{
+  display: inline-block;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 10rpx 25rpx;
+  font-size: 0.75rem;
+  color: #fff;
+}
+.commoditybox-right-btm-pricemf{
+  text-decoration:line-through;
+}
+.buybtnbg{
+  background: #ccc;
+}
+.faultbox{
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #333333;
+}
+.faultbox image{
+  display: block;
+  width: 50%;
+  margin: 0 auto 30rpx;
+}

@@ -1,0 +1,33 @@
+<view>
+  <view class='paysuccess-top'>
+    <image mode='widthFix' class='paysuccess-img' src='../../img/success-img.png'></image>
+    <text class='paysuccess-text1'>提交成功</text>
+    <text class='paysuccess-text2'>正在等待酒店确认，请稍候...</text>
+    <view class='successbtnbox'>
+      <view bindtap='backbtn' class='shoppingbtn'>返回首页</view>
+      <view bindtap='lookdetails' class='shoppingbtn'>查看详情</view>
+    </view>
+  </view>
+  <view class='commoditylist'>
+    <view class='commoditylist-top'>其它商品推荐</view>
+    <view class='commoditybox-bg' bindtap='details' data-id="{{item.prodId}}" wx:for="{{commoditylist}}" wx:if="{{item.isFree==0}}">
+      <view class='commoditybox'>
+        <view class='commoditybox-img'>
+          <image class='commodityboximg' mode='widthFix' src='{{item.prodLogoPath}}'></image>
+        </view>
+        <view class='commoditybox-right'>
+          <view class='commoditybox-right-info'>
+            <!-- <text class='commoditybox-right-text'>橙心环保</text> -->
+            {{item.productName}}{{item.prodShowName}}
+          </view>
+          <!-- <view class='commoditybox-right-label'>一次性用品</view> -->
+          <view class='commoditybox-right-btm'>
+            <view class='commoditybox-right-btm-price commoditybox-right-btm-pricemf'>
+              ￥{{item.prodRetailPrice}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

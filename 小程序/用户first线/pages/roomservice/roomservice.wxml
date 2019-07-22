@@ -1,0 +1,42 @@
+<view class='pagebox'>
+  <view class='roomservice-top'>
+    <view class='roomservice-top-btn' style='color: {{themecolor.skintone}};border-bottom: 2px solid {{themecolor.skintone}};'>客房服务</view>
+    <view bindtap='characteristic' class='roomservice-top-btn'>客房设施</view>
+    <!-- <view class='roomservice-top-btn'>去订房</view> -->
+  </view>
+  <view class='banner'>
+    <image mode='widthFix' src='../../img/img1.jpg'></image>
+  </view>
+  <view class='roomservice-typeul'>
+    <view class='roomservice-typeli' bindtap='details' wx:for="{{roomservicetype}}" data-id="{{item.id}}">
+      <view class='roomservice-typeli-left'>
+        <image src='{{item.imageUrl}}'></image>
+        <text>{{item.rmsvcName}}</text>
+      </view>
+      <image class='roomservice-typeli-right' src='../../img/my-bgimg2.png'></image>
+    </view>
+  </view>
+  <block wx:if="{{isNewUser}}">
+  <view class='shoppingcart' bindtap='shoppingcart'>
+    <image class='shoppingcart-img' src='../../img/shoppingcart.png'></image>
+  </view>
+  </block>
+  <view class='footerbox'>
+    <view class='footerbox-btn' bindtap='index'>
+      <text class='iconfont icon-zhuye-selected' style='color: #999999;font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;'>迷你吧</view>
+    </view>
+    <view class='footerbox-btn'>
+      <text class='iconfont icon-zuanshi1' style='color: {{themecolor.skintone}};font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: {{themecolor.skintone}};margin-top: 5rpx;'>客房服务</view>
+    </view>
+    <view class='footerbox-btn' bindtap='hotelmall'>
+      <text class='iconfont icon-shangcheng2' style='color: #999999;font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;margin-top: 5rpx;'>酒店商城</view>
+    </view>
+    <view class='footerbox-btn' bindtap='mypage'>
+      <text class='iconfont icon-yduigerenzhongxinxuanzhong' style='color: #999999;font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;'>我的</view>
+    </view>
+  </view>
+</view>

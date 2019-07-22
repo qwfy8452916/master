@@ -1,0 +1,15 @@
+<swiper
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+  circular="{{circular}}"
+  class='swiperbox'
+>
+  <swiper-item class="swiperitembox" wx:for='{{detials[0].imageDTOS}}'>
+    <image src="{{item.url}}" class="slide-image" mode='widthFix' />
+  </swiper-item>
+</swiper>
+<view class='widthbox'>
+  <view class='titlebox'>{{detials[0].title}}</view>
+  <view class='contentbox'>{{detials[0].detailDesc}}</view>
+</view>

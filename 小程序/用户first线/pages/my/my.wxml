@@ -1,0 +1,77 @@
+<view class='pagebox'>
+  <image class='pagebox-bg' mode='widthFix' src='../../img/my-bgimg.png'></image>
+  <view class='pagebox-box'>
+    <view class='userinfo'>
+      <view class='userimg'><image class='userimg-img' mode='widthFix' src='{{userInfo.avatarUrl}}'></image></view>
+      <view class='username'>{{userInfo.nickName}}</view>
+    </view>
+    <!-- <view class='mybtnbox'>
+      <view class='mybtnbox-btn'>
+        <view class='mybtnbox-img'><image src='../../img/my-btnimg1.png' mode='widthFix'></image></view>
+        <view class='mybtnbox-name'>我买过的</view>
+      </view>
+      <view class='mybtnbox-btn'>
+        <view class='mybtnbox-img'><image src='../../img/my-btnimg2.png' mode='widthFix'></image></view>
+        <view class='mybtnbox-name'>我住过的</view>
+      </view>
+      <view class='mybtnbox-btn'>
+        <view class='mybtnbox-img'><image src='../../img/my-btnimg3.png' mode='widthFix'></image></view>
+        <view class='mybtnbox-name'>我的优惠券</view>
+      </view>
+      <view class='mybtnbox-btn'>
+        <view class='mybtnbox-img'><image src='../../img/my-btnimg4.png' mode='widthFix'></image></view>
+        <view class='mybtnbox-name'>我的地址</view>
+      </view>
+    </view> -->
+    <view class='mylistbox'>
+      <view class='mylistbox-li' bindtap='orderlist'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg5.png'></image>
+          <view class='mylistbox-li-name'>我的订单</view>
+        </view>
+        <image class='mylistbox-li-bg' mode='widthFix' src='../../img/my-bgimg2.png'></image>
+      </view>
+      <view class='mylistbox-li' bindtap='hotelafter'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg7.png'></image>
+          <view class='mylistbox-li-name'>退款/售后</view>
+        </view>
+        <image class='mylistbox-li-bg' mode='widthFix' src='../../img/my-bgimg2.png'></image>
+      </view>
+      <!-- <view class='mylistbox-li'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg6.png'></image>
+          <view class='mylistbox-li-name'>我住过的酒店</view>
+        </view>
+        <image class='mylistbox-li-bg' mode='widthFix' src='../../img/my-bgimg2.png'></image>
+      </view> -->
+    </view>
+    <view class='mylistbox'>
+      <view class='mylistbox-li' bindtap='tel'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg8.png'></image>
+          <view class='mylistbox-li-name'>合作洽谈</view>
+        </view>
+        <image class='mylistbox-li-bg' mode='widthFix' src='../../img/my-bgimg2.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='footerbox'>
+    <view class='footerbox-btn' bindtap='index' wx:if="{{isvirtual}}">
+      <text class='iconfont icon-zhuye-selected' style='color: #999999;font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;'>迷你吧</view>
+    </view>
+    <view class='footerbox-btn' bindtap='roomservice' wx:if="{{isvirtual && isSupportRmsvc == 1}}">
+      <text class='iconfont icon-zuanshi1' style='color: #999999;font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;margin-top: 5rpx;'>客房服务</view>
+    </view>
+    <view v-if="{{isSupportDelivery == 1}}" class='footerbox-btn' bindtap='hotelmall'>
+      <text class='iconfont icon-shangcheng2' style='color: #999999;font-size: 40rpx;'></text>
+      <view class='footerbox-btnname' style='color: #999999;margin-top: 5rpx;'>酒店商城</view>
+    </view>
+    <view class='footerbox-btn'>
+      <text class='iconfont icon-yduigerenzhongxinxuanzhong' style='color: {{themecolor.skintone}};font-size: 50rpx;'></text>
+      <view class='footerbox-btnname' style='color: {{themecolor.skintone}};'>我的</view>
+    </view>
+  </view>
+</view>

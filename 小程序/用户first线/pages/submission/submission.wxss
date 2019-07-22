@@ -1,0 +1,115 @@
+page{
+  background: #fff;
+}
+.pagebox{
+  padding-bottom: 150rpx;
+}
+.roomservicedetails-li{
+  padding: 20rpx 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.roomservicedetails-li .roomservicedetails-img{
+  display: block;
+  width: 20%;
+  height: 120rpx;
+}
+.roomservicedetails-li .roomservicedetails-name{
+  width: 20%;
+  font-size: 0.9rem;
+  color: #333;
+  padding-right: 1%;
+  padding-left: 1%;
+  text-align: center;
+}
+.roomservicedetails-li .roomservicedetails-price{
+  width: 20%;
+  font-size: 0.9rem;
+  color: #333;
+}
+.roomservicedetails-li .roomservicedetails-num{
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.roomservicedetails-num .roomservicedetails-num-view{
+  width: 30%;
+}
+.roomservicedetails-num-img image{
+  display: block;
+  width: 100%;
+  height: 65rpx;
+}
+.roomservicedetails-number{
+  text-align: center;
+  font-size: 0.9rem;
+}
+.subbtnbox{
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  padding: 20rpx 3%;
+  overflow: hidden;
+}
+.subbtn{
+  font-size: 0.9rem;
+  color: #fff;
+  background: #ff9c00;
+  width: 30%;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 5px;
+  float: right;
+}
+.subbtn-cancel{
+  float: right;
+  margin-right: 20rpx;
+}
+.intervalbox{
+  height: 20rpx;
+  background: #f6f6f6;
+}
+
+.submissionbox{
+  padding: 20rpx 3%;
+  border-bottom: 1px solid #ccc;
+}
+.userinfobox-top{
+  font-size: 0.9rem;
+  padding-bottom: 25rpx;
+  margin-bottom: 25rpx;
+  border-bottom: 1px solid #ccc;
+}
+.userinfobox-form input{
+  height: 70rpx;
+  border-bottom: 1px solid #ccc;
+  line-height: 65rpx;
+  margin-bottom: 10rpx;
+  padding-left: 3%;
+  font-size: 0.8rem;
+  width: 65%;
+}
+.remarks{
+  height: 5rem;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10rpx;
+}
+.radio-group .radio{
+  width: 100%;
+  margin-bottom: 25rpx;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

@@ -1,0 +1,24 @@
+<view class='ordertype'>
+  <view class='ordertype-btn' bindtap='smgw'>扫码购物</view>
+  <view class='ordertype-btn' style='color: {{themecolor.skintone}};border-color: {{themecolor.skintone}};'>客房服务</view>
+  <view class='ordertype-btn' bindtap='mhotelmall'>酒店商城</view>
+  <!-- <view class='ordertype-btn'>周边美食</view>
+  <view class='ordertype-btn'>当地特产</view> -->
+</view>
+<view class='bgfff'>
+  <view class='kffu-li' wx:for="{{orderlist}}" data-id="{{item.id}}" bindtap='detials'>
+    <view class='kffu-li-left'>
+      <view class='forlist' wx:for="{{item.dtos}}" wx:for-item="dtos">
+        <view class='font-text'>{{dtos.hdetailName}}</view>
+        <view class='font-text'>X{{dtos.amount}}</view>
+        <view class='font-text'>{{dtos.priceDesc}}</view>
+      </view>
+    </view>
+    <view class='kffu-li-right'>
+      <view class='type-font' wx:if="{{item.status == 2}}">已取消</view>
+      <view class='type-font' wx:elif="{{item.status == 0}}">待确认</view>
+      <view class='type-font' wx:elif="{{item.status == 1}}">已确认</view>
+      <view class='time-font'>{{item.createdAt}}</view>
+    </view>
+  </view>
+</view>

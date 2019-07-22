@@ -1,0 +1,293 @@
+.paddAll{
+  padding: 20rpx 3%;
+  background: #fff;
+}
+.hotelmallcar-name{
+  font-size: 40rpx;
+  color: #333333;
+  border-top: 1px solid #f2f2f2;
+}
+.hoteladdress{
+  font-size: 30rpx;
+  color: #999999;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+.hoteladdress2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #f2f2f2;
+}
+.listbox-l{
+  width: 10%;
+}
+.checkboximg{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+}
+.listbox-c{
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: wrap;
+}
+.commodityimg{
+  display: block;
+  width: 205rpx;
+  height: 205rpx;
+  border-radius: 5px;    
+  overflow: hidden;
+  border: 1px solid #f2f2f2;
+}
+.font-btn{
+  width: 205rpx;
+  font-size: 25rpx;
+  color: #FFFFFF;
+  text-align: center;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  background: #10BBBB;
+  border-radius: 5px;
+  margin-top: 15rpx;
+}
+.listbox-r{
+  width: 65%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.commodityname{
+  font-size: 35rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 25rpx;
+  width: 100%;
+  text-align: left;
+}
+.commodityprice{
+  width: 100%;
+  text-align: left;
+  font-size: 35rpx;
+  color: #EE1E1E;
+  margin-bottom: 15rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.commoditynum{
+  font-size: 30rpx;
+  color: #999999;
+  width: 40%;
+  text-align: right;
+}
+.mgB20{
+  margin-bottom: 20rpx;
+}
+.font-address{
+  font-size: 30rpx;
+  color: #999999;
+  width: 90%;
+}
+.iconimg{
+  width: 35rpx;
+  height: 35rpx;
+}
+.foottotal{
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.settlementbtn{
+  width: 30%;
+  background: #FF9700;
+  font-size: 35rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+.settlementbtn2{
+  background: #999999;
+  color: #fff;
+}
+.selectallbtn{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 3%;
+  width: 18%;
+  font-size: 30rpx;
+  color: #999999;
+}
+.costbox{
+  width: 54%;
+  padding-left: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.cost-font1{
+  font-size: 25rpx;
+  color: #999999;
+  margin-left: 10rpx;
+}
+.cost-font2{
+  font-size: 35rpx;
+  color: #333333;
+}
+.cost-font3{
+  font-size: 25rpx;
+  color: #EE1E1E;
+}
+.cost-font4{
+  font-size: 35rpx;
+  color: #EE1E1E;
+}
+.mgR10{
+  margin-right: 10rpx;
+}
+.font-text{
+  font-size: 45rpx;
+  color: #ccc;
+  margin-top: 200rpx;
+  text-align: center;
+}
+.footbox-order{
+  text-align: right;
+  font-size: 35rpx;
+  color: #999999;
+  background: #fff;
+  padding: 20rpx 3%;
+  border-bottom: 1px solid #f2f2f2;
+}
+.text-font1{
+  color: #FF9700;
+}
+.text-font2{
+  color: #EE1E1E;
+}
+.totalbox{
+  background: #fff;
+  padding: 20rpx 3%;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.totalbox-font{
+  font-size: 35rpx;
+  color: #333333;
+  text-align: right;
+}
+.btnbox{
+  width: 25%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  text-align: center;
+  font-size: 35rpx;
+  color: #fff;
+  background: #FF9700;
+  border-radius: 5px;
+}
+.textareabox{
+  width: 80%;
+}
+.textarea-font{
+  width: 15%;
+}
+.remarkbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #fff;
+  padding: 20rpx 3%;
+  font-size: 35rpx;
+  color: #333333;
+}
+.formbox{
+  padding: 20rpx 3%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 35rpx;
+  color: #333333;
+  background: #fff;
+  border-bottom: 1px solid #f6f6f6;
+}
+.textW{
+  width: 20%;
+}
+.inpbox{
+  width: 75%;
+}
+.paddAll20{
+  padding: 20rpx 3%;
+}
+.btbox{
+  font-size: 35rpx;
+  color: #333333;
+  border-bottom: 1px solid #f3f3f3;
+}
+.orderinfo-text{
+  font-size: 30rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+.orderinfo-text text{
+  display: inline-block;
+  width: 22%;
+}
+.service{
+  background: #FF9700;
+  font-size: 35rpx;
+  color: #fff;
+  line-height: 90rpx;
+  text-align: center;
+  border: none;
+  border-radius: none;
+  width: 100%;
+  padding: 0;
+}
+.footbtn{
+  padding: 20rpx 3%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.countdownbox{
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  border-bottom: 1px solid #f2f2f2;
+}
+.countdownbox text{
+  display: block;
+  text-align: center;
+}
+.countdownbox-font1{
+  font-size: 35rpx;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+.countdownbox-font2{
+  font-size: 45rpx;
+  color: #10BBBB;
+}

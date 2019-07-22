@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/details/details",
+    "pages/paysuccess/paysuccess",
+    "pages/payerror/payerror",  
+    "pages/aftersale/aftersale",
+    "pages/invoicebtn/invoicebtn",
+    "pages/openfail/openfail",
+    "pages/roomservice/roomservice",
+    "pages/roomservicetype/roomservicetype",
+    "pages/shoppingcart/shoppingcart",
+    "pages/roomservicesuccess/roomservicesuccess",
+    "pages/characteristic/characteristic",
+    "pages/characteristicdetails/characteristicdetails",
+    "pages/orderdetails/orderdetails",
+    "pages/submission/submission",
+    "pages/my/my",
+    "pages/orderlist/orderlist",
+    "pages/kffulist/kffulist",
+    "pages/map/map",
+    "pages/hotelmall/hotelmall",
+    "pages/hotelmalldetails/hotelmalldetails",
+    "pages/hotelmalladdress/hotelmalladdress",
+    "pages/hotelmallcar/hotelmallcar",
+    "pages/hotelmallorder/hotelmallorder",
+    "pages/hotelmallsuccess/hotelmallsuccess",
+    "pages/hotelmallorderdetails/hotelmallorderdetails",
+    "pages/mhotelmall/mhotelmall",
+    "pages/mhotelmalldetail/mhotelmalldetail",
+    "pages/adview/adview",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

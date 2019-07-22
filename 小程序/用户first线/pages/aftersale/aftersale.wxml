@@ -1,0 +1,45 @@
+<view class='tips-font'>
+  <image class='tips-font-img' src='../../img/icon-img3.png' mode='widthFix'></image>
+  请输入您的信息，我们将立即安排人员送货到您房间
+</view>
+<view class='userinfobox-form'>
+  <view class="section">
+    <picker bindchange="bindPickerChange" value="{{dictValue}}" range="{{aftersaletype}}" range-key="dictName">
+      <view class="picker">
+        <view>
+          <text class='font-red'>*</text>申请售后原因：
+        </view>
+        <view class='picker-right'>
+          {{aftersaletype[dictValue].dictName}} 
+          <image class='tbimg' src='../../img/my-bgimg2.png'></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class='userinfobox-form-box'>
+    <view class='userinfobox-box-name'><text class='font-red'>*</text>姓名：</view><input type="text" bindinput="username" focus="{{usernamefocus}}" />
+  </view>
+  <view class='userinfobox-form-box'>
+    <view class='userinfobox-box-name'><text class='font-red'>*</text>手机号：</view><input type="number" bindinput="usertel" focus="{{usertelfocus}}" />
+  </view>
+  <view class='userinfobox-form-box'>
+    <view class='userinfobox-box-name'><text class='font-red'>*</text>房间号：</view><input type="number" value='{{roomCode}}' disabled="true" />
+  </view>
+  <view class='uploadimg'>
+    <view class='userinfobox-box-name'><text class='font-red'>*</text>上传照片：</view>
+    <view>
+      <view bindtap='bindChooiceProduct' class='upbtn' style='background: {{themecolor.skintone}};'>{{uptext}}</view>
+      <view class='upfont'>(最多上传3张)</view>
+    </view>
+  </view>
+  <view class='uploadimg-list'>
+    <image wx:for="{{productInfo}}" src='http://res.zhuniu.com/longan-test/{{item}}' mode='widthFix'></image>
+  </view>
+  <view class='userinfobox-form-box' style='border-bottom: none;'>
+    <view class='userinfobox-box-name'>备注：</view><textarea class='remarks' bindinput="userremark" focus="{{remarkfocus}}" />
+  </view>
+  <view class='btnbox'>
+    <view class='btnbox-btn' bindtap='backfun' style='background: {{themecolor.skintone}};'>取消</view>
+    <view class='btnbox-btn' bindtap='subfun' style='background: {{themecolor.skintone}};'>提交</view>
+  </view>
+</view>

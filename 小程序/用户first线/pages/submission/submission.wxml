@@ -1,0 +1,56 @@
+<view class='pagebox'>
+  <view class='roomservice-typeul'>
+    <view class='roomservicedetails-li' wx:for="{{roomservicetype}}">
+      <image class='roomservicedetails-img' src='{{item.imageUrl}}'></image>
+      <view class='roomservicedetails-name'>{{item.name}}</view>
+      <view class='roomservicedetails-price'>{{item.priceDesc}}</view>
+      <view class='roomservicedetails-num'>
+        <view class='roomservicedetails-num-view roomservicedetails-num-img' data-service="{{item}}" bindtap="{{btntype?'changeshopbox_reduce':''}}"><image src='../../img/icon-img2.png'></image></view>
+        <view class='roomservicedetails-num-view roomservicedetails-number'>{{item.amount}}</view>
+        <view class='roomservicedetails-num-view roomservicedetails-num-img' data-service="{{item}}" bindtap="{{btntype?'changeshopbox_add':''}}"><image src='../../img/icon-img1.png'></image></view>
+      </view>
+    </view>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='submissionbox'>
+    <view class='userinfobox-top'>用户信息</view>
+    <view class='userinfobox-form'>
+      <input type="text" bindinput="username" focus="{{usernamefocus}}" placeholder="请输入您的姓名" />
+      <input type="number" bindinput="usertel" focus="{{usertelfocus}}" placeholder="请输入您的联系电话" />
+      <input type="number" bindinput="userroom" focus="{{userroomfocus}}" placeholder="请输入您的房间号" />
+    </view>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='submissionbox'>
+    <view class='userinfobox-top'>送达时间</view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio">
+        <radio value="0" checked="" />立即
+      </label>
+      <label class="radio">
+        <radio value="1" checked="" />
+        <view class="section" style='margin-right: 15rpx;'>
+          <picker mode="date" value="{{datevalue}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange">
+            <view class="picker">{{datevalue}}</view>
+          </picker>
+        </view>
+        <view class="section">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+              {{array[index]}}
+            </view>
+          </picker>
+        </view>
+      </label>
+    </radio-group>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='submissionbox' style='border-bottom: none;'>
+    <view class='userinfobox-top'>备注</view>
+    <textarea class='remarks' bindinput="userremark" focus="{{remarkfocus}}" />
+  </view>
+  <view class='subbtnbox'>
+    <view class='subbtn' bindtap='submission' style='background: {{themecolor.skintone}};'>确认提交</view>
+    <view class='subbtn subbtn-cancel' bindtap='subcancel'>取消</view>
+  </view>
+</view>

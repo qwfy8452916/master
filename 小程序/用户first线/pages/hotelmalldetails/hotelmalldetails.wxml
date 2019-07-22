@@ -1,0 +1,49 @@
+<swiper indicator-dots='true' indicator-color='rgba(204, 204, 204, 0.8)' indicator-active-color='#ffc000' autoplay='true' interval='3000' duration='500' circular='true' display-multiple-items='1' style="height:{{imgheights[current]}}rpx;" bindchange="bindchange">
+  <block wx:for="{{detailsdata.bannerImageList}}" wx:for-item="item" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" data-id='{{index}}' class="slide-image" mode="widthFix" bindload="imageLoad" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='detailsinfo'>
+  <view class='detailsinfo-top'>
+    <view class='font-price'>￥<text>{{detailsdata.prodRetailPrice}}</text></view>
+    <view class='font-stock' wx:if="{{detailsdata.prodAmount != 0}}">库存{{detailsdata.prodAmount}}个</view>
+  </view>
+  <view class='font-name'>{{detailsdata.prodShowName}}</view>
+</view>
+<view class='deliverybox' wx:if="{{detailsdata.delivWay != 0}}">  
+  <view class='deliverybox-name'>支持配送方式</view>
+  <block wx:if="{{isvirtual}}">
+    <view class='deliverybox-type' wx:if="{{detailsdata.delivWay == 1}}">客房配送</view>
+    <view class='deliverybox-type' wx:elif="{{detailsdata.delivWay == 2}}">快递到家</view>
+    <view class='deliverybox-type' wx:elif="{{detailsdata.delivWay == 3}}">客房配送 | 快递到家</view>
+  </block>
+  <block wx:else>
+    <view class='deliverybox-type' wx:if="{{detailsdata.delivWay == 1}}">现场配送</view>
+    <view class='deliverybox-type' wx:elif="{{detailsdata.delivWay == 2}}">快递到家</view>
+    <view class='deliverybox-type' wx:elif="{{detailsdata.delivWay == 3}}">现场配送 | 快递到家</view>
+  </block>
+</view>
+<view class='detailsinfo-img'>
+  <view class='font-bt'>商品详情</view>
+  <block wx:for="{{detailsdata.descImageList}}" wx:for-item="item" wx:key="index">
+    <image src="{{item}}" class="detailsimg" mode="widthFix" />
+  </block>
+</view>
+
+
+<view class='footbox'>
+  <view class='buycar' bindtap='buycarfun'>
+    <image src='../../img/shoppingcart.png' class='buycarimg' mode='aspectFill'></image>
+  </view>
+  <block wx:if="{{detailsdata.isCanBuy == 1 && detailsdata.delivWay != 0}}">
+    <view class='footbox-r'>
+      <view class='joincar' data-delivway="{{detailsdata.delivWay}}" bindtap='addcarfun'>加入购物车</view>
+      <view class='buy' data-delivway="{{detailsdata.delivWay}}" bindtap='gobuy'>立即购买</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='buy bgcolor'>暂不支持购买</view>
+  </block>
+</view>

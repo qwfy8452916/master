@@ -1,0 +1,132 @@
+page{
+  background: #fff;
+}
+.pagebox{
+  padding-bottom: 1rem;
+}
+.intervalbox{
+  height: 20rpx;
+  background: #f6f6f6;
+}
+.submissionbox{
+  padding: 20rpx 3%;
+  border-bottom: 1px solid #ccc;
+}
+.userinfobox-top{
+  font-size: 0.9rem;
+  padding-bottom: 25rpx;
+  margin-bottom: 25rpx;
+  border-bottom: 1px solid #ccc;
+}
+.orderdetails-li{
+  padding: 20rpx 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+.orderdetails-libox{
+  width: 30%;
+  text-align: left;
+  font-size: 0.85rem;
+}
+.userinfo-orderdetails-li .orderdetails-libox:first-child{
+  width: 15%;
+}
+.userinfo-orderdetails-li .orderdetails-libox:last-child{
+  text-align: right;
+}
+.cancelbox{
+  overflow: hidden;
+}
+.cancelbtn{
+  width: 30%;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 0.9rem;
+  color: #fff;
+  background: red;
+  float: right;
+  border-radius: 5px;
+  margin-top: 20rpx;
+}
+.border-none{
+  border: none;
+}
+.orderdetails-font{
+  font-size: 0.85rem;
+  padding: 20rpx 5%;
+}
+.orderdetails-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.orderdetails-box-left{
+  width: 35%;
+  text-align: left;
+}
+.orderdetails-box-right{
+  width: 65%;
+  text-align: right;
+}
+.remarksbox{
+  font-size: 0.8rem;
+  line-height: 1rem;
+  padding: 15rpx 5%;
+}
+.remarks{
+  height: 5rem;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 90%;
+  margin: 0 auto 30rpx;
+  padding: 10rpx;
+}
+.cancel-tipsbg{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.cancel-tips{
+  width: 70%;
+  margin: 6rem auto;
+  padding: 25rpx 25rpx;
+  background: #fff;
+  z-index: 9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.cancel-tips-top{
+  font-size: 1rem;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.cancel-tips-btn{
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cancel-tips-btn .cancel-tips-btnbox{
+  width: 40%;
+  font-size: 0.8rem;
+  color: #fff;
+  background: #ff9c00;
+  text-align: center;
+  line-height: 2rem;
+  border-radius: 5px;
+}
+.cancel-tips-btn .cancel-tips-btnbox:last-child{
+  background: red;
+}
+.cancelfont{
+  font-size: 35rpx;
+  text-align: right;
+  line-height: 70rpx;
+}

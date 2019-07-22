@@ -1,0 +1,54 @@
+<view class='pagebox'>
+  <view class='submissionbox'>
+    <view class='userinfobox-top'>商品详情</view>
+    <view class='orderdetails-li' wx:for="{{orderlist}}">
+      <view class='orderdetails-libox'>{{item.hdetailName}}</view>
+      <view class='orderdetails-libox'>x{{item.amount}}</view>
+      <view class='orderdetails-libox'>{{item.priceDesc}}</view>
+    </view>
+    <view class='cancelbox' wx:if="{{status == 1}}">
+      <view class='cancelbtn' bindtap='boxshow'>取消</view>
+    </view>
+    <view class='cancelfont' wx:else>
+      已取消
+    </view>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='submissionbox'>
+    <view class='userinfobox-top'>客户信息</view>
+    <view class='orderdetails-li userinfo-orderdetails-li border-none'>
+      <view class='orderdetails-libox'>{{customerName}}</view>
+      <view class='orderdetails-libox'>{{mobile}}</view>
+      <view class='orderdetails-libox'>{{roomCode}}号房间</view>
+    </view>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='submissionbox'>
+    <view class='userinfobox-top'>送达时间</view>
+    <view class='orderdetails-font'>{{arrivedAt}}</view>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='submissionbox'>
+    <view class='userinfobox-top'>订单详情</view>
+    <view class='orderdetails-box'>
+      <view class='orderdetails-font orderdetails-box-left'>下单时间</view>
+      <view class='orderdetails-font orderdetails-box-right'>{{createdAt}}</view>
+    </view>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='submissionbox'>
+    <view class='userinfobox-top'>备注</view>
+    <view class='remarksbox'>{{remark}}</view>
+  </view>
+  <view class='intervalbox'></view>
+  <view class='cancel-tipsbg' wx:if="{{showView}}">
+    <view class='cancel-tips'>
+      <view class='cancel-tips-top'>提示</view>
+      <textarea bindinput="userremark" class='remarks' />
+      <view class='cancel-tips-btn'>
+        <view class='cancel-tips-btnbox' bindtap='boxshow'>取消</view>
+        <view class='cancel-tips-btnbox' bindtap='cancelorderdetails'>确定</view>
+      </view>
+    </view>
+  </view>
+</view>

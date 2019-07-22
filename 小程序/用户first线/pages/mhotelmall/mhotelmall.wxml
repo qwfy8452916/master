@@ -1,0 +1,65 @@
+
+<block wx:if="{{isvirtual}}">
+  <view class='ordertype'>
+    <view class='ordertype-btn' bindtap='smgw'>扫码购物</view>
+    <view class='ordertype-btn' bindtap='kffw'>客房服务</view>
+    <view class='ordertype-btn' style='color: {{themecolor.skintone}};border-color: {{themecolor.skintone}};'>酒店商城</view>
+    <!-- <view class='ordertype-btn'>周边美食</view>
+    <view class='ordertype-btn'>当地特产</view> -->
+  </view>
+</block>
+<view class='paddAll mgB30 borderT'>
+  <scroll-view scroll-x class='typelist' style="">
+    <view class='typebtn {{typeindex==3?"typeactive":""}}' data-index='3' bindtap='changetype'>待支付</view>
+    <view class='typebtn {{typeindex=="all"?"typeactive":""}}' data-index='all' bindtap='changetype'>全部</view>
+    <view class='typebtn {{typeindex==0?"typeactive":""}}' data-index='0' bindtap='changetype'>待商家确认</view>
+    <view class='typebtn {{typeindex==1?"typeactive":""}}' data-index='1' bindtap='changetype'>已确认</view>
+    <view class='typebtn {{typeindex==2?"typeactive":""}}' data-index='2' bindtap='changetype'>已发货</view>
+  </scroll-view>
+</view>
+
+<block wx:if="{{datanull}}">
+  <view class='datanull-font'>
+    <image src='../../img/icon-img8.png' class='iconimg1' mode='widthFix'></image>
+    <text>您还没有相关订单</text>
+  </view>
+</block>
+<block wx:else>
+  <block wx:if="{{typeindex==3}}"><!-- 待支付 -->
+    <include src="waitpay.wxml" />
+  </block>
+  <block wx:else>
+    <view class='bgfff orderlist' wx:for="{{listdata}}" wx:for-item='item' wx:key="index">
+      <view data-orderid="{{item.id}}" data-payendtime="{{item.payEndTime}}" bindtap=''>
+        <view class='orderlistbox borderB'>
+          <view class='font-name'>{{item.createdAt}}</view>  
+          <view wx:if="{{item.delivStatus == 0}}" class='font-name font-color1'>待确认</view>
+          <view wx:elif="{{item.delivStatus == 1}}" class='font-name font-color1'>已确认</view>
+          <view wx:elif="{{item.delivStatus == 2}}" class='font-name font-color2'>已发货</view>
+          <view wx:elif="{{item.delivStatus == 3}}" class='font-name font-color3'>已退款</view>
+        </view>
+        <block wx:if="{{item.prodOrderDTOS.length == 1}}">
+          <view class='orderlistbox-c'>
+            <view class='contentbox1'>
+              <image src='{{item.prodOrderDTOS[0].prodPath}}' class='spimg' mode='aspectFill'></image>
+                <view class='font-content'>
+                  <view class='font-name font-overflow' style='width: 100%;'>{{item.prodOrderDTOS[0].prodName}}</view>
+                  <view class='font-name2' style='width: 100%;'>¥ {{item.prodOrderDTOS[0].prodActualAmount}}</view>
+                </view>
+              <view class='font-name2 font-width'>x {{item.prodOrderDTOS[0].prodQuantity}}</view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='paddAll borderB'>
+            <scroll-view scroll-x class='typelist'>
+              <block wx:for="{{item.prodOrderDTOS}}" wx:for-item="item2" wx:key="index">
+                <image src='{{item2.prodPath}}' class='spimg spimg-mgR' mode='aspectFill'></image>
+              </block>
+            </scroll-view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+</block>

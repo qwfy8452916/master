@@ -1,0 +1,39 @@
+.openfail-font1{
+  font-size: 1rem;
+  color: #000;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.openfail-font2{
+  font-size: 0.7rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+.openfail-img .openfailimg{
+  display: block;
+  width: 100%;
+}
+.openfail-img{
+  width: 15%;
+  margin: 0 auto 1rem;
+}
+.successbtnbox{
+  display: flex;
+  width: 75%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.shoppingbtn{
+  width: 40%;
+  margin:0 auto;
+  background: #FF9700;
+  font-size: 0.7rem;
+  color: #fff;
+  line-height: 1.8rem;
+  border-radius: 5px;
+  text-align: center;
+}
+.telbtn{
+  background: #fc6602;
+}

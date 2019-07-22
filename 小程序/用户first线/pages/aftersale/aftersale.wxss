@@ -1,0 +1,126 @@
+page{
+  background: #fff;
+}
+.tips-font{
+  font-size: 0.8rem;
+  color: red;
+  line-height: 1rem;
+  padding: 20rpx 3%;
+  margin-bottom: 50rpx;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #f6f6f6;
+}
+.tips-font-img{
+  width: 10%;
+  margin-right: 10rpx;
+}
+.userinfobox-form{
+  width: 90%;
+  margin: 0 auto;
+}
+.userinfobox-form-box{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #ccc;
+}
+.userinfobox-box-name{
+  font-size: 0.9rem;
+  color: #333;
+  width: 30%;
+  padding-left: 3%;
+}
+.userinfobox-form-box input{
+  width: 60%;
+  height: 2rem;
+  line-height: 1.8rem;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-left: 1px solid #ccc;
+}
+.font-red{
+  color: red;
+}
+.section{
+  margin-top: 1.5rem;
+  margin-bottom: 20rpx;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.picker{
+  font-size: 0.9rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.picker-right{
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.tbimg{
+  width: 5%;
+  height: 35rpx;
+  margin-left: 10rpx;
+}
+.remarks{
+  height: 5rem;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 51%;
+  padding: 10rpx;
+}
+.btnbox{
+  width: 80%;
+  margin: 80rpx auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 100rpx;
+}
+.btnbox .btnbox-btn{
+  width: 40%;
+  background: #FF9700;
+  line-height: 2rem;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+}
+.uploadimg{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+.upbtn{
+  font-size: 1rem;
+  color: #fff;
+  background: #FF9700;
+  line-height: 2rem;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20rpx;
+}
+.upfont{
+  font-size: 0.8rem;
+}
+.uploadimg-list{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.uploadimg-list image{
+  width: 32%;
+}
