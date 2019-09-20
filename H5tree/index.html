@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/m-publicrem.new.css">
+    <link rel="stylesheet" href="css/m-reset.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.1/lib/index.css"> -->
+    <link rel="stylesheet" href="element-ui@2.8.2/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/suppplier.css">
+    
+
+    <script type="text/javascript" src="js/vue/vue.js"></script>
+    <script type="text/javascript" src="js/axios/axios.min.js"></script>
+    
+    <!-- <script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vant@2.1/lib/vant.min.js"></script>  -->
+    
+    
+
+    <title>立即入驻</title>
+    
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="pagetitlewrap">
+            <i class="iconfont returnicon">&#xe605;</i>
+            <span class="ruzhutext">立即入驻</span>
+        </div>
+        <div class="tiptext"><i class="iconfont laba">&#xe62a;</i>入驻供应商需支付1000元保证金</div>
+        <div class="basicinfo">基本信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">联系人</span><input v-model="merchantContact" class="shuru" maxlength="10" type="text" placeholder="请输入联系人姓名">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">手机号码</span><input class="shuru" maxlength="11" v-model="merchantContactPhone" type="text" placeholder="请输入手机号">
+            </div>
+
+        </div>
+        <div class="basicinfo">公司信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">类&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp型</span>
+                <div class="radiowrap">
+                    <el-radio v-model="type" label="C">企业</el-radio>
+                    <el-radio v-model="type" label="P">个人</el-radio>
+                </div>
+            </div>
+            <div class="hangitem" v-if="type=='C'">
+                <span class="hangtitle credittitle">统一社会信用代码</span><input class="shuru creditshuru" v-model="merchantUscc" type="text" placeholder="请输入统一社会信用代码">
+            </div>
+            <div class="hangitem" v-if="type=='P'">
+                <span class="hangtitle">身份证号码</span><input class="shuru creditshuru" type="text" v-model="merchantIdno" placeholder="请输入身份证号码">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">公司名称</span><input class="shuru" type="text" maxlength="35" v-model="merchantName" placeholder="请输入公司名称">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">供应商类型</span>
+                <div class="radiowrap">
+                    <el-radio v-model="supplierType" label="1">工厂</el-radio>
+                    <el-radio v-model="supplierType" label="2">品牌商</el-radio>
+                    <el-radio v-model="supplierType" label="3">代理商</el-radio>
+                </div>
+            </div>
+
+            <div class="hangitem">
+                <div class="uploadtitle">上传营业执照</div>
+                <el-upload :action="uploadUrl" list-type="picture-card" :limit="3"
+                name="fileContent"
+                :on-exceed="(file,fileList,index)=>{return handleExceed(file,fileList,'license')}" 
+                :on-success="(res,file,fileList,index)=>{return handleAvatarSuccess(res,file,fileList,'license')}" 
+                :file-list="CertificatesPic"
+                :on-error="(file,fileList,index)=>{return imgUploadError(file,fileList,'license')}"
+                :on-remove="(file,fileList,index)=>{return handleRemove(file,fileList,'license')}">
+                <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+    
+
+            <div class="hangitem" @click="choseAddress(1)">
+                <span class="hangtitle">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp区</span><span v-html="addressCity" class="shuru"></span><i class="iconfont selecticon">&#xe697;</i>
+            </div>
+
+            <div class="hangitem">
+                <span class="hangtitle">公司地址</span><input class="shuru" type="text" maxlength="35" v-model="merchantAddress" placeholder="请输入公司地址">
+            </div>
+       
+        </div>
+        <div class="basicinfo">产品信息</div>
+        <div class="textwrap">
+            <div class="hangitem" @click="choseAddress(2)">
+                <span class="hangtitle">供应区域</span><span v-html="addressCity2" class="shuru"></span><i class="iconfont selecticon">&#xe697;</i>
+            </div>
+            <div class="addresswrap">
+                <div class="hangitem addresshang" v-for="(item,index) in showselectaddress">
+                     <span class="addressdet">{{item.shengname}}{{item.shiname}}{{item.quname}}</span><i class="iconfont deladdress" @click="deladdress(index)">&#xe612;</i>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- 产品信息 -->
+        <div class="prodwrap" v-for="(item,prodindex) in prodinfo">
+             <div class="prodtitle">
+                 <span class="prodtitleleft">产品信息{{prodindex+1}}</span>
+                 <i class="iconfont prodtitleright" @click="delprod(prodindex)">&#xe615;</i>
+             </div>
+             <div class="hangitem">
+                <span class="hangtitle">产品名称</span><input class="shuru" v-model="item.prodName" type="text" placeholder="请输入产品名称">
+            </div>
+            <div class="hangitem">
+                <div class="uploadtitle">上传产品实物图</div>
+                    <el-upload :action="uploadUrl" list-type="picture-card" :limit="3"
+                    name="fileContent"
+                    :on-exceed="(file,fileList,index)=>{return handleExceed(file,fileList,prodindex)}" 
+                    :on-success="(res, file, fileList,index)=>{return handleAvatarSuccess(res, file, fileList,prodindex)}" 
+                    :file-list="item.fileList"
+                    :on-error="(file,fileList,index)=>{return imgUploadError(file,fileList,prodindex)}"
+                    :on-remove="(file,fileList,index)=>{return handleRemove(file,fileList,prodindex)}">
+                    <i class="el-icon-plus"></i>
+                    </el-upload>
+                    <el-dialog :visible.sync="dialogVisible">
+                        <img width="100%" :src="dialogImageUrl" alt="">
+                    </el-dialog>
+            </div>
+        </div>
+        <div class="addwrap" @click="addprod">
+            <i class="iconfont addniuicon">&#xe602;</i>添加产品信息
+        </div>
+        <!-- 产品信息 -->
+
+        <div class="textwrap">       
+            <div class="hangitem">
+                <span class="hangtitle">支持发票</span>
+                <div class="radiowrap">
+                    <el-radio v-model="invoice" label="0">不支持</el-radio>
+                    <el-radio v-model="invoice" label="1">普票</el-radio>
+                    <el-radio v-model="invoice" label="2">专普票</el-radio>
+                </div>
+            </div>
+            <div class="hangitem" v-if="invoice!='0'">
+                <span class="hangtitle invoicetitle">商品销售发票税率</span><input class="shuru shuruinvoice" type="text" v-model="invoiceTaxRate" placeholder="请输入商品销售发票税率">
+            </div>
+        </div>
+        <div class="basicinfo">支付信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">诚意金(元)</span><span class="shuru deposit">￥1000.00</span>
+            </div>
+        </div>
+
+        <el-tree
+            :data="treedata"
+            show-checkbox
+            default-expand-all
+            node-key="id"
+            ref="tree"
+            highlight-current
+            @node-drop="handleDrop"
+            draggable>
+        </el-tree>
+
+        <div class="buttons">
+            <el-button @click="getCheckedNodes">通过 node 获取</el-button>
+            <el-button @click="getCheckedKeys">通过 key 获取</el-button>
+            <el-button @click="setCheckedNodes">通过 node 设置</el-button>
+            <el-button @click="setCheckedKeys">通过 key 设置</el-button>
+            <el-button @click="resetChecked">清空</el-button>
+        </div>
+
+
+        <div class="paywrap" @click="payevent">支付</div>
+
+
+
+        <!--选择地址-->
+		<div class="deleteShadow" v-show="showAddress" @click="hideProvince">
+			<div class="chose" @click.stop="stopNull">
+				<div class="choseHead">
+					<a>省份</a>
+					<a>城市</a>
+					<a>地区</a>
+				</div>
+				<div class="choseMain">
+					<div class="choseProvince">
+						<p v-for="(item, index) in choseProvince" :class="{active: index == checkindex2}"
+							@click="getProvince(index,item.dictValue,2,'CITY','PROVINCE')">
+							{{item.dictName}}
+							<i class="lele icon-gengduo"></i>
+						</p>
+					</div>
+					<div class="choseCity">
+						<p v-for="(item,index) in choseCity" :class="{active: index === checkindex3}"
+							@click="getProvince(index,item.dictValue,3,'AREA','CITY')">{{item.dictName}}<i class="lele icon-gengduo"></i>
+						</p>
+					</div>
+					<div class="choseArea">
+						<p v-for="(item,index) in choseArea" :class="{active: index === checkindex4}"
+							@click="getProvince(index,item.dictValue,4,'','')">{{item.dictName}}</p>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!--选择地址-->  
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="element-ui@2.8.2/index.js"></script>
+    <!-- <script type="text/javascript" src="js/supplier.js"></script> -->
+
+    <script>
+       
+ var app = new Vue({
+	el: '#app',
+	data: {
+        url:'http://172.16.200.90:9001/longan/api',
+        uploadUrl:'http://172.16.200.90:9001/longan/api/basic/file/upload', //上传附件,
+        merchantContact:'',  //联系人
+        merchantContactPhone:'',  //手机号
+        merchantUscc:'',   //统一社会信用代码
+        merchantIdno:'',   //身份证号码
+        merchantName:'',   //公司名称
+        type: '',  //入驻商类型
+        supplierType:'',  //供应商类型
+        invoice:'',
+        CertificatesPic:[],  //营业执照
+        merchantProvince:'',  //所属省份代号
+        merchantCity:'',  //所属城市代号
+        merchantArea:'',  //所属区域代号
+        supplyArea:[],   //供应区域
+        merchantAddress:'',  //公司地址
+        invoiceFlag:'',    //是否支持开票
+        invoiceTaxRate:'',  //发票税率
+
+        dialogImageUrl: '',
+        dialogVisible: false,
+        disabled: false,
+
+        judge:'',
+        showAddress:false,
+        checkindex2: '',
+        checkindex3:'',
+        checkindex4:'',
+        choseProvince:[],
+        choseCity:[],
+        choseArea:[],
+        addressCityIdList:{},
+        addressCity:"",
+        addressCity2:"",
+        showselectaddress:[],
+         
+        prodinfo:[
+            {
+                prodName:"",
+                prodImagPaths:[]
+            },
+        ],    //产品信息
+
+        treedata: [{
+          id: 1,
+          label: '一级 1',
+          children: [{
+            id: 4,
+            label: '二级 1-1',
+            children: [{
+              id: 9,
+              label: '三级 1-1-1'
+            }, {
+              id: 10,
+              label: '三级 1-1-2'
+            }]
+          }]
+        }, {
+          id: 2,
+          label: '一级 2',
+          children: [{
+            id: 5,
+            label: '二级 2-1'
+          }, {
+            id: 6,
+            label: '二级 2-2'
+          }]
+        }, {
+          id: 3,
+          label: '一级 3',
+          children: [{
+            id: 7,
+            label: '二级 3-1'
+          }, {
+            id: 8,
+            label: '二级 3-2'
+          }]
+        }],
+
+      
+
+    },
+    watch:{
+        
+    },
+
+    mounted(){
+      this.provinceGet();
+    //   this.payevent();
+	},
+	methods: {
+
+        handleDrop(draggingNode, dropNode, dropType, ev){
+           console.log(draggingNode.data)  //获取被移动id和描述
+           console.log(dropNode.parent)    //父节点数据
+           console.log(dropType)
+           console.log(ev)
+        },
+
+        getCheckedNodes() {
+        console.log(this.$refs.tree.getCheckedNodes());
+      },
+      getCheckedKeys() {
+        console.log(this.$refs.tree.getCheckedKeys());
+      },
+      setCheckedNodes() {
+        this.$refs.tree.setCheckedNodes([{
+          id: 5,
+          label: '二级 2-1'
+        }, {
+          id: 9,
+          label: '三级 1-1-1'
+        }]);
+      },
+      setCheckedKeys() {
+        this.$refs.tree.setCheckedKeys([3]);
+      },
+      resetChecked() {
+        this.$refs.tree.setCheckedKeys([]);
+      },
+
+        //支付
+        payevent(){
+          let that=this;
+          let reg=/(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/;
+          const imageListdetail = that.CertificatesPic.map(item => item.path);
+          if(that.merchantContact==''){
+             alert("请填写联系人！")
+             return false;
+          }
+          if(that.merchantContactPhone==''){
+             alert("请填写手机号码！")
+             return false;
+          }
+          if(that.type==''){
+             alert("请填写公司类型！")
+             return false;
+          }
+          if(that.type=='C' && that.merchantUscc==''){
+            alert("请填写企业统一社会信用代码！")
+             return false;
+          }
+          if(that.type=='P' && that.merchantIdno==''){
+            alert("请填写个人身份证号码！")
+             return false;
+          }
+          if(that.type=='P' && !reg.test(that.merchantIdno)){
+            alert("证件号码格式有误！")
+             return false;
+          }
+          if(that.merchantName==''){
+             alert("请填写公司名称！")
+             return false;
+          }
+          if(that.supplierType==''){
+             alert("请填写供应商类型！")
+             return false;
+          }
+          if(imageListdetail.length<1){
+             alert("请上传营业执照！")
+             return false;
+          }
+          if(that.merchantArea==''){
+             alert("请选择地区！")
+             return false;
+          }
+          if(that.merchantAddress==''){
+             alert("请填写公司地址！")
+             return false;
+          }
+          if(that.supplyArea.length<1){
+             alert("请选择供应区域！")
+             return false;
+          }
+          for(var i=0;i<that.prodinfo.length;i++){
+             if(that.prodinfo[i].prodName==''){
+                alert("请填写商品名称!")
+                return false;
+             }
+             if(that.prodinfo[i].prodImagPaths.length<1){
+                alert("请上传商品图片!")
+                return false;
+             }
+          }
+          if(that.invoice!=0 && that.invoiceTaxRate==''){
+             alert("请填写商品销售发票税率!")
+             return false;
+           }
+          $.ajax({
+                type: "POST",
+                url: that.url + "/mer/supplier/appl",
+                contentType:'application/json',
+                data:JSON.stringify({
+                    merchantContact: that.merchantContact,
+                    merchantContactPhone:that.merchantContactPhone,
+                    merchantType:that.type,
+                    merchantUscc:that.merchantUscc,
+                    merchantIdno:that.merchantIdno,
+                    merchantName:that.merchantName,
+                    supplierType:that.supplierType,
+                    merchantLicenseList:imageListdetail,
+                    merchantProvince:that.merchantProvince,
+                    merchantCity:that.merchantCity,
+                    merchantArea:that.merchantArea,
+                    merchantAddress:that.merchantAddress,
+                    supplyArea:JSON.stringify(that.supplyArea),
+                    prodDTOS:that.prodinfo,
+                    invoiceFlag:that.invoice,
+                    invoiceTaxRate:that.invoiceTaxRate,
+                    earnest:1000,
+                }),
+                dataType:'json',
+                success:function (response) {
+                    alert('操作成功！')
+                    window.location.reload()
+                    
+                },
+                error:function(xhr){
+                   alert(xhr)
+                }
+            })
+
+        },
+
+
+        //省
+        provinceGet(){
+            let that=this;
+            $.ajax({
+                type: "GET",
+                url: that.url + "/basic/dict/items",
+                data:{
+                    key: 'PROVINCE',
+                    orgId: '0',
+                    parentKey: '',
+                    parentValue: ''
+                },
+                dataType:'json',
+                success:function (response) {
+                    that.choseProvince=response.data
+                },
+                error:function(xhr){
+                   alert(xhr)
+                }
+            })
+
+        },
+
+        choseAddress:function(e){
+            this.judge=e
+            this.showAddress = true;
+            this.checkindex2="";
+            this.checkindex3="";
+            this.checkindex4="";
+            this.choseCity=[];
+            this.choseArea=[];
+        },
+        
+
+        stopNull:function(){
+        //   return false;
+        },
+        //隐藏地址选择
+        hideProvince:function(){
+            this.showAddress = false;
+        },
+
+        getProvince:function(index,id,run,key,parentKey){
+            var that = this;
+            if(run==4 && this.judge!=2){
+                that.checkindex4 = index;
+                var sheng = that.choseProvince[that.checkindex2];
+                var shi = that.choseCity[that.checkindex3];
+                var qu = that.choseArea[index];
+                that.merchantProvince=sheng.dictValue
+                that.merchantCity=shi.dictValue
+                that.merchantArea=qu.dictValue
+                       
+                that.addressCity = sheng.dictName + ' ' + shi.dictName + ' ' + qu.dictName;
+
+                that.showAddress = false;
+                return
+            }
+            if(run==3 && this.judge==2){
+                that.checkindex3 = index;
+                var sheng = that.choseProvince[that.checkindex2];
+                var shi = that.choseCity[that.checkindex3];
+                that.addressCityIdList = {
+                    sheng: that.choseProvince[that.checkindex2].dictValue,
+                	shi: that.choseCity[that.checkindex3].dictValue,
+                    shengname:that.choseProvince[that.checkindex2].dictName,
+                    shiname: that.choseCity[that.checkindex3].dictName,
+                 }  
+                if(JSON.stringify(that.showselectaddress).indexOf(JSON.stringify(that.addressCityIdList))==-1){
+                    that.showselectaddress.push(that.addressCityIdList);
+                    that.supplyArea.push(shi.dictValue)
+                  }  
+                    that.addressCity2 = sheng.dictName + ' ' + shi.dictName;
+                    that.showAddress = false;
+                    return
+              }
+              $.ajax({
+                type: "GET",
+                url: that.url + "/basic/dict/items",
+                data:{
+                    key: key,
+                    orgId: '0',
+                    parentKey: parentKey,
+                    parentValue: id
+                },
+                dataType:'json',
+                success:function (response) {
+                    if(run==2){
+                        that.checkindex2 = index;
+                        that.checkindex3 = "";
+                        that.checkindex4 = "";
+                        that.choseCity=response.data
+                    }
+                    if(run==3){
+                        that.checkindex3 = index;
+                        that.checkindex4 = "";
+                        that.choseArea=response.data
+                    }
+                },
+                error:function(xhr){
+                   alert(xhr)
+                }
+            })
+
+                
+        },
+
+
+        deladdress(ind){
+          this.showselectaddress.splice(ind,1)
+          this.supplyArea.splice(ind,1)
+        },
+        
+        //新增
+        addprod(){
+            let that=this;
+            let newline={
+                    prodName:"",
+                    prodImagPaths:[]
+                }
+            this.prodinfo.push(newline)
+        },
+
+        //删除
+        delprod(index){
+            this.prodinfo.splice(index,1)
+        },
+
+        handleAvatarSuccess(res, file, fileList,index) {
+            var that = this;
+            if(res.code==0){ 
+                const image={
+                  name: file.name,
+                  url: file.url,
+                  path: res.data
+                }
+                if(index=='license'){
+                  that.CertificatesPic.push(image)
+                  return false
+                }
+                that.prodinfo[index].prodImagPaths.push(res.data);
+                
+            }
+        },
+
+        handleRemove(file, fileList,index) {
+            var that = this;
+            if(fileList.length>0){
+                if(index=='license'){
+                  that.CertificatesPic=fileList.map((item,index)=>{
+                    return {
+                        name:item.name,
+                        url:item.url,
+                        path:item.path
+                    }
+                  })
+                  console.log(that.CertificatesPic)
+                  return false
+                 }
+                
+                that.prodinfo[index].prodImagPaths=fileList.map((item,index)=>{
+                    return item.response.data
+                  })
+                }else{
+                  if(index=='license'){
+                    that.CertificatesPic=[];
+                     return false;
+                    }
+                   that.prodinfo[index].prodImagPaths=[];
+                }
+                
+           },
+        handleExceed(files, fileList,index) {
+            alert(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+        },
+        //图片上传失败
+        imgUploadError(file,fileList,index){
+            // console.log(fileList)
+            alert('上传图片失败！');
+
+           }
+
+	},
+	
+})
+
+
+
+    </script>
+    
+</body>
+</html>
