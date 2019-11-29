@@ -1,1 +1,4 @@
 /* pages/area/area.wxss */
+
+.hangitem{overflow: hidden;}
+.close{float: right;}

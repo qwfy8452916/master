@@ -145,7 +145,7 @@ Page({
   },
 
   onReachBottom: function (e) {
-    console.log(e)
+    console.log(1)
   },
 
 // 建立一个缓冲 回调在主js里

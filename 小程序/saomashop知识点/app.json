@@ -1,20 +1,33 @@
 {
-  "pages":[
-    "pages/shaix/shaix",
-    "pages/area/area",
+  "pages": [
+    "pages/zp/zp",
+    "pages/table2/table2",
+    "pages/table/table",
+    "pages/cablayout/cablayout",
     "pages/map/map",
+    "pages/shouquan/shouquan",
+    "pages/jump01/jump01",
+    "pages/area/area",
+    "pages/countdown/countdown",
     
-    "pages/sweep/sweep",
+    "pages/addinfo/addinfo",
+    
+    
+    "pages/jump02/jump02",
+    
     "pages/index/index",
+    
+    "pages/wifi/wifi",
+    
+    "pages/checkbox/checkbox",
+    "pages/shaix/shaix",
+    "pages/sweep/sweep",
     "pages/usezujian/usezujian",
     "pages/iview/iview",
     "pages/user/user",
-    
     "pages/shoppingcart/shoppingcart",
-    
     "pages/reservation/reservation",
     "pages/service/service",
-    "pages/shouquan/shouquan",
     
     "pages/weui/weui",
     "pages/logs/logs"
@@ -24,11 +37,11 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#ccc",
@@ -61,5 +74,6 @@
         "selectedIconPath": "img/me-hover.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

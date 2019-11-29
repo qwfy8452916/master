@@ -62,3 +62,45 @@
     </view>
   </picker>
 </view>
+
+
+<view class="section">
+  <view class="section__title">省市区选择器</view>
+  <picker
+    mode="region"
+    bindchange="bindRegionChange2"
+    value="{{region2}}"
+  >
+    <view class="picker">
+      当前选择：{{region[0]}}，{{region[1]}}
+    </view>
+  </picker>
+</view>
+
+
+
+<picker class="pickbox" bindchange="bindPickerChange1" range-key="name" value="{{index}}" range="{{province}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left"><text class="pickeritem">省：</text><text wx:if="{{province[index1].id}}">{{province[index1].name}}</text>
+         <text wx:else class="placems">请选择</text>
+      </text>
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <picker class="pickbox" bindchange="bindPickerChange2" range-key="name" value="{{index}}" range="{{citydata}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left"><text class="pickeritem">市：</text><text wx:if="{{citydata[index2].id}}">{{citydata[index2].name}}</text>
+         <text wx:else class="placems">请选择</text>
+      </text>
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <view class="hangitem" wx:for="{{showcityobj}}" wx:key data-index="{{index}}" data-id="{{item.id}}">
+     <text>{{item.name}}</text>  <text class="close" bindtap="close">关闭</text>
+  </view>

@@ -204,6 +204,28 @@ App({
       },
     })
   },
+  overtime: function () {
+
+    wx.redirectTo({
+      url: '../login/login',
+    })
+
+    wx.showToast({
+      title: '登录超时,重新登录!',
+      icon: 'none',
+      duration: 1200
+    });
+  },
+
+  getApiUrl: function () {
+    //  let apiUrl = 'http://111.231.87.18/longan/api';
+    // let apiUrl = 'https://api.kefangbao.com.cn/longan/api';
+    let apiUrl = 'http://172.16.200.165:9001/longan/api';
+    // let apiUrl = 'http://172.16.200.89:9001/longan/api';
+    // let apiUrl = 'http://172.16.200.90:9001/longan/api';
+    // let apiUrl = 'http://192.168.1.122:9001/longan/api';
+    return apiUrl
+  },
 
   globalData: {
     userInfo: null,
