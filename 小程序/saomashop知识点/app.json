@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/zp/zp",
+    
+    "pages/jump01/jump01",
     "pages/table2/table2",
-    "pages/table/table",
+    "pages/zp/zp",
+    "pages/newtable/newtable",
     "pages/cablayout/cablayout",
     "pages/map/map",
     "pages/shouquan/shouquan",
-    "pages/jump01/jump01",
+    
     "pages/area/area",
     "pages/countdown/countdown",
     
