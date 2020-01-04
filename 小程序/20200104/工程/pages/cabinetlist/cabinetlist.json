@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "柜子列表",
+  "usingComponents": {
+    "my-tabbar": "../../pages/tabbar/tabbar"
+  }
+}

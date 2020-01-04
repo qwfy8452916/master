@@ -1,0 +1,10 @@
+<!--pages/myqecode/myqecode.wxml-->
+<view class="myqrcode">
+   <image bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg' src="{{qrcodeData}}"></image>
+   <view>长按保存图片分享给好友，可以获得红包</view>
+</view>
+
+
+
+
+

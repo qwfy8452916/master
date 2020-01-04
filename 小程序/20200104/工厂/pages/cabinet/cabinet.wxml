@@ -1,0 +1,182 @@
+
+<view class="table">
+  <view class="td rowite" bindtap='switchzhixing' wx:for="{{cabinet}}" wx:key style="width:{{item.width}}%;height:{{item.height}}%;position:absolute;top:{{item.top}}%;left:{{item.left}}%;" data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}">
+  
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+
+  
+  </view>
+</view>
+
+
+
+<!-- <view class='wrap2'>
+    <view class="colite color1">
+
+        <view class='rowite' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{item.latticeCode=='A'}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+      <view class='rowite' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{(item.latticeCode=='C' && getcabType=='01') || (item.latticeCode=='B' && getcabType=='05')}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+      <view class='rowite' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{item.latticeCode=='E' && getcabType=='01'}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+    </view>
+    <view class="colite color2">
+
+       <view class='rowite' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{(item.latticeCode=='B' && getcabType=='01') || (item.latticeCode=='C' && getcabType=='05')}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+      <view class='rowite' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{item.latticeCode=='D'}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+      <view class='rowite' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{item.latticeCode=='F' && getcabType=='01'}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+    </view>
+    <view class="colite color3">
+      
+       <view class='rowite hebing1' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{(item.latticeCode=='G' && getcabType=='01') || (item.latticeCode=='E' && getcabType=='05')}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms merge'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms merge'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+      <view class='rowite' wx:for="{{cabinet}}" wx:key data-index="{{index}}" bindtap='switchzhixing' data-id="{{item.id}}" data-isopen="{{item.isOpen}}" data-latticecode="{{item.latticeCode}}" wx:if="{{item.latticeCode=='H' && getcabType=='01'}}">
+    <view wx:if="{{item.isOpen==1 && geziarray[index]==false}}" class='tuwen'>
+        <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png' ></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==false}}">
+      <view class='mongolia'></view>
+      <view class='tuwenms'>{{item.latticeCode}}</view>
+      <image class='verification' src='../../img/noadopt.png'></image>
+    </view>
+    <view class='tuwen' wx:elif="{{item.isOpen==0 && geziarray[index]==true}}">
+        <view class='tuwenms'></view>
+      <image class='verification' src='../../img/adopt.png'></image>
+     </view>
+      </view>
+
+    </view>
+</view> -->
+
+
+
+<view class='cabinettext'>
+  点击上述按钮，对应的柜子打开，关闭柜子，则 对应柜子测试完成，待全部柜子测试完成，点击 测试完成，测试结束。
+</view>
+
+<view class='completetest' bindtap='completetest'>测试完成</view>
+
+<view class="customtip" hidden="{{customtip}}">
+   <view class="tipcontent">
+      <text class="iconfont iconguanbi1" bindtap="closetip"></text>
+      <view class="tipinfo">测试成功，是否绑定？</view>
+        <view class="bottombtn">
+          <view class="btnniu" bindtap="continueTest">继续测试</view>
+          <view class="btnniu" bindtap="binding">绑定</view>
+        </view>
+    </view>
+</view>

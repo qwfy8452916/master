@@ -1,0 +1,7 @@
+/* pages/hotel/hotel.wxss */
+.wrap{overflow: hidden;}
+.wrap .item{width: 100%;border-top: 1px solid #e5e5e5;
+padding: 30rpx 4%;box-sizing: border-box;font-size: 32rpx;
+color: #333;
+ }
+ .wrap .item:last-child{border-bottom: 1px solid #e5e5e5;}

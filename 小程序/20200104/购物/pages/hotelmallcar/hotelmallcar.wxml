@@ -1,0 +1,159 @@
+<block wx:if="{{hasprodlist == 1}}">
+  <view style="margin-bottom: 100rpx;">
+    <block wx:if="{{deliverylist3.length != 0}}">
+      <view class='mgB20'>
+        <view class='paddAll hotelmallcar-name'>迷你吧</view>
+        <view class='paddAll hoteladdress'>{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+        <block wx:for="{{deliverylist3}}" wx:for-item="item" wx:key="index">
+          <view class='paddAll listbox'>
+            <view class='listbox-l' data-index="{{index}}" bindtap='checkboxChange2'>
+              <image wx:if="{{item.selecttype == true}}" src='../../img/icon-img5.png' class='checkboximg' mode='aspectFill'></image>
+              <image wx:else src='../../img/icon-img7.png' class='checkboximg' mode='aspectFill'></image>
+            </view>
+            <view class='listbox-c'>
+              <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+            </view>
+            <view class='listbox-r'>
+              <view class='commodityname'>{{item.prodShowName}}</view>
+              <view class='commodityprice'>¥{{item.latticeProdAmt}}</view>
+              <view class='commoditynum'>
+                <view class='btnstyle' data-index="{{index}}" data-listtype="3" bindtap='cutback'>-</view>
+                <view class='commoditynum-text'>{{item.prodnum}}</view>
+                <view class='btnstyle' data-index="{{index}}" data-pordamt="{{item.prodnum}}" data-isneedinv="{{item.isNeedInv}}" data-listtype="3" bindtap='increase'>+</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{deliverylist1.length != 0}}">
+      <view class='mgB20'>
+        <view class='paddAll hotelmallcar-name'>现场配送</view>
+        <view class='paddAll hoteladdress'>{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+        <block wx:for="{{deliverylist1}}" wx:for-item="item" wx:key="index">
+          <view class='paddAll listbox'>
+            <view class='listbox-l' data-index="{{index}}" bindtap='checkboxChange'>
+              <image wx:if="{{item.selecttype == true}}" src='../../img/icon-img5.png' class='checkboximg' mode='aspectFill'></image>
+              <image wx:else src='../../img/icon-img7.png' class='checkboximg' mode='aspectFill'></image>
+            </view>
+            <view class='listbox-c'>
+              <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+              <view wx:if="{{item.delivWay == 3}}" class='font-btn' data-index="{{index}}" bindtap='addTokd'>添加到快递到家</view>
+            </view>
+            <view class='listbox-r'>
+              <view class='commodityname'>{{item.prodShowName}}</view>
+              <view class='commodityprice'>¥{{item.prodRetailPrice}}</view>
+              <view class='commoditynum'>
+                <view class='btnstyle' data-index="{{index}}" data-listtype="1" bindtap='cutback'>-</view>
+                <view class='commoditynum-text'>{{item.prodnum}}</view>
+                <view class='btnstyle' data-index="{{index}}" data-pordamt="{{item.prodnum}}" data-isneedinv="{{item.isNeedInv}}" data-listtype="1" bindtap='increase'>+</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{deliverylist2.length != 0}}">
+      <view class='mgB20'>
+        <view class='paddAll hotelmallcar-name'>快递到家</view>
+        <view class='paddAll hoteladdress hoteladdress2' bindtap='addressfun'>
+          <view wx:if="{{receipttype == true}}" class='font-address'>请添加收货信息</view>
+          <view wx:else class='font-address'>
+            <view>{{receiptlist.consignee}} {{receiptlist.consigneePhone}}</view>
+            <view>{{receiptlist.addressAll}}</view>
+          </view>
+          <image src='../../img/my-bgimg2.png' class='iconimg' mode='aspectFill'></image>
+        </view>
+        <block wx:for="{{deliverylist2}}" wx:for-item="item" wx:key="index">
+          <view class='paddAll listbox'>
+            <view class='listbox-l' data-index="{{index}}" bindtap='checkboxChange1'>
+              <image wx:if="{{item.selecttype == true}}" src='../../img/icon-img5.png' class='checkboximg' mode='aspectFill'></image>
+              <image wx:else src='../../img/icon-img7.png' class='checkboximg' mode='aspectFill'></image>
+            </view>
+            <view class='listbox-c'>
+              <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+              <view wx:if="{{item.delivWay == 3}}" class='font-btn' data-index="{{index}}" bindtap='addTokf'>添加到客房配送</view>
+            </view>
+            <view class='listbox-r'>
+              <view class='commodityname'>{{item.prodShowName}}</view>
+              <view class='commodityprice'>¥{{item.prodRetailPrice}}</view>
+              <view class='commoditynum'>
+                <view class='btnstyle' data-index="{{index}}" data-listtype="2" bindtap='cutback'>-</view>
+                <view class='commoditynum-text'>{{item.prodnum}}</view>
+                <view class='btnstyle' data-index="{{index}}" data-pordamt="{{item.prodnum}}" data-isneedinv="0" data-listtype="2" bindtap='increase'>+</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+  <view class="couponjh" bindtap="showcoupon" wx:if="{{coupontype == true}}">
+    <view class="couponjh-l">优惠券</view>
+    <view class="couponjh-r">
+      <text>
+        <block wx:if="{{coupon_selected.length>0}}">满{{coupon_selected[0].useLimitMoney}}减{{coupon_selected[0].reduceMoney}}</block>
+        <block wx:else>满{{coupon_optional[0].useLimitMoney}}减{{coupon_optional[0].reduceMoney}}</block>
+      </text> 
+      <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+    </view>
+  </view>
+  <view class='foottotal'>
+    <view class='selectallbtn' bindtap='selectall'>
+      <image wx:if="{{selectalltype}}" src='../../img/icon-img5.png' class='checkboximg mgR10' mode='aspectFill'></image>
+      <image wx:else src='../../img/icon-img7.png' class='checkboximg mgR10' mode='aspectFill'></image>
+      全选
+    </view>
+    <view class='costbox'>
+      <text class='cost-font1' wx:if="{{deliverytype2}}">不包含运费</text>
+      <text class='cost-font2'>合计:</text>
+      <text class='cost-font3'>￥</text>
+      <text class='cost-font4'>{{lumpsum_Discount}}</text>
+    </view>
+    <view class='settlementbtn' bindtap='checkcoupon'>结算<text wx:if="{{alllength>0}}">({{alllength}})</text></view>
+  </view>
+</block>
+<block wx:else>
+  <view class='font-text'>购物车里空荡荡的~</view>
+</block>
+
+<view class="couponlistbox-bg" wx:if="{{coupontype2 == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择优惠券</view>
+    <view class="font-prod2 mgB20">已选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_selected.length > 0}}">
+        <block wx:for="{{coupon_selected}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="1" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/success-img2.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">请选择优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="font-prod2 mgB20">可选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_optional.length > 0}}">
+        <block wx:for="{{coupon_optional}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="2" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/icon-img7.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">暂无可选优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" bindtap="showcoupon">确定</view>
+  </view>
+</view>

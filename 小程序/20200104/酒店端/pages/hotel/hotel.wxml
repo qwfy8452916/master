@@ -1,0 +1,7 @@
+<!--pages/hotel/hotel.wxml-->
+
+<view class='wrap'>
+   <view class='item' wx:for="{{10}}">
+      苏州金鸡湖大酒店
+   </view>
+</view>

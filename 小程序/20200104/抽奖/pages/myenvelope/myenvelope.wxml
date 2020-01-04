@@ -1,0 +1,29 @@
+<block wx:if="{{listdata.length != 0}}">
+  <block wx:for="{{listdata}}" wx:for-item="item" wx:key="index">
+    <view class="libox">
+      <view class="libox-l">
+        <text class="font1">红包</text>
+        <text class="font2"><block wx:if="{{item.status == 0}}">待分享</block><block wx:elif="{{item.status == 1}}">共{{item.totalCount}}个，已领{{item.usedCount}}个</block><block wx:elif="{{item.status == 2}}">已领完</block></text>
+      </view>
+      <view class="libox-r" wx:if="{{item.status == 0}}" data-status="{{item.status}}" data-investorcabnetid="{{item.investorCabnetId}}" data-investorid="{{item.investorId}}" data-orderid="{{item.orderId}}" data-fscabtypedto="{{item.fsCabTypeDTO}}" bindtap="showbox">去分享
+      </view>
+      <button class="libox-r" open-type="share" wx:elif="{{item.status == 1}}" data-type="2" data-sharecode="{{item.shareCode}}">继续分享</button>
+    </view>
+  </block>
+</block>
+<block wx:if="{{ifenvelope}}">
+  <view class="centerbox">
+    <image src="../../images/myenvelope/img2.png" mode="widthFix" class="imgbox"></image>
+    <view class="font1">您还未购买智盒，暂无可分享红包</view>
+  </view>
+</block>
+<view wx:if="{{showtype == true}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">{{name}}给你发了一个现金红包！</view>
+    <image src="cloud://fortunestar-pics-p6drx.666f-fortunestar-pics-p6drx-1300540775/5f06ab79-94a0-4f5c-9402-181ebabb2cce.png" class="imgbox" mode="widthFix"></image>
+    <view class="btnbox">
+      <view class="btn" bindtap="closefun">取消</view>
+      <button open-type="share" data-type="1" class="btn btncss">分享</button>
+    </view>
+  </view>
+</view>

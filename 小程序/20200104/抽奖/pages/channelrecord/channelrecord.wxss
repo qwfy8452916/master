@@ -1,0 +1,2 @@
+/* pages/channelrecord/channelrecord.wxss */
+@import "../channellink/channellink.wxss";

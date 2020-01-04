@@ -1,0 +1,32 @@
+page{
+  background: #fff;
+}
+.section{
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.section_title{
+  font-size: 32rpx;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 50rpx;
+}
+.pickerbox{
+  width: 80%;
+  margin: 0 auto 30rpx;
+}
+.btnbox{
+  width: 80%;
+  margin: 300rpx auto 0;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #fff;
+  background: #ff9700;
+  border-radius: 25px;
+}
+.btnboxbg{
+  background: #cecece;
+}

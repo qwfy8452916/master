@@ -1,0 +1,15 @@
+<!--pages/ChannelLogin/ChannelLogin.wxml-->
+<view class="loginbg">
+  <view class="loginicon">注册</view>
+  <form>
+    <view class="userinfo">
+      <image class="iconuser" src="../../images/channellogin/usericon.png" alt="username" />
+      <input name="name" bindblur="getaccount" placeholder='请输入用户名' placeholder-style='color:#cecece;' maxlength='10' class="txtuser"></input>
+    </view>
+    <view class="userinfo">
+      <image class="iconuser" src="../../images/channellogin/pwdicon.png" alt="username" />
+      <input name="pwd" bindblur="getmobile" placeholder='请输入手机号' placeholder-style='color:#cecece;' maxlength='11' class="txtuser"></input>
+    </view>
+    <button class="submitbtn" bindtap='register'>注册</button>
+  </form>
+</view>

@@ -1,0 +1,81 @@
+page{
+  padding-bottom: 100rpx;
+}
+.pordinfo{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.pordimg{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 5px;
+  margin-right: 20rpx;
+}
+.pordname{
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 50rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  width: 78%;
+}
+.pjcentent-m{
+  color: #CECECE;
+}
+.pjcentent{
+  width: 94%;
+  min-height: 120rpx;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 50rpx;
+}
+.imglistbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pjimgwh{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 5px;
+  margin-right: 3.1%;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  position: relative;
+}
+.pjimgwh image{
+  display: block;
+  width: 220rpx;
+  height: 220rpx;
+}
+.imglistbox .pjimgwh:nth-child(3n){
+  margin-right: 0;
+}
+.pjimgwh .closebtn{
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+}
+.subbtn{
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 90rpx;
+  background: #ff9700;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+}

@@ -1,0 +1,20 @@
+<!--pages/reback/reback.wxml-->
+<view class="reback">
+    <view class="header">智盒类型</view>
+    <radio-group class="radioGroup" bindchange='radioChange'>
+        <label wx:for="{{cabList}}" class="labelItem" wx:key="index">
+            <radio value="{{item.id}}" checked="{{index == 0 ? true : false}}"/> 
+            <text style="color:{{selected == item.id?'#EE1E1E':'#999'}}">{{item.typeName}}</text>
+            <text class="remark">(您有{{item.noDraw}}个未抽取的智盒)</text>
+        </label>
+    </radio-group>
+</view>
+<view class="cabNum">
+    <text style="color:#333">智盒数量</text>
+    <view class="number">
+        <input type="number" class="inputNum" bindinput="sureNum" value="{{cabNum}}"/>台
+    </view>
+</view>
+<view class="warning" wx:if="{{warning}}">输入数量不可为0或超过最大未抽取数量</view>
+<view class="submit" wx:if="{{!warning&&!ifshow}}" bindtap="submit">提交</view>
+<view class="submit" wx:elif="{{warning||ifshow}}" style="background:#ccc">提交</view>

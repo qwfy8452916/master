@@ -1,0 +1,40 @@
+<!--pages/channellink/channellink.wxml-->
+<view class="linkbg">
+  <view style="padding-bottom:60px;">
+    <view wx:for="{{linkList}}" wx:key wx:for-index="idx" class="linkinfo">
+      <view class="linkleft">
+        <view class="lefttop">
+          <view>{{item.shareTitle}}</view>
+          <image data-sharecodeid="{{item.id}}" bindtap="linkedit" class="iconedit" src="../../images/channellink/editicon.png" alt="editicon" />
+        </view>
+        <view class="leftbottom">
+          <view>{{shareL}}{{item.shareCode}}</view>
+          <!-- <view class="copylink" data-linkdetail="{{item.shareCode}}" bindtap="copylink"><image class="iconlink" src="../../images/channellink/linkicon.png" alt="linkicon" />复制链接</view> -->
+          <view class="copylink" data-index="{{idx}}" bindtap="linkcode">查看二维码</view>
+        </view>
+      </view>
+      <view data-scode="{{item.shareCode}}" bindtap="linkskip" class="linkright">
+        <image class="iconright" src="../../images/channellink/righticon.png" alt="righticon" />
+      </view>
+    </view>
+  </view>
+  <view class="linkadd">
+    <view bindtap="linkadd" class="addbtn">添加</view>
+  </view>
+  <view hidden='{{maskFlagAdd}}' class="addmask">
+    <view class="maskinfo">
+      <image bindtap="addclose" class="iconclose" src="../../images/channellink/closeicon.png" alt="closeicon" />
+      <input name="title" placeholder='请输入标题' placeholder-style='color:#cecece;' maxlength='20' class="txttitle" bindinput="titleinput" value='{{linktitle}}'></input>
+      <view class="linktxt">{{shareL}}</view>
+      <view bindtap="confirmadd" class="confirmbtn">确定</view>
+    </view>
+  </view>
+  <view hidden='{{maskFlagEdit}}' class="addmask">
+    <view class="maskinfo">
+      <image bindtap="addclose" class="iconclose" src="../../images/channellink/closeicon.png" alt="closeicon" />
+      <input name="title" placeholder='请输入标题' placeholder-style='color:#cecece;' maxlength='20' class="txttitle" bindinput="titleinputedit" value='{{titleedit}}'></input>
+      <view class="linktxt">{{sharelinkedit}}</view>
+      <view bindtap="confirmedit" class="confirmbtn">确定</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+/* pages/getcashstatus/getcashstatus.wxss */
+.leftalign{float: left;}
+.rightalign{float: right;}
+
+.statusbox{width: 100%;text-align: center;padding: 60rpx 0;}
+.statusbox .handstatus{font-size: 32rpx;font-weight: bold;
+margin-top: 30rpx;}
+.handerror{color: #ee1e1e;}
+.handesuccess{color: #44bf19;}
+.handewait{color: #0066cc;}
+.statusbox image{width: 98rpx;height: 98rpx;overflow: hidden;}
+
+.infobox{overflow: hidden;padding-left: 4%;box-sizing: border-box;position: relative;}
+.infobox .infoboxitem{padding: 25rpx 4% 25rpx 0;box-sizing: border-box;
+border-bottom: 1px solid #e6e6e6;overflow: hidden;font-size: 28rpx;}
+.infobox .infotitle{color: #999;}
+.infobox .money{color: #999;margin-top: 10rpx;color: #333;}
+
+.voucherbox{width: 100%;white-space: nowrap;
+width: 100%;vertical-align: top;}
+.voucherbox .imgbox{display: inline-block;width: 150rpx;height: 150rpx;
+margin-right: 30rpx;margin-top: 30rpx;}
+.imgbox image{width: 100%;height: 100%;}
+
+
+
+
+
+
+

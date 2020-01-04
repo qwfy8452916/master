@@ -1,0 +1,48 @@
+/* pages/updateinfo/updateinfo.wxss */
+/* .mainbg{
+  width: 100%;
+  min-height: 100%;
+  background-color: #f2f2f2;
+  position: absolute;
+  z-index: 0;
+  padding: 15px 15px;
+} */
+.userinfo{
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 10px 10px;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+}
+.labuser{
+  width: 80px;
+  color: #666;
+  text-align: right;
+  height: 28px;
+  line-height: 28px;
+  margin-right: 20px;
+}
+.iconcolor{
+  color: #ee1e1e;
+}
+.txtuser{
+  width: 82%;
+  padding: 2px 0;
+}
+.discolor{
+  color: #999;
+}
+.submitbtn{
+  width: 88%;
+  height: 44px;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  border-radius: 44px;
+  background: #ee1e1e;
+  position: absolute;
+  left: 6%;
+  bottom: 20px;
+}

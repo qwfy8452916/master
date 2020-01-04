@@ -1,0 +1,17 @@
+<!--pages/help/help.wxml-->
+<view class="helptype">
+    <navigator url="{{item.urlPath}}" hover-class="navigator-hover" class="help-item" wx:for="{{helpsType}}" wx:key="title">
+        <view class="leftpart">
+            <view class="picture">
+                <image src="{{item.iconPath}}" style="width:66rpx;height:66rpx;" mode="widthFix"/>
+            </view>
+            <text class="title">{{item.title}}</text>
+        </view>
+        <view class="rightpart">
+            <view class="rightItem" wx:for="{{item.questions}}" wx:for-item="question" wx:key="index">
+                <text class="circle"></text>
+                <text class="words">{{question}}</text>
+            </view>
+        </view>
+    </navigator>
+</view>

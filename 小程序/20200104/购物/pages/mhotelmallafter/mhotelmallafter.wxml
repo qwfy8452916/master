@@ -1,0 +1,162 @@
+<block wx:if="{{prodstate == 0}}">
+  <view class="paddAll list-view mgB20">
+    <view class="list-view-img"><image src="{{imgurl}}"></image></view>
+    <view class="list-viewR">
+      <view class="list-viewR-top">
+        <view class="list-viewR-name">{{name}}</view>
+        <view class="list-viewR-num">x{{prodnum}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="mgB20 font-all">
+    <view class="paddAll flexbox borderB">
+      <text>订单状态</text>
+      <text class="font-color2">
+        <block wx:if="{{delivstatus == 1}}">已确认</block>
+        <block wx:elif="{{delivstatus == 2}}">已配送</block>
+        <block wx:elif="{{delivstatus == 3}}">已退款</block>
+        <block wx:else>已申请售后</block>
+      </text>
+    </view>
+    <view class="paddAll flexbox borderB">
+      <view>选择售后类型<text class="font-color3">*</text></view>
+      <picker class="pickerbox" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name">
+        <view class="picker">{{array[index].name}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="mgB20 font-all" style="padding-bottom: 64rpx;">
+    <view class="paddAll flexbox borderB" wx:if="{{index != 0}}">
+      <view>申请数量</view>
+      <view class="numbox">
+        <view class="btnview" bindtap="cutback">-</view><view class="numview">{{afternum}}</view><view class="btnview" bindtap="add">+</view>
+      </view>
+    </view>
+    <view class="paddAll flexbox" wx:if="{{index != 1}}">
+      <text>退款金额</text>
+      <input wx:if="{{index == 0}}" class="jeinp" type="digit" placeholder-style="color: #cecece;" bindinput="aprodamountchange" value="{{aprodamountAll}}"></input>
+      <text wx:else class="font-color3">¥ {{aprodamount}}</text>
+    </view>
+    <view class="paddAll description">*如果已开发票，申请售后时需扣除发票税率</view>
+    <view class="paddAll flexbox formbox-li">
+      <text>
+        <block wx:if="{{index == 1}}">换货说明</block><block wx:else>退款说明</block>
+      </text>
+      <textarea maxlength="30" auto-height placeholder="{{index == 1?'请填写换货说明':'请填写退款说明'}}" placeholder-style="color: #CECECE;" bindinput="reasonfun" />
+    </view>
+    <view class="mgB20 font-all" style="padding-top: 20rpx;border-top: 0.5px solid #e5e5e5;" wx:if="{{index != 0}}">
+      <view class="paddAll flexbox2">
+        <text>物流信息</text>
+        <input type="text" maxlength="10" placeholder="请填写物流信息" placeholder-style="color: #CECECE;" bindinput="shipmentinfofun"></input>
+      </view>
+      <view class="paddAll flexbox2 borderB">
+        <view>物流单号</view>
+        <input type="number" maxlength="20" placeholder="请填写物流单号" placeholder-style="color: #CECECE;" bindinput="shipmentfun"></input>
+      </view>
+    </view>
+    <view class='uploadimg'>
+      <view class='userinfobox-box-name'>上传凭证：</view>
+      <view bindtap='bindChooiceProduct' class='upbtn' style='background: {{themecolor.skintone}};'>{{uptext}}</view>
+      <view class='upfont'>(最多上传3张)</view>
+    </view>
+    <view class='uploadimg-list'>
+      <image wx:for="{{showproductInfo}}" wx:for-item="item" wx:key="index" src='{{item}}' mode='widthFix'></image>
+    </view>
+  </view>
+  
+  <button wx:if="{{refundsubtype == true}}" class="submitbtn" bindtap="aftersub">提交</button>
+  <view wx:else class="submitbtn2">提交</view>
+</block>
+<block wx:else>
+  <block wx:if="{{csStatus == 1}}">
+    <view class="paddAll mgB20 refund-top">
+      <view class="refund-top-flex">
+        <text>请等待处理</text>
+        <view wx:if="{{canceltype == true}}" bindtap="cancel">撤销申请</view>
+      </view>
+      您已成功发起<block wx:if="{{csKind == 0}}">退款</block><block wx:elif="{{csKind == 1}}">换货</block><block wx:elif="{{csKind == 2}}">退货退款</block>申请，请耐心等待处理
+    </view>
+  </block>
+  <block wx:else>
+    <view class="paddAll refund-top mgB20">
+      <block wx:if="{{csStatus == 2}}">
+        <view class="refund-top-flex" style="margin-bottom: 0;">
+          <text>已同意<block wx:if="{{csKind == 4}}">退款</block><block wx:elif="{{csKind == 1}}">换货</block><block wx:elif="{{csKind == 2}}">退货退款</block>申请<block wx:if="{{csKind == 1}}">,请尽早发货</block></text>
+        </view>
+      </block>
+      <block wx:elif="{{csStatus == 3}}">
+        <view class="paddAll refund-top">
+          <view class="refund-top-flex">
+            <text>商家已拒绝</text>
+            <view bindtap="application">重新申请</view>
+          </view>
+          如对此次处理不满意，请重新提交申请！
+        </view>
+      </block>
+    </view>
+    <view class="paddAll borderB" wx:if="{{csStatus != 0}}">
+      <block wx:if="{{csStatus == 2}}">
+        <block wx:if="{{csKind == 4}}">退款</block><block wx:elif="{{csKind == 1}}">换货</block><block wx:elif="{{csKind == 2}}">退货退款</block>说明
+      </block>
+      <block wx:elif="{{csStatus == 3}}">拒绝原因</block>
+    </view>
+    <view wx:if="{{csStatus != 0}}" class="paddAll mgB20 font-description">{{prodinfo.handleRemark}}</view>
+  </block>
+  <view>
+    <view class="paddAll borderB font-tk">退款信息</view>
+    <view class="paddAll list-view mgB20">
+      <view class="list-view-img"><image src="{{imgurl}}"></image></view>
+      <view class="list-viewR">
+        <view class="list-viewR-top">
+          <view class="list-viewR-name">{{name}}</view>
+          <view class="list-viewR-num">x{{prodnum}}</view>
+        </view>
+        <view class="list-viewR-num">￥ {{prodjg}}</view>
+      </view>
+    </view>
+    <view class="paddAll">
+      <view class="font-od">
+        <text>售后类型</text>
+        <text class="font-color5">
+          <block wx:if="{{csKind == 4}}">退款</block>
+          <block wx:elif="{{csKind == 1}}">换货</block>
+          <block wx:elif="{{csKind == 2}}">退货退款</block>
+        </text>
+      </view>
+      <view class="font-od" wx:if="{{csKind != 1}}">
+        <text>退款金额</text><text class="font-color3">￥ {{prodinfo.autualRefoundAmount}}</text>
+      </view>
+      <view class="font-od">
+        <text>
+          <block wx:if="{{csKind == 1}}">换货说明</block>
+          <block wx:else>退款说明</block>
+        </text>
+        <text>{{prodinfo.csDescription}}</text>
+      </view>
+      <view class="font-od">
+        <text>申请时间</text><text>{{prodinfo.createdAt}}</text>
+      </view>
+      <view wx:if="{{csKind != 4 && prodinfo.supplierLogisticsInfo != '' && prodinfo.supplierLogisticsInfo != null}}" class="borderT" style="margin-top: 20rpx;padding-top: 20rpx;">
+        <view class="font-od">
+          <text>物流信息</text><text>{{prodinfo.supplierLogisticsInfo}}</text>
+        </view>
+        <view class="font-od">
+          <text>物流单号</text><text>{{prodinfo.supplierLogisticsCode}}</text>
+        </view>
+      </view>
+      <view class="borderT" style="margin-top: 20rpx;padding-top: 20rpx;" wx:if="{{csRequestDTOstype == true}}">
+        <view class="font-od borderB" style="margin-bottom: 20rpx;padding-bottom: 20rpx;">
+          <text>凭证</text>
+        </view>
+        <view class='uploadimg-list'>
+          <block wx:for="{{csRequestDTOs}}" wx:for-item="item" wx:key="index">
+            <image src='{{item}}' mode='widthFix'></image>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="kfbtn" bindtap="kefun">
+      <image src="../../img/icon-img9.png"></image>联系客服
+    </view>
+  </view>
+</block>

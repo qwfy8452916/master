@@ -1,0 +1,40 @@
+/* pages/partnership/partnership.wxss */
+.helps-part{
+    background: #fff;
+    overflow: hidden;
+}
+.helps-head{
+    display: flex;
+    align-items: center;
+    margin-top: 30rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+.helps-head .headchip1{
+    width: 36rpx;
+    height: 36rpx;
+    background: #EE1E1E;
+    margin-right: 7rpx;
+}
+.helps-head .headchip2{
+    width: 10rpx;
+    height: 36rpx;
+    margin-right: 10rpx;
+    background: #EE1E1E;
+}
+.helpQA{
+    padding: 32rpx 0;
+    padding-left: 64rpx;
+    font-size: 28rpx;
+    border-bottom: 2rpx rgb(246,246,246) solid;
+}
+.helpQA .question{
+    color: #999999;
+    display: flex;
+    margin-bottom: 24rpx;
+}
+.helpQA .answer{
+    color: #333333;
+    display: flex;
+}
+    

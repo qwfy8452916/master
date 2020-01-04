@@ -1,0 +1,46 @@
+/* pages/relatedhotel/relatedhotel.wxss */
+.searchbg{
+  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  /* position: fixed;
+  top: 0px; */
+  width: calc(100% - 30px);
+  background: #f6f6f6;
+}
+.searchicon{
+  width: 16px;
+  height: 16px;
+  margin: 0px 6px;
+  position: absolute;
+}
+.txtname{
+  width: calc(100% - 28px);
+  height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+  margin: 15px 0px;
+  padding-left: 28px;
+  background: #fff;
+}
+.hotelinfo{
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px 10px 15px;
+  margin-bottom: 10px;
+}
+.hotelname{
+  font-size: 14px;
+  color: #487ae9;
+  margin-bottom: 5px;
+}
+.identity{
+  font-size: 11px;
+  color: #999;
+}
+.righticon{
+  width: 16px;
+  height: 16px;
+}

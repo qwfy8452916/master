@@ -1,0 +1,125 @@
+.paysuccess-top{
+  text-align: center;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  background: #fff;
+}
+.paysuccess-img{
+  display: block;
+  width: 25%;
+  margin: 0 auto 10rpx;
+}
+.paysuccess-text1,.paysuccess-text2{
+  display: block;
+}
+.paysuccess-text1{
+  font-size: 35rpx;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.paysuccess-text2{
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 40rpx;
+}
+.shoppingbtn{
+  width: 40%;
+  margin:0 auto;
+  background: #FF9700;
+  font-size: 26rpx;
+  color: #fff;
+  line-height: 75rpx;
+  border-radius: 5px;
+}
+.shoppingbtn2{
+  background: none;
+  border: 0.5px solid #FF9700;
+  color: #FF9700;
+}
+.commoditylist{
+  background: #fff;
+  padding: 30rpx 5%;
+}
+.commoditylist-top{
+  font-size: 30rpx;
+  color: #333;
+  padding-bottom: 20rpx;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.commoditybox-bg{
+  background: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.commoditybox{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+.commoditybox-img{
+  width: 30%;
+  border-radius: 5px 5px;
+  overflow: hidden;
+}
+.commoditybox-img .commodityboximg{
+  display: block;
+  width: 100%;
+}
+.commoditybox-right{
+  width: 65%;
+}
+.commoditybox-right-info{
+  font-size: 30rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+.commoditybox-right-info .commoditybox-right-text{
+  color: #ff9700;
+}
+.commoditybox-right-label{
+  font-size: 30rpx;
+  color: #999;
+  border-radius: 25px;
+  border: 0.5px solid #e5e5e5;
+  display: inline-block;
+  padding: 5rpx 15rpx;
+}
+.commoditybox-right-btm{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.commoditybox-right-btm-price{
+  font-size: 30rpx;
+  color: #ee1e1e;
+  font-weight: bold;
+}
+.buybtn{
+  display: inline-block;
+  background: #ff9700;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 10rpx 25rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+.commoditybox-right-btm-pricemf{
+  text-decoration:line-through;
+}
+.openfail{
+  background: #ee1e1e;
+}
+.successbtnbox{
+  display: flex;
+  width: 75%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}

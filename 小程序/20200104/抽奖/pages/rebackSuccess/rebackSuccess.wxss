@@ -1,0 +1,25 @@
+/* pages/rebackSuccess/rebackSuccess.wxss */
+.success{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    color: #999;
+}
+.sucIcon{
+    width: 160rpx;
+    height: 160rpx;
+    margin-top: 80rpx;
+}
+.warning{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 8rpx;
+}
+.notice{
+    display: flex;
+    align-items: center;
+    margin-top: 100rpx;
+    margin-bottom: 32rpx;
+}

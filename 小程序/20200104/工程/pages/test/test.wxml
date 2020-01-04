@@ -1,0 +1,41 @@
+<!--pages/test/test.wxml-->
+<view class="wrap">
+   
+  <view class='hangtiem'>
+    <!-- <view class='titlename'><text class='iconfont iconcard2'></text>物联卡</view> -->
+    <view class='inputwk iotcard'>
+        <text class="iconfont iconsimqia"></text>
+        <input class='iteminput' maxlength='32' placeholder='请填写物联卡号' placeholder-class='color:#cecece;' placeholder-style="color:#cecece;" bindblur='yanzhengcode' bindinput='Iotcart' value='{{iotcartval}}'></input>
+        <text class="sweepwrap" bindtap="sweepCode">
+          <text class="iconfont iconsaoma1"></text>
+        </text>
+    </view>
+  </view>
+
+  <picker class="pickbox" bindchange="bindPickerChange2" range-key="cabTypeName" value="{{index}}" range="{{caninetType}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left">
+        <!-- <text class="pickeritem">柜子类型</text> -->
+          <text class="iconfont iconxuanzeleixing"></text>
+          <text wx:if="{{caninetType[index].cabType}}">{{caninetType[index].cabTypeName}} <!--<text class="jianjv">格子数：{{caninetType[index].latticeCount}}</text>-->
+            </text>
+          <text wx:else class="placems">请选择柜子类型</text>
+      </text>
+
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <view class="tiptext"><text class="iconfont icongantanhao"></text>请填写物联卡号或扫描二维码用以进行测试</view>
+
+</view>
+
+
+<view class='wraptesting'>
+   <view class='testingniu' bindtap='testingniu'>去测试</view>
+</view>
+
+
+<my-tabbar id="tabbar"></my-tabbar>

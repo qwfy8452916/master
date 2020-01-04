@@ -1,0 +1,55 @@
+{
+  "pages": [
+    
+    
+    
+    "pages/verify/verify",
+    "pages/login/login",
+    "pages/user/user",
+    "pages/cabmakeover/cabmakeover",
+    "pages/relatedhotel/relatedhotel",
+    "pages/manage/manage",
+    "pages/mine/mine",
+    
+    "pages/relatedhoteldetail/relatedhoteldetail",
+    "pages/predictearnings/predictearnings",
+    "pages/messageset/messageset",
+    
+    "pages/updateinfo/updateinfo",
+    "pages/updatepwd/updatepwd",
+    "pages/divideintodetail/divideintodetail",
+    "pages/cashdetail/cashdetail",
+    "pages/cashWithdrawal/cashWithdrawal",
+    
+    "pages/editbank/editbank",
+    "pages/fillinbank/fillinbank",
+    "pages/getcashstatus/getcashstatus",
+
+    "pages/index/index",
+    "pages/demo/demo",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#4877e9",
+    "list": [
+      {
+        "pagePath": "pages/manage/manage",
+        "text": "管理"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wxe4bc42f44b79c8dc"
+  ]
+}

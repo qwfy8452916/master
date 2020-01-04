@@ -1,0 +1,11 @@
+/**app.wxss**/
+page{
+  height: 100%;
+  box-sizing: border-box;
+  background: #f6f6f6;
+  border-top: 2rpx rgb(246,246,246) solid;
+  /* border-bottom: 2rpx rgb(246,246,246) solid; */
+}
+.container {
+  height: 100%;
+}

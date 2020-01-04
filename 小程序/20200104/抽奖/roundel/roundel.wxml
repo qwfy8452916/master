@@ -1,0 +1,95 @@
+<view class="canvas-container">
+   <view animation="{{animationData}}" class="gb-wheel-content1" style='width:{{size+50}}rpx;height:{{size+50}}rpx;'>
+      <!-- 扇形颜色背景 当选项长度等于2或者3时做了特殊处理 -->
+      <view class="gb-wheel-content2" style='width:{{size+20}}rpx;height:{{size+20}}rpx;'>
+         <view class="gb-wheel-content3" style='width:{{size+4}}rpx;height:{{size+4}}rpx;'>
+            <view class="gb-wheel-content" style='width:{{size}}rpx;height:{{size-2}}rpx;'>
+               <view class="canvas-list">
+                  <view class="canvas-item2" wx:for="{{awardsConfig.awards}}" wx:key="key" style="transform: rotate({{item.item2Deg}});background-color:{{awardsConfig.awards.length==2?item.color:''}};opacity:{{awardsConfig.awards.length==2?item.opacity:awardsConfig.awards.length==3?item.opacity:''}};width:{{size}}rpx;height:{{size/2-2}}rpx;transform-origin:{{size/2}}rpx {{size/2}}rpx">
+                     <view class="canvas-item2-after" style="transform: rotate({{item.afterDeg}});background-color:{{item.color}};opacity:{{awardsConfig.awards.length==3?'':item.opacity}};width:{{size/2}}rpx;height:{{size/2}}rpx;transform-origin: {{size/2}}rpx {{size/2}}rpx"></view>
+                     <view wx:if='{{awardsConfig.awards.length==3}}' class="canvas-item2-after" style="background-color:{{item.color}};width:{{size/2}}rpx;height:{{size/2}}rpx;transform-origin: {{size/2}}rpx {{size/2}}rpx"></view>
+                  </view>
+               </view>
+         
+               <!-- 选项内容 -->
+               <view class="gb-wheel-list">
+                  <view class="gb-wheel-item" data-index="{{index}}" wx:for="{{awardsConfig.awards}}" wx:key='key'>
+                     <view class="gb-wheel-icontent" style="height:262rpx;font-size:{{item.name.length>9?'20':'26'}}rpx;line-height:{{item.name.length>9?'20':'26'}}rpx;width:26rpx;padding-top:5rpx;transform: rotate({{index*turnNum}}turn);transform-origin: 50% {{size/2-2}}rpx">
+                        <view class="imageBox">
+                           <image src="{{item.imageUrl}}" mode='widthFix' style="width:{{item.isQuestion? '70rpx':'130rpx'}};height:{{item.isQuestion? '92rpx':'130rpx'}};" />
+                        </view>
+                        <!-- <image src="{{item.imageUrl}}" mode="widthFix" style="width:100rpx;" class="imageUrl" /> -->
+                     </view>
+                  </view>
+               </view>
+            </view>
+         </view>
+         <view class="light" wx:for="{{lightArr}}" wx:key="index" style="left:{{item.left}}rpx;top:{{item.top}}rpx">
+         </view>
+      </view>
+   </view>
+ 
+   <view class="img-container" style='width:100%;height:{{size}}rpx;'>
+      <!-- 转盘中间的按钮 -->
+      <!-- <image bindtap="_zhuan" src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_unclick.png' style='width:{{size/4.4}}rpx;display:{{block1}};margin-top:16rpx' mode='widthFix'></image> -->
+      <image bindtap="_zhuan" src='../images/touzi/pin.png' style='width:{{size/4}}rpx;height:{{size/4}}rpx;display:{{block1}};margin-bottom:20rpx' mode='widthFix'></image>
+      <!-- <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_go_click.png' style='width:{{size/4.4}}rpx;display:{{block2}};margin-top:16rpx' mode='widthFix'></image>
+      <image bindtap="reset" src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_reset_unclick.png' style='width:{{size/4.4}}rpx;display:{{block3}};margin-top:16rpx' mode='widthFix'></image>
+      <image src='https://gamesdata.oss-cn-hangzhou.aliyuncs.com/xiaojueding/canvas_button_reset_click.png' style='width:{{size/4.4}}rpx;display:{{block4}};margin-top:16rpx' mode='widthFix'></image> -->
+   </view>
+   <view class="mask" wx:if="{{showMask}}"></view>
+   <view class="ifMores" wx:if="{{ifshow}}">
+      <view class="ifMore">
+         <view class="title">您有{{cabTotal}}台智盒还未投放!</view>
+         <view class="content">
+            <radio-group class="radioGroup" bindchange='radioChange'>
+               <label class="labelItem" wx:for="{{typeList}}" wx:key="index">
+                  <radio value="{{item.id}}" checked="{{index == 0 ? true : false}}"/> {{item.typeName}}
+               </label>
+            </radio-group>
+            <view class="lessOrMore">
+               <text class="changenunm" bindtap="decreaseNum">-</text>
+               <input value="{{cabNum}}" bindinput="inputNum" class="cabnum" min="1" max="{{cabTotal}}" type="number" />
+               <text class="changenunm" bindtap="addNum">+</text>
+            </view>
+            <view class="drawAward" bindtap="getAward">抽取</view>
+         </view>
+      </view>
+      <view class="closes">
+         <view class="line"></view>
+         <image class="close" bindtap="closeDialog" src="../images/index/cancel.png" />
+      </view>
+   </view>
+   <view class='showRe' wx:if="{{showResult}}">
+      <view class="results">
+         <image class='backimg' src="../images/touzi/congratulation1.png" mode="widthFix"/>
+         <view class="itemGroup">
+            <view class="showItems">
+               <view class='showItem' wx:for="{{resultList}}" wx:key='{{index}}'>
+                  <image class="itemimg" src="{{item.imgUrl}}"/>
+                  <view class="itemdetail">
+                     <view class="itemtitle">{{item.hotelName}}</view>
+                     <view class="itemID" style="font-size:">{{item.roomId}}</view>
+                     <view class="itemstar">
+                        <image wx:for="{{item.star}}" wx:key="{{index}}" src="../images/touzi/star.png" mode="widthFix" class="star" />
+                     </view>
+                  </view>
+               </view>
+            </view>
+            <view class='lines'></view>
+            <view class="operator">
+               <navigator url="/pages/equipdetail/equipdetail" class="viewdetail" hover-class="navigator-hover">
+                  查看详情
+               </navigator>
+               <navigator url="/pages/myenvelope/myenvelope" class="viewdetail" hover-class="navigator-hover">
+                  分享红包
+               </navigator>
+            </view>
+         </view>
+      </view>
+      <view class="closess">
+         <view class="whitelines"></view>
+         <image class="closeX" bindtap="closeRe" src="../images/index/cancel.png" />
+      </view>
+   </view>
+</view>

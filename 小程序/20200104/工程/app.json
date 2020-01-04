@@ -1,0 +1,37 @@
+{
+  "pages": [
+    
+    "pages/verify/verify",
+    "pages/login/login",
+    "pages/replacerecord/replacerecord",
+    "pages/repairsuccess/repairsuccess",
+    "pages/repair/repair",
+    "pages/cabinetlist/cabinetlist",
+    "pages/bindcabinet/bindcabinet",
+    "pages/bindcabinetedit/bindcabinetedit",
+    "pages/lookdetail/lookdetail",
+    "pages/updatepwd/updatepwd",
+    "pages/updateinfo/updateinfo",
+    "pages/personalcenter/personalcenter",
+    "pages/maintenance/maintenance",
+    "pages/cabinet/cabinet",
+    "pages/test/test",
+    
+    
+    "pages/tabbar/tabbar",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于获取周围wifi信息"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

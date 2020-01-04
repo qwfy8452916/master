@@ -1,0 +1,8 @@
+<!--pages/channelcode/channelcode.wxml-->
+<view class="bodybg">
+  <view class="codebg">
+    <image class="code" src="{{codeurl}}" alt="code"  data-src="{{codeurl}}" bindtap="previewImage"></image>
+  </view>
+  <!-- <button data-name="shareBtn" open-type="share">转发</button> -->
+  <!-- 实际开发中会发现这个 button 自带有样式，当背景颜色设置为白色的时候还有一个黑色的边框，刚开始那个边框怎么都去不掉，后来给button加了一个样式属性 plain="true" 以后就好了 -->
+</view>

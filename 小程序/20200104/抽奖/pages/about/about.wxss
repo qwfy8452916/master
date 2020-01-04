@@ -1,0 +1,14 @@
+/* pages/smartCab/smartCab.wxss */
+.content{
+    color: #666;
+    font-size: 28rpx;
+    padding: 40rpx 30rpx;
+    background: #fff;
+    height: 100%;
+}
+.content .content_item{
+    display: block;
+    line-height: 40rpx;
+    text-indent: 50rpx;
+    margin-bottom: 34rpx;
+}

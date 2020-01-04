@@ -1,0 +1,46 @@
+<!--pages/equipdetail/equipdetail.wxml-->
+<view class="equipments">
+    <view class="myequip">
+        <view class="mydetail">
+            <view class="equipnum">我的设备：{{cabNumAll}}台</view>
+            <view class="equipde">
+                <image src="../../images/personal/warning2.png" mode="widthFix" class="equipdeImg"/>  
+                <text>未抽取{{cabNumN}}台</text>
+            </view>
+        </view>
+        <navigator
+        wx:if="{{cabNumN}}"
+         hover-class="navigator-hover"
+         url="/pages/smartCab/smartCab"
+         open-type="switchTab"
+          class='draw'>抽取</navigator>
+    </view>
+    <view class="notDraw" wx:if="{{ifExpand}}">
+        <view class="nodrawList">
+            <view class="nodrawItem" wx:for="{{cabList}}" wx:key="index">
+                <text>{{item.typeName}}：{{item.cabNumAll}}台</text>
+                <text style="margin-left:20rpx">未抽取：{{item.cabNumN}}台</text>
+            </view>
+        </view>
+        <navigator
+        wx:if="{{cabNumN}}"
+         hover-class="navigator-hover"
+         url="/pages/reback/reback"
+          class='reback'>退款</navigator>
+    </view>
+    <view class="expand" bindtap="expand">
+        <image class="expandIcon" mode="widthFix" src="{{ifExpand?'../../images/personal/shouqi.png':'../../images/personal/zhankai.png'}}"/>
+    </view>
+    <view class="equipName" wx:for="{{equipList}}" wx:key="index">
+        <view class="hotelDetail">
+            <view class="name">{{item.equipName}}</view>
+            <view class="order">设备编号{{item.cabinetId}} ({{item.typeName}})</view>
+        </view>
+        <view class="eqstatus">
+            <view class="status">{{item.status}}</view>
+        </view>
+    </view>
+</view>
+<view class="none" wx:if="{{ifshow}}">
+    你还没有购买过智盒哦~
+</view>

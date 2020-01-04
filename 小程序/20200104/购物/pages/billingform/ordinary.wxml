@@ -1,0 +1,55 @@
+<block wx:if="{{type == true}}">
+  <view class="paddAll20 font26">
+    请选择发票类型
+  </view>
+  <view class="paddAll flexbox-around" wx:if="{{type == true}}">
+    <view class="viewbtn viewbtn-active">电子普通发票</view>
+    <view class="viewbtn" data-type="2" bindtap="changetype">增值税专用发票</view>
+  </view>
+</block>
+<view class="paddAll20 font26">
+  发票详情
+</view>
+<view class="paddLR03 bgfff">
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">抬头类型</view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio">
+        <radio value="1" color="#FF9700" checked="true" />企业
+      </label>
+      <label class="radio">
+        <radio value="2" color="#FF9700" />个人
+      </label>
+    </radio-group>
+  </view>
+  <view class="borderB inpbox" wx:if="{{enterprise}}">
+    <view class="minw20 font30 mgR20">单位名称</view>
+    <input class='inp' type="text" maxlength="50" placeholder-style='color: #cecece;' placeholder="请填写单位名称" bindinput='invHeadfun'></input>
+  </view>
+  <view class="borderB inpbox" wx:if="{{enterprise}}">
+    <view class="minw20 font30 mgR20">纳税人识别码</view>
+    <input class='inp' type="number" maxlength="50" placeholder-style='color: #cecece;' placeholder="请填写纳税人识别码" bindinput='taxpayerIdfun'></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">发票金额</view>
+    <view class='inp font-color2'>¥ {{totalprice}}</view>
+  </view>
+  <view class="borderB inpbox bordernone">
+    <view class="minw20 font30 mgR20"><text decode="{{true}}">备&ensp;&ensp;&ensp;&ensp;注</text></view>
+    <textarea class='inp' maxlength="50" auto-height placeholder="请填写备注(50字内)" placeholder-style="color: #cecece;" bindinput="remarkfun" />
+  </view>
+</view>
+<view class="paddAll20 font26">
+  收件信息
+</view>
+<view class="paddLR03 bgfff">
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">手机号码</view>
+    <input class='inp' type="number" placeholder-style='color: #cecece;' placeholder="请填写手机号码" bindinput='mobilefun'></input>
+  </view>
+  <view class="borderB inpbox bordernone">
+    <view class="minw20 font30 mgR20">电子邮箱</view>
+    <input class='inp' type="text" placeholder-style='color: #cecece;' placeholder="请填写电子邮箱" bindinput='emailfun'></input>
+  </view>
+</view>
+<view class="subbtn positionbox" bindtap="subformfun">确定</view>

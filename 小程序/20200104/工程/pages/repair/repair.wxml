@@ -1,0 +1,54 @@
+<!--pages/repair/repair.wxml-->
+<view class='resultwrap'>
+    <text class='statustitle'><text class='red'>*</text>维修结果</text>
+    <radio-group class="danxuanzu" bindchange="radioChange">
+        <view class='statussucc'><label class="radio">
+            <radio name="jieguo" value="1"/>
+          </label>维修成功</view>
+        <view class='statufault'><label class="radio">
+            <radio name="jieguo" value="2" checked />
+          </label>维修失败</view>
+      </radio-group>
+</view>
+<view class='replaceselect' hidden='{{!replacejudge}}'>
+   <checkbox-group bindchange="replaceevent">
+              <label class="weui-cell weui-check__label" wx:for="{{replacedata}}" wx:key="{{item.value}}">
+                <view class="weui-cell__hd">
+                  <checkbox checked="{{replaceselect}}" value="{{item.id}}"/>
+                </view>
+                <view class="weui-cell__bd">{{item.replacename}}</view>
+              </label>
+            </checkbox-group>
+</view>
+<view class='partswrap'>
+    <text class='partswraptitle'>故障部件</text>
+        <checkbox-group bindchange="checkboxbujian">
+              <label class="weui-cell weui-check__label" wx:for="{{partsdata}}" wx:key="{{item.value}}">
+                <view class="weui-cell__hd">
+                  <checkbox value="{{item.dictName}}"/>
+                </view>
+                <view class="weui-cell__bd">{{item.dictName}}</view>
+              </label>
+            </checkbox-group>
+</view>
+
+<view class='partswrap partswrapreason'>
+    <text class='partswraptitle'>故障原因</text>
+        <checkbox-group bindchange="checkboxreason">
+              <label class="weui-cell weui-check__label" wx:for="{{reasondata}}" wx:key="{{item.value}}">
+                <view class="weui-cell__hd">
+                  <checkbox value="{{item.dictName}}"/>
+                </view>
+                <view class="weui-cell__bd">{{item.dictName}}</view>
+              </label>
+            </checkbox-group>
+</view>
+
+<view class='reasonwrap'>
+    <textarea placeholder-style='color:"#CECECE"' bindinput='remarkevent' placeholder='请填写其它故障原因' maxlength='255'></textarea>
+</view>
+
+<view class='niuwrap'>
+    <view class='dianjiniu cancelniu' bindtap='cancelfanhui'>取消</view>
+    <view class='dianjiniu sureniu' bindtap='updatatj'>确定</view>
+</view>

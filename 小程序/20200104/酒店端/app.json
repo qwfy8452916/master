@@ -1,0 +1,60 @@
+{
+  "pages": [
+    
+    "pages/verify/verify",
+    "pages/login/login",
+    "pages/setmessage/setmessage",
+    "pages/myqecode/myqecode",
+    "pages/bindcabinet/bindcabinet",
+    
+    "pages/cabinet/cabinet",
+    "pages/repair/repair",
+    "pages/cabinetlist/cabinetlist",
+    "pages/housematterlist/housematterlist",
+    
+    "pages/bindcabinetedit/bindcabinetedit",
+    
+    "pages/deliveredlist/deliveredlist",
+    "pages/personalcenter/personalcenter",
+    
+    "pages/updateinfo/updateinfo",
+    "pages/updatepwd/updatepwd",
+
+    "pages/getcash/getcash",
+    "pages/shouquan/shouquan",
+    
+    "pages/myincome/myincome",
+    "pages/buhuolist/buhuolist",
+    "pages/tabbar/tabbar",
+    "pages/checkdelivered/checkdelivered",
+    "pages/delivereddetail/delivereddetail",
+    "pages/conplatedelivered/conplatedelivered",
+    "pages/conplatedelivereddetail/conplatedelivereddetail",
+    "pages/getcashrecord/getcashrecord",
+    "pages/user/user",
+    "pages/getcashsuccess/getcashsuccess",
+    "pages/indexselect/indexselect",
+    "pages/housebulist/housebulist",
+    "pages/logs/logs",
+    
+    "pages/hotel/hotel",
+    "pages/index/index",
+    "pages/replacerecord/replacerecord",
+    "pages/detailnormal/detailnormal",
+    "pages/repairsuccess/repairsuccess",
+    "pages/lookdetail/lookdetail",
+    "pages/hotellist/hotellist"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于获取周围wifi信息"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

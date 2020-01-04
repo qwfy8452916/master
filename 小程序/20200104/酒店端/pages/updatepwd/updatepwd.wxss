@@ -1,0 +1,2 @@
+/* pages/updatepwd/updatepwd.wxss */
+@import "../updateinfo/updateinfo.wxss"

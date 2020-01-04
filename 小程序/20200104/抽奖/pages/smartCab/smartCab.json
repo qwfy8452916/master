@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "roundel": "../../roundel/roundel",
+    "envelopebox": "../../envelopebox/envelopebox"
+  },
+  "navigationBarTitleText": "住橙智盒投资"
+}

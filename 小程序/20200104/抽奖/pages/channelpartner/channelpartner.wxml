@@ -1,0 +1,17 @@
+<!--pages/channelpartner/channelpartner.wxml-->
+<view class="linkbg">
+  <view wx:for="{{partnerList}}" wx:key data-partnerid="{{item.id}}" bindtap="linkrecord" class="linkinfo">
+    <view class="linkleft">
+      <view class="lefttop">
+        <view>{{item.fullName}}</view>
+      </view>
+      <view class="leftbottom">
+        <view>{{item.investorTime}}</view>
+      </view>
+    </view>
+    <view class="linkright">
+      <view class="cabnum">{{item.investCont}} 台</view>
+      <image class="iconright" src="../../images/channellink/righticon.png" alt="righticon" />
+    </view>
+  </view>
+</view>

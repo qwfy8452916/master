@@ -1,0 +1,44 @@
+<!--pages/personalcenter/personalcenter.wxml-->
+<view class='mywrapbj'>
+    <!-- <button class='niudj' hidden='{{userInfojudge}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 去提现</button> -->
+    <!-- <button class='niudj' hidden='{{userInfojudge}}' bindtap="jumpshouquan"> 去提现</button> -->
+
+    <image class='pictopbj' src='../../img/userbj.png'></image>
+    <image class='touxiang' src='{{userInfo.avatarUrl}}'></image>
+    <text class='ningchegn'>{{userInfo.nickName}}</text>
+    <text class='bindbtn' wx:if="{{!isBind}}" hidden='{{!userInfojudge}}' bindtap="bindfun">绑定</text>
+    <text class='exitbtn' hidden='{{!userInfojudge}}' bindtap="signout">切换账号</text>
+</view>
+<!-- <view wx:if="{{authzData['F:MH_USER_VIEW_ACCOUNT']}}" class='replenishment' hidden='{{!userInfojudge}}'>
+  <view class='leftblok'>
+     <text class='iconfont iconicon'></text><text>我的补货费</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou' bindtap='linkmycome'></text>
+  </view>
+</view> -->
+<view class='replenishment topline' bindtap='goUpdatePWD'>
+  <view class='leftblok'>
+     <text class='iconfont iconchangepassword'></text><text>修改密码</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou' bindtap='linkmycome'></text>
+  </view>
+</view>
+<view class='replenishment topline' bindtap='goUpdateInfo'>
+  <view class='leftblok'>
+     <text class='iconfont iconxinxiweihu'></text><text>信息维护</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou' bindtap='linkmycome'></text>
+  </view>
+</view>
+
+
+<my-tabbar id="tabbar"></my-tabbar>
+
+
+
+
+
+

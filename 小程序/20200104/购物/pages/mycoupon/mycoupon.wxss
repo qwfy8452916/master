@@ -1,0 +1,48 @@
+.couponlist{
+  margin-top: 30rpx;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 50rpx;
+}
+.couponlist-li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 25rpx;
+  background:#ffe3d5;
+  color: #EE1E1E;
+  border-radius: 25rpx 25rpx;
+  margin-bottom: 20rpx;
+}
+.bgcolor{
+  background:#FAFAFA;
+  color: #999999;
+}
+.couponlist-li-l{
+  width: 65%;
+}
+.couponlist-li-r{
+  width: 35%;
+  text-align: right;
+}
+.font-l1{
+  font-size: 28rpx;
+}
+.font-l2{
+  font-size: 20rpx;
+}
+.font-l3{
+  font-size: 48rpx;
+}
+.font-coupon{
+  text-align: center;
+  font-size: 32rpx;
+  color: #999999;
+  margin-top: 200rpx;
+}
+.ordertype-btn2{
+  font-size: 30rpx;
+  color: #333;
+  border-bottom: 2px solid #fff;
+  line-height: 90rpx;
+}

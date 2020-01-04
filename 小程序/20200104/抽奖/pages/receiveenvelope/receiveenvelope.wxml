@@ -1,0 +1,34 @@
+<view class="bigbox">
+  <view class="colsebtn" bindtap="gobackfun">
+    <image src="../../images/index/cancel.png" class="closeimg"></image>
+  </view>
+  <block wx:if="{{redbox.fsRedPacketDTO.avatarUrl != ''}}">
+    <image src="{{redbox.fsRedPacketDTO.avatarUrl}}" class="avatarimg"></image>
+  </block>
+  <block wx:else>
+    <image src="../../images/myenvelope/icon-img10.png" class="avatarimg"></image>
+  </block>
+  <view class="font-money" wx:if="{{redbox.code != 2}}">
+    {{amount}}<text>元</text>
+  </view>
+  <view class="fonttext" wx:if="{{amount != 0}}">已存入余额，可直接提现</view>
+  <view class="width90 fonttext2">{{redbox.fsRedPacketDTO.totalCount}}个红包 / 已领{{redbox.fsRedPacketDTO.usedCount}}个</view>
+  <block wx:for="{{redbox.fsBalanceDetailDTO}}" wx:for-item="item" wx:key="index">
+    <view class="width90 libox">
+      <view class="li-l">
+        <block wx:if="{{item.avatarUrl != ''}}">
+          <image src="{{item.avatarUrl}}" class="avatarimg2"></image>
+        </block>
+        <block wx:else>
+          <image src="../../images/myenvelope/icon-img10.png" class="avatarimg2"></image>
+        </block>
+        <view class="fonttext3">
+          <text class="fonttext3-name"><block wx:if="{{item.nickName != ''}}">{{item.nickName}}</block><block wx:else>***</block></text>
+          <text>{{item.transTime}}</text>
+        </view>
+      </view>
+      <view class="li-r">{{item.amount}}元</view>
+    </view>
+  </block>
+  <view class="fonttext4" bindtap="seelist">查看我的余额</view>
+</view>

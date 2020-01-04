@@ -1,0 +1,40 @@
+/* pages/cashdetail/cashdetail.wxss */
+.fillinwrap{width: 100%;padding-left: 4%;box-sizing: border-box;
+border-bottom: 20rpx solid #f6f6f6;}
+
+.pickbox{
+    padding: 30rpx 4% 30rpx 0;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+    box-sizing: border-box;
+}
+.pickbox .pickeritem{display: inline-block;width:115rpx;text-align: left;
+margin-right: 20rpx;}
+.alignlef{float: left;}
+.alignrig{float: right;}
+.placems{color: #cecece; }
+
+.picker_group{overflow: hidden;vertical-align: middle;
+font-size: 28rpx;display: block;clear: both;padding: 30rpx 4% 30rpx 0;
+box-sizing: border-box;}
+.pickertime{display: inline-block;}
+.selectdate{margin-right: 20rpx;}
+.sectionitem{overflow: hidden;display: inline-block;width: (calc(100% - 115rpx))}
+.hengxian{color: #666;margin:0 20rpx;}
+
+.recordbox{overflow: hidden;padding-left: 4%;box-sizing: border-box;position: relative;}
+.recordbox .recorditem{padding: 25rpx 4% 25rpx 0;box-sizing: border-box;
+border-bottom: 1px solid #e6e6e6;}
+.recorditem .jine{font-size: 32rpx;color: #333;}
+.recorditem .time{font-size: 24rpx;color: #999;margin-top: 10rpx;}
+.recordbox .handle{position: absolute;right: 4%;top: 45rpx;font-size: 28rpx;
+color: #999;}
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+<!--pages/deliveredlist/deliveredlist.wxml-->
+<view class='wrap'>
+  <view class='floorselect'  data-type="1">
+    <text class='floortitle'>请选择楼层</text>
+    <text class='iconfont iconwodedingdan1' bindtap='deliveredrecord'></text>
+    <text class='suxian'></text>
+    <text class='iconfont icon-wangyou'  bindtap='selectlouceng'></text>
+  </view>
+  
+  <scroll-view class='wraplist' style='height:{{gaodu}}rpx;' scroll-y>
+      <view class='peisitem' wx:for="{{deliverydata}}" wx:key bindtap='delivereddetail' data-id='{{item.id}}' data-delivtype='{{item.delivType}}'>
+          <view class='roomcode'>{{item.roomFloor}}-{{item.roomCode}}</view>
+             <view class='protype'>
+                <text wx:for="{{item.orderDeliveryDetailDTOList}}" wx:for-item="childrenitem" wx:key>{{childrenitem.prodProductDTO.prodName}}、</text>
+             </view>
+             <text class='gongnengarea' wx:if="{{item.delivType!='1'}}">{{item.funcName}}</text>
+             <text class='prototal'>共{{item.prodCount}}件</text>
+      </view>
+  </scroll-view>
+  
+</view>
+
+<!-- <view class='yinying' hidden='{{isHide}}' bindtap='yinying'></view> -->
+<view class="selectfloorbox {{isHide?'transtion-off':'transtion-on'}}">
+
+ <view>
+  <view class='floormodel'>
+    <text class='selectfloor'>请选择楼层</text>
+    <text class='iconfont icon-' bindtap='yinying'></text>
+  </view>
+  <view class='floorcontent'>
+    <view class='flooritem {{floordataactive[index]?"flooractivity":""}}' bindtap='flooritem' wx:for="{{floordata}}" data-index="{{index}}" data-floor="{{item}}" wx:key>{{item}}</view>
+  </view>
+</view>
+
+</view>
+
+<my-tabbar id="tabbar"></my-tabbar>
+

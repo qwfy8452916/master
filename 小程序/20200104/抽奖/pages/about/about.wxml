@@ -1,0 +1,4 @@
+<!--pages/smartCab/smartCab.wxml-->
+<view class="aboutCab">
+    <image class="cabImg" style="width:100%" src="cloud://fortunestar-pics-p6drx.666f-fortunestar-pics-p6drx-1300540775/关于智盒.png" mode="widthFix"/>
+</view>

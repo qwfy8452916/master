@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "待配送",
+  "usingComponents": {
+    "my-tabbar": "../../pages/tabbar/tabbar"
+  }
+}

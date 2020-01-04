@@ -1,0 +1,59 @@
+/* pages/predictearnings/predictearnings.wxss */
+@import '../relatedhoteldetail/relatedhoteldetail.wxss';
+.searchbg{
+  height: 30px;
+  background: #fff;
+  margin: 15px;
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+}
+.searchicon{
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+.txtname{
+  width: 100%;
+  height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+}
+.promptmsg{
+  height: 30px;
+  font-size: 12px;
+  color: #ee1e1e;
+  line-height: 30px;
+  padding: 0px 15px;
+  background: #fff4e9;
+  display: flex;
+  justify-content: space-between;
+}
+.prompttxt{
+  display: flex;
+  align-items: center;
+}
+.hinticon{
+  width: 13px;
+  height: 13px;
+  margin-right: 6px;
+}
+.closeicon{
+  width: 12px;
+  height: 12px;
+}
+.rightmoney{
+  font-size: 14px;
+  color: #487ae9;
+  line-height: 22px;
+  margin-bottom: 3px;
+}
+.hotelinfo{
+  font-size: 12px;
+  color: #999;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  background: #fff;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+}

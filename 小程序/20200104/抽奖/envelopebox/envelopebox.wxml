@@ -1,0 +1,7 @@
+<view class="bgcolor" wx:if="{{isShow == true}}">
+  <view class="envelopebox">
+    <image src="cloud://fortunestar-pics-p6drx.666f-fortunestar-pics-p6drx-1300540775/img1.png" mode="widthFix" class="imgbox"></image>
+    <view bindtap="hideEnvelopebox" class="closebtn"></view>
+    <view bindtap="receivefun" class="receiveBtn"></view>
+  </view>
+</view>

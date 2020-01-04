@@ -1,0 +1,34 @@
+<block wx:if="{{billinglist.length == 0}}">
+  <view class='datanull-font'>
+    <image src='../../img/my-btnimg16.png' class='iconimg1' mode='widthFix'></image>
+    <text>您暂无开票记录</text>
+  </view>
+</block>
+<block wx:else>
+  <block wx:for="{{billinglist}}" wx:for-item="item" wx:key="index">
+    <view class="bgfff listbox mgB20" data-id="{{item.id}}"  data-invtype="{{item.invType}}" bindtap="detail">
+      <view class="listbox-top">
+        <view class="listbox-top-l">
+          <view class="font-text1 mgB20">
+            <block wx:if="{{item.invType == 101}}">酒店房费发票</block>
+            <block wx:else>商品销售发票</block>
+          </view>
+          <view class="font-text2">¥ {{item.amount}}</view>
+        </view>
+        <view class="listbox-top-r">
+          <image src="../../img/my-bgimg2.png" class="iconimg"></image>
+        </view>
+      </view>
+      <view class="listbox-btm">
+        <view>{{item.createdAt}}</view>
+        <view>
+          <block wx:if="{{item.invType == 1}}">
+            电子发票-<block wx:if="{{item.invHeadType == 1}}">企业</block><block wx:else>个人</block>
+          </block>
+          <block wx:elif="{{item.invType == 2}}">增值税专用发票</block>
+          <block wx:elif="{{item.invType == 101}}"></block>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>

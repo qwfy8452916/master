@@ -1,0 +1,101 @@
+/* pages/equipdetail/equipdetail.wxss */
+.equipments{
+    font-size: 32rpx;
+    background: #fff;
+}
+.equipName {
+    display: flex;
+    padding: 30rpx 30rpx;
+    justify-content: space-between;
+    border-bottom: 2rpx rgb(246, 246, 246) solid;
+    height: 90rpx;
+}
+.equipName .name{
+    color: #333333;
+}
+.equipName .status{
+    color: #999999;
+}
+.equipde{
+    display: flex;
+    align-items: center;
+}
+.equipdeImg{
+    margin-right: 10rpx;
+    width:30rpx;
+    height:30rpx;
+}
+.order{
+    color: #999999;
+    font-size: 28rpx;
+}
+.hotelDetail{
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+}
+.eqstatus{
+    height: 100%;
+    font-size: 28rpx;
+    display: flex;
+    align-items: center;
+}
+
+.myequip{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 29rpx;
+    align-items: center;
+    background: #EE1E1E;
+    height: 200rpx;
+    font-size: 28rpx;
+    color: white;
+}
+.mydetail{
+    flex: 1;
+    flex-wrap: wrap;
+    height: 100rpx;
+    align-content: space-between;
+    display: flex;
+}
+.equipnum{
+    width: 100%;
+    font-size: 36rpx;
+}
+.draw{
+    width: 150rpx;
+    height: 50rpx;
+    color: #EE1E1E;
+    background: #FFF;
+    border-radius: 25rpx;
+    text-align: center;
+    line-height: 50rpx;
+}
+.notDraw{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    background: #EE1E1E;
+    color: white;
+    font-size: 28rpx;
+    padding: 0 29rpx;
+}
+.nodrawItem{
+    line-height: 50rpx;
+}
+.expand{
+    background: #EE1E1E;
+    text-align: center;
+    padding-top: 10rpx;
+}
+.expandIcon{
+    width: 40rpx;
+    height: 40rpx;
+}
+.none{
+    font-size: 28rpx;
+    color: #ccc;
+    text-align: center;
+    margin-top: 50rpx;
+}

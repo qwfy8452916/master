@@ -1,0 +1,26 @@
+<view class="act-bg" wx:if="{{showtype == true}}">
+  <block wx:if="{{newcomertype == 0}}">
+    <view class="newcomer-img" bindtap="openfun"><image mode="widthFix" src="{{actImageUrl}}"></image></view>
+    <view class="closebtn" bindtap="closefun"><image src="../../../img/my-btnimg23.png"></image></view>
+  </block>
+  <block wx:else>
+    <view class="actbox">
+      <view class="actbox-top-img borderB"><image mode="widthFix" src="{{actAdImageUrl}}"></image></view>
+      <view class="actbox-btm">
+        <scroll-view scroll-y style="height: 90%;">
+          <block wx:for="{{listdata}}" wx:for-item="item" wx:key="index">
+            <view class="actbox-li">
+              <view class="font-li-a">¥ <text>{{item.reduceMoney}}</text></view>
+              <view class="actbox-li-r">
+                <view class="font-li-b">{{item.couponName}}</view>
+                <view class="font-li-c">消费满{{item.useLimitMoney}}元可用</view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+        <view class="font-btm">已领取的优惠券，请在<text>【我的优惠券】</text>查看</view>
+      </view>
+    </view>
+    <view class="closebtn" bindtap="closefun"><image src="../../../img/my-btnimg23.png"></image></view>
+  </block>
+</view>

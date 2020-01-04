@@ -1,0 +1,27 @@
+<view class='bgfff success-top'>
+  <image src='../../img/success-img2.png' class='iconimg'></image>
+  <view class='font-text1'>提交成功!</view>
+  <view class='font-text2'>
+    <block wx:if="{{ishasmnb == 1}}">您的商品正在整装待发...</block>
+    <block wx:else>柜门已打开，请取走商品</block>
+  </view>
+  <view class='successbtnbox'>
+    <view class='successbtn successbtn2' bindtap='backfun'>继续购买</view>
+    <view wx:if="{{ishasmnb == 1}}" class='successbtn successbtn1' bindtap='orderdetails'>查看详情</view>
+    <view wx:else class='successbtn successbtn1' bindtap='orderlist'>查看订单</view>
+  </view>
+</view>
+<view class="share_redbag" wx:if="{{redcode != -1}}" bindtap="sharefun">
+  <image mode="widthFix" src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/shareredbag.png"></image>
+</view>
+
+<view wx:if="{{showtype == true}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">{{user_name?user_name+'邀你一起领红包':'好友邀你一起领红包'}}</view>
+    <image src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/shareimg.jpg" class="imgbox" mode="widthFix"></image>
+    <view class="sharebtnbox2">
+      <view class="btn" bindtap="closefun">取消</view>
+      <button open-type="share" data-type="1" class="btn btncss">分享</button>
+    </view>
+  </view>
+</view>

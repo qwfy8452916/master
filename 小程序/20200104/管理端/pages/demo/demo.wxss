@@ -1,0 +1,27 @@
+ /* pages/demo/demo.wxss */
+.section{overflow: hidden;}
+.picker{
+    padding: 8rpx;
+    background-color: #FFFFFF;
+}
+.alignlef{float: left;}
+.alignrig{float: right;}
+.alignrig .iconfont{margin-left: 5rpx;
+            transition: all0.5s;
+            -moz-transition: all0.5s; /* Firefox 4 */
+            -webkit-transition: all0.5s; /* Safari 和 Chrome */
+            -o-transition: all0.5s; /* Opera */}
+.animstyle{
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            display: inline-block;}
+
+
+
+
+.picker_group{overflow: hidden;vertical-align: middle;padding: 8rpx;}
+.pickeritem{display: inline-block;}
+.selectdate{padding: 8rpx 0;}
+
+

@@ -1,0 +1,18 @@
+<block wx:if="{{styledata.style=='PIC_ONLY'}}"><!-- 纯图片 -->
+  <view class="paddB100">
+    <image class="roomsecrvice-img" mode="widthFix" src="{{styledata.picUrl}}"></image>
+  </view>
+  <view wx:if="{{styledata.contacts != ''}}" class="telbtn" bindtap="telfun">联系客服</view>
+</block>
+<block wx:elif="{{styledata.style=='DYNAMIC_FORM'}}"><!-- 动态表单 -->
+  <include src="styleform.wxml" />
+</block>
+<block wx:elif="{{styledata.style=='BANNER_DETAIL_ORDER'}}"><!-- banner详情下单 -->
+  <include src="stylebannerlist.wxml" />
+</block>
+<block wx:elif="{{styledata.style=='LIST_ORDER'}}"><!-- 列表下单 -->
+  <include src="stylelist.wxml" />
+</block>
+<block wx:elif="{{styledata.style=='ICON_ORDER'}}"><!-- 列表详情下单 -->
+  <include src="stylelist2.wxml" />
+</block>

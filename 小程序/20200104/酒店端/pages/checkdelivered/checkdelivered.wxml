@@ -1,0 +1,39 @@
+
+ <view class='hangitem roomhao'>房间号 03-1321</view>
+ <view class='hangitem contactinfo'>
+   <view class='lianxihang'>
+      <view class='lianxi'>
+         <text class='lianxi-title'>联系人</text><text>太上老君</text>
+      </view>
+      <text class='phonehao'>18995683626</text>
+   </view>
+   <view class='comment'>
+      <text class='comment-title'>用户留言</text><text>非常棒</text>
+   </view>
+ </view>
+
+ <view class='timehang'>
+    <view class='timeitem'>
+       <text>配送时间：</text><text>2019-05-12 10:15:39</text>
+    </view>
+    <view class='timeitem'>
+       <text>支付时间：</text><text>2019-05-12 10:15:39</text>
+    </view>
+    <view class='timeitem'>
+       <text>确认时间：</text><text>2019-05-12 10:15:39</text>
+    </view>
+ </view>
+
+<view class='detailwrap'>
+   <view class='detailitem' wx:for="{{10}}" wx:key>
+      <view class='propic'>
+        <image src='../../img/huowu.png'></image>
+      </view>
+      <view class='promiaos'>2019新款夏装女装条纹短袖T恤女潮半袖宽松针织打底衫ins洋气上衣</view>
+      <text class='geshu'>×1</text>
+  </view>
+</view>
+
+
+
+

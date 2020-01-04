@@ -1,0 +1,18 @@
+<!--pages/login/login.wxml-->
+<view class='wrap'>
+  <!-- <view class='loginname'>客房宝</view> -->
+  <text class='logintest'>工程小程序用户登录</text>
+  <view class='hangitem'>
+    <text class='iconfont iconwode'></text>
+    <input bindinput='Username' class='' placeholder='请输入用户名' placeholder-style='color:#cecece'></input>
+  </view>
+  <view class='hangitem'>
+    <text class='iconfont iconlock'></text>
+    <input password="true" bindinput='Password' class='' placeholder='请输入密码' placeholder-style='color:#cecece'></input>
+  </view>
+  <view class='forgetwrap'>
+     <text class='forgetpassword' bindtap='forgetpassword'>忘记密码？</text>
+  </view>
+  <button class='loginniu' bindtap="loginniu">登录</button>
+  <!-- <button class='loginniu' bindgetuserinfo='shouquanlogin' open-type="getUserInfo">登录</button> -->
+</view>

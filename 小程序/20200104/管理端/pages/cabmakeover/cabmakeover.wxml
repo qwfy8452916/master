@@ -1,0 +1,18 @@
+<!--pages/cabmakeover/cabmakeover.wxml-->
+<view class="hotelname">{{hotelName}} {{frCode}}</view>
+<form bindsubmit="makeoverSubmit">
+  <view class="makepart">
+    <view class="title">转让价格</view>
+    <view class="cabprice">
+      <view class="priceicon">￥</view>
+      <input name="price" maxlength="10" class="pricenum" value="{{makeoverData.price}}"></input>
+    </view>
+  </view>
+  <view class="makepart">
+    <view class="title">转让原因</view>
+    <view class="cabprice">
+      <textarea name="reason" placeholder="填写转让原因（非必填）" maxlength="255" class="reason" value="{{makeoverData.reason}}"></textarea>
+    </view>
+  </view>
+  <button form-type='submit' class="submitbtn">提交</button>
+</form>

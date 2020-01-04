@@ -1,0 +1,21 @@
+<swiper
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="{{circular}}"
+    indicator-dots="true"
+    indicator-color="#fff"
+    indicator-active-color="#ff9c01"
+    style="height:{{imgheights[current]}}rpx;"
+    bindchange="bindchange"
+  >
+  <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+    <swiper-item class="swiperitembox">
+      <image src="{{item}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='widthbox'>
+  <view class='titlebox' wx:if="{{detials.title != '' && detials.title != null}}">{{detials.title}}</view>
+  <view class='contentbox' wx:if="{{detials.detailDesc != '' && detials.detailDesc != null}}">{{detials.detailDesc}}</view>
+</view>

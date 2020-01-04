@@ -1,0 +1,79 @@
+<!--pages/smartCab/smartCab.wxml-->
+<view class="CabInverstor">
+    <image class="bgimg" src="cloud://fortunestar-pics-p6drx.666f-fortunestar-pics-p6drx-1300540775/288f924d-bd92-43bb-b835-d68e4507c1aa.png" />
+    <view class="maincontent">
+        <view class="status" wx:if="{{ifFirst}}">首发中</view>
+        <view class="status" wx:else>首发已抢完</view>
+        <view class="zhuanpan">
+            <view class="roundOuter" style="width:{{size}}rpx;height:{{size}}rpx">
+                <roundel id='roundel' 
+                bind:myData='getData' 
+                bind:myAwards="getAwards" 
+                bind:startZhuan="startZhuan" 
+                bind:resetStatus="resetFirst" 
+                size='{{size}}' 
+                musicflg='{{musicflg}}' 
+                fastJuedin='{{fastJuedin}}' 
+                repeat='{{repeat}}' 
+                probability='{{probability}}' 
+                zhuanpanArr='{{xiaojuedingArr}}' 
+                awardsConfig='{{awardsConfig}}'></roundel>
+            </view>
+            <view class="hasFS">
+                您有可使用的财运星 {{cabTotal}} 颗
+            </view>
+            <view bindtap='gotoOrder' wx:if="{{ifFirst}}" class="fsbutton">首发抢投</view>
+            <navigator wx:if="{{ifFirst}}" class="viewall" url="/pages/firstList/firstList" hover-class="navigator-hover">
+                IHO详情
+            </navigator>
+            <view wx:if="{{!ifFirst}}" class="fsbutton2">
+                <view style="width:100%">{{nextLaunchTime?'预计下次首发时间':'暂无首发柜子'}}</view>
+                <view>{{nextLaunchTime?nextLaunchTime:''}}</view>
+            </view>
+            <view wx:if="{{!ifFirst}}" bindtap='gotoOrder2' class="fsbutton3">
+                预付智盒款
+            </view>
+        </view>
+        <!-- <view style='width:100%;margin:5px;text-align:center;'>
+        转盘声音 <switch type='switch' bindchange="switch1Change1"/>
+        不重复抽取 <switch type='switch' bindchange="switch1Change2"/>
+        </view>
+        <view style='width:100%;margin:5px;text-align:center;'>
+        快速决定 <switch type='switch' bindchange="switch1Change3"/>
+        概率 <switch type='switch' bindchange="switch1Change4"/>
+        </view> -->
+    </view>
+</view>
+<navigator class="invertorinfo" url="/pages/investIns/investIns" hover-class="navigator-hover">
+    投资须知
+</navigator>
+<view wx:if="{{ifshowShare || isSalesman}}">
+    <view class='share' wx:if="{{ isShare }}">
+        <button open-type="share" class='shareBtn'>分享赚钱</button>
+        <image mode="widthFix" bindtap="goTorule" style="width:34rpx;height:34rpx" src="../../images/touzi/selected.png"/>
+    </view>
+    <view class='share' wx:else>
+        <button bindtap='share' class='shareBtn'>分享赚钱</button>
+        <image mode="widthFix" bindtap="goTorule" style="width:34rpx;height:34rpx" src="../../images/touzi/selected.png"/>
+    </view>
+</view>
+<envelopebox wx:if="{{showtype}}" bind:ifCoupon='getifCoupon' ></envelopebox>
+<view class='coupon' style="display:{{blocks}}">
+    <view class="mainC">
+      <image bindload='imageLoad' class="couponB" mode="widthFix" src="cloud://fortunestar-pics-p6drx.666f-fortunestar-pics-p6drx-1300540775/youhuiquan.png" />
+      <view class="couponC" wx:if="{{onloadif}}">
+        <text class="cointype">￥</text>
+        <text class="couponNum">{{fsAmount}}</text>
+        <view class="condition">
+          <view class="counpontype">YUAN</view>
+          <view class="conditions">现金券</view>
+        </view>
+      </view>
+      <view wx:if="{{onloadif}}" bindtap='getcoupon' class="lingqu">领</view>
+    </view>
+    <view class="closes" wx:if="{{onloadif}}">
+      <view class="line"></view>
+      <image class="close" bindtap="closeDialog" src="../../images/index/cancel.png" />
+    </view>
+  </view>
+  <view class="mask" style="display:{{blocks}}"></view>

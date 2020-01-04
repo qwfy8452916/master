@@ -1,0 +1,16 @@
+.cancelbtn{
+  border: 0.5px solid #FF9700;
+  font-size: 27rpx;
+  color: #FF9700;
+  padding: 8rpx 15rpx;
+}
+.libox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 30rpx;
+  padding-top: 30rpx;
+}
+.libox text:last-child{
+  max-width: 70%;
+}

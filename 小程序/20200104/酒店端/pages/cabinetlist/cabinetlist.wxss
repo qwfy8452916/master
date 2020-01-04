@@ -1,0 +1,169 @@
+/* pages/cabinetlist/cabinetlist.wxss */
+
+.navwrap{width: 100%;padding: 0 6%;box-sizing: border-box;display: flex;}
+.navwrap .navitem{display: inline-block;padding: 25rpx 0rpx;box-sizing: border-box;
+font-size: 32rpx;color: #999;flex-grow: 1;text-align: center;width: 158rpx;}
+/* .navwrap .navitem:nth-child(1){float: left;}
+.navwrap .navitem:nth-child(2){float: right;} */
+.navwrap .navitemactive{border-bottom: 4rpx solid #FF9700;color:#FF9700; }
+.wraplist{overflow: hidden;overflow-y: auto;position: fixed;top:100rpx;bottom: 150rpx;
+width: 100%;}
+.hiddenyc{display: none;overflow: hidden;}
+.xianshi{display: block !important;}
+.hangitem{overflow: hidden;padding: 30rpx 4%;box-sizing: border-box;
+border-bottom: 1px solid #e5e5e5;font-size: 30rpx;color: #666;
+position: relative;}
+.hangitem:first-child{border-top: 1px solid #e5e5e5;}
+.miaosone{overflow: hidden;}
+.miaosone .xuhao{font-size:24rpx;color: #ff9700;display: inline-block;
+padding: 3rpx 15rpx;border: 1px solid #ff9700;border-radius: 10rpx;
+margin-right: 20rpx;}
+.miaosone .statuszt{color: #ff9100;}
+.statuszt .fault{color: #ff0000;}
+.hangitem .miaostwo{overflow: hidden;margin-top: 20rpx;}
+.icongengduo{position: absolute;right: 4%;top: 46rpx;padding:20rpx;}
+
+.wrapcontinue{width: 100%;padding: 0 4%;box-sizing: border-box;
+overflow: hidden;position: fixed;bottom: 125rpx;left: 0;}
+.wrapcontinue .continueniu{width: 100%;height: 88rpx;line-height: 88rpx;text-align: center;
+background: #ff9700;color: #fff;font-size: 32rpx;border-radius: 10rpx;
+display: none;}
+.wrapcontinue .showxs{display: block !important;}
+
+.botcontent{width: 100%;height: 337rpx;background: #fff;position: absolute;bottom: 0;
+left: 0;text-align: left;padding: 0 88rpx;box-sizing: border-box;
+text-align: center;border-radius: 5rpx;}
+.botcontent .tantitle{font-size: 36rpx;color: #333;margin-top: 80rpx;}
+.wrapniu{overflow: hidden;margin-top:70rpx;font-size: 36rpx;}
+.wrapniu .delniu{background: #e32121;color: #fff;display: inline-block;
+padding: 20rpx 80rpx;border-radius: 8rpx;float: left;}
+.wrapniu .editniu{background: #ff9700;color: #fff;display: inline-block;
+padding: 20rpx 80rpx;border-radius: 8rpx;float: right;}
+
+.nodata{font-size: 32rpx;text-align: center;}
+
+.repairhangitem{overflow: hidden;padding: 30rpx 4%;box-sizing: border-box;
+border-bottom: 1px solid #e5e5e5;font-size: 32rpx;color: #666;
+position: relative;}
+.repairhangitem:first-child{border-top: 1px solid #e5e5e5;}
+.repairhangitem .miaosone{overflow: hidden;}
+.repairhangitem .miaosone .xuhao{font-size:32rpx;color: #333;display: inline-block;
+padding: 7rpx 0;border: none;
+margin-right: 20rpx;}
+.repairhangitem .miaostwo{overflow: hidden;margin-top: 15rpx;color: #ee1e1e;
+font-size: 32rpx;}
+.repairhangitem .iconwangyou{position: absolute;right: 4%;top: 46rpx;padding:20rpx 30rpx;
+color: #cecece;}
+.repairhangitem .icongantan{margin-right:10rpx;font-size: 31rpx;}
+.nodataimg{width: 117rpx;height: 113rpx;margin: 0 auto;display: block;
+margin-top: 150rpx;}
+.nodatams{text-align: center;margin-top: 50rpx;font-size: 36rpx;
+color: #cecece;}
+
+
+.replaceitem{overflow: hidden;width: 100%;padding: 30rpx 4%;box-sizing: border-box;
+border-bottom: 1px solid #ddd;}
+.replaceitem:last-child{border-bottom: 0;}
+.replaceitem .replacebj{width: 83rpx;height: 26rpx;display: inline-block;
+margin-left: 20rpx;font-size: 20rpx;color: #fff;position: relative;}
+
+.replaceitem .replacebj image{width: 100%;height: 100%;}
+.replaceitem .leftext{float: left;font-size: 32rpx;color: #666;
+margin-top: 10rpx;}
+.replaceitem .replacebj .statustext{position: absolute;top: -1rpx;left: 7rpx;}
+.replaceitem .righttext{float: right;font-size: 32rpx;color: #ff9100;
+font-weight: bold;padding: 10rpx 20rpx;}
+/* ==================
+         模态窗口
+ ==================== */
+
+.cu-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1110;
+  opacity: 0;
+  outline: 0;
+  text-align: center;
+  -ms-transform: scale(1.185);
+  transform: scale(1.185);
+  backface-visibility: hidden;
+  perspective: 2000rpx;
+  background: rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease-in-out 0s;
+  pointer-events: none;
+}
+
+.cu-modal::before {
+  content: "\200B";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.cu-modal.show {
+  opacity: 1;
+  transition-duration: 0.3s;
+  -ms-transform: scale(1);
+  transform: scale(1);
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.cu-dialog {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+  width: 680rpx;
+  max-width: 100%;
+  background: #f8f8f8;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.cu-modal.bottom-modal::before {
+  vertical-align: bottom;
+}
+
+.cu-modal.bottom-modal .cu-dialog {
+  width: 100%;
+  border-radius: 0;
+}
+
+.cu-modal.bottom-modal {
+  margin-bottom: -1000rpx;
+}
+
+.cu-modal.bottom-modal.show {
+  margin-bottom: 0;
+}
+
+.cu-modal.drawer-modal {
+  transform: scale(1);
+  display: flex;
+}
+
+.cu-modal.drawer-modal .cu-dialog {
+  height: 100%;
+  min-width: 200rpx;
+  border-radius: 0;
+  margin: initial;
+  transition-duration: 0.3s;
+}
+
+.cu-modal.drawer-modal.justify-start .cu-dialog {
+  transform: translateX(-100%);
+}
+
+.cu-modal.drawer-modal.justify-end .cu-dialog {
+  transform: translateX(100%);
+}
+
+.cu-modal.drawer-modal.show .cu-dialog {
+  transform: translateX(0%);
+}

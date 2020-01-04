@@ -1,0 +1,21 @@
+/* pages/login/login.wxss */
+.signinbox{width: 80%;overflow: hidden;margin:0 auto;margin-top:  250rpx;
+}
+.signinbox .itembox{overflow: hidden;padding:25rpx 0;box-sizing: border-box;
+border-bottom: 1px solid #e5e5e5;margin-bottom: 30rpx;}
+.itembox .iconfont{float: left;color: #0569cd;margin-right: 25rpx;font-size: 36rpx;font-weight: bold;}
+.phone .iconfont{position: relative;top: 2rpx;}
+.password .iconfont{position: relative;top: 8rpx;}
+.itembox .itemput{display: inline-block;float: left;font-size: 36rpx;}
+
+.loginbtn{width: 80%;height: 92rpx;line-height: 92rpx;font-size: 32rpx;
+background: #0066CC;margin: 0 auto;margin-top: 70rpx;
+text-align: center;color: #fff;border-radius: 40rpx;}
+.forget{text-align: center;font-size: 24rpx;color: #0066CC;
+margin-top: 150rpx;}
+
+.loginbj{width: 100%;height: 156rpx;overflow: hidden;position: fixed;
+bottom: 0;}
+.loginbj image{width: 100%;height: 100%;vertical-align: top;}
+
+

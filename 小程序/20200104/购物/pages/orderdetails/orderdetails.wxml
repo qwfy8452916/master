@@ -1,0 +1,56 @@
+<view class="paddAll flexbox mgB20 detailbox-t">
+  <view class="detailbox-t-l">
+    <image class="service-img" src="{{serviceimg}}"></image>
+    <view class="service-name mgL25">{{servicename}}</view>
+  </view>
+  <view class="detailbox-t-l">
+    <text class="font-color2" wx:if="{{status==0}}">待确认</text>
+    <text class="font-color1" wx:elif="{{status==1}}">已确认</text>
+    <text class="font-color1" wx:elif="{{status==2}}">已完成</text>
+    <text class="font-color4" wx:elif="{{status==3}}">已取消</text>
+  </view>
+</view>
+<view class="mgB20">
+  <block wx:for="{{detaildata}}" wx:for-item="item" wx:key="index">
+    <view class="paddAll flexbox borderB prodbox">
+      <view class="detailbox-t-l prodbox-l">
+        <image class="prodimg" src="{{item.commonStyleDTO.picUrl}}"></image>
+        <view class="prodinfo">
+          <view class="prodname">{{item.commonStyleDTO.name}}</view>
+          <view class="prodprice" wx:if="{{item.commonStyleDTO.price != '' && item.commonStyleDTO.unit != ''}}">￥{{item.commonStyleDTO.price}}/{{item.commonStyleDTO.unit}}</view>
+        </view>
+      </view>
+      <view class="prodname" wx:if="{{item.count > 0}}">x {{item.count}}</view>
+    </view>
+  </block>
+</view>
+<block wx:if="{{imglist.length > 0}}">
+  <view class="paddAll mgB20 picPathbox">
+    <block wx:for="{{imglist}}" wx:for-item="item" wx:key="index">
+      <image class="img-box" src="{{item}}" mode="widthFix"></image>
+    </block>
+  </view>
+</block>
+<view class="mgB20">
+  <view class="paddAll detailbox-t-l borderB roomcodefont">房间号<text class="mgL25">{{roomCode}}</text></view>
+  <view class="paddAll detailbox-t-l2  roomcodefont">备  注<text class="mgL25">{{remark}}</text></view>
+</view>
+<view class="paddAll">
+  <view class="timefont">提交时间<text class="mgL25">{{createdAt}}</text></view>
+  <view wx:if="{{status==1}}" class="timefont">确认时间<text class="mgL25">{{confirmTime}}</text></view>
+  <view wx:if="{{status==3}}" class="timefont">取消时间<text class="mgL25">{{cancelTime}}</text></view>
+  <view wx:if="{{status==3}}" class="timefont">取消原因<text class="mgL25">{{cancelReason}}</text></view>
+  <view class="textright borderT" wx:if="{{status==0}}">
+    <view class="cancelbtn" bindtap="boxshow">取消</view>
+  </view>
+</view>
+<view class='cancel-tipsbg' wx:if="{{showView == true}}">
+  <view class='cancel-tips'>
+    <view class='cancel-tips-top'>提示</view>
+    <textarea bindinput="userremark" placeholder="请输入取消原因" placeholder-style="color: #cecece;" class='remarks' />
+    <view class='cancel-tips-btn'>
+      <view class='cancel-tips-btnbox' bindtap='boxshow'>取消</view>
+      <view class='cancel-tips-btnbox' bindtap='cancelorderdetails'>确定</view>
+    </view>
+  </view>
+</view>

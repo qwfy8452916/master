@@ -1,0 +1,36 @@
+<!--pages/updateinfo/updateinfo.wxml-->
+<view class="mainbg">
+  <form bindsubmit='infoSubmit'>
+    <view class='userinfo' wx:if="{{userinfoData.type == 'c'}}">
+      <text class='labuser'><text class="iconcolor">* </text>信用代码</text>
+      <input disabled='true' name="uscc" placeholder='请填写信用代码' placeholder-style='color:#cecece;' maxlength='20' class="txtuser discolor" value='{{userinfoData.uscc}}'></input>
+    </view>
+    <view class='userinfo' wx:if="{{userinfoData.type == 'p'}}">
+      <text class='labuser'><text class="iconcolor">* </text>身份证码</text>
+      <input disabled='true' name="idno" placeholder='请填写身份证码' placeholder-style='color:#cecece;' maxlength='20' class="txtuser discolor" value='{{userinfoData.idno}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'><text class="iconcolor">* </text>企业名称</text>
+      <input name="name" placeholder='请填写企业名称' placeholder-style='color:#cecece;' maxlength='20' class="txtuser" value='{{userinfoData.name}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'>联系人</text>
+      <input name="contact" placeholder='请填写联系人' placeholder-style='color:#cecece;' maxlength='20' class="txtuser" value='{{userinfoData.contact}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'><text class="iconcolor">* </text>手机号</text>
+      <input type='number' name="phone" placeholder='请填写手机号' placeholder-style='color:#cecece;' maxlength='11' class="txtuser" value='{{userinfoData.phone}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'><text class="iconcolor">* </text>区域选择</text>
+      <picker mode="region" bindchange='bindRegionChange' value='{{userinfoData.region}}' class="region">
+        <view class='picker'>{{userinfoData.region[0]}},{{userinfoData.region[1]}},{{userinfoData.region[2]}}</view>
+      </picker>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'><text class="iconcolor">* </text>详细地址</text>
+      <input name="address" placeholder='请填写邮箱' placeholder-style='color:#cecece;' maxlength='32' class="txtuser" value='{{userinfoData.address}}'></input>
+    </view>
+    <button form-type='submit' class="submitbtn">确认</button>
+  </form>
+</view>

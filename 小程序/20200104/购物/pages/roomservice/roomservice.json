@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "客房服务 Room Service",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "pop": "../common/pop/pop",
+    "redbagact": "../common/redbagact/redbagact",
+    "newcomer": "../common/newcomer/newcomer"
+  }
+}

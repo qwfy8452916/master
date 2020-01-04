@@ -1,0 +1,6 @@
+<block wx:for="{{styledata.styles}}" wx:for-item="item" wx:key="index">
+  <view class="stylebanner" data-id="{{item.id}}" data-hotelcategoryid="{{styledata.id}}" bindtap="detailfun">
+    <image class="roomsecrvice-img" mode="widthFix" src="{{item.picUrl}}"></image>
+    <view class="stylebanner-title">{{item.name}}</view>
+  </view>
+</block>

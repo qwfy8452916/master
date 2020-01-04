@@ -1,0 +1,24 @@
+<!--pages/login/login.wxml--> 
+<view class="signinbox">
+   <view class="itembox phone">
+     <text class="iconfont iconshouji"></text>
+     <input class="itemput" bindinput="Username" placeholder="请输入用户名"></input>
+   </view>
+   <view class="itembox password">
+     <text class="iconfont iconsuo"></text>
+     <input class="itemput" bindinput="Password" placeholder="请输入密码" password="true"></input>
+   </view>
+</view>
+
+<view class="loginbtn" bindtap="login">登录</view>
+<!-- <view class="loginbtn" bindtap="subscribeMsg">订阅消息</view> -->
+
+ <!-- <button class='loginbtn' bindgetuserinfo='shouquanlogin' open-type="getUserInfo">登录</button> -->
+<view class="forget">忘记密码</view>
+
+<view class="loginbj">
+  <image src="../../img/loginbj.png"></image>
+</view>
+
+
+

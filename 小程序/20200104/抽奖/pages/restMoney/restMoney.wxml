@@ -1,0 +1,23 @@
+<!--pages/restMoney/restMoney.wxml-->
+<view class="restmoney">
+    <view class="restnum">
+        <view class="ableDraw">可提现余额<text style="font-size:24rpx;">（元）</text></view>
+        <view class="ablenum">{{balance}}</view>
+    </view>
+    <navigator hover-class="navigator-hover" url="/pages/withdraw/withdraw" class='goDraw'>
+        <image src="../../images/personal/toRightW.png" mode="widthFix" style="width:34rpx;height:34rpx;"/>
+    </navigator>
+</view>
+<view class='rpdetail'>
+    <view class="rptitle">收支明细</view>
+    <view wx:for="{{rplist}}" wx:key="index" class="rpitems">
+        <view class="rpleft">
+            <view class="rptype">{{item.rptype}}<text style="font-size:24rpx;">{{item.rpexplain}}</text></view>
+            <view class="rptime">{{item.rptime}}</view>
+        </view>
+        <view class="rpmoney">{{item.rpmoney}}</view>
+    </view>
+</view>
+<view class="none" wx:if="{{ifshow}}">
+    暂无收支明细
+</view>

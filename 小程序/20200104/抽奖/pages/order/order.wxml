@@ -1,0 +1,66 @@
+<!--pages/order/order.wxml-->
+<view class="order">
+    <view class="choose">
+        <view class="type" style="padding-bottom:30rpx;border-bottom:1px #F6F6F6 solid">选择类型</view>
+        <radio-group class="radioGroup" bindchange='radioChange'>
+            <label wx:for="{{typeList}}" style="padding:10px 0;border-bottom:1px #F6F6F6 solid" wx:key="index">
+                <radio style="float:right" value="{{item.id}}" checked="{{index == 0 ? true : false}}"/> {{item.typeName}}
+                <!-- <text style="font-size:26rpx;color:#ccc;margin-left:30rpx;">(租金{{item.rent}}元,运营服务费{{item.serviceFee}}元)</text> -->
+            </label>
+        </radio-group>
+    </view>
+    <view class="discountList">
+        <view class="countItem"
+         style="background:{{activeIndex==index?'#EE1E1E':'#eeeeee'}};color:{{activeIndex==index?'white':'#333333'}}"
+          data-gid='{{index}}'
+          data-gid2='{{item.num}}'
+           bindtap='changeStyle'
+            wx:for="{{cabNumType}}"
+             wx:key="index">
+            <text class="countC">{{item.num}}台</text>
+        </view>
+        <text class="addwords">投放数量</text>
+        <view class="addbutton">
+            <text style="background:#CECECE" class="fuhao" bindtap="decreaseNum">-</text>
+            <input value="{{cabNum}}" bindblur="inputNum" type="number" class="cabNum" />
+            <text style="background:#EE1E1E" class="fuhao" bindtap="addNum">+</text>
+        </view>
+    </view>
+    <view class="money">
+        <view class="moneytype" wx:for="{{moneyData}}" wx:key="index">
+            <text class="common moneyname">{{item.moneyname}}</text>
+            <text wx:if="{{item.explain}}" class="explain">{{item.explain}}</text>
+            <text class="common moneydis">{{item.moneyNum}}</text>
+        </view>
+    </view>
+    <view class="payfor">
+        <view class="calculate">
+            <text class="calcu">小计：</text>
+            <text class="calcu" style="color:#EE1E1E;">￥{{totalMoney}}</text>
+        </view>
+        <view class="paybutton" bindtap="payMoney">支付</view>
+    </view>
+</view>
+<view class="agreecheck">
+  <checkbox-group  bindchange="checka">
+    <checkbox checked="{{agreecheck}}" value="是否同意"  />
+  </checkbox-group>
+  <navigator url="/pages/agreement/agreement">
+      <text class="alink">合作协议</text>
+  </navigator>
+</view>
+<modal title="选择支付方式" confirm-text="确认" cancel-text="取消" hidden="{{onOff}}" bindconfirm="modalConfirm" bindcancel="modalCancel">
+    <radio-group class="radioGroup" bindchange='payTypeChange'>
+        <label class="labelItem">
+            <radio value="1" checked="true"/> 微信支付
+        </label>
+        <label class="labelItem">
+            <radio value="2"/> 余额支付
+            <text style="font-size:26rpx;color:#ccc;margin-left:20rpx;">(￥{{balance}})</text>
+        </label>
+        <view class="warning" wx:if="{{ifLess && payType == 2}}">
+            <image src="../../images/touzi/warning.png" style="width:50rpx;height:50rpx;margin-top:4rpx;" />
+            <text>余额不足，剩余金额将使用微信支付</text>
+        </view>
+    </radio-group>
+</modal>

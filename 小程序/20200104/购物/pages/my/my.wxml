@@ -1,0 +1,124 @@
+<view class='pagebox'>
+  <view class='userinfo'>
+    <view class="userinfo-l" bindtap="isLanding">
+      <view class='userimg'>
+        <image wx:if="{{userInfo.avatarUrl != ''}}" class='userimg-img' mode='widthFix' src="{{userInfo.avatarUrl}}"></image>
+        <image wx:else class='userimg-img' src="../../img/icon-img10.png"></image>
+      </view>
+      <view class='username'>
+        <block wx:if="{{userInfo.nickName == ''}}">登录</block>
+        <block wx:else>{{userInfo.nickName}}</block>
+      </view>
+    </view>
+    <view class="userinfo-r" data-typenum="8" bindtap="isLanding">余额 {{userbalancedata.balance}} <image class='ye-img' src='../../img/my-bgimg2-1.png'></image></view>
+  </view>
+  <scroll-view scroll-y style="height: 83%;">
+    <view class='mylistbox'>
+      <view class='mylistbox-li' data-typenum="1" bindtap='isLanding'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg5.png'></image>
+          <view class='mylistbox-li-name'>我的订单</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+      <!-- <view class='mylistbox-li' data-typenum="2" bindtap='isLanding'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg13.png'></image>
+          <view class='mylistbox-li-name'>我住过的</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view> -->
+    </view>
+    <view class='mylistbox'>
+      <view class='mylistbox-li' data-typenum="6" bindtap='isLanding' wx:if="{{oprInvoiceSup == 1}}">
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg19.png'></image>
+          <view class='mylistbox-li-name'>我的红包</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+    </view>
+    <view class='mylistbox'>
+      <view class='mylistbox-li' data-typenum="5" bindtap='isLanding'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg20.png'></image>
+          <view class='mylistbox-li-name'>我的优惠券</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+      <view class='mylistbox-li' data-typenum="7" bindtap='isLanding'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg18.png'></image>
+          <view class='mylistbox-li-name'>领券中心</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+    </view>
+    <view class='mylistbox'>
+      <view class='mylistbox-li' data-typenum="3" bindtap='isLanding'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg7.png'></image>
+          <view class='mylistbox-li-name'>退款/售后</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+      <view class='mylistbox-li' data-typenum="4" bindtap='isLanding' wx:if="{{oprInvoiceSup == 1}}">
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg9.png'></image>
+          <view class='mylistbox-li-name'>开票管理</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+    </view>
+    <view class='mylistbox'>
+      <view class='mylistbox-li' bindtap='tel'>
+        <view class='mylistbox-li-left'>
+          <image class='mylistbox-li-img' mode='widthFix' src='../../img/my-btnimg8.png'></image>
+          <view class='mylistbox-li-name'>商务合作</view>
+        </view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='footerbox' style="padding-top: {{isSupportEn == 1?'17rpx':'7rpx'}};padding-bottom: {{isSupportEn == 1?'18rpx':'8rpx'}};">
+    <scroll-view class="tablist-box" scroll-x="true" enable-flex="true">
+      <view class='footerbox-btn' bindtap='index' wx:if="{{minibar != 0 || convenienceStore != 0}}" style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-yonghuzhongxin-shouye' style='color: #999999;font-size: 45rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>迷你吧</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Home Page</view>
+      </view>
+      <block wx:for="{{hotelFuncDTOS1}}" wx:for-item="item" wx:key="index">
+        <view class='footerbox-btn func-box' data-id="{{item.id}}" bindtap='hotelmall' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+          <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+          <view class='footerbox-btnname' style='color: #999999;'>{{item.funcCnName}}</view>
+          <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>{{item.funcEnName}}</view>
+        </view>
+      </block>
+      <view class='footerbox-btn' bindtap='roomservice' wx:if="{{roomService != 0 && shareuser == ''}}" style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-zuanshi' style='color: #999999;font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>客房服务</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Room Service</view>
+      </view>
+      <view wx:if="{{isSupportRoomAlloc == 1}}" class='footerbox-btn' bindtap="reservation" style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-xieyiguanli' style='color: #999999;font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>客房协议价</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Reservation</view>
+      </view>
+      <view class='footerbox-btn'style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-yonghu_fill' style='color: {{themecolor.skintone}};font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: {{themecolor.skintone}};font-weight: 800;'>我的</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: {{themecolor.skintone}};font-weight: 800;'>Mine</view>
+      </view>
+      <block wx:if="{{hotelFuncDTOS2.length != 0}}">
+        <block wx:for="{{hotelFuncDTOS2}}" wx:for-item="item" wx:key="index">
+          <view class='footerbox-btn func-box' data-id="{{item.id}}" bindtap='hotelmall' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+            <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+            <view class='footerbox-btnname' style='color: #999999;'>{{item.funcCnName}}</view>
+            <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>{{item.funcEnName}}</view>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>

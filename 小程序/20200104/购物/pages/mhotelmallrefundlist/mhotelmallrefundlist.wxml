@@ -1,0 +1,42 @@
+<block wx:if="{{datalist.length == 0}}">
+  <view class='datanull-font'>
+    <image src='../../img/my-btnimg14.png' class='iconimg1' mode='widthFix'></image>
+    <text>您暂无退款/售后记录</text>
+  </view>
+</block>
+<block wx:else>
+  <block wx:for="{{datalist}}" wx:for-item="item" wx:key="index">
+    <view class="viewlibox" bindtap="detail" data-csid='{{item.id}}' data-status="{{item.status}}">
+      <image src="{{item.productImage}}" class="spimg"></image>
+      <view class="viewliboxR">
+        <view class="viewliboxR-flex mgB20">
+          <view class="font-name">{{item.productName}}</view>
+          <view class="font-num">x {{item.prodCount}}</view>
+        </view>
+        <view class="viewliboxR-flex">
+          <view class="font-jg">
+            ￥ {{item.refoundAmount}} 
+            <block wx:if="{{item.csType == 4}}">(退款)</block>
+            <block wx:elif="{{item.csType == 1 || item.csType == 4}}">(换货)</block>
+            <block wx:elif="{{item.csType == 2}}">(退款退货)</block>
+          </view>
+          <view class="font-type">
+            <block wx:if="{{item.status != 1}}">
+              <text class="{{item.status==2?'font-color2':'font-color3'}}">
+                <block wx:if="{{item.csType == 4}}">退款</block>
+                <block wx:elif="{{item.csType == 1}}">换货</block>
+                <block wx:elif="{{item.csType == 2}}">退款退货</block>
+                <block wx:if="{{item.status == 2}}">成功</block>
+                <block wx:elif="{{item.status == 3}}">失败</block>
+              </text>
+            </block>
+            <block wx:else>
+              <text class="font-color1">处理中</text>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="font-foot" hidden="{{moretype}}">没有更多数据咯~</view>
+</block>

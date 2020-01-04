@@ -1,0 +1,62 @@
+/* pages/reback/reback.wxss */
+.reback{
+    background: #fff;
+}
+.radioGroup{
+    display: flex;
+    margin-bottom: 20rpx;
+    flex-direction: column;
+}
+.remark{
+    font-size:28rpx;
+    color:#999999;
+    margin-left:16rpx;
+}
+.header{
+    padding: 30rpx;
+    color: #333;
+    border-bottom: 2rpx solid #F6F6F6;
+}
+.labelItem{
+    padding: 30rpx;
+    border-bottom: 2rpx solid #F6F6F6;
+}
+.warning{
+    text-align: right;
+    padding: 0 30rpx;
+    line-height: 50rpx;
+    color: #EE1E1E;
+    font-size: 24rpx;
+    background: #fff;
+}
+.cabNum{
+    padding: 30rpx;
+    display: flex;
+    background: #fff;
+    justify-content: space-between;
+}
+.number{
+    color: #EE1E1E;
+    display: flex;
+}
+.inputNum{
+    width: 100rpx;
+    border-radius: 6rpx;
+    border: 2rpx solid #ccc;
+    text-align: center;
+    margin-right: 20rpx;
+    color: #333;
+}
+.submit{
+    width: 90%;
+    background: #EE1E1E;
+    text-align: center;
+    color: white;
+    border-radius: 6rpx;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    line-height: 88rpx;
+}

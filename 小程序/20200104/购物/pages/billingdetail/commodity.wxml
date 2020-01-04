@@ -1,0 +1,76 @@
+<view class="paddLR03 bgfff paddB30">
+  <view class="libox">
+    <text class="font-color4 mgR20">酒店名称：</text>
+    <text class="font-color5">{{billingifo.hotelName}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">发票类别：</text>
+    <text class="font-color5">商品销售发票</text>
+  </view>
+</view>
+<view class="paddAll20 flexbox">
+  <view class="font30">发票信息</view>
+</view>
+<view class="paddLR03 bgfff paddB30">
+  <view class="libox">
+    <text class="font-color4 mgR20">发票类型：</text>
+    <text class="font-color5">增值税专用发票</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">单位名称：</text>
+    <text class="font-color5">{{billingifo.invHead}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">纳税人识别号：</text>
+    <text class="font-color5">{{billingifo.taxpayerId}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">注册地址：</text>
+    <text class="font-color5">{{billingifo.registrationAddr}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">注册电话：</text>
+    <text class="font-color5">{{billingifo.registrationMobile}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">开户银行：</text>
+    <text class="font-color5">{{billingifo.bank}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">银行账户：</text>
+    <text class="font-color5">{{billingifo.bankAccount}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">发票金额(元)：</text>
+    <text class="font-color5">¥ {{billingifo.amount}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">备注：</text>
+    <text class="font-color5">{{billingifo.remark}}</text>
+  </view>
+</view>
+<view class="paddAll20 flexbox">
+  <view class="font30">用户信息</view>
+</view>
+<view class="paddLR03 bgfff paddB30">
+  <view class="libox">
+    <text class="font-color4 mgR20">用户姓名：</text>
+    <text class="font-color5">{{billingifo.addresseeName}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">用户手机号：</text>
+    <text class="font-color5">{{billingifo.mobile}}</text>
+  </view>
+  <view class="libox">
+    <text class="font-color4 mgR20">地址：</text>
+    <text class="font-color5">{{billingifo.addresseeAddr}}</text>
+  </view>
+  <view class="libox borderT mgT20">
+    <text class="font-color4 mgR20">申请时间：</text>
+    <text class="font-color4">{{billingifo.createdAt}}</text>
+  </view>
+  <view class="libox" wx:if="{{billingifo.status == 3}}">
+    <text class="font-color4 mgR20">取消时间：</text>
+    <text class="font-color4">{{billingifo.cancelTime}}</text>
+  </view>
+</view>

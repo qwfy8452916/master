@@ -1,0 +1,129 @@
+/* pages/order/order.wxss */
+.order{
+    background: #fff;
+}
+.order .choose{
+    padding: 28rpx;
+    border-bottom:#E5E5E5 solid 2rpx;
+}
+.order .discountList{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 54rpx 28rpx 28rpx 28rpx;
+    border-bottom: 2rpx solid #F6F6F6;
+    flex-wrap: wrap;
+    color: #333333;
+    text-align: center;
+    height: 180rpx;
+}
+.order .discountList .countItem{
+    width: 198rpx;
+    height: 58rpx;
+    border-radius: 10rpx;
+    border: 2rpx rgb(206,206,206) solid;
+    line-height: 58rpx;
+    font-size: 28rpx;
+    position: relative;
+}
+.order .discountList .addwords{
+    font-size: 32rpx;
+}
+.order .discountList .addbutton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order .discountList .addbutton .cabNum{
+    width: 120rpx;
+    height: 48rpx;
+    border: 2rpx solid #CECECE;
+    border-radius: 10rpx;
+    margin: 0 20rpx;
+}
+.order .discountList .addbutton .fuhao{
+    width: 44rpx;
+    display: block;
+    height: 44rpx;
+    color: white;
+    border-radius: 50%;
+    font-size: 50rpx;
+    text-align: center;
+    line-height: 38rpx;
+}
+.order .money{
+    padding: 28rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+.order .money .moneytype{
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 20rpx;
+    line-height: 40rpx;
+}
+.order .money .moneytype .common{
+    color: #999999;
+    font-size: 28rpx;
+}
+.order .money .moneytype .moneyname{
+    /* width: 150rpx; */
+    float: left;
+}
+.order .money .moneytype .explain{
+    float: left;
+    font-size: 24rpx;
+    color: #EE1E1E;
+}
+.order .money .moneytype .moneydis{
+    float: right;
+}
+.order .payfor{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 28rpx;
+    align-items: center;
+    height: 100rpx;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+}
+.order .payfor .calculate{
+    font-size: 36rpx;
+    color: #333333;
+}
+.order .payfor .paybutton{
+    width: 250rpx;
+    background: #EE1E1E;
+    font-size: 36rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.agreecheck{
+  padding: 28rpx;
+  display: flex;
+}
+.alink{
+  font-size: 14px;
+  color: #999;
+  text-decoration: underline;
+}
+.radioGroup{
+    display: flex;
+    flex-direction: column;
+}
+.labelItem{
+    margin-top: 30rpx;
+    margin-left: 40rpx;
+}
+.warning{
+    color:#EE1E1E;
+    font-size:24rpx;
+    margin-left:30rpx;
+    display: flex;
+    align-items: center;
+}

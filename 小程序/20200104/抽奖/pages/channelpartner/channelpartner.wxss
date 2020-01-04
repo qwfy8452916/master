@@ -1,0 +1,11 @@
+/* pages/channelpartner/channelpartner.wxss */
+@import "../channellink/channellink.wxss";
+.linkright{
+  display: flex;
+  align-items: center;
+}
+.cabnum{
+  font-size: 16px;
+  color: #ee1e1e;
+  margin-right: 5px;
+}

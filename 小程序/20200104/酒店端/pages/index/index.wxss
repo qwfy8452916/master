@@ -1,0 +1,19 @@
+/**index.wxss**/
+page{padding: 0 4%;box-sizing: border-box;height: 100%;padding-bottom: 50rpx;}
+.addmiaos{font-size: 32rpx;color: #333;text-align: left;}
+.addmiaosfu{font-size: 24rpx;color: #999;padding-left: 30rpx;box-sizing: border-box;
+position: relative;margin-top: 25rpx;}
+.addmiaosfu .yuanxu{width: 18rpx;height: 18rpx;border-radius: 50%;background: #dadada;
+position: absolute;top: 8rpx;left: 0;}
+
+.wrapliuc{overflow: hidden;margin-top: 60rpx;}
+.liucwk{font-size: 32rpx;color: #333;
+width: 75%;height: 88rpx;line-height: 88rpx;text-align: center;
+border:1px solid #e3e3e3;border-radius: 5rpx;margin: 0 auto;}
+.jiantouwk{overflow: hidden;margin: 8rpx 0;text-align: center;}
+.iconsanjiaoxing{color: #e4e4e4;}
+
+.wrapaddsao{width: 94%;overflow: hidden;bottom: 10rpx;left: 0;right: 0;
+margin: auto;position: fixed;}
+.wrapaddsao .addsao{width: 100%;height: 88rpx;line-height: 88rpx;text-align: center;
+background: #ff9700;color: #fff;font-size: 32rpx;border-radius: 10rpx;}

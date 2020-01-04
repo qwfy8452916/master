@@ -1,0 +1,35 @@
+<!--pages/myincome/myincome.wxml-->
+<view class='carryrecord'>
+   <text bindtap='linkrecord'><text class='iconfont iconye'></text>提现记录</text>
+</view>
+<view class='moneywrap'>
+   <image class='picbeijing' src="../../img/getcash.png"></image>
+   <view class='hangblock'>
+       <text class='iconfont iconjinbi'></text><text class='moneynumber'>{{jine}}</text>
+       <view class='danwei'>金额(元)</view>
+       <view class='tixianniu' bindtap='linkcarry'>提现</view>
+   </view>
+</view>
+
+<view class="detailmx">
+   <text class='detailmx-title'>补货费明细</text>
+   
+         <picker
+          class='riqiselect'
+          mode="date"
+          value="{{date}}"
+          start="{{startdate2}}"
+          end="{{startdate}}"
+          bindchange="bindDateChange"
+        >
+        <text class='iconfont iconriqi'></text>
+        </picker>
+</view>
+
+<view class='tablewrap'>
+    <view class='hangitem' wx:for="{{buhuodetail}}" wx:key>
+       <text class='datetime'>{{item.replTime}}</text>
+       <text class='floorroom'>{{item.roomFloor}}-{{item.roomCode}}-{{item.latticeCode}}</text>
+       <text class='jine'>+{{item.replAmount}}</text>
+    </view>
+</view>

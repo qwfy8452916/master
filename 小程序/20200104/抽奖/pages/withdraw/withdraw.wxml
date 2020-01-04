@@ -1,0 +1,24 @@
+<!--pages/withdraw/withdraw.wxml-->
+<view class="withdraw">
+    <view class="withdrawTop">
+        <view class="ableTitle">可提现金额<text style="font-size:24rpx;">（元）</text></view>
+        <view class="ableMoney">{{myCase}}</view>
+    </view>
+    <view class='withdrawCenter'>
+        <view class="notice">
+            <image style="width:34rpx;margin-right:14rpx;" src="../../images/personal/wxicon.png" mode="widthFix"/>
+            <text class="noticeword">请输入提现金额</text>
+        </view>
+        <view class="inputcase">
+            <text class="rmb">￥</text>
+            <input bindinput="inputCase" value="{{inputCase}}" type="digit" class="inputItem"/>
+        </view>
+    </view>
+    <view class="warning" style="color:red;">{{errorInfo}}</view>
+    <view class="warning">
+        <image src="../../images/personal/warning.png" mode="widthFix" style="width:30rpx;height:30rpx;margin-right:10rpx;" />
+        <text>提现成功后，提现金额会转入微信钱包，请注意查收。</text>
+    </view>
+    <view class="drawButton" wx:if="{{ifCandraw&&isSubmit}}" bind:tap="withdraw">提现</view>
+    <view class="drawButton" wx:else style="background:#ccc">提现</view>
+</view>

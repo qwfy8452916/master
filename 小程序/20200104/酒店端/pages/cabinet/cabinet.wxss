@@ -1,0 +1,88 @@
+/* pages/cabinet/cabinet.wxss */
+page{width: 100%;padding: 0 0 0 4%;box-sizing: border-box;}
+.wraplist{overflow: hidden;margin-bottom: 55rpx;margin-top: 30rpx;}
+.wraplist .listitem{display: inline-block;float: left;width: 210rpx;
+height: 210rpx;border-radius: 10rpx;margin-right: 30rpx;margin-bottom: 30rpx;}
+.wraplist .listitem:nth-child(3n){margin-right: 0 !important;}
+.tuwen{overflow: hidden;position: relative;vertical-align: top;}
+.listitem .verification{width: 210rpx;height: 210rpx;
+vertical-align: top;}
+.tuwen .tuwenms{text-align: center;
+/* line-height: 210rpx; */
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 0;left: 0;width: 100%;font-size: 74rpx;color: #fff;
+z-index: 3;}
+.tuwen .mongolia{overflow: hidden;width: 100%;height: 100%;position: absolute;
+top: 0;left: 0;z-index: 9;background: rgba(0,0,0,0.5);}
+
+.cabinettext{font-size: 32rpx;color: #666;text-align: left;}
+
+
+.wrap2{overflow: hidden;display: flex;margin-top: 50rpx;}
+.colite{flex-grow: 1;
+display: flex;
+flex-direction: column;}
+.rowite{overflow: hidden;
+/* width: 210rpx;
+height: 210rpx; */
+vertical-align: top;
+/* margin-right: 30rpx; */
+display: inline-block;
+/* margin-bottom: 25rpx; */
+padding-right: 4%;
+padding-bottom: 25rpx;
+box-sizing: border-box;
+}
+.rowite .tuwen{overflow: hidden;position: relative;vertical-align: top;width: 100%;height: 100%;}
+.hebing1 .merge{line-height: 420rpx;}
+.rowite .verification{width: 100%;height:100%;
+vertical-align: top;}
+.rowite:nth-child(3n){margin-right: 0 !important;}
+
+.rowite image{width: 100%;height: 100%;
+/* border-radius: 5rpx; */
+vertical-align: top;}
+
+.colite .rowite{
+  color: white;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border:white 1px solid;}
+ .colite .hebing1{
+    flex: 2.1 !important;
+  }
+
+
+
+  .table{
+    width: 100%;
+    height: 600rpx;
+    position: relative;
+    /* border: 1rpx solid #999; */
+    border-top: none;
+    border-right: none;
+  }
+
+  .td{
+    /* display: inline-block; */
+    display: flex;
+    /* border: 1px solid #999; */
+    width: 20%;
+    height: 20%;
+    float: left;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+    border-left: none;
+}
+
+
+.completetest{width: 92%;height: 88rpx;line-height: 88rpx;background: #ff9700;
+text-align: center;color: #fff;font-size: 32rpx;border-radius: 10rpx;position: fixed;
+bottom: 30rpx;left: 0;right: 0;margin: auto;}

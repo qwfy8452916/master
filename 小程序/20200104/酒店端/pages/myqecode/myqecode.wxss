@@ -1,0 +1,14 @@
+/* pages/myqecode/myqecode.wxss */
+.myqrcode{
+  text-align: center;width: 100%;padding: 0 4%;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+  font-size: 36rpx;
+}
+.myqrcode image{
+  width:100%;height:600rpx;
+}
+
+
+
+

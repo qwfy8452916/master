@@ -1,0 +1,79 @@
+/* pages/help/help.wxss */
+.helptype{
+    padding: 20rpx;
+}
+.help-item{
+    height: 252rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20rpx;
+}
+.help-item .leftpart{
+    width: 180rpx;
+    font-size: 32rpx;
+    text-align: center;
+    margin-right: 30rpx;
+}
+.help-item .leftpart .picture{
+    width: 108rpx;
+    height: 108rpx;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #fff;
+    margin: 0 auto;
+    margin-bottom: 16rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.help-item .leftpart .picture image{
+    width: 66rpx;
+}
+.help-item .rightpart{
+    width: 470rpx;
+    font-size: 28rpx;
+    color: #fff;
+}
+.help-item .rightpart .rightItem{
+    display: flex;
+    align-items: flex-start;
+    line-height: 50rpx;
+}
+.help-item .rightpart .rightItem .circle{
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 5rpx;
+    background: #fff;
+    margin-right: 8rpx;
+    display: block;
+    margin-top: 20rpx;
+}
+
+
+
+.help-item:nth-child(1){
+    background: linear-gradient(to left,#EE1E1E,#FF7575)
+}
+.help-item:nth-child(1) .title{
+    color: #B01515;
+}
+.help-item:nth-child(2){
+    background: linear-gradient(to left,#EEA21E,#ECC075)
+}
+.help-item:nth-child(2) .title{
+    color: #9F6706;
+}
+.help-item:nth-child(3){
+    background: linear-gradient(to left,#1E7BEE,#69C3E8)
+}
+.help-item:nth-child(3) .title{
+    color: #1552A5;
+}
+.help-item:nth-child(4){
+    background: linear-gradient(to left,#8A1EEE,#B181DE)
+}
+.help-item:nth-child(4) .title{
+    color: #590892;
+}

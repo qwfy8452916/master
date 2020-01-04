@@ -1,0 +1,168 @@
+<block wx:if="{{deliverytype3}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>迷你吧</view>
+    <view class='paddAll hoteladdress'>{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+    <block wx:for="{{deliverylist3}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class='commodityprice'>
+            ¥{{item.latticeProdAmt}}
+            <view class='commoditynum'>x{{item.prodnum}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum3}}</text>件商品  小计<text class='text-font2'>￥{{total3}}</text>
+    </view>
+  </view>
+</block>
+<block wx:if="{{deliverytype1}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>现场配送</view>
+    <view class='paddAll hoteladdress'>{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+    <block wx:for="{{deliverylist1}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class='commodityprice'>
+            ¥{{item.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.prodnum}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum1}}</text>件商品  小计<text class='text-font2'>￥{{total1}}</text>
+    </view>
+    <view class='remarkbox'>
+        <view class='textarea-font'>留言</view>
+        <view wx:if="{{messtype == 1}}" class="textareabox fontcolor" bindtap="showtext2">选填(对本交易的补充说明)</view>
+        <textarea wx:else class='textareabox' maxlength='250' placeholder-style='color: #cecece;' placeholder='选填(对本交易的补充说明)' data-type='1' bindinput="bindTextAreaBlur" auto-height focus="{{messtype != 1}}" bindblur="confirm2"  />
+    </view>
+  </view>
+</block>
+<block wx:if="{{deliverytype2}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>快递到家</view>
+    <view class='paddAll hoteladdress hoteladdress2' bindtap='addressfun'>
+      <view class='font-address' wx:if="{{receipttype}}">请添加收货信息</view>
+      <view class='font-address' wx:else >
+        <view>{{receiptlist.consignee}} {{receiptlist.consigneePhone}}</view>
+        <view>{{receiptlist.addressAll}}</view>
+      </view>
+      <image src='../../img/my-bgimg2.png' class='iconimg' mode='aspectFill'></image>
+    </view>
+    <block wx:for="{{expresslist}}" wx:for-item="item" wx:key="index">
+      <!-- <view class='paddAll hotelmallcar-name borderstyle'>{{item.orgName}}</view> -->
+      <block wx:for='{{item.hshopProducts}}' wx:for-item="item2" wx:key="index">
+        <view class='paddAll listbox'>
+          <view class='listbox-c'>
+            <image src='{{item2.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+          </view>
+          <view class='listbox-r'>
+            <view class='commodityname'>{{item2.prodShowName}}</view>
+            <view class='commodityprice'>
+              ¥{{item2.prodRetailPrice}}
+              <view class='commoditynum'>x{{item2.prodnum}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="paddAll freight">
+        <text>运费</text><text class="fonts1"><block wx:if="{{item.totalExpressFee == 0}}">快递包邮</block><block wx:else>¥{{item.totalExpressFee}}</block></text>
+      </view>
+      <view class='footbox-order'>
+        共<text class='text-font1'>{{item.totalProdAmt}}</text>件商品  小计<text class='text-font2'>￥{{item.totalFee}}</text>
+      </view>
+      <view class='remarkbox mgB20'>
+        <view class='textarea-font'>留言</view>
+        <view wx:if="{{item.messtype == 1}}" class="textareabox fontcolor" data-id="{{item.prodOwnerOrgId}}" bindtap="showtext"><block wx:if="{{item.message==''}}">选填(对本交易的补充说明)</block><block wx:else>{{item.message}}</block>
+        </view>
+        <textarea wx:else class='textareabox' maxlength='250' placeholder-style='color: #cecece;' placeholder='选填(对本交易的补充说明)' bindblur="confirm" show-confirm-bar="true" focus="{{item.messtype}}" auto-height value="{{item.message}}" />
+      </view>
+    </block>
+  </view>
+</block>
+
+<view class='mgB20'>
+  <view class='formbox'>
+    <text class='textW'>联系人</text>
+    <input class='inpbox' type="text" placeholder-style='color: #cecece;' placeholder="请填写联系人" bindinput='usernamefun'></input>
+  </view>
+  <view class='formbox'>
+    <text class='textW'>手机号</text>
+    <input class='inpbox' type="number" placeholder-style='color: #cecece;' placeholder="请填写手机号" bindinput='telfun'></input>
+  </view>
+</view>
+
+<view class="couponjh" bindtap="showcoupon" wx:if="{{coupontype == true}}">
+  <view class="couponjh-l">优惠券</view>
+  <view class="couponjh-r">
+    <text>
+      <block wx:if="{{coupon_selected.length>0}}">满{{coupon_selected[0].useLimitMoney}}减{{coupon_selected[0].reduceMoney}}</block>
+      <block wx:else>满{{coupon_optional[0].useLimitMoney}}减{{coupon_optional[0].reduceMoney}}</block>
+    </text> 
+    <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+  </view>
+</view>
+<block wx:if="{{coupontype2 == false}}">
+  <cover-view class='foottotal' wx:if="{{ deliverytype3 || deliverytype1 || deliverytype2}}">
+    <cover-view class='costbox'>
+      <cover-view class='cost-font2'>合计:</cover-view>
+      <cover-view class='cost-font3'>￥</cover-view>
+      <cover-view class='cost-font4'>{{lumpsum_Discount}}</cover-view>
+      <cover-view class='cost-font1' wx:if="{{courierfee>0}}">包含运费</cover-view>
+    </cover-view>
+    <cover-view class='settlementbtn' wx:if="{{paytype == true}}" bindtap='delayfun'>支付<cover-view wx:if="{{alllength>0}}">({{alllength}})</cover-view></cover-view>
+    <cover-view class='settlementbtn settlementbtn2' wx:else>支付中···</cover-view>
+  </cover-view>
+</block>
+
+<view class="couponlistbox-bg" wx:if="{{coupontype2 == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择优惠券</view>
+    <view class="font-prod2 mgB20">已选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_selected.length > 0}}">
+        <block wx:for="{{coupon_selected}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="1" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/success-img2.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">请选择优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="font-prod2 mgB20">可选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_optional.length > 0}}">
+        <block wx:for="{{coupon_optional}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="2" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/icon-img7.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">暂无可选优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" bindtap="showcoupon">确定</view>
+  </view>
+</view>

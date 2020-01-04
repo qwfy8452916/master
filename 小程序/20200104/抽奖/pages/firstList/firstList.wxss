@@ -1,0 +1,27 @@
+/* pages/firstList/firstList.wxss */
+.itembox{
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx;
+    border-bottom: 2rpx solid #E5E5E5;
+    background: #fff;
+}
+.detail{
+    flex: 1;
+    margin-left: 30rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.starlevel{
+    margin-bottom: 20rpx;
+}
+.hotelName{
+    color: #333333;
+}
+.firstInfos{
+    display: flex;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #999999;
+}

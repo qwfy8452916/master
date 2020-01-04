@@ -1,0 +1,91 @@
+<!--pages/delivereddetail/delivereddetail.wxml-->
+ <view class='hangitem roomhao'><text class="lefroom">房间号 {{delivereddata.roomFloor}}-{{delivereddata.roomCode}}</text><text class="rigsure">状态：<text wx:if="{{delivereddata.status=='0'}}">待确认</text><text wx:if="{{delivereddata.status=='1'}}">已确认</text><text wx:if="{{delivereddata.status=='2'}}">已完成</text>
+ </text></view>
+ <view class='hangitem contactinfo2'>
+   <view class="lianxihang" wx:if="{{delivtype!=1}}">
+       <text class="public-title">功能区</text><text>{{delivereddata.funcName}}</text>
+   </view>
+   <view class='lianxihang'>
+      <view class='public'>
+         <text class='public-title'>配送类型</text><text>
+            <text wx:if="{{delivereddata.delivType=='2'}}">迷你吧</text>
+            <text wx:if="{{delivereddata.delivType=='1'}}">客房服务</text>
+            <text wx:if="{{delivereddata.delivType=='0'}}">现场送</text>
+         </text>
+       </view>
+       <!-- <view class='public' wx:if="{{delivtype==1}}">
+         <text class='public-title'>格子编号</text><text>A</text>
+       </view> -->
+       <view class='public' wx:if="{{delivtype==2}}">
+         <text class='public-title'>商品名称</text><text>迷你吧商品名称</text>
+       </view>
+       <view class='public' wx:if="{{delivtype==2}}">
+         <text class='public-title'>商品金额</text><text>￥迷你吧商品金额</text>
+       </view>
+      <!-- <view class='lianxi public' wx:if="{{delivtype!=1}}">
+         <text class='public-title lianxi-title'>联系人</text><text>{{delivereddata.contactPeople}}</text>
+         <text class='phonehao'>{{delivereddata.contactMobile}}</text>
+      </view> -->
+      <view class='lianxi public' wx:if="{{delivtype==1}}">
+         <text class='public-title lianxi-title'>联系人</text><text>{{delivereddata.rmavcRecordsDto.customerName}}</text>
+         <text class='phonehao'>{{delivereddata.rmavcRecordsDto.mobile}}</text>
+      </view>
+      <view class='lianxi public' wx:if="{{delivtype==0}}">
+         <text class='public-title lianxi-title'>联系人</text><text>{{delivereddata.contactPeople}}</text>
+         <text class='phonehao'>{{delivereddata.contactPhone}}</text>
+      </view>
+
+   </view>
+   <view class='comment public' wx:if="{{delivtype==0}}">
+      <text class='comment-title public-title'>用户留言</text><text>{{delivereddata.roomDeliveryRemark}}</text>
+   </view>
+   <view class='comment public' wx:if="{{delivtype==1}}">
+      <text class='comment-title public-title'>备  注</text><text>{{delivereddata.rmavcRecordsDto.remark}}</text>
+   </view>
+ </view>
+
+  <view class='hangitem contactinfo'>
+  
+   <view class='comment' wx:if="{{delivtype!='0'}}">
+      <text class='comment-title'>支付时间</text><text>{{delivereddata.payCompleteTime}}</text>
+   </view>
+   <view class='comment' wx:if="{{delivtype=='0'}}">
+      <text class='comment-title'>提交时间</text><text>{{delivereddata.payCompleteTime}}</text>
+   </view>
+
+   <view class='comment'>
+      <text class='comment-title'>确认时间</text><text>{{delivereddata.confirmTime}}</text>
+   </view>
+ </view>
+
+<scroll-view class='detailwrap' style='height:840rpx' scroll-y wx:if="{{delivtype==0}}">
+   <view class='detailitem' wx:for="{{delivereddata.orderDeliveryDetailDTOList}}" wx:key>
+      <view class='propic'>
+        <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+      </view>
+      <view class='promiaos'>{{item.prodProductDTO.prodName}}</view>
+      <text class='geshu'>×{{item.prodCount}}</text>
+  </view>
+</scroll-view>
+
+<view class="guestwrap" wx:if="{{delivtype==1}}">
+   <view class="guestrow guestheader">
+      <view class="guesttitle">产品</view>
+      <view class="guesttitle">数量</view>
+      <view class="guesttitle">单价</view>
+   </view>
+   <view class="guestrow" wx:for="{{delivereddata.rmavcRecordsDto.dtos}}" wx:key>
+         <view class="proditem">{{item.hdetailName}}</view>
+         <view class="proditem">{{item.amount}}</view>
+         <view class="proditem">{{item.priceDesc}}</view>
+   </view>
+   <view class="givetime">送达时间:<text class="nowtime">{{delivereddata.rmavcRecordsDto.arrivedAt}}</text></view>
+</view>
+
+<view class='wraptesting' wx:if="{{authzData['F:MH_DELIV_DELIVERYDEAL']}}">
+  <view class='testingniu' bindtap='testingniu'>完成配送</view>
+</view>
+
+
+
+

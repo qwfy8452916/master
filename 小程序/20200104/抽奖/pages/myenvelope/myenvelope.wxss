@@ -1,0 +1,96 @@
+page{
+  background: #fff;
+}
+button{
+  margin: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+.button-hover{
+  background: #fff !important;
+}
+.libox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 15rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.libox-r{
+  padding: 10rpx 35rpx;
+  background: #EE1E1E;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 25px 25px;
+  line-height: 36rpx !important;
+}
+.libox-l{
+  width: 50%;
+}
+.libox-l text{
+  display: block;
+}
+.font1{
+  font-size: 32rpx;
+  color: #333333;
+}
+.font2{
+  font-size: 28rpx;
+  color: #999999;
+}
+.centerbox{
+  text-align: center;
+  margin-top: 150rpx;
+}
+.imgbox{
+  display: inline-block;
+  width: 274rpx;
+  height: 127rpx;
+  margin-bottom: 58rpx;
+}
+.shareboxbg{
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.sharebox{
+  position: absolute;
+  z-index: 9999;
+  top: 200rpx;
+  width: 75%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  padding: 50rpx 50rpx;
+  background: #fff;
+  border-radius: 15px;
+}
+.fontts{
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.btnbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btnbox .btn{
+  width: 45%;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 80rpx;
+  border-radius: 15rpx;
+  border: 1rpx solid #e5e5e5;
+  text-align: center;
+}
+.btnbox .btncss{
+  background: #ff9700;
+  color: #fff;
+}

@@ -1,0 +1,104 @@
+/* pages/relatedhoteldetail/relatedhoteldetail.wxss */
+.hotelbg{
+  font-size: 16px;
+  color: #333;
+  line-height: 23px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  background: #fff;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+.cabinfo{
+  font-size: 12px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.cabtop{
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 15px;
+}
+.cabstatus{
+  display: flex;
+  align-items: center;
+}
+.cabnum{
+  font-size: 14px;
+  color: #487ae9;
+  margin-right: 10px;
+}
+.modate{
+  height: 14px;
+  font-size: 10px;
+  color: #999;
+  line-height: 14px;
+  border-radius: 3px;
+  padding: 1px 5px;
+  background: #e5e5e5;
+}
+.mobtn{
+  text-align: center;
+  border-radius: 3px;
+}
+.cancel{
+  width: 70px;
+  height: 22px;
+  line-height: 22px;
+  color: #487ae9;
+  border: 1px solid #487ae9;
+}
+.ensure{
+  width: 72px;
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+  background: -webkit-linear-gradient(left,#487ae9 0%,#503fed 80%);
+}
+.cabbottom{
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 15px;
+}
+.openapplet{
+  display: flex;
+  align-items: center;
+}
+.righticon{
+  width: 13px;
+  height: 13px;
+  margin-left: 3px;
+}
+.authmask{
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+.authbg{
+  width: 80%;
+  border-radius: 5px;
+  background: #fff;
+  margin: 120px 10% 0px 10%;
+}
+.closemsg{
+  font-size: 16px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}
+.msgclick{
+  display: flex;
+}
+.msgensure,.msgcancel{
+  font-size: 16px;
+  color: #999;
+  width: 50%;
+  height: 44px;
+  background: #fff;
+}

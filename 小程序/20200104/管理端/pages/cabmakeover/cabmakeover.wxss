@@ -1,0 +1,39 @@
+/* pages/cabmakeover/cabmakeover.wxss */
+.hotelname{
+  line-height: 24px;
+  padding: 10px 15px;
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+.makepart{
+  background: #fff;
+  margin-top: 10px;
+}
+.title{
+  line-height: 44px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 0px 15px;
+}
+.cabprice{
+  padding: 10px 15px;
+  display: flex;
+  align-items: flex-end;
+}
+.priceicon{
+  height: 24px;
+  margin-right: 5px;
+}
+.pricenum{
+  height: 54px;
+  font-size: 50px;
+}
+.submitbtn{
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  left: 15px;
+  font-size: 18px;
+  color: #fff;
+  border: 0px;
+  background: -webkit-linear-gradient(left,#487ae9,#503fed);
+}

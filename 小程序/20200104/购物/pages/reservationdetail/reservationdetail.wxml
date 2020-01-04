@@ -1,0 +1,101 @@
+<view style="height:{{imgheights[current]}}rpx;" class="swiperbox">
+  <swiper autoplay='true' interval='3000' duration='500' circular='true' display-multiple-items='1' style="height:{{imgheights[current]}}rpx;" bindchange="bindchange">
+    <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" data-id='{{index}}' class="slide-image" mode="widthFix" bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="room-name">
+    <block wx:if="{{type == 1}}">{{roomdetail.typeName}}</block>
+    <block wx:else>{{roomdetail.resourceName}}</block>
+  </view>
+  <view class="sharebtnbox" bindtap="sharefun">
+    <image class="shareicon" src="../../img/shareimg.png"></image>分享
+  </view>
+</view>
+<view class="mgB20 kfinfobox">
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img1.png"></image>
+    <text class="kfinfobox-li-text">{{roomdetail.roomSize}}㎡</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{type == 2}}"><!-- 仅房源详情展示 -->
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img2.png"></image>
+    <text class="kfinfobox-li-text">可住{{roomdetail.livePeople}}人</text>
+  </view>
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img3.png"></image>
+    <text class="kfinfobox-li-text">{{roomdetail.floor}}层</text>
+  </view>
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img4.png"></image>
+    <text class="kfinfobox-li-text">{{roomdetail.bedTypeName}} {{roomdetail.bedWidth}}米</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{type == 2}}"><!-- 仅房源详情展示 -->
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img6.png"></image>
+    <text class="kfinfobox-li-text">
+      <block wx:if="{{roomdetail.windowFlag == 0}}">无窗</block>
+      <block wx:elif="{{roomdetail.windowFlag == 1}}">有窗</block>
+      <block wx:elif="{{roomdetail.windowFlag == 2}}">飘窗</block>
+      <block wx:elif="{{roomdetail.windowFlag == 3}}">落地窗</block>
+    </text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{type == 2}}"><!-- 仅房源详情展示 -->
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img7.png"></image>
+    <text class="kfinfobox-li-text">
+      <block wx:if="{{roomdetail.breakfastFlag == 0}}">无早餐</block>
+      <block wx:elif="{{roomdetail.breakfastFlag == 1}}">单早</block>
+      <block wx:elif="{{roomdetail.breakfastFlag == 2}}">双早</block>
+    </text>
+  </view>
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img8.png"></image>
+    <text class="kfinfobox-li-text">
+      <block wx:if="{{roomdetail.bedAddFlag == 0}}">不支持加床</block>
+      <block wx:elif="{{roomdetail.bedAddFlag == 1}}">无偿加床</block>
+      <block wx:elif="{{roomdetail.bedAddFlag == 2}}">有偿加床 {{roomdetail.bedAddPrice}}/张</block>
+    </text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{roomdetail.breakfastInRoom == 1}}">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img11.png"></image>
+    <text class="kfinfobox-li-text">早餐可送入房</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{roomdetail.laundryServiceFlag == 1}}">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img10.png"></image>
+    <text class="kfinfobox-li-text">有洗衣服务</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{roomdetail.bathtubFlag == 1}}">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img9.png"></image>
+    <text class="kfinfobox-li-text">有浴缸</text>
+  </view>
+</view>
+<view class="">
+  <block wx:for="{{roomdetail.facilityDTOS}}" wx:for-item="item" wx:key="index">
+    <view class="bgfff mgB20 facilitybox-li" wx:if="{{item.facilityContent != ''}}">
+      <text class="facilitybox-li-L">{{item.facilityType}}</text>
+      <text class="facilitybox-li-R">{{item.facilityContent}}</text>
+    </view>
+  </block>
+</view>
+
+<view class="footbox" wx:if="{{type == 2}}">
+  <view class="footbox-L">在线付：<text class="font-color2"><block wx:if="{{day > 1}}">均</block> ¥ {{price}} </text></view>
+  
+  <block wx:if="{{fullflag == 0}}">
+    <view class="btnbox" style='background: {{themecolor.skintone}};' data-id="{{roomdetail.id}}" bindtap="formfun">预订</view>
+  </block>
+  <block wx:else>
+    <view class="btnbox btnbox2-bg">预订</view>
+  </block>
+</view>
+
+<view wx:if="{{showtype == true}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">推荐一家酒店给你，{{hotelName}}</view>
+    <image src="{{bannerImageList[0]}}" class="imgbox" mode="widthFix"></image>
+    <view class="sharebtnbox2">
+      <view class="btn" bindtap="closefun">取消</view>
+      <button open-type="share" data-type="1" class="btn btncss">分享</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+/* pages/personalcenter/personalcenter.wxss */
+page{background: #f3f3f3;}
+.mywrapbj{width: 100%;height: 313rpx;position: relative;}
+.mywrapbj .niudj{width: 150rpx;height: 50rpx;line-height: 50rpx;
+position: absolute;
+font-size: 26rpx;padding: 0 5rpx;top: 235rpx;left: 48rpx;}
+.mywrapbj .pictopbj{width: 100%;height: 100%;position: absolute;
+z-index: -1;}
+.mywrapbj .touxiang{width: 140rpx;height: 140rpx;background: #ece6e6;
+border-radius: 50%;border: 14rpx solid #f5a033;
+position: absolute;top: 57rpx;left: 36rpx;}
+.mywrapbj .ningchegn{font-size: 36rpx;color: #fff;font-weight: bold;
+position: absolute;top: 85rpx;left: 225rpx;}
+.mywrapbj .bindbtn{font-size: 24rpx;color: #F5A033;font-weight: bold;
+position: absolute;top: 150rpx;left: 225rpx;display: inline-block;padding: 8rpx 25rpx;background: #fff;border-radius: 25rpx;}
+.mywrapbj .exitbtn{font-size: 24rpx;color: #F5A033;font-weight: bold;
+position: absolute;top: 150rpx;left: 345rpx;display: inline-block;padding: 8rpx 25rpx;background: #fff;border-radius: 25rpx;}
+.replenishment{overflow: hidden;padding: 25rpx 4%;background: #fff;}
+.topline{border-top: 1px solid #eee;}
+.replenishment .leftblok{float: left;display: inline-block;
+font-size: 28rpx;color: #666;}
+.leftblok .iconicon{color: #ccc;margin-right: 20rpx;}
+.leftblok .iconchangepassword{color: #ccc;margin-right: 20rpx;font-size: 20px;}
+.leftblok .iconxinxiweihu{color: #ccc;margin-right: 10rpx;font-size: 20px;}
+.replenishment .rightblok{float: right;display: inline-block;color: #d1d1d1;}
+.rightblok .iconwangyou{padding: 5rpx 10rpx;}
+
+

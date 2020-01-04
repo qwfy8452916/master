@@ -1,0 +1,20 @@
+<!--pages/firstList/firstList.wxml-->
+<view class="firstList">
+    <view class="itembox" wx:for="{{firstList}}" wx:key="index">
+        <view class="imgbox">
+            <image mode='widthFix' src="{{item.imgUrl}}" style="width:150rpx;height:150rpx" />
+        </view>
+        <view class='detail'>
+            <view class="hotelName">{{item.hotelName}}</view>
+            <view class="starlevel">
+                <image style="width:30rpx;height:30rpx" wx:for="{{item.starLeval}}" wx:key="index" src="../../images/touzi/star.png" />
+            </view>
+            <view class="firstInfos">
+                <view class="cabType">
+                    <text>{{item.cabtypeList}}</text> 
+                </view>
+                <view class="cabNum">首发 <text style="color:#10BBBB">{{item.cabNum}}</text> 个</view>
+            </view>
+        </view>
+    </view>
+</view>

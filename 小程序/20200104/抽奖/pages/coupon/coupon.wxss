@@ -1,0 +1,85 @@
+/* pages/coupon/coupon.wxss */
+.outborder{
+    height: 100%;
+    background: #fff;
+    padding-top: 40rpx;
+}
+.coupon{
+    position: relative;
+    width: 100%;
+    color: white;
+}
+.coupon image{
+    width: 92%;
+    display: block;
+    margin: 0 auto;
+}
+.content{
+    width: 100%;
+    left: 0;
+    position: absolute;
+    display: flex;
+    top: 0;
+    height: 200rpx;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    padding: 46rpx 34rpx;
+}
+.cleft{
+    width: 400rpx;
+    height: 130rpx;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    align-content: space-between;
+}
+.coinNum{
+    font-size: 72rpx;
+}
+.timedata{
+    font-size: 20rpx;
+}
+.clefttop{
+    width: 400rpx;
+    display: flex;
+    /* height: 66rpx; */
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 14rpx;
+}
+.coin{
+    font-size: 28rpx;
+    margin-bottom: 16rpx;
+}
+.notUser{
+    font-size: 28rpx;
+}
+.ctype{
+    display: block;
+    line-height: 26rpx;
+}
+.goUser{
+    margin-top: 30rpx;
+    margin-left: 22rpx;
+    width: 160rpx;
+    height: 46rpx;
+    background: #fff;
+    text-align: center;
+    line-height: 45rpx;
+    font-size: 28rpx;
+    color: #EE1E1E;
+    border-radius: 23rpx;
+}
+.cright{
+    margin-right: 32rpx;
+}
+.cNum{
+    font-size: 20rpx;
+}
+.none{
+    font-size: 28rpx;
+    color: #ccc;
+    text-align: center;
+}

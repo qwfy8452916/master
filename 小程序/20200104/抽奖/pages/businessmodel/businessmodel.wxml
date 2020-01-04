@@ -1,0 +1,38 @@
+<!--pages/partnership/partnership.wxml-->
+<view class="helps-part">
+    <view class="helps-head">
+        <view class="headchip1"></view>
+        <view class="headchip2"></view>
+        <view class="headchip3">商业模式</view>
+    </view>
+   <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">什么是酒店智盒？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">酒店智盒是通过智能互联、物联网、区块链、大数据、共享私有云等技术，专注于打造酒店行业智能零售新生态。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">酒店为什么要使用酒店智盒？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">酒店智盒能够为入住客人提供更佳的入住体验，帮助酒店大幅提高客房零售收入。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+    <view class="question">
+        <text class="ask">问：</text>
+        <text class="askC">客人为什么愿意使用酒店智盒？</text>
+    </view>
+    <view class="answer">
+        <text class="respnse">答：</text>
+        <text class="respnseC">在客房就能购物，而且有效保护隐私，享受新颖的掌上服务，购买特产相对外面，有酒店担保品质更可靠。</text>
+    </view>
+    </view>
+</view>

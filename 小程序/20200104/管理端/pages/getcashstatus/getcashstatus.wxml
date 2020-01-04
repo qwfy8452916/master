@@ -1,0 +1,71 @@
+<!--pages/getcashstatus/getcashstatus.wxml-->
+<view class="statusbox">
+   <view wx:if="{{getcashdetaildata.status=='3'}}">
+     <image src="../../img/handlerror.jpg"></image>
+     <view class="handstatus handerror">提现状态:转账失败</view>
+   </view>
+   <view wx:if="{{getcashdetaildata.status=='2'}}">
+     <image src="../../img/handlesucess.jpg"></image>
+     <view class="handstatus handesuccess">提现状态:已转账</view>
+   </view>
+   <view wx:if="{{getcashdetaildata.status=='1'}}">
+     <image src="../../img/handlewait.jpg"></image>
+     <view class="handstatus handewait">提现状态:待处理</view>
+   </view>
+</view>
+
+ <view class="infobox">
+     <view class="infoboxitem">
+       <text class="infotitle leftalign">提现金额</text>
+       <text class="money rightalign">￥{{getcashdetaildata.withdrawalAmount}}</text>
+     </view>
+     <view class="infoboxitem">
+       <text class="infotitle leftalign">申请人</text>
+       <text class="money rightalign">{{getcashdetaildata.withdrawalName}}</text>
+     </view>
+     <view class="infoboxitem">
+       <text class="infotitle leftalign">申请时间</text>
+       <text class="money rightalign">{{getcashdetaildata.withdrawalTime}}</text>
+     </view>
+     <view class="infoboxitem">
+       <text class="infotitle leftalign">开户银行</text>
+       <text class="money rightalign">{{getcashdetaildata.bank}}</text>
+     </view>
+     <view class="infoboxitem">
+       <text class="infotitle leftalign">账户名称</text>
+       <text class="money rightalign">{{getcashdetaildata.accountName}}</text>
+     </view>
+     <view class="infoboxitem">
+       <text class="infotitle leftalign">账号</text>
+       <text class="money rightalign">{{getcashdetaildata.account}}</text>
+     </view>
+     <view class="infoboxitem" wx:if="{{getcashdetaildata.status=='2'}}">
+       <text class="infotitle leftalign">转账时间</text>
+       <text class="money rightalign">{{getcashdetaildata.transferTime}}</text>
+     </view>
+     <view class="infoboxitem" wx:if="{{getcashdetaildata.status=='2'}}">
+       <view class="infotitle">转账凭证</view>
+       <scroll-view class="voucherbox" scroll-x="true">
+          <view class="imgbox" wx:for="{{getcashdetaildata.withdrawAccessoryDTOS}}" wx:key>
+            <!-- <image src="../../img/infoback.png"></image> -->
+            <image src="{{item.transferPath}}"></image>
+          </view>
+       </scroll-view>
+     </view>
+     <view class="infoboxitem" wx:if="{{getcashdetaildata.status=='2'}}">
+       <text class="infotitle leftalign">转账说明</text>
+       <text class="money rightalign">{{getcashdetaildata.remark}}</text>
+     </view>
+     <view class="infoboxitem" wx:if="{{getcashdetaildata.status=='3'}}">
+       <text class="infotitle leftalign">备注</text>
+       <text class="money rightalign">{{getcashdetaildata.remark}}</text>
+     </view>
+     <view class="infoboxitem" wx:if="{{getcashdetaildata.status!='1'}}">
+       <text class="infotitle leftalign">处理人</text>
+       <text class="money rightalign">{{getcashdetaildata.dealer}}</text>
+     </view>
+     <view class="infoboxitem" wx:if="{{getcashdetaildata.status!='1'}}">
+       <text class="infotitle leftalign">处理时间</text>
+       <text class="money rightalign">{{getcashdetaildata.dealTime}}</text>
+     </view>
+  </view>

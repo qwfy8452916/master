@@ -1,0 +1,22 @@
+/* pages/shareRule/shareRule.wxss */
+.rules{
+    height: 100%;
+    background: #fff;
+    color: #333333;
+    font-size: 28rpx;
+    padding: 0 40rpx;
+    overflow: hidden;
+}
+.ruleHead{
+    font-size: 48rpx;
+    color: #C40000;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 90rpx;
+}
+.itemColor{
+    color: #999999;
+}
+.marginItem{
+    margin-bottom: 40rpx;
+}

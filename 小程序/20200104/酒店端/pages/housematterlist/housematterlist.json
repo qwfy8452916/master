@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "补货列表",
+  "usingComponents": {
+    "my-tabbar": "../../pages/tabbar/tabbar"
+  }
+}

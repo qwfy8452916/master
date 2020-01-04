@@ -1,0 +1,10 @@
+<view class="myCommunity" wx:for="{{CommunityList}}" wx:key="index">
+    <view class="com_1">
+        <text class="nickname">{{item.typeName}}×{{item.refoundCount}}</text>
+        <text class="investTime">{{item.createdAt}}</text>
+    </view>
+    <view class="cabNum">￥ {{item.refoundAmount}}</view>
+</view>
+<view wx:if="{{ifshow}}" class="none">
+    暂无退款记录
+</view>

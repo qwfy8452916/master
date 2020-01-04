@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="index" style="background:white;padding-bottom:30rpx;">
+    <image style="width:100%" bindload="loadImg" src="cloud://fortunestar-pics-p6drx.666f-fortunestar-pics-p6drx-1300540775/图层3@2x.png" mode="widthFix" class="indexUrl" />
+    <view class="indextabs">
+      <navigator
+       url="{{item.itemUrl}}"
+       hover-class="navigator-hover"
+        class="tabItem"
+         wx:for="{{indexUrls}}"
+          wx:key="index">
+        <image src="{{item.imgUrl}}" mode="widthFix" class="itemurl" />
+        <text class="itemword">{{item.itemwords}}</text>
+      </navigator>
+    </view>
+  </view>
+</view>
+<view wx:if="{{ifshowShare || isSalesman}}">
+  <button style="display:{{imgBlock}}" open-type="share" wx:if="{{ isShare }}" class="share">分享赚钱</button>
+  <button style="display:{{imgBlock}}" bindtap='share' wx:else class="share">分享赚钱</button>
+</view>
+  <!-- <button bindtap='sm'>扫码</button> -->

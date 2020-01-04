@@ -1,0 +1,58 @@
+<!--pages/cashWithdrawal/cashWithdrawal.wxml-->
+<view class="cashbox">
+   <view class="cashbox_title">请输入提现金额</view>
+   <view class="inputbox">
+      <text class="danwei">￥</text>
+      <input class="jine" bindinput="jine"></input>
+   </view>
+   <view class="balance">可提现金额 {{bankinfo.withdrawMayAmount}} 元</view>
+</view>
+
+<view class="accountinfo" wx:if="{{accountType=='c'}}">
+   <view class="infosure itembox">请确认账户信息</view>
+   <view class="itembox">
+      <text class="itembox_title">开户银行</text>
+      <text class="itembox_val">{{bankinfo.bank}}</text>
+   </view>
+   <view class="itembox">
+      <text class="itembox_title">账号名称</text>
+      <text class="itembox_val">{{bankinfo.bankAccountName}}</text>
+   </view>
+   <view class="itembox">
+      <text class="itembox_title">开户账号</text>
+      <text class="itembox_val">{{bankinfo.bankAccount}}</text>
+   </view>
+</view>
+
+<view class="accountinfo" wx:elif="{{accountType=='p'}}">
+   <view class="infosure itembox">请确认账户信息</view>
+   <view class="itembox">
+      <text class="itembox_title">开户银行</text>
+      <input class="itembox_val" bindinput="fillbank" value="{{bankinfo.bank}}" placeholder="请输入开户银行"></input>
+   </view>
+   <view class="itembox">
+      <text class="itembox_title">账号名称</text>
+      <input class="itembox_val" value="{{bankinfo.bankAccountName}}" bindinput="fillaccountname" placeholder="请输入账号名称"></input>
+   </view>
+   <view class="itembox">
+      <text class="itembox_title">开户账号</text>
+      <input class="itembox_val" value="{{bankinfo.bankAccount}}" placeholder="请输入开户账号" bindinput="fillbankaccount"></input>
+   </view>
+</view>
+
+<view class="btnwrap">
+   <view class="savebtn" bindtap="getcashbtn">提交</view>
+</view>
+<view class="tiptext">提现成功后，提现金额会转入微信钱包，请注意查收。</view>
+
+<view class="shadow" hidden="{{showjudge}}"></view>
+<view class="framebox" hidden="{{showjudge}}">
+   <image class="frameboxbj" src="../../img/successbj.png"></image>
+   <view class="submittext">提交成功</view>
+   <view class="btnsure" bindtap="btnsure">确定</view>
+   <view class="checkdetail" bindtap="checkdetail">查看提现明细</view>
+</view>
+
+
+
+

@@ -1,0 +1,9 @@
+<view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{envelopelist}}">
+    <view class="pickerbox">
+      红包数量：{{envelopelist[index]}}
+    </view>
+  </picker>
+</view>
+<view wx:if="{{index != 0}}" class="btnbox" bindtap="getsharecode">创建红包</view>
+<view wx:else class="btnbox btnboxbg" bindtap="getsharecode">创建红包</view>

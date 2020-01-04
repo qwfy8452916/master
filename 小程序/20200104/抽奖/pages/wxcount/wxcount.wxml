@@ -1,0 +1,5 @@
+<!--pages/wxcount/wxcount.wxml-->
+<view style="text-align:center;padding-top:40rpx;">
+    <image src="../../images/personal/a48c4364c82ce9dd0ce8950f539bf4e.jpg" class="wximg" mode="widthFix" />
+</view>
+

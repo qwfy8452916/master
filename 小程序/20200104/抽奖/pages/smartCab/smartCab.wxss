@@ -1,0 +1,220 @@
+/* pages/smartCab/smartCab.wxss */
+.CabInverstor{
+    /* height: 100%; */
+    width: 100%;
+    position: relative;
+    overflow: auto;
+}
+.bgimg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -10;
+}
+.roundOuter{
+    border-radius: 50%;
+    /* overflow: hidden; */
+    background: #F2C8C8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20rpx;
+}
+.maincontent{
+    /* position: absolute; */
+    margin-top: 260rpx;
+    width: 100%;
+    /* height: 81%; */
+    height: 1030rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.zhuanpan{
+    height: 94%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.hasFS{
+    font-size: 28rpx;
+    color: #E24122;
+}
+.status{
+    font-size: 34rpx;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 4rpx;
+}
+.fsbutton{
+    width: 392rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+    text-align: center;
+    line-height: 80rpx;
+    color: #fff;
+    background: #E24122;
+    font-size: 36rpx;
+}
+.fsbutton2{
+    width: 392rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+    text-align: center;
+    color: #fff;
+    background: #BCBCBC;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 24rpx;
+}
+.fsbutton3{
+    width: 392rpx;
+    height: 58rpx;
+    border-radius: 29rpx;
+    text-align: center;
+    color: #fff;
+    background: #EE1E1E;
+    line-height: 58rpx;
+    font-size: 28rpx;
+}
+.viewall{
+    font-size: 28rpx;
+    color: #E24122;
+    text-decoration: underline;
+    line-height: 50rpx;
+}
+.share{
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    display: flex;
+    align-items: center;
+    height: 50rpx;
+}
+.shareBtn{
+    color: #fff;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 24rpx;
+    padding: 0;
+    background: none;
+    border: none;
+    margin-right: 18rpx;
+}
+.invertorinfo{
+    width: 144rpx;
+    height: 42rpx;
+    border-radius: 21rpx;
+    color: white;
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 42rpx;
+    position: absolute;
+    left: 30rpx;
+    top: 30rpx;
+    background: #9871CB;
+}
+
+.coupon{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 564rpx;
+    height: 620rpx;
+    text-align: center;
+    z-index: 5;
+  }
+  .mainC{
+    width: 100%;
+    position: relative;
+  }
+  .couponB{
+    width: 100%;
+    display: block;
+  
+  }
+  .couponC{
+    position: absolute;
+    top: 12rpx;
+    display: flex;
+    justify-content: center;
+    color: #EE1E1E;
+    box-sizing: border-box;
+    align-items: flex-start;
+    width: 100%;
+    z-index: 5;
+  
+  }
+  .cointype{
+    font-size: 28rpx;
+    margin-top: 22rpx;
+  }
+  .couponNum{
+    font-size: 92rpx;
+    margin: 0 4rpx;
+  }
+  .condition{
+    margin-top: 22rpx;
+  }
+  .condition .counpontype{
+    font-size: 30rpx;
+    text-align: left;
+  }
+  .condition .conditions{
+    font-size: 28rpx;
+    text-align: left;
+    font-weight: bold;
+  }
+  .lingqu{
+    width: 152rpx;
+    height: 152rpx;
+    position: absolute;
+    bottom: 98rpx;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background: #E99528;
+    border-radius: 50%;
+    line-height: 152rpx;
+    color: #FFE3E3;
+    font-size: 96rpx;
+    font-family: '宋体';
+    z-index: 5;
+    box-shadow: 0px 0px 34rpx 8rpx #E99528;
+  }
+  
+.closes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .close{
+    width: 57rpx;
+    height: 57rpx;
+  }
+  .line{
+    width: 0;
+    border-left: #fff solid 2rpx;
+    height: 80rpx;
+    opacity: .8;
+  }
+
+  .mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    left: 0;
+    top: 0;
+    z-index: 4;
+  }

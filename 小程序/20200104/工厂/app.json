@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/verify/verify",
+    "pages/login/login",
+    "pages/updatepwd/updatepwd",
+    "pages/updateinfo/updateinfo",
+    "pages/test/test",
+    "pages/cabinet/cabinet",
+    
+    
+    "pages/personalcenter/personalcenter",
+    "pages/tabbar/tabbar",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
+
+

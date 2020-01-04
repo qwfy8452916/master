@@ -1,0 +1,54 @@
+<!--pages/personal/personal.wxml-->
+<view class="personal">
+    <view class="message" wx:if="{{ cabnumY }}">
+        <image style="width:26rpx;height:26rpx;margin-right:10rpx;" src='../../images/personal/infos/detail.png' />
+        <text>您的{{ cabnumY }}台设备正在投放中...(预计还需23天完成投放)</text>
+    </view>
+    <view class="infos">
+        <view class="infos_1">
+            <image wx:if="{{hasUserInfo}}" src="{{userInfo.avatarUrl}}" alt="" />
+            <image wx:else src="../../images/personal/u157.png" alt="" />
+        </view>
+        <view class="infos_2">
+            <text class="name">{{ hasUserInfo?userInfo.nickName:'智盒投资人' }}</text>
+            <text wx:if="{{isRich && !isChannel}}" class="counts" style="color:yellow"><text style="font-size:40rpx;">V</text>{{ richLevel }}</text>
+        </view>
+        <button wx:if="{{!hasUserInfo}}" open-type="getUserInfo" class="infos_3" style="font-size:20rpx;" bindgetuserinfo="getUserInfo">获取头像昵称</button>
+        <view wx:if="{{ifshowShare || isSalesman}}">
+            <button open-type="share" wx:if="{{ isShare }}" class="infos_3">分享赚钱</button>
+            <button bindtap='share' wx:else class="infos_3">分享赚钱</button>
+        </view>
+    </view>
+    <view class="upgrade" wx:if="{{specialEnvoy=='-1'}}" bindtap="upGrade">
+        <image mode="widthFix" src="../../images/personal/upgrade.png" style="width:46rpx;height:46rpx" />
+        <text>升级成为"财富特使"</text>
+    </view>
+    <view class="extract">
+        <navigator
+        wx:for="{{personalItems}}"
+        wx:key="index"
+         url="{{item.urlpath}}" hover-class="navigator-hover" class="extract_2">
+            <image src="{{item.iconpath}}" class="perpic" mode="widthFix"/>
+            <text class="pername">{{item.name}}</text>
+            <view class="pernum">{{item.num}}
+                <image src="../../images/personal/toRight.png" mode="widthFix" style="width:34rpx;height:34rpx;"/>
+            </view>
+        </navigator>
+    </view>
+    <view class="menus">
+        <view class="menu-item" wx:for="{{personalMenu}}" wx:key="desc">
+            <navigator url="{{item.urlPath}}" class="menu-navi" hover-class="navigator-hover">
+                <image class="menuIcon" mode="widthFix" src='{{item.iconPath}}'/>
+                <text class="menuWord">{{item.desc}}</text>
+            </navigator>
+        </view>
+    </view>
+    <navigator wx:if="{{!isChannel}}" url="/pages/channellogin/channellogin" class="qudaoLogin" hover-class="navigator-hover">
+        <text>渠道登录</text>
+        <image style="width: 30rpx;height:30rpx;margin-left:6rpx;" src="../../images/personal/skipicon.png" mode="widthFix"/>
+    </navigator>
+    <navigator wx:else url="/pages/index/index" bindtap="exitlogin" class="qudaoLogin" hover-class="navigator-hover">
+        <image style="width: 30rpx;height:30rpx;margin-right:6rpx;" src="../../images/personal/exiticon.png" mode="widthFix"/>
+        <text>退出登录</text>
+    </navigator>
+</view>

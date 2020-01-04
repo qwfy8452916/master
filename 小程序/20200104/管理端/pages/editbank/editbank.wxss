@@ -1,0 +1,12 @@
+/* pages/editbank/editbank.wxss */
+page{background: #f6f6f6;}
+.bankinfobox{width: 100%;overflow: hidden;background: #fff;}
+.bankinfobox .bankitem{padding:  30rpx 0 30rpx 4%;box-sizing: border-box;
+overflow: hidden;border-bottom: 1px solid #e5e5e5;font-size: 28rpx;}
+.bankitem_title{display: inline-block;float: left;width: 115rpx;text-align: left;
+margin-right: 30rpx;}
+.bankitem_add{display: inline-block;float: left;}
+
+.btnwrap{width: 100%;overflow: hidden;position: fixed;bottom: 60rpx;}
+.btnwrap .savebtn{text-align: center;width: 84%;height: 70rpx;line-height: 70rpx;
+color: #fff;background: #0066cc;margin:0 auto;border-radius: 30rpx;}

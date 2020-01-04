@@ -1,0 +1,90 @@
+.balance-top{
+  padding: 27rpx 30rpx;
+  background: #ffffff;
+}
+.balance-topbox{
+  border-radius: 10px 10px;
+  background: -webkit-linear-gradient(left, #fa5353, #ee1e1e);
+  background: -o-linear-gradient(left,#fa5353, #ee1e1e);
+  background: -moz-linear-gradient(left,#fa5353,#ee1e1e);
+  background: -ms-linear-gradient(left,#fa5353,#ee1e1e);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50rpx 0 50rpx 30rpx;
+  color: #ffffff;
+}
+.balance-topbox-l{
+  width: 60%;
+}
+.balance-font1{
+  font-size: 24rpx;
+  margin-bottom: 16rpx;
+}
+.balance-font2{
+  font-size: 66rpx;
+}
+.balance-topbox-r{
+  background: rgba(255,255,255,0.3);
+  background: -webkit-linear-gradient(left,rgba(255, 255, 255, 0.3),rgb(255, 255, 255, 0.1));
+  background: -moz-linear-gradient(left,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.1) 100%); /*FireFox*/
+  background: -o-linear-gradient(left,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.1) 100%);  /* Opear */
+  background: -ms-linear-gradient(left,rgba(255, 255, 255, 0.3),rgba(255,255,255,0.1)); /*IE10及IE10+*/
+  width: 30%;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius:25px 0px 0px 25px;
+}
+.ye-img{
+  display: inline-block;
+  line-height: 60rpx;
+  vertical-align: middle;
+  width: 20rpx;
+  height: 25rpx;
+}
+.balance-listbox-top{
+  font-size: 32rpx;
+  color: #282623;
+}
+.balance-listbox-li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listbox-li-l{
+  width: 70%;
+}
+.li-font1{
+  font-size: 28rpx;
+  color: #333333;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.li-font1 text{
+  font-size: 18rpx;
+  color: #ffffff;
+  padding: 6rpx 15rpx;
+  border-radius: 4px;
+  margin-left: 15rpx;
+}
+.li-font3{
+  background: #EE1E1E;
+}
+.li-font4{
+  background: #C5C5C5;
+}
+.li-font2{
+  font-size: 24rpx;
+  color: #999999;
+}
+.listbox-li-r{
+  width: 30%;
+  text-align: right;
+}
+.balance-listbox .balance-listbox-li:last-child{
+  border-bottom: none;
+}

@@ -1,0 +1,10 @@
+<!--pages/rebackSuccess/rebackSuccess.wxml-->
+<view class="success">
+    <image class="sucIcon" src="../../images/personal/reback.png" mode="widthFix" />
+    <view style="color:#333;margin:20rpx 0;">提交成功</view>
+    <view style="font-size:28rpx;">你已成功发起退款申请</view>
+    <view class="notice">
+        <image class="warning" mode="widthFix" src="../../images/personal/warning1.png" />
+        <text style="font-size:24rpx;">请耐心等待，退款金额将自动返回到您的账户</text>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+<!--pages/fillinbank/fillinbank.wxml-->
+<view class="bankinfobox">
+   <view class="bankitem">
+       <text class="bankitem_title">开户银行</text>
+       <input class="bankitem_add" bindinput="fillbank" placeholder="请填写开户银行"></input>
+   </view>
+   <view class="bankitem">
+       <text class="bankitem_title">账户名称</text>
+       <input class="bankitem_add" bindinput="fillaccountname" placeholder="请填写账户名称"></input>
+   </view>
+   <view class="bankitem">
+       <text class="bankitem_title">开户账号</text>
+       <input class="bankitem_add" bindinput="fillbankaccount" placeholder="请填写开户账号"></input>
+   </view>
+</view>
+
+<view class="btnwrap">
+   <view class="savebtn" bindtap="savebankinfo">保存</view>
+</view>
+ 

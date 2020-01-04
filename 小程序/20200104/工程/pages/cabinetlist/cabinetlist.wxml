@@ -1,0 +1,62 @@
+<!--pages/cabinetlist/cabinetlist.wxml-->
+<view class="pickhangitem">
+  <picker class="pickbox" bindchange="bindPickerChange2" range-key="hotelName" value="{{index}}" range="{{hoteldata}}">
+    <view class="picker">
+      <text class="pictitle">酒店名称:</text>
+      <text class="alignlef" style="text-align:left">
+          <text class="iconfont iconxuanzeleixing"></text>
+          <text wx:if="{{hotelName}}">{{hotelName}}
+            </text>
+          <text wx:else class="placems">请选择酒店</text>
+      </text>
+
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+</view>
+<scroll-view class='wraplist' style='height:{{gaodu}}rpx'  scroll-y bindscrolltolower="downLoad">
+
+  
+     <view wx:if="{{cabinetlistdata.length>0}}">
+        <view class='hangitem' wx:for="{{cabinetlistdata}}" wx:key>
+          <text class='iconfont icongengduo' bindtap='showModal' data-id="{{item.id}}" data-target="bottomModal" data-floor="{{item.roomFloor}}" data-roomid="{{item.roomCode}}" data-index="{{index}}"></text>
+          <view class='miaosone'>
+            <text class='xuhao'>{{index+1}}</text>
+
+            <text class='statuszt'>
+              <text wx:if="{{item.cabinetStatus==1}}">正常</text>
+              <text class='fault' wx:elif="{{item.cabinetStatus==2}}">异常</text>
+            </text>
+          </view>
+          <view class='miaostwo'>酒店楼层 {{item.roomFloor}} / 房间号 {{item.roomCode}}</view>
+        </view>
+      </view>
+     <view wx:else>
+      <image class='nodataimg' src='../../img/waiterlogo.png'></image>
+      <view class='nodatams'>暂无安装记录哦~</view>
+     </view>
+ 
+
+</scroll-view>
+
+<view class='wrapcontinue'>
+  <view class='continueniu' bindtap='continueniu'>去安装</view>
+</view>
+
+<view bindtap='yinying' class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class='botcontent' catchtap='showxian'>
+    <view class='tantitle'>酒店楼层 {{hotelfloor}} / 房间号 {{housenumber}}</view>
+    <view class='wrapniu'>
+      <view class='delniu' catchtap='delevent' data-id="{{cabinetid}}">删除</view>
+      <view class='editniu' catchtap='editevent' data-id="{{cabinetid}}">编辑</view>
+    </view>
+  </view>
+</view>
+<my-tabbar id="tabbar"></my-tabbar>
+
+
+
+
+

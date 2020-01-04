@@ -1,0 +1,70 @@
+/**app.wxss**/
+page{
+  background: #f6f6f6;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1112014 */
+  src: url('//at.alicdn.com/t/font_1112014_i985oowazz.eot');
+  src: url('//at.alicdn.com/t/font_1112014_i985oowazz.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1112014_i985oowazz.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1112014_i985oowazz.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1112014_i985oowazz.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1112014_i985oowazz.svg#iconfont') format('svg');
+}
+
+.iconfont {
+font-family:"iconfont"!important;
+font-size:18px;
+font-style:normal;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+}
+
+.iconlock::before{content: "\e7ca";}
+.iconwode::before{content: "\e616";}
+.iconwangyou::before{content: "\e697";}
+.iconlouceng::before{content:"\e60e";}
+.iconfanghao::before{content:"\e657";}
+.iconcard2::before{content:"\e62f";}
+.icongengduo::before{content:"\e879";}
+.iconsanjiaoxing::before{content: "\e6b4";}
+.icon-wangyou::before{content: "\e697";}
+.icon-::before{content: "\e631";}
+.iconye::before{content: "\e656";}
+.iconjinbi::before{content: "\e6bd";}
+.iconriqi::before{content: "\e670";}
+.iconsanjiaoxing1::before{content: "\e600";}
+.iconicon::before{content: "\e613";}
+.iconchenggong1::before{content: "\e643";}
+.iconshouye::before{content: "\e614";}
+.iconwodedangxuan::before{content: "\e601";}
+.iconpeisong::before{content: "\e677";}
+.iconwodedingdan1::before{content: "\e66d";}
+.iconwodedingdan1::before{content: "\e66d";}
+.iconqiandai::before{content: "\e60b";}
+.iconqian1::before{content: "\e679";}
+.iconqian::before{content: "\e60f";}
+.iconmingxi::before{content: "\e69b";}
+.iconmingxi1::before{content: "\e6f6";}
+.iconicon1::before{content: "\e60c";}
+.iconicon02::before{content: "\e602";}
+.iconbianji::before{content: "\e61e";}
+.iconshouji::before{content: "\e60d";}
+.iconsuo::before{content: "\e604";}
+
+
+
+
+
+

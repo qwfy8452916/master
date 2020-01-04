@@ -1,0 +1,28 @@
+<view class='ordertype mgB20'>
+  <view class='ordertype-btn' bindtap='smgw'>商品订单</view>
+  <view class='ordertype-btn' bindtap='reservation'>客房协议价</view>
+  <view class='ordertype-btn' style='color: {{themecolor.skintone}};border-color: {{themecolor.skintone}};'>客房服务</view>
+</view>
+<block wx:if="{{orderlist == null || orderlist == '' || orderlist.length == 0}}">
+  <view class='datanull-font'>
+    <image src='../../img/my-btnimg17.png' class='iconimg1' mode='widthFix'></image>
+    <text>您还没有相关订单</text>
+  </view>
+</block>
+<block wx:else>
+  <view class='bgfff'>
+    <view class='kffu-li' wx:for="{{orderlist}}" wx:for-item="item" wx:key="index" data-id="{{item.id}}" bindtap='detials'>
+      <view class='kffu-li-left'>
+        <view class='font-text2'>{{item.hotelCategoryName}}</view>
+        <view class='font-text'>{{item.createdAt}}</view>
+      </view>
+      <view class='kffu-li-right'>
+        <view class='type-font' wx:if="{{item.status == 0}}">待确认</view>
+        <view class='type-font' wx:elif="{{item.status == 1}}">已确认</view>
+        <view class='type-font' wx:elif="{{item.status == 2}}">已完成</view>
+        <view class='type-font' wx:elif="{{item.status == 3}}">已取消</view>
+        <image class='mylistbox-li-bg' src='../../img/my-bgimg2.png'></image>
+      </view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,24 @@
+<!--pages/cabMarket/cabMarket.wxml-->
+<view class="cabMarket">
+    <view class="soldCablist" wx:for="{{soldCablist}}" wx:key="index">
+        <view class="cabInfo">
+            <view class="hotelName">{{item.hotleName}}</view>
+            <view class="roomId">房间号 {{item.roomId}}</view>
+        </view>
+        <view class="rightItem">
+            <view class="price">￥{{item.cabPrice}}<text style="font-size:24rpx;color:#333">（转让价格）</text></view>
+            <view class="purchase" bindtap="purchase">购买</view>
+        </view>
+    </view>
+</view>
+<view class="phone" wx:if="{{ifshow}}">
+    <view class="words">
+        <view class="prompt">因涉及到产权变更,请联系客服办理</view>
+        <view class="phoneNum">客服电话:{{phoneNum}}</view>
+    </view>
+    <view class="callfor">
+        <image mode="widthFix" style="width:50rpx;height:50rpx" src="../../images/personal/phone.png" />
+        <view class="call" bindtap="callNum">呼叫</view>
+    </view>
+</view>
+<view class="mask" bindtap="hideWindow" wx:if="{{ifshow}}"></view>

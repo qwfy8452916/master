@@ -1,0 +1,33 @@
+/* pages/channellogin/channellogin.wxss */
+.loginbg{
+    width: 80%;
+    height: 100%;
+    background: #fff;
+    padding: 0px 10%;
+  }
+  .loginicon{
+    font-size: 30px;
+    color: #333;
+    padding: 90px 0px 40px 0px;
+  }
+  .userinfo{
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 8px 0px;
+    margin-bottom: 30px;
+  }
+  .iconuser{
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+  }
+  .txtuser{
+    height: 24px;
+  }
+  .submitbtn{
+    height: 44px;
+    font-size: 16px;
+    color: #fff;
+    background: #ee1e1e;
+    margin-top: 60px;
+  }

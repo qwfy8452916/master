@@ -1,0 +1,14 @@
+<!--pages/conplatedelivered/conplatedelivered.wxml-->
+<view class='recordwrap'>
+   <view class='recorditem' bindtap='wanchengdetail' wx:for="{{complatedata}}" wx:key data-id="{{item.id}}" data-delivtype='{{item.delivType}}'>
+     <text class='recordtitle'>{{item.shipmentsTime}}</text>
+     <text class='countzj'>共{{item.prodCount}}件</text>
+     <text class='roomcode'>{{item.roomFloor}}-{{item.roomCode}}</text>
+     <text class="gongnengqu" wx:if="{{item.delivType!='1'}}">{{item.funcName}}</text>
+   </view>
+
+</view>
+
+
+
+

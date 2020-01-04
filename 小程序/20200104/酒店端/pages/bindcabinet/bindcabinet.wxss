@@ -1,0 +1,37 @@
+/* pages/bindcabinet/bindcabinet.wxss */
+page{border-top: 1px solid #e5e5e5;padding-bottom: 50rpx;}
+.hangtiem{overflow: hidden;padding: 0 4%;box-sizing: border-box;
+border-bottom: 20rpx solid #f6f6f6;}
+.hangtiem .titlename{font-size: 36rpx;color: #ff9700;padding: 30rpx 0;
+border-bottom:1px solid #e5e5e5;}
+.hangtiem .iconfont{margin-right: 15rpx;}
+.inputwk{overflow: hidden;padding: 30rpx 0;}
+.hangtiem .iteminput{font-size: 32rpx;height: 30rpx;
+line-height: 30rpx;}
+.iotcard{position: relative;}
+.iotcard .iconsaoma{position: absolute;right:0;top: 20rpx;
+font-size: 40rpx;padding: 20rpx;z-index: 9;}
+
+.pickbox{
+    padding: 30rpx 4% 30rpx 0;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 28rpx;
+    box-sizing: border-box;
+}
+.pickbox .pickeritem{display: inline-block;width:115rpx;text-align: left;
+margin-right: 20rpx;}
+.alignlef{float: left;}
+.alignlef .iconxuanzeleixing{margin-left: 25rpx;color: #cecece;
+margin-right: 20rpx;}
+.alignlef .jianjv{margin-left: 30rpx;}
+
+.alignrig{float: right;}
+.placems{color: #cecece;font-size: 32rpx;}
+
+
+
+.wraptesting{width: 100%;box-sizing: border-box;
+overflow: hidden;margin-bottom: 30rpx;margin-top: 30rpx;}
+.wraptesting .testingniu{width: 100%;height: 88rpx;line-height: 88rpx;text-align: center;
+background: #ff9700;color: #fff;font-size: 32rpx;border-radius: 10rpx;}

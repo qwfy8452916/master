@@ -1,0 +1,79 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.4",
+	"appid": "wxe4bc42f44b79c8dc",
+	"projectname": "%E8%B4%AD%E7%89%A9%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%8E%A5%E5%8F%A3%E6%B1%87%E6%80%BB%E7%89%88",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "90-4003",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01101909210003&scancode_time=1577174639",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "开发库柜子",
+					"pathName": "pages/login/login",
+					"query": "c=01111901134001",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "红包分享",
+					"pathName": "pages/login/login",
+					"query": "sharecode=s_ij5sx4r9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "90-006",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01001909250006&scancode_time=1577686836",
+					"scene": null
+				}
+			]
+		}
+	}
+}

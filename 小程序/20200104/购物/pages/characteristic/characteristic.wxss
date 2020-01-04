@@ -1,0 +1,119 @@
+.pagebox{
+  padding-bottom: 110rpx;
+}
+.positionbox{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.banner image{
+  display: block;
+  width: 100%;
+}
+.roomservice-top{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.roomservice-top .roomservice-top-btn{
+  font-size: 32rpx;
+  color: #333;
+  text-align: center;
+  line-height: 88rpx;
+}
+.roomservice-top  .roomservice-top-btn-active{
+  color: #ff9700;
+  border-bottom: 2px solid #ff9700;
+}
+.facilitybox{
+  position: relative;
+}
+.facilitybox-img{
+  display: block;
+  width: 100%;
+}
+.datanull-font{
+  text-align: center;
+  font-size: 28rpx;
+  color: #999999;
+  margin-top: 600rpx;
+}
+.iconimg1{
+  display: inline-block;
+  width: 10%;
+}
+.datanull-font text{
+  display: block;
+  width: 100%;
+}
+.facilityname{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8rpx 3%;
+  background: rgba(0,0,0,0.5);
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 72rpx;
+}
+.characteristic-type{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+}
+.characteristic-type .characteristic-type-btn{
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  line-height: 55rpx;
+  font-size: 28rpx;
+  color: #999999;
+  border-radius: 25px;
+  background: #DBDBDB;
+  margin-right: 20rpx;
+  min-width: 88rpx;
+  text-align: center;
+}
+.characteristic-type .characteristic-type-btn:last-child{
+  margin-right: 0;
+}
+.characteristic-type .characteristic-type-btn-active{
+  color: #fff;
+}
+.characteristic-list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 7rem;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.characteristic-listbox{
+  width: 47%;
+  margin-bottom: 50rpx;
+  position: relative;
+}
+.characteristic-listbox .characteristic-listbox-img{
+  width: 100%;
+  display: block;
+}
+.characteristic-listbox .characteristic-listbox-name{
+  font-size: 30rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  line-height: 75rpx;
+  color: #fff;
+  padding-left: 4%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

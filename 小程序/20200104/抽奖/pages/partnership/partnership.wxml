@@ -1,0 +1,38 @@
+<!--pages/partnership/partnership.wxml-->
+<view class="helps-part">
+    <view class="helps-head">
+        <view class="headchip1"></view>
+        <view class="headchip2"></view>
+        <view class="headchip3">财富合伙人</view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">什么是代运营服务？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">您购买设备，总部帮您洽谈酒店以及管理维护，您无需任何人力付出，您只需要坐享收益。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">为什么收益只享有40%？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">您出设备，酒店提供位置也需要抽取部分收益，我们负责技术支持及管理维护也需产生成本。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">代运营与自运营那个更有优势？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">选择代运营更省心，如果收益不理想，每年还可更换酒店客房；选择自运营，还需人力管理支出，收益由您自由分配。</text>
+        </view>
+    </view>
+</view>

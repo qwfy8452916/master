@@ -1,0 +1,17 @@
+<!--pages/channelrecord/channelrecord.wxml-->
+<view class="linkbg">
+  <view wx:for="{{recordList}}" wx:key class="linkinfo">
+    <view class="linkleft">
+      <view class="lefttop">
+        <view>{{item.cabTypeName}} x {{item.cabinetQuantity}}</view>
+      </view>
+      <view class="leftbottom">
+        <view>{{item.payTime}}</view>
+      </view>
+    </view>
+    <view class="linkright">
+      <view class="moneynum">￥ {{item.actualPayAmount}}</view>
+    </view>
+  </view>
+</view>
+

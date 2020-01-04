@@ -1,0 +1,37 @@
+.orderlistbox{
+  padding: 20rpx 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.orderlistbox-c{
+  padding: 20rpx 3%;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.contentbox1{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.font-content{
+  width: 89%;
+  height: 150rpx;
+}
+.spimg{
+  width: 50rpx;
+  height: 50rpx;
+}
+.datanull-font{
+  text-align: center;
+  font-size: 32rpx;
+  color: #999999;
+  margin-top: 310rpx;
+}
+.iconimg1{
+  display: inline-block;
+  width: 25%;
+}
+.datanull-font text{
+  display: block;
+  width: 100%;
+}

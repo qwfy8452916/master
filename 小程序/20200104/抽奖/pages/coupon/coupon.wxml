@@ -1,0 +1,30 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="outborder">
+    <view class="coupon" style="display:{{couponinfo.couponAmount ? 'block': 'none'}}">
+        <image src="../../images/coupon/coupon.png" mode="widthFix" class="couponImg" />
+        <view class="content">
+            <view class="cleft">
+                <view class="clefttop">
+                    <text class="coin">￥</text>
+                    <text class="coinNum">{{couponinfo.couponAmount}}</text>
+                    <view style="margin-bottom:8rpx;">
+                        <text class="ctype">{{couponinfo.couponName}}</text>
+                    </view>
+                </view>
+                <view class="timedata">
+                    有效期：{{couponinfo.useDuring}}
+                </view>
+            </view>
+            <view class="cright">
+                <view class="notUser">未使用：{{couponinfo.count}}张</view>
+                <navigator ></navigator>
+                <navigator url="{{'/pages/smartCab/smartCab'}}" open-type="switchTab" class="goUser" hover-class="navigator-hover">
+                    去使用
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="none" wx:if="{{ifshow}}">
+        暂无可用优惠券
+    </view>
+</view>

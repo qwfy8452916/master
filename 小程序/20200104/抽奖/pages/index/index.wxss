@@ -1,0 +1,51 @@
+/**index.wxss**/
+.container{
+  position: relative;
+  background: #fff;
+}
+
+.indextabs{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 49rpx;
+  flex-wrap: wrap;
+  text-align: center;
+  height: 420rpx;
+  align-content: space-between;
+}
+.tabItem{
+  width: 309rpx;
+  height: 195rpx;
+  border-radius: 20rpx;
+  background: #CFA972;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+} 
+.tabItem image{
+  width: 80rpx;
+}
+
+.share{
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  width: 144rpx;
+  height: 42rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 42rpx;
+  border-radius: 21rpx;
+  font-size: 24rpx;
+  padding: 0;
+  background: #E24122;
+}
+/* @media (max-device-height: 700px) {
+  .container{
+    padding-bottom: 160rpx;
+  }      
+} */

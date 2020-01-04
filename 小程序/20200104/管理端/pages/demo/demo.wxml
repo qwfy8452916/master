@@ -1,0 +1,32 @@
+<!--pages/demo/demo.wxml-->
+<view class="section">
+  <!-- <view class="section__title">普通选择器</view> -->
+  <picker bindchange="bindPickerChange" range-key="name" value="{{index}}" range="{{hoteldata}}">
+    <view class="picker">
+      <text class="alignlef">酒店名称：</text>
+      <text class="alignrig">
+        <text wx:if="{{hoteldata[index].id}}">{{hoteldata[index].name}}</text>
+        <text wx:else>请选择酒店</text><text class="iconfont icon-"></text>
+      </text>
+    </view>
+  </picker>
+</view>
+
+
+<view class="picker_group">
+      <text class="alignlef selectdate">选择时间：</text>
+      <section class="alignrig">
+        <picker class="pickeritem" mode="date" value="{{date}}"  end="{{date2}}" bindchange="bindDateChange">  
+          <view class="picker">  
+            {{date}}  
+          </view>  
+        </picker>  
+        至  
+        <picker class="pickeritem" mode="date" value="{{date2}}" start="{{date}}" end="2050-01-01" bindchange="bindDateChange2">  
+          <view class="picker">  
+            {{date2}}  
+          </view>  
+        </picker> 
+        <text class="iconfont icon-"></text>
+        </section>    
+</view>

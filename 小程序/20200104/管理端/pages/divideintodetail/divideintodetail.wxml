@@ -1,0 +1,99 @@
+<!--pages/divideintodetail/divideintodetail.wxml-->
+<view class="fillinwrap">
+   <picker class="pickbox" bindchange="bindPickerChange" range-key="hotelName" value="{{index}}" range="{{hoteldata}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left"><text class="pickeritem">酒店名称</text><text wx:if="{{hoteldata[index1].hotelId}}">{{hoteldata[index1].hotelName}}</text>
+         <text wx:else class="placems">请选择酒店</text>
+      </text>
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <picker class="pickbox" bindchange="bindPickerChange2" range-key="hotelAsName" value="{{index}}" range="{{identitydata}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left"><text class="pickeritem">身份</text><text wx:if="{{identitydata[index2].hotelAs}}">{{identitydata[index2].hotelAsName}}</text>
+         <text wx:else class="placems">请选择身份</text>
+      </text>
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+  <!-- <picker class="pickbox" bindchange="bindPickerChange3" range-key="name" value="{{index}}" range="{{categorydata}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left"><text class="pickeritem">类别</text><text wx:if="{{categorydata[index3].id}}">{{categorydata[index3].name}}</text>
+         <text wx:else class="placems">请选择类别</text>
+      </text>
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker> -->
+
+<view class="picker_group">
+      <text class="alignlef selectdate">选择时间</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" value="{{date}}"  end="{{date2}}" bindchange="bindDateChange">  
+          <view class="picker">  
+            <text wx:if="{{date}}">{{date}}</text><text wx:else class="placems">请选择起始时间</text>  
+          </view>  
+        </picker>  
+        <text class="hengxian">——</text>  
+        <picker class="pickertime" mode="date" value="{{date2}}" start="{{date}}" end="2050-01-01" bindchange="bindDateChange2">  
+          <view class="picker">  
+            <text wx:if="{{date2}}">{{date2}}</text><text wx:else class="placems">请选择终止时间</text>  
+          </view>  
+        </picker> 
+        </section>    
+</view>
+
+</view>
+
+<scroll-view class="detailedlist" style='height:{{gaodu}}rpx'  scroll-y>
+   <view class="detailitem" wx:for="{{dividedata}}" wx:key>
+      <view class="blockitem">
+        <!-- <text wx:if="{{item.revenueKind=='1'}}" class="alignlef typebeijing fencheng03">货柜分成</text>
+        <text wx:if="{{item.revenueKind=='2'}}" class="alignlef typebeijing fencheng02">商城分成</text> -->
+        <text class="alignlef typebeijing fencheng03">{{item.revenueKindName}}</text>
+        <text wx:if="{{item.funcId == -1}}" class="alignlef typebeijing fencheng01">客房预订</text>
+        <text wx:else class="alignlef typebeijing fencheng01">{{item.funcName}}</text>
+        <text class="alignlef blockitemtitle">{{item.hotelName}}</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='1'}}">平台</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='2'}}">运营商</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='3'}}">酒店</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='4'}}">入驻商</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='5'}}">供应商</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='6'}}">城市运营商</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='7'}}">合伙人</text>
+        <text class="alignrig partnertype" wx:if="{{item.orgAs=='8'}}">加盟商</text>
+      </view>
+      <view class="blockitem">
+         <text class="alignlef blockitemkey">销售金额</text>
+         <text class="alignrig blockitemval">￥{{item.salesAmount}}</text>
+      </view>
+      <view class="blockitem">
+         <text class="alignlef blockitemkey">分成金额</text>
+         <text class="alignrig blockitemval">￥{{item.revenueAmount}}</text>
+      </view>
+      <view class="blockitem">
+         <text class="alignlef blockitemkey">{{item.revenueDate}}</text>
+      </view>
+   </view>
+</scroll-view>
+
+<view bindtap="export" class="exportbox">导出</view>
+
+
+
+
+
+
+
+
+
+
+
+
+

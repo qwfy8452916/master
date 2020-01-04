@@ -1,0 +1,183 @@
+page{
+  padding-bottom: 100rpx;
+}
+.swiperbox{
+  position: relative;
+}
+.slide-image{
+  width: 100%;
+  height: auto;
+}
+.room-name{
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  color: #fff;
+  padding: 3% 15rpx;
+} 
+.kfinfobox{
+  background: #fff;
+  padding: 15rpx 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.kfinfobox-li{
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.kfinfobox-li-img{
+  display: block;
+  width: 65rpx;
+  height: 65rpx;
+  margin-right: 10rpx;
+}
+.kfinfobox-li-text{
+  font-size: 26rpx;
+  color: #333333;
+}
+.facilitybox{
+  background: #fff;
+}
+.facilitybox-li{
+  display: flex;
+  align-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  /* padding: 20rpx 3%;
+  border-bottom: 0.5px solid #e5e5e5; */
+  margin-bottom: 20rpx;
+}
+.facilitybox-li-L{
+  width: 100%;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 85rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.facilitybox-li-R{
+  width: 100%;
+  font-size: 26rpx;
+  color: #333333;
+  padding: 20rpx 30rpx;
+}
+.facilitybox-li-Lw{
+  width: 45%;
+}
+.facilitybox-li-Lw2{
+  width: 55%;
+}
+.footbox{
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-top: 0.5px solid #e5e5e5;
+}
+.footbox-L{
+  width: 57%;
+  font-size: 30rpx;
+  color: #999999;
+  padding-left: 3%;
+}
+.footbox-L text{
+  font-size: 30rpx;
+}
+.btnbox{
+  width: 35%;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  background: #FF9700;
+}
+.font-text25{
+  font-size: 25rpx !important;
+}
+.btnbox2-bg{
+  background: #ccc;
+}
+
+.sharebtnbox{
+  position: absolute;
+  z-index: 999;
+  right: 0;
+  top: 30rpx;
+  width: 20%;
+  background: #ee1e1e;
+  border-radius: 50px 0 0 50px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #ffffff;
+}
+.shareicon{
+  vertical-align: middle;
+  line-height: 60rpx;
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.shareboxbg{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.sharebox{
+  position: absolute;
+  z-index: 9999;
+  top: 200rpx;
+  width: 75%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  padding: 50rpx 50rpx;
+  background: #fff;
+  border-radius: 15px;
+}
+.fontts{
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.sharebtnbox2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sharebtnbox2 .btn{
+  width: 45%;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 80rpx;
+  border-radius: 15rpx;
+  border: 1rpx solid #e5e5e5;
+  text-align: center;
+}
+.sharebtnbox2 .btncss{
+  background: #ff9700;
+  color: #fff;
+}
+.imgbox{
+  width: 100%;
+}

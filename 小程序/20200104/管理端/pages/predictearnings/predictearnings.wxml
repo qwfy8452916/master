@@ -1,0 +1,28 @@
+<!--pages/predictearnings/predictearnings.wxml-->
+<view>
+  <view class="searchbg">
+    <image src="../../img/icon/search.png" alt="search" class="searchicon"></image>
+    <input name="hotelname" confirm-type="search" placeholder="输入酒店名称" placeholder-style="color: #cecece;" maxlength="64" class="txtname" value="{{hname}}" bindinput="inputhotelname" bindconfirm="searchhotel"></input>
+  </view>
+  <view class="promptmsg" hidden="{{promptHide}}">
+    <view class="prompttxt">
+      <image src="../../img/icon/warning.png" alt="search" class="hinticon"></image>
+      <view>该收益为预计收益，准确金额以实际到账为准！</view>
+    </view>
+    <view bindtap="promptclose">
+      <image src="../../img/icon/close.png" alt="search" class="closeicon"></image>
+    </view>
+  </view>
+  <view wx:for="{{hotelList}}" wx:key class="hotelinfo">
+    <view class="rleft">
+      <view class="lefttop">{{item.hotelName}}（{{item.orgAsName}}）</view>
+      <view class="hintbottom">{{item.tradeDate}} 销售金额 {{item.salesAmount}}</view>
+    </view>
+    <view class="rright">
+      <view class="rightmoney">{{item.revenueAmount}}</view>
+      <view class="hintbottom">
+        <view>分成金额</view>
+      </view>
+    </view>
+  </view>
+</view>

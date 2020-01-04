@@ -1,0 +1,71 @@
+<view class="stylelistbox">
+  <view class="bgfff borderT stylelistbox-l">
+    <block wx:for="{{styledata.styles}}" wx:for-item="item" wx:key="index">
+      <view wx:if="{{item.rmsvcHotelCategoryCommonStyleDTOList.length != 0}}" class="stylelistbox-l-typebtn" data-id="{{index}}" bindtap="bindToView">
+        <image class="iconimg" src="{{item.iconUrl}}"></image>
+        <view class="titelfont-l">{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+  <scroll-view class="stylelistbox-r stylelistbox-r2" scroll-y="true" scroll-into-view="{{toView}}" scroll-with-animation="true">
+    <block wx:for="{{styledata.styles}}" wx:for-item="item" wx:for-index="itemindex" wx:key="index">
+      <view wx:if="{{item.rmsvcHotelCategoryCommonStyleDTOList.length != 0}}" class="paddAll20 stylelistbox-r-title1" id='list-{{itemindex}}'>{{item.name}}</view>
+      <block wx:for="{{item.rmsvcHotelCategoryCommonStyleDTOList}}" wx:for-item="item2" wx:for-index="item2index" wx:key="index">
+        <view class="mgB20 bgfff stylelistbox-r-li stylelistbox-r-li2" data-infodata="{{item2}}">
+          <image class="iconimg iconimg2" src="{{item2.picUrl}}"></image>
+          <view class="stylelistbox-r-li-box-r">
+            <view class="paddTB2010 titelfont-r">{{item2.name}}</view>
+            <view class="oprodprice paddB20" wx:if="{{item2.price != '' && item2.unit != ''}}"><text>￥</text> {{item2.price}}/{{item2.unit}}</view>
+            <view class="prodnumbox">
+              <block wx:if="{{item2.prodnum > 0}}">
+                <view class="iconbtn" data-type="1" data-index1="{{itemindex}}" data-index2="{{item2index}}" bindtap="changenum"><image class="iconbtnimg" src="../../img/icon-img2.png"></image></view>
+                <view class="prodnum-font">{{item2.prodnum}}</view>
+              </block>
+              <view class="iconbtn" data-type="2" data-index1="{{itemindex}}" data-index2="{{item2index}}" bindtap="changenum"><image class="iconbtnimg" src="../../img/icon-img1.png"></image></view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  </scroll-view>
+  <view class="borderT subbox">
+    <view class="subbox-l" bindtap="showdetail">
+      <image class="detailicon" src="../../img/icon-img19.png"></image>明细
+    </view>
+    <view wx:if="{{subtype == 1}}" class="subbox-r" bindtap="subfun">提交 <block wx:if="{{prodnumtype > 0}}">({{prodnumtype}})</block></view>
+    <view wx:else class="subbox-r subnone">提交</view>
+  </view>
+</view>
+<view class="detaillistboxbg" wx:if="{{detailtype == true}}">
+  <view class="detaillistbox">
+    <view class="paddAll20 detaillistbox-top">
+      <view class="detaillistbox-top-l">
+        <image class="detailicon2" src="../../img/kfyd-img11.png"></image> 已点菜品
+      </view>
+      <view class="detaillistbox-top-r" bindtap="showdetail">
+        <image class="closebtn" src="../../img/icon-img11.png"></image>
+      </view>
+    </view>
+    <scroll-view scroll-y style="height: 84%;">
+      <block wx:if="{{prodnumtype > 0}}">
+        <block wx:for="{{styledata.styles}}" wx:for-item="item" wx:key="index">
+          <block wx:for="{{item.rmsvcHotelCategoryCommonStyleDTOList}}" wx:for-item="item2" wx:key="index">
+            <view class="paddAll20 detailbox" wx:if="{{item2.prodnum > 0}}">
+              <view class="detailbox-left">{{item2.name}}</view>
+              <view class="prodnumbox">
+                <block wx:if="{{item2.prodnum > 0}}">
+                  <view class="iconbtn" data-type="1" data-index1="{{item2.index1}}" data-index2="{{item2.index2}}" bindtap="changenum"><image class="iconbtnimg" src="../../img/icon-img2.png"></image></view>
+                  <view class="prodnum-font">{{item2.prodnum}}</view>
+                </block>
+                <view class="iconbtn" data-type="2" data-index1="{{item2.index1}}" data-index2="{{item2.index2}}" bindtap="changenum"><image class="iconbtnimg" src="../../img/icon-img1.png"></image></view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">您还未选择商品</view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

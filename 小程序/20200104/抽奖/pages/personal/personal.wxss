@@ -1,0 +1,147 @@
+/* pages/personal/personal.wxss */
+
+.personal{
+    height: 100%;
+}
+.message{
+    background: #FFDEB3;
+    font-size: 24rpx;
+    line-height: 56rpx;
+    color: #EE1E1E;
+    padding-left: 30rpx;
+    display: flex;
+    align-items: center;
+}
+.infos{
+    display: flex;
+    justify-content: space-between;
+    height: 220rpx;
+    align-items: center;
+    background: #EE1E1E;
+}
+.infos .infos_1{
+    width: 120rpx;
+    height:120rpx;
+    margin-left: 40rpx;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2rpx #fff solid;
+
+}
+.infos .infos_1 image{
+    width: 100%;
+    height: 100%;
+}
+.infos .infos_2 {
+    flex: 1;
+    padding-left: 20rpx;
+    color: #fff;
+}
+.infos .infos_2 .name{
+    font-size: 32rpx;
+    display: block;
+    margin-bottom: 6rpx;
+}
+.infos .infos_2 .counts{
+    font-size: 28rpx;
+}
+.showbutton{
+    width: 160rpx;
+    height: 80rpx;
+    font-size: 20rpx;
+}
+.infos .infos_3{
+    width: 150rpx;
+    height: 50rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+    font-size: 28rpx;
+    border: 1rpx #fff solid;
+    padding: 0;
+    background: none;
+    margin-right: 40rpx;
+}
+.extract{
+    background: #fff;
+    margin: 20rpx 0;
+}
+.extract .extract_2{
+    font-size: 28rpx;
+    height: 88rpx;
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 30rpx;
+    border-bottom: 1rpx #E5E5E5 solid;
+}
+.extract .extract_2:last-child{
+    border: none;
+}
+.perpic{
+    width: 50rpx;
+    height: 50rpx;
+}
+.pername{
+    color: #333333;
+    flex: 1;
+}
+.pernum{
+    color: #999999;
+    display: flex;
+    align-items: center;
+}
+.menus{
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    align-content: space-around;
+}
+.menus .menu-item{
+    width: 25%;
+    height: 117rpx;
+    margin-top: 52rpx;
+    text-align: center;
+    font-size: 28rpx;
+}
+.menus .menu-item:last-child{
+    margin-bottom: 52rpx;
+}
+.menus .menu-item .menu-navi{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.menus .menu-item .menuIcon{
+    width: 70rpx;
+    height: 70rpx;
+}
+.qudaoLogin{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30rpx;
+    margin: auto;
+    text-align: center;
+    width: 200rpx;
+    color: #C7C7C7;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.upgrade{
+    width: 360rpx;
+    height: 58rpx;
+    border-radius: 29rpx;
+    background: #EE1E1E;
+    color: white;
+    font-size: 28rpx;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 30rpx auto;
+}

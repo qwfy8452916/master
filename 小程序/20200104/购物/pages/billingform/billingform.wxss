@@ -1,0 +1,62 @@
+page{
+  min-height: 100%;
+  position: relative;
+}
+.inpbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.inp{
+  width: 71%;
+  font-size: 30rpx;
+  color: #999999;
+}
+.minw20{
+  min-width: 20%;
+}
+.subbtn{
+  width: 100%;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+  background: #FF9700;
+}
+.positionbox{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.viewbtn{
+  width: 40%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999999;
+  line-height: 80rpx;
+  border: 0.5px solid #e5e5e5;
+}
+.viewbtn-active{
+  background: #FF9700;
+  border-color: #FF9700;
+  color: #fff;
+}
+.radio-group{
+  font-size: 30rpx;
+  color: #333333;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.radio{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 50rpx;
+}
+.radio radio{
+  margin-right: 15rpx;
+}

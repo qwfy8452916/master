@@ -1,0 +1,10 @@
+<!-- 导航 -->
+<view class='tabbarwrap'>
+
+   <view wx:for="{{tabbardata}}" bindtap="tabevent" wx:key class='tabitem {{tabjudge[index]?"active":""}}' data-index="{{index}}" data-url="{{item.url}}">
+      <text class='iconfont {{item.icon}}'></text>
+      <view class='tabitemms'>{{item.name}}</view>
+   </view>
+
+</view>
+

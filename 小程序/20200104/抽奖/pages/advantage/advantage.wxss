@@ -1,0 +1,24 @@
+/* pages/advantage/advantage.wxss */
+.indexStyle{
+    width: 100%;
+    position: relative;
+}
+.indexImg{
+    width: 100%;
+    display: block;
+} 
+.touzi{
+    position: fixed;
+    bottom:50rpx;
+    left: 0;
+    right: 0;
+    width: 250rpx;
+    margin: auto;
+    height: 50rpx;
+    background: #EE1E1E;
+    border-radius: 25rpx;
+    text-align: center;
+    color: #fff;
+    line-height: 50rpx;
+    font-size: 28rpx;
+}

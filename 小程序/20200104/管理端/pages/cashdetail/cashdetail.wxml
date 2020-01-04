@@ -1,0 +1,46 @@
+<!--pages/cashdetail/cashdetail.wxml-->
+<view class="fillinwrap">
+   <picker class="pickbox" bindchange="bindPickerChange" range-key="name" value="{{index}}" range="{{categorydata}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left"><text class="pickeritem">提现状态</text><text wx:if="{{categorydata[index].id}}">{{categorydata[index].name}}</text>
+         <text wx:else class="placems">请选择类别</text>
+      </text>
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <view class="picker_group">
+        <text class="alignlef selectdate">选择时间</text>
+        <section class="alignlef sectionitem">
+          <picker class="pickertime" mode="date" value="{{date}}"  end="{{date2}}" bindchange="bindDateChange">  
+            <view class="picker">  
+              <text wx:if="{{date}}">{{date}}</text><text wx:else class="placems">请选择起始时间</text>  
+            </view>  
+          </picker>  
+          <text class="hengxian">——</text>  
+          <picker class="pickertime" mode="date" value="{{date2}}" start="{{date}}" end="2050-01-01" bindchange="bindDateChange2">  
+            <view class="picker">  
+              <text wx:if="{{date2}}">{{date2}}</text><text wx:else class="placems">请选择终止时间</text>  
+            </view>  
+          </picker> 
+          </section>    
+    </view>
+  </view>
+
+  <view class="recordbox" wx:for="{{getcashrecord}}" wx:key>
+     <view class="recorditem" bindtap="recorditem" data-id="{{item.id}}">
+       <view class="jine">￥{{item.withdrawalAmount}}</view>
+       <view class="time">{{item.withdrawalTime}}</view>
+     </view>
+     <text class="handle">
+        <text wx:if="{{item.status=='1'}}">待处理</text>
+        <text wx:elif="{{item.status=='2'}}">已转账</text>
+        <text wx:else="{{item.status=='3'}}">转账失败</text>
+     </text>
+  </view>
+
+
+
+

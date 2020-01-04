@@ -1,0 +1,38 @@
+<!--pages/partnership/partnership.wxml-->
+<view class="helps-part">
+    <view class="helps-head">
+        <view class="headchip1"></view>
+        <view class="headchip2"></view>
+        <view class="headchip3">客房便利店</view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">与市场上在售的酒店售货机相比优势在哪里？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">首先普通的售货机造价低廉多为塑料材质，拉低酒店客房品质，品牌酒店及星级酒店等不会使用，而住橙客房便利店为合金材质，超高的颜值获得星级酒店一致认可。再加上强大的后台软件支持是其他酒店售货机不具备的。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">设备质量怎么样，如何保修？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">设备整机、芯片、接口、软件均为公司自主研发，拥有多项发明专利及知识产权保护，提供1年保修，终身维护服务。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">设备采用何种通信方式，是否耗电？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">智能设备采用4G信号，无需链接酒店wifi，采用5伏弱电源，比手机还要省电，并且足够安全。</text>
+        </view>
+    </view>
+</view>

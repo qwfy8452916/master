@@ -1,0 +1,42 @@
+<view>
+  <block wx:if="{{datanull}}">
+    <view class='datanull-font'>
+      <image src='../../img/my-btnimg17.png' class='iconimg1' mode='widthFix'></image>
+      <text>您还没有相关订单....</text>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- 订单 -->
+    <block wx:for="{{waitpaydata}}" wx:key="index"> 
+      <view class='bgfff orderlist'>
+        <view class='orderlistbox borderB'>
+          <view class='font-name'>订单编号 {{item.orderCode}}</view>
+          <view class='font-name font-color1'>待支付</view>
+        </view>
+        <!-- 订单里的商品 -->
+        <block wx:for="{{item.orderDetailDTOS}}" wx:for-item="childitem" wx:key="index">
+          <view data-orderid="{{childitem.id}}" data-payendtime="{{item.payEndTime}}">
+            <view class='orderlistbox-c'>
+              <view class='contentbox1'>
+                <image wx:if="{{childitem.prodHotelProductDTO.prodLogoUrl!=''&&childitem.prodHotelProductDTO.prodLogoUrl!=null}}" src='{{childitem.prodHotelProductDTO.prodLogoUrl}}' class='spimg' mode='aspectFill'></image>
+                <image wx:else src='{{childitem.prodProductDTO.prodLogoUrl}}' class='spimg' mode='aspectFill'></image>
+                <view class='font-content'>
+                  <view wx:if="{{childitem.prodHotelProductDTO.prodShowName!=''&&childitem.prodHotelProductDTO.prodShowName!=null}}" class='font-name font-overflow' style='width: 100%;'>{{childitem.prodHotelProductDTO.prodShowName}}</view>
+                  <view wx:else class='font-name font-overflow' style='width: 100%;'>{{childitem.prodProductDTO.prodShowName}}</view>
+                  <view class='font-name2' style='width: 100%;'>¥ {{childitem.prodPrice}}</view>
+                </view>
+                <view class='font-name2 font-width'>x {{childitem.prodCount}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!-- 订单里的商品 -->
+        <view class='orderlistbox'>
+          <view class='font-name'>共<text class='font-color2'>{{item.prodCount}}</text>件商品 合计 <text class='font-color3'>¥{{item.totalAmount}}</text></view>
+          <view class='btnbox' data-payendtime="{{item.payEndTime}}" data-orderid="{{item.orderId}}" bindtap='waitpaydetails'>去支付</view>
+        </view>
+      </view>
+    </block>
+    <!-- 订单 -->
+  </block>
+</view>

@@ -1,0 +1,5 @@
+<!--pages/advantage/advantage.wxml-->
+<view class="indexStyle">
+    <image src="cloud://fortunestar-pics-p6drx.666f-fortunestar-pics-p6drx-1300540775/产品介绍.png" class="indexImg" mode="widthFix" />
+    <navigator hover-class="navigator-hover" open-type="switchTab" url="/pages/smartCab/smartCab" class='touzi'>立即投资</navigator>    
+</view>

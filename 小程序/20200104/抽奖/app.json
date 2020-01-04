@@ -1,0 +1,88 @@
+{
+  "pages": [
+    "pages/smartCab/smartCab",
+    "pages/order/order",
+    "pages/restMoney/restMoney",
+    "pages/equipdetail/equipdetail",
+    "pages/personal/personal",
+    "pages/shareRule/shareRule",
+    "pages/index/index",
+    "pages/investIns/investIns",
+    "pages/rebackRecords/rebackRecords",
+    "pages/records/records",
+    "pages/firstList/firstList",
+    "pages/reback/reback",
+    "pages/cabMarket/cabMarket",
+    "pages/rebackSuccess/rebackSuccess",
+    "pages/channellogin/channellogin",
+    "pages/channellink/channellink",
+    "pages/channelcode/channelcode",
+    "pages/channelpartner/channelpartner",
+    "pages/channelrecord/channelrecord",
+    "pages/introduction/introduction",
+    "pages/coupon/coupon",
+    "pages/wxcount/wxcount",
+    "pages/help/help",
+    "pages/about/about",
+    "pages/message/message",
+    "pages/partnership/partnership",
+    "pages/ChannelReg/ChannelReg",
+    "pages/convenience/convenience",
+    "pages/businessmodel/businessmodel",
+    "pages/minihotel/minihotel",
+    "pages/agreement/agreement",
+    "roundel/roundel",
+    "pages/advantage/advantage",
+    "pages/prointro/prointro",
+    "pages/earncomputed/earncomputed",
+    "pages/policy/policy",
+    "pages/myenvelope/myenvelope",
+    "pages/receiveenvelope/receiveenvelope",
+    "pages/myCommunity/myCommunity",
+    "pages/comRecord/comRecord",
+    "pages/createenvelope/createenvelope",
+    "pages/withdraw/withdraw"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#56ab4e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "智盒介绍",
+        "iconPath": "images/footer/index1.png",
+        "selectedIconPath": "images/footer/index.png"
+      },
+      {
+        "pagePath": "pages/smartCab/smartCab",
+        "text": "智盒首发",
+        "iconPath": "images/footer/touzi1.png",
+        "selectedIconPath": "images/footer/touzi.png"
+      },
+      {
+        "pagePath": "pages/cabMarket/cabMarket",
+        "text": "智盒转让",
+        "iconPath": "images/footer/touzi1.png",
+        "selectedIconPath": "images/footer/touzi.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "个人中心",
+        "iconPath": "images/footer/personnal1.png",
+        "selectedIconPath": "images/footer/personnal.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

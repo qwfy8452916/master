@@ -1,0 +1,54 @@
+/* pages/test/test.wxss */
+page{background: #f6f6f6;}
+.wrap{width: 100%;padding: 0 4%;box-sizing: border-box;
+background: #fff;}
+
+.hangtiem{overflow: hidden;padding: 0;box-sizing: border-box;
+}
+.hangtiem .titlename{font-size: 36rpx;color: #ff9700;padding: 30rpx 0;
+border-bottom:1px solid #e5e5e5;}
+/* .hangtiem .iconfont{margin-right: 15rpx;} */
+.inputwk{overflow: hidden;padding: 30rpx 0;}
+.hangtiem .iteminput{font-size: 32rpx;height: 30rpx;
+line-height: 30rpx;padding-left: 80rpx;box-sizing: border-box;}
+.iotcard{position: relative;background: #fafafa;margin-top: 80rpx;
+margin-bottom: 30rpx;border: 1px solid #dbdbdb;}
+
+.iotcard .iconsimqia{font-size: 60rpx;position: absolute;left: 10rpx;top: 22rpx;
+color: #cecece;}
+.iotcard .sweepwrap{position: absolute;right:0;top: 0;padding: 0 35rpx;
+z-index: 9;height: 100%;vertical-align: middle;display: flex;align-items:center;
+text-align: center;background: #ff9700;}
+.iotcard .iconsaoma1{
+font-size: 40rpx;color: #fff;}
+.tiptext{color: #ff9100;font-size: 24rpx;}
+.tiptext .icongantanhao{margin-right: 10rpx;position: relative;top:3rpx;}
+
+
+.pickbox{
+    padding: 30rpx 4% 30rpx 0;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+    box-sizing: border-box;
+    border: 1px solid #dbdbdb;
+    margin-bottom: 30rpx;
+}
+.pickbox .pickeritem{display: inline-block;width:115rpx;text-align: left;
+margin-right: 20rpx;}
+.alignlef{float: left;}
+.alignlef .iconxuanzeleixing{margin-left: 25rpx;color: #cecece;
+margin-right: 20rpx;}
+.alignlef .jianjv{margin-left: 30rpx;}
+
+.alignrig{float: right;}
+.placems{color: #cecece;font-size: 32rpx;}
+
+.wraptesting{width: 100%;box-sizing: border-box;padding: 0 4%;box-sizing: border-box;
+overflow: hidden;margin-bottom: 30rpx;margin-top: 30rpx;position: fixed;left: 0;bottom: 115rpx;}
+.wraptesting .testingniu{width: 100%;height: 88rpx;line-height: 88rpx;text-align: center;
+background: #ff9700;color: #fff;font-size: 32rpx;border-radius: 10rpx;}
+
+
+

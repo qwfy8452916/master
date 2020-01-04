@@ -1,0 +1,38 @@
+<!--pages/partnership/partnership.wxml-->
+<view class="helps-part">
+    <view class="helps-head">
+        <view class="headchip1"></view>
+        <view class="headchip2"></view>
+        <view class="headchip3">掌上酒店</view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">什么是掌上酒店服务量化？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">每个酒店提供哪些服务其实客人并不完全清楚，客房宝把所有酒店服务一键量化，客人可以在手机上轻松使用。例如需要毛巾、叫醒、点餐送餐、SPA等等均可在手机上发送指令，酒店前台及工作人员能够实时收到指令并提供服务。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">客人如何购买酒店智盒的商品？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">客人通过微信或者支付宝扫描即可在手机上购买商品，付款后对应格门自动开启。</text>
+        </view>
+    </view>
+    <view class="helpQA">
+        <view class="question">
+            <text class="ask">问：</text>
+            <text class="askC">客人如何购买酒店商城的商品？</text>
+        </view>
+        <view class="answer">
+            <text class="respnse">答：</text>
+            <text class="respnseC">酒店商城出售本地特产及酒店想卖的任何东西，可选择配送至酒店客房或者直接快递到家。</text>
+        </view>
+    </view>
+</view>

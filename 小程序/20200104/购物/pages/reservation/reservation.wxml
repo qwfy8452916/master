@@ -1,0 +1,183 @@
+<view style="padding-bottom: {{isIpx?'160rpx':'120rpx'}};">
+  <view class='swiperbox'>
+    <swiper
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      circular="{{circular}}"
+    >
+      <swiper-item class="swiperitembox">
+        <image src="{{hotelAddImagesfirst.url}}" class="slide-image" mode='widthFix' />
+        <view class='jdinfobox'>
+          <view class='banner-img' bindtap="hotelstoryfun"><image src='../../img/index-img1.png' mode='widthFix'></image></view>
+          <view class='hotelinfobox'>
+            <text class='jd-name' style="margin-top: {{windowHeight > 700?'160rpx':'196rpx'}};">{{hotelName}}</text>
+            <view style="margin-bottom: 20rpx;">
+              <text wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class='iconfont icon-star_full stars' style='color: {{themecolor.skintone}};'></text>
+            </view>
+            <view class='labellist'>
+                <view class='labelbox' wx:if="{{hotelDecorationYear != ''}}">{{hotelDecorationYear}}年装修</view>
+                <view class='labelbox' wx:if="{{isHasPark==1}}">停车位</view>
+                <view class='labelbox' wx:if="{{hotelStyle != ''}}">{{hotelStyle}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+      <block wx:for="{{hotelAddImages}}" wx:for-item="item" wx:key='index'>
+        <swiper-item class="swiperitembox">
+          <image src="{{item.url}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="sharebtnbox" bindtap="sharefun">
+      <image class="shareicon" src="../../img/shareimg.png"></image>分享
+    </view>
+  </view>
+  <view class='jdinfo-bg'>
+    <view class='jdinfo'>
+      <view class='jdinfo-position'>
+        <!-- <text class='iconfont icon-biaodiandidian position-img' style='color: {{themecolor.skintone}};'></text> -->
+        <image src="../../img/position-img.png" class="position-img"></image>
+        <text class='position-text'>{{city}}{{area}}{{hotelAddress}}</text>
+      </view>
+    </view> 
+  </view>
+  <view class="timebox" bindtap='selecttimefun'>
+    <view class="timebox-w">
+      <text class="font-text">入住时间</text>
+      <text class="font-text2">{{starTime}} {{starweek}}</text>
+    </view>
+    <view class="timebox-w2">
+      <text class="font-textbox">共<text class="font-color1"> {{day}} </text>晚</text>
+    </view>
+    <view class="timebox-w">
+      <text class="font-text">离店时间</text>
+      <text class="font-text2">{{endTime}} {{endweek}}</text>
+    </view>
+  </view>
+  <block wx:for="{{roominfo}}" wx:for-item="item" wx:key="index">
+    <view class="reselistbox-top">
+      <view class="reseimg" data-type="1" data-id="{{item.id}}" data-price="{{item.lowestPrice}}" bindtap="detailfun"><image src="{{item.imageListUrl}}"></image></view>
+      <view class="reseT-R">
+        <view data-id="{{item.id}}" data-type="1" data-price="{{item.lowestPrice}}" bindtap="detailfun" style="height: 200rpx;">
+          <view class="font-rese1">{{item.typeName}}</view>
+          <view class="font-rese2">{{item.roomSize}}㎡ | {{item.bedTypeName}} | {{item.bedWidth}}m</view>
+          <view class="labelbox2" wx:if="{{item.bookRoomResourceDTOS[0].presentList != '' && item.bookRoomResourceDTOS[0].presentList.length > 0 && item.bookRoomResourceDTOS[0].presentList != null}}">
+            <text class="lifont">礼</text>
+            <block wx:for="{{item.bookRoomResourceDTOS[0].presentList}}" wx:for-item="itempresent" wx:key="index">
+              <text>{{itempresent}}</text>
+            </block>
+          </view>
+          <!-- <view class="labelbox2 labelbox3">
+            <text>￥20元商城券</text><text>￥10元商城券</text>
+          </view> -->
+        </view>
+        <view class="flexbox reseT-R-b">
+          <view class="font-rese4" style="color: {{themecolor.skintone}};"><text wx:if="{{day>1}}">均</text> ¥ {{item.lowestPrice}} <text class="font-rese5">起</text></view>          
+        </view>
+      </view>
+      <view class="btnbox" data-indexnum="{{index}}" data-type="{{item.type}}" bindtap="togglebtm"><image class="btnbox-image {{item.type?'btnbox-image2':'btnbox-image1'}}" src="../../img/icon-img13.png"></image></view>
+    </view>
+    <block wx:for="{{item.bookRoomResourceDTOS}}" wx:for-item="item2" wx:key="index">
+      <view class="reselistbox-btm {{item.type?'showbtm':'hidebtm'}}">
+        <view class="reselistbox-btm-li">
+          <view data-id="{{item2.id}}" data-type="2" data-price="{{item2.averagePrice}}" data-fullflag="{{item2.fullFlag}}" bindtap="detailfun" style="width: 55%;">
+            <view class="font-rese1">
+              {{item2.resourceName}} <block wx:if="{{item2.isHourRoom == 1}}">- 钟点房</block>
+              <block wx:if="{{item2.breakfastFlag == 0}}">(不含早餐)</block>
+              <block wx:if="{{item2.breakfastFlag == 1}}">(单早)</block>
+              <block wx:if="{{item2.breakfastFlag == 2}}">(双早)</block>
+            </view>
+            <view class="font-rese2">{{item.roomSize}}㎡ | {{item.bedTypeName}} | {{item.bedWidth}}m | <block wx:if="{{item2.isCancellable == 0}}">不可取消</block></view>
+            <view class="labelbox2" wx:if="{{item2.presentList != '' && item2.presentList.length > 0 && item2.presentList != null}}">
+              <text class="lifont">礼</text>
+              <block wx:for="{{item2.presentList}}" wx:for-item="itempresent" wx:key="index">
+                <text>{{itempresent}}</text>
+              </block>
+            </view>
+            <!-- <view class="labelbox2 labelbox3">
+              <text>￥20元商城券</text><text>￥10元商城券</text>
+            </view> -->
+            <view class="font-time" wx:if="{{item2.isHourRoom == 1}}">可住时段{{item.hourRoomStartTime}}-<block wx:if="{{item.hourRoomEndTime == '00:00'}}">24:00</block><block wx:else>{{item.hourRoomEndTime}}</block>,连住{{item.hourRoomDuration}}小时</view>
+          </view>
+          <view class="flexbox-r">
+            <view class="font-rese4" style="color: {{themecolor.skintone}};"><text wx:if="{{day>1}}">均</text>¥ {{item2.averagePrice}}</view>
+            <block wx:if="{{item2.fullFlag == 0}}">
+              <view class="btnbox2" style="border-color: {{themecolor.skintone}};" data-id="{{item2.id}}" bindtap="formfun">
+                <text class="btnbox2-text" style="color: #fff;background: {{themecolor.skintone}};">预订</text>
+                <text wx:if="{{isSupportEn == 1}}" class="btnbox2-text" style="color: {{themecolor.skintone}};background: #fff;">Book</text>
+              </view>
+            </block>
+            <block wx:else>
+              <view class="btnbox2" style="border-color: #cecece;">
+                <text class="btnbox2-text" style="color: #fff;background: #cecece;">预订</text>
+                <text wx:if="{{isSupportEn == 1}}" class="btnbox2-text" style="color: #cecece;background: #fff;">Book</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <view class='footerbox' style="padding-top: {{isSupportEn == 1?'17rpx':'7rpx'}};padding-bottom: {{isSupportEn == 1?'18rpx':'8rpx'}};">
+    <scroll-view class="tablist-box" scroll-x="true" enable-flex="true">
+      <view class='footerbox-btn' bindtap='index' wx:if="{{minibar != 0 || convenienceStore != 0}}" style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-yonghuzhongxin-shouye' style='color: #999999;font-size: 45rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>迷你吧</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Home Page</view>
+      </view>
+      <block wx:for="{{hotelFuncDTOS1}}" wx:for-item="item" wx:key="index">
+        <view class='footerbox-btn func-box' data-id="{{item.id}}" bindtap='hotelmall' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+          <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+          <view class='footerbox-btnname' style='color: #999999;'>{{item.funcCnName}}</view>
+          <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>{{item.funcEnName}}</view>
+        </view>
+      </block>
+      <view wx:if="{{roomService != 0 && shareuser == ''}}" class='footerbox-btn' bindtap='roomservice' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-zuanshi' style='color: #999999;font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>客房服务</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Room Service</view>
+      </view>
+      <view wx:if="{{isSupportRoomAlloc == 1}}" class='footerbox-btn' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-xieyiguanli' style='color: {{themecolor.skintone}};font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: {{themecolor.skintone}};font-weight: 800;'>客房协议价</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: {{themecolor.skintone}};font-weight: 800;'>Reservation</view>
+      </view>
+      <view class='footerbox-btn' bindtap='mypage' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-yonghu_fill' style='color: #999999;font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>我的</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Mine</view>
+      </view>
+      <block wx:if="{{hotelFuncDTOS2.length != 0}}">
+        <block wx:for="{{hotelFuncDTOS2}}" wx:for-item="item" wx:key="index">
+          <view class='footerbox-btn func-box' data-id="{{item.id}}" bindtap='hotelmall' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+            <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+            <view class='footerbox-btnname' style='color: #999999;'>{{item.funcCnName}}</view>
+            <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>{{item.funcEnName}}</view>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+
+  <!-- 引用组件 -->
+  <rili bindmyevent="onMyEvent" id='rili' timedata="{{timedataval}}"></rili>
+</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>
+
+<view wx:if="{{showtype == true}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">推荐一家酒店给你，{{hotelName}}</view>
+    <image src="{{hotelAddImagesfirst.url}}" class="imgbox" mode="widthFix"></image>
+    <view class="sharebtnbox2">
+      <view class="btn" bindtap="closefun">取消</view>
+      <button open-type="share" data-type="1" class="btn btncss">分享</button>
+    </view>
+  </view>
+</view>
+<block wx:if="{{shareObj == 3 && regbagact_type == 0}}">
+  <redbagact shareUserAvatarUrl='{{shareUserAvatarUrl}}' shareUserNickName='{{shareUserNickName}}' redbagtype='{{redbagtype}}'></redbagact>
+</block>
+<block wx:if="{{act_newcomer != '' && act_newcomer.isOpen == 0 && (shareObj != 3 || regbagact_type != 0)}}">
+  <newcomer actAdImageUrl='{{act_newcomer.actAdImageUrl}}' actImageUrl='{{act_newcomer.actImageUrl}}' actId="{{act_newcomer.id}}"></newcomer>
+</block>

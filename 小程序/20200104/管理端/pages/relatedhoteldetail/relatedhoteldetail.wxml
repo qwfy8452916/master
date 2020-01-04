@@ -1,0 +1,34 @@
+<!--pages/relatedhoteldetail/relatedhoteldetail.wxml-->
+<view>
+  <view class="hotelbg" >
+    <view>{{hotelName}}</view>
+  </view>
+  <block wx:for="{{cabList}}" wx:key>
+    <view class="cabinfo">
+      <view class="cabtop">
+        <view class="cabstatus">
+          <view class="cabnum">{{item.floorAndRoom}}</view>
+          <view wx:if="{{hotelAs == 8 && item.transferStatus == 0}}" class="modate">转让中，转让日期{{item.transferTime}}</view>
+        </view>
+        <view wx:if="{{hotelAs == 8 && item.transferStatus == 0}}" class="mobtn cancel" data-cid="{{item.id}}" bindtap="makeoverCancel">取消转让</view>
+        <view wx:if="{{hotelAs == 8 && item.transferStatus != 0}}" class="mobtn ensure" data-cid="{{item.id}}" data-frcode="{{item.floorAndRoom}}" bindtap="makeoverCab">转让</view>
+      </view>
+      <view class="cabbottom">
+        <view class="putindate">投放日期 {{hotelAs == 8 ? item.createdAt:item.oprCityCreateAt}}</view>
+        <view class="openapplet" data-cabcode="{{item.cabCode}}" bindtap="jumpapplet">
+          <view>打开小程序</view>
+          <image src="../../img/icon/right.png" alt="right" class="righticon"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view wx:if="{{isShowMsg}}" class="authmask">
+    <view class="authbg">
+      <view class="closemsg">是否确认取消转让？</view>
+      <view class="msgclick">
+        <button class="msgcancel" bindtap="msgCancel">取消</button>
+        <button class="msgensure" bindtap="msgEnsure">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

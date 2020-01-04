@@ -1,0 +1,19 @@
+<block wx:if="{{invType == 101}}"><!-- 房费票 -->
+  <view class="mgB20 paddLR03 bgfff">
+    <view class="borderB inpbox">
+      <view class="minw20 font30 mgR20">手机号码</view>
+      <input class='inp' type="number" placeholder-style='color: #cecece;' placeholder="请填写手机号码" bindinput='mobilefun'></input>
+    </view>
+    <view class="borderB inpbox bordernone">
+      <view class="minw20 font30 mgR20"><text decode="{{true}}">备&ensp;&ensp;&ensp;&ensp;注</text></view>
+      <textarea class='inp' maxlength="50" auto-height placeholder="请填写备注(50字内)" placeholder-style="color: #cecece;" bindinput="remarkfun" />
+    </view>
+  </view>
+  <view class="subbtn positionbox" bindtap="subformfun">确定</view>
+</block>
+<block wx:if="{{invType == 1}}"><!-- 普票 -->
+  <include src="ordinary.wxml" />
+</block>
+<block wx:if="{{invType == 2}}"><!-- 专票 -->
+  <include src="dedicated.wxml" />
+</block>

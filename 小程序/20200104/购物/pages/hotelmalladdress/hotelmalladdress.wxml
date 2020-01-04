@@ -1,0 +1,60 @@
+<block wx:if="{{receipttype == true}}">
+  <view class='formview'>
+    <view class='liview'>
+      <view class='inpname'>收货人</view>
+      <input class='inpval' type='text' value='{{consignee}}' placeholder-style="color: #CECECE" placeholder="请输入收货人姓名" bindinput="consigneefun" />
+    </view>
+    <view class='liview'>
+      <view class='inpname'>手机号码</view>
+      <input class='inpval' type='number' value='{{consigneePhone}}' placeholder-style="color: #CECECE" placeholder="请输入收货人手机号码" bindinput="consigneePhonefun" />
+    </view>
+    <view class='liview'>
+      <view class='inpname'>地区</view>
+      <picker class='inpval' mode="region" bindchange="bindRegionChange" value="{{region}}">
+        <view wx:if="{{regiontype == true}}" class='placeholder-font'>请选择收货人地区</view>
+        <view wx:else class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+      </picker>
+    </view>
+    <view class='liview'>
+      <view class='inpname'>详细地址</view>
+      <input class='inpval' type='text' value='{{address}}' placeholder-style="color: #CECECE" placeholder="请输入收货人详细地址" bindinput="addressfun" />
+    </view>
+  </view>
+  <block wx:if="{{changetype == 0}}">
+    <view wx:if="{{subtype == true}}" class='subbtn' data-type='1' bindtap='subfun'>确定</view>
+    <view wx:else class='subbtn' style="background: #cecece">已提交</view>
+  </block>
+  <view wx:elif="{{changetype == 1}}" class='footbtnbox'>
+    <view bindtap='cancelfun'>取消</view>
+    <view wx:if="{{subtype == true}}" data-type='1' bindtap='subfun'>确定</view>
+    <view wx:else style="background: #cecece">已提交</view>
+  </view>
+  <view wx:elif="{{changetype == 2}}" class='footbtnbox'>
+    <view bindtap='cancelfun'>取消修改</view>
+    <view wx:if="{{subtype == true}}" data-type='2' bindtap='subfun'>确定修改</view>
+    <view wx:else style="background: #cecece">已提交</view>
+  </view>
+</block>
+<block wx:else>
+  <block wx:for="{{receiptlist}}" wx:for-item="item" wx:key="index">
+    <view class='libox'>
+      <view class='libox-t'>
+        <view class='libox-t-l' data-id='{{item.id}}' bindtap='backfun'>
+          <view class='font-text1'>{{item.consignee}} {{item.consigneePhone}}</view>
+          <view class='font-text2'>{{item.provinceName}}{{item.cityName}}{{item.areaName}}</view>
+          <view class='font-text2'>{{item.address}}</view>
+        </view>
+        <view class='libox-t-r' data-index="{{index}}" bindtap='changeaddress'>编辑</view>
+      </view>
+      <view class='libox-b'>
+        <view class='libox-b-l' data-id="{{item.id}}" bindtap='changedefault'>
+          <image wx:if="{{item.isDefault == 1}}" src='../../img/icon-img5.png' class='iconimg'></image>
+          <image wx:else src='../../img/icon-img7.png' class='iconimg'></image>
+          默认地址
+        </view>
+        <view class='libox-b-r' class='delete' data-id="{{item.id}}" bindtap='deletefun'>删除</view>
+      </view>
+    </view>
+  </block>
+  <view class='subbtn' bindtap='addAddress'>添加新地址</view>
+</block>

@@ -1,0 +1,23 @@
+<!--pages/shareRule/shareRule.wxml-->
+<view class="rules">
+    <view class="ruleHead marginItem">分享赚钱</view>
+    <view class="first marginItem">
+        <text>1.任何人分享酒店智盒信息后，如被分享者购买，分享者即可</text>
+        <text style="color:#EE1E1E">获得每套100元(8格版)、每套80元（5格款）的现金奖励</text>
+    </view>
+    <view class="second">
+        <view class="marginItem">2.当分享购买累计满10套后，分享者可申请兼职财富推客身份，享有以下权益：</view>
+        <view class="marginItem">
+            <text>A.推广奖 </text>
+            <text class="itemColor">直接发展财富合伙人继续分别获得每套100元、80元的推广奖现金奖励。</text>
+        </view>
+        <view class="marginItem">
+            <text>B.团队奖 </text>
+            <text class="itemColor">财富推客可发展兼职团队，对兼职团队成员推广产生的购买（不含下级直接购买），财富推客获得8格款每套60元、5格款每套50元的团队奖。</text>
+        </view>
+        <view class="marginItem">
+            <text>C.特别福利 </text>
+            <text class="itemColor">通过直接推广或团队推广，业绩超过1000套的财富推客，有机会参加公司在海内外举行的年会盛典，并有机会享有公司的股权激励。</text>
+        </view>
+    </view>
+</view>

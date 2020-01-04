@@ -1,0 +1,14 @@
+<!--pages/myCommunity/myCommunity.wxml-->
+<view class="myCommunity" wx:for="{{CommunityList}}" wx:key="index">
+    <view class="com_1">
+        <text class="nickname">{{item.cabTypeName}}×{{item.cabinetQuantity}}</text>
+        <text class="investTime">{{item.payTime}}</text>
+    </view>
+    <view class="cabNum">￥ {{item.actualPayAmount}}</view>
+</view>
+<navigator wx:if="{{CommunityList[0]}}" url="/pages/rebackRecords/rebackRecords" class="rebackRecords" hover-class="navigator-hover">
+    退款记录
+</navigator>
+<view wx:if="{{ifshow}}" class="none">
+    暂无投资记录
+</view>

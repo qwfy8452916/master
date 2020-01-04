@@ -1,0 +1,49 @@
+/* pages/divideintodetail/divideintodetail.wxss */
+.fillinwrap{
+  width: 100%;
+  padding-left: 4%;
+  box-sizing: border-box;
+  border-bottom: 20rpx solid #f6f6f6;
+  background: #fff;
+}
+
+.pickbox{
+    padding: 30rpx 4% 30rpx 0;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+    box-sizing: border-box;
+}
+.pickbox .pickeritem{display: inline-block;width:115rpx;text-align: left;
+margin-right: 20rpx;}
+.alignlef{float: left;}
+.alignrig{float: right;}
+.placems{color: #cecece; }
+
+.picker_group{overflow: hidden;vertical-align: middle;
+font-size: 28rpx;clear: both;padding: 30rpx 4% 30rpx 0;
+box-sizing: border-box;}
+.pickertime{display: inline-block;}
+.selectdate{margin-right: 20rpx;}
+.sectionitem{overflow: hidden;display: inline-block;width: (calc(100% - 115rpx))}
+.hengxian{color: #666;margin:0 20rpx;}
+
+.detailedlist{overflow: hidden;position: absolute;top: 320rpx;background: #fff;}
+.detailedlist .detailitem{width: 100%;padding: 28rpx 4%;box-sizing: border-box;
+border-bottom: 1px solid #e5e5e5;}
+.detailitem .blockitem{overflow: hidden;font-size: 28rpx;margin-bottom: 22rpx;}
+.blockitem .typebeijing{padding: 5rpx 16rpx;box-sizing: border-box;
+color: #fff;border-radius: 8rpx;font-size: 20rpx;
+margin-right: 16rpx;}
+.blockitem .fencheng01{background: #0066cc;}
+.blockitem .fencheng02{background: #22ac38;}
+.blockitem .fencheng03{background: #8957a1;}
+.blockitem .partnertype{font-size: 24rpx;}
+.blockitemkey{color: #999;}
+.blockitemval{color: #999;}
+
+.exportbox{width: 100%;height: 98rpx;line-height: 98rpx;text-align: center;
+font-size: 32rpx;background: #0576db;color: #fff;position: fixed;left: 0;bottom: 0;}
+
+
