@@ -1,0 +1,45 @@
+/* pages/checkbox/checkbox.wxss */
+.checkbox{
+  margin-right: 20rpx;
+}
+
+/* checkbox未选中时样式 */
+
+checkbox .wx-checkbox-input{
+
+border-radius: 3rpx;
+
+height: 26rpx;
+
+width: 26rpx;
+
+margin-top: -4rpx;
+background: #e5e5e5;
+
+/* 自定义样式.... */
+
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+
+background-color: #ff9100;
+
+border: 1rpx solid #ff9100;
+color: #fff;
+
+/* 自定义样式.... */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

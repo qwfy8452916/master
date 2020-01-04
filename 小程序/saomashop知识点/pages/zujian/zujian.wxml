@@ -1,0 +1,9 @@
+<!--pages/zujian/zujian.wxml-->
+<view class="djevent {{getdata?'changecolor':''}}" bindtap="passFather">点击</view>
+
+
+
+
+
+
+

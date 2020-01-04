@@ -1,0 +1,5 @@
+/* pages/zujianFather/zujianFather.wxss */
+.zujianFather{
+  text-align: center;
+  background: red;
+}

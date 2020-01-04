@@ -1,0 +1,76 @@
+<!--pages/cablayout/cablayout.wxml-->
+<view class="wrap">
+   <view class="colite color1">
+     <view class="rowite">1</view>
+     <view class="rowite">2</view>
+     <view class="rowite">3</view>
+   </view>
+   <view class="colite color2">
+      <view class="rowite">4</view>
+      <view class="rowite">5</view>
+      <view class="rowite">6</view>
+   </view>
+   <view class="colite color3">
+      <view class="rowite">7</view>
+      <view class="rowite">8</view>
+   </view>
+</view>
+
+
+<!-- <view class="wrap" style="margin-top:50rpx">
+   <view class="colite color1">
+     <view class="rowite">1</view>
+     <view class="rowite">2</view>
+     <view class="rowite">3</view>
+   </view>
+   <view class="colite color2">
+      <view class="rowite">4</view>
+      <view class="rowite">5</view>
+      <view class="rowite">6</view>
+   </view>
+   <view class="colite color3">
+      <view class="rowite">7</view>
+      <view class="rowite">8</view>
+   </view>
+</view> -->
+
+
+
+
+
+<!-- <view class="wrap2">
+   <view class="colite color1">
+     <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='a'}}">{{item.name}}</view>
+     <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='d'}}">{{item.name}}</view>
+     <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='f'}}">{{item.name}}</view>
+   </view>
+   <view class="colite color2">
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='b'}}">{{item.name}}</view>
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='e'}}">{{item.name}}</view>
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='h'}}">{{item.name}}</view>
+   </view>
+   <view class="colite color3">
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='c'}}">{{item.name}}</view>
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='i'}}">{{item.name}}</view>
+   </view>
+</view> -->
+
+
+<view class="wrap2">
+   <view class="colite color1">
+     <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='a'}}">{{item.name}}</view>
+     <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='d'}}">{{item.name}}</view>
+     <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='f'}}">{{item.name}}</view>
+   </view>
+   <view class="colite color2">
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='b'}}">{{item.name}}</view>
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='e'}}">{{item.name}}</view>
+      <view class="rowite" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='h'}}">{{item.name}}</view>
+   </view>
+   <view class="colite color3">
+      <view class="rowite hebing1" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='c'}}">{{item.name}}</view>
+      <view class="rowite hebing2" wx:for="{{cabinet}}" data-index="{{index}}" wx:key wx:if="{{item.name=='i'}}">{{item.name}}</view>
+   </view>
+</view>
+
+

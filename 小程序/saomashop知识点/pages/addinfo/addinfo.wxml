@@ -1,0 +1,15 @@
+<!--pages/addinfo/addinfo.wxml-->
+<view class="prodinfo">
+   <view>产品信息<text class="delbtn">删除</text></view>
+   <view class="hang">
+      <text class="title">产品名称</text>
+      <input class="inputtext" placeholder="请输入产品名称"></input>
+   </view>
+   <view class="hang">
+     <view>上传产品实物</view>
+     <view>
+     <view bindtap='bindChooiceProduct' class='upbtn'>上传</view>
+      <view class='upfont'>(最多上传3张)</view>
+    </view>
+   </view>
+</view>

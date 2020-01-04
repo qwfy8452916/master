@@ -1,0 +1,24 @@
+/* pages/cablayout/cablayout.wxss */
+.wrap{overflow: hidden;display: flex;}
+.wrap2{overflow: hidden;display: flex;margin-top: 50rpx;}
+.colite{flex-grow: 1;height: 400rpx;
+display: flex;
+flex-direction: column;}
+.color1{background: #d7a7f3;}
+.color2{background: #8ba5f9;}
+.color3{background: #f55827;}
+.colite .rowite{
+  background: #1D3159;
+  color: white;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:white 1px solid;}
+
+  .colite .hebing1{
+    flex: 2.04 !important;
+  }
+
+
+

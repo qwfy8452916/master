@@ -1,0 +1,3 @@
+/* pages/wifi/wifi.wxss */
+.connect{text-align: center;background:#0a2639;color: #fff;
+padding: 5px 0;}

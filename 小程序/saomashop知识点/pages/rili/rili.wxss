@@ -1,0 +1,42 @@
+/* pages/rili/rili.wxss */
+
+
+
+.timebox{
+  display: flex;
+  background: #fff;
+  padding: 25rpx 3%;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+.timebox-w{
+  width: 35%;
+}
+.timebox-w2{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.timebox-w text{
+  display: block;
+  width: 100%;
+}
+.font-text{
+  font-size: 27rpx;
+  color: #333333;
+  padding-bottom: 10rpx;
+}
+.font-text2{
+  font-size: 27rpx;
+  color: #10BBBB;
+}
+
+
+
+
+
+
+

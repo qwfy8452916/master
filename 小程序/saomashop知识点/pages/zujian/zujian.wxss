@@ -1,0 +1,10 @@
+/* pages/zujian/zujian.wxss */
+.djevent{
+  text-align: center;
+  margin-top: 10px;
+  background: blue;
+  color: #fff;
+}
+.changecolor{
+  background: green;
+}

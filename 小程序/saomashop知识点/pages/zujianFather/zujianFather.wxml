@@ -1,0 +1,5 @@
+<!--pages/zujianFather/zujianFather.wxml-->
+<view class="zujianFather" bindtap="fatherevent">与子组件联系</view>
+
+<zujian id="zujian" bind:myData="zujianFather">
+</zujian>

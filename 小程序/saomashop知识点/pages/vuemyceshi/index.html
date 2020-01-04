@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/m-publicrem.new.css">
+    <link rel="stylesheet" href="css/m-reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.1/lib/index.css">
+    <script type="text/javascript" src="js/vue/vue.js"></script>
+    <script type="text/javascript" src="js/axios/axios.min.js"></script>
+    
+    <script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.1/lib/vant.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
+
+    <title>立即入驻</title>
+    
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="pagetitlewrap">
+            <i class="iconfont returnicon">&#xe605;</i>
+            <span class="ruzhutext">立即入驻</span>
+        </div>
+        <div class="tiptext"><i class="iconfont laba">&#xe62a;</i>入驻供应商需支付1000元保证金</div>
+        <div class="basicinfo">基本信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">联系人</span><input class="shuru" type="text" placeholder="请输入联系人姓名">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">手机号码</span><input class="shuru" type="text" placeholder="请输入手机号">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">短信验证码</span><input class="shuru testcode" type="text" placeholder="请输入短信验证码">
+                <span class="getcode">获取验证码</span>
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">职&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp务</span><input class="shuru" type="text" placeholder="请输入您的职务">
+            </div>
+        </div>
+        <div class="basicinfo">公司信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">类&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp型</span>
+                <div class="radiowrap">
+                    <el-radio v-model="type" label="1">企业</el-radio>
+                    <el-radio v-model="type" label="2">个人</el-radio>
+                </div>
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle credittitle">统一社会信用代码</span><input class="shuru creditshuru" type="text" placeholder="请输入统一社会信用代码">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">公司名称</span><input class="shuru" type="text" placeholder="请输入公司名称">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">供应商类型</span>
+                <div class="radiowrap">
+                    <el-radio v-model="suppertype" label="1">工厂</el-radio>
+                    <el-radio v-model="suppertype" label="2">品牌商</el-radio>
+                    <el-radio v-model="suppertype" label="3">代理商</el-radio>
+                </div>
+            </div>
+
+            <div class="hangitem">
+                <div class="uploadtitle">上传营业执照</div>
+                <el-upload :action="uploadUrl" list-type="picture-card" multiple :limit="3"
+                :on-exceed="(file,fileList,index)=>{return handleExceed(file,fileList,'01')}" 
+                :on-success="(res,file,fileList,index)=>{return handleAvatarSuccess(res,file,fileList,'01')}" 
+                :file-list="CertificatesPic"
+                :on-error="(file,fileList,index)=>{return imgUploadError(file,fileList,'01')}"
+                :on-remove="(file,fileList,index)=>{return handleRemove(file,fileList,'01')}">
+                <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+    
+
+            <div class="hangitem" @click="choseAddress(1)">
+                <span class="hangtitle">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp区</span><input v-model="addressCity" disabled class="shuru" type="text" placeholder="请选择地区"><i class="iconfont selecticon">&#xe697;</i>
+            </div>
+
+            <div class="hangitem">
+                <span class="hangtitle">公司地址</span><input class="shuru" type="text" placeholder="请输入公司地址">
+            </div>
+       
+        </div>
+        <div class="basicinfo">产品信息</div>
+        <div class="textwrap">
+            <div class="hangitem" @click="choseAddress(2)">
+                <span class="hangtitle">供应区域</span><input v-model="addressCity2" disabled class="shuru" type="text" placeholder="请选择供应区域"><i class="iconfont selecticon">&#xe697;</i>
+            </div>
+            <div class="addresswrap">
+                <div class="hangitem addresshang" v-for="(item,index) in showselectaddress">
+                     <span class="addressdet">{{item.shengname}}{{item.shiname}}{{item.quname}}</span><i class="iconfont deladdress" @click="deladdress(index)">&#xe612;</i>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- 产品信息 -->
+        <div class="prodwrap" v-for="(item,prodindex) in prodinfo">
+             <div class="prodtitle">
+                 <span class="prodtitleleft">产品信息{{prodindex+1}}</span>
+                 <i class="iconfont prodtitleright" @click="delprod(prodindex)">&#xe615;</i>
+             </div>
+             <div class="hangitem">
+                <span class="hangtitle">产品名称</span><input class="shuru" v-model="item.prodname" type="text" placeholder="请输入产品名称">
+            </div>
+            <div class="hangitem">
+                <div class="uploadtitle">上传产品实物图</div>
+                    <el-upload :action="uploadUrl" list-type="picture-card" multiple :limit="3"
+                    :on-exceed="(file,fileList,index)=>{return handleExceed(file,fileList,prodindex)}" 
+                    :on-success="(res, file, fileList,index)=>{return handleAvatarSuccess(res, file, fileList,prodindex)}" 
+                    :file-list="item.fileList"
+                    :on-error="(file,fileList,index)=>{return imgUploadError(file,fileList,prodindex)}"
+                    :on-remove="(file,fileList,index)=>{return handleRemove(file,fileList,prodindex)}">
+                    <i class="el-icon-plus"></i>
+                    </el-upload>
+                    <el-dialog :visible.sync="dialogVisible">
+                        <img width="100%" :src="dialogImageUrl" alt="">
+                    </el-dialog>
+            </div>
+        </div>
+        <div class="addwrap" @click="addprod">
+            <i class="iconfont addniuicon">&#xe602;</i>添加产品信息
+        </div>
+        <!-- 产品信息 -->
+
+        <div class="textwrap">       
+            <div class="hangitem">
+                <span class="hangtitle">支持发票</span>
+                <div class="radiowrap">
+                    <el-radio v-model="invoice" label="1">不支持</el-radio>
+                    <el-radio v-model="invoice" label="2">普票</el-radio>
+                    <el-radio v-model="invoice" label="3">专普票</el-radio>
+                </div>
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle invoicetitle">商品销售发票税率</span><input class="shuru shuruinvoice" type="text" placeholder="请输入商品销售发票税率">
+            </div>
+        </div>
+        <div class="basicinfo">支付信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">诚意金(元)</span><span class="shuru deposit">￥1000.00</span>
+            </div>
+        </div>
+
+
+        <div class="paywrap" @click="payevent">支付</div>
+
+
+
+        <!--选择地址-->
+		<div class="deleteShadow" v-show="showAddress" @click="hideProvince">
+			<div class="chose" @click.stop="stopNull">
+				<div class="choseHead">
+					<a>省份</a>
+					<a>城市</a>
+					<a>地区</a>
+				</div>
+				<div class="choseMain">
+					<div class="choseProvince">
+						<p v-for="(item, index) in choseProvince" :class="{active: index == checkindex2}"
+							@click="getProvince(index,item.id,2)">
+							{{item.name}}
+							<i class="lele icon-gengduo"></i>
+						</p>
+					</div>
+					<div class="choseCity">
+						<p v-for="(item,index) in choseCity" :class="{active: index === checkindex3}"
+							@click="getProvince(index,item.id,3)">{{item.name}}<i class="lele icon-gengduo"></i>
+						</p>
+					</div>
+					<div class="choseArea">
+						<p v-for="(item,index) in choseArea" :class="{active: index === checkindex4}"
+							@click="getProvince(index,item.id,4)">{{item.name}}</p>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!--选择地址-->
+
+
+
+        
+        
+    </div>
+
+
+    <script>
+      var app = new Vue({
+	el: '#app',
+	data: {
+        uploadUrl:'http://192.168.1.165:9001/longan/api/basic/file/upload', //上传附件,
+        type: '1',
+        suppertype:'1',
+        invoice:'2',
+        CertificatesPic:[],  //营业执照
+
+        dialogImageUrl: '',
+        dialogVisible: false,
+        disabled: false,
+
+        judge:'',
+        showAddress:false,
+        checkindex2: '',
+        checkindex3:'',
+        checkindex4:'',
+        choseProvince:[
+            {name:"北京",id:"1"},{name:"天津",id:"2"},{name:"河北",id:"3"},{name:"山西",id:"4"},
+            {name:"辽宁",id:"5"},{name:"吉林",id:"6"},{name:"上海",id:"7"},{name:"江苏",id:"8"}
+        ],
+        choseCity:[],
+        choseArea:[],
+        nowchoseCity:[
+            {name:"淮南",id:"1"},{name:"盐城",id:"2"},{name:"苏州",id:"3"},{name:"合肥",id:"4"},
+            {name:"郑州",id:"5"},{name:"昆明",id:"6"},{name:"贵阳",id:"7"},{name:"昆山",id:"8"}
+        ],
+        nowchoseArea:[
+            {name:"田家庵",id:"1"},{name:"姑苏区",id:"2"},{name:"大通区",id:"3"},{name:"相城区",id:"4"},
+            {name:"吴江区",id:"5"},{name:"龙子湖区",id:"6"},{name:"工业园区",id:"7"},{name:"瑶海区",id:"8"}
+        ],
+        addressCityIdList:{},
+        addressCity:"",
+        addressCity2:"",
+        showselectaddress:[],
+         
+        prodinfo:[
+            {
+                prodname:"",
+                fileList:[]
+            },
+        ],    //产品信息
+
+    },
+    watch:{
+        
+    },
+
+    mounted(){
+        
+      this.payevent()
+	},
+	methods: {
+		payevent(){
+            console.log(this.prodinfo)
+            // let that=this;
+            // let url="https://www.easy-mock.com/mock/5b7f7b7d4a96987699e40656/dc/renyuan";
+            // const params = {
+            //     key: 'PROVINCE',
+            //     orgId: '0',
+            //     parentKey: '',
+            //     parentValue: ''
+            // }
+            // axios({
+            //     method: 'GET',
+            //     url: url,
+            //     data: params,
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     }
+            // }).then(function (response) {
+            //     console.log(response);
+            //     if(response.data.code == 0){
+            //             this.province = response.data.data;
+            //         }else{
+            //             this.$message.error('获取省份失败！');
+            //         }
+            // }).catch(err => {
+            //     console.log(err)
+            // }); 
+
+        },
+
+        choseAddress:function(e){
+            this.judge=e
+            this.showAddress = true;
+            this.checkindex2="";
+            this.checkindex3="";
+            this.checkindex4="";
+            this.choseCity=[];
+            this.choseArea=[];
+        },
+
+        stopNull:function(){
+        //   return false;
+        },
+        //隐藏地址选择
+        hideProvince:function(){
+            this.showAddress = false;
+        },
+
+        getProvince:function(index,id,run){
+            var that = this;
+            if(run==4 && this.judge!=2){
+                that.checkindex4 = index;
+                var sheng = that.choseProvince[that.checkindex2];
+                var shi = that.choseCity[that.checkindex3];
+                var qu = that.choseArea[index];
+                that.addressCityIdList = {
+                    sheng: that.choseProvince[that.checkindex2].id,
+                	shi: that.choseCity[that.checkindex3].id,
+                    qu: that.choseArea[index].id,
+                    shengname:that.choseProvince[that.checkindex2].name,
+                    shiname: that.choseCity[that.checkindex3].name,
+                    quname: that.choseArea[index].name,
+                }
+                // if(this.judge==1){
+                   
+                    that.addressCity = sheng.name + ' ' + shi.name + ' ' + qu.name;
+                // }else if(this.judge==2){
+                //     that.showselectaddress.push(that.addressCityIdList)
+                //     that.addressCity2 = sheng.name + ' ' + shi.name + ' ' + qu.name;
+                // }
+
+                that.showAddress = false;
+                return
+            }
+            if(run==3 && this.judge==2){
+                that.checkindex3 = index;
+                var sheng = that.choseProvince[that.checkindex2];
+                var shi = that.choseCity[that.checkindex3];
+                that.addressCityIdList = {
+                    sheng: that.choseProvince[that.checkindex2].id,
+                	shi: that.choseCity[that.checkindex3].id,
+                    shengname:that.choseProvince[that.checkindex2].name,
+                    shiname: that.choseCity[that.checkindex3].name,
+                 }  
+                if(JSON.stringify(that.showselectaddress).indexOf(JSON.stringify(that.addressCityIdList))==-1){
+                    that.showselectaddress.push(that.addressCityIdList)
+                  }  
+                    that.addressCity2 = sheng.name + ' ' + shi.name;
+                    that.showAddress = false;
+                    return
+              }
+                if(run==2){
+                    that.checkindex2 = index;
+                    that.checkindex3 = "";
+                    that.checkindex4 = "";
+                    that.choseCity=that.nowchoseCity
+                }
+                if(run==3){
+                    that.checkindex3 = index;
+                    that.checkindex4 = "";
+                    that.choseArea=that.nowchoseArea
+                }
+        },
+
+
+        deladdress(ind){
+          console.log(ind)
+          this.showselectaddress.splice(ind,1)
+        },
+        
+        //新增
+        addprod(){
+            let that=this;
+            let newline={
+                    prodname:"",
+                    fileList:[]
+                }
+            this.prodinfo.push(newline)
+        },
+
+        //删除
+        delprod(index){
+            console.log(index)
+            this.prodinfo.splice(index,1)
+        },
+
+
+
+
+
+        //确认下一步查询地址
+        // getProvince:function(index,id,run){
+        //     var that = this;
+        //     if(run==4){
+        //         that.checkindex4 = index;
+        //         var sheng = that.choseProvince[that.checkindex];
+        //         var shi = that.choseCity[that.checkindex3];
+        //         var qu = that.choseArea[index];
+        //         that.addressCityIdList = {
+        //             sheng: that.choseProvince[that.checkindex].id,
+        //         	shi: that.choseCity[that.checkindex3].id,
+        //         	qu: that.choseArea[index].id
+        //         }
+        //         that.addressCity = sheng.region_name + ' ' + shi.region_name + ' ' + qu.region_name;
+        //         that.showAddress = false;
+        //         return
+        //     }
+        //     $.ajax({
+        //         type: "POST",
+        //         url: window.globalResURL + "/user/get_area",
+        //         data:{
+        //             parent_id : id
+        //         },
+        //         dataType:'json',
+        //         success:function (data) {
+        //             if(data && data.data){
+        //                 if(run==2){ //市列表
+        //                     that.choseCity = data.data;
+        //                     that.choseArea = [];
+        //                     that.checkindex2 = index;
+        //                     that.checkindex3 = "";
+        //                     that.checkindex4 = "";
+        //                 }
+        //                 if(run ==3){ //区列表
+        //                     that.choseArea = data.data;
+        //                     that.checkindex3 = index;
+        //                     that.checkindex4 = "";
+        //                 }
+        //             }
+        //         }
+        //     });
+        // },
+
+
+
+
+        handleAvatarSuccess(res, file, fileList,index) {
+            var that = this;
+            if(res.code==0){ 
+                const image={
+                  name: file.name,
+                  url: file.url,
+                  path: res.data
+                }
+                if(index=='01'){
+                  that.CertificatesPic.push(image)
+                  return false
+                }
+                that.prodinfo[index].fileList.push(image);
+            }
+        },
+
+        handleRemove(file, fileList,index) {
+            var that = this;
+            if(fileList.length>0){
+                if(index=='01'){
+                  that.CertificatesPic=fileList.map((item,index)=>{
+                    return {
+                        name:item.name,
+                        url:item.url,
+                        path:item.path
+                    }
+                  })
+                  return false
+                }
+                that.prodinfo[index].fileList=fileList.map((item,index)=>{
+                    return {
+                        name:item.name,
+                        url:item.url,
+                        path:item.path
+                    }
+                  })
+                }else{
+                  that.prodinfo[index].fileList=[];
+                }
+                console.log(that.prodinfo)
+           },
+        handleExceed(files, fileList,index) {
+            this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+        },
+        //图片上传失败
+        imgUploadError(file,fileList,index){
+            console.log(fileList)
+            this.$message.warning('上传图片失败！');
+            // this.$message.error('上传图片失败！');
+                console.log(index)
+                if(index=="01"){
+                    this.CertificatesPic.push({
+                       name:fileList.name,
+                        url:fileList.url,
+                        path:'固定'+index
+                   })
+                   return false;
+                }
+                this.prodinfo[index].fileList.push({
+                       name:fileList.name,
+                        url:fileList.url,
+                        path:'固定'+index
+                })
+                  
+
+                console.log(this.prodinfo)
+                console.log(this.CertificatesPic)
+           }
+
+	},
+	
+})
+    
+    </script>
+
+<style>
+  @font-face {
+  font-family: 'iconfont';  /* project id 1112014 */
+  src: url('https://at.alicdn.com/t/font_1112014_xy3gtvem14a.eot');
+  src: url('https://at.alicdn.com/t/font_1112014_xy3gtvem14a.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1112014_xy3gtvem14a.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1112014_xy3gtvem14a.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1112014_xy3gtvem14a.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1112014_xy3gtvem14a.svg#iconfont') format('svg');
+}
+
+    .iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+    .iconxinxiweihu::before{content: "\e610";}
+    
+    /* body{} */
+    .el-radio__input.is-checked .el-radio__inner{
+        border-color: #ff9100;
+        background: #ff9100;
+    }
+    .el-radio__input.is-checked+.el-radio__label{
+        color:  #ff9100;
+    }
+
+    .el-upload--picture-card{width:48% !important;}
+    .el-upload-list--picture-card .el-upload-list__item{width: 48% !important;float: left;box-sizing: border-box;
+    margin:0px !important;padding: 8px 8px 0 0 !important;}
+    
+    .el-upload--picture-card, .el-upload{position: relative;}
+    .el-upload--picture-card i{position: absolute;top: 50%;
+        transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+    }
+  
+    .pagetitlewrap{width: 100%;padding: 0.132rem 4%;box-sizing: border-box;font-size: 14px;
+    overflow: hidden;text-align: center;}
+    .returnicon{font-size: 14px;float: left;position: relative;top: 4px;}
+    .pagetitlewrap .ruzhutext{font-size: 0.158rem;}
+
+    .tiptext{height: 0.256rem;width: 100%;background: #fefcf4;padding: 0 4%;box-sizing: border-box;
+    font-size: 0.102rem;line-height: 0.256rem;color: #ee1f1e;} 
+    .tiptext .laba{font-size: 14px;margin-right: 0.059rem;}
+    .basicinfo{width: 100%;height: 0.3755rem;line-height:0.3755rem;padding: 0 4%;box-sizing: border-box;
+        font-size:0.119rem;background: #f6f6f6;}
+    .textwrap{overflow: hidden;width: 100%;padding-left: 4%;box-sizing: border-box;}
+    .hangitem{width: 100%;padding: 0.132rem 4% 0.132rem 0;box-sizing: border-box;overflow: hidden;
+    text-align: left;border-bottom: 1px solid #e6e6e6;vertical-align: middle;position: relative;}
+    .hangitem .hangtitle{display: inline-block;float: left;width:0.659rem;text-align: left; font-size: 0.119rem;
+        vertical-align: middle;height: 0.154rem;}
+    .hangitem .credittitle{width:1rem !important;}
+    .hangitem .invoicetitle{width:1rem !important;}
+    .hangitem .creditshuru{width:calc(100% - 1rem) !important;}
+    .hangitem .shuruinvoice{width:calc(100% - 1rem) !important;}
+    .hangitem .radiowrap{display: inline-block;float: left;outline: none;vertical-align: middle;font-size: 0.119rem;
+    border: none;color: #333;width: calc(100% - 0.659rem);height: 0.154rem;position: relative;top: 1px;}
+    .hangitem .shuru{display: inline-block;float: left;outline: none;vertical-align: middle;font-size: 0.119rem;
+    border: none;color: #333;width: calc(100% - 0.659rem);height: 0.154rem;position: relative;top: 1px;}
+    .hangitem .testcode{width: calc(100% - 1.5rem) !important;}
+    .hangitem .getcode{font-size: 0.119rem;color: #ff9100;display: inline-block;padding: 0.09rem;box-sizing: border-box;float: left;position: absolute;right: 4%;top: 0.06rem;}
+    .hangitem .uploadtitle{overflow: hidden;text-align: left; font-size: 0.119rem;
+        vertical-align: middle;height: 0.154rem;width: 100%;clear: both;float: left;
+    margin-bottom: 0.088rem;}
+
+    .paywrap{width: 92%;margin: 0 auto;height: 0.387rem;line-height: 0.387rem;text-align: center;
+    background: #ff9100;color: #fff;font-size: 0.1365rem;margin-top: 0.5rem;}
+    .hangitem .shuru:disabled{background: #fff;}
+
+    .selecticon{position: absolute;right: 4%;top: 0.12rem;}
+    
+
+    .deleteShadow{
+            background-color: rgba(0,0,0,0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    .deleteShadow .chose{
+        position: absolute;
+        background: #fff;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
+    .chose .choseHead{
+        height:0.352rem;
+        line-height: 0.352rem;
+        display: flex;
+    }
+    .chose .choseHead a{
+        flex-grow: 1;
+        align-items: center;
+        text-align: center;
+        font-size: 0.124rem;
+        color: #333;
+    }
+
+    .choseMain{
+        display: flex;
+        justify-content: space-between;
+    }
+    .choseMain div{
+        width: calc(33% + 17px);
+        padding-right: -17px;
+        height: 250px;
+        overflow-y: scroll;
+        border-left: 1px solid rgba(125,125,125,0.2);
+        text-align: center;
+    }
+    .choseMain div::-webkit-scrollbar {
+        width:0px;
+        height:0px;
+    }
+
+    .choseMain p{
+        padding: 10px 0;
+        font-size: 0.124rem;
+        position: relative;
+    }
+    .choseMain p.active{
+        color: #FFA800;
+    }
+
+    .addresswrap{overflow: hidden;width: 100%;border-top: 0.044rem solid #f6f6f6;
+        padding-left: 0.835rem;box-sizing: border-box;}
+    /* .addresshang{} */
+    .addressdet{font-size: 0.124rem;float: left;}
+    .deladdress{position: absolute;right: 4%;top: 0.12rem;color: #cecece;}
+
+    .prodwrap{overflow: hidden;
+        border-top: 0.088rem solid #f6f6f6;
+        padding-left: 4%;box-sizing: border-box;
+     }
+     .prodwrap .prodtitle{padding: 0.132rem 0;box-sizing:border-box;overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;}
+     .prodwrap .prodtitleleft{font-size:0.124rem;float: left;color: #333;}
+     .prodwrap .prodtitleright{float: right;margin-right: 4%;padding: 0.022rem 0.044rem;
+    color: #999;}
+
+    .addwrap{overflow: hidden;width: 100%;text-align: center;padding: 0.132rem 4%;
+    box-sizing: border-box;color: #ff9500;font-size:0.124rem;vertical-align: middle;
+    border-bottom: 0.088rem solid #f6f6f6;}
+    .addwrap .addniuicon{margin-right: 0.066rem;font-size: 0.17rem;position: relative;top: 2px;}
+
+    .deposit{color: #ff9100 !important;}
+
+
+</style>
+    
+</body>
+</html>

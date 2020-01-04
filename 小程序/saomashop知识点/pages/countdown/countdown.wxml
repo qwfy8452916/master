@@ -1,0 +1,5 @@
+<!--pages/countdown/countdown.wxml-->
+<view class='timebox'>
+      <view class='timebox-view'>倒计时</view>
+      <view class='timebox-view'>{{timer}}</view>
+</view>

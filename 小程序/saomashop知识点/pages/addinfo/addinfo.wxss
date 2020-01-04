@@ -1,0 +1,16 @@
+/* pages/addinfo/addinfo.wxss */
+.prodinfo{overflow: hidden;}
+.delbtn{float: right;}
+.hang{overflow: hidden;vertical-align: bottom;}
+.title{display: inline-block;vertical-align: bottom;}
+.inputtext{display: inline-block;vertical-align: bottom;padding-left: 20rpx;}
+
+.upbtn{
+  font-size: 30rpx;
+  color: #fff;
+  background: #FF9700;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20rpx;
+}

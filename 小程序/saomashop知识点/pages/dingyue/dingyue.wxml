@@ -1,0 +1,5 @@
+<view style="margin-bottom:20rpx;" wx:for="{{wxmlContent}}" wx:key="index">
+  <view>{{item.name}}</view>
+  <view>{{item.ifBook?'关闭后无法接收消息':'开启后可实时接收消息'}}</view>
+  <view data-status="{{item.ifBook}}" data-index="{{index}}" bindtap="changeStatus">{{item.ifBook?'取消订阅':'订阅'}}</view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "navigationBarTitleText": "父组件",
+    "zujian": "/pages/zujian/zujian"
+  }
+}

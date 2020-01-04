@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "日历",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "rili": "../../component/component"
+  }
+}

@@ -1,0 +1,157 @@
+<!--pages/wxif/wxif.wxml-->
+<!-- <view>
+<view wx:if="{{msgjudge.minMsg}}" bindtap="btn01">按钮01</view>
+<view wx:else bindtap="btn02">按钮02</view>
+</view>
+<view>
+<view wx:if="{{msgjudge.sceneMsg}}" bindtap="btn01">按钮03</view>
+<view wx:else bindtap="btn02">按钮04</view>
+</view> -->
+
+
+
+<!--pages/setmessage/setmessage.wxml-->
+<!-- <view wx:if="{{isSubscribe}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">订阅消息通知</view>
+    <view class="hint">关闭后，您将不再受到消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn cancel" bindtap="cancelmsg">取消</view>
+  </view>
+</view>
+<view wx:else class="msgbg">
+  <view class="mleft">
+    <view class="title">订阅消息通知</view>
+    <view class="hint">订阅后，您将收到消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn ensure" bindtap="ensuremsg">订阅</view>
+  </view>
+</view> -->
+
+<!-- 迷你吧 -->
+<view>
+ <view wx:if="{{msgjudge.minMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">迷你吧故障提醒</view>
+    <view class="hint">关闭后，您将不再受到消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn cancel" data-businessSubType="1" bindtap="cancelmsg">取消</view>
+  </view>
+</view>
+<view wx:if="{{!msgjudge.minMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">迷你吧故障提醒</view>
+    <view class="hint">订阅后，您将受到该消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn ensure" data-businesssubtype="1" bindtap="ensuremsg">订阅</view>
+  </view>
+ </view>
+</view>
+<!-- 现场配送订单提醒 -->
+<view>
+ <view wx:if="{{msgjudge.sceneMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">现场配送订单提醒</view>
+    <view class="hint">关闭后，您将不再受到消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn cancel" data-businessSubType="2" bindtap="cancelmsg">取消</view>
+  </view>
+</view>
+<view wx:if="{{!msgjudge.sceneMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">现场配送订单提醒</view>
+    <view class="hint">订阅后，您将受到该消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn ensure" data-businessSubType="2" bindtap="ensuremsg">订阅</view>
+  </view>
+ </view>
+</view>
+<!-- 客房服务订单提醒 -->
+<view>
+ <view wx:if="{{msgjudge.roomMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">客房服务订单提醒</view>
+    <view class="hint">关闭后，您将不再受到消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn cancel" data-businessSubType="3" bindtap="cancelmsg">取消</view>
+  </view>
+</view>
+<view wx:if="{{!msgjudge.roomMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">客房服务订单提醒</view>
+    <view class="hint">订阅后，您将受到该消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn ensure" data-businessSubType="3" bindtap="ensuremsg">订阅</view>
+  </view>
+ </view>
+</view>
+<!-- 客房预订订单提醒 -->
+<view>
+ <view wx:if="{{msgjudge.roombookMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">客房预订订单提醒</view>
+    <view class="hint">关闭后，您将不再受到消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn cancel" data-businessSubType="4" bindtap="cancelmsg">取消</view>
+  </view>
+</view>
+<view wx:if="{{!msgjudge.roombookMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">客房预订订单提醒</view>
+    <view class="hint">订阅后，您将受到该消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn ensure" data-businessSubType="4" bindtap="ensuremsg">订阅</view>
+  </view>
+ </view>
+</view>
+<!-- 补货提醒 -->
+<view>
+ <view wx:if="{{msgjudge.replenishMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">补货提醒</view>
+    <view class="hint">关闭后，您将不再受到消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn cancel" data-businessSubType="5" bindtap="cancelmsg">取消</view>
+  </view>
+</view>
+<view wx:if="{{!msgjudge.replenishMsg}}" class="msgbg">
+  <view class="mleft">
+    <view class="title">补货提醒</view>
+    <view class="hint">订阅后，您将受到该消息提醒</view>
+  </view>
+  <view class="mright">
+    <view class="msgbtn ensure" data-businessSubType="5" bindtap="ensuremsg">订阅</view>
+  </view>
+ </view>
+</view>
+<!-- 补货提醒 -->
+
+<view wx:if="{{isShowModel}}" class="authmask">
+  <view class="authbg">
+    <view class="authtitle">提示</view>
+    <view class="authhint">订阅消息需要获取您的用户信息，请同意授权！</view>
+    <view class="authClick">
+      <button open-type="getUserInfo" class="authbtn ensureAuth" bindtap="userAuthLogin">确定</button>
+    </view>
+  </view>
+</view>
+<view wx:if="{{isShowMsg}}" class="authmask">
+  <view class="authbg">
+    <view class="closemsg">是否关闭消息提示？</view>
+    <view class="msgclick">
+      <button class="msgensure" bindtap="msgHintClose">确定</button>
+      <button class="msgcancel" bindtap="msgHintKeep">取消</button>
+    </view>
+  </view>
+</view>

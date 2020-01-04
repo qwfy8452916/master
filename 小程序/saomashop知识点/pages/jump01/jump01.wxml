@@ -1,0 +1,16 @@
+<!-- <view class="tiaoH51">
+   <navigator url="/pages/jump02/jump02" class="papaa">
+     点击跳转到H5页面
+   </navigator>
+ </view> -->
+
+<view class="tiaoH51">
+   <navigator url="/pages/jump02/jump02" class="papaa">
+     点击跳转到H5页面
+   </navigator>
+    <button style="display:{{imgBlock}}" open-type="share" class="share">分享赚钱</button>
+
+ </view>
+
+
+

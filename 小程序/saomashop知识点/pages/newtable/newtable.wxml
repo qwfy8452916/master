@@ -1,0 +1,32 @@
+<!--pages/newtable/newtable.wxml-->
+
+<!-- <view class="table">
+  <text class="td"></text>
+  <text class="td td2"></text>
+  <text class="td td3"></text>
+  <text class="td td4"></text>
+  <text class="td td5"></text>
+  <text class="td td6"></text>
+  <text class="td td7"></text>
+  <text class="td td8"></text>
+</view> -->
+
+<!-- <view class="table">
+  <text class="td" bindtap='switchzhixing' wx:for="{{cabdata}}" wx:key style="width:{{item.width}}%;height:{{item.height}}%;position:absolute;top:{{item.top}}%;left:{{item.left}}%;">{{item.code}}</text>
+</view> -->
+
+<view class="table">
+  <text class="td {{item.flag==true?'coloetrue':''}}" bindtap='switchzhixing' wx:for="{{cabdata}}" wx:key style="width:{{item.width}}%;height:{{item.height}}%;position:absolute;top:{{item.top}}%;left:{{item.left}}%;" data-index="{{index}}">{{item.latticeCode}}</text>
+</view>
+
+<view bindtap="jump">跳转</view>
+
+
+
+
+
+
+
+
+
+

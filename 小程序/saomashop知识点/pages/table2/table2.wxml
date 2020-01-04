@@ -1,0 +1,64 @@
+<!-- <view class="table">
+  <view class="tr tr_title">
+    上午8:30-11:45
+  </view>
+  <view class="tr bg-w">
+    <view class="th width1">板块</view>
+    <view class="th width2">时间</view>
+    <view class="th width2">环节</view>
+    <view class="th width1">时长</view>
+  </view>
+  <view class='tr'>
+    <view class="td  td_center">开场</view>
+    <view class="td width2">
+      <view class="tdd2">签到/暖场（展示区开放）</view>
+      <view class="tdd2 border-none">签到/暖场（展示区开放）</view>
+    </view>
+    <view class="td width2">
+      <view class="tdd2">签到/暖场（展示区开放）</view>
+      <view class="tdd2 border-none">签到/暖场（展示区开放）</view>
+    </view>
+    <view class="td width1 td_center">60分钟</view>
+  </view>
+  <block wx:for="{{6}}" wx:key="">
+    <view class="tr">
+      <view class="td">业绩展示</view>
+      <view class="td width2">09:30-09:35</view>
+      <view class="td width2">主持人开场</view>
+      <view class="td">5分钟</view>
+    </view>
+  </block>
+</view> -->
+
+
+<view class="table">
+  <view class="tr tr_title">
+    上午8:30-11:45
+  </view>
+  <view class="tr bg-w">
+    <view class="th width1">板块</view>
+    <view class="th width2">时间</view>
+    <view class="th width2">环节</view>
+    <view class="th width1">时长</view>
+  </view>
+  <view class='tr'>
+    <view class="td  td_center">开场</view>
+    <view class="td width2" style="width:40%">
+      <view class="tdd2">签到/暖场（展示区开放）</view>
+      <view class="tdd2 border-none">签到/暖场（展示区开放）</view>
+    </view>
+    <view class="td width2" style="width:20%">
+      <view class="tdd2">签到/暖场（展示区开放）</view>
+      <view class="tdd2 border-none">签到/暖场（展示区开放）</view>
+    </view>
+    <view class="td width1 td_center">60分钟</view>
+  </view>
+  <block wx:for="{{6}}" wx:key="">
+    <view class="tr">
+      <view class="td">业绩展示</view>
+      <view class="td width2">09:30-09:35</view>
+      <view class="td width2">主持人开场</view>
+      <view class="td">5分钟</view>
+    </view>
+  </block>
+</view>

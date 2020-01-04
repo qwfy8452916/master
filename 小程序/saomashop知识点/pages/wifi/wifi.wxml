@@ -1,0 +1,2 @@
+<!--pages/wifi/wifi.wxml-->
+<view class='connect' bindtap='connect'>登录</view>

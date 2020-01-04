@@ -1,0 +1,19 @@
+<!--pages/rili/rili.wxml-->
+
+<view class="timebox" bindtap='selecttimefun'>
+    <view class="timebox-w">
+      <text class="font-text">入住时间</text>
+      <text class="font-text2">{{starTime}} {{starweek}}</text>
+    </view>
+    <view class="timebox-w2">
+      <text class="font-textbox">共<text class="font-color1"> {{day}} </text>晚</text>
+    </view>
+    <view class="timebox-w">
+      <text class="font-text">离店时间</text>
+      <text class="font-text2">{{endTime}} {{endweek}}</text>
+    </view>
+  </view>
+
+
+
+<rili bindmyevent="onMyEvent" id='rili' timedata="{{timedataval}}"></rili>

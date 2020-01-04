@@ -1,0 +1,20 @@
+<!-- <view class="container">
+  <view class="pageH5">
+    <web-view src="https://www.baidu.com/"></web-view>
+  </view>
+</view> -->
+
+<view class="container">
+  <view class="pageH5">
+    <web-view src="http://localhost.me/vuemyceshi/index.html?name={{name}}&obj={{age}}" bindmessage="bindGetMsg"></web-view>
+  </view>
+ 
+</view>
+
+
+
+
+
+
+
+
