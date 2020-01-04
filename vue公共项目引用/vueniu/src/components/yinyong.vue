@@ -2,14 +2,17 @@
     <div class="frame">
          <div>yinyong</div>
          <HelloWorld @user-modify="modify"></HelloWorld>
+         <div>{{$store.getters.datasj}}</div>
     </div>
 </template>
 
 <script>
 
 import { HelloWorld } from 'yinyong'
+import store from '@/vuex/store'
 export default {
     name: 'yinyong',
+    store,
     components: {
         HelloWorld
     },

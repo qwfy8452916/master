@@ -1,10 +1,16 @@
 {
   "pages": [
-    
+    "pages/dingyue/dingyue",
+    "pages/wxif/wxif",
+    "pages/wxif02/wxif02",
+    "pages/newtable/newtable",
+    "pages/zujianFather/zujianFather",
+    "pages/zujian/zujian",
+    "pages/zp/zp",
+    "pages/rili/rili",
     "pages/jump01/jump01",
     "pages/table2/table2",
-    "pages/zp/zp",
-    "pages/newtable/newtable",
+    "pages/setmessage/setmessage",
     "pages/cablayout/cablayout",
     "pages/map/map",
     "pages/shouquan/shouquan",
