@@ -1,0 +1,129 @@
+.paddLR03{
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.tips-font{
+  font-size: 28rpx;
+  color: #ee1e1e;
+  line-height: 45rpx;
+  padding: 20rpx 3%;
+  border-top: 0.5px solid #e5e5e5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #f6f6f6;
+}
+.tips-font-img{
+  width: 6%;
+  margin-right: 10rpx;
+}
+.userinfobox-form-box{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.userinfobox-box-name{
+  font-size: 30rpx;
+  color: #333;
+  width: 23%;
+}
+.userinfobox-form-box input{
+  width: 60%;
+  height: 80rpx;
+  line-height: 70rpx;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: #999999;
+}
+.font-red{
+  color: #ee1e1e;
+}
+.section{
+  border-bottom: 0.5px solid #e5e5e5;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.picker{
+  font-size: 30rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.picker-right{
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.tbimg{
+  width: 5%;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+.remarks{
+  font-size: 30rpx;
+  width: 51%;
+  padding: 10rpx;
+  color: #999999;
+}
+.btnbox{
+  width: 80%;
+  margin: 80rpx auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 100rpx;
+}
+.btnbox .btnbox-btn{
+  width: 40%;
+  background: #FF9700;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+}
+.btnbox-btn2{
+  width: 95%;
+  margin: 100rpx auto;
+  background: #FF9700;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+}
+.uploadimg{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 25rpx;
+  margin-top: 25rpx;
+}
+.upbtn{
+  font-size: 30rpx;
+  color: #fff;
+  background: #FF9700;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20rpx;
+}
+.upfont{
+  font-size: 30rpx;
+  color: #999;
+}
+.uploadimg-list{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.uploadimg-list image{
+  width: 32%;
+}
+.w15{
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}

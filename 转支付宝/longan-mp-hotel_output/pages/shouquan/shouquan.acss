@@ -1,0 +1,19 @@
+/* pages/shouquan/shouquan.wxss */
+.logobox{width: 100%;text-align: center;margin-top: 45rpx;
+overflow: hidden;}
+.logobox image{width: 150rpx;height: 150rpx;}
+.shouquantitle{text-align: center;font-size: 30rpx;color: #333;
+font-weight: bold;margin-top: 15rpx;}
+
+.getinfo{overflow: hidden;width: 100%;padding: 0 4%;box-sizing: border-box;
+margin-top: 80rpx;}
+.getinfo .getinfotitle{font-size: 28rpx;color: #333;font-weight: bold;}
+.getinfo .infotext{font-size: 26rpx;color: #999;margin-top: 10rpx;margin-left: 10rpx;}
+
+.btnbox{overflow: hidden;text-align: center;margin-top: 80rpx;}
+.btnbox .btnitem{display: inline-block;padding: 0rpx 80rpx;margin-right: 10rpx;
+text-align: center;}
+.btnbox .refuse{background: #88888a;color: #fff;}
+.btnbox .allow{background: #9b22e1;color: #fff;}
+
+ 

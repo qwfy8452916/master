@@ -1,0 +1,161 @@
+.detailbox-t-l{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.detailbox-t-l2{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.service-img{
+  display: block;
+  width: 70rpx;
+  height: 70rpx;
+}
+.service-name{
+  font-size: 32rpx;
+  color: #333333;
+}
+.roomcodefont{
+  font-size: 28rpx;
+  color: #333333;
+}
+.roomcodefon text{
+  color: #999999;
+}
+.timefont{
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 50rpx;
+}
+.textright{
+  text-align: right;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+}
+.cancelbtn{
+  display: inline-block;
+  width: 120rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 0.5rpx solid #e5e5e5;
+  border-radius: 24px;
+  font-size: 28rpx;
+  color: #999999;
+}
+.cancel-tipsbg{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+.cancel-tips{
+  width: 70%;
+  margin: 6rem auto;
+  padding: 25rpx 25rpx;
+  background: #fff;
+  z-index: 9;
+  border: 0.5px solid #e5e5e5;
+  border-radius: 5px;
+}
+.cancel-tips-top{
+  font-size:30rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.cancel-tips-btn{
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cancel-tips-btn .cancel-tips-btnbox{
+  width: 40%;
+  font-size: 27rpx;
+  color: #fff;
+  background: #ff9700;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 5px;
+}
+.cancel-tips-btn .cancel-tips-btnbox:last-child{
+  background: #ee1e1e;
+}
+.cancelfont{
+  font-size:30rpx;
+  text-align: right;
+  line-height: 70rpx;
+}
+.remarksbox{
+  font-size: 27rpx;
+  line-height: 75rpx;
+  padding: 15rpx 5%;
+  color: #999999;
+}
+.remarks{
+  height: 220rpx;
+  font-size: 27rpx;
+  border: 0.5px solid #e5e5e5;
+  border-radius: 5px;
+  width: 90%;
+  margin: 0 auto 30rpx;
+  padding: 10rpx;
+}
+.prodbox-l{
+  width: 80%;
+}
+.prodimg{
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 25rpx;
+}
+.prodinfo{
+  width: 80%;
+}
+.prodname{
+  font-size: 28rpx;
+  color: #333333;
+}
+.prodprice{
+  font-size: 24rpx;
+  color: #999999;
+}
+.picPathbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.picPathbox .img-box{
+  width: 30%;
+  margin-right: 5%;
+}
+.picPathbox .img-box:last-child{
+  margin-right: 0;
+}
+.mgL25{
+  margin-left: 25rpx;
+}
+
+.formdata-box{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 30rpx;
+  background: #ffffff;
+  border-bottom: 0.5rpx solid #e5e5e5;
+  line-height: 88rpx;
+  font-size: 28rpx;
+}
+.formdata-box-l{
+  color: #333333;
+  width: 25%;
+}
+.formdata-box-r{
+  width: 73%;
+  color: #999999;
+}

@@ -1,0 +1,6 @@
+<!--pages/hotel/hotel.axml-->
+<view class="wrap">
+  <view class="item" a:for="{{10}}">
+      苏州金鸡湖大酒店
+   </view>
+</view>

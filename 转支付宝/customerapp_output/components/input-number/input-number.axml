@@ -1,0 +1,10 @@
+<view class="inp-box-flex">
+  <view class="form-inputname">{{forminfo.showName}}
+    <text a:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+  <view class="inp-box-flex-r">
+    <image src="../../img/icon-img2-1.png" onTap="cutbackfun" id="{{forminfo.id}}"></image>
+    <view class="inp-box-flex-num">{{sendval}}</view>
+    <image src="../../img/icon-img1-1.png" onTap="increasefun" id="{{forminfo.id}}"></image>
+  </view>
+</view>

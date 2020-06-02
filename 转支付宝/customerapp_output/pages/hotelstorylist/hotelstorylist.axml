@@ -1,0 +1,51 @@
+<block
+  a:for="{{storylist}}"
+  a:for-item="item"
+  a:key="index"
+>
+  <view
+    class="mgB20 storybox"
+    data-id="{{item.id}}"
+    onTap="detailfun"
+  >
+    <image
+      src="{{item.storyPath}}"
+      class="storybox-img"
+      mode="widthFix"
+    ></image>
+    <view class="storyname">{{item.cultureStoryName}}</view>
+  </view>
+</block>
+<view
+  class="detailbox"
+  a:if="{{detailtype}}"
+  catchTouchMove="move"
+  onTap="closefun"
+>
+  <view class="detail-info" catchTap="move">
+    <image
+      src="../../img/icon-img11.png"
+      class="closebtn"
+      catchTap="closefun"
+    ></image>
+    <scroll-view scroll-y style="height: 100%;">
+      <block a:if="{{detailinfo.length != 0}}">
+        <block
+          a:for="{{detailinfo}}"
+          a:for-item="item"
+          a:key="index"
+        >
+          <image
+            src="{{item.storyDetailsPath}}"
+            mode="widthFix"
+            class="mgB20 storybox-img"
+          ></image>
+          <view class="mgB20 detail-font">{{item.cultureStory}}</view>
+        </block>
+      </block>
+      <block a:else>
+        <view class="font-none">暂无内容</view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+<view class="inp-box-flex">
+  <view class="form-inputname">{{forminfo.showName}}
+    <text a:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+  <!-- <picker
+    class="form-inputtext"
+    onChange="bindPickerChange"
+    value="{{selectlist[index].id}}"
+    range-key="val"
+    range="{{selectlist}}"
+  >
+    <view class="picker">
+      {{selectlist[index].val}}
+      
+      <image src="../../../img/my-bgimg2.png"></image>
+    </view>
+  </picker> -->
+
+<!-- <view class="page">
+<view class="page-section"> -->
+<picker onChange="bindObjPickerChange" id="{{forminfo.id}}" value="{{arrIndex}}" range="{{forminfo.valueScopeJson}}" range-key="val">
+      <view class="row">
+        <view class="row-extra">{{forminfo.valueScopeJson[arrIndex].val}}</view>
+      </view>
+    </picker>
+ <!-- </view>
+</view> -->
+
+</view>

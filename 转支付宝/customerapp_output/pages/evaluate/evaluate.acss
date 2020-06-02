@@ -1,0 +1,39 @@
+.evaluationT{
+  padding-bottom: 0;
+}
+.evaluationT2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.time-font{
+  width: 80%;
+  font-size: 24rpx;
+  color: #999;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  padding-left: 70rpx;
+}
+.imglist{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 70rpx;
+}
+.imglist image{
+  display: block;
+  width: 186rpx;
+  height: 186rpx;
+  margin-right: 20rpx;
+  margin-bottom: 15rpx;
+}
+.imglist image:nth-child(3n){
+  margin-right: 0;
+}
+.font-null{
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 300rpx;
+}

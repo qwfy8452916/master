@@ -1,0 +1,12 @@
+<view class="inp-box-flex inp-box-flex2">
+  <view class="form-inputname form-inputname2">{{forminfo.showName}}
+    <text a:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+  <textarea
+    class="form-textarea"
+    maxlength="255"
+    onInput="enterValue"
+    placeholder-style="color: #CECECE;"
+    placeholder="{{forminfo.valuePlaceholder}}"
+  />
+</view>

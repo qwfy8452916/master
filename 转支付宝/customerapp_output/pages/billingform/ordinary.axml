@@ -1,0 +1,99 @@
+<block a:if="{{type == true}}">
+  <view class="paddAll20 font26">
+    请选择发票类型
+  </view>
+  <view class="paddAll flexbox-around" a:if="{{type == true}}">
+    <view class="viewbtn viewbtn-active">电子普通发票</view>
+    <view
+      class="viewbtn"
+      data-type="2"
+      onTap="changetype"
+    >增值税专用发票</view>
+  </view>
+</block>
+<view class="paddAll20 font26">
+  发票详情
+</view>
+<view class="paddLR03 bgfff">
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">抬头类型</view>
+    <radio-group class="radio-group" onChange="radioChange">
+      <label class="radio">
+        <radio
+          value="1"
+          color="#FF9700"
+          checked="true"
+        />企业
+      </label>
+      <label class="radio">
+        <radio value="2" color="#FF9700"/>个人
+      </label>
+    </radio-group>
+  </view>
+  <view class="borderB inpbox" a:if="{{enterprise}}">
+    <view class="minw20 font30 mgR20">单位名称</view>
+    <input
+      class="inp"
+      type="text"
+      maxlength="50"
+      placeholder-style="color: #cecece;"
+      placeholder="请填写单位名称"
+      onInput="invHeadfun"
+    ></input>
+  </view>
+  <view class="borderB inpbox" a:if="{{enterprise}}">
+    <view class="minw20 font30 mgR20">纳税人识别码</view>
+    <input
+      class="inp"
+      type="number"
+      maxlength="50"
+      placeholder-style="color: #cecece;"
+      placeholder="请填写纳税人识别码"
+      onInput="taxpayerIdfun"
+    ></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">发票金额</view>
+    <view class="inp font-color2">¥ {{totalprice}}</view>
+  </view>
+  <view class="borderB inpbox bordernone">
+    <view class="minw20 font30 mgR20">
+      <!-- WX2MY: 属性decode不被支持，请调整 -->
+      <text decode="{{true}}">备&ensp;&ensp;&ensp;&ensp;注</text>
+    </view>
+    <textarea
+      class="inp"
+      maxlength="50"
+      auto-height
+      placeholder="请填写备注(50字内)"
+      placeholder-style="color: #cecece;"
+      onInput="remarkfun"
+    />
+  </view>
+</view>
+<view class="paddAll20 font26">
+  收件信息
+</view>
+<view class="paddLR03 bgfff">
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">手机号码</view>
+    <input
+      class="inp"
+      type="number"
+      placeholder-style="color: #cecece;"
+      placeholder="请填写手机号码"
+      onInput="mobilefun"
+    ></input>
+  </view>
+  <view class="borderB inpbox bordernone">
+    <view class="minw20 font30 mgR20">电子邮箱</view>
+    <input
+      class="inp"
+      type="text"
+      placeholder-style="color: #cecece;"
+      placeholder="请填写电子邮箱"
+      onInput="emailfun"
+    ></input>
+  </view>
+</view>
+<view class="subbtn positionbox" onTap="subformfun">确定</view>

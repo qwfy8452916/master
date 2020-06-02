@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "my-tabbar": "../../components/tabbar/tabbar"
+  },
+  "defaultTitle": "柜子列表",
+  "pullRefresh": true
+}

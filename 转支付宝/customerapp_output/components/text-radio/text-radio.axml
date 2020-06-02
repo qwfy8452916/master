@@ -1,0 +1,19 @@
+<view class="inp-box-flex">
+  <view class="form-inputname">{{forminfo.showName}}
+    <text a:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+  <radio-group onChange="enterValue" class="form-radiobox" id="{{forminfo.id}}">
+    <block
+      a:for="{{forminfo.valueScopeJson}}"
+      a:for-item="items"
+      a:key="index"
+    >
+      <radio
+        class="form-radiobox-radio"
+        checked="{{index == 0}}"
+        value="{{items.id}}"
+      />
+      <text class="radio-text">{{items.val}}</text>
+    </block>
+  </radio-group>
+</view>

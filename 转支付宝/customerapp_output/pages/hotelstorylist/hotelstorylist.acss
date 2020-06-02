@@ -1,0 +1,58 @@
+.storybox{
+  position: relative;
+}
+.storybox-img{
+  display: block;
+  width: 100%;
+}
+.storyname{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10rpx 3%;
+  font-size: 30rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+}
+.detailbox{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+}
+.detail-info{
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+.detail-font{
+  font-size: 27rpx;
+  color: #333;
+  line-height: 70rpx;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.closebtn{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  z-index: 2;
+}
+.font-none{
+  font-size: 30rpx;
+  color: #ccc;
+  line-height: 200rpx;
+  text-align: center;
+}

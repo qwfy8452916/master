@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-tabbar": "../../components/tabbar/tabbar"
+  },
+  "defaultTitle": "待配送"
+}

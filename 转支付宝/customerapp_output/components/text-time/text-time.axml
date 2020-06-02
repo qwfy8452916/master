@@ -1,0 +1,27 @@
+<view class="inp-box-flex" onTap="datePickerHMS" id="{{forminfo.id}}">
+  <view class="form-inputname">{{forminfo.showName}}
+    <text a:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+  <!-- WX2MY: 属性mode=time时，不被支持，请调整。属性start、end、bindchange为mode=time的关联属性，不被支持。 -->
+  <!-- <picker
+    class="form-inputtext"
+    onChange="bindPickerChange"
+    mode="time"
+    start=""
+    end=""
+    value="{{text_datetime}}"
+  >
+    <view class="picker">
+      {{sendval}}
+      
+      <image src="../../../img/my-bgimg2.png"></image>
+    </view>
+  </picker> -->
+  <text
+    id="{{forminfo.id}}"
+    time="{{sendval}}"
+    value="{{sendval}}"
+  >{{sendval}}</text>
+
+
+</view>

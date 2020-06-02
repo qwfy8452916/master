@@ -1,0 +1,18 @@
+<view
+  class="bilingimg"
+  data-bilingtype="101"
+  onTap="bilingtypefun"
+  a:if="{{isInvoice == 1}}"
+>
+  <!-- 房费发票 -->
+  <image src="../../img/invoice-img1.png" mode="widthFix"></image>
+</view>
+<view
+  class="bilingimg"
+  data-bilingtype="1"
+  onTap="bilingtypefun"
+  a:if="{{oprInvoiceSup == 1}}"
+>
+  <!-- 商品发票 -->
+  <image src="../../img/invoice-img2.png" mode="widthFix"></image>
+</view>

@@ -1,0 +1,9 @@
+{
+  
+  "usingComponents": {
+    "popup": "mini-antui/es/popup/index",
+    "tabs": "mini-antui/es/tabs/index",
+    "tab-content": "mini-antui/es/tabs/tab-content/index"
+  },
+  "component": true
+}

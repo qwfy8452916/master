@@ -1,0 +1,8 @@
+<view class="inp-box-flex inp-box-flex2"  onTap="openSelect">
+  <view class="form-inputname form-inputname2">{{forminfo.showName}}
+    <text a:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+<text>{{input_textarea}}</text>
+<multi-select selectShow="{{selectShow}}" selectValue="{{input_textarea}}" list="{{rawCitiesData}}" onSelectSuccess="onSelectSuccess" onClose="closeSelect"/>
+  
+</view>

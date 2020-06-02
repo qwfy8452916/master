@@ -1,0 +1,8 @@
+.box1{
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  top: 500rpx;
+  left: 20rpx;
+  background: green;
+}

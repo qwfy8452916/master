@@ -1,0 +1,86 @@
+<!--pages/housematterlist/housematterlist.axml-->
+<view class="wrap">
+  <view
+    class="floorselect"
+    onTap="selectlouceng"
+    data-type="1"
+  >
+    <text class="floortitle">请选择楼层</text>
+    <text class="iconfont icon-wangyou"></text>
+    <text class="floorposi">{{floorlc}}L</text>
+  </view>
+  <!-- <view class='typeselect' bindtap='selectlouceng' data-type="2">
+    <text class='typetitle'>请选择类型</text><text class='typetitle2'>补货</text>
+    <text class='iconfont icon-wangyou'></text>
+  </view> -->
+  <scroll-view style="height:800rpx;" scroll-y>
+    <view class="hejiwrap" a:if="{{housedata!=''}}">
+      <!-- <view class='bgcolor'></view>
+    <view class='floornumber'>{{floorlc}}
+      <text>L</text>
+    </view> -->
+      <view
+        class="houseselect"
+        a:for="{{housedata}}"
+        a:key="*this"
+        data-index="{{index}}"
+        onTap="housedetail"
+      >
+        <view class="contentwrap">
+          <text class="housetitle">{{item.roomFloor}}-{{item.roomCode}}</text>
+          <text class="iconfont icon- {{item.flag==true?'xzrotate':''}}" data-roomcode="{{item.roomCode}}"></text>
+        </view>
+        <view class="prodwrap {{item.flag==true?'showall':''}}">
+          <text
+            a:for="{{item.replHotelDTOS}}"
+            a:for-item="proditem"
+            a:for-index="prodindex"
+            a:key="*this"
+          >{{proditem.prodName}}*{{proditem.replCount}}/</text>
+        </view>
+        <text class="prodtotal">共{{item.prodAllCount}}件</text>
+      </view>
+      <view class="totalwk">
+        <text class="totaltitle">合计</text>
+        <block a:for="{{floortotal}}" a:key="*this">
+        {{item.prodName}}{{item.replCount}}个
+      </block>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<!-- <view class='yinying' hidden='{{isHide}}' bindtap='yinying'></view> -->
+<view class="selectfloorbox {{isHide?'transtion-off':'transtion-on'}}">
+  <!-- WX2MY: 属性hidden不被支持，请调整 -->
+  <view hidden="{{!showtype}}">
+    <view class="floormodel">
+      <text class="selectfloor">请选择楼层</text>
+      <text class="iconfont icon-" onTap="yinying"></text>
+    </view>
+    <view class="floorcontent">
+      <view
+        class="flooritem {{floordataactive[index]?'flooractivity':''}}"
+        onTap="flooritem"
+        a:for="{{floordata}}"
+        data-index="{{index}}"
+        data-floor="{{item}}"
+        a:key="*this"
+      >{{item}}</view>
+    </view>
+  </view>
+  <!-- <view hidden='{{showtype}}'>
+<view class='floormodel'>
+    <text class='selectfloor'>请选择类型</text>
+    <text class='iconfont icon-' bindtap='yinying'></text>
+  </view>
+  
+  <view class='typewrap'>
+    <view class='typeitem {{typedataactive[index]?"flooractivity":""}}' wx:for="{{typedata}}" wx:key bindtap='typeitem' data-index="{{index}}">{{item}}</view>
+  </view>
+
+</view> -->
+</view>
+<view class="wraptesting" a:if="!{{authzData['F:MH_REPL_RESTOCK']}}">
+  <view class="testingniu" onTap="testingniu">扫码</view>
+</view>
+<my-tabbar id="tabbar" tabindex="{{Tabindex}}"></my-tabbar>

@@ -1,0 +1,44 @@
+<view class="balance-top mgB20">
+  <view class="balance-topbox">
+    <view class="balance-topbox-l">
+      <view class="balance-font1">可提现余额(元)</view>
+      <view>{{userbalancedata.balance}}</view>
+    </view>
+    <view class="balance-topbox-r" onTap="gowithdraw">去提现 
+      <image class="ye-img" src="../../img/my-bgimg2-1.png"></image>
+    </view>
+  </view>
+</view>
+<view class="balance-listbox">
+  <view class="paddAll borderB balance-listbox-top">收支明细</view>
+  <block
+    a:for="{{userbalancedata.finCusIncomeExpenseDTOS}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <view class="paddAll borderB balance-listbox-li">
+      <view class="listbox-li-l">
+        <view class="li-font1">
+          <block a:if="{{item.businessType == 1 || item.businessType == 2}}">红包</block>
+          <block a:elif="{{item.businessType == 3}}">提现</block>
+          <block a:elif="{{item.businessType == 4}}">好物分享佣金</block>
+          <block a:elif="{{item.businessType == 5}}">订房分享佣金</block>
+          <text class="li-font3" a:if="{{item.status == 0}}">处理中</text>
+          <text class="li-font4" a:if="{{item.status == 2}}">提现失败</text>
+        </view>
+        <view class="li-font2">{{item.createdAt}}</view>
+      </view>
+      <view class="listbox-li-r">
+        <text class="font-color1" a:if="{{item.status == 1}}">
+          <block a:if="{{item.type == 1}}">+</block>
+          <block a:else>-</block> {{item.amount}}</text>
+        <text class="font-color3" a:elif="{{item.status == 2}}">
+          <block a:if="{{item.type == 1}}">+</block>
+          <block a:else>-</block> {{item.amount}}</text>
+        <text class="font-color4" a:elif="{{item.status == 0}}">
+          <block a:if="{{item.type == 1}}">+</block>
+          <block a:else>-</block> {{item.amount}}</text>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="userinfo">
+    <!-- WX2MY: 属性open-type=getUserInfo时，不被支持，请调整。属性bindgetuserinfo为open-type=getUserInfo的关联属性，不被支持。 -->
+    <button
+      a:if="{{!hasUserInfo && canIUse}}"
+      open-type="getUserInfo"
+      bindgetuserinfo="getUserInfo"
+    > 获取头像昵称 </button>
+    <block a:else>
+      <image
+        onTap="bindViewTap"
+        class="userinfo-avatar"
+        src="{{userInfo.avatarUrl}}"
+        mode="cover"
+      ></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>

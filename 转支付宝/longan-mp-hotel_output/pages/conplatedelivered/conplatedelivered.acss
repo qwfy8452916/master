@@ -1,0 +1,16 @@
+/* pages/conplatedelivered/conplatedelivered.wxss */
+page{border-top: 1px solid #e5e5e5;}
+.recordwrap{overflow: hidden;}
+.recordwrap .recorditem{overflow: hidden;border-bottom:1px solid #e5e5e5;
+position: relative;
+padding: 30rpx 4%;box-sizing: border-box;font-size: 32rpx;color: #999;}
+.recorditem .recordtitle{float: left;}
+.recorditem .countzj{
+  float: right;font-size: 28rpx;color: #10bbbb;
+  position: relative;top: 24rpx;
+}
+.recorditem .gongnengqu{
+  font-size: 28rpx;color: #10bbbb;
+  position: absolute;top: 15rpx;right: 4%;
+}
+.recorditem .roomcode{float: right;margin-right:25rpx;font-size: 28rpx;}

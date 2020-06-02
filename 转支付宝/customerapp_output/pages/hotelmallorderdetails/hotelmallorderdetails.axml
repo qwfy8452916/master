@@ -1,0 +1,91 @@
+<block a:if="{{deliverytype1}}">
+  <view class="mgB20">
+    <view a:if="{{isvirtual == 1}}" class="paddAll hotelmallcar-name">客房配送</view>
+    <view a:else class="paddAll hotelmallcar-name">现场配送</view>
+    <view class="paddAll hoteladdress">{{orderinfo.hotelName}} {{orderinfo.roomFloor}}-{{orderinfo.roomCode}}</view>
+    <block
+      a:for="{{orderlist1}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view class="paddAll listbox">
+        <view class="listbox-c">
+          <image src="{{item.hotelProductDTO.prodProductDTO.prodLogoUrl}}" class="commodityimg"></image>
+        </view>
+        <view class="listbox-r">
+          <view class="commodityname">{{item.hotelProductDTO.prodProductDTO.prodName}}</view>
+          <view class="commodityprice">
+            ¥{{item.hotelProductDTO.prodRetailPrice}}
+            
+            <view class="commoditynum">x{{item.prodCount}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="footbox-order">
+      共
+      <text class="text-font1">{{quantity1}}</text>件商品  小计
+      <text class="text-font2">￥{{total1}}</text>
+    </view>
+    <view class="remarkbox">
+      <view class="textarea-font">留言</view>
+      <view class="textareabox">{{orderinfo.roomDeliveryRemark}}</view>
+    </view>
+  </view>
+</block>
+<block a:if="{{deliverytype2}}">
+  <view class="mgB20">
+    <view class="paddAll hotelmallcar-name">快递到家</view>
+    <view class="paddAll hoteladdress hoteladdress2">
+      <view class="font-address">
+        <view>{{consignee}} {{consigneePhone}}</view>
+        <view>{{addressAll}}</view>
+      </view>
+    </view>
+    <block
+      a:for="{{orderlist2}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view class="paddAll listbox">
+        <view class="listbox-c">
+          <image src="{{item.hotelProductDTO.prodProductDTO.prodLogoUrl}}" class="commodityimg"></image>
+        </view>
+        <view class="listbox-r">
+          <view class="commodityname">{{item.hotelProductDTO.prodProductDTO.prodName}}</view>
+          <view class="commodityprice">
+            ¥{{item.hotelProductDTO.prodRetailPrice}}
+            
+            <view class="commoditynum">x{{item.prodCount}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="footbox-order">
+      共
+      <text class="text-font1">{{quantity2}}</text>件商品  小计
+      <text class="text-font2">￥{{total2}}</text>
+    </view>
+    <view class="remarkbox">
+      <view class="textarea-font">留言</view>
+      <view class="textareabox">{{orderinfo.expressRemark}}</view>
+    </view>
+  </view>
+</block>
+<view class="totalbox">合计 
+  <text class="text-font2">￥{{orderinfo.totalAmount}}</text>
+</view>
+<view class="bgfff">
+  <view class="paddAll20 btbox">订单信息</view>
+  <view class="paddAll20">
+    <view class="orderinfo-text">
+      <text>订单编号</text>{{orderinfo.orderCode}}</view>
+    <view class="orderinfo-text">
+      <text>交易号</text>{{orderinfo.transactionId}}</view>
+    <view class="orderinfo-text">
+      <text>创建时间</text>{{orderinfo.createdAt}}</view>
+    <view class="orderinfo-text">
+      <text>付款时间</text>{{orderinfo.payTime}}</view>
+  </view>
+</view>
+<button class="service" onTap="servicefun">联系客服</button>

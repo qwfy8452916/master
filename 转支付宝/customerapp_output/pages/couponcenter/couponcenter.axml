@@ -1,0 +1,27 @@
+<view class="couponlist">
+  <block a:if="{{coupon_list.length > 0}}">
+    <block
+      a:for="{{coupon_list}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view class="couponlist-li">
+        <view class="couponlist-li-l">
+          <view class="font-l1">¥ 
+            <text class="font-l3">{{item.reduceMoney}}</text> {{item.couponName}}</view>
+          <view class="font-l2">满{{item.useLimitMoney}}使用</view>
+          <view a:if="{{item.couponTermType == 0}}" class="font-l2">领取后{{item.couponTermDays}}天内可用</view>
+          <view a:else class="font-l2">有效期至 {{item.couponTermEndDate}} 前</view>
+        </view>
+        <view
+          class="couponlist-li-r font-l1"
+          data-id="{{item.id}}"
+          onTap="receive"
+        >立即领取</view>
+      </view>
+    </block>
+  </block>
+  <block a:else>
+    <view class="font-coupon">暂无可领的优惠券</view>
+  </block>
+</view>

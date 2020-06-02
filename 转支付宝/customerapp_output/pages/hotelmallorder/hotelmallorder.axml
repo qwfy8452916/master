@@ -1,0 +1,288 @@
+<block a:if="{{deliverytype3}}">
+  <view class="mgB20">
+    <view class="paddAll hotelmallcar-name">迷你吧</view>
+    <view class="paddAll hoteladdress">{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+    <block
+      a:for="{{deliverylist3}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view class="paddAll listbox">
+        <view class="listbox-c">
+          <image
+            src="{{item.prodLogoUrl}}"
+            class="commodityimg"
+            mode="aspectFill"
+          ></image>
+        </view>
+        <view class="listbox-r">
+          <view class="commodityname">{{item.prodShowName}}</view>
+          <view class="commodityprice">
+            ¥{{item.latticeProdAmt}}
+            
+            <view class="commoditynum">x{{item.prodnum}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="footbox-order">
+      共
+      <text class="text-font1">{{totalnum3}}</text>件商品  小计
+      <text class="text-font2">￥{{total3}}</text>
+    </view>
+  </view>
+</block>
+<block a:if="{{deliverytype1}}">
+  <view class="mgB20">
+    <view class="paddAll hotelmallcar-name">现场配送</view>
+    <view class="paddAll hoteladdress">{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+    <block
+      a:for="{{deliverylist1}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view class="paddAll listbox">
+        <view class="listbox-c">
+          <image
+            src="{{item.prodLogoUrl}}"
+            class="commodityimg"
+            mode="aspectFill"
+          ></image>
+        </view>
+        <view class="listbox-r">
+          <view class="commodityname">{{item.prodShowName}}</view>
+          <view class="commodityprice">
+            ¥{{item.prodRetailPrice}}
+            
+            <view class="commoditynum">x{{item.prodnum}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="footbox-order">
+      共
+      <text class="text-font1">{{totalnum1}}</text>件商品  小计
+      <text class="text-font2">￥{{total1}}</text>
+    </view>
+    <view class="remarkbox">
+      <view class="textarea-font">留言</view>
+      <view
+        a:if="{{messtype == 1}}"
+        class="textareabox fontcolor"
+        onTap="showtext2"
+      >选填(对本交易的补充说明)</view>
+      <textarea
+        a:else
+        class="textareabox"
+        maxlength="250"
+        placeholder-style="color: #cecece;"
+        placeholder="选填(对本交易的补充说明)"
+        data-type="1"
+        onInput="bindTextAreaBlur"
+        auto-height
+        focus="{{messtype != 1}}"
+        onBlur="confirm2"
+      />
+    </view>
+  </view>
+</block>
+<block a:if="{{deliverytype2}}">
+  <view class="mgB20">
+    <view class="paddAll hotelmallcar-name">快递到家</view>
+    <view class="paddAll hoteladdress hoteladdress2" onTap="addressfun">
+      <view class="font-address" a:if="{{receipttype}}">请添加收货信息</view>
+      <view class="font-address" a:else>
+        <view>{{receiptlist.consignee}} {{receiptlist.consigneePhone}}</view>
+        <view>{{receiptlist.addressAll}}</view>
+      </view>
+      <image
+        src="../../img/my-bgimg2.png"
+        class="iconimg"
+        mode="aspectFill"
+      ></image>
+    </view>
+    <block
+      a:for="{{expresslist}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <!-- <view class='paddAll hotelmallcar-name borderstyle'>{{item.orgName}}</view> -->
+      <block
+        a:for="{{item.hshopProducts}}"
+        a:for-item="item2"
+        a:key="index"
+      >
+        <view class="paddAll listbox">
+          <view class="listbox-c">
+            <image
+              src="{{item2.prodLogoUrl}}"
+              class="commodityimg"
+              mode="aspectFill"
+            ></image>
+          </view>
+          <view class="listbox-r">
+            <view class="commodityname">{{item2.prodShowName}}</view>
+            <view class="commodityprice">
+              ¥{{item2.prodRetailPrice}}
+              
+              <view class="commoditynum">x{{item2.prodnum}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="paddAll freight">
+        <text>运费</text>
+        <text class="fonts1">
+          <block a:if="{{item.totalExpressFee == 0}}">快递包邮</block>
+          <block a:else>¥{{item.totalExpressFee}}</block>
+        </text>
+      </view>
+      <view class="footbox-order">
+        共
+        <text class="text-font1">{{item.totalProdAmt}}</text>件商品  小计
+        <text class="text-font2">￥{{item.totalFee}}</text>
+      </view>
+      <view class="remarkbox mgB20">
+        <view class="textarea-font">留言</view>
+        <view
+          a:if="{{item.messtype == 1}}"
+          class="textareabox fontcolor"
+          data-id="{{item.prodOwnerOrgId}}"
+          onTap="showtext"
+        >
+          <block a:if="{{item.message==''}}">选填(对本交易的补充说明)</block>
+          <block a:else>{{item.message}}</block>
+        </view>
+        <!-- WX2MY: 属性show-confirm-bar不被支持，请调整。 -->
+        <textarea
+          a:else
+          class="textareabox"
+          maxlength="250"
+          placeholder-style="color: #cecece;"
+          placeholder="选填(对本交易的补充说明)"
+          onBlur="confirm"
+          show-confirm-bar="true"
+          focus="{{item.messtype}}"
+          auto-height
+          value="{{item.message}}"
+        />
+      </view>
+    </block>
+  </view>
+</block>
+<view class="mgB20">
+  <view class="formbox">
+    <text class="textW">联系人</text>
+    <input
+      class="inpbox"
+      type="text"
+      placeholder-style="color: #cecece;"
+      placeholder="请填写联系人"
+      onInput="usernamefun"
+    ></input>
+  </view>
+  <view class="formbox">
+    <text class="textW">手机号</text>
+    <input
+      class="inpbox"
+      type="number"
+      placeholder-style="color: #cecece;"
+      placeholder="请填写手机号"
+      onInput="telfun"
+    ></input>
+  </view>
+</view>
+<view
+  class="couponjh"
+  onTap="showcoupon"
+  a:if="{{coupontype == true}}"
+>
+  <view class="couponjh-l">优惠券</view>
+  <view class="couponjh-r">
+    <text>
+      <block a:if="{{coupon_selected.length>0}}">满{{coupon_selected[0].useLimitMoney}}减{{coupon_selected[0].reduceMoney}}</block>
+      <block a:else>满{{coupon_optional[0].useLimitMoney}}减{{coupon_optional[0].reduceMoney}}</block>
+    </text>
+    <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+  </view>
+</view>
+<block a:if="{{coupontype2 == false}}">
+  <cover-view class="foottotal" a:if="{{ deliverytype3 || deliverytype1 || deliverytype2}}">
+    <cover-view class="costbox">
+      <cover-view class="cost-font2">合计:</cover-view>
+      <cover-view class="cost-font3">￥</cover-view>
+      <cover-view class="cost-font4">{{lumpsum_Discount}}</cover-view>
+      <cover-view class="cost-font1" a:if="{{courierfee>0}}">包含运费</cover-view>
+    </cover-view>
+    <cover-view
+      class="settlementbtn"
+      a:if="{{paytype == true}}"
+      onTap="delayfun"
+    >支付
+      <cover-view a:if="{{alllength>0}}">({{alllength}})</cover-view>
+    </cover-view>
+    <cover-view class="settlementbtn settlementbtn2" a:else>支付中···</cover-view>
+  </cover-view>
+</block>
+<view class="couponlistbox-bg" a:if="{{coupontype2 == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择优惠券</view>
+    <view class="font-prod2 mgB20">已选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block a:if="{{coupon_selected.length > 0}}">
+        <block
+          a:for="{{coupon_selected}}"
+          a:for-item="item"
+          a:key="index"
+        >
+          <view
+            class="select-li"
+            data-index="{{index}}"
+            data-type="1"
+            onTap="changecoupon"
+          >
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} 
+                <text class="Limit" a:if="{{item.couponLimit==0}}">(唯一券)</text>
+              </view>
+            </view>
+            <image src="../../img/success-img2.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block a:else>
+        <view class="font-none">请选择优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="font-prod2 mgB20">可选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block a:if="{{coupon_optional.length > 0}}">
+        <block
+          a:for="{{coupon_optional}}"
+          a:for-item="item"
+          a:key="index"
+        >
+          <view
+            class="select-li"
+            data-index="{{index}}"
+            data-type="2"
+            onTap="changecoupon"
+          >
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} 
+                <text class="Limit" a:if="{{item.couponLimit==0}}">(唯一券)</text>
+              </view>
+            </view>
+            <image src="../../img/icon-img7.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block a:else>
+        <view class="font-none">暂无可选优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" onTap="showcoupon">确定</view>
+  </view>
+</view>

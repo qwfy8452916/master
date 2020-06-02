@@ -1,0 +1,54 @@
+<!--pages/deliveredlist/deliveredlist.axml-->
+<view class="wrap">
+  <view class="floorselect" data-type="1">
+    <text class="floortitle">请选择楼层</text>
+    <text class="iconfont iconwodedingdan1" onTap="deliveredrecord"></text>
+    <text class="suxian"></text>
+    <text class="iconfont icon-wangyou" onTap="selectlouceng"></text>
+  </view>
+  <scroll-view
+    class="wraplist"
+    style="height:{{gaodu}}rpx;"
+    scroll-y
+  >
+    <view
+      class="peisitem"
+      a:for="{{deliverydata}}"
+      a:key="*this"
+      onTap="delivereddetail"
+      data-id="{{item.id}}"
+      data-delivtype="{{item.delivType}}"
+    >
+      <view class="roomcode">{{item.roomFloor}}-{{item.roomCode}}</view>
+      <view class="protype">
+        <text
+          a:for="{{item.orderDeliveryDetailDTOList}}"
+          a:for-item="childrenitem"
+          a:key="*this"
+        >{{childrenitem.prodProductDTO.prodName}}、</text>
+      </view>
+      <text class="gongnengarea" a:if="{{item.delivType!='1'}}">{{item.funcName}}</text>
+      <text class="prototal">共{{item.prodCount}}件</text>
+    </view>
+  </scroll-view>
+</view>
+<!-- <view class='yinying' hidden='{{isHide}}' bindtap='yinying'></view> -->
+<view class="selectfloorbox {{isHide?'transtion-off':'transtion-on'}}">
+  <view>
+    <view class="floormodel">
+      <text class="selectfloor">请选择楼层</text>
+      <text class="iconfont icon-" onTap="yinying"></text>
+    </view>
+    <view class="floorcontent">
+      <view
+        class="flooritem {{floordataactive[index]?'flooractivity':''}}"
+        onTap="flooritem"
+        a:for="{{floordata}}"
+        data-index="{{index}}"
+        data-floor="{{item}}"
+        a:key="*this"
+      >{{item}}</view>
+    </view>
+  </view>
+</view>
+<my-tabbar id="tabbar" tabindex="{{Tabindex}}"></my-tabbar>

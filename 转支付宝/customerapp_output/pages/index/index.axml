@@ -1,0 +1,476 @@
+<view class="pagebox" style="padding-bottom: {{buylist.length == 0?'112rpx':'250rpx'}}">
+  <view class="swiperbox">
+    <swiper
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      circular="{{circular}}"
+    >
+      <swiper-item
+        class="swiperitembox"
+        data-url="{{hotelAddImagesfirst.toLinkUrl}}"
+        onTap="tzurl"
+      >
+        <image
+          src="{{hotelAddImagesfirst.url}}"
+          class="slide-image"
+          mode="widthFix"
+        />
+        <view class="jdinfobox">
+          <view class="banner-img" onTap="hotelstoryfun">
+            <image src="../../img/index-img1.png" mode="widthFix"></image>
+          </view>
+          <view class="hotelinfobox">
+            <text class="jd-name" style="margin-top: 0;">{{hotelName}}</text>
+            <view class="mgB10">
+              <image
+                src="../../img/star.png"
+                a:for="{{hotelStarLevel}}"
+                a:for-item="i"
+                a:key="index"
+                class="stars"
+              ></image>
+            </view>
+            <view class="labellist">
+              <view class="labelbox" a:if="{{hotelDecorationYear != ''}}">{{hotelDecorationYear}}年装修</view>
+              <view class="labelbox" a:if="{{isHasPark==1}}">停车位</view>
+              <view class="labelbox" a:if="{{hotelStyle != ''}}">{{hotelStyle}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+      <block
+        a:for="{{hotelAddImages}}"
+        a:for-item="item"
+        a:key="index"
+      >
+        <swiper-item
+          class="swiperitembox"
+          data-url="{{item.toLinkUrl}}"
+          onTap="tzurl"
+        >
+          <image
+            src="{{item.url}}"
+            class="slide-image"
+            mode="widthFix"
+            data-id="{{index}}"
+            onLoad="imageLoad"
+          />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="jdinfo-bg" style="padding-bottom: {{oprInvoiceSup == 1?'10rpx':'0rpx'}};">
+    <view class="jdinfo" style="border-bottom: {{oprInvoiceSup == 1?'0.5px solid #e5e5e5;':'none'}};">
+      <view class="jdinfo-position" onTap="mabview">
+        <image src="../../img/position-img.png" class="position-img"></image>
+        <text class="position-text">{{city}}/{{area}}\n{{hotelAddress}}</text>
+      </view>
+      <view class="jdinfoR">
+        <view class="jdinfo-tel" onTap="tel">
+          <image src="../../img/tel.png" class="jdinfo-telimg"></image>
+        </view>
+        <view
+          class="jdinfo-wifi"
+          onTap="connect"
+          a:if="{{wifiSsid != ''}}"
+        >
+          <image
+            class="icon-wifi"
+            src="../../img/wifi.png"
+            mode=""
+          ></image>
+        </view>
+      </view>
+    </view>
+    <block a:if="{{isShowInvoiceReminder == 1}}">
+      <view class="honorbox" a:if="{{oprInvoiceSup == 1}}">
+        <!-- 开票 -->
+        <text class="iconfont icon-laba honorbox-img" style="color: {{themecolor.skintone}};"></text>
+        <view class="honorbox-text" style="color: {{themecolor.skintone}};">
+          <!-- WX2MY: 属性decode不被支持，请调整 -->
+          <text class="txt" decode="{{true}}">
+            <block a:if="{{isInvoice == 1}}">所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.</block>
+            <block a:else>所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.</block>
+          </text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <block a:if="{{minibar != 0}}">
+    <view class="index-bt">
+      <view class="index-bt-l">智能迷你吧</view>
+      <view class="index-bt-r">{{roomCode}}</view>
+    </view>
+    <view class="border-none">
+      <!--  wx:if="{{cabinetStatus == 1}}" -->
+      <block
+        a:for="{{mnb_commodity}}"
+        a:for-item="item"
+        a:key="index"
+      >
+        <view
+          a:if="{{item.prodShowName != null && item.prodShowName != ''}}"
+          class="commoditybox-bg"
+          data-prodcode="{{item.prodCode}}"
+          data-latticeid="{{item.latticeId}}"
+          data-cabid="{{item.cabId}}"
+          data-latticecode="{{item.latticeCode}}"
+          data-hotelprodid="{{item.hotelProdId}}"
+          data-img="{{item.prodLogoUrl}}"
+          data-funcprodid="{{item.funcProdId}}"
+          data-ptype="1"
+          data-isempty="{{item.isEmpty}}"
+          data-prodamt="{{item.prodnum}}"
+          data-prodnumtype="{{item.prodnumtype}}"
+          onTap="details"
+        >
+          <view class="commoditybox">
+            <view class="commoditybox-img">
+              <image class="commodityboximg" src="{{item.prodLogoUrl}}"></image>
+            </view>
+            <view class="commoditybox-right">
+              <view class="commoditybox-right-info">
+                <text class="latticeCode">{{item.latticeCode}}</text> {{item.prodShowName}}
+              </view>
+              <view a:if="{{item.isEmpty == 1 && item.isFree != 1 && item.prodRetailPrice != 0 && item.prodRetailPrice != 0.00}}" class="font-tsy">
+                <block a:if="{{convenienceStore != 0 && item.funcProdId != 0 && item.invProdAmount != 0 && item.invProdAmount != null}}">可再次购买 商品由服务员配送至客房</block>
+              </view>
+              <view class="commoditybox-right-btm">
+                <view class="commoditybox-right-btm-price">¥ 
+                  <block a:if="{{item.isFree != 1}}">{{item.latticeProdAmt}}</block>
+                  <block a:else>0.00</block>
+                  <text a:if="{{item.latticeProdAmt < item.prodMarketPrice}}" class="commoditybox-right-btm-pricemf fontsize20">¥ {{item.prodMarketPrice}}</text>
+                </view>
+              </view>
+            </view>
+            <block a:if="{{minibar == 2 && spotpurchaseflag == 1}}">
+              <block a:if="{{(item.isEmpty == 1 && convenienceStore != 0 && item.funcProdId != 0 && item.invProdAmount != 0 && item.invProdAmount != null) || item.isEmpty == 0}}">
+                <block a:if="{{item.prodRetailPrice != 0 && item.prodRetailPrice != 0.00 && item.isFree != 1}}">
+                  <view class="buybtn-box" style="justify-content: {{item.prodnumtype == true?'space-between':'flex-end'}}">
+                    <block a:if="{{item.prodnumtype == true}}">
+                      <view
+                        class="btnstyle"
+                        data-ptype="1"
+                        data-latticecode="{{item.latticeCode}}"
+                        data-prodcode="{{item.prodCode}}"
+                        catchTap="lessfun"
+                      >
+                        <image src="../../img/icon-img2.png"></image>
+                      </view>
+                      <view class="prodnum">{{item.prodnum}}</view>
+                    </block>
+                    <view
+                      class="btnstyle"
+                      data-isclock="{{item.isclock}}"
+                      data-ptype="1"
+                      data-latticecode="{{item.latticeCode}}"
+                      data-prodcode="{{item.prodCode}}"
+                      data-prodnumtype="{{item.prodnumtype}}"
+                      data-hotelprodid="{{item.hotelProdId}}"
+                      data-isempty="{{item.isEmpty}}"
+                      data-prodamt="{{item.prodnum}}"
+                      data-isneedinv="{{item.isNeedInv}}"
+                      catchTap="plusfun"
+                    >
+                      <image src="../../img/icon-img1.png"></image>
+                    </view>
+                  </view>
+                </block>
+                <block a:else>
+                  <block a:if="{{item.isEmpty !=1 }}">
+                    <view
+                      a:if="{{item.prodnumtype != true}}"
+                      style="background: {{themecolor.skintone}};border: 0.5px solid {{themecolor.skintone}};"
+                      class="buybtn buybtnbg"
+                      data-isclock="{{item.isclock}}"
+                      data-ptype="1"
+                      data-latticecode="{{item.latticeCode}}"
+                      data-prodcode="{{item.prodCode}}"
+                      data-prodamt="{{item.prodnum}}"
+                      catchTap="plusfun"
+                    >免费领 
+                      <block a:if="{{isSupportEn == 1}}">Free</block>
+                    </view>
+                    <view
+                      a:else
+                      style="color: {{themecolor.skintone}}""
+                      class="buybtn buybtnbg"
+                      data-prodcode="{{item.prodCode}}"
+                      data-ptype="1"
+                      data-latticecode="{{item.latticeCode}}"
+                      catchTap="lessfun"
+                    >取消 
+                      <block a:if="{{isSupportEn == 1}}">Cancel</block>
+                    </view>
+                  </block>
+                  <block a:else>
+                    <view class="buybtn buybtnbg">已领取 
+                      <block a:if="{{isSupportEn == 1}}">Sold out</block>
+                    </view>
+                  </block>
+                </block>
+              </block>
+              <block a:elif="{{item.prodRetailPrice == 0 || item.prodRetailPrice == 0.00 || item.isFree == 1}}">
+                <view class="buybtn buybtnbg">已领取 
+                  <block a:if="{{isSupportEn == 1}}">Sold out</block>
+                </view>
+              </block>
+              <block a:else>
+                <view class="buybtn buybtnbg">已售出 
+                  <block a:if="{{isSupportEn == 1}}">Sold out</block>
+                </view>
+              </block>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- <view wx:else class='faultbox'>
+      <image src='../../img/u485.png' mode='widthFix'></image>
+      柜子故障，暂不能购买...
+    </view> -->
+  </block>
+  <block a:if="{{convenienceStore != 0}}">
+    <view class="index-bt">
+      <view class="index-bt-l">智能便利店
+        <text class="index-bt-r">(购买后服务员送入客房)</text>
+      </view>
+      <view class="index-bt-r">{{roomCode}}</view>
+    </view>
+    <block
+      a:for="{{storelist}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view
+        a:if="{{item.prodShowName != null && item.prodShowName != ''}}"
+        class="commoditybox-bg"
+        data-prodcode="{{item.prodCode}}"
+        data-hotelprodid="{{item.hotelProdId}}"
+        data-funcprodid="{{item.funcProdId}}"
+        data-img="{{item.prodLogoUrl}}"
+        data-ptype="2"
+        data-isempty="3"
+        data-prodamt="{{item.prodnum}}"
+        data-prodnumtype="{{item.prodnumtype}}"
+        onTap="details"
+      >
+        <view class="commoditybox">
+          <view class="commoditybox-img">
+            <image class="commodityboximg" src="{{item.prodLogoUrl}}"></image>
+          </view>
+          <view class="commoditybox-right">
+            <view class="commoditybox-right-info">{{item.prodShowName}}</view>
+            <view class="commoditybox-right-btm">
+              <view class="commoditybox-right-btm-price">¥ 
+                <block a:if="{{item.isFree != 1}}">{{item.prodRetailPrice}}</block>
+                <block a:else>0.00</block>
+                <text a:if="{{item.prodRetailPrice < item.prodMarketPrice}}" class="commoditybox-right-btm-pricemf fontsize20">¥ {{item.prodMarketPrice}}</text>
+              </view>
+            </view>
+          </view>
+          <block a:if="{{convenienceStore == 2 && spotpurchaseflag == 1}}">
+            <view class="buybtn-box" style="justify-content: {{item.prodnumtype == true?'space-between':'flex-end'}}">
+              <block a:if="{{item.prodnumtype == true}}">
+                <view
+                  class="btnstyle"
+                  data-ptype="2"
+                  data-prodcode="{{item.prodCode}}"
+                  catchTap="lessfun"
+                >
+                  <image src="../../img/icon-img2.png"></image>
+                </view>
+                <view class="prodnum">{{item.prodnum}}</view>
+              </block>
+              <view
+                class="btnstyle"
+                data-isclock="{{item.isclock}}"
+                data-ptype="2"
+                data-prodcode="{{item.prodCode}}"
+                data-prodnumtype="{{item.prodnumtype}}"
+                data-hotelprodid="{{item.hotelProdId}}"
+                data-prodamt="{{item.prodnum}}"
+                data-isneedinv="{{item.isNeedInv}}"
+                catchTap="plusfun"
+              >
+                <image src="../../img/icon-img1.png"></image>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </block>
+  <view
+    class="buybox {{buylist.length != 0?'btm108':'btm0'}}"
+    a:if="{{buylist.length != 0}}"
+    style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+  >
+    <view class="promptbox">购买多数量同一商品， 智能迷你吧内商品自取，剩余商品服务员会送至客房。</view>
+    <view class="buybox-font">合计：
+      <text class="font-color3">¥ {{money}}</text>
+    </view>
+    <view
+      a:if="{{hasfuncprod == 1}}"
+      class="shopcar-view"
+      onTap="goshopcar"
+    >
+      <image src="../../img/shoppingcart.png"></image>
+    </view>
+    <view
+      a:if="{{subordertype == true}}"
+      class="buybtn2"
+      style="background: {{themecolor.skintone}};"
+      onTap="getshoppingcart"
+    >结算 ({{prodlength}})</view>
+    <view
+      a:else
+      class="buybtn2"
+      style="background: #cecece;"
+    >已提交</view>
+  </view>
+  <view class="footerbox" style="padding-top: {{isSupportEn == 1?'17rpx':'7rpx'}};padding-bottom: {{isSupportEn == 1?'18rpx':'8rpx'}};">
+    <scroll-view
+      class="tablist-box"
+      scroll-x="true"
+      enable-flex="true"
+    >
+      <view
+        class="footerbox-btn"
+        a:if="{{minibar != 0 || convenienceStore != 0}}"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-yonghuzhongxin-shouye"
+          style="color: {{themecolor.skintone}};font-size: 45rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: {{themecolor.skintone}}; font-weight: 800;">迷你吧</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: {{themecolor.skintone}}; font-weight: 800;"
+        >Home Page</view>
+      </view>
+      <block
+        a:for="{{hotelFuncDTOS1}}"
+        a:for-item="item"
+        a:key="index"
+      >
+        <view
+          class="footerbox-btn func-box"
+          data-id="{{item.id}}"
+          onTap="hotelmall"
+          style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+        >
+          <text
+            a:if="{{isSupportEn == 0}}"
+            class="iconfont icon-fenqishangcheng"
+            style="color: #999999;font-size: 40rpx;"
+          ></text>
+          <view class="footerbox-btnname" style="color: #999999;">{{item.funcCnName}}</view>
+          <view
+            a:if="{{isSupportEn == 1}}"
+            class="footerbox-btnname2"
+            style="color: #999999;"
+          >{{item.funcEnName}}</view>
+        </view>
+      </block>
+      <view
+        a:if="{{roomService != 0 && spotpurchaseflag == 1}}"
+        class="footerbox-btn"
+        onTap="roomservice"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-zuanshi"
+          style="color: #999999;font-size: 40rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: #999999;">客房服务</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: #999999;"
+        >Room Service</view>
+      </view>
+      <view
+        a:if="{{isSupportRoomAlloc == 1}}"
+        class="footerbox-btn"
+        onTap="reservation"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-xieyiguanli"
+          style="color: #999999;font-size: 40rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: #999999;">客房协议价</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: #999999;"
+        >Reservation</view>
+      </view>
+      <view
+        class="footerbox-btn"
+        onTap="mypage"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-yonghu_fill"
+          style="color: #999999;font-size: 40rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: #999999;">我的</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: #999999;"
+        >Mine</view>
+      </view>
+      <block a:if="{{hotelFuncDTOS2.length != 0}}">
+        <block
+          a:for="{{hotelFuncDTOS2}}"
+          a:for-item="item"
+          a:key="index"
+        >
+          <view
+            class="footerbox-btn func-box"
+            data-id="{{item.id}}"
+            onTap="hotelmall"
+            style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+          >
+            <text
+              a:if="{{isSupportEn == 0}}"
+              class="iconfont icon-fenqishangcheng"
+              style="color: #999999;font-size: 40rpx;"
+            ></text>
+            <view class="footerbox-btnname" style="color: #999999;">{{item.funcCnName}}</view>
+            <view
+              a:if="{{isSupportEn == 1}}"
+              class="footerbox-btnname2"
+              style="color: #999999;"
+            >{{item.funcEnName}}</view>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<pop id="dialog" onRedirectfun="redirectfun"></pop>
+<block a:if="{{redPacketShowFlag == 1 && shareObj == 3 && regbagact_type == 0}}">
+  <redbagact
+    shareUserAvatarUrl="{{shareUserAvatarUrl}}"
+    shareUserNickName="{{shareUserNickName}}"
+    redbagtype="{{redbagtype}}"
+  ></redbagact>
+</block>
+<block a:if="{{act_newcomer != '' && act_newcomer.isOpen == 0 && (redPacketShowFlag == 0 || shareObj != 3 || regbagact_type != 0)}}">
+  <newcomer
+    actAdImageUrl="{{act_newcomer.actAdImageUrl}}"
+    actImageUrl="{{act_newcomer.actImageUrl}}"
+    actId="{{act_newcomer.id}}"
+  ></newcomer>
+</block>

@@ -1,0 +1,42 @@
+<!--pages/updatepwd/updatepwd.axml-->
+<view class="mainbg">
+  <form onSubmit="infoSubmit">
+    <view class="userinfo">
+      <text class="labuser">
+        <text class="iconcolor">* </text>旧密码</text>
+      <input
+        name="oldpwd"
+        placeholder="请填写旧密码"
+        placeholder-style="color:#cecece;"
+        maxlength="18"
+        class="txtuser"
+        value="{{userinfoData.oldpwd}}"
+      ></input>
+    </view>
+    <view class="userinfo">
+      <text class="labuser">
+        <text class="iconcolor">* </text>新密码</text>
+      <input
+        name="newpwd"
+        placeholder="请填写新密码"
+        placeholder-style="color:#cecece;"
+        maxlength="18"
+        class="txtuser"
+        value="{{userinfoData.newpwd}}"
+      ></input>
+    </view>
+    <view class="userinfo">
+      <text class="labuser">
+        <text class="iconcolor">* </text>确认密码</text>
+      <input
+        name="confirmpwd"
+        placeholder="请填写确认密码"
+        placeholder-style="color:#cecece;"
+        maxlength="18"
+        class="txtuser"
+        value="{{userinfoData.confirmpwd}}"
+      ></input>
+    </view>
+    <button form-type="submit" class="submitbtn">确认</button>
+  </form>
+</view>

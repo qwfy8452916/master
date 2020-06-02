@@ -1,0 +1,16 @@
+<!--pages/conplatedelivered/conplatedelivered.axml-->
+<view class="recordwrap">
+  <view
+    class="recorditem"
+    onTap="wanchengdetail"
+    a:for="{{complatedata}}"
+    a:key="*this"
+    data-id="{{item.id}}"
+    data-delivtype="{{item.delivType}}"
+  >
+    <text class="recordtitle">{{item.shipmentsTime}}</text>
+    <text class="countzj">共{{item.prodCount}}件</text>
+    <text class="roomcode">{{item.roomFloor}}-{{item.roomCode}}</text>
+    <text class="gongnengqu" a:if="{{item.delivType!='1'}}">{{item.funcName}}</text>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+page{
+  background: #fff;
+}
+.mylistbox-li{
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.mylistbox-li-name{
+  font-size: 30rpx;
+  color: #666666;
+}
+.mylistbox-li-img{
+  display: block;
+  width: 10%;
+  margin-right: 15rpx;
+}
+.mylistbox-li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18rpx;
+  padding-bottom: 18rpx;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.mylistbox-li-left{
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mylistbox-li-bg{
+  display: block;
+  width: 15rpx;
+  height: 25rpx;
+  margin-right: 20rpx;
+}
+.mylistbox .mylistbox-li:last-child{
+  border-bottom: none;
+}

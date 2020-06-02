@@ -1,0 +1,58 @@
+<block
+  a:for="{{orderinfo}}"
+  a:for-item="item"
+  a:key="index"
+>
+  <view class="mgB20">
+    <view class="paddAll borderB pordinfo">
+      <image
+        a:if="{{item.prodHotelProductDTO.prodLogoUrl!=''&&item.prodHotelProductDTO.prodLogoUrl!=null}}"
+        src="{{item.prodHotelProductDTO.prodLogoUrl}}"
+        class="pordimg"
+      ></image>
+      <image
+        a:else
+        src="{{item.prodProductDTO.prodLogoUrl}}"
+        class="pordimg"
+      ></image>
+      <view a:if="{{item.prodHotelProductDTO.prodShowName!=''&&item.prodHotelProductDTO.prodShowName!=null}}" class="pordname">{{item.prodHotelProductDTO.prodShowName}}</view>
+      <view a:else class="pordname">{{item.prodProductDTO.prodShowName}}</view>
+    </view>
+    <textarea
+      class="paddAll pjcentent"
+      data-index="{{index}}"
+      onInput="pjtext"
+      placeholder-class="pjcentent-m"
+      placeholder="宝贝满足你的期待吗？说说你的使用心得，分享给想买 的他们吧！"
+      auto-height
+    ></textarea>
+    <view class="paddAll imglistbox">
+      <block
+        a:for="{{pjdata[index].imglist}}"
+        a:for-item="itemimg"
+        a:key="index"
+      >
+        <view
+          class="pjimgwh"
+          data-index="{{index}}"
+          data-hotelprodid="{{itemimg.hotelprodid}}"
+          onTap="closeimg"
+        >
+          <image src="{{itemimg.fileUri}}"></image>{{item.index}}
+          
+          <image class="closebtn" src="../../img/icon-img11.png"></image>
+        </view>
+      </block>
+      <view
+        class="pjimgwh"
+        a:if="{{item.uptype}}"
+        data-hotelprodid="{{item.hotelProdId}}"
+        data-index="{{index}}"
+        onTap="bindChooiceProduct"
+      >
+        <image src="../../img/upimg.png"></image>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="subbtn" onTap="subpj">发布</view>

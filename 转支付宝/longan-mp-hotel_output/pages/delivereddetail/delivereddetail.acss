@@ -1,0 +1,62 @@
+/* pages/delivereddetail/delivereddetail.wxss */
+page{border-top: 1rpx solid #e5e5e5;}
+.hangitem{width: 100%;padding: 25rpx 4%;box-sizing: border-box;
+border-bottom: 1rpx solid #e5e5e5;}
+.roomhao{color: #FF9700;font-size: 32rpx;overflow: hidden;}
+.roomhao .lefroom{float: left;}
+.roomhao .rigsure{float: right;color: #10BBBB;font-size: 28rpx;}
+.contactinfo{font-size: 28rpx;border-bottom:20rpx solid #f6f6f6;}
+.contactinfo2{font-size: 28rpx;}
+.lianxihang{overflow: hidden;}
+.lianxihang .lianxi{color: #333;}
+.lianxi .lianxi-title{color: #999;margin-right: 20rpx;}
+.lianxihang .phonehao{float: right;}
+.comment{overflow: hidden;margin-top: 10rpx;}
+.comment .comment-title{color: #999;margin-right: 20rpx;} 
+.detailwrap{overflow: hidden;}
+.detailwrap .detailitem{padding: 30rpx 4%;box-sizing: border-box;position: relative;
+border-bottom: 1px solid #e5e5e5;vertical-align: top;overflow: hidden;} 
+.detailitem .propic{width:130rpx;height: 130rpx;display: inline-block;
+overflow: hidden;vertical-align: top;float: left;}
+.propic image{width: 100%;height: 100%;}
+.detailitem .promiaos{display: inline-block;float: left;margin-left: 30rpx;
+font-size: 28rpx;color: #333;width: calc(100% - 160rpx);}
+.detailitem .geshu{position: absolute;right: 4%;bottom: 25rpx;
+font-size: 28rpx;color: #999;}
+.public{overflow: hidden;margin-top: 15rpx;}
+.public:first-child{margin-top: 10rpx;}
+.public-title{color: #999;margin-right: 20rpx;display: inline-block;
+width: 120rpx;text-align: right;}
+
+
+.guestwrap{overflow: hidden;display:flex;margin-bottom: 120rpx;
+flex-direction:column;}
+.guestwrap .guestrow{
+  flex-grow: 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* border:#333 1px solid; */
+  padding: 20rpx 0;
+  overflow: hidden;}
+.guestwrap .guestrow:first-child{border-bottom: 1px solid #e5e5e5;}
+.guestwrap .guestrow:last-child{border-bottom: 1px solid #e5e5e5;}
+.guestheader .guesttitle{flex-grow: 1;justify-content: center;width: 33.3%;
+ align-items: center;text-align: center;font-size: 28rpx;color: #999;}
+
+ .guestrow .proditem{flex-grow: 1;justify-content: center;width: 33.3%;
+ align-items: center;text-align: center;font-size: 28rpx;color: #333;}
+.givetime{font-size: 28rpx;color: #999;
+padding-left: 75rpx;box-sizing: border-box;}
+.givetime .nowtime{color: #ff9100;margin-left: 10rpx;}
+
+
+.wraptesting{width: 100%;padding: 25rpx 4%;
+overflow: hidden;position: fixed;bottom: 0;left: 0;}
+.wraptesting .testingniu{width: 100%;height: 88rpx;line-height: 88rpx;
+text-align: center;
+background: #ff9700;color: #fff;font-size: 32rpx;}
+
+
+
+

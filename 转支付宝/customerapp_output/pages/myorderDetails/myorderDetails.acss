@@ -1,0 +1,218 @@
+.othordertitbox{
+  width: 100%;
+  padding: 25rpx 4%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  border-top: 1px solid #e5e5e5;
+  font-size: 32rpx;
+  color: #333;
+}
+.detailListbox{overflow: hidden;
+  margin-top: 30rpx;background: #fff;
+  text-align: left;
+}
+.titlebox{
+  font-size: 28rpx;color: #999;
+  width: 100%;padding: 25rpx 4%;
+  box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+}
+.titlebox2{
+  font-size: 32rpx;color: #333;
+  width: 100%;padding: 25rpx 4%;
+  box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+}
+.floorroom{margin-left: 25rpx;} 
+.jinenumbox{
+  overflow: hidden;
+  margin-top: 25rpx;
+  width: 100%;
+}
+.jinenumbox .lefbox{float: left;font-size: 20rpx;
+  color: #EE1E1E;
+}
+.pricenumber{font-size: 32rpx;}
+.jinenumbox .rightbox{
+  float: right;
+  font-size: 24rpx;
+  color: #999;
+}
+.countnumber{font-size: 30rpx;}
+.yunbox{
+  overflow: hidden;
+  font-size: 28rpx;color: #999;
+  width: 100%;padding: 25rpx 4%;
+  box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+}
+.alignleft{float: left;}
+.alignright{float: right;}
+
+.jijianbox{
+  overflow: hidden;
+  font-size: 28rpx;color: #999;
+  width: 100%;padding: 25rpx 4%;
+  box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+  text-align: right;
+  background: #fff;
+
+}
+.mesgbox{
+  overflow: hidden;
+  font-size: 28rpx;color: #999;
+  width: 100%;padding: 25rpx 4%;
+  box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+  text-align: left;
+}
+.totalcount{
+  margin-right: 30rpx;
+  }
+  .textcolor{
+    color: #10bbbb;
+  }
+  .jincolor{
+    color:#ee1e1e;
+  } 
+
+.addressbox{
+  overflow: hidden;
+  font-size: 28rpx;color: #999;
+  width: 100%;
+  padding: 25rpx 4%;
+  box-sizing: border-box;
+  border-top: 1px solid #e5e5e5;
+  text-align: left;
+}
+.textitem{
+  margin-bottom: 15rpx;
+}
+.textitem .textitem_title{
+  margin-right: 30rpx;
+}
+
+
+
+.orderinfobox{
+  overflow: hidden;margin-top: 30rpx;background: #fff;
+  text-align: left;
+ }
+ .orderinfo_title{
+   overflow: hidden;
+   font-size: 32rpx;
+   color: #333;
+   font-weight: bold;
+   width: 100%;
+   padding: 25rpx 4%;
+   box-sizing: border-box;
+ }
+ .xiadanpay{
+   overflow: hidden;
+   width: 100%;
+   padding: 25rpx 4%;
+   box-sizing: border-box;
+   border-bottom: 1px solid #e5e5e5;
+   font-size: 28rpx;
+   color: #999;
+ }
+ .xiadanpay .xiadanpay_title{
+   margin-right:35rpx; 
+   display: inline-block;
+   width: 125rpx;
+   text-align: left;
+ }
+ .xiadanpay .xiadanpay_bottom{
+   margin-bottom:15rpx; 
+ }
+
+ .contactbox{
+   overflow: hidden;
+   width: 100%;
+   padding: 25rpx 4%;
+   box-sizing: border-box;
+   border-bottom: 1px solid #e5e5e5;
+   font-size: 28rpx;
+   color: #10BBBB;
+   text-align: center;
+   background: #fff;
+ }
+ .contactbtn{
+   display: inline-block;
+   padding: 10rpx 20rpx;
+ }
+ .kefulogo{
+   width:41rpx;height:38rpx;vertical:middle;position:relative;top:4rpx;
+ }
+
+
+.hejibox{
+  width: 100%;
+  padding: 25rpx 4%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 30rpx;
+}
+.hejiboxitem{
+  overflow: hidden;
+}
+ .orderlistbox-c{
+  padding: 20rpx 3%;
+  border-top: 0.5px solid #e5e5e5;
+}
+
+.contentbox1{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.spimg{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.spimg-mgR{
+  margin-right: 20rpx;
+}
+.typelist .spimg-mgR:last-child{
+  margin-right: 0;
+}
+.font-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 62%;
+  height: 150rpx;
+}
+.font-overflow{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.font-width{
+  width: 10%;
+  text-align: right;
+  
+}
+.refundbtn{
+  display: inline-block;
+  padding: 4rpx 30rpx;
+  border: 1px solid #999;
+  color: #999;
+  font-size: 28rpx;
+  border-radius: 5rpx;
+  float: right;
+  position: relative;
+  right: -80rpx;
+}
+.bordernone{
+  border: none;
+}

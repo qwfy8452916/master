@@ -1,0 +1,51 @@
+<view class="paddAll20 flexbox">
+  <view class="font30">开票信息</view>
+  <view
+    a:if="{{billingifo.status == 1}}"
+    class="cancelbtn"
+    data-id="{{}}"
+    onTap="cancelfun"
+  >撤销开票</view>
+  <view a:elif="{{billingifo.status == 3}}">已取消</view>
+</view>
+<block a:if="{{invoicetype == 101}}">
+  <!-- 酒店房费发票 -->
+  <view class="paddLR03 bgfff paddB30">
+    <view class="libox">
+      <text class="font-color4 mgR20">酒店名称：</text>
+      <text class="font-color5">{{billingifo.hotelName}}</text>
+    </view>
+    <view class="libox">
+      <text class="font-color4 mgR20">发票类别：</text>
+      <text class="font-color5">酒店房费发票</text>
+    </view>
+    <view class="libox">
+      <text class="font-color4 mgR20">发票金额(元)：</text>
+      <text class="font-color5">¥ {{billingifo.amount}}</text>
+    </view>
+    <view class="libox">
+      <text class="font-color4 mgR20">备注：</text>
+      <text class="font-color5">{{billingifo.remark}}</text>
+    </view>
+    <view class="libox">
+      <text class="font-color4 mgR20">用户手机号：</text>
+      <text class="font-color5">{{billingifo.mobile}}</text>
+    </view>
+    <view class="libox borderT mgT20">
+      <text class="font-color4 mgR20">申请时间：</text>
+      <text class="font-color4">{{billingifo.createdAt}}</text>
+    </view>
+    <view class="libox" a:if="{{billingifo.status == 3}}">
+      <text class="font-color4 mgR20">取消时间：</text>
+      <text class="font-color4">{{billingifo.cancelTime}}</text>
+    </view>
+  </view>
+</block>
+<block a:elif="{{invoicetype == 2}}">
+  <!-- 增值税专用发票 -->
+  <include src="../billingdetail/commodity.axml"/>
+</block>
+<block a:elif="{{invoicetype == 1}}">
+  <!-- 电子普通发票 -->
+  <include src="../billingdetail/invoice.axml"/>
+</block>

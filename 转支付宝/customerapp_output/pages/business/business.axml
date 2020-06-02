@@ -1,0 +1,16 @@
+<image
+  mode="widthFix"
+  src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/business-t.jpg"
+  class="business-img"
+></image>
+<image
+  mode="widthFix"
+  src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/business-b.jpg"
+  class="business-img business-position"
+></image>
+<image
+  mode="widthFix"
+  src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/more.png"
+  class="business-img business-position2"
+  onTap="tel"
+></image>

@@ -1,0 +1,31 @@
+<block a:if="{{livedlist != null || livedlist.length > 0}}">
+  <block
+    a:for="{{livedlist}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <view
+      class="paddAll livedbox mgB20"
+      data-cabid="{{item.cabId}}"
+      data-hotelid="{{item.hotelId}}"
+      data-cabcode="{{item.cabinetQrcode}}"
+      onTap="reservation"
+    >
+      <image src="../../img/my-btnimg12.png" class="iconimg"></image>
+      <view class="livedbox-r">
+        <view class="font30" style="width: 100%;">{{item.hotelName}}</view>
+        <view class="font26-999">{{item.address}}</view>
+      </view>
+    </view>
+  </block>
+</block>
+<block a:else>
+  <view class="datanull-font">
+    <image
+      src="../../img/my-btnimg17.png"
+      class="iconimg1"
+      mode="widthFix"
+    ></image>
+    <text>您还没有相关订单</text>
+  </view>
+</block>

@@ -1,0 +1,12 @@
+<view class="inp-box-flex">
+  <view class="form-inputname">{{forminfo.showName}}
+    <text a:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+  <input
+    onInput="enterValue"
+    type="{{forminfo.valueType == 'INTEGER'?'number':'text'}}"
+    class="form-inputtext"
+    placeholder="{{forminfo.valuePlaceholder}}"
+    placeholder-style="color: #CECECE;"
+  ></input>
+</view>

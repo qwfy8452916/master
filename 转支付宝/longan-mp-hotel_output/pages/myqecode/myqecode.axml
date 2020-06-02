@@ -1,0 +1,10 @@
+<!--pages/myqecode/myqecode.axml-->
+<view class="myqrcode">
+  <image
+    onTouchStart="timestart"
+    onTouchEnd="timeend"
+    onTap="saveImg"
+    src="{{qrcodeData}}"
+  ></image>
+  <view>长按保存图片分享给好友，可以获得红包</view>
+</view>

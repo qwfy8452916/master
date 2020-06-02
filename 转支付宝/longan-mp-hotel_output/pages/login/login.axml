@@ -1,0 +1,29 @@
+<!--pages/login/login.axml-->
+<view class="wrap">
+  <!-- <view class='loginname'>客房宝</view> -->
+  <text class="logintest">酒店小程序用户登录</text>
+  <view class="hangitem">
+    <text class="iconfont iconwode"></text>
+    <input
+      onInput="Username"
+      class=""
+      placeholder="请输入用户名"
+      placeholder-style="color:#cecece"
+    ></input>
+  </view>
+  <view class="hangitem">
+    <text class="iconfont iconlock"></text>
+    <input
+      password="true"
+      onInput="Password"
+      class=""
+      placeholder="请输入密码"
+      placeholder-style="color:#cecece"
+    ></input>
+  </view>
+  <view class="forgetwrap">
+    <text class="forgetpassword" onTap="forgetpassword">忘记密码？</text>
+  </view>
+  <button class="loginniu" onTap="loginniu">登录</button>
+  <!-- <button class='loginniu' bindgetuserinfo='shouquanlogin' open-type="getUserInfo">登录</button> -->
+</view>

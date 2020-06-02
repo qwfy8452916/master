@@ -1,0 +1,37 @@
+<view class="balance-top mgB20">
+  <view class="balance-topbox">
+    <view class="balance-topbox-l">
+      <view class="balance-font1">可提现余额(元)</view>
+      <view>{{balance}}</view>
+    </view>
+  </view>
+</view>
+<view class="withdrawbox">
+  <view class="paddAll borderB withdrawbox-top">
+    <image class="iconfont" src="../../img/my-btnimg21.png"></image> 请输入提现金额</view>
+  <view class="paddAll withdraw-box">
+    <view class="withdraw-box-l">
+      <view class="withdraw-font2">¥</view>
+      <input
+        class="withdraw-inp"
+        type="digit"
+        onInput="changefun"
+        value="{{money}}"
+        placeholder=""
+      ></input>
+    </view>
+    <image
+      class="clearbtn"
+      onTap="clearfun"
+      src="../../img/my-btnimg23.png"
+    ></image>
+  </view>
+  <view class="paddAll borderT withdrawbox-top withdraw-font">
+    <image class="iconfont2" src="../../img/my-btnimg22.png"></image>提现成功后，提现金额会转入微信钱包，请注意查收。</view>
+</view>
+<view
+  a:if="{{money > 0 && subtype == true}}"
+  class="withdrawbtn"
+  onTap="withdrawfun"
+>提现</view>
+<view a:else class="withdrawbtn withdrawbtnbg">提现</view>

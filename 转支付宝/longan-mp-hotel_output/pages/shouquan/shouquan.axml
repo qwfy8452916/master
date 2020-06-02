@@ -1,0 +1,25 @@
+<!--pages/shouquan/shouquan.axml-->
+<view class="logobox">
+  <image src="../../img/applogo.jpg"></image>
+</view>
+<view class="shouquantitle">客服宝酒店端</view>
+<view class="getinfo">
+  <view class="getinfotitle">该程序将获取以下授权：</view>
+  <view class="infotext">获得您的公开信息（昵称、头像等）</view>
+</view>
+<view class="btnbox">
+  <!-- <button bindtap="refuse" class="btnitem refuse">拒绝</button> -->
+  <!-- WX2MY: 属性open-type=getUserInfo时，不被支持，请调整。属性bindgetuserinfo为open-type=getUserInfo的关联属性，不被支持。 -->
+  <!-- <button
+    onGetAuthorize="onGetAuthorize"
+    open-type="getAuthorize"
+    class="btnitem allow"
+  >获取</button> -->
+<button open-type="getAuthorize" 
+  onGetAuthorize="onGetAuthorize" onError="onAuthError" 
+  scope='userInfo'>
+      会员基础信息授权
+  </button>
+
+</view>
+

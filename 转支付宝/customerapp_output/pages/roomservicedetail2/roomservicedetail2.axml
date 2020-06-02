@@ -1,0 +1,82 @@
+<view class="paddAll detail-top borderB">
+  <image class="iconimg" src="{{detaildata.picUrl}}"></image>
+  <view style="margin-left: 25rpx;">
+    <view class="titelfont-l">{{detaildata.name}}</view>
+    <view class="titelfont-price" a:if="{{detaildata.price != '' && detaildata.unit != ''}}">￥{{detaildata.price}}/{{detaildata.unit}}</view>
+  </view>
+</view>
+<block a:if="{{styledata.isNeedNum == 1}}">
+  <view class="bgfff paddAll20 mgB20 prodnumbox">
+    <view class="roomCodetext">选择数量</view>
+    <view class="prodnumbox-r">
+      <block a:if="{{prodnum > 0}}">
+        <view class="iconbtn" onTap="lessfun">
+          <image class="iconbtnimg" src="../../img/icon-img2.png"></image>
+        </view>
+        <view class="prodnum-font">{{prodnum}}</view>
+      </block>
+      <view class="iconbtn" onTap="plusfun">
+        <image class="iconbtnimg" src="../../img/icon-img1.png"></image>
+      </view>
+    </view>
+  </view>
+</block>
+<block a:if="{{styledata.isNeedRoomNo == 1}}">
+  <view class="bgfff paddAll20 mgB20 evaluationT roomCodesize">
+    <view class="roomCodetext">房间号
+      <text>*</text>
+    </view>
+    <input
+      class="roomCode-inp"
+      type="number"
+      value="{{roomCode}}"
+      placeholder-style="color: #cecece;"
+      placeholder="请填写房间号"
+      onInput="changeroomCode"
+    ></input>
+  </view>
+</block>
+<block a:if="{{styledata.isNeedDescription == 1}}">
+  <textarea
+    class="remarkbox mgB20"
+    placeholder-style="color: #cecece;line-height: 50rpx;font-size: 28rpx;"
+    placeholder="备注"
+    maxlength="50"
+    onInput="remarkfun"
+  />
+</block>
+<block a:if="{{styledata.isNeedAttachment == 1}}">
+  <view class="paddAll font-img">上传照片 
+    <text>最多3张</text>
+  </view>
+  <view class="paddAll mgB20 imglistbox">
+    <block
+      a:for="{{pjdata}}"
+      a:for-item="itemimg"
+      a:key="index"
+    >
+      <view class="pjimgwh">
+        <image src="{{itemimg}}"></image>
+        <image
+          class="closebtn"
+          src="../../img/icon-img11.png"
+          data-index="{{index}}"
+          onTap="closeimg"
+        ></image>
+      </view>
+    </block>
+    <view
+      class="pjimgwh"
+      a:if="{{pjdata.length < 3}}"
+      onTap="bindChooiceProduct"
+    >
+      <image src="../../img/upimg.png"></image>
+    </view>
+  </view>
+</block>
+<view
+  a:if="{{subtype == 1}}"
+  class="subbtn"
+  onTap="subfun"
+>提交</view>
+<view a:else class="subbtn subnone">提交</view>

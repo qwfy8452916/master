@@ -1,0 +1,19 @@
+<block
+  a:for="{{styledata.styles}}"
+  a:for-item="item"
+  a:key="index"
+>
+  <view
+    class="stylebanner"
+    data-id="{{item.id}}"
+    data-hotelcategoryid="{{styledata.id}}"
+    onTap="detailfun"
+  >
+    <image
+      class="roomsecrvice-img"
+      mode="widthFix"
+      src="{{item.picUrl}}"
+    ></image>
+    <view class="stylebanner-title">{{item.name}}</view>
+  </view>
+</block>

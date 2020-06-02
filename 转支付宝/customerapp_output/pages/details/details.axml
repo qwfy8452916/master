@@ -1,0 +1,157 @@
+<view class="pagebox paddB3 {{coupontype == true?'showclass':''}}">
+  <swiper
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="{{circular}}"
+    indicator-dots="true"
+    indicator-color="#fff"
+    indicator-active-color="#ff9c01"
+    style="height:{{imgheights[current]}}rpx;"
+    onChange="bindchange"
+  >
+    <block
+      a:for="{{bannerImageList}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <swiper-item class="swiperitembox">
+        <image
+          src="{{item}}"
+          class="slide-image"
+          mode="widthFix"
+          data-id="{{index}}"
+          onLoad="imageLoad"
+        />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view a:if="{{ptype == 1}}" class="roomcode">{{roomCode}}-{{latticeCode}}</view>
+  <view class="details-info mgB20">
+    {{prodShowName}}
+    
+    <view class="details-price">
+      ¥ 
+      <block a:if="{{isFree==1}}">0.00 </block>
+      <block a:else>{{prodRetailPrice}} </block>
+      <text class="freetext" a:if="{{prodMarketPrice > prodRetailPrice}}">¥ {{prodMarketPrice}}</text>
+    </view>
+  </view>
+  <view
+    a:if="{{couponlist.length > 0}}"
+    class="couponbox mgB20"
+    onTap="showcoupon"
+  >
+    <view class="couponboxL">优惠</view>
+    <view class="couponboxC">
+      <view class="coupon-box">
+        <view class="couponboxC-t">满{{couponlist[0].useLimitMoney}}减{{couponlist[0].reduceMoney}}</view>
+      </view>
+    </view>
+    <view class="couponboxR">领券 
+      <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+    </view>
+  </view>
+  <view
+    a:if="{{total != 0}}"
+    class="paddAll borderB font-bttext"
+    onTap="evaluatefun"
+  >
+    <view>商品评价
+      <text class="font-bttext-text">({{total}})</text>
+    </view>
+    <view class="lookall">查看全部 
+      <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+    </view>
+  </view>
+  <view class="lastnoneborder">
+    <block
+      a:for="{{evaluatelist}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <!-- 评价 -->
+      <view class="paddAll evaluation">
+        <view class="evaluationT">
+          <image class="userimg" src="{{item.avatarUrl != null?item.avatarUrl:'../../img/icon-img10.png'}}"></image>
+          <text a:if="{{item.nickName != null}}" class="font-username">{{item.nickName}}</text>
+        </view>
+        <view class="conttent-font contenthide">{{item.remarkContent}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="paddAll borderB font-bttext mgT20">商品详情</view>
+  <block
+    a:for="{{descImageList}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <image
+      class="details-img"
+      mode="widthFix"
+      src="{{item}}"
+    ></image>
+  </block>
+  <block a:if="{{canbuy == 1 && spotpurchaseflag == 1}}">
+    <view class="buybtn">
+      <view class="shopcarbox" onTap="shopcarfun">
+        <image src="../../img/shoppingcart.png"></image>
+      </view>
+      <block a:if="{{isClock != 1}}">
+        <view
+          a:if="{{jointype != -2}}"
+          class="joincar"
+          onTap="joincarfun"
+        >加入购物车</view>
+        <view
+          a:if="{{buybtntype == 1}}"
+          class="buy-btn"
+          onTap="purchase"
+        >立即购买</view>
+        <view a:else class="buy-btn buybtnbg">
+          <block a:if="{{buybtntype == 2}}">下单中</block>
+          <block a:else>暂不支持购买</block>
+        </view>
+      </block>
+      <block a:else>
+        <view class="buy-btn buybtnbg">柜子已锁定</view>
+      </block>
+    </view>
+  </block>
+</view>
+<pop id="dialog" onRedirectfun="redirectfun"></pop>
+<view class="couponlistbox-bg" a:if="{{coupontype == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">优惠券</view>
+    <view class="font-prod1 mgB30">商品售价 ¥
+      <block a:if="{{isFree==1}}">0.00 </block>
+      <block a:else>{{prodRetailPrice}}</block>，使用以下优惠 可减 ¥ 
+      <text class="font-color3">{{couponlist[0].reduceMoney}}</text>
+    </view>
+    <view class="font-prod2 mgB30">领券</view>
+    <scroll-view scroll-y style="height: 60%;">
+      <block
+        a:for="{{couponlist}}"
+        a:for-item="item"
+        a:key="index"
+      >
+        <view class="couponlist-li">
+          <view class="couponlist-li-l">
+            <view class="font-l1">¥ 
+              <text class="font-l3">{{item.reduceMoney}}</text> {{item.couponName}}</view>
+            <view class="font-l2">满{{item.useLimitMoney}}使用</view>
+            <view a:if="{{item.couponTermType == 0}}" class="font-l2">领取后{{item.couponTermDays}}天内可用</view>
+            <view a:else class="font-l2">有效期至 {{item.couponTermEndDate}} 前</view>
+          </view>
+          <view
+            class="couponlist-li-r font-l1"
+            data-id="{{item.id}}"
+            onTap="receive"
+          >立即领取</view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="font-l4">以上价格计算仅为初步预估，不代表最终购买价格</view>
+    <view class="closebtn" onTap="showcoupon">关闭</view>
+  </view>
+</view>

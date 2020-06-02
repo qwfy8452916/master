@@ -1,0 +1,46 @@
+<view class="ordertype">
+  <view
+    class="ordertype-btn2"
+    style="color: {{indexnum == 0?themecolor.skintone:''}};border-color: {{indexnum == 0?themecolor.skintone:''}};"
+    data-num="0"
+    onTap="changetype"
+  >未使用</view>
+  <view
+    class="ordertype-btn2"
+    style="color: {{indexnum == 1?themecolor.skintone:''}};border-color: {{indexnum == 1?themecolor.skintone:''}};"
+    data-num="1"
+    onTap="changetype"
+  >已使用</view>
+  <view
+    class="ordertype-btn2"
+    style="color: {{indexnum == 2?themecolor.skintone:''}};border-color: {{indexnum == 2?themecolor.skintone:''}};"
+    data-num="2"
+    onTap="changetype"
+  >已过期</view>
+</view>
+<view class="couponlist">
+  <block a:if="{{coupon_list.length > 0}}">
+    <block
+      a:for="{{coupon_list}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view class="couponlist-li {{indexnum == 0?'':'bgcolor'}}">
+        <view class="couponlist-li-l">
+          <view class="font-l1">¥ 
+            <text class="font-l3">{{item.reduceMoney}}</text> {{item.couponName}}</view>
+          <view class="font-l2">满{{item.useLimitMoney}}使用</view>
+          <view class="font-l2">有效期至 {{item.couponEndDate}} 前</view>
+        </view>
+        <view class="couponlist-li-r font-l1"></view>
+      </view>
+    </block>
+  </block>
+  <block a:else>
+    <view class="font-coupon">
+      <block a:if="{{indexnum == 0}}">暂无未使用优惠券</block>
+      <block a:elif="{{indexnum == 1}}">暂无已使用优惠券</block>
+      <block a:elif="{{indexnum == 2}}">暂无已过期优惠券</block>
+    </view>
+  </block>
+</view>

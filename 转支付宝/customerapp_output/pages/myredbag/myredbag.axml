@@ -1,0 +1,59 @@
+<block a:if="{{redbaglist.length > 0}}">
+  <block
+    a:for="{{redbaglist}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <view class="paddAll borderB redbagli-box">
+      <view class="redbagli-l">
+        <view class="redbag-font1 mgB20">
+          <block a:if="{{item.businessType == 1}}">购物红包</block>
+          <block a:else>订房红包</block>
+          <text class="redbag-font3" a:if="{{item.receivedNum < item.totalNum}}">(共{{item.totalNum}}个，已领{{item.receivedNum}}个)</text>
+        </view>
+        <view class="redbag-font2">{{item.createdAt}}</view>
+      </view>
+      <view
+        a:if="{{item.status == 0 || item.status == 1}}"
+        class="sharebtn"
+        data-code="{{item.shareCode}}"
+        onTap="shareredbagfun"
+      >
+        去分享
+      </view>
+      <view a:else class="sharebtn sharebtn2">
+        <block a:if="{{item.status == 3}}">已失效</block>
+        <block a:elif="{{item.status == 4}}">已过期</block>
+        <block a:elif="{{item.status == 5}}">已领完</block>
+      </view>
+    </view>
+  </block>
+</block>
+<block a:else>
+  <view class="datanull-font">
+    <image
+      src="../../img/my-btnimg24.png"
+      class="iconimg1"
+      mode="widthFix"
+    ></image>
+    <text>您还未下单，暂无红包记录哦~</text>
+  </view>
+</block>
+<view a:if="{{showtype == true}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">{{user_name?user_name+'邀你一起领红包':'好友邀你一起领红包'}}</view>
+    <image
+      src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/shareimg.jpg"
+      class="imgbox"
+      mode="widthFix"
+    ></image>
+    <view class="sharebtnbox2">
+      <view class="btn" onTap="closefun">取消</view>
+      <button
+        open-type="share"
+        data-type="1"
+        class="btn btncss"
+      >分享</button>
+    </view>
+  </view>
+</view>

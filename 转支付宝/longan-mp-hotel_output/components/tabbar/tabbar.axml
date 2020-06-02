@@ -1,0 +1,14 @@
+<!-- 导航 -->
+<view class="tabbarwrap">
+  <view
+    a:for="{{tabbardata}}"
+    onTap="tabevent"
+    a:key="*this"
+    class="tabitem {{tabbardata[index].id==currentid? 'active' : '' }}"
+    data-id="{{item.id}}"
+    data-url="{{item.url}}"
+  >
+    <text class="iconfont {{item.icon}}"></text>
+    <view class="tabitemms">{{item.name}}</view>
+  </view>
+</view>

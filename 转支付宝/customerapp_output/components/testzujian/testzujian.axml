@@ -1,0 +1,11 @@
+<view animation="{{animationData}}" class="box1">
+  {{info}}
+</view>
+
+ <input
+    onInput="enterValue"
+    class="form-inputtext"
+    placeholder="请填写"
+    value="{{senddata.info}}"
+    placeholder-style="color: #CECECE;"
+  ></input>

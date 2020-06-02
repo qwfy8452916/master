@@ -1,0 +1,304 @@
+<view class="ordertype">
+  <view class="ordertype-btn" style="color: {{themecolor.skintone}};border-color: {{themecolor.skintone}};">商品订单</view>
+  <view class="ordertype-btn" onTap="reservation">客房协议价</view>
+  <view
+    a:if="{{roomService == 2}}"
+    class="ordertype-btn"
+    onTap="kffw"
+  >客房服务</view>
+</view>
+<view class="paddAll mgB30">
+  <scroll-view scroll-x class="typelist">
+    <view
+      class="typebtn {{typeindex==3?'typeactive':''}}"
+      data-num="3"
+      onTap="changetype"
+    >待支付</view>
+    <view
+      class="typebtn {{typeindex=='all'?'typeactive':''}}"
+      data-num="all"
+      onTap="changetype"
+    >全部</view>
+    <view
+      class="typebtn {{typeindex==0?'typeactive':''}}"
+      data-num="0"
+      onTap="changetype"
+    >待商家确认</view>
+    <view
+      class="typebtn {{typeindex==1?'typeactive':''}}"
+      data-num="1"
+      onTap="changetype"
+    >已确认</view>
+    <view
+      class="typebtn {{typeindex==2?'typeactive':''}}"
+      data-num="2"
+      onTap="changetype"
+    >已发货</view>
+  </scroll-view>
+</view>
+<block a:if="{{datanull}}">
+  <!-- 无数据 -->
+  <view class="datanull-font">
+    <image
+      src="../../img/my-btnimg17.png"
+      class="iconimg1"
+      mode="widthFix"
+    ></image>
+    <text>您还没有相关订单!</text>
+  </view>
+</block>
+<block a:else>
+  <!-- 有数据 -->
+  <block a:if="{{typeindex=='3'}}">
+    <!-- 待支付 -->
+    <include src="../prodOrder/waitpay.axml"/>
+  </block>
+  <block a:else>
+    <!-- 非待支付状态 -->
+    <block a:for="{{listdata}}" a:key="index">
+      <!-- 渲染数据 -->
+      <block a:if="{{typeindex=='all'}}">
+        <!-- 全部 -->
+        <!-- 智能迷你吧 -->
+        <block a:if="{{item.delivWay=='3' && item.delivType=='0'}}">
+          <view class="bgfff orderlist">
+            <view data-orderid="{{item.id}}">
+              <view class="orderlistbox borderB">
+                <view class="font-name">智能迷你吧</view>
+              </view>
+              <view
+                class="orderlistbox-c nopadding"
+                a:for="{{item.orderDeliveryDetailDTOList}}"
+                a:for-item="childitem"
+                a:key="index"
+              >
+                <view class="contentbox1">
+                  <image
+                    a:if="{{childitem.prodHotelProductDTO.prodLogoUrl!=''&&childitem.prodHotelProductDTO.prodLogoUrl!=null}}"
+                    src="{{childitem.prodHotelProductDTO.prodLogoUrl}}"
+                    class="spimg"
+                    mode="aspectFill"
+                  ></image>
+                  <image
+                    a:else
+                    src="{{childitem.prodProductDTO.prodLogoUrl}}"
+                    class="spimg"
+                    mode="aspectFill"
+                  ></image>
+                  <view class="font-content">
+                    <view
+                      a:if="{{childitem.prodHotelProductDTO.prodShowName!=''&&childitem.prodHotelProductDTO.prodShowName!=null}}"
+                      class="font-name font-overflow fontcolor"
+                      style="width: 100%;"
+                    >{{childitem.prodHotelProductDTO.prodShowName}}</view>
+                    <view
+                      a:else
+                      class="font-name font-overflow fontcolor"
+                      style="width: 100%;"
+                    >{{childitem.prodProductDTO.prodShowName}}</view>
+                    <view class="font-name2 alignright" style="width: 100%;">¥ {{childitem.prodPrice}}</view>
+                  </view>
+                  <view class="font-name2 font-width">x {{childitem.prodCount}}</view>
+                </view>
+                <view class="orderlistbox borderB bortop">
+                  <view class="font-name ordertime">{{item.payTime}}</view>
+                </view>
+                <!-- 再次打开等按钮 -->
+                <view class="orderlistbox borderB nobotborder" a:if="{{item.delivType != 2}}">
+                  <view class="btnwrap nobotborder">
+                    <text
+                      a:if="{{childitem.isCanOpenAgain == 1}}"
+                      class="btnitem"
+                      catchTap="openagain"
+                      data-orderdetailid="{{childitem.orderDetailId}}"
+                    >再次打开</text>
+                    <text
+                      class="btnitem"
+                      a:if="{{item.isCabCs == 1}}"
+                      catchTap="after"
+                      data-cabid="{{item.cabId}}"
+                      data-deliid="{{item.id}}"
+                      data-roomcode="{{item.roomCode}}"
+                      data-delivcode="{{item.delivCode}}"
+                      data-devidetailid="{{childitem.id}}"
+                      data-prodcode="{{childitem.prodCode}}"
+                    >申请售后</text>
+                    <text
+                      a:if="{{item.isRemark == 0}}"
+                      class="btnitem commentbtn"
+                      data-id="{{item.id}}"
+                      catchTap="postpj"
+                    >评价</text>
+                  </view>
+                </view>
+                <!-- 再次打开按钮 -->
+              </view>
+            </view>
+          </view>
+        </block>
+        <!-- 智能迷你吧 -->
+        <!-- 订单 -->
+        <block a:if="{{item.delivWay!=3 && item.funcId != 0}}">
+          <view class="bgfff orderlist">
+            <view data-orderid="{{item.id}}" onTap="checkDetails">
+              <view class="orderlistbox borderB">
+                <view class="font-name">订单编号 {{item.delivCode}}</view>
+                <view class="font-name font-color1">
+                  <text a:if="{{item.status=='0'}}">待确认</text>
+                  <text a:if="{{item.status=='1'}}">已确认</text>
+                  <text a:if="{{item.status=='2'}}">已发货</text>
+                  <text a:if="{{item.status=='3'}}">部分退款</text>
+                  <text a:if="{{item.status=='4'}}">全部退款</text>
+                  <text a:if="{{item.status=='5'}}">已收货</text>
+                </view>
+              </view>
+              <view
+                a:if="{{item.delivType!=1}}"
+                class="orderlistbox-c"
+                a:for="{{item.orderDeliveryDetailDTOList}}"
+                a:for-item="childitemtwo"
+                a:key="index"
+              >
+                <view class="contentbox1">
+                  <image
+                    a:if="{{childitemtwo.prodHotelProductDTO.prodLogoUrl!=''&&childitemtwo.prodHotelProductDTO.prodLogoUrl!=null}}"
+                    src="{{childitemtwo.prodHotelProductDTO.prodLogoUrl}}"
+                    class="spimg"
+                    mode="aspectFill"
+                  ></image>
+                  <image
+                    a:else
+                    src="{{childitemtwo.prodProductDTO.prodLogoUrl}}"
+                    class="spimg"
+                    mode="aspectFill"
+                  ></image>
+                  <view class="font-content">
+                    <view
+                      a:if="{{childitemtwo.prodHotelProductDTO.prodShowName!=''&&childitemtwo.prodHotelProductDTO.prodShowName!=null}}"
+                      class="font-name font-overflow fontcolor"
+                      style="width: 100%;"
+                    >{{childitemtwo.prodHotelProductDTO.prodShowName}}</view>
+                    <view
+                      a:else
+                      class="font-name font-overflow fontcolor"
+                      style="width: 100%;"
+                    >{{childitemtwo.prodProductDTO.prodShowName}}</view>
+                    <view class="font-name2 alignright" style="width: 100%;">¥ {{childitemtwo.prodPrice}}</view>
+                  </view>
+                  <view class="font-name2 font-width">x {{childitemtwo.prodCount}}</view>
+                </view>
+              </view>
+              <!-- 客房服务配送 -->
+              <!-- <view wx:if="{{item.delivType==1}}" class='orderlistbox-c'>
+                <view class='contentbox1'>
+                  <image src='{{item.rmavcRecordsDto.hotelCategoryPicUrl}}' class='spimg' mode='aspectFill'></image>
+                  <view class='font-content' style="width:calc(100% - 170rpx)">
+                    <view class='font-name font-overflow fontcolor' style='width: 100%;'>{{item.rmavcRecordsDto.hotelCategoryName}}</view>
+                  </view>
+                </view>
+              </view> -->
+              <!-- 客房服务配送 -->
+            </view>
+            <view class="orderlistbox borderB">
+              <view class="font-name ordertime">{{item.createdAt}}</view>
+            </view>
+            <block a:if="{{item.status== 1 || item.status== 2}}">
+              <view class="orderlistbox nobotborder" a:if="{{item.isRemark == 0 && item.delivType == 0}}">
+                <view class="btnwrap nobotborder">
+                  <text
+                    class="btnitem commentbtn"
+                    data-id="{{item.id}}"
+                    catchTap="postpj"
+                  >评价</text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+        <!-- 订单 -->
+      </block>
+      <block a:if="{{typeindex!='all'}}">
+        <!-- 非全部 -->
+        <!-- 订单 -->
+        <block a:if="{{item.delivWay!=3 && item.funcId != 0 }}">
+          <view class="bgfff orderlist">
+            <view data-orderid="{{item.id}}" onTap="checkDetails">
+              <view class="orderlistbox borderB">
+                <view class="font-name">订单编号 {{item.delivCode}}</view>
+                <view class="font-name font-color1">
+                  <text a:if="{{item.status=='0'}}">待确认</text>
+                  <text a:if="{{item.status=='1'}}">已确认</text>
+                  <text a:if="{{item.status=='2'}}">已发货</text>
+                  <text a:if="{{item.status=='3'}}">部分退款</text>
+                  <text a:if="{{item.status=='4'}}">全部退款</text>
+                  <text a:if="{{item.status=='5'}}">已收货</text>
+                </view>
+              </view>
+              <view
+                a:if="{{item.delivType!=1}}"
+                class="orderlistbox-c"
+                a:for="{{item.orderDeliveryDetailDTOList}}"
+                a:for-item="childitemtwo"
+                a:key="index"
+              >
+                <view class="contentbox1">
+                  <image
+                    a:if="{{childitemtwo.prodHotelProductDTO.prodLogoUrl!=''&&childitemtwo.prodHotelProductDTO.prodLogoUrl!=null}}"
+                    src="{{childitemtwo.prodHotelProductDTO.prodLogoUrl}}"
+                    class="spimg"
+                    mode="aspectFill"
+                  ></image>
+                  <image
+                    a:else
+                    src="{{childitemtwo.prodProductDTO.prodLogoUrl}}"
+                    class="spimg"
+                    mode="aspectFill"
+                  ></image>
+                  <view class="font-content">
+                    <view
+                      a:if="{{childitemtwo.prodHotelProductDTO.prodShowName!=''&&childitemtwo.prodHotelProductDTO.prodShowName!=null}}"
+                      class="font-name font-overflow fontcolor"
+                      style="width: 100%;"
+                    >{{childitemtwo.prodHotelProductDTO.prodShowName}}</view>
+                    <view
+                      a:else
+                      class="font-name font-overflow fontcolor"
+                      style="width: 100%;"
+                    >{{childitemtwo.prodProductDTO.prodShowName}}</view>
+                    <view class="font-name2 alignright" style="width: 100%;">¥ {{childitemtwo.prodPrice}}</view>
+                  </view>
+                  <view class="font-name2 font-width">x {{childitemtwo.prodCount}}</view>
+                </view>
+              </view>
+              <!-- 客房服务配送 -->
+              <!-- <view wx:if="{{item.delivType==1}}" class='orderlistbox-c'>
+                <view class='contentbox1'>
+                  <image src='{{item.rmavcRecordsDto.hotelCategoryPicUrl}}' class='spimg' mode='aspectFill'></image>
+                  <view class='font-content' style="width:calc(100% - 170rpx)">
+                    <view class='font-name font-overflow fontcolor' style='width: 100%;'>{{item.rmavcRecordsDto.hotelCategoryName}}</view>
+                  </view>
+                </view>
+              </view> -->
+              <!-- 客房服务配送 -->
+            </view>
+            <view class="orderlistbox borderB">
+              <view class="font-name ordertime">{{item.payTime}}</view>
+            </view>
+            <block a:if="{{item.status== 1 || item.status== 2}}">
+              <view class="orderlistbox nobotborder" a:if="{{item.isRemark == 0 && item.delivType == 0}}">
+                <view class="btnwrap nobotborder">
+                  <text
+                    class="btnitem commentbtn"
+                    data-id="{{item.id}}"
+                    catchTap="postpj"
+                  >评价</text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+        <!-- 订单 -->
+      </block>
+    </block>
+  </block>
+</block>

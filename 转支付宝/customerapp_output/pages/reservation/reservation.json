@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "rili": "../../components/rili/rili",
+    "pop": "../../components/pop/pop",
+    "redbagact": "../../components/redbagact/redbagact",
+    "newcomer": "../../components/newcomer/newcomer"
+  },
+  "defaultTitle": "客房协议价 Reservation",
+  "titleBarColor": "#fff"
+}

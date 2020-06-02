@@ -1,0 +1,6 @@
+{
+ "usingComponents": {
+    "testzujian": "../../components/testzujian/testzujian",
+    "text-input": "../../components/text-input/text-input"
+  }
+}

@@ -1,0 +1,15 @@
+<view>
+  <view class="paysuccess-top">
+    <image
+      mode="widthFix"
+      class="paysuccess-img"
+      src="../../img/success-img2.png"
+    ></image>
+    <text class="paysuccess-text1">提交成功！</text>
+    <text class="paysuccess-text2">正在等待酒店确认，请稍候...</text>
+    <view class="successbtnbox">
+      <view onTap="backbtn" class="shoppingbtn shoppingbtn2">返回首页</view>
+      <view onTap="lookdetails" class="shoppingbtn">查看详情</view>
+    </view>
+  </view>
+</view>

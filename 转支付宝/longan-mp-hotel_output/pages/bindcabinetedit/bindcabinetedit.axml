@@ -1,0 +1,134 @@
+<view class="hangtiem">
+  <view class="titlename">
+    <text class="iconfont iconlouceng"></text>酒店楼层</view>
+  <view class="inputwk">
+    <input
+      class="iteminput"
+      maxlength="10"
+      placeholder="请填写酒店楼层"
+      placeholder-class="color:#cecece;"
+      onInput="Loufloor"
+      value="{{floorval}}"
+    ></input>
+  </view>
+</view>
+<view class="hangtiem">
+  <view class="titlename">
+    <text class="iconfont iconfanghao"></text>房号</view>
+  <view class="inputwk">
+    <input
+      class="iteminput"
+      maxlength="10"
+      placeholder="请填写房号"
+      placeholder-class="color:#cecece;"
+      onInput="Housenumber"
+      value="{{housenumberval}}"
+    ></input>
+  </view>
+</view>
+<view class="hangtiem" a:if="{{fictitious=='0'}}">
+  <view class="titlename">
+    <text class="iconfont iconcard2"></text>物联卡</view>
+  <view class="inputwk iotcard">
+    <input
+      class="iteminput"
+      maxlength="30"
+      placeholder="请填写物联卡号"
+      placeholder-class="color:#cecece;"
+      onBlur="yanzhengcode"
+      onInput="Iotcart"
+      value="{{iotcartval}}"
+    ></input>
+    <text class="iconfont iconsaoma" onTap="sweepCode"></text>
+  </view>
+</view>
+<view class="hangtiem">
+  <view class="titlename">
+    <text class="iconfont iconwifiwofi"></text>WiFi名称</view>
+  <!-- <view class='inputwk'>
+      <input class='iteminput' maxlength='50' placeholder='请填写WiFi名称' placeholder-class='color:#cecece;' bindinput='wifiname' value='{{wifiname}}'></input>
+   </view> -->
+  <view a:if="{{isAuthLocation}}" class="inputwk">
+    <picker
+      onChange="bindWifiChange"
+      value="{{wifiIndex}}"
+      range="{{wifiDataList}}"
+    >
+      <input
+        class="iteminput"
+        disabled="true"
+        value="{{wifiDataList[wifiIndex]}}"
+        placeholder="请选择WiFi名称"
+        placeholder-class="color:#cecece;"
+      ></input>
+    </picker>
+  </view>
+  <view a:else class="inputwk">
+    <input
+      class="iteminput"
+      maxlength="50"
+      placeholder="请填写WiFi名称"
+      placeholder-class="color:#cecece;"
+      onInput="wifiname"
+      value="{{wifiname}}"
+    ></input>
+  </view>
+</view>
+<view class="hangtiem">
+  <view class="titlename">
+    <text class="iconfont iconpeiwangWiFimima"></text>WiFi密码</view>
+  <view class="inputwk">
+    <input
+      class="iteminput"
+      maxlength="50"
+      placeholder="请填写WiFi密码"
+      placeholder-class="color:#cecece;"
+      onInput="wifipass"
+      value="{{wifipassword}}"
+    ></input>
+  </view>
+</view>
+<view class="hangtiem" a:if="{{fictitious=='1'}}">
+  <view class="titlename">
+    <text class="iconfont iconpeiwangWiFimima"></text>虚拟柜配置</view>
+  <picker
+    class="pickbox"
+    onChange="bindPickerChange2"
+    range-key="settingName"
+    value="{{index}}"
+    range="{{fictitiousdata}}"
+  >
+    <view class="picker">
+      <text class="alignlef" style="text-align:left">
+        <text class="iconfont iconxuanzeleixing"></text>
+        <text a:if="{{xunicabId}}">{{visualSettingName}} 
+            </text>
+        <text a:else class="placems">请选择柜子类型</text>
+      </text>
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+</view>
+<view class="hangtiem" a:if="{{fictitious=='0'}}">
+  <view class="titlename">
+    <text class="iconfont iconpeiwangWiFimima"></text>是否断电</view>
+  <view class="inputwk">
+    <switch checked="{{isPowerFailure=='1'?true:false}}" onChange="switch1Change"/>
+  </view>
+</view>
+<view class="wraptesting">
+  <!-- WX2MY: 属性hidden不被支持，请调整 -->
+  <view
+    class="testingniu"
+    hidden="{{!niujudge}}"
+    onTap="sureniu"
+  >确定</view>
+  <!-- WX2MY: 属性hidden不被支持，请调整 -->
+  <view
+    class="testingniu"
+    hidden="{{niujudge}}"
+    onTap="testingniu"
+  >去检测</view>
+</view>

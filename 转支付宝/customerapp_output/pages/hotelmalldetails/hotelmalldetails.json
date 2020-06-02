@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "pop": "../../components/pop/pop"
+  },
+  "defaultTitle": "地方特产",
+  "titleBarColor": "#fff"
+}

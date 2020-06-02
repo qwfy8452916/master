@@ -1,0 +1,31 @@
+<swiper
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+  circular="{{circular}}"
+  indicator-dots="true"
+  indicator-color="#fff"
+  indicator-active-color="#ff9c01"
+  style="height:{{imgheights[current]}}rpx;"
+  onChange="bindchange"
+>
+  <block
+    a:for="{{bannerImageList}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <swiper-item class="swiperitembox">
+      <image
+        src="{{item}}"
+        class="slide-image"
+        mode="widthFix"
+        data-id="{{index}}"
+        onLoad="imageLoad"
+      />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="widthbox">
+  <view class="titlebox" a:if="{{detials.title != '' && detials.title != null}}">{{detials.title}}</view>
+  <view class="contentbox" a:if="{{detials.detailDesc != '' && detials.detailDesc != null}}">{{detials.detailDesc}}</view>
+</view>

@@ -1,0 +1,11 @@
+<!--pages/getcashsuccess/getcashsuccess.axml-->
+<view>
+  <image class="successlogo" src="../../img/tixiansuccess.png"></image>
+</view>
+<view class="successms">提现申请提交成功!</view>
+<view class="tijiaoniu" onTap="linkrecord">查看提现记录</view>
+<view class="ruleswrap">
+  <view class="rulesitem">提现规则:</view>
+  <view class="rulesitem">将在1-3个工作日内审核该笔提现申请。</view>
+  <view class="rulesitem">审核通过后提现金额将转入微信钱包,请注意查收。</view>
+</view>

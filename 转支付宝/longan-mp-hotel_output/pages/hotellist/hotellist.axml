@@ -1,0 +1,11 @@
+<!--pages/hotellist/hotellist.axml-->
+<!--index.axml-->
+<view class="wraphotel">
+  <view class="hotel" a:for="{{8}}">
+    <text class="hotelms">金鸡湖筑牛大酒店</text>
+    <text class="iconfont iconwangyou"></text>
+  </view>
+</view>
+<view class="wrapadd">
+  <view class="addniu">添加酒店</view>
+</view>

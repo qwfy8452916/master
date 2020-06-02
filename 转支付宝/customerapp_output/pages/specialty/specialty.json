@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "pop": "../../components/pop/pop",
+    "redbagact": "../../components/redbagact/redbagact",
+    "newcomer": "../../components/newcomer/newcomer"
+  },
+  "defaultTitle": "",
+  "pullRefresh": true,
+  "titleBarColor": "#fff"
+}

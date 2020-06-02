@@ -1,0 +1,31 @@
+<!--index.axml-->
+<view class="addmiaos">此页面为安装人员测试柜子安装的流程</view>
+<view class="addmiaosfu">
+  <text class="yuanxu"></text>点击“添加柜子信息”进入柜子初始化页面</view>
+<view class="addmiaosfu">
+  <text class="yuanxu"></text>扫描柜子上的二维码，填写相关信息</view>
+<view class="addmiaosfu">
+  <text class="yuanxu"></text>根据提示检测柜子，9个柜子检测完毕后，点击“测试完成”，则柜子安装成功</view>
+<view class="wrapliuc">
+  <view class="liucwk">添加柜子信息</view>
+  <view class="jiantouwk">
+    <text class="iconfont iconsanjiaoxing"></text>
+  </view>
+  <view class="liucwk">扫描柜子二维码</view>
+  <view class="jiantouwk">
+    <text class="iconfont iconsanjiaoxing"></text>
+  </view>
+  <view class="liucwk">填写信息</view>
+  <view class="jiantouwk">
+    <text class="iconfont iconsanjiaoxing"></text>
+  </view>
+  <view class="liucwk">检测</view>
+  <view class="jiantouwk">
+    <text class="iconfont iconsanjiaoxing"></text>
+  </view>
+  <view class="liucwk">安装成功</view>
+</view>
+<view class="wrapaddsao">
+  <!-- <navigator class='addsao' url='../bindcabinet/bindcabinet'>添加柜子信息</navigator> -->
+  <view class="addsao" onTap="addsao">添加柜子信息</view>
+</view>

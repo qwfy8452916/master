@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "text-input": "../../components/text-input/text-input",
+    "text-time": "../../components/text-time/text-time",
+    "region-picker": "../../components/region-picker/region-picker",
+    "text-radio": "../../components/text-radio/text-radio",
+    "text-textarea": "../../components/text-textarea/text-textarea",
+    "text-data": "../../components/text-data/text-data",
+    "input-number": "../../components/input-number/input-number",
+    "text-picker": "../../components/text-picker/text-picker"
+  },
+  "defaultTitle": "客房服务",
+  "titleBarColor": "#fff"
+}

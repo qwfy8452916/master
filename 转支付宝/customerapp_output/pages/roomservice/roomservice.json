@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "pop": "../../components/pop/pop",
+    "redbagact": "../../components/redbagact/redbagact",
+    "newcomer": "../../components/newcomer/newcomer"
+  },
+  "defaultTitle": "客房服务 Room Service",
+  "titleBarColor": "#fff"
+}

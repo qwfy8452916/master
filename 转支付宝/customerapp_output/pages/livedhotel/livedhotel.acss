@@ -1,0 +1,33 @@
+.livedbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.iconimg{
+  display: block;
+  width: 110rpx;
+  height: 110rpx;
+  margin-right: 30rpx;
+}
+.livedbox-r{
+  width: 80%;
+  min-height: 130rpx;
+  display: flex;
+  align-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.datanull-font{
+  text-align: center;
+  font-size: 32rpx;
+  color: #999999;
+  margin-top: 200rpx;
+}
+.iconimg1{
+  display: inline-block;
+  width: 25%;
+}
+.datanull-font text{
+  display: block;
+  width: 100%;
+}

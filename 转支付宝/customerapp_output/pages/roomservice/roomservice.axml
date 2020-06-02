@@ -1,0 +1,170 @@
+<view class="pagebox" style="padding-bottom: {{mgtop/2}}px;">
+  <view>
+    <view class="banner">
+      <image mode="widthFix" src="{{rmsvcImageDTOs[0].url}}"></image>
+    </view>
+    <view class="roomservice-top">
+      <view class="roomservice-top-btn" style="color: {{themecolor.skintone}};border-bottom: 2px solid {{themecolor.skintone}};">客房服务</view>
+      <view onTap="characteristic" class="roomservice-top-btn">客房设施</view>
+    </view>
+  </view>
+  <view class="roomservice-typeul" style="margin-top: 20rpx;">
+    <block
+      a:for="{{roomservicelist}}"
+      a:for-item="item"
+      a:key="index"
+    >
+      <view
+        class="roomservice-typeli"
+        data-id="{{item.id}}"
+        onTap="roomservicetype"
+      >
+        <image class="roomservice-typeli-img" src="{{item.categoryIconUrl}}"></image>
+        <view class="roomservice-typeli-font">{{item.showName}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="footerbox" style="padding-top: {{isSupportEn == 1?'17rpx':'7rpx'}};padding-bottom: {{isSupportEn == 1?'18rpx':'8rpx'}};">
+    <scroll-view
+      class="tablist-box"
+      scroll-x="true"
+      enable-flex="true"
+    >
+      <view
+        class="footerbox-btn"
+        onTap="index"
+        a:if="{{minibar != 0 || convenienceStore != 0}}"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-yonghuzhongxin-shouye"
+          style="color: #999999;font-size: 45rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: #999999;">迷你吧</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: #999999;"
+        >Home Page</view>
+      </view>
+      <block
+        a:for="{{hotelFuncDTOS1}}"
+        a:for-item="item"
+        a:key="index"
+      >
+        <view
+          class="footerbox-btn func-box"
+          data-id="{{item.id}}"
+          onTap="hotelmall"
+          style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+        >
+          <text
+            a:if="{{isSupportEn == 0}}"
+            class="iconfont icon-fenqishangcheng"
+            style="color: #999999;font-size: 40rpx;"
+          ></text>
+          <view class="footerbox-btnname" style="color: #999999;">{{item.funcCnName}}</view>
+          <view
+            a:if="{{isSupportEn == 1}}"
+            class="footerbox-btnname2"
+            style="color: #999999;"
+          >{{item.funcEnName}}</view>
+        </view>
+      </block>
+      <view
+        a:if="{{roomService != 0 && spotpurchaseflag == 1}}"
+        class="footerbox-btn"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-zuanshi"
+          style="color: {{themecolor.skintone}};font-size: 40rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: {{themecolor.skintone}};font-weight: 800;">客房服务</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: {{themecolor.skintone}};font-weight: 800;"
+        >Room Service</view>
+      </view>
+      <view
+        a:if="{{isSupportRoomAlloc == 1}}"
+        class="footerbox-btn"
+        onTap="reservation"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-xieyiguanli"
+          style="color: #999999;font-size: 40rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: #999999;">客房协议价</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: #999999;"
+        >Reservation</view>
+      </view>
+      <view
+        class="footerbox-btn"
+        onTap="mypage"
+        style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+      >
+        <text
+          a:if="{{isSupportEn == 0}}"
+          class="iconfont icon-yonghu_fill"
+          style="color: #999999;font-size: 40rpx;"
+        ></text>
+        <view class="footerbox-btnname" style="color: #999999;">我的</view>
+        <view
+          a:if="{{isSupportEn == 1}}"
+          class="footerbox-btnname2"
+          style="color: #999999;"
+        >Mine</view>
+      </view>
+      <block a:if="{{hotelFuncDTOS2.length != 0}}">
+        <block
+          a:for="{{hotelFuncDTOS2}}"
+          a:for-item="item"
+          a:key="index"
+        >
+          <view
+            class="footerbox-btn func-box"
+            data-id="{{item.id}}"
+            onTap="hotelmall"
+            style="padding-bottom: {{isIpx?'40rpx':'0'}};"
+          >
+            <text
+              a:if="{{isSupportEn == 0}}"
+              class="iconfont icon-fenqishangcheng"
+              style="color: #999999;font-size: 40rpx;"
+            ></text>
+            <view class="footerbox-btnname" style="color: #999999;">{{item.funcCnName}}</view>
+            <view
+              a:if="{{isSupportEn == 1}}"
+              class="footerbox-btnname2"
+              style="color: #999999;"
+            >{{item.funcEnName}}</view>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<pop id="dialog" onRedirectfun="redirectfun"></pop>
+<block a:if="{{redPacketShowFlag == 1 && shareObj == 3 && regbagact_type == 0}}">
+  <redbagact
+    shareUserAvatarUrl="{{shareUserAvatarUrl}}"
+    shareUserNickName="{{shareUserNickName}}"
+    redbagtype="{{redbagtype}}"
+  ></redbagact>
+</block>
+<block a:if="{{act_newcomer != '' && act_newcomer.isOpen == 0 && (redPacketShowFlag == 0 || shareObj != 3 || regbagact_type != 0)}}">
+  <newcomer
+    actAdImageUrl="{{act_newcomer.actAdImageUrl}}"
+    actImageUrl="{{act_newcomer.actImageUrl}}"
+    actId="{{act_newcomer.id}}"
+  ></newcomer>
+</block>

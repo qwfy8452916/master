@@ -1,0 +1,141 @@
+<view class="othordertitbox">
+  <text class="alignleft">
+    <text a:if="{{orderinfo.delivWay=='1'}}">现场送</text>
+    <text a:if="{{orderinfo.delivWay=='2'}}">快递送</text>
+    <text a:if="{{orderinfo.delivWay=='3'}}">迷你吧</text>
+  </text>
+  <text class="alignright" style="color:#10BBBB">
+    <text a:if="{{orderinfo.status=='0'}}">待确认</text>
+    <text a:if="{{orderinfo.status=='1'}}">已确认</text>
+    <text a:if="{{orderinfo.status=='2'}}">已配送</text>
+    <text a:if="{{orderinfo.status=='3' || orderinfo.status=='4'}}">已退款</text>
+  </text>
+</view>
+<view class="detailListbox">
+  <view class="titlebox" a:if="{{orderinfo.delivWay=='1'}}">
+    <text>{{orderinfo.hotelName}}</text>
+    <text class="floorroom">{{orderinfo.roomFloor}}-{{orderinfo.roomCode}}</text>
+  </view>
+  <view class="addressbox" a:if="{{orderinfo.delivWay=='2'}}">
+    <view class="textitem">
+      <text class="textitem_title">{{orderinfo.consignee}}</text>  {{orderinfo.consigneePhone}}
+    </view>
+    <view>{{orderinfo.consigneeSite}}</view>
+  </view>
+  <block
+    a:if="{{orderinfo.delivType!='1'}}"
+    a:for="{{orderinfo.orderDeliveryDetailDTOList}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <view class="orderlistbox-c">
+      <view class="contentbox1">
+        <image
+          a:if="{{item.prodHotelProductDTO.prodLogoUrl!=''&&item.prodHotelProductDTO.prodLogoUrl!=null}}"
+          src="{{item.prodHotelProductDTO.prodLogoUrl}}"
+          class="spimg"
+          mode="aspectFill"
+        ></image>
+        <image
+          a:else
+          src="{{item.prodProductDTO.prodLogoUrl}}"
+          class="spimg"
+          mode="aspectFill"
+        ></image>
+        <view class="font-content">
+          <view
+            a:if="{{item.prodHotelProductDTO.prodShowName!=''&&item.prodHotelProductDTO.prodShowName!=null}}"
+            class="font-name font-overflow fontcolor"
+            style="width: 100%;"
+          >{{item.prodHotelProductDTO.prodShowName}}</view>
+          <view
+            a:else
+            class="font-name font-overflow fontcolor"
+            style="width: 100%;"
+          >{{item.prodProductDTO.prodShowName}}</view>
+          <view class="font-name2 alignright" style="width: 100%;">
+            <text style="color:#EE1E1E">¥ {{item.totalAmount}}</text>
+            <block a:if="{{orderinfo.delivWay == 1 && orderinfo.status != 0}}"></block>
+            <block a:else>
+              <text
+                class="refundbtn"
+                a:if="{{item.prodCsTimes < item.prodCount && orderinfo.status != 3 && orderinfo.status != 4 && item.prodStatus != 5 && item.actualPay > 0}}"
+                data-index="{{index}}"
+                onTap="refundfun"
+              >
+                <block a:if="{{orderinfo.status == 0}}">退款</block>
+                <block a:else>申请售后</block>
+              </text>
+              <text class="refundbtn font-color2 bordernone" a:elif="{{item.prodStatus == 1 || item.prodStatus == 2}}">已退款</text>
+              <text class="refundbtn font-color2" a:elif="{{item.prodStatus == 3}}">已换货</text>
+              <text class="refundbtn font-color2" a:elif="{{item.prodStatus == 4}}">已退货退款</text>
+              <text class="refundbtn font-color1" a:elif="{{item.prodStatus == 5}}">处理中</text>
+            </block>
+          </view>
+        </view>
+        <view class="font-name2 font-width">x {{item.prodCount}}</view>
+      </view>
+    </view>
+  </block>
+  <!-- 客房服务订单 -->
+  <block
+    a:if="{{orderinfo.delivType=='1'}}"
+    a:for="{{roomServerdata}}"
+    a:key="index"
+  >
+    <view class="orderlistbox-c">
+      <view class="contentbox1">
+        <image
+          src="{{item.commonStyleDTO.picUrl}}"
+          class="spimg"
+          mode="aspectFill"
+        ></image>
+        <view class="font-content">
+          <view class="font-name font-overflow fontcolor" style="width: 100%;">{{item.commonStyleDTO.name}}</view>
+          <view class="font-name2 alignright" style="width: 100%;">
+            <text style="color:#EE1E1E">¥ {{item.commonStyleDTO.price}}/{{item.commonStyleDTO.unit}}</text>
+          </view>
+        </view>
+        <view class="font-name2 font-width">x {{item.count}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="hejibox" a:if="{{orderinfo.delivType!='1'}}">
+  <view class="hejiboxitem">
+    <text class="alignleft">商品总价</text>
+    <text class="alignright">¥ {{orderinfo.totalAmount}}</text>
+  </view>
+  <view class="hejiboxitem">
+    <text class="alignleft">优惠金额</text>
+    <text class="alignright">¥ {{orderinfo.couponAmount}}</text>
+  </view>
+  <view class="hejiboxitem" a:if="{{orderinfo.delivWay=='2'}}">
+    <text class="alignleft">运费</text>
+    <text class="alignright">¥ {{orderinfo.expressFee}}</text>
+  </view>
+</view>
+<view class="jijianbox" a:if="{{orderinfo.delivType!='1'}}">
+  <text class="totalcount">共
+    <text class="textcolor">{{orderinfo.prodCount}}</text>件商品</text>
+  <text class="jimoney">合计
+    <text class="jincolor">¥ {{orderinfo.actualPay}}</text>
+  </text>
+</view>
+<view class="orderinfobox">
+  <view class="orderinfo_title">订单信息</view>
+  <view class="xiadanpay">
+    <view class="xiadanpay_bottom">
+      <text class="xiadanpay_title">订单编号</text>{{orderinfo.delivCode}}</view>
+    <view a:if="{{orderinfo.delivType!='1' && orderinfo.delivType!='2'}}" class="xiadanpay_bottom">
+      <text class="xiadanpay_title">交易号</text>{{orderinfo.transactionId}}</view>
+    <view class="xiadanpay_bottom">
+      <text class="xiadanpay_title">创建时间</text>{{orderinfo.createdAt}}</view>
+    <view class="xiadanpay_bottom" a:if="{{orderinfo.delivType!='1'}}">
+      <text class="xiadanpay_title">付款时间</text>{{orderinfo.payCompleteTime}}</view>
+  </view>
+</view>
+<view class="contactbox" onTap="servicefun">
+  <image class="kefulogo" src="../../img/icon-img9.png"></image>
+  <text class="contactbtn">联系客服</text>
+</view>

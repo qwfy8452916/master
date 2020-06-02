@@ -1,0 +1,114 @@
+<block a:if="{{styledata.style=='PIC_ONLY'}}">
+  <!-- 纯图片 -->
+  <view class="paddB100">
+    <image
+      class="roomsecrvice-img"
+      mode="widthFix"
+      src="{{styledata.picUrl}}"
+    ></image>
+  </view>
+  <view
+    a:if="{{styledata.contacts != ''}}"
+    class="telbtn"
+    onTap="telfun"
+  >联系客服</view>
+</block>
+<block a:elif="{{styledata.style=='DYNAMIC_FORM'}}">
+  <!-- 动态表单 -->
+  <!-- <include src="../roomservicetype/styleform.axml"/> -->
+
+<view class="dynamicform-box">
+  <view class="inp-box-flex mgB20" a:if="{{styledata.isNeedRoomNo == 1}}">
+    <view class="form-inputname">房间号
+      <text class="force_text">*</text>
+    </view>
+    <input
+      onInput="changeroomcode"
+      type="number"
+      class="form-inputtext"
+      placeholder="请输入房间号"
+      placeholder-style="color: #CECECE;"
+      value="{{form_roomcode}}"
+    ></input>
+  </view>
+  <block
+    a:for="{{styledata.styles}}"
+    a:for-item="items"
+    a:key="index"
+  >
+    <block a:if="{{items.widget==='TEXT'}}">
+      <!-- 文本框 -->
+      <text-input id="{{items.id}}" forminfo="{{items}}" onHangdleTab="hangdleTab" ref="saveRef"></text-input>
+    </block>
+    <block a:if="{{items.widget==='TEXTAREA'}}">
+      <!-- 文本域 -->
+      <text-textarea id="{{items.id}}" forminfo="{{items}}"></text-textarea>
+    </block>
+    <block a:if="{{items.widget==='RADIO'}}">
+      <!-- 单选框 -->
+      <text-radio id="{{items.id}}" forminfo="{{items}}" onHangdleTab="hangdleTab" ref="saveRef"></text-radio>
+    </block>
+    <block a:if="{{items.widget==='DATETIME_SELECT'}}">
+      <!-- 日期选择器 -->
+      <text-data id="{{items.id}}" forminfo="{{items}}" onHangdleTab="hangdleTab" ref="saveRef"></text-data>
+    </block>
+    <block a:if="{{items.widget==='DATETIME'}}">
+      <!-- 时间选择器 -->
+      <text-time id="{{items.id}}" forminfo="{{items}}" onHangdleTab="hangdleTab" ref="saveRef"></text-time>
+    </block>
+    <block a:if="{{items.widget==='REGION_SELECT'}}">
+      <!-- 地区选择器 -->
+      <view class="inp-box-flex inp-box-flex2"  onTap="openSelect">
+  <view class="form-inputname">{{items.showName}}
+    <text a:if="{{items.isValueRequired==1}}" class="force_text">*</text>
+  </view>
+  <text class="form-wid
+">{{selectValue}}</text>
+</view>
+      <!-- <region-picker id="form{{items.id}}" forminfo="{{items}}" ref="saveRef"></region-picker> -->
+    </block>
+    <block a:if="{{items.widget==='INPUT_NUMBER'}}">
+      <!-- 计数器 -->
+      <input-number id="{{items.id}}" forminfo="{{items}}" onHangdleTab="hangdleTab" ref="saveRef"></input-number>
+    </block>
+    <block a:if="{{items.widget==='SELECT'}}">
+      <!-- 下拉选 -->
+      <text-picker id="{{items.id}}" forminfo="{{items}}" onHangdleTab="hangdleTab" ref="saveRef"></text-picker>
+    </block>
+  </block>
+  <view class="inp-box-flex inp-box-flex2" a:if="{{styledata.isNeedDescription == 1}}">
+    <view class="form-inputname form-inputname2">备注</view>
+    <textarea
+      class="form-textarea"
+      maxlength="255"
+      onInput="remarkfun"
+      placeholder-style="color: #CECECE;"
+      placeholder="{{styledata.description}}"
+    />
+  </view>
+  <view
+    a:if="{{subtype == 1}}"
+    class="dynamicform_sub"
+    onTap="dynamicform"
+  >提交</view>
+  <view a:else class="dynamicform_sub subnone">提交中</view>
+</view>
+
+</block>
+<block a:elif="{{styledata.style=='BANNER_DETAIL_ORDER'}}">
+  <!-- banner详情下单 -->
+  <include src="../roomservicetype/stylebannerlist.axml"/>
+</block>
+<block a:elif="{{styledata.style=='LIST_ORDER'}}">
+  <!-- 列表下单 -->
+  <include src="../roomservicetype/stylelist.axml"/>
+</block>
+<block a:elif="{{styledata.style=='ICON_ORDER'}}">
+  <!-- 列表详情下单 -->
+  <include src="../roomservicetype/stylelist2.axml"/>
+</block>
+
+
+<!--级联选择器-->
+<multi-select selectShow="{{selectShow}}" selectValue="{{selectValue}}" list="{{rawCitiesData}}" onSelectSuccess="onSelectSuccess" onClose="closeSelect"/>
+<!---->

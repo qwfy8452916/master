@@ -1,0 +1,18 @@
+<!--pages/housebulist/housebulist.axml-->
+<view class="wraplist" a:if="{{datalist.length>0}}">
+  <view
+    class="itemwrap"
+    a:for="{{datalist}}"
+    a:key="*this"
+  >
+    <view class="imgwk" data-id="{{item.id}}">
+      <view class="buzuotop">
+        <image src="../../img/bubeijing.png"></image>
+      </view>
+      <view class="imgwktest">{{item.latticeCode}}</view>
+      <image src="../../img/huowu.png"></image>
+    </view>
+    <view class="itemtitle">{{item.productName}}</view>
+  </view>
+</view>
+<view class="nodata" a:else>暂无补货数据</view>

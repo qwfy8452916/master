@@ -1,0 +1,139 @@
+<!--pages/cabinetlist/cabinetlist.axml-->
+<view class="navwrap">
+  <view
+    a:for="{{navtext}}"
+    a:key="*this"
+    class="navitem navitemleft {{navarray[index]==true?'navitemactive':''}}"
+    onTap="navevent"
+    data-index="{{index}}"
+    data-id="{{item.id}}"
+  >{{item.name}}</view>
+</view>
+<scroll-view
+  class="wraplist"
+  style="height:{{gaodu}}rpx"
+  scroll-y
+  onScrollToLower="downLoad"
+>
+  <view class="hiddenyc {{navindex==0?'xianshi':''}}">
+    <view a:if="{{cabinetlistdata.length>0}}">
+      <view
+        class="hangitem"
+        a:for="{{cabinetlistdata}}"
+        a:key="*this"
+      >
+        <text
+          a:if="{{authzData['F:MH_CAB_EDITDELETEBTN']}}"
+          class="iconfont icongengduo"
+          onTap="showModal"
+          data-id="{{item.id}}"
+          data-target="bottomModal"
+          data-floor="{{item.roomFloor}}"
+          data-roomid="{{item.roomCode}}"
+          data-index="{{index}}"
+        ></text>
+        <view class="miaosone">
+          <text class="xuhao">{{index+1}}</text>
+          <text class="statuszt">
+            <text a:if="{{item.cabinetStatus==1}}">正常</text>
+            <text class="fault" a:elif="{{item.cabinetStatus==2}}">异常</text>
+          </text>
+        </view>
+        <view class="miaostwo">酒店楼层 {{item.roomFloor}} / 房间号 {{item.roomCode}}</view>
+      </view>
+    </view>
+    <view a:else>
+      <image class="nodataimg" src="../../img/waiterlogo.png"></image>
+      <view class="nodatams">暂无安装记录哦~</view>
+    </view>
+  </view>
+  <view class="hiddenyc {{navindex==1?'xianshi':''}}">
+    <view a:if="{{repairlistdata.length>0}}">
+      <view
+        class="repairhangitem"
+        a:for="{{repairlistdata}}"
+        a:key="*this"
+      >
+        <text
+          class="iconfont iconwangyou"
+          onTap="checkdetail"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+        ></text>
+        <view class="miaosone">
+          <text class="xuhao">{{item.roomFloor}}-{{item.roomCode}}-{{item.latticeCode}}柜</text>
+        </view>
+        <view class="miaostwo">
+          <text class="iconfont icongantan"></text>
+          <text a:if="{{item.malType==2}}">柜门打不开</text>
+          <text a:elif="{{item.malType==0}}">初始类型</text>
+          <text a:elif="{{item.malType==1}}">扫码失败</text>
+          <text a:elif="{{item.malType==3}}">锁具异常</text>
+          <text a:elif="{{item.malType==4}}">其他</text>
+        </view>
+      </view>
+    </view>
+    <view a:else>
+      <image class="nodataimg" src="../../img/waiterlogo.png"></image>
+      <view class="nodatams">暂无维修记录哦~</view>
+    </view>
+  </view>
+  <view class="hiddenyc {{navindex==2?'xianshi':''}}">
+    <view a:if="{{replacelistdata.length>0}}">
+      <view
+        class="replaceitem"
+        a:for="{{replacelistdata}}"
+        a:key="*this"
+      >
+        <view class="leftext">{{item.roomFloor}}-{{item.roomCode}}
+          <view class="replacebj">
+            <image src="../../img/replacelogo.png"></image>
+            <text class="statustext">
+              <text a:if="{{item.replaceStatus==0}}">待处理</text>
+              <text a:elif="{{item.replaceStatus==1}}">待取货</text>
+              <text a:elif="{{item.replaceStatus==2}}">待更换</text>
+              <text a:else="{{item.replaceStatus==3}}">已更换</text>
+            </text>
+          </view>
+        </view>
+        <view
+          class="righttext"
+          onTap="replacehuan"
+          data-replaceStatus="{{item.replaceStatus}}"
+          data-id="{{item.cabinetId}}"
+        >更换</view>
+      </view>
+    </view>
+    <view a:else>
+      <image class="nodataimg" src="../../img/waiterlogo.png"></image>
+      <view class="nodatams">暂无更换记录哦~</view>
+    </view>
+  </view>
+</scroll-view>
+<view class="wrapcontinue">
+  <view
+    a:if="{{authzData['F:MH_CAB_SWEEPCODEADD']}}"
+    class="continueniu {{navindex==0?'showxs':''}}"
+    onTap="continueniu"
+  >添加柜子信息</view>
+  <view class="continueniu {{navindex==1?'showxs':''}}" onTap="repairrecord">维修记录</view>
+  <view class="continueniu {{navindex==2?'showxs':''}}" onTap="replacerecord">更换柜子记录</view>
+</view>
+<view onTap="yinying" class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="botcontent" catchTap="showxian">
+    <view class="tantitle">酒店楼层 {{hotelfloor}} / 房间号 {{housenumber}}</view>
+    <view class="wrapniu">
+      <view
+        class="delniu"
+        catchTap="delevent"
+        data-id="{{cabinetid}}"
+      >删除</view>
+      <view
+        class="editniu"
+        catchTap="editevent"
+        data-id="{{cabinetid}}"
+      >编辑</view>
+    </view>
+  </view>
+</view>
+<my-tabbar id="tabbar" tabindex="{{Tabindex}}"></my-tabbar>

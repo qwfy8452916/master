@@ -1,0 +1,70 @@
+<!--pages/detailnormal/detailnormal.axml-->
+<view class="detailwrap">
+  <view class="abnormalitem">
+    <view class="title">
+      <text class="title-info">酒店楼层 {{abnormaldata.roomFloor}} / 房间号 {{abnormaldata.roomCode}}</text>
+      <text class="title-status" a:if="{{abnormaldata.dealStatus==1}}">正常</text>
+      <text class="title-status" a:elif="{{abnormaldata.dealStatus==2}}">异常</text>
+    </view>
+    <view class="guzhanginfo">
+      <view class="latticenum">{{abnormaldata.latticeCode}}</view>
+      <view class="latticetype">
+        <view class="guztype">
+          <text class="guztypebt">故障类型</text>
+          <text class="guztypems">
+            <text a:if="{{abnormaldata.malType==1}}">扫码失败</text>
+            <text a:elif="{{abnormaldata.malType==2}}">柜门不开</text>
+            <text a:elif="{{abnormaldata.malType==3}}">锁具异常</text>
+            <text a:elif="{{abnormaldata.malType==4}}">其他</text>
+          </text>
+        </view>
+        <view class="applicant">
+          <text class="guztypebt">报修人</text>
+          <text class="guztypems">{{abnormaldata.malReportBy}}</text>
+        </view>
+        <view class="repairtime">
+          <text class="guztypebt">报修时间</text>
+          <text class="guztypems">{{abnormaldata.createdAt}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="handlewrap">
+      <view class="hangitem">
+        <text class="hangitemtitle">维修结果</text>
+        <text class="hangitemname">
+          <text a:if="{{abnormaldata.dealStatus==1}}">成功</text>
+          <text a:elif="{{abnormaldata.dealStatus==2}}">
+            <text>失败</text>
+          </text>
+        </text>
+      </view>
+      <view class="hangitem">
+        <text class="hangitemtitle">故障部件</text>
+        <text class="hangitemname">
+          <text>{{abnormaldata.malPart}}</text>
+        </text>
+      </view>
+      <view class="hangitem">
+        <text class="hangitemtitle">故障原因</text>
+        <text class="hangitemname">
+          <text>{{abnormaldata.malReason}}</text>
+        </text>
+      </view>
+      <view class="hangitem">
+        <text class="hangitemtitle">备注</text>
+        <text class="hangitemname">{{abnormaldata.remark}}</text>
+      </view>
+    </view>
+    <view class="chuliwrap">
+      <view class="chuliman">
+        <text class="chulimantitle">处理人</text>
+        <text class="chulimanname">{{abnormaldata.dealPeople}}</text>
+      </view>
+      <view class="chuliman">
+        <text class="chulimantitle">处理时间</text>
+        <text class="chulimanname">{{abnormaldata.dealAt}}</text>
+      </view>
+    </view>
+    <image class="handlelogo" src="../../img/handlelogo.png"></image>
+  </view>
+</view>

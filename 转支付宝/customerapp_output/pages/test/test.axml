@@ -1,0 +1,15 @@
+<view>
+  New Page
+</view>
+<view>
+  <text onTap="zhixing"  class="data1">{{data1}}</text>
+</view>
+<include src="../test/test2.axml"/>
+<testzujian ref="saveRef" senddata="{{senddata}}" onFatherreceive="fatherreceive"></testzujian>
+<view style="color:green">
+  {{receivedata}}
+</view>
+
+
+
+

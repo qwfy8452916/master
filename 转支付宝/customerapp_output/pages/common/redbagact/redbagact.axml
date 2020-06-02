@@ -1,0 +1,89 @@
+<view class="redbag-bg" a:if="{{showtype == true}}">
+  <view a:if="{{redbag_type == 0 || redbag_type == 2}}" class="redbag-box">
+    <image
+      a:if="{{redbag_type == 0}}"
+      class="redbag-box-bgimg"
+      mode="widthFix"
+      src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/redbag-bg.png"
+    ></image>
+    <image
+      a:elif="{{redbag_type == 2}}"
+      class="redbag-box-bgimg"
+      mode="widthFix"
+      src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/redbag-bg2.png"
+    ></image>
+    <view class="closebtn" onTap="closefun"></view>
+    <view class="redbag-info" onTap="openfun">
+      <image class="share-img" src="{{shareUserAvatarUrl}}"></image>
+      <block a:if="{{redbagtype == 1}}">
+        <view class="share-name">{{shareUserNickName}}</view>
+        <view class="font-text1">给你发了一个红包</view>
+      </block>
+      <block a:else>
+        <view class="share-name">恭喜您！</view>
+        <view class="font-text1">获得一个返现红包</view>
+      </block>
+      <view class="font-text2">
+        <block a:if="{{redbag_type == 0}}">红包返现</block>
+        <block a:elif="{{redbag_type == 2}}">手慢了，红包派完了</block>
+      </view>
+    </view>
+  </view>
+  <view a:else class="redbag-box2-bg">
+    <scroll-view scroll-y style="height: 100%;">
+      <view class="redbag-box2">
+        <view class="closebtn2" onTap="closefun">
+          <image src="../../../img/my-btnimg23.png"></image>
+        </view>
+        <image
+          class="redbag-box2-img"
+          mode="widthFix"
+          src="{{shareUserAvatarUrl}}"
+        ></image>
+        <view class="share-name2">
+          <block a:if="{{redbagtype == 1}}">{{shareUserNickName}}的红包</block>
+          <block a:else>XXX好友的红包</block>
+        </view>
+        <view class="font-text3">红包返现</view>
+        <view class="redbag-amount">{{redbagdata.amount}}
+          <text>元</text>
+        </view>
+        <view class="font-text4">已存入余额，可直接提现</view>
+        <view class="redbaginfo-box">
+          <view class="borderB redbaginfo-box-top">
+            {{redbagdata.actRedPacketDTO.totalNum}}个红包 / 已领{{redbagdata.actRedPacketDTO.receivedNum}}个
+          </view>
+          <block
+            a:for="{{redbagdata.actRedPacketRecordDTOS}}"
+            a:for-item="item"
+            a:key="index"
+          >
+            <view class="borderB redbag-libox">
+              <view class="redbag-libox-l">
+                <image
+                  a:if="{{item.receiveCustomAvatarUrl}}"
+                  class="tx-img"
+                  src="{{item.receiveCustomAvatarUrl}}"
+                ></image>
+                <image
+                  a:else
+                  class="tx-img"
+                  src="../../../img/my-btnimg25.png"
+                ></image>
+                <view>
+                  <view class="font-name">
+                    <block a:if="{{item.receiveCustomNickName}}">{{item.receiveCustomNickName}}</block>
+                    <block a:else>XXX</block>
+                  </view>
+                  <view class="font-time">{{item.createdAt}}</view>
+                </view>
+              </view>
+              <view class="redbag-libox-r">{{item.receivceAmount}}元</view>
+            </view>
+          </block>
+        </view>
+        <view class="font-btm">可于“我的-我的余额”查看记录</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

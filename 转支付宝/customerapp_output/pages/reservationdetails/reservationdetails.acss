@@ -1,0 +1,152 @@
+page{
+  min-height: 100%;
+  position: relative;
+}
+.font30{
+  font-size: 30rpx;
+}
+.flexstart{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.imgwh{
+  display: block;
+  width: 35rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.timebox{
+  display: flex;
+  background: #fff;
+  padding: 25rpx 3%;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.timebox-w{
+  width: 35%;
+}
+.timebox-w2{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.timebox-w text{
+  display: block;
+  width: 100%;
+}
+.font-text{
+  font-size: 30rpx;
+  color: #333333;
+  padding-bottom: 10rpx;
+}
+.font-text2{
+  font-size: 27rpx;
+  color: #10BBBB;
+}
+.font-textbox{
+  font-size: 25rpx;
+  color: #333;
+  display: inline-block;
+  width: 70%;
+  border: 0.5px solid #e5e5e5;
+  border-radius: 5px;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+.hourlyroom{
+  background: #fff;
+  padding: 25rpx 3%;
+}
+.promptbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.promptbox-img{
+  display: block;
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 15rpx;
+}
+.promptbox-text{
+  font-size: 26rpx;
+  color: #EE1E1E;
+}
+
+.footbox{
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btnbox{
+  width: 20%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999999;
+  border: 0.5px solid #e5e5e5;
+  background: none;
+  line-height: 70rpx;
+  border-radius: 5px;
+}
+
+
+.share_redbag image{
+  display: block;
+  width: 100%;
+}
+.shareboxbg{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.sharebox{
+  position: absolute;
+  z-index: 9999;
+  top: 200rpx;
+  width: 75%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  padding: 50rpx 50rpx;
+  background: #fff;
+  border-radius: 15px;
+}
+.fontts{
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.sharebtnbox2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50rpx;
+}
+.sharebtnbox2 .btn{
+  width: 45%;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 80rpx;
+  border-radius: 15rpx;
+  border: 1rpx solid #e5e5e5;
+  text-align: center;
+}
+.sharebtnbox2 .btncss{
+  background: #ff9700;
+  color: #fff;
+}
+.imgbox{
+  width: 100%;
+}

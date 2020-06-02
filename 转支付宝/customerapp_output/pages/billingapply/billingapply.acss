@@ -1,0 +1,123 @@
+.bilingimg{
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  margin: 30rpx auto 0; 
+}
+.bilingimg image{
+  display: block;
+  width: 100%;
+}
+.paddB110{
+  padding-bottom: 110rpx;
+}
+
+.listbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.listbox-l{
+  width: 10%;
+}
+.checkboximg{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+}
+.listbox-c{
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: wrap;
+  overflow: hidden;
+}
+.commodityimg{
+  display: block;
+  width: 205rpx;
+  height: 205rpx;
+  border-radius: 5px;    
+  overflow: hidden;
+  border: 0.5px solid #e5e5e5;
+}
+.orderTime{
+  width: 100%;
+  text-align: left;
+  font-size: 26rpx;
+  color: #999999;
+}
+.listbox-r{
+  width: 55%;
+  display: flex;
+  align-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  min-height: 205rpx;
+}
+.w80{
+  width: 80%;
+}
+.w20{
+  width: 20%;
+  text-align: right;
+}
+.unitPrice{
+  font-size: 30rpx;
+  color: #EE1E1E;
+}
+.listbox-r-t{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footbox{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-top: 0.5px solid #e5e5e5;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+.selectallbtn{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 3%;
+  width: 22%;
+  font-size: 30rpx;
+  color: #999999;
+}
+.checkboximg{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+}
+.footbox-r{
+  width: 76%;
+  background: #FF9700;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+.datanull-font{
+  text-align: center;
+  font-size: 32rpx;
+  color: #999999;
+  margin-top: 310rpx;
+}
+.iconimg1{
+  display: inline-block;
+  width: 25%;
+}
+.datanull-font text{
+  display: block;
+  width: 100%;
+}

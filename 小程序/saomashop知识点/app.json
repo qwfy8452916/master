@@ -1,14 +1,18 @@
 {
   "pages": [
+    "pages/api/api",
+    "pages/countdown/countdown",
+    "pages/sureshare/sureshare",
+    "pages/sharehaibao/sharehaibao",
+    "pages/jump01/jump01",
+    "pages/rili/rili",
+    "pages/newtable/newtable",
     "pages/dingyue/dingyue",
     "pages/wxif/wxif",
     "pages/wxif02/wxif02",
-    "pages/newtable/newtable",
     "pages/zujianFather/zujianFather",
     "pages/zujian/zujian",
     "pages/zp/zp",
-    "pages/rili/rili",
-    "pages/jump01/jump01",
     "pages/table2/table2",
     "pages/setmessage/setmessage",
     "pages/cablayout/cablayout",
@@ -16,7 +20,7 @@
     "pages/shouquan/shouquan",
     
     "pages/area/area",
-    "pages/countdown/countdown",
+    
     
     "pages/addinfo/addinfo",
     

@@ -1,0 +1,27 @@
+<!--pages/sureshare/sureshare.wxml-->
+<view class="sharemsbox">
+   <view class="sharemsbox_title">{{suretitle}}</view>
+   <view class="shareimg">
+      <image src="../../img/haibao2.jpg"></image>
+   </view>
+</view>
+
+<view class="tipsbox">
+   <view class="tipsboxbt">
+      <text class="iconfont iconguanbi"></text><text>小贴士</text>
+   </view>
+   <view class="tipscontent">您可以点击"修改标题"按钮来修改标题,<n/>好的标题可以让更多人看到您的分享</view>
+</view>
+
+<button class="sharebtn" open-type="share">分享</button>
+<view class="edittitlebtn" bindtap="edittitlebtn">修改标题</view>
+
+<view class="shadowbox" hidden="{{tcinput}}">
+   <view class="inputbox">
+      <textarea class="inputcontent" placeholder-style="font-size:28rpx;color:#d5d5d7;" placeholder="请输入标题，最多15个字" maxlength="15" auto-height auto-focus="{{autokey}}" focus="{{autokey}}" value="{{tipstitle}}" bindinput="inputcontent"></textarea>
+      <view class="btnboxtc">
+         <text class="btnniu cancelbtn" bindtap="cancelbtn">取消</text>
+         <text class="btnniu confirnbtn" bindtap="confirnbtn">确定</text>
+      </view>
+   </view>
+</view>

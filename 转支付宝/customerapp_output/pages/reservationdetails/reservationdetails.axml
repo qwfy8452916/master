@@ -1,0 +1,93 @@
+<view class="paddAll borderB font30">
+  <text class="font-color2" a:if="{{orderinfo.dealStatus == 0}}">支付成功待确认</text>
+  <text class="font-color1" a:elif="{{orderinfo.dealStatus == 1}}">预订成功</text>
+  <text class="font-color2" a:elif="{{orderinfo.dealStatus == 3}}">已申请退订</text>
+  <text class="font-color3" a:elif="{{orderinfo.dealStatus == 4}}">已退订</text>
+  <text class="font-color3" a:elif="{{orderinfo.dealStatus == 5}}">已拒绝</text>
+  <text class="font-color1" a:elif="{{orderinfo.dealStatus == 6}}">已消费</text>
+</view>
+<block a:if="{{orderinfo.dealStatus == 5}}">
+  <view class="paddAll flexstart borderB">
+    <text class="font-name4">处理时间：</text>
+    <text class="font-name2">{{orderinfo.unSubDealTime}}</text>
+  </view>
+  <view class="paddAll flexstart mgB20">
+    <text class="font-name4">拒绝原因：</text>
+    <text class="font-name2">{{orderinfo.unSubDealRemark}}</text>
+  </view>
+</block>
+<view class="paddAll font30 mgB20">
+  在线付 
+  <text class="font-color2">¥ {{orderinfo.roomPrice * orderinfo.roomCount}}</text>
+</view>
+<view class="paddAll borderB font30 flexstart">
+  <image src="../../img/position-img.png" class="imgwh"></image>
+  {{orderinfo.hotelName}}（{{orderinfo.hotelAddress}}）
+</view>
+<view class="timebox borderB" a:if="{{orderinfo.hourTime == ''}}">
+  <view class="timebox-w">
+    <text class="font-text">入住时间</text>
+    <text class="font-text2">{{orderinfo.arrivalDate}} {{arrivalWeek}}</text>
+  </view>
+  <view class="timebox-w2">
+    <text class="font-textbox">共
+      <text class="font-color1">{{orderinfo.days}}</text>晚</text>
+  </view>
+  <view class="timebox-w">
+    <text class="font-text">离店时间</text>
+    <text class="font-text2">{{orderinfo.leaveDate}} {{leaveWeek}}</text>
+  </view>
+</view>
+<view class="hourlyroom borderB" a:else>
+  <view class="font-text2 mgB10">{{orderinfo.arrivalDate}} {{arrivalWeek}}</view>
+  <view class="font-text2">可住时段：{{orderinfo.hourTime}},连住{{orderinfo.bookRoomResourceDTO.roomType.hourRoomDuration}}小时</view>
+</view>
+<view class="hourlyroom borderB mgB20">
+  <view class="font-text mgB10">{{orderinfo.roomCount}}间 {{roominfo.resourceName}}</view>
+  <view class="font-text font-color4">可住{{roominfo.livePeople}}人 | {{roominfo.roomType.roomSize}}㎡ | 
+    <block a:if="{{roominfo.windowFlag == 0}}">无窗</block>
+    <block a:elif="{{roominfo.windowFlag == 1}}">有窗</block>
+    <block a:elif="{{roominfo.windowFlag == 2}}">飘窗</block>
+    <block a:elif="{{roominfo.windowFlag == 3}}">落地窗</block> | 
+    <block a:if="{{roominfo.breakfastFlag == 0}}">无早</block>
+    <block a:elif="{{roominfo.breakfastFlag == 1}}">单早</block>
+    <block a:elif="{{roominfo.breakfastFlag == 2}}">双早</block>
+  </view>
+</view>
+<view class="hourlyroom borderB mgB20">
+  <view class="font-text mgB10">{{orderinfo.cusName}} {{orderinfo.cusPhone}}</view>
+  <view class="promptbox">
+    <image class="promptbox-img" src="../../img/icon-img14.png"></image>
+    <text class="promptbox-text">入住请携带本人有效证件  </text>
+  </view>
+</view>
+<view
+  class="share_redbag mgB20"
+  a:if="{{redcode != -1 && type == 1}}"
+  onTap="sharefun"
+>
+  <image mode="widthFix" src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/shareredbag.png"></image>
+</view>
+<block a:if="{{((roominfo.isCancellable == 1 && orderinfo.dealStatus == 1 && iscancel == true) || orderinfo.dealStatus == 0 || orderinfo.dealStatus == 5 ) && orderinfo.writeOffStatus == 0}}">
+  <view class="paddAll footbox">
+    <view class="btnbox" onTap="unsubscribefun">退订</view>
+  </view>
+</block>
+<view a:if="{{showtype == true}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">{{user_name?user_name+'邀你一起领红包':'好友邀你一起领红包'}}</view>
+    <image
+      src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/shareimg.jpg"
+      class="imgbox"
+      mode="widthFix"
+    ></image>
+    <view class="sharebtnbox2">
+      <view class="btn" onTap="closefun">取消</view>
+      <button
+        open-type="share"
+        data-type="1"
+        class="btn btncss"
+      >分享</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,288 @@
+<!--pages/buhuolist/buhuolist.axml-->
+<view class="table">
+  <view
+    class="td rowite"
+    onTap="switchzhixing"
+    a:for="{{latticedatalist}}"
+    a:key="*this"
+    style="width:{{item.width}}%;height:{{item.height}}%;position:absolute;top:{{item.top}}%;left:{{item.left}}%;"
+    data-id="{{item.id}}"
+    data-index="{{index}}"
+    data-code="{{item.latticeCode}}"
+    data-cabId="{{item.cabId}}"
+    data-prodid="{{item.prodId}}"
+    data-prodname="{{item.prodProductDTO.prodName}}"
+    data-isopen="{{item.isOpen}}"
+    data-kong="{{item.isEmpty}}"
+    data-huan="{{item.opFlag}}"
+  >
+    <view a:if="{{item.opFlag==0}}" class="imgwk">
+      <view class="imgwktest2"></view>
+      <view class="imgwktest">{{item.latticeCode}}</view>
+      <image src="{{item.prodProductDTO.prodLogoUrl}}"></image>
+    </view>
+    <view a:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class="imgwk">
+      <view class="imgwktest2"></view>
+      <view class="imgwktest">{{item.latticeCode}}</view>
+      <image a:if="{{item.opFlag!=3}}" src="{{item.prodProductDTO.prodLogoUrl}}"></image>
+      <image a:else src="{{item.changeProdProductDTO.prodLogoUrl}}"></image>
+    </view>
+    <view a:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class="imgwk">
+      <view class="buhuopicwk" a:if="{{geziarray[index]}}">
+        <image src="../../img/statuswc.png"></image>
+      </view>
+      <view class="buhuopicwk" a:else>
+        <image src="../../img/statusdefault.png"></image>
+      </view>
+      <view class="imgwktest">{{item.latticeCode}}</view>
+      <image a:if="{{item.opFlag!=3}}" src="{{item.prodProductDTO.prodLogoUrl}}"></image>
+      <image a:else src="{{item.changeProdProductDTO.prodLogoUrl}}"></image>
+    </view>
+    <view class="itemtitle">
+      <text class="prodstatus bustatus" a:if="{{item.opFlag==1}}">补*{{item.prodCount}}</text>
+      <text class="prodstatus getstatus" a:if="{{item.opFlag==2}}">取*{{item.prodCount}}</text>
+      <text class="prodstatus replacestatus" a:if="{{item.opFlag==3}}">换*{{item.changeProdCount}}</text>
+    </view>
+  </view>
+</view>
+<!-- <view class="wrap2">
+   <view class="colite color1">
+     <view class="rowite" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{item.latticeCode=='A'}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+     <view class="rowite" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{(item.latticeCode=='C' && getcabType=='01') || (item.latticeCode=='B' && getcabType=='05')}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+     <view class="rowite" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{(item.latticeCode=='E' && getcabType=='01')}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+   </view>
+   <view class="colite color2">
+      <view class="rowite" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{(item.latticeCode=='B' && getcabType=='01') || (item.latticeCode=='C' && getcabType=='05')}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+     <view class="rowite" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{item.latticeCode=='D'}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+     <view class="rowite" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{(item.latticeCode=='F' && getcabType=='01')}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+   </view>
+   <view class="colite color3">
+      <view class="rowite hebing1" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{(item.latticeCode=='G' && getcabType=='01') || (item.latticeCode=='E' && getcabType=='05')}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+     <view class="rowite" wx:for="{{latticedatalist}}" bindtap='switchzhixing' wx:for="{{latticedatalist}}" wx:key data-id="{{item.id}}" data-index="{{index}}" data-code="{{item.latticeCode}}" data-cabId="{{item.cabId}}" data-prodid="{{item.prodId}}" data-prodname="{{item.prodProductDTO.prodName}}" data-isopen="{{item.isOpen}}" data-kong='{{item.isEmpty}}' data-huan="{{item.opFlag}}" wx:key wx:if="{{(item.latticeCode=='H' && getcabType=='01')}}">
+     <view wx:if="{{item.opFlag==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==0}}" class='imgwk'>
+           <view class='imgwktest2'></view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+
+       <view wx:if="{{(item.opFlag==1 || item.opFlag==2 || item.opFlag==3) && item.isOpen==1}}" class='imgwk'>
+           <view class='buhuopicwk' wx:if="{{geziarray[index]}}">
+             <image src='../../img/statuswc.png'></image>
+           </view>
+           <view class='buhuopicwk' wx:else>
+             <image src='../../img/statusdefault.png'></image>
+           </view>
+           <view class='imgwktest'>{{item.latticeCode}}</view>
+           <image src='{{item.prodProductDTO.prodLogoUrl}}'></image>
+       </view>
+       
+       <view class='itemtitle'><text class='prodstatus bustatus' wx:if="{{item.opFlag==1}}">补</text><text class='prodstatus getstatus' wx:if="{{item.opFlag==2}}">取</text><text class='prodstatus replacestatus' wx:if="{{item.opFlag==3}}">换</text>{{item.prodProductDTO.productName}}</view>
+     
+     </view>
+   </view>
+</view>  -->
+<view a:if="{{niuhidden}}">
+  <view class="baoxiuwrap" a:if="{{!niujudge}}">注：如果发现锁柜存在问题请点击
+    <text class="baoxiutext" onTap="repairniu">报修锁柜</text>
+  </view>
+  <!-- WX2MY: 属性hidden不被支持，请调整 -->
+  <view
+    class="completetest"
+    onTap="bounceniu"
+    hidden="{{!niujudge}}"
+  >开始补货</view>
+  <!-- WX2MY: 属性hidden不被支持，请调整 -->
+  <view
+    class="completetest"
+    onTap="completeniu"
+    hidden="{{niujudge}}"
+  >补货完成</view>
+</view>

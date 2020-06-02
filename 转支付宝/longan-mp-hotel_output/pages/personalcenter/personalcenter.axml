@@ -1,0 +1,75 @@
+<!--pages/personalcenter/personalcenter.axml-->
+<view class="mywrapbj">
+  <!-- <button class='niudj' hidden='{{userInfojudge}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 去提现</button> -->
+  <!-- WX2MY: 属性hidden不被支持，请调整 -->
+  <button
+    class="niudj"
+    hidden="{{userInfojudge}}"
+    onTap="jumpshouquan"
+  > 去提现</button>
+  <image class="pictopbj" src="../../img/userbj.png"></image>
+  <image class="touxiang" src="{{userInfo.avatar}}"></image>
+  <text class="ningchegn">{{userInfo.nickName}}</text>
+  <text
+    a:if="{{!isBind}}"
+    class="bindbtn"
+    onTap="bindfun"
+  >绑定</text>
+  <!-- WX2MY: 属性hidden不被支持，请调整 -->
+  <text
+    class="exitbtn"
+    hidden="{{!userInfojudge}}"
+    onTap="signout"
+  >切换账号</text>
+</view>
+<!-- WX2MY: 属性hidden不被支持，请调整 -->
+<view
+  a:if="{{authzData['F:MH_USER_VIEW_ACCOUNT']}}"
+  class="replenishment"
+  hidden="{{!userInfojudge}}"
+>
+  <view class="leftblok">
+    <text class="iconfont iconicon"></text>
+    <text>我的补货费</text>
+  </view>
+  <view class="rightblok">
+    <text class="iconfont iconwangyou" onTap="linkmycome"></text>
+  </view>
+</view>
+<view class="replenishment topline" onTap="goUpdatePWD">
+  <view class="leftblok">
+    <text class="iconfont iconchangepassword"></text>
+    <text>修改密码</text>
+  </view>
+  <view class="rightblok">
+    <text class="iconfont iconwangyou"></text>
+  </view>
+</view>
+<view class="replenishment topline" onTap="goUpdateInfo">
+  <view class="leftblok">
+    <text class="iconfont iconxinxiweihu"></text>
+    <text>信息维护</text>
+  </view>
+  <view class="rightblok">
+    <text class="iconfont iconwangyou"></text>
+  </view>
+</view>
+<view class="replenishment topline" onTap="mycode">
+  <view class="leftblok">
+    <text class="iconfont iconsaoma1"></text>
+    <text>我的二维码</text>
+  </view>
+  <view class="rightblok">
+    <text class="iconfont iconwangyou"></text>
+  </view>
+</view>
+<view class="replenishment topline" onTap="settingmsg">
+  <view class="leftblok">
+    <text class="iconfont iconanzhuang"></text>
+    <text>消息设置</text>
+  </view>
+  <view class="rightblok">
+    <text class="iconfont iconwangyou"></text>
+  </view>
+</view>
+<my-tabbar id="tabbar" tabindex="{{Tabindex}}"></my-tabbar>

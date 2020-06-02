@@ -1,0 +1,132 @@
+<block a:if="{{receipttype == true}}">
+  <view class="formview">
+    <view class="liview">
+      <view class="inpname">收货人</view>
+      <input
+        class="inpval"
+        type="text"
+        value="{{consignee}}"
+        placeholder-style="color: #CECECE"
+        placeholder="请输入收货人姓名"
+        onInput="consigneefun"
+      />
+    </view>
+    <view class="liview">
+      <view class="inpname">手机号码</view>
+      <input
+        class="inpval"
+        type="number"
+        value="{{consigneePhone}}"
+        placeholder-style="color: #CECECE"
+        placeholder="请输入收货人手机号码"
+        onInput="consigneePhonefun"
+      />
+    </view>
+    <view class="liview">
+      <view class="inpname">地区</view>
+      <!-- WX2MY: 属性mode=region时，不被支持，请调整。属性bindchange为mode=region的关联属性，不被支持。 -->
+      <picker
+        class="inpval"
+        mode="region"
+        onChange="bindRegionChange"
+        value="{{region}}"
+      >
+        <view a:if="{{regiontype == true}}" class="placeholder-font">请选择收货人地区</view>
+        <view a:else class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+      </picker>
+    </view>
+    <view class="liview">
+      <view class="inpname">详细地址</view>
+      <input
+        class="inpval"
+        type="text"
+        value="{{address}}"
+        placeholder-style="color: #CECECE"
+        placeholder="请输入收货人详细地址"
+        onInput="addressfun"
+      />
+    </view>
+  </view>
+  <block a:if="{{changetype == 0}}">
+    <view
+      a:if="{{subtype == true}}"
+      class="subbtn"
+      data-type="1"
+      onTap="subfun"
+    >确定</view>
+    <view
+      a:else
+      class="subbtn"
+      style="background: #cecece"
+    >已提交</view>
+  </block>
+  <view a:elif="{{changetype == 1}}" class="footbtnbox">
+    <view onTap="cancelfun">取消</view>
+    <view
+      a:if="{{subtype == true}}"
+      data-type="1"
+      onTap="subfun"
+    >确定</view>
+    <view a:else style="background: #cecece">已提交</view>
+  </view>
+  <view a:elif="{{changetype == 2}}" class="footbtnbox">
+    <view onTap="cancelfun">取消修改</view>
+    <view
+      a:if="{{subtype == true}}"
+      data-type="2"
+      onTap="subfun"
+    >确定修改</view>
+    <view a:else style="background: #cecece">已提交</view>
+  </view>
+</block>
+<block a:else>
+  <block
+    a:for="{{receiptlist}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <view class="libox">
+      <view class="libox-t">
+        <view
+          class="libox-t-l"
+          data-id="{{item.id}}"
+          onTap="backfun"
+        >
+          <view class="font-text1">{{item.consignee}} {{item.consigneePhone}}</view>
+          <view class="font-text2">{{item.provinceName}}{{item.cityName}}{{item.areaName}}</view>
+          <view class="font-text2">{{item.address}}</view>
+        </view>
+        <view
+          class="libox-t-r"
+          data-index="{{index}}"
+          onTap="changeaddress"
+        >编辑</view>
+      </view>
+      <view class="libox-b">
+        <view
+          class="libox-b-l"
+          data-id="{{item.id}}"
+          onTap="changedefault"
+        >
+          <image
+            a:if="{{item.isDefault == 1}}"
+            src="../../img/icon-img5.png"
+            class="iconimg"
+          ></image>
+          <image
+            a:else
+            src="../../img/icon-img7.png"
+            class="iconimg"
+          ></image>
+          默认地址
+        </view>
+        <view
+          class="delete"
+          data-id="{{item.id}}"
+          onTap="deletefun"
+        >删除</view>
+      </view>
+    </view>
+  </block>
+  <view class="subbtn" onTap="addAddress">添加新地址</view>
+</block>

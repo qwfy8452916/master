@@ -1,0 +1,20 @@
+<!--pages/getcashrecord/getcashrecord.axml-->
+<view class="itemwrap">
+  <view
+    class="item"
+    a:for="{{getcashrecorddata}}"
+    a:key="*this"
+  >
+    <view class="clearfu">
+      <text class="lefttext">{{item.empWithdrawalStatus==1?'申请成功':(item.empWithdrawalStatus==2?'申请失败':'默认状态')}}</text>
+      <text class="righttext">{{item.empWithdrawalAmount}}元</text>
+    </view>
+    <view class="datetime">{{item.createdAt}}</view>
+  </view>
+</view>
+<!-- WX2MY: 属性hidden不被支持，请调整 -->
+<view class="checkmore" hidden="{{!judge}}">
+  <text onTap="moredata">查看更多 
+    <text class="iconfont iconsanjiaoxing1"></text>
+  </text>
+</view>

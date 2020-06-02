@@ -1,0 +1,17 @@
+<view class="popboxbg" a:if="{{isShow == true}}">
+  <view class="popbox">
+    <view onTap="hideDialog" class="closebtn"></view>
+    <image src="../../../img/loading.png" mode="widthFix"></image>
+    <!-- WX2MY: 属性open-type=getUserInfo时，不被支持，请调整。属性bindgetuserinfo为open-type=getUserInfo的关联属性，不被支持。 -->
+    <!-- <button
+      class="btnbox"
+      open-type="getUserInfo"
+      bindgetuserinfo="_getUserInfo"
+      onTap="hideDialog"
+    >授权登录</button> -->
+    <button open-type="getAuthorize" 
+  onGetAuthorize="onGetAuthorize" onError="onAuthError" 
+  scope='userInfo'>授权登录</button>
+
+  </view>
+</view>

@@ -1,0 +1,86 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "autoAudits": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.9.4",
+  "appid": "wxe4bc42f44b79c8dc",
+  "projectname": "%E8%B4%AD%E7%89%A9%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E6%8E%A5%E5%8F%A3%E6%B1%87%E6%80%BB%E7%89%88",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": 1,
+          "name": "开发库柜子",
+          "pathName": "pages/login/login",
+          "query": "c=01111901134001",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "线上柜子",
+          "pathName": "pages/login/login",
+          "query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01111909180058&scancode_time=1577781991",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "线上虚拟柜",
+          "pathName": "pages/login/login",
+          "query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D04000018001001&scancode_time=1579071989",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "90-006",
+          "pathName": "pages/login/login",
+          "query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01001909250006&scancode_time=1579163318",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "90-015",
+          "pathName": "pages/login/login",
+          "query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01001909250015&scancode_time=1579232567",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

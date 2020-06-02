@@ -1,0 +1,36 @@
+<block a:if="{{type}}">
+  <block
+    a:for="{{evaluatelist}}"
+    a:for-item="item"
+    a:key="index"
+  >
+    <view class="paddAll mgB20 evaluation">
+      <view class="evaluationT2">
+        <view class="evaluationT">
+          <image class="userimg" src="{{item.avatarUrl != null?item.avatarUrl:'../../img/icon-img10.png'}}"></image>
+          <text class="font-username">{{item.nickName}}</text>
+        </view>
+      </view>
+      <view class="conttent-font">{{item.remarkContent}}</view>
+      <view class="imglist" a:if="{{item.remarkImageDTOS !=null}}">
+        <block
+          a:for="{{item.remarkImageDTOS}}"
+          a:for-item="imgitem"
+          a:key="index"
+        >
+          <image
+            src="{{imgitem.imageUrl}}"
+            mode="aspectFill"
+            data-index="{{index}}"
+            data-imgarr="{{item.remarkImageDTOS}}"
+            onTap="previewImg"
+          ></image>
+        </block>
+      </view>
+      <view class="time-font">{{item.createdAt}}</view>
+    </view>
+  </block>
+</block>
+<block a:else>
+  <view class="font-null">此商品暂无评价</view>
+</block>

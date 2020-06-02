@@ -1,0 +1,22 @@
+<view class="mylistbox-li" onTap="billingfun">
+  <view class="mylistbox-li-left">
+    <image
+      class="mylistbox-li-img"
+      mode="widthFix"
+      src="../../img/my-btnimg11.png"
+    ></image>
+    <view class="mylistbox-li-name">申请开票</view>
+  </view>
+  <image class="mylistbox-li-bg" src="../../img/my-bgimg2.png"></image>
+</view>
+<view class="mylistbox-li" onTap="billinglistfun">
+  <view class="mylistbox-li-left">
+    <image
+      class="mylistbox-li-img"
+      mode="widthFix"
+      src="../../img/my-btnimg10.png"
+    ></image>
+    <view class="mylistbox-li-name">开票记录</view>
+  </view>
+  <image class="mylistbox-li-bg" src="../../img/my-bgimg2.png"></image>
+</view>

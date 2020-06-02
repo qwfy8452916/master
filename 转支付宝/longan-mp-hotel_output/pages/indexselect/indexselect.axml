@@ -1,0 +1,21 @@
+<view class="loginbj">
+  <image class="loginimg" src="../../img/buhuobj.png"></image>
+  <view class="btnniu buhuo activity" onTap="buhuodetail">
+    <view class="btnicon">
+      <image src="../../img/buhuo01.png"></image>
+    </view>
+    <text class="btntext">补货</text>
+  </view>
+  <view class="btnniu huanhuo activity">
+    <view class="btnicon">
+      <image src="../../img/huanhuo02.png"></image>
+    </view>
+    <text class="btntext">换货</text>
+  </view>
+  <view class="btnniu quhuo">
+    <view class="btnicon">
+      <image src="../../img/huanhuo02.png"></image>
+    </view>
+    <text class="btntext">换货</text>
+  </view>
+</view>

@@ -1,0 +1,209 @@
+<view class="paddAll borderB">
+  <view class="roomname-font">{{roomdetail.resourceName}}</view>
+  <view class="mgB20 kfinfobox">
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img1.png"></image>
+      <text class="kfinfobox-li-text">{{roomdetail.roomSize}}㎡</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img2.png"></image>
+      <text class="kfinfobox-li-text">可住{{roomdetail.livePeople}}人</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img3.png"></image>
+      <text class="kfinfobox-li-text">{{roomdetail.floor}}层</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img4.png"></image>
+      <text class="kfinfobox-li-text">{{roomdetail.bedTypeName}} {{roomdetail.bedWidth}}米</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img6.png"></image>
+      <text class="kfinfobox-li-text">
+        <block a:if="{{roomdetail.windowFlag == 0}}">无窗</block>
+        <block a:elif="{{roomdetail.windowFlag == 1}}">有窗</block>
+        <block a:elif="{{roomdetail.windowFlag == 2}}">飘窗</block>
+        <block a:elif="{{roomdetail.windowFlag == 3}}">落地窗</block>
+      </text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img7.png"></image>
+      <text class="kfinfobox-li-text">
+        <block a:if="{{roomdetail.breakfastFlag == 0}}">无早餐</block>
+        <block a:elif="{{roomdetail.breakfastFlag == 1}}">单早</block>
+        <block a:elif="{{roomdetail.breakfastFlag == 2}}">双早</block>
+      </text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img8.png"></image>
+      <text class="kfinfobox-li-text">
+        <block a:if="{{roomdetail.bedAddFlag == 0}}">不支持加床</block>
+        <block a:elif="{{roomdetail.bedAddFlag == 1}}">无偿加床</block>
+        <block a:elif="{{roomdetail.bedAddFlag == 2}}">有偿加床 {{roomdetail.bedAddPrice}}/张</block>
+      </text>
+    </view>
+  </view>
+</view>
+<block a:if="{{roomdetail.isHourRoom == 0}}">
+  <view class="timebox borderB">
+    <view class="timebox-w">
+      <text class="font-text">入住时间</text>
+      <text class="font-text2">{{starTime}} {{starweek}}</text>
+    </view>
+    <view class="timebox-w2">
+      <text class="font-textbox">共
+        <text class="font-color1">{{day}}</text>晚</text>
+    </view>
+    <view class="timebox-w">
+      <text class="font-text">离店时间</text>
+      <text class="font-text2">{{endTime}} {{endweek}}</text>
+    </view>
+  </view>
+</block>
+<block a:else>
+  <view class="hourlyroom borderB">
+    <view class="font-text2 mgB10">{{roomdetail.starTime}} {{roomdetail.starweek}}</view>
+    <view class="font-text2">可住时段：{{roomdetail.hourRoomStartTime}}-
+      <block a:if="{{roomdetail.hourRoomEndTime == '00:00'}}">24:00</block>
+      <block a:else>{{roomdetail.hourRoomEndTime}}</block>,连住{{roomdetail.hourRoomDuration}}小时</view>
+  </view>
+</block>
+<view class="paddAll mgB20 promptbox">
+  <image class="promptbox-img" src="../../img/icon-img14.png"></image>
+  <text class="promptbox-text" a:if="{{roomdetail.isCancellable == 1}}">此订单{{starTime}} 
+    <block a:if="{{roomdetail.cancelDeadline != null}}">
+      <block a:if="{{roomdetail.cancelDeadline == '00:00'}}">24:00</block>
+      <block a:else>{{item.hourRoomEndTime}}</block>
+    </block>前可免费取消</text>
+  <text class="promptbox-text" a:else>此订单不可取消</text>
+</view>
+<view class="formbox">
+  <view class="form-li">
+    <text class="form-li-L">房间数
+      <text class="font-color3">*</text>
+    </text>
+    <input
+      class="form-li-R"
+      type="number"
+      onInput="roomnumfun"
+      value="{{roomnum}}"
+      placeholder="请填写房间数"
+      placeholder-class="font-mr"
+    ></input>
+  </view>
+  <view class="form-li">
+    <text class="form-li-L">联系人
+      <text class="font-color3">*</text>
+    </text>
+    <input
+      class="form-li-R"
+      type="text"
+      onInput="contactfun"
+      placeholder="请输入住客姓名"
+      placeholder-class="font-mr"
+    ></input>
+  </view>
+  <view class="form-li">
+    <text class="form-li-L">手机号
+      <text class="font-color3">*</text>
+    </text>
+    <input
+      class="form-li-R"
+      type="number"
+      onInput="telfun"
+      placeholder="请填写手机号码"
+      placeholder-class="font-mr"
+    ></input>
+  </view>
+  <view class="form-li" a:if="{{roomdetail.isHourRoom == 1}}">
+    <text class="form-li-L">入住时间
+      <text class="font-color3">*</text>
+    </text>
+    <!-- WX2MY: 属性mode=time时，不被支持，请调整。属性start、end、bindchange为mode=time的关联属性，不被支持。 -->
+    <picker
+      class="form-li-R"
+      mode="time"
+      value="{{userchecktime}}"
+      start="{{currenttime}}"
+      end="{{deadline}}"
+      onChange="bindTimeChange"
+    >
+      <view class="flexbetween">
+        <view>
+          {{userchecktime}} - {{userdeparturetime}}
+        </view>
+        <view class="promptbox" a:if="{{prompttype}}">
+          <image class="promptbox-img" src="../../img/icon-img14.png"></image>
+          <text class="promptbox-text">入住时间不足{{roomdetail.hourRoomDuration}}小时</text>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="form-li">
+    <!-- WX2MY: 属性decode不被支持，请调整 -->
+    <text class="form-li-L remarklabel" decode="{{true}}">备&nbsp;&nbsp;&nbsp;注</text>
+    <textarea
+      a:if="{{!mxboxtype}}"
+      class="form-li-R remarkinp"
+      maxlength="255"
+      onInput="remarkfun"
+      auto-height
+      placeholder="请填写备注（选填）"
+      placeholder-class="font-mr"
+      value="{{remark}}"
+    />
+  </view>
+</view>
+<view class="footbox">
+  <view class="footbox-L">
+    在线付：
+    
+    <text class="font-color3">¥ {{totalPrice_}}</text>
+    <text
+      class="font-color2 font-mx"
+      data-mxboxtype="{{mxboxtype}}"
+      onTap="showmx"
+    >明细</text>
+  </view>
+  <view
+    a:if="{{topaytype == true}}"
+    class="btnbox"
+    style="background: {{themecolor.skintone}};"
+    data-ishourroom="{{roomdetail.isHourRoom}}"
+    onTap="topay"
+  >去支付</view>
+  <view
+    a:else
+    class="btnbox"
+    style="background: #cecece;"
+    data-ishourroom="{{roomdetail.isHourRoom}}"
+  >已提交</view>
+</view>
+<view
+  class="mxbox-bg"
+  a:if="{{mxboxtype}}"
+  onTap="hidemx"
+>
+  <view class="paddAll borderB mxbox">
+    <view class="mgB30">
+      <block
+        a:for="{{roomdetail.priceDetail}}"
+        a:for-item="item"
+        a:key="index"
+      >
+        <view class="mxbox-li">
+          <text>{{item.priceDateS}} 
+            <block a:if="{{roomdetail.breakfastFlag == 0}}">无早</block>
+            <block a:elif="{{roomdetail.breakfastFlag == 1}}">单早</block>
+            <block a:elif="{{roomdetail.breakfastFlag == 2}}">双早</block>
+          </text>
+          <text>{{roomnum}} × ¥{{item.price}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="font-total">
+      {{day}}晚，{{roomnum}}间共 
+      <text class="font-color3">¥{{totalPrice_}}</text>
+    </view>
+  </view>
+</view>

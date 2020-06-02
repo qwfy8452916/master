@@ -1,0 +1,10 @@
+<!-- <template name="test2"> -->
+   <view>
+     <text>hellow word</text>
+     <view>{{data2}}</view>
+     <!-- <text-input></text-input> -->
+   </view>
+   
+<!-- </template> -->
+
+

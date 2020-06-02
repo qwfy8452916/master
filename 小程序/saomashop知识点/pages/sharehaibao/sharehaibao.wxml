@@ -1,0 +1,22 @@
+<!--pages/sharehaibao/sharehaibao.wxml-->
+
+<button open-type="share" class="infos_3" hover-class="other-button-hover">分享</button>
+
+<button class="infos_3" bindtap="copyTBL">一键复制</button>
+
+<block wx:for="{{fenlist}}" wx:key>
+  <view wx:if="item.a==1">{{item.a}}</view>
+  <view wx:if="item.b==2">{{item.b}}</view>
+</block>
+
+
+
+
+<view class="wraphaibao" hidden="{{showHide}}">
+   <text class="iconfont iconguanbi" bindtap="closepic"></text>
+   <view class="picbox">
+      <image class="haibaopic" src="../../img/haibao.jpg"></image>
+   </view>
+   <view class="btnpic" bindtap="saveImg">保存到手机相册</view>
+   <view class="btnpic preview" bindtap="preview">预览海报</view>
+</view>

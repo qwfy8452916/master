@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript" src="js/vue/vue.js"></script>
+    <script type="text/javascript" src="js/axios/axios.min.js"></script>
+    <script type="text/javascript" src="js/swiper/swiper-4.3.2.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="js/swiper/swiper-4.3.2.min.css">
+    <link rel="stylesheet" href="css/indexces.css" + Date.now()>
+    <title>Document</title>
+    <style>
+        .yangshi{color: green;font-size: 14px;text-decoration: underline;}
+    </style>
+</head>
+<body>
+    <section id="app" v-cloak>
+            <!--轮播-->
+           <div class="swiper-container banner">
+             <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href=""><img src="img/banner1.jpg" /></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href=""><img src="img/banner1.jpg" /></a>
+                </div>
+              </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <!--轮播-->
+         <div class="top"></div>
+         <div class="banner">
+             <img src="img/banner1.jpg">
+         </div>
+         <!-- 文本输入 -->
+         <div v-html="danshujv"></div>
+         <div>{{danshujv}}</div>
+         <input type="text" v-model="danshujv">
+         <!-- 数据渲染 -->
+         <div class="dandata">{{danshujv}}</div>
+         <!-- 循环读取 -->
+         <div v-for="item in footerNavList">
+             <span>{{item.icon}}</span>
+             <span>{{item.name}}</span>
+             <span>{{item.isActive}}</span>
+             <span>{{item.url}}</span>
+         </div>
+          <!-- 样式执行 -->
+         <div :class="{yangshi:csspanduan}">添加样式改变效果</div>
+         <button type="button" @click="yanghsiclick">点击执行样式</button>
+         <!-- 事件 -->
+         <button @click="dianji" style="font-size:16px;">{{eventdata}}</button>
+         <!-- 请求数据 -->
+         <div>{{morendata}}</div>
+         <button @click="clickdata">执行数据</button>
+         <div v-show="hidesh" style="color:red">{{showhide}}</div>
+         <button @click="showdata">{{showtext}}</button>
+         <!-- 判断 -->
+         <div v-if="type==='a'">显示a</div>
+         <div v-else-if="type=='b'">显示b</div>
+         <div v-else-if="type==='c'">显示c</div>
+         <!-- 改变对象 -->
+         <div data-id="123">{{cityName.name}}</div>
+         <button type="button" :data-id="456" @click="clickobj(789)">点击改变对象值</button>
+         <!-- 绑定数据 -->
+         <button data-str="{{dataid}}" @click="dataid=666">点击绑定数据</button>
+
+         <el-upload
+            multiple
+            :limit="10"
+            :file-list="bannerList"
+            action="/longan/api/basic/file/upload"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove"
+            :on-success="handleSuccess">
+            <i class="el-icon-plus"></i>
+            </el-upload>
+            <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+
+        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+        <div style="margin: 15px 0;"></div>
+        <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+          <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+        </el-checkbox-group>
+        <el-button @click="dianjia" type="primary">点击加</el-button>
+          <div v-for="item in footerNavList">
+            <input @change="inputchange(item.inputvalue)" v-model="item.inputvalue"/>
+          </div>
+        
+
+    </section>
+    <script>
+        const cityOptions = ['上海', '北京', '广州', '深圳'];
+      var app = new Vue({
+	el: '#app',
+	data: {dialogImageUrl: '',
+        dialogVisible: false,
+
+		isLevip: true,
+        isInternal: false,
+        hidesh:false,
+        csspanduan:false,
+        type:"c",
+        dataid:null,
+        danshujv:"欢迎来到新环境",
+        eventdata:"执行",
+        morendata:"默认数据",
+        showhide:"显示隐藏",
+        showtext:"显示数据",
+        cityName: {id: 1, name: 'shanghai'},
+        bannerList:[],
+		userInfo:{
+
+		},
+        footerNavList: [
+            {
+                icon: 'icon-zhuye',
+                name: '首页',
+                isActive: false,
+                url: 'index.html'
+            },
+            {
+                icon: 'icon-dingdan1',
+                name: '订单',
+                isActive: false,
+                url: 'order.html'
+            },
+            {
+                icon: 'icon-gouwuche1',
+                name: '购物车',
+                isActive: false,
+                url: 'shopcar.html'
+            },
+            {
+                icon: 'icon-wode',
+                name: '我的',
+                isActive: true,
+                url: 'my.html'
+            }
+        ],
+
+        checkAll: false,
+        checkedCities: ['上海', '北京'],
+        cities: cityOptions,
+        isIndeterminate: true
+    },
+    watch:{
+        danshujv(newdata,olddata){
+            console.log("数据改变了")
+            console.log(newdata)
+            console.log(olddata)
+        },
+
+        cityName: {
+            handler(newName, oldName) {
+              console.log("对象改变") 
+              console.log(newName)  
+              console.log(oldName)  
+            },
+            deep: true,
+            immediate: true
+        }
+    },
+    created(){
+        this.footerNavList.map(item=>{
+            item.url=""
+        })
+        console.log(this.footerNavList)
+    },
+	methods: {
+
+        dianjia(){
+            this.footerNavList.map(item=>{
+            item.inputvalue=""
+          })
+          console.log(this.footerNavList)
+        },
+
+        inputchange(e){
+          console.log(e)
+          console.log(this.footerNavList)
+        },
+
+
+
+           handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+
+            handleSuccess(response,file,fileList){
+              console.log(response)
+              console.log(file)
+              console.log(fileList)
+            },
+
+            handleCheckAllChange(val) {
+                console.log(val)
+                this.checkedCities = val ? cityOptions : [];
+                this.isIndeterminate = false;
+            },
+         handleCheckedCitiesChange(value) {
+             console.log(value)
+            let checkedCount = value.length;
+            this.checkAll = checkedCount === this.cities.length;
+            this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+        },
+
+
+		dianji:function(){
+            var that=this;
+            
+            if(that.danshujv=="欢迎来到筑牛"){
+              that.danshujv="欢迎来到新环境"
+            }else{
+                that.danshujv="欢迎来到筑牛";
+            }
+        },
+        showdata:function(str){
+                console.log(str)
+                console.log(this.dataid)
+                this.hidesh=!this.hidesh;
+                if(this.hidesh==true){
+                    this.showtext="隐藏数据"
+                }else{
+                    this.showtext="显示数据"
+                }
+            
+        },
+        yanghsiclick:function(){
+            this.csspanduan=!this.csspanduan
+        },
+        clickobj:function(x){
+            var that=this;
+            this.cityName.name="beijing"
+            console.log(x)
+        },
+        clickdata:function(){
+            var that=this;
+            var url="https://www.easy-mock.com/mock/5b7f7b7d4a96987699e40656/dc/renyuan";
+            axios.get(url, {
+                params: {
+                    id: ""
+                }
+                }).then(function (res) {
+                   console.log(res.data.data)
+                   that.morendata=res.data.data.work
+                }).catch(function (error) {
+                alert(error);
+                });
+        }
+
+	},
+	mounted(){
+        var that = this;
+        
+        // 初始化 swiper
+        var mySwiper = new Swiper ('.swiper-container', {
+            loop: true,
+            autoplay: true,
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        });
+      
+	}
+})
+    
+    </script>
+    
+</body>
+</html>

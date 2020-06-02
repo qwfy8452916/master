@@ -1,0 +1,85 @@
+/* pages/repair/repair.wxss */
+/* page{width: 100%;padding: 0 4%;box-sizing: border-box;} */
+.resultwrap{overflow: hidden;margin-top: 45rpx;font-size: 32rpx;
+line-height: 50rpx;width: 100%;padding: 0 4%;box-sizing: border-box;
+border-bottom: 1px solid #ddd;padding-bottom: 30rpx;}
+.resultwrap .danxuanzu{display: inline-block;}
+.resultwrap .statustitle{padding-left: 20rpx;border-left: 4rpx solid #ff9100;}
+.statustitle .red{color: #ff5353;}
+.resultwrap .statussucc{display: inline-block;margin-left: 68rpx;}
+.resultwrap .statufault{display: inline-block;margin-left: 68rpx;}
+.resultwrap radio{margin-right: 10rpx;vertical-align: top;}
+
+.replaceselect{overflow: hidden;padding: 30rpx 4% 30rpx 7.2%;}
+.replaceselect checkbox-group{margin-top: 30rpx;overflow: hidden;}
+.replaceselect .weui-check__label{display: block;overflow: hidden;padding: 28rpx 0;padding-right: 4%;box-sizing: border-box;}
+.replaceselect .weui-cell__hd{display: inline-block;float: right;}
+.replaceselect .weui-cell__bd{display: inline-block;float: left;
+color: #999;font-size: 32rpx;}
+
+radio .wx-radio-input{
+width: 32rpx;
+height: 32rpx;
+background-color: #e5e5e5;
+border-color: #acacac;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before{
+
+background-color: #fff;
+width: 16rpx;
+height: 16rpx;
+border:10rpx solid  #ff9100;
+color: #fff;
+border-radius: 50%;
+font-size:0;
+transform:translate(-50%, -50%)scale(1);
+-webkit-transform:translate(-50%, -50%)scale(1);
+}
+
+.partswrap{overflow: hidden;font-size: 32rpx;line-height: 50rpx;
+margin-top: 70rpx;width: 100%;padding-left: 4%;box-sizing: border-box;}
+.partswraptitle{padding-left: 20rpx;border-left: 4rpx solid #ff9100;}
+
+.partswrap checkbox-group{margin-top: 30rpx;overflow: hidden;}
+.partswrap .weui-check__label{display: block;overflow: hidden;padding: 28rpx 0;
+border-top: 1px solid #e5e5e5;padding-right: 4%;box-sizing: border-box;}
+.partswrap .weui-cell__hd{display: inline-block;float: right;}
+.partswrap .weui-cell__bd{display: inline-block;float: left;
+color: #999;}
+
+.partswrapreason .weui-check__label:last-child{
+border-bottom: 1px solid #e5e5e5;}
+
+
+checkbox .wx-checkbox-input{
+
+border-radius: 3rpx;
+
+height: 26rpx;
+
+width: 26rpx;
+
+margin-top: -4rpx;
+background: #e5e5e5;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+
+background-color: #ff9100;
+
+border: 1rpx solid #ff9100;
+color: #fff;
+}
+
+.reasonwrap{overflow: hidden;padding: 0 4%;box-sizing: border-box;
+margin-top: 25rpx;}
+.reasonwrap textarea{width: 100%;
+height: 200rpx;text-indent: 10rpx;font-size: 32rpx;color: #333;}
+
+.niuwrap{overflow: hidden;margin-top: 50rpx;padding: 0 4%;box-sizing: border-box;
+margin-bottom: 30rpx;}
+.niuwrap .dianjiniu{width: 47%;padding: 30rpx 0;font-size: 31rpx;color: #fff;
+border-radius: 5rpx;text-align: center;display: inline-block;}
+.niuwrap .cancelniu{background: #ffbb4d;float: left;}
+.niuwrap .sureniu{background: #ff9100;float: right;}

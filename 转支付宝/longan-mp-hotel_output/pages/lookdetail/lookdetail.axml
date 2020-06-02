@@ -1,0 +1,35 @@
+<!--pages/lookdetail/lookdetail.axml-->
+<view class="detailwrap">
+  <view class="abnormalitem">
+    <view class="title">
+      <text class="title-info">酒店楼层 {{abnormaldata.roomFloor}} / 房间号 {{abnormaldata.roomCode}}</text>
+      <text class="title-status">异常</text>
+    </view>
+    <view class="guzhanginfo">
+      <view class="latticenum">{{abnormaldata.latticeCode}}</view>
+      <view class="latticetype">
+        <view class="guztype">
+          <text class="guztypebt">故障类型</text>
+          <text class="guztypems">
+            <text a:if="{{abnormaldata.malType==1}}">扫码失败</text>
+            <text a:elif="{{abnormaldata.malType==2}}">柜门不开</text>
+            <text a:elif="{{abnormaldata.malType==3}}">锁具异常</text>
+            <text a:elif="{{abnormaldata.malType==4}}">其他</text>
+          </text>
+        </view>
+        <view class="applicant">
+          <text class="guztypebt">报修人</text>
+          <text class="guztypems">{{abnormaldata.malReportBy}}</text>
+        </view>
+        <view class="repairtime">
+          <text class="guztypebt">报修时间</text>
+          <text class="guztypems">{{abnormaldata.createdAt}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="niuwrap">
+    <view class="niuitem weixiu" onTap="repairurl">维修</view>
+    <view class="niuitem canniu" onTap="cancelfanhui">取消</view>
+  </view>
+</view>

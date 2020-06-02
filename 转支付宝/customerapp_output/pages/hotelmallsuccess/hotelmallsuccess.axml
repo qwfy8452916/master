@@ -1,0 +1,74 @@
+<view
+  class="font-warning {{cabopentype == true?'font-warning2':''}}"
+  a:if="{{ishasmnb == 0}}"
+  onTap="openagain"
+>
+  <!-- font-warning2 -->
+  <view class="font-warning-l">
+    <block a:if="{{cabopentype == false}}">
+      <image src="../../img/laba-1.png"></image>
+    </block>
+    <block a:else>
+      <image src="../../img/laba-2.png"></image>
+    </block>
+    如柜门未打开，请点击"再次打开" 
+  </view>
+  <text class="openbtn">再次打开</text>
+</view>
+<view class="bgfff success-top">
+  <image src="../../img/success-img2.png" class="iconimg"></image>
+  <view class="font-text1">提交成功!</view>
+  <view class="font-text2">
+    <block a:if="{{ishasmnb == 1}}">您的商品正在整装待发...</block>
+    <block a:else>柜门已打开，请取走商品</block>
+  </view>
+  <view class="successbtnbox">
+    <view class="successbtn successbtn2" onTap="backfun">继续购买</view>
+    <view
+      a:if="{{ishasmnb == 1}}"
+      class="successbtn successbtn1"
+      onTap="orderdetails"
+    >查看详情</view>
+    <view
+      a:else
+      class="successbtn successbtn1"
+      onTap="orderlist"
+    >查看订单</view>
+  </view>
+</view>
+<view
+  class="share_redbag"
+  a:if="{{redcode != -1}}"
+  onTap="sharefun"
+>
+  <image mode="widthFix" src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/shareredbag.png"></image>
+</view>
+<!-- <view class="recommendbox">
+  <block wx:for="{{recommendprodlist}}" wx:for-item="item" wx:key="index">
+    <view class="recommend-box" data-funcid="{{item.funcId}}" data-prodcode="{{item.prodCode}}"  data-hotelprodid="{{item.hotelProdId}}" data-funcprodid="{{item.funcProdId}}" data-img="{{item.prodLogoUrl}}" data-ptype="2" data-isempty="3" data-prodamt="0" data-prodnumtype="false"  bindtap="detailfun">
+      <image class="recommend-img" src="{{item.prodLogoUrl}}"></image>
+      <view class="recommend-name">{{item.prodShowName}}</view>
+      <view class="recommend-price">
+        ¥ {{item.prodRetailPrice}} <text wx:if="{{item.prodMarketPrice != 0 && item.prodMarketPrice != item.prodRetailPrice}}">¥ {{item.prodMarketPrice}}</text>
+      </view>
+    </view>
+  </block>
+</view> -->
+<view a:if="{{showtype == true}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">{{user_name?user_name+'邀你一起领红包':'好友邀你一起领红包'}}</view>
+    <image
+      src="cloud://hotelconsumption-e23cl.686f-hotelconsumption-e23cl-1300251335/shareimg.jpg"
+      class="imgbox"
+      mode="widthFix"
+    ></image>
+    <view class="sharebtnbox2">
+      <view class="btn" onTap="closefun">取消</view>
+      <button
+        open-type="share"
+        data-type="1"
+        class="btn btncss"
+      >分享</button>
+    </view>
+  </view>
+</view>

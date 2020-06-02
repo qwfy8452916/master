@@ -1,0 +1,71 @@
+<view class="countBox" a:if="{{pagetype == 2}}">
+  <view class="countTime">{{timer}}</view>
+  <view class="ordermstext1">订单待支付</view>
+  <view class="ordermstext2">超时未支付，订单自动取消</view>
+  <view class="paybtnbox">
+    <view class="paybtn" onTap="gopay">去支付</view>
+  </view>
+</view>
+<view class="detailListbox">
+  <view class="titlebox" a:if="{{orderinfo.delivWay=='1'}}">
+    <text>{{orderinfo.hotelName}}</text>
+    <text class="floorroom">{{orderinfo.roomFloor}}-{{orderinfo.roomCode}}</text>
+  </view>
+  <view class="addressbox" a:if="{{orderinfo.delivWay=='2'}}">
+    <view class="textitem">
+      <text class="textitem_title">{{orderinfo.consignee}}</text>  {{orderinfo.consigneePhone}}
+    </view>
+    <view>{{orderinfo.consigneeSite}}</view>
+  </view>
+  <view class="titlebox2" a:if="{{orderinfo.delivWay=='2'}}">
+    <text>{{orderinfo.delivCode}}</text>
+  </view>
+  <view
+    class="detalistbox"
+    a:for="{{orderinfo.orderDetailDTOS}}"
+    a:key="index"
+  >
+    <image
+      a:if="{{item.prodHotelProductDTO.prodLogoUrl!=''&&item.prodHotelProductDTO.prodLogoUrl!=null}}"
+      class="prodPic"
+      src="{{item.prodHotelProductDTO.prodLogoUrl}}"
+    ></image>
+    <image
+      a:else
+      class="prodPic"
+      src="{{item.prodProductDTO.prodLogoUrl}}"
+    ></image>
+    <view class="rightmsbox">
+      <view a:if="{{item.prodHotelProductDTO.prodShowName!=''&&item.prodHotelProductDTO.prodShowName!=null}}" class="prodtitle">{{item.prodHotelProductDTO.prodShowName}}</view>
+      <view a:else class="prodtitle">{{item.prodProductDTO.prodShowName}}</view>
+      <view class="jinenumbox">
+        <text class="lefbox">￥
+          <text class="pricenumber">{{item.totalAmount}}</text>
+        </text>
+        <text class="rightbox">X
+          <text class="countnumber">{{item.prodCount}}</text>
+        </text>
+      </view>
+    </view>
+  </view>
+  <view class="jijianbox">
+    <text class="totalcount">共
+      <text class="textcolor">{{orderinfo.prodCount}}</text>件商品</text>
+    <text class="totalcount">已优惠
+      <text class="textcolor">¥{{orderinfo.couponAmount}}</text>
+    </text>
+    <text class="jimoney">小计
+      <text class="jincolor">¥{{orderinfo.totalAmount}}</text>
+    </text>
+  </view>
+</view>
+<view class="orderinfobox">
+  <view class="orderinfo_title">订单信息</view>
+  <view class="xiadanpay">
+    <view class="xiadanpay_bottom">下单时间 {{orderinfo.payTime}}</view>
+    <view>支付方式 微信</view>
+  </view>
+</view>
+<view class="cancelbox" a:if="{{pagetype == 2}}">
+  <text class="cancelbtn" onTap="cancel">取消订单</text>
+</view>
