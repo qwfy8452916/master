@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/m-publicrem.new.css">
+    <link rel="stylesheet" href="css/m-reset.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui@2.12.0/lib/theme-chalk/index.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.1/lib/index.css"> -->
+    <link rel="stylesheet" href="element-ui@2.8.2/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/suppplier.css">
+
+
+    <script type="text/javascript" src="js/vue/vue.js"></script>
+    <script type="text/javascript" src="js/axios/axios.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/element-ui@2.12.0/lib/index.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vant@2.1/lib/vant.min.js"></script>  -->
+
+
+
+    <title>立即入驻</title>
+
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="pagetitlewrap">
+            <i class="iconfont returnicon">&#xe605;</i>
+            <span class="ruzhutext">立即入驻</span>
+        </div>
+        <!-- <div class="tiptext"><i class="iconfont laba">&#xe62a;</i>入驻供应商需支付1000元保证金</div> -->
+        <div class="basicinfo">基本信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">联系人</span><input v-model="merchantContact" class="shuru" maxlength="10" type="text" placeholder="请输入联系人姓名">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">手机号码</span><input class="shuru" maxlength="11" v-model="merchantContactPhone" type="text" placeholder="请输入手机号">
+            </div>
+
+        </div>
+        <div class="basicinfo">公司信息</div>
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">类&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp型</span>
+                <div class="radiowrap">
+                    <el-radio v-model="type" label="C">企业</el-radio>
+                    <el-radio v-model="type" label="P">个人</el-radio>
+                </div>
+            </div>
+            <div class="hangitem" v-if="type=='C'">
+                <span class="hangtitle credittitle">统一社会信用代码</span><input class="shuru creditshuru" v-model="merchantUscc" type="text" placeholder="请输入统一社会信用代码">
+            </div>
+            <div class="hangitem" v-if="type=='P'">
+                <span class="hangtitle">身份证号码</span><input class="shuru creditshuru" type="text" v-model="merchantIdno" placeholder="请输入身份证号码">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">公司名称</span><input class="shuru" type="text" maxlength="35" v-model="merchantName" placeholder="请输入公司名称">
+            </div>
+            <div class="hangitem">
+                <span class="hangtitle">供应商类型</span>
+                <div class="radiowrap">
+                    <el-radio v-model="supplierType" label="1">工厂</el-radio>
+                    <el-radio v-model="supplierType" label="2">品牌商</el-radio>
+                    <el-radio v-model="supplierType" label="3">代理商</el-radio>
+                </div>
+            </div>
+
+            <div class="hangitem">
+                <div class="uploadtitle">上传营业执照</div>
+                <el-upload :action="uploadUrl" list-type="picture-card" :limit="3"
+                name="fileContent"
+                :on-exceed="(file,fileList,index)=>{return handleExceed(file,fileList,'license')}"
+                :on-success="(res,file,fileList,index)=>{return handleAvatarSuccess(res,file,fileList,'license')}"
+                :file-list="CertificatesPic"
+                :on-error="(file,fileList,index)=>{return imgUploadError(file,fileList,'license')}"
+                :on-remove="(file,fileList,index)=>{return handleRemove(file,fileList,'license')}">
+                <i class="el-icon-plus"></i>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                    <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+
+
+            <div class="hangitem" @click="choseAddress(1)">
+                <span class="hangtitle">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp区</span><span v-html="addressCity" class="shuru"></span><i class="iconfont selecticon">&#xe697;</i>
+            </div>
+
+            <div class="hangitem">
+                <span class="hangtitle">公司地址</span><input class="shuru" type="text" maxlength="35" v-model="merchantAddress" placeholder="请输入公司地址">
+            </div>
+
+        </div>
+        <div class="basicinfo">产品信息</div>
+        <div class="textwrap">
+            <div class="hangitem" @click="choseAddress(2)">
+                <span class="hangtitle">供应区域</span><span v-html="addressCity2" class="shuru"></span><i class="iconfont selecticon">&#xe697;</i>
+            </div>
+            <div class="addresswrap">
+                <div class="hangitem addresshang" v-for="(item,index) in showselectaddress">
+                     <span class="addressdet">{{item.shengname}}{{item.shiname}}{{item.quname}}</span><i class="iconfont deladdress" @click="deladdress(index)">&#xe612;</i>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 产品信息 -->
+        <div class="prodwrap" v-for="(item,prodindex) in prodinfo">
+             <div class="prodtitle">
+                 <span class="prodtitleleft">产品信息{{prodindex+1}}</span>
+                 <i class="iconfont prodtitleright" @click="delprod(prodindex)">&#xe615;</i>
+             </div>
+             <div class="hangitem">
+                <span class="hangtitle">产品名称</span><input class="shuru" v-model="item.prodName" type="text" placeholder="请输入产品名称">
+            </div>
+            <div class="hangitem">
+                <div class="uploadtitle">上传产品实物图</div>
+                    <el-upload :action="uploadUrl" list-type="picture-card" :limit="3"
+                    name="fileContent"
+                    :on-exceed="(file,fileList,index)=>{return handleExceed(file,fileList,prodindex)}"
+                    :on-success="(res, file, fileList,index)=>{return handleAvatarSuccess(res, file, fileList,prodindex)}"
+                    :file-list="item.fileList"
+                    :on-error="(file,fileList,index)=>{return imgUploadError(file,fileList,prodindex)}"
+                    :on-remove="(file,fileList,index)=>{return handleRemove(file,fileList,prodindex)}">
+                    <i class="el-icon-plus"></i>
+                    </el-upload>
+                    <el-dialog :visible.sync="dialogVisible">
+                        <img width="100%" :src="dialogImageUrl" alt="">
+                    </el-dialog>
+            </div>
+        </div>
+        <div class="addwrap" @click="addprod">
+            <i class="iconfont addniuicon">&#xe602;</i>添加产品信息
+        </div>
+        <!-- 产品信息 -->
+
+        <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">支持发票</span>
+                <div class="radiowrap">
+                    <el-radio v-model="invoice" label="0">不支持</el-radio>
+                    <el-radio v-model="invoice" label="1">普票</el-radio>
+                    <el-radio v-model="invoice" label="2">专普票</el-radio>
+                </div>
+            </div>
+            <div class="hangitem" v-if="invoice!='0'">
+                <span class="hangtitle invoicetitle">商品销售发票税率</span><input class="shuru shuruinvoice" type="text" v-model="invoiceTaxRate" placeholder="请输入商品销售发票税率">
+            </div>
+        </div>
+        <!-- <div class="basicinfo">支付信息</div> -->
+        <!-- <div class="textwrap">
+            <div class="hangitem">
+                <span class="hangtitle">诚意金(元)</span><span class="shuru deposit">￥1000.00</span>
+            </div>
+        </div> -->
+
+
+        <div class="paywrap" @click="payevent">提交</div>
+
+
+
+        <!--选择地址-->
+		<div class="deleteShadow" v-show="showAddress" @click="hideProvince">
+			<div class="chose" @click.stop="stopNull">
+				<div class="choseHead">
+					<a>省份</a>
+					<a>城市</a>
+					<a>地区</a>
+				</div>
+				<div class="choseMain">
+					<div class="choseProvince">
+						<p v-for="(item, index) in choseProvince" :class="{active: index == checkindex2}"
+							@click="getProvince(index,item.dictValue,2,'CITY','PROVINCE')">
+							{{item.dictName}}
+							<i class="lele icon-gengduo"></i>
+						</p>
+					</div>
+					<div class="choseCity">
+						<p v-for="(item,index) in choseCity" :class="{active: index === checkindex3}"
+							@click="getProvince(index,item.dictValue,3,'AREA','CITY')">{{item.dictName}}<i class="lele icon-gengduo"></i>
+						</p>
+					</div>
+					<div class="choseArea">
+						<p v-for="(item,index) in choseArea" :class="{active: index === checkindex4}"
+							@click="getProvince(index,item.dictValue,4,'','')">{{item.dictName}}</p>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!--选择地址-->
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="element-ui@2.8.2/index.js"></script>
+    <script type="text/javascript" src="js/supplier.js"></script>
+
+</body>
+</html>

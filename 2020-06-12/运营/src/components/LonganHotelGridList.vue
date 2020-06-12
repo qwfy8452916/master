@@ -1,0 +1,187 @@
+<template>
+    <div class="hotelgridlist">
+         <el-form :inline="true" align=left class="searchform">
+            <el-form-item label="酒店名称">
+                <el-select
+                    v-model="inquireHotelName"
+                    filterable
+                    remote
+                    :remote-method="remoteHotel"
+                    :loading="loadingH"
+                    @focus="getHotelList()"
+                    placeholder="请选择">
+                    <el-option
+                        v-for="item in hotelList"
+                        :key="item.id"
+                        :label="item.hotelName"
+                        :value="item.id">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="酒店楼层">
+                <el-input v-model="inquireHotelFloor"></el-input>
+            </el-form-item>
+            <el-form-item label="格子编号">
+                <el-input v-model="inquireGridNumber"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="inquire">查&nbsp;&nbsp;询</el-button>
+            </el-form-item>
+            <el-form-item>
+                <resetButton @resetFunc='resetFunc'/>
+            </el-form-item>
+        </el-form>
+        <el-table :data="HotelGridDataList" border stripe style="width:100%;" >
+            <el-table-column fixed prop="hotelName" label="酒店名称" min-width="200px"></el-table-column>
+            <el-table-column prop="roomFloor" label="酒店楼层" min-width="80px" align=center></el-table-column>
+            <el-table-column prop="roomCode" label="房间号" min-width="80px" align=center></el-table-column>
+            <el-table-column prop="latticeCode" label="格子编号" min-width="80px" align=center></el-table-column>
+            <el-table-column prop="prodProductDTO.prodName" label="原商品" min-width="120px"></el-table-column>
+            <el-table-column prop="changeProdProductDTO.prodName" label="新商品" min-width="120px"></el-table-column>
+            <el-table-column prop="replaceStartTime" label="开始更换时间" min-width="160px" align=center>
+                <template slot-scope="scope">
+                   <span v-if="scope.row.replaceStartTime!='1970-01-01 00:00:00'">{{scope.row.replaceStartTime}}</span>
+                </template>
+            </el-table-column>
+        </el-table>
+        <div class="pagination">
+            <LonganPagination :pageTotal="pageTotal" @pageFunc="pageFunc" />
+        </div>
+    </div>
+</template>
+
+<script>
+import resetButton from './resetButton'
+import LonganPagination from '@/components/LonganPagination'
+export default {
+    name: 'LonganHotelGridList',
+    components:{
+        LonganPagination,
+        resetButton
+    },
+    data(){
+        return {
+            // orgId: '',
+            hotelList: [],
+            inquireHotelName: '',
+            inquireHotelFloor: '',
+            inquireGridNumber: '',
+            HotelGridDataList: [],
+            pageTotal: 0,
+            pageSize: 10,
+            pageNum: 1,
+            loadingH: false,
+        }
+    },
+    mounted(){
+        // this.orgId = localStorage.getItem('orgId');
+        // this.orgId = this.$route.params.orgId;
+        if(JSON.stringify(this.$store.state.searchList) != '{}'){
+            for(var item in this.$store.state.searchList){
+                this[item] = this.$store.state.searchList[item]
+            }
+        }
+        this.getHotelList();
+        this.hotelGridList();
+    },
+    methods: {
+        resetFunc(){
+            this.inquireHotelName = ''
+            this.inquireHotelFloor = ''
+            this.inquireGridNumber = ''
+            this.hotelGridList();
+        },
+        //分页
+        pageFunc(data){
+            this.pageSize = data.pageSize;
+            this.pageNum = data.pageNum;
+            this.hotelGridList();
+        },
+        //获取酒店信息
+        getHotelList(hName){
+            this.loadingH = true;
+            const params = {
+                orgAs: 2,
+                hotelName: hName,
+                pageNo: 1,
+                pageSize: 50
+            };
+            this.$api.hotelList(params)
+                .then(response => {
+                    this.loadingH = false;
+                    const result = response.data;
+                    if(result.code == 0){
+                        this.hotelList = result.data.records.map(item => {
+                            return{
+                                id: item.id,
+                                hotelName: item.hotelName
+                            }
+                        })
+                        const hotelAll = {
+                            id: '',
+                            hotelName: '全部'
+                        };
+                        this.hotelList.unshift(hotelAll);
+                    }else{
+                        this.$message.error(result.msg);
+                    }
+                })
+                .catch(error => {
+                    this.$alert(error,"警告",{
+                        confirmButtonText: "确定"
+                    })
+                })
+        },
+        remoteHotel(val){
+            this.getHotelList(val);
+        },
+        //格子列表
+        hotelGridList(){
+            const params = {
+                // encryptedOrgId: this.orgId,
+                orgAs: 2,
+                hotelId: this.inquireHotelName,
+                roomFloor: this.inquireHotelFloor,
+                latticeCode: this.inquireGridNumber,
+                pageNo: this.pageNum,
+                pageSize: this.pageSize,
+            };
+            // console.log(params);
+            this.$api.hotelGridList(params)
+                .then(response => {
+                    // console.log(response);
+                    const result = response.data;
+                    if(result.code == 0){
+                        this.HotelGridDataList = result.data.records;
+                        this.pageTotal = result.data.total;
+                    }else{
+                        this.$message.error('格子列表获取失败！');
+                    }
+                })
+                .catch(error => {
+                    this.$alert(error,"警告",{
+                        confirmButtonText: "确定"
+                    })
+                })
+        },
+        //查询
+        inquire(){
+            this.pageNum = 1;
+            this.hotelGridList();
+            this.$store.commit('setSearchList',{
+                inquireHotelName: this.inquireHotelName,
+                inquireHotelFloor: this.inquireHotelFloor,
+                inquireGridNumber: this.inquireGridNumber
+            })
+        },
+    }
+}
+</script>
+
+<style lang="less" scoped>
+.hotelgridlist{
+    .pagination{
+        margin-top: 20px;
+    }
+}
+</style>
