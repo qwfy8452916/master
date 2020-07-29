@@ -1,6 +1,10 @@
 {
   "pages": [
+    "pages/suerForm/suerForm",
     "pages/api/api",
+    "pages/imageSelect/imageSelect",
+    
+    
     "pages/countdown/countdown",
     "pages/sureshare/sureshare",
     "pages/sharehaibao/sharehaibao",

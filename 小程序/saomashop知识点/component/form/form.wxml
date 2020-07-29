@@ -1,0 +1,52 @@
+<!--component/form.wxml-->
+<view class="wrap">
+  <view class="searchWrap">
+    <view class="expandbox">
+      <view class="searchdesc expenditem">
+        <image class="searchlogo" src="../../img/searchlogo.png"></image>
+        搜索
+      </view>
+      <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+        <image src="../../img/expendlogo.png"></image>
+      </view>
+    </view>
+
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view wx:if="{{switchJudge}}">
+
+        <block wx:for="{{forminfo}}" wx:for-index="wkindex">
+          <view class="rowbox" wx:if="{{item.type=='input'}}">
+            <view class="rowtitle">{{item.name}}</view>
+            <view>
+              <input placeholder="{{item.desc}}" bindinput="nameInput" name="cardName{{wkindex}}" value="{{cardName}}"></input>
+            </view>
+          </view>
+
+          <picker class="pickbox" bindchange="{{item.bindchange}}" range-key="dictName" value="{{item.nowindex}}" range="{{item.data}}" wx:if="{{item.type=='pick'}}" data-index="{{wkindex}}">
+            <view class="picker">
+              <text class="alignlef">
+                <text class="pickeritem">{{item.name}}</text>
+              </text>
+              <text class="alignrig">
+                <text wx:if="{{item.data[item.nowindex].dictValue}}">{{item.data[item.nowindex].dictName}}</text>
+
+              <text wx:else class="placems">{{item.desc}}</text>
+              <text class="iconfont iconwangyou"></text>
+              </text>
+            </view>
+            <input hidden="{{true}}" name="{{item.bindName}}" value="{{item.data[item.nowindex].dictValue}}"></input>
+          </picker>
+        </block>
+        <!-- <view class="searchBtn" bindtap="searchBtn">搜索</view> -->
+        <button form-type="submit" class="searchBtn">搜索</button>
+        <button class="reset" formType="reset">重置</button>
+        <!-- <view class="reset" bindtap="reset">重置</view> -->
+      </view>
+    </form>
+
+
+  </view>
+  <text>{{ind2}}</text>
+  <text>{{ind4}}</text>
+
+</view>

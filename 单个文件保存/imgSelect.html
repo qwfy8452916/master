@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <!-- <script type="text/javascript" src="js/jquery-1.11.0.js" ></script> -->
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- <link rel="stylesheet" href="css/Allstyle.css" /> -->
+        <style>
+            .g-li{
+                position: relative;
+                width: 150px;
+                height: 100px;
+                margin: 10px;
+                border:1px solid #dedede;
+            }
+            .g-li .c{
+                content: "";
+                position: absolute;
+                top:-10px;
+                right: -10px;
+                width: 20px;
+                height: 20px;
+                color: #fff;
+                font-size: 12px;
+                text-align: center;
+                line-height: 20px;
+                display: none;
+                border-radius: 10px;
+                background-color: red;
+            }
+            .g-li.active .c{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="flex">
+            <li class="g-li">第一个
+                <div class="c"></div>
+            </li>
+            <li class="g-li ">第二个
+                <div class="c"></div>
+            </li>
+            <li class="g-li">第三个
+                <div class="c"></div>
+            </li>
+            <li class="g-li">第四个
+                <div class="c"></div>
+            </li>
+            <li class="g-li">第五个
+                <div class="c"></div>
+            </li>
+            <li class="g-li">第六个
+                <div class="c"></div>
+            </li>
+        </ul>
+        <script>
+            $(function(){
+                var arr=new Array();//有红点的元素的集合
+                //1.点击li给它加上红点或去掉红点
+                //2.如果是加上红点就往红点数组追加一个元素，如果去掉红点就在数组中找到这个值并去除
+                //3.每次点击完，处理好红点数组之后，遍历新的数组，重新给点赋值
+                $('.g-li').on('click',function(){
+                    if($(this).hasClass('active')){
+                        $(this).removeClass('active');
+                        //注意，这里找到要去掉的值是多少以后，就直接在数组删去，这个环节不需要循环
+                        var idx=$(this).index();
+                        var i = $.inArray(idx,arr);
+                        arr.splice(i,1);
+
+                    }
+                    else{
+                        $(this).addClass('active');
+                        //追加到最后
+                        arr.push($(this).index());
+                    }
+                    //注意，重复定义变量在js中不报错，可是该变量会在第二次初始化语句执行前都是undefined
+                    //注意，每次点击都会影响到红点数组元素，所以每次点击完再写字
+                    var num=1;//写字的时候从1开始标号
+                    for(var a=0;a<arr.length;a++){
+                        //注意，arr里保存的是数字，都是红点元素的下标值，要先根据下标找到节点才可以
+                        //注意，arr不是对象节点，不要用each来遍历
+                        var index=arr[a];
+                        $(".g-li").eq(index).find('.c').html(num++);
+                    }
+                    console.log(arr);
+
+                })
+
+            })
+
+        </script>
+    </body>
+</html>

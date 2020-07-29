@@ -1,0 +1,146 @@
+<tc_include file="Dress:/element/header" />
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default ace-save-state">
+	<tc_include file="Dress:/element/topnav" />
+	<!-- /顶部导航结束 -->
+</div>
+<link rel="stylesheet" href="/statics/css/dressManager.css">
+<script type="text/javascript" src="/statics/js/dressManager/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/dressManager/xlsx.core.min.js"></script>
+<div class="main-container ace-save-state" id="main-container">
+	<script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+	</script>
+	<!-- /左侧栏开始 -->
+	<div id="sidebar" class="sidebar responsive ace-save-state">
+		<tc_include file="Dress:/element/sidebar" />
+	</div>
+	<!-- /左侧栏结束 -->
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+				<ul class="breadcrumb">
+					<li>
+						<i class="ace-icon fa fa-home home-icon"></i>
+						<a href="#">首页</a>
+					</li>
+					<li class="active">礼服导入</li>
+				</ul><!-- /.breadcrumb -->
+			</div>
+			<div class="page-content">
+				<tc_include file="Dress:/element/settings" />
+				<!-- /.ace-settings-container -->
+				<!-- /头部导航开始 -->
+				<div class="page-header">
+					礼服导入
+				</div>
+				<!-- /头部导航结束 -->
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- 页面正文部分模板内容开始 -->
+								<!-- {这里放置内容} -->
+						<div class="dressContainer">
+							<ul class="step">
+								<li>
+									<div class="order">1</div>
+									<div class="right">
+										<div class="rightTop">
+											<div class="stepName">下载模板</div>
+											<div class="line"></div>
+										</div>
+										<div class="intro">下载数据导入模板，整理数据</div>
+										<input type="button" onclick="javascript:window.location.href='https://test.lifu.caiguayun.com/dress/import/downloadTemplate';nextStep(0);" class="Btn" value="下载模板">
+									</div>
+								</li>
+								<li>
+									<div class="order">2</div>
+									<div class="right">
+										<div class="rightTop">
+											<div class="stepName">上传文件</div>
+											<div class="line"></div>
+										</div>
+										<div class="intro">上传整理好的数据表</div>
+										<input type="file" style="display:none;" id="file" value="上传文件" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+										<input type="file" style="display:none;" id="photo" value="上传照片" onchange="uploadImg()" accept="image/*">
+										<input type="button" class="Btn" onclick="javascript:selectFile()" value="上传文件">
+										<input type="button" class="Btn" onclick="javascript:selectPic()" value="上传照片">
+										<p class="pathName">文件路径</p>
+									</div>
+								</li>
+								<li>
+									<div class="order">3</div>
+									<div class="right">
+										<div class="rightTop">
+											<div class="stepName">数据检验</div>
+											<div class="line"></div>
+										</div>
+										<div class="intro">修改匹配错误的数据信息</div>
+									</div>
+								</li>
+								<li style="width:156px">
+									<div class="order">4</div>
+									<div class="right" style="width:120px">
+										<div class="rightTop">
+											<div class="stepName">完成</div>
+											<div class="lines" style="border-bottom:transparent 1px solid;"></div>
+										</div>
+										<div class="intro">完成上传并导入系统</div>
+									</div>
+								</li>
+								<li class="opera">
+									<input type="button" class="save" onclick="saveAll()" value="保存">
+									<input type="button" onclick="clearAll()" class="clearAll" value="一键清除缓存">
+								</li>
+							</ul>
+							<ul class="tabChange">
+								<li>
+									错误数据 (<span>0</span>)
+								</li>
+								<li>
+									重复数据 (<span>0</span>)
+								</li>
+								<li>
+									无图数据 (<span>0</span>)
+								</li>
+								<li>
+									正常数据 (<span>0</span>)
+								</li>
+							</ul>
+							<ul id="result">
+								<div class="libox">
+									<li></li>
+								</div>
+								<div class="libox">
+									<li></li>
+								</div>
+								<div class="libox">
+									<li></li>
+								</div>
+								<div class="libox">
+									<li></li>
+								</div>
+							</ul>
+							
+							<div class="page">
+								<div class="prev">上一页</div>
+								<ul class="pagelist">
+					
+								</ul>
+								<div class="next">下一页</div>
+							</div>
+							<div id="loading"><img src='/statics/img/imgsDress/loading.gif'></div>
+						</div>
+
+						<!-- 页面正文部分模板内容结束 -->
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.page-content -->
+		</div>
+	</div><!-- /.main-content -->
+
+	<tc_include file="Dress:/element/copyright" />
+</div><!-- /.main-container -->
+<script type="text/javascript" src="/statics/js/dressManager/dressManager.js"></script>
+<tc_include file="Dress:js" />
+</body>
+<tc_include file="Dress:/element/footer" />

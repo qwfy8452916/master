@@ -1,0 +1,177 @@
+<tc_include file="Dress:/element/header" />
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default ace-save-state">
+	<tc_include file="Dress:/element/topnav" />
+	<!-- /顶部导航结束 -->
+</div>
+<div class="main-container ace-save-state" id="main-container">
+	<script type="text/javascript">
+        try{ace.settings.loadState('main-container')}catch(e){}
+	</script>
+	<!-- /左侧栏开始 -->
+	<div id="sidebar" class="sidebar responsive ace-save-state">
+		<tc_include file="Dress:/element/sidebar" />
+	</div>
+	<!-- /左侧栏结束 -->
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div id="sidebar" class="sidebar      h-sidebar                navbar-collapse collapse          ace-save-state" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+				<script type="text/javascript">
+                    try{ace.settings.loadState('sidebar')}catch(e){}
+				</script>
+
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</div><!-- /.sidebar-shortcuts -->
+
+				<ul class="nav nav-list" style="top: 0px;">
+					<li class="active open hover">
+						<a href="/dress/setting/set_shop">
+							<i class="menu-icon fa fa-cogs"></i>
+							<span class="menu-text"> 系统设置 </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					<li class="">
+						<a href="/dress/index/memberlist">
+							<i class="menu-icon fa 	fa-users"></i>
+							<span class="menu-text">
+										用户管理
+									</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					<php>if(!empty($login_user['admin'])){</php>
+					<li class="">
+						<a href="/dress/setting/branch_store">
+							<i class="menu-icon fa fa-list"></i>
+							<span class="menu-text"> 分店管理 </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="">
+						<a href="/dress/role/index">
+							<i class="menu-icon fa 	fa-cogs"></i>
+							<span class="menu-text"> 权限设置 </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<php>}</php>
+
+					<li class="">
+						<a href="/dress/setting/expressindex">
+							<i class="menu-icon fa 	fa-fighter-jet"></i>
+							<span class="menu-text"> 物流公司 </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<li class="">
+						<a href="/dress/setting/paytypeindex">
+							<i class="menu-icon fa 	fa-credit-card"></i>
+							<span class="menu-text"> 收银方式 </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+
+
+
+
+				</ul><!-- /.nav-list -->
+			</div>
+
+			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+				<ul class="breadcrumb">
+					<li>
+						<i class="ace-icon fa fa-home home-icon"></i>
+						<a href="#">首页</a>
+					</li>
+					<li class="active">综合设置</li>
+				</ul><!-- /.breadcrumb -->
+			</div>
+			<div class="page-content">
+				<tc_include file="Dress:/element/settings" />
+				<!-- /.ace-settings-container -->
+				<!-- /头部导航开始 -->
+				<div class="page-header">
+					店铺设置
+				</div>
+				<!-- /头部导航结束 -->
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- 页面正文部分模板内容开始 -->
+						<!--<form action="/dress/setting/shop_set_post" method="post" class="form-horizontal" role="form"> -->
+						<form class="form-horizontal" role="form">
+							<div class="clearfix form-actions">
+								<div class="col-md-offset-3 col-md-9">
+									<!--<button class="btn btn-info" type="submit" id="submitbutton">-->
+										<!--<i class="ace-icon fa fa-check bigger-110"></i>-->
+										<!--提交-->
+									<!--</button>-->
+									<button class="btn btn-info" type="button" onclick="store_add()"> <i class="ace-icon fa fa-check bigger-110"></i>
+										提交店铺信息
+									</button>
+								</div>
+							</div>
+						</form>
+
+
+
+						<!-- 页面正文部分模板内容结束 -->
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.page-content -->
+		</div>
+	</div><!-- /.main-content -->
+
+	<tc_include file="Dress:/element/copyright" />
+</div><!-- /.main-container -->
+<tc_include file="Dress:js" />
+<script type="text/javascript" src="/assets/js/dropzone.js"></script>
+<!-- inline scripts related to this page -->
+<script>
+    function store_add(){
+        var dress_sn = ['N00100113','N00300115','N00200117','N00200222']
+        var dress_data = [{'c':'0010024','name':'哈哈','img':'11111.img','cat':'红纱','sec':'礼服分区三','store':'克洛伊','p':200,'dp':300,'rp':400,'mc':'NWD','rem':'备注哈哈哈'}]
+        dress_data = JSON.stringify(dress_data)
+        var postData = {
+            dress_data:dress_data,
+        }
+        $.post('/dress/import/saveData', postData, function(data) {
+            switch(data['code']){
+                case 200:{
+                    show_success_msg(data.msg)
+                    break;
+                }
+                case -6000:{
+                    show_error_msg(data.msg)
+                    break;
+                }
+                default:{
+                    alert("系统繁忙,请稍后再试");
+                    break;
+                }
+            }
+        });
+    }
+</script>
+</body>
+<tc_include file="Dress:/element/footer" />

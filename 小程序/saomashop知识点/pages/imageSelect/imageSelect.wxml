@@ -1,0 +1,7 @@
+<!--pages/imageSelect/imageSelect.wxml-->
+<view class="box">
+   <view class="itembox" wx:for="{{imgData}}" wx:key bindtap="dianji" data-index="{{index}}">
+      <text>{{item.num}}</text>
+   </view>
+</view>
+
