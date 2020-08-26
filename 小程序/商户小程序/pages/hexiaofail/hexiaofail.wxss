@@ -1,0 +1,61 @@
+/* pages/hexiaofail/hexiaofail.wxss */
+page{
+  background: #f7f5f6;
+  border-top: 1px solid #dedede;
+}
+.wrap{
+  overflow: hidden;
+}
+.itembox{
+  background: #fff;
+  width: 100%;
+  padding: 50rpx 0 50rpx 30rpx;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 80rpx;
+}
+.item{
+  display: inline-block;
+}
+.yuanbk{
+  display: flex;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: #fdeaec;
+  justify-content: center;
+  align-items: center;
+}
+.yuanbk .iconguoqiyaopin{
+  font-size:70rpx;
+  color: #e0312f;
+}
+.itemdesc{
+  margin-left: 30rpx;
+}
+.erweimaone{
+  font-size: 36rpx;
+  color: #2B2D30;
+  font-weight: bold;
+}
+.erweimatwo{
+  font-size: 28rpx;
+  color: #888C8F;
+  margin-top: 15rpx;
+}
+.fanhui{
+  position: absolute;
+  right: 0;
+  font-size: 28rpx;
+  top: 65rpx;
+}
+.fanhuiBtn{
+  display: inline-block;
+  padding:15rpx 30rpx;
+  background: #ff9800;
+  color: #fff;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+}
+
+

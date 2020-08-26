@@ -1,0 +1,20 @@
+<!--pages/hexiaosuccess/hexiaosuccess.wxml-->
+<view class="whiteback">
+   <view>
+      <text class="iconfont iconchenggong2"></text>
+   </view>
+   <view class="whiteback_cg">核销成功</view>
+   <view class="whiteback_fh">
+     <text class="second">{{countDownNum}}</text>秒后返回核销页
+   </view>
+   <view class="returnpage" bindtap="returnpage">返回核销页>></view>
+</view>
+
+
+
+
+
+
+
+
+

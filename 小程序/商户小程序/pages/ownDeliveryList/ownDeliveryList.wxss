@@ -1,0 +1,526 @@
+/* pages/ownDeliveryList/ownDeliveryList.wxss */
+page{
+  background: #f2f2f5;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 100%;
+  padding:20rpx 3%;
+  box-sizing:border-box;
+  padding-bottom: 150rpx;
+} 
+.searchWrap{
+  width: 100%;
+  background:#fff;
+  box-sizing:border-box;
+  overflow: hidden;
+  font-size: 32rpx;
+  position: fixed;
+  top: 120rpx;
+  left: 0;
+}
+.orderstatus{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 20rpx solid #ecedf3 !important;
+}
+.expandbox{
+  width: 100%;
+  padding:15rpx 4%; 
+  box-sizing: border-box; 
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  border-bottom: 1px solid #e9eaea;
+}
+.expandbox .expenditem{
+  display: flex;
+  align-items:center;
+}
+.searchlogo{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 15rpx;
+}
+.searchlogoclose{
+  transform: rotate(180deg);
+}
+.expandlogo{
+  width: 42rpx;
+  height: 42rpx;
+  overflow: hidden;
+}
+.expandlogo image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 下拉选择 */
+
+
+.pickbox{
+    padding: 30rpx 4%;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    border-radius:15rpx;
+    border-bottom: 1px solid #e9eaea;
+}
+.pickbox .pickeritem{
+  display: inline-block;
+  width:160rpx;
+  text-align: left;
+  margin-right: 20rpx;
+  color:#888FA1;
+  }
+.alignlef{
+  float: left;
+  }
+.alignrig{
+  float: right;
+}
+
+  .placemsall{
+   color: #FF6930;
+  }
+.iconwangyou{
+  color: #888c8f;
+  font-size: 28rpx;
+}
+
+/* 时间选择 */
+.picker_group{overflow: hidden;vertical-align: middle;
+font-size: 28rpx;clear: both;padding: 30rpx 4% 30rpx 0;
+box-sizing: border-box;}
+.pickertime{display: inline-block;}
+.selectdate{
+  margin-right: 20rpx;
+  font-size: 32rpx;
+  color: #888FA1;
+  }
+.sectionitem{overflow: hidden;display: inline-block;width: (calc(100% - 115rpx))}
+.hengxian{color: #666;margin:0 20rpx;}
+
+/* 下拉选择 */
+
+.rowbox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing:border-box;
+  border-bottom: 1px solid #e9eaea;
+  display: flex;
+  align-items:center;
+  font-size: 32rpx;
+}
+.rowtitle{
+  color:#888FA1;
+  margin-right:30rpx;
+  width: 130rpx;
+}
+.searchBtn{
+  width: 86%;
+  height:70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-image:linear-gradient(to right,#f0904d,#ed7142); 
+  color: #fff;
+  font-size: 36rpx;
+  border-radius: 30rpx;
+  margin:30rpx auto;
+}
+.reset{
+  font-size: 36rpx;
+  color: #888FA1;
+  text-align: center;
+  padding: 30rpx 0rpx;
+}
+
+.searchblock{
+  overflow: hidden;
+  width: 100%;
+  margin-top: 205rpx;
+}
+.inlinebox{
+  display: inline-block;
+}
+.searitembox{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 15rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 25rpx;
+  font-size:28rpx; 
+  margin-bottom: 20rpx;
+}
+.searTitle{
+  color:#797f92; 
+}
+.desc{
+  margin-left: 10rpx;
+  color: #212325;
+}
+.closetjbox{
+  width: 35rpx;
+  height: 35rpx;
+  overflow: hidden;
+  margin-left: 10rpx;
+}
+.closetjbox image{
+  width: 100%;
+  height: 100%;
+}
+
+.delivBox{
+  width: 100%;
+  border-radius: 25rpx;
+  background: #fff;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+.headbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: #888FA1;
+  padding: 20rpx 3%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+  background: #f8f8f8;
+}
+.orabtn{
+  color: #FF6930;
+}
+.alreadybtn{
+  color: #10BBBB;
+}
+.funwrap{
+  width: 100%;
+  background: #fff;
+  padding: 0 3%;
+  box-sizing: border-box;
+}
+.funbox{
+  width: 100%;
+  padding: 30rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: #ff6930;
+}
+.funsign{
+  padding: 10rpx 25rpx;
+  border-radius: 30rpx;
+  background: #ffe1d6;
+  box-sizing: border-box;
+}
+.funName{
+  margin-left: 20rpx;
+}
+.backbox{
+  width: 100%;
+  background: #c3c7d0;
+  color: #fff;
+  padding: 15rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.eximg{
+  width: 32rpx;
+  height: 26rpx;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.eximg image{
+  width: 100%;
+  height: 100%;
+}
+.express{
+  display: inline-block;
+  margin-left: 15rpx;
+}
+
+.idbox{
+  width: 100%;
+  padding:10rpx 3%;
+  box-sizing: border-box;
+  color: #2b2d30;
+  font-size: 28rpx;
+  display: flex;
+  border-top: 20rpx solid #f8f8fa;
+  background: #f8f8fa;
+}
+.idtext{
+  margin-left:20rpx; 
+}
+.descbox{
+  width: 100%;
+  padding: 10rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  color: #888FA1;
+  justify-content: space-between;
+  background: #f8f8fa;
+}
+.botborder{
+  border-bottom: 1px solid #e3e3e4;
+}
+.amounbox{
+  width: 100%;
+  padding:30rpx 3%;
+  box-sizing: border-box;
+  color: #2B2D30; 
+  display: flex;
+  justify-content: flex-end;
+  background: #f8f8fa;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.marginjv{
+  margin: 0 15rpx;
+}
+.paybox{
+  width: 100%;
+  background: #fff;
+  padding: 20rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items:center;
+  border-bottom: 1px solid #e3e3e4;
+  color: #888FA1;
+}
+.btnbox{
+  width: 100%;
+  background: #fff;
+  padding:20rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.btndefa{
+  padding: 10rpx 35rpx;
+  border-radius: 30rpx;
+}
+.btndetail{
+  border:1px solid #d5d5d6;
+}
+.btnsure{
+  color: #fff;
+  margin-left: 20rpx;
+}
+.blueBen{
+   background: #10bbbb;
+}
+.fahuo{
+  background: #ff6930;
+}
+
+/* 发货 */
+
+.saleDoalog{
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99;
+}
+.saleContent{
+  background: #fff;
+  width: 80%;
+  height:400rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; 
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+.saleContent2{
+  background: #fff;
+  width: 80%;
+  height:480rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; 
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+.diotitle{
+  text-align: center;
+  margin: 20rpx 0;
+}
+.diarow{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20rpx 0;
+}
+.rowtitle{
+  width:130rpx; 
+  text-align: right;
+  margin-right: 10rpx;
+}
+.rowtitle2{
+  width:180rpx; 
+  text-align: right;
+  margin-right: 10rpx;
+}
+.inputbox{
+  width: calc(100% - 180rpx);
+}
+.inputbox2{
+  width: calc(100% - 270rpx);
+}
+.inputbox input,.inputbox2 input{
+  border: 1px solid #d7d7d7;
+  height: 60rpx;
+  line-height: 30rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.inputbox textarea,.inputbox2 textarea{
+  border: 1px solid #d7d7d7;
+  height: 120rpx;
+  line-height: 40rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.diabtnbox{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+.refusebtn{
+  padding: 10rpx 25rpx;
+  border: 1px solid #bcbcbc;
+  border-radius: 10rpx;
+}
+.adoptbtn{
+  padding: 10rpx 25rpx;
+  border-radius: 10rpx;
+  background: #409eff;
+  color: #fff;
+  margin-left:15rpx; 
+}
+.fahuotime{
+  height: 60rpx;
+  border: 1px solid #d7d7d7;
+  line-height: 60rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+}
+.fahuotip{
+  color: #999;
+}
+
+
+/* 选择物流 */
+.dialogyy{
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.diacontent{
+  background: #fff;
+  border-radius: 20rpx;
+  width: 80%;
+  height: 380rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 30rpx 3%;
+}
+.diatitle{
+  text-align: center;
+}
+.radioBox{
+  margin-top: 30rpx;
+}
+.danxuanzu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.statuone{
+  margin-right: 60rpx;
+}
+
+
+
+radio .wx-radio-input{
+width: 32rpx;
+height: 32rpx;
+background-color: #e5e5e5;
+border-color: #acacac;
+}
+
+
+radio .wx-radio-input.wx-radio-input-checked::before{
+
+background-color: #fff;
+width: 16rpx;
+height: 16rpx;
+border:10rpx solid  #ff6930;
+color: #fff;
+border-radius: 50%;
+font-size:0;
+transform:translate(-50%, -50%)scale(1);
+-webkit-transform:translate(-50%, -50%)scale(1);
+}
+.logisticsxz{
+  border: 1px solid #dcdfe6;
+  margin-top: 30rpx;
+  width: 80%;
+  margin:30rpx auto;
+  padding: 20rpx 3% !important;
+}
+
+.fahuobtnbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnniu{
+  padding: 20rpx 60rpx;
+  border-radius: 30rpx;
+  border: 1px solid #dcdfe6; 
+  color: #d7976d;
+}
+.fahuocan{
+  margin-right: 30rpx;
+  color: #606266;
+}
+.selectdefault{
+  width: 80%;
+  height: 100%;
+}
+.defaultcolor{
+  color: #fff;
+}

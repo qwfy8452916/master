@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "upImg": "../../component/upimg/upimg",
+    "my-tabbar": "../../component/tabbar/tabbar",
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  },
+  "navigationBarTitleText": "首页"
+}

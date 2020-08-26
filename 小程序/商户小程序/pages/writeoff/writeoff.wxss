@@ -1,0 +1,184 @@
+page{
+  background: #F6F6F6;
+}
+.box-w{
+  width: 92%;
+  margin: 230rpx auto 0;
+}
+.classtypebox{
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  background: #F6F6F6;
+}
+.view-w{
+  width: 60%;
+  margin: 0 auto 30rpx;
+  background: #ECECEC;
+  border-radius: 45rpx;
+  overflow: hidden;
+}
+.classbtn{
+  width: 50%;
+  text-align: center;
+  line-height: 68rpx;
+  font-size: 28rpx;
+  color: #888FA1;
+  border-radius: 45rpx;
+}
+.classbtnactive{
+  background: #FF6930;
+  color: #ffffff;
+}
+.seachbox{
+  background: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  width: 92%;
+  margin: 0 auto;
+}
+.seachbox-t{
+  padding: 20rpx 25rpx;
+}
+.seachicon{
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.seachtext{
+  font-size: 32rpx;
+  color: #2B2D30;
+}
+.seachicon2{
+  display: block;
+  width: 42rpx;
+  height: 42rpx;
+  transform: rotate(-90deg);
+}
+.seachicon2-rotate{
+  transform: rotate(0deg);
+}
+.formbox{
+  width: 92%;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+.formbox-li{
+  min-height: 88rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.form-text{
+  width: 25%;
+  font-size: 32rpx;
+  color: #888FA1;
+  line-height: 88rpx;
+}
+.form-inp{
+  width: 74%;
+  font-size: 32rpx;
+  line-height: 88rpx;
+}
+.pickeicon{
+  display: block;
+  width: 25rpx;
+  height: 27rpx;
+}
+.itembox-t{
+  background: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+  padding: 20rpx;
+}
+.itembox-b{
+  background: #ffffff;
+  border-radius:  0 0 20rpx 20rpx;
+  padding: 20rpx;
+
+}
+.itembox-font1{
+  font-size: 24rpx;
+  color: #2B2D30;
+  line-height: 45rpx;
+}
+.itembox-font1 text:first-child{
+  width: 20%;
+}
+.itembox-font1 text:last-child{
+  width: 80%;
+}
+.itemimg{
+  display: block;
+  width: 100%;
+}
+.itembox-font2{
+  font-size: 20rpx;
+  color: #888FA1;
+  line-height: 45rpx;
+}
+.itembox-font2 text:first-child{
+  width: 20%;
+}
+.itembox-font2 text:last-child{
+  width: 80%;
+}
+.itembox-b-l{
+  width: 70%;
+}
+.itembox-b-r{
+  width: 30%;
+}
+.seachbtn{
+  width: 90%;
+  margin: 30rpx auto 0;
+  border-radius: 50px;
+  text-align: center;
+  line-height: 86rpx;
+  font-size: 32rpx;
+  color: #888FA1;
+  border: 0.1rpx solid #888FA1;
+}
+.seachbtn-bg{
+  color: #ffffff;
+  border-color: #ffffff; 
+  background: linear-gradient(to right, #F0904D, #ED7142);
+}
+.datanull{
+  font-size: 26rpx;
+  color: #C5C9CF;
+  margin-top: 200rpx;
+  text-align: center;
+}
+.ditionicon{
+  display: block;
+  width: 34rpx;
+  height: 34rpx;
+}
+.dition-font{
+  font-size: 24rpx;
+}
+.dition-color1{
+  color: #888FA1;
+}
+.dition-color2{
+  color: #2B2D30;
+}
+.ditionbox{
+  border-radius: 20rpx 20rpx;
+  background: #ffffff;
+  padding: 15rpx 15rpx;
+}
+.gotopicon{
+  display: block;
+  position: fixed;
+  z-index: 9999;
+  bottom: 15%;
+  right: 15rpx;
+  width: 60rpx;
+  height: 60rpx;
+  transform: rotate(180deg);
+}

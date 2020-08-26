@@ -1,0 +1,198 @@
+/* pages/selfTake/selfTake.wxss */
+page{
+  background: #f6f6f6;
+  border-top: 1px solid #dedede;
+} 
+.wrap{
+  width: 100%;
+  padding: 20rpx 4%;
+  box-sizing: border-box;
+}
+.orderinfo{
+  background: #fff;
+  border-radius: 15rpx;
+  width: 100%;
+}
+.orderinfo .ordercode{
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.ordercode .ordercode_num{
+  font-size: 28rpx;
+  color: #888C8F;
+}
+.ordercode .ordercode_type{
+  font-size: 28rpx;
+  color: #10BBBB;
+  font-weight: bold;
+}
+.selfinfo{ 
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 28rpx;
+  color: #888C8F;
+  line-height: 46rpx;
+}
+
+.prodwrap{
+  background: #fff;
+  border-radius: 15rpx;
+  width: 100%;
+  margin-top:20rpx; 
+}
+.prodwrap .proditem{
+  width: 100%;
+  padding:30rpx 0 30rpx 30rpx;
+  box-sizing: border-box; 
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ece9ec;
+}
+.proditemlef,.proditemrig{
+  display:inline-block;
+}
+.proditemlef{
+  vertical-align: top;
+}
+.proditemlef .prodpicwrap{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  display: inline-block;
+}
+.prodpicwrap image{
+  width: 100%;
+  height: 100%;
+}
+.proditemlef .prodmsg{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20rpx;
+}
+.prodmsg .prodmsg_title{
+  font-size: 28rpx;
+  color: #2B2D30;
+  font-weight: bold;
+}
+.prodmsg .prodmsg_specs{
+  font-size: 24rpx;
+  color: #888C8F;
+  margin-top: 40rpx;
+}
+.proditemrig .proditemrig_num{
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: bold;
+  background: #ff9800;
+  text-align: center;
+  padding: 5rpx 15rpx;
+  box-sizing: border-box;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+}
+.proditemrig .proditemrig_price{
+  font-size: 28rpx;
+  color: #888C8F;
+  margin-top: 35rpx;
+}
+.prodwrap .riqi{
+  font-size: 24rpx;
+  color: #888C8F;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.tipwrap{
+  margin-top: 40rpx;
+  padding: 0 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.icon2{
+  color: #f2b746;
+  margin-right: 5rpx;
+}
+.tipwrap_title{
+  font-size: 28rpx;
+  color: #2B2D30;
+  font-weight: bold;
+}
+.tipwrap_desc{
+  font-size: 24rpx;
+  color: #888C8F;
+  margin-top: 5rpx;
+}
+.hexiaobtn{
+  width: 100%;
+  background: #ff9802;
+  color: #fff;
+  font-size: 36rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  margin-top: 200rpx;
+}
+.backwall{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+}
+.backwall .tiptk{
+  width: 74%;
+  height: 440rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #fff;
+  border-radius: 15rpx;
+  padding: 30rpx 45rpx;
+  box-sizing: border-box;
+}
+.tiptk .tiptk_title{
+  text-align: center;
+  font-size: 38rpx;
+  font-weight: bold;
+  overflow: hidden;
+  margin-top: 25rpx;
+}
+.tiptk .tiptk_desc{
+  font-size: 30rpx;
+  color: #888c8f;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+}
+.btnwrap{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #e9eaea;
+  display: flex;
+  justify-content: space-between;
+}
+.btnwrap .cancelBtn,.btnwrap .sureBtn{
+  width: 50%;
+  text-align: center;
+  padding: 25rpx 0;
+  box-sizing: border-box;
+  font-size: 34rpx;
+}
+.btnwrap .sureBtn{
+  border-left: 1px solid #e9eaea;
+  color: #ff9700;
+}

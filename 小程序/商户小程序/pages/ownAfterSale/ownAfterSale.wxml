@@ -1,0 +1,201 @@
+<!--pages/ownAfterSale/ownAfterSale.wxml-->
+<picker class="pickbox orderstatus" bindchange="bindPickerOrder" range-key="name" value="{{orderStatusIndex}}" range="{{orderStatusData}}">
+  <view class="picker">
+    <text class="alignlef">
+              <text class="pickeritem">订单状态</text>
+    <text class="placems" wx:if="{{orderStatusData[orderStatusIndex].id}}">{{orderStatusData[orderStatusIndex].name}}</text>
+    </text>
+    <text class="alignrig">
+    <text wx:if="{{!orderStatusData[orderStatusIndex].id}}" class="placemsall">全部</text>
+    <text class="iconfont iconwangyou"></text>
+    </text>
+  </view>
+</picker>
+
+<view class="searchWrap">
+  <view class="expandbox">
+    <view class="searchdesc expenditem">
+      <image class="searchlogo" src="../../img/searchlogo.png"></image>
+      搜索
+    </view>
+    <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+      <image src="../../img/expendlogo.png"></image>
+    </view>
+  </view>
+  <view wx:if="{{switchJudge}}">
+
+    <view class="rowbox">
+      <view class="rowtitle">服务单号</view>
+      <view>
+        <input placeholder="请输入配送编号" bindinput="serverCode" value="{{csCode}}"></input>
+      </view>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerFun" range-key="funcCnName" value="{{funcIndex}}" range="{{functionList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">功能区</text>
+        <text wx:if="{{functionList[funcIndex].id}}">{{functionList[funcIndex].funcCnName}}</text>
+        </text>
+        <text class="alignrig">    
+        <text wx:if="{{!functionList[funcIndex].id}}" class="placems">全部</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+
+    <view class="pickbox">
+      <text class="alignlef selectdate">申请时间</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text wx:if="{{date}}">{{date}}</text>
+            <text wx:else class="placems">起始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" value="{{date2}}" bindchange="bindDateChange2">
+          <view class="picker">
+            <text wx:if="{{date2}}">{{date2}}</text>
+            <text wx:else class="placems">终止时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+    <view class="searchBtn" bindtap="searchBtn">搜索</view>
+    <view class="reset" bindtap="reset">重置</view>
+  </view>
+</view>
+
+
+<view class="wrap">
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+          <view class="searitembox" wx:else>
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="saleBox" wx:for="{{selfAfterSaleData}}" wx:key>
+    <view class="headerbox">
+      <view class="dancode">服务单号 {{item.csCode}}</view>
+      <view class="orderCode">
+        <text wx:if="{{item.status==1}}">待处理</text>
+        <text wx:if="{{item.status==2}}">已通过</text>
+        <text wx:if="{{item.status==3}}">已拒绝</text>
+        <text wx:if="{{item.status==4}}">已撤销</text>
+      </view>
+    </view>
+    <view class="funBox">
+      <!-- <view class="funcode">A121</view> -->
+      <view>{{item.funcName}}</view>
+    </view>
+   
+    <view class="infoBox">
+       <view class="infoBoxtop">
+          <view class="imgbox">
+            <image src="{{item.productImage}}"></image>
+          </view>
+          <view class="descbox">
+            <view>{{item.productName}}</view>
+            <text class="prodcount">x{{item.prodCount}}</text>
+            <view class="priceBox">
+              <view class="refund">
+                <text wx:if="{{item.csType==1}}">换货</text>
+                <text wx:if="{{item.csType==2}}">退货退款</text>
+                <text wx:if="{{item.csType==3}}">迷你吧</text>
+                <text wx:if="{{item.csType==4}}">退款</text>
+                <text wx:if="{{item.csType==5}}">确认前退款</text>
+              </view>
+              <view>￥{{item.prodAmount}}</view>
+            </view>
+       </view>
+      </view>
+
+      <view class="btnbox">
+          <view class="detailbtn" bindtap="detailbtn" data-id="{{item.id}}" wx:if="{{authzData['F:MS_CS_OWNSALE_DETAIL']}}">详情</view>
+          <view class="refundbtn" bindtap="refundbtn" data-cstype="{{item.csType}}" data-refoundAmount="{{item.refoundAmount}}" data-handleRemark="{{item.handleRemark}}" data-logistics="{{item.supplierLogisticsInfo}}" data-supplierLogisticsCode="{{item.supplierLogisticsCode}}"
+            data-supplierLogisticsInfo="{{item.supplierlogisticsinfo}}" data-id="{{item.id}}" wx:if="{{item.status==1}}">
+            <text wx:if="{{item.csType==1 && authzData['F:MS_CS_OWNSALE_EXCHANGE']}}">换货</text>
+            <text wx:if="{{item.csType==2 && authzData['F:MS_CS_OWNSALE_REFUNDGOOD']}}">退货退款</text>
+            <text wx:if="{{item.csType==4 && authzData['F:MS_CS_OWNSALE_REFUND']}}">退款</text>
+          </view>
+        </view>
+
+    </view>
+  </view>
+
+</view>
+
+<view class="saleDoalog" wx:if="{{diajudge}}" bindtap="saleDoalog"></view>
+
+  <view class="saleContent" wx:if="{{diajudge}}">
+    <text class="iconfont iconguanbi1" bindtap="saleDoalog"></text>
+    <view class="diotitle">处理售后申请</view>
+    <view class="diarow">
+      <view class="rowtitle">退款金额</view>
+      <view class="inputbox">
+        <input disabled="{{cstype==4}}" value="{{refoundAmount}}" bindinput="inputrefoundAmount"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle">备注</view>
+      <view class="inputbox">
+        <textarea type="textarea" fixed="true" value="{{handleRemark}}" bindinput="inputhandleRemark"></textarea>
+      </view>
+    </view>
+    <view class="diabtnbox">
+      <view class="refusebtn" bindtap="refusebtn" data-refusebtn="diajudge">拒绝</view>
+      <view class="adoptbtn" bindtap="adoptbtn" data-adoptbtn="diajudge">通过</view>
+    </view>
+  </view>
+
+
+<view class="saleDoalog" wx:if="{{diajudge2}}" bindtap="saleDoalog"></view>
+  <view class="saleContent2" wx:if="{{diajudge2}}">
+    <text class="iconfont iconguanbi1" bindtap="saleDoalog"></text>
+    <view class="diotitle">处理售后申请</view>
+    <view class="diarow">
+      <view class="rowtitle2">商家发货物流公司
+      </view>
+      <view class="inputbox2">
+        <input value="{{supplierLogisticsInfo}}" bindinput="logisticsInfo"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle2">商家发货物流单号</view>
+      <view class="inputbox2">
+        <input value="{{supplierLogisticsCode}}" bindinput="logisticsCode"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle2">备注</view>
+      <view class="inputbox2">
+        <textarea type="textarea" fixed="true" value="{{handleRemark}}" bindinput="inputhandleRemark"></textarea>
+      </view>
+    </view>
+    <view class="diabtnbox">
+      <view class="refusebtn" bindtap="refusebtn" data-refusebtn="diajudge2">拒绝</view>
+      <view class="adoptbtn" bindtap="adoptbtn" data-adoptbtn="diajudge2">通过</view>
+    </view>
+  </view>

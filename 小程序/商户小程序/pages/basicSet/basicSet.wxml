@@ -1,0 +1,105 @@
+<!--pages/basicSet/basicSet.wxml-->
+<view class="rowLine" wx:if="{{authzData['F:MS_BASICSET_FUNAREA']}}" bindtap="functionList">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/funimg.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>功能区</text>
+       </view>
+       <view class="descbot">Functional area</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>     
+
+<view class="rowLine" wx:if="{{authzData['F:MS_BASICSET_SELFPROD']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/selfprod.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>自营商品</text>
+       </view>
+       <view class="descbot">Proprietary goods</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view> 
+
+<view class="rowLine" wx:if="{{authzData['F:MS_BASICSET_FUNAREAPROD']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/funprod.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>功能区商品</text>
+       </view>
+       <view class="descbot">Ribbon products</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<view class="rowLine" wx:if="{{authzData['F:MS_BASICSET_APPROACHSET']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/configure.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>进场配置</text>
+       </view>
+       <view class="descbot">configuration</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<view class="rowLine" wx:if="{{authzData['F:MS_BASICSET_APPROACHCODE']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/approachcode.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>进场二维码</text>
+       </view>
+       <view class="descbot">QR codes</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<view class="rowLine" bindtap="selfTakingList" wx:if="{{authzData['F:MS_BASICSET_SELFMANAGE']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/selfmanage.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>自提点管理</text>
+       </view>
+       <view class="descbot">Pick up point management</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<view class="rowLine">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/enterinfo.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>企业信息修改</text>
+       </view>
+       <view class="descbot">information modification</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>

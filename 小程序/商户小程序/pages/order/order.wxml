@@ -1,0 +1,135 @@
+<!--pages/order/order.wxml-->
+<view class="wrap">
+
+
+  <view class="titlebox">
+     <view class="linebk"></view>
+     商城订单
+   </view>
+
+   <view class="rowLine" wx:if="{{authzData['F:MS_CS_OWNSALE_TANGSHI']}}" bindtap="foodOrder">
+    <view class="childbox lefbox">
+      <image class="rowlogo" src="../../img/tangshi.png"></image>
+      <view class="descbox">
+        <view class="desctop">
+          <text>堂食</text>
+        </view>
+        <view class="descbot">HALL FOOD</view>
+      </view>
+    </view>
+    <view class="childbox rigbox">
+      <!-- <view class="childCount">15
+       </view> -->
+      <image class="moreimg" src="../../img/back.png"></image>
+    </view>
+  </view>
+
+  <view class="rowLine" bindtap="storeDeliv" wx:if="{{authzData['F:MS_CS_OWNSALE_STOREDELIV']}}">
+    <view class="childbox lefbox">
+      <image class="rowlogo" src="../../img/storegive.png"></image>
+      <view class="descbox">
+        <view class="desctop">
+          <text>店内送</text>
+        </view>
+        <view class="descbot">IN STORE DELIVERY</view>
+      </view>
+    </view>
+    <view class="childbox rigbox">
+       <!-- <view class="childCount">15
+       </view> -->
+      <image class="moreimg" src="../../img/back.png"></image>
+    </view>
+  </view>
+
+  <view class="rowLine" bindtap="ownDeliveryList" wx:if="{{authzData['F:MS_ORDER_OWNDELIV']}}">
+    <view class="childbox lefbox">
+      <image class="rowlogo" src="../../img/selfdeliv.png"></image>
+      <view class="descbox">
+        <view class="desctop">
+          <text>自营配送单</text>
+        </view>
+        <view class="descbot">DELIVERY NOTE</view>
+      </view>
+    </view>
+    <view class="childbox rigbox">
+      <!-- <view class="childCount">8
+       </view> -->
+      <image class="moreimg" src="../../img/back.png"></image>
+    </view>
+  </view>
+
+  <view class="rowLine" bindtap="ownAfterSale" wx:if="{{authzData['F:MS_CS_OWNSALE']}}">
+    <view class="childbox lefbox">
+      <image class="rowlogo" src="../../img/selfsale.png"></image>
+      <view class="descbox">
+        <view class="desctop">
+          <text>自营售后</text>
+        </view>
+        <view class="descbot">AFTER SALES</view>
+      </view>
+    </view>
+    <view class="childbox rigbox">
+      <image class="moreimg" src="../../img/back.png"></image>
+    </view>
+  </view>
+
+  <view class="titlebox">
+     <view class="linebk"></view>
+     订房订单
+   </view>
+
+   <view class="rowLine" wx:if="{{authzData['F:MS_CS_OWNSALE_BOOKINGORDER']}}">
+    <view class="childbox lefbox">
+      <image class="rowlogo" src="../../img/booking.png"></image>
+      <view class="descbox">
+        <view class="desctop">
+          <text>订房订单</text>
+        </view>
+        <view class="descbot">BOOKING ORDER</view>
+      </view>
+    </view>
+    <view class="childbox rigbox">
+      <!-- <view class="childCount bluecolor">8
+       </view> -->
+      <image class="moreimg" src="../../img/back.png"></image>
+    </view>
+  </view>
+
+  <view class="rowLine" wx:if="{{authzData['F:MS_CS_OWNSALE_BESTPRICE']}}">
+    <view class="childbox lefbox">
+      <image class="rowlogo" src="../../img/tanxingjia.png"></image>
+      <view class="descbox">
+        <view class="desctop">
+          <text>最优弹性价</text>
+        </view>
+        <view class="descbot">OPTIMAL ELASTIC PRICE</view>
+      </view>
+    </view>
+    <view class="childbox rigbox">
+      <image class="moreimg" src="../../img/back.png"></image>
+    </view>
+  </view>
+
+  <view class="rowLine" wx:if="{{authzData['F:MS_CS_OWNSALE_TEAMPRICE']}}">
+    <view class="childbox lefbox">
+      <image class="rowlogo" src="../../img/teamjia.png"></image>
+      <view class="descbox">
+        <view class="desctop">
+          <text>团队调价</text>
+        </view>
+        <view class="descbot">TEMA PRICE ADJUSTMENT 
+        </view>
+      </view>
+    </view>
+    <view class="childbox rigbox">
+       <!-- <view class="childCount bluecolor">12
+       </view> -->
+      <image class="moreimg" src="../../img/back.png"></image>
+    </view>
+  </view>
+
+</view>
+
+<my-tabbar id="tabbar"></my-tabbar>
+
+

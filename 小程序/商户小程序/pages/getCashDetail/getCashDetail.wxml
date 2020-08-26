@@ -1,0 +1,76 @@
+<!--pages/getCashDetail/getCashDetail.wxml-->
+<view class="wrap">
+   <view class="section">
+      <view class="titlebox">
+        <view class="lineblock"></view>
+        基础信息
+      </view>
+      <view class="inner">
+        <view class="rowbox">
+          <view class="rowboxTitle">状态</view>
+          <view class="rowboxInfo" wx:if="{{withdrawalsDetails.status==1}}">待处理</view>
+          <view class="rowboxInfo" wx:if="{{withdrawalsDetails.status==2}}">已转账</view>
+          <view class="rowboxInfo" wx:if="{{withdrawalsDetails.status==3}}">转账失败</view>
+        </view>
+        <view class="rowbox">
+          <view class="rowboxTitle">提现金额</view>
+          <view class="rowboxInfo">{{withdrawalsDetails.withdrawalAmount}}</view>
+        </view>
+        <view class="rowbox">
+          <view class="rowboxTitle">申请人</view>
+          <view class="rowboxInfo">{{withdrawalsDetails.withdrawalName}}</view>
+        </view>
+        <view class="rowbox">
+          <view class="rowboxTitle">申请时间</view>
+          <view class="rowboxInfo">{{withdrawalsDetails.withdrawalTime}}</view>
+        </view>
+      </view>
+   </view>
+
+   <view class="section">
+      <view class="titlebox">
+        <view class="lineblock"></view>
+        账户信息
+      </view>
+      <view class="inner">
+        <view class="rowbox">
+          <view class="rowboxTitle">开户银行</view>
+          <view class="rowboxInfo">{{withdrawalsDetails.bank}}</view>
+        </view>
+        <view class="rowbox">
+          <view class="rowboxTitle">账户名称</view>
+          <view class="rowboxInfo">{{withdrawalsDetails.accountName}}</view>
+        </view>
+        <view class="rowbox linebot">
+          <view class="rowboxTitle">账号</view>
+          <view class="rowboxInfo">{{withdrawalsDetails.account}}</view>
+        </view>
+        <view class="rowbox padtop30" wx:if="{{withdrawalsDetails.status!=1}}">
+          <view class="rowboxTitle">转账时间</view>
+          <view class="rowboxInfo" wx:if="{{withdrawalsDetails.transferTime!=null}}">{{withdrawalsDetails.transferTime}}</view>
+        </view>
+        <view class="rowbox" wx:if="{{withdrawalsDetails.status!=1}}">
+          <view class="rowboxTitle">转账凭证</view>
+        </view>
+        <view class="imgbox">
+           <view class="subimg" wx:for="{{voucherdata}}" wx:key>
+             <image src="{{item.transferPathUrl}}"></image>
+           </view>
+        </view> 
+        <view class="tradebox" wx:if="{{withdrawalsDetails.status!=1}}">
+          <view class="rowboxTitle">转账说明</view>
+          <view class="rowboxInfo infoblock">{{withdrawalsDetails.remark}}</view>
+        </view>
+        <view class="rowbox padtop25" wx:if="{{withdrawalsDetails.status!=1}}">
+          <view class="rowboxTitle">处理人</view>
+          <view class="rowboxInfo">{{withdrawalsDetails.dealer}}</view>
+        </view>
+        <view class="rowbox" wx:if="{{withdrawalsDetails.status!=1}}">
+          <view class="rowboxTitle">处理时间</view>
+          <view class="rowboxInfo" wx:if="{{withdrawalsDetails.dealTime!=null}}">{{withdrawalsDetails.dealTime}}</view>
+        </view>
+      </view>
+   </view>
+
+</view>
+

@@ -1,0 +1,78 @@
+<!--pages/accountInfo/accountInfo.wxml-->
+<view class="amountBox">
+   <text class="amount">{{accountdetail.withdrawMayAmount}}</text>
+   <text class="amountDesc">账户余额(元)</text>
+   <view class="getCash" bindtap="withdrawal" wx:if="{{authzData['F:MS_FIN_APPLYWITHDRA']}}">申请提现</view>
+   <view class="withdrawInfo">
+     <view class="withdrawTotal withdrawItem">提现总额 {{accountdetail.withdrawAmount}}</view>
+     <view class="withdrawing withdrawItem">提现中金额 {{accountdetail.frozeAmount}}</view>
+   </view>
+</view>
+
+<view class="wrapRecord" wx:if="{{authzData['F:MS_FIN_WITHDRARECORD']}}">
+   <view class="rowLine" bindtap="repair" bindtap="getCashRecord">
+      <view class="childbox lefbox">
+        <image class="rowlogo" src="../../img/minilogo.png"></image>
+        <view class="descbox">
+          <view class="desctop">
+            <text>提现记录</text>
+          </view>
+          <view class="descbot">WITHDRAWAL RECORD</view>
+        </view>
+      </view>
+      <view class="childbox rigbox">
+        <image class="moreimg" src="../../img/back.png"></image>
+      </view>
+    </view>
+    
+    <view class="rowLine" bindtap="repair" wx:if="{{authzData['F:MS_FIN_TOTALSHARE']}}">
+      <view class="childbox lefbox">
+        <image class="rowlogo" src="../../img/minilogo.png"></image>
+        <view class="descbox">
+          <view class="desctop">
+            <text>分成总额</text>
+          </view>
+          <view class="descbot">TOTAL SHARE</view>
+        </view>
+      </view>
+      <view class="childbox rigbox">
+        <text>{{accountdetail.revenueAmount}}</text>
+        <image class="moreimg" src="../../img/back.png"></image>
+      </view>
+    </view>
+
+     <view class="rowLine" bindtap="repair" bindtap="waitIncomeRecord" wx:if="{{authzData['F:MS_FIN_WAITINCOME']}}">
+      <view class="childbox lefbox">
+        <image class="rowlogo" src="../../img/minilogo.png"></image>
+        <view class="descbox">
+          <view class="desctop">
+            <text>待入账记录</text>
+          </view>
+          <view class="descbot">TO BE RECORDED</view>
+        </view>
+      </view>
+      <view class="childbox rigbox">
+        <text>{{accountdetail.pendingAmount}}</text>
+        <image class="moreimg" src="../../img/back.png"></image>
+      </view>
+    </view>
+
+    <view class="rowLine" bindtap="repair" bindtap="incomeRecord" wx:if="{{authzData['F:MS_FIN_INCOMERECORD']}}">
+      <view class="childbox lefbox">
+        <image class="rowlogo" src="../../img/minilogo.png"></image>
+        <view class="descbox">
+          <view class="desctop">
+            <text>入账记录</text>
+          </view>
+          <view class="descbot">ENTRY RECORDED</view>
+        </view>
+      </view>
+      <view class="childbox rigbox">
+        <image class="moreimg" src="../../img/back.png"></image>
+      </view>
+    </view>
+
+</view>
+
+
+

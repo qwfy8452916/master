@@ -1,0 +1,152 @@
+<!--pages/personalcenter/personalcenter.wxml-->
+<view class="boxwrap">
+<view class='mywrapbj'>
+    <button class='niudj' hidden='{{userInfojudge}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录</button>
+    <!-- <button class='niudj' hidden='{{userInfojudge}}' bindtap="jumpshouquan">授权</button> -->
+
+    <image class='touxiang' src='{{userInfo.avatarUrl}}'></image>
+    <text class='ningchegn'>{{userInfo.nickName}}</text>
+    <view wx:if="{{!isBind}}" class='bindbtn' bindtap="bindfun" hidden='{{!userInfojudge}}'><text class="iconfont iconrenyuan"></text>绑定<text class="iconfont iconwangyou"></text></view>
+    <view class="myAccount" wx:if="{{authzData['F:MS_MY_MYACCOUNT'] && userInfojudge}}" bindtap='linkmycome'>
+     <text class="iconfont iconwodezhanghu"></text>
+       我的账户
+    </view>
+</view>
+
+<view class="distwrap">
+  <view class="distitem" bindtap="myShare">
+     <view class="imgbak">
+        <image src="../../img/fenxhz.png"></image>
+     </view>
+     <view class="desctext">
+         <view class="huizongdesc">分销汇总统计</view>
+         <view class="shujvdesc">最新分销数据<text class="iconfont iconwangyou"></text></view>
+     </view>
+  </view>
+  <view class="distitem" bindtap="myShareNext">
+     <view class="imgbak">
+        <image src="../../img/xiaji.png"></image>
+     </view>
+     <view class="desctext">
+         <view class="huizongdesc">我的下级</view>
+         <view class="shujvdesc">分销下级数据<text class="iconfont iconwangyou"></text></view>
+     </view>
+  </view>
+</view>
+
+<!-- <view class="rowitem" wx:if="{{!authzData['F:MH_USER_VIEW_ACCOUNT'] && userInfojudge}}" bindtap='linkmycome'>
+   <view class="imgwrap">
+       <image src="../../img/myshare.png"></image>
+    </view>
+   <view class="desctext">我的账户</view>
+</view> -->
+
+<view class="rowitem" bindtap='goUpdatePWD'>
+   <view class="imgwrap">
+       <image src="../../img/password.png"></image>
+    </view>
+   <view class="desctext">修改密码</view>
+</view>
+
+<!-- <view class="rowitem" bindtap='settingmsg'>
+   <view class="imgwrap">
+       <image src="../../img/messub.png"></image>
+    </view>
+   <view class="desctext">消息订阅</view>
+</view> -->
+
+<view class="rowitem" bindtap='goUpdateInfo'>
+   <view class="imgwrap">
+       <image src="../../img/infomain.png"></image>
+    </view>
+   <view class="desctext">信息维护</view>
+</view>
+
+
+<!-- <view class='replenishment topline' bindtap='myShare'>
+  <view class='leftblok'>
+     <text class='iconfont iconicon'></text><text>我的分销</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view>
+<view class='replenishment topline' bindtap='myShareNext'>
+  <view class='leftblok'>
+     <text class='iconfont iconxinxiweihu'></text><text>我的下级</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view> -->
+<!-- <view wx:if="{{authzData['F:MH_USER_VIEW_ACCOUNT']}}" class='replenishment topline' hidden='{{!userInfojudge}}' bindtap='linkmycome'>
+  <view class='leftblok'>
+     <text class='iconfont iconicon'></text><text>我的账户</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view> -->
+<!-- <view class='replenishment topline' bindtap='goUpdatePWD'>
+  <view class='leftblok'>
+     <text class='iconfont iconchangepassword'></text><text>修改密码</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view>
+<view class='replenishment topline' bindtap='goUpdateInfo'>
+  <view class='leftblok'>
+     <text class='iconfont iconxinxiweihu'></text><text>信息维护</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view> -->
+
+<!-- <view class='replenishment topline' bindtap='mycode'>
+  <view class='leftblok'>
+     <text class='iconfont iconsaoma1'></text><text>我的二维码</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view> -->
+
+<!-- <view class='replenishment topline' bindtap='myshare'>
+  <view class='leftblok'>
+     <text class='iconfont iconliwu'></text><text>我的分享</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view> -->
+
+<!-- <view class='replenishment topline' bindtap='mygroup'>
+  <view class='leftblok'>
+     <text class='iconfont iconsaoma1'></text><text>我的社群</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view> -->
+
+<!-- <view class='replenishment topline' bindtap='settingmsg'>
+  <view class='leftblok'>
+     <text class='iconfont iconanzhuang'></text><text>消息设置</text>
+  </view>
+  <view class='rightblok'>
+     <text class='iconfont iconwangyou'></text>
+  </view>
+</view> -->
+
+ <view class="switchAccount" hidden='{{!userInfojudge}}' bindtap="signout">账号切换</view>
+
+</view>
+
+<my-tabbar id="tabbar"></my-tabbar>
+
+
+
+
+

@@ -1,0 +1,61 @@
+<!--pages/couponManage/couponManage.wxml-->
+<view class="rowLine" bindtap="couponBatch">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/couponBatch.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>优惠券批次</text>
+       </view>
+       <view class="descbot">COUPON BATCH</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>     
+
+<view class="rowLine" bindtap="couponGroup">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/couponfz.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>优惠券分组</text>
+       </view>
+       <view class="descbot">COUPON GROUP</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>   
+
+<view class="rowLine" bindtap="useCoupon">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/couponsend.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>用户优惠券</text>
+       </view>
+       <view class="descbot">USER COUPONS</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<view class="rowLine" bindtap="userCard">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/coupontj.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>优惠券统计</text>
+       </view>
+       <view class="descbot">COUPON STATISTICS</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+

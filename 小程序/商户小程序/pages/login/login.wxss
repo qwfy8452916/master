@@ -1,0 +1,55 @@
+page{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.imgbox{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.formbox{
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 320rpx;
+}
+.weui-input{
+  margin: 80rpx auto 0;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 44px;
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  box-shadow:0px 0px 29px 0px rgba(34,60,188,0.1);
+  font-size: 32rpx;
+  color: #2B2D30;
+}
+.font-text1{
+  font-size: 28rpx;
+  color: #FFFFFF;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+.submit-btn{
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  background: linear-gradient(to right,  #F0904D 0%,#ED7142 100%);
+  border-radius: 44rpx;
+}
+.icon-size{
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+}

@@ -1,0 +1,120 @@
+<!--component/tabbar/tabbar.wxml-->
+<!-- 导航 -->
+
+<view class='tabbarwrap'>
+
+   <view wx:for="{{tabbardata}}" bindtap="tabevent" wx:key class='tabitem {{tabbardata[index].id==currentid?"active":""}}' data-id="{{item.id}}" data-url="{{item.url}}" wx:if="{{tabbardata[index].id==0}}">
+      <!-- <text class='iconfont {{item.icon}}'></text> -->
+
+      
+      <view class="svgwrap " hidden="{{!(tabbardata[index].id==currentid)}}">
+         <view class="svgbox">
+           <image src="../../img/syfill.png"></image>
+         </view>
+      </view>
+
+      <view class="svgwrap" hidden="{{tabbardata[index].id==currentid}}">
+         <view class="svgbox">
+           <image src="../../img/syline.png"></image>
+         </view>
+      </view>
+      <view class='tabitemms'>{{item.name}}</view>
+   </view>
+
+   <view wx:for="{{tabbardata}}" bindtap="tabevent" wx:key class='tabitem {{tabbardata[index].id==currentid?"active":""}}' data-id="{{item.id}}" data-url="{{item.url}}" wx:if="{{tabbardata[index].id==1}}">
+      <!-- <text class='iconfont {{item.icon}}'></text> -->
+      <view class="svgwrap " hidden="{{!(tabbardata[index].id==currentid)}}">
+         <view class="svgbox">
+           <image src="../../img/minifill.png"></image>
+         </view>
+      </view>
+
+      <view class="svgwrap" hidden="{{tabbardata[index].id==currentid}}">
+         <view class="svgbox">
+           <image src="../../img/miniline.png"></image>
+         </view>
+      </view>
+
+      <view class='tabitemms'>{{item.name}}</view>
+   </view>
+
+   <view wx:for="{{tabbardata}}" bindtap="tabswitch" wx:key class='tabitem {{tabbardata[index].id==currentid?"active":""}}' data-id="{{item.id}}" data-url="{{item.url}}" wx:if="{{tabbardata[index].id==10 && tabbardata.length>=4}}">
+      <image class="navlogo {{switchonoff?'':'navlogoxz'}}" src="../../img/navlogo.png"></image>
+   </view>
+
+   <view wx:for="{{tabbardata}}" bindtap="tabevent" wx:key class='tabitem {{tabbardata[index].id==currentid?"active":""}}' data-id="{{item.id}}" data-url="{{item.url}}" wx:if="{{tabbardata[index].id==3}}">
+      <!-- <text class='iconfont {{item.icon}}'></text> -->
+      <view class="svgwrap " hidden="{{!(tabbardata[index].id==currentid)}}">
+         <view class="svgbox">
+           <image src="../../img/roomfill.png"></image>
+         </view>
+      </view>
+
+      <view class="svgwrap" hidden="{{tabbardata[index].id==currentid}}">
+         <view class="svgbox">
+           <image src="../../img/roomOrderline.png"></image>
+         </view>
+      </view>
+
+      <view class='tabitemms'>{{item.name}}</view>
+   </view>
+   <view wx:for="{{tabbardata}}" bindtap="tabevent" wx:key class='tabitem {{tabbardata[index].id==currentid?"active":""}}' data-id="{{item.id}}" data-url="{{item.url}}" wx:if="{{tabbardata[index].id==4}}">
+      <!-- <text class='iconfont {{item.icon}}'></text> -->
+      <view class="svgwrap " hidden="{{!(tabbardata[index].id==currentid)}}">
+         <view class="svgbox">
+           <image src="../../img/myfill.png"></image>
+         </view>
+      </view>
+
+      <view class="svgwrap" hidden="{{tabbardata[index].id==currentid}}">
+         <view class="svgbox">
+           <image src="../../img/myline.png"></image>
+         </view>
+      </view>
+
+      <view class='tabitemms'>{{item.name}}</view>
+   </view>
+
+</view>
+<!-- 导航 -->
+<view class="yinbox" wx:if="{{switchonoff}}" bindtap="tabswitch"></view>
+  <view class="navbarWrap" wx:if="{{switchonoff}}">
+  <view class="navbaritem" bindtap="cardCoupon" wx:if="{{authzData['M:MS_VOU_CARDCOUPON']}}">
+     <image class="navbarlogo" src="../../img/cardcoupon.png"></image>
+     <view>卡券</view>
+  </view>
+  <view class="navbaritem" bindtap="couponManage" wx:if="{{authzData['M:MS_COUPON_COUPON']}}">
+     <image class="navbarlogo" src="../../img/couponimg.png"></image>
+     <view>优惠券</view>
+  </view>
+  <view class="navbaritem" wx:if="{{authzData['M:MS_ACT_ACT']}}">
+     <image class="navbarlogo" src="../../img/activeimg.png"></image>
+     <view>活动</view>
+  </view>
+  <view class="navbaritem" bindtap="orderDeal" wx:if="{{authzData['M:MS_ORDER_ORDERDEAL']}}">
+     <image class="navbarlogo" src="../../img/orderdeal.png"></image>
+     <view>订单处理</view>
+  </view>
+  <view class="navbaritem" bindtap="shareTotal" wx:if="{{authzData['M:MS_BRANCH_BRANCH']}}">
+     <image class="navbarlogo" src="../../img/fenxiao.png"></image>
+     <view>分销</view>
+  </view>
+  <view class="navbaritem" bindtap="finance" wx:if="{{authzData['M:MS_FIN_FIN']}}">
+     <image class="navbarlogo" src="../../img/finance.png"></image>
+     <view>财务</view>
+  </view>
+  <view class="navbaritem" bindtap="faceServer" wx:if="{{authzData['M:MS_SERVER_FACESERVER']}}">
+     <image class="navbarlogo" src="../../img/faceimg.png"></image>
+     <view>当面服务</view>
+  </view>
+  <view class="navbaritem" bindtap="miniba" wx:if="{{authzData['M:MS_CAB_MINI']}}">
+     <image class="navbarlogo" src="../../img/miniimg.png"></image>
+     <view>迷你吧</view>
+  </view>
+  <view class="navbaritem" bindtap="basicSet" wx:if="{{authzData['M:MS_BASIC_BASICSET']}}">
+     <image class="navbarlogo" src="../../img/basicimg.png"></image>
+     <view>基础设置</view>
+  </view>
+
+  </view>
+

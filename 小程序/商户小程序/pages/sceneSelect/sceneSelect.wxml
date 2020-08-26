@@ -1,0 +1,8 @@
+<!--pages/sceneSelect/sceneSelect.wxml-->
+
+<view class="wrap">
+   <view class="funitem {{selectActive[index]?'active':''}}" bindtap="sceneitem" wx:for="{{sceneList}}" data-index="{{index}}">{{item.dictName}}</view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>

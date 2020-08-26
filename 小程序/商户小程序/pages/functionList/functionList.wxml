@@ -1,0 +1,45 @@
+<!--pages/functionList/functionList.wxml-->
+<view class="wrap">
+   <view class="funBox">
+      <view class="titlebox">
+         <view class="titlef">
+            <view class="sortbox">
+               <text class="sortnum">10</text>
+               <image src="../../img/sortbak.png"></image>
+            </view>
+            <text class="spec">特产馆</text><text class="enlisspec">SPECIAL</text>
+         </view>
+         <view class="titrig">
+            <view class="circlebak">
+               <image src="../../img/circle.png"></image>
+            </view>开放
+         </view>
+      </view>
+      <view class="midbox">
+          <view class="midlef">
+              <view class="typeName">类型名称</view>
+              <view class="tagbox">
+                 <text class="tagitem">店内送</text>
+                 <text class="tagitem">快递送</text>
+                 <text class="tagitem">迷你吧</text>
+                 <text class="tagitem">自提取</text>
+              </view>
+          </view>
+          <view class="midrig">
+             <text class="iconfont iconwangyou"></text>
+          </view>
+      </view>
+      <view class="btnbox">
+         <view class="buju">卡券布局</view>
+         <view class="btnwrap">
+            <view class="btnitem">删除</view>
+            <view class="btnitem">编辑</view>
+            <view class="btnitem">分类管理</view>
+         </view>
+      </view>
+   </view>
+</view>
+
+<view class="addfun">新增功能区</view>
+
+

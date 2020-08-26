@@ -1,0 +1,116 @@
+/* pages/accountInfo/accountInfo.wxss */
+page{
+  background:#f4f5f5; 
+}
+.amountBox{
+  background-image:linear-gradient(to right, #f0904d , #ed7142);
+  width: 100%;
+  box-sizing: border-box;
+  height:282rpx; 
+  position: relative;
+  color: #fff;
+}
+.amountBox .amount{
+  font-size: 58rpx;
+  position: absolute;
+  top: 45rpx;
+  left: 60rpx;
+}
+.amountBox .amountDesc{
+  position: absolute;
+  top: 120rpx;
+  left: 60rpx;
+  font-size: 28rpx;
+}
+.getCash{
+  position: absolute;
+  font-size:32rpx; 
+  right: 0;
+  top:60rpx;
+  padding:  15rpx 30rpx;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  background: rgba(255,255,255,0.2);
+}
+.amountBox .withdrawInfo{
+  background: rgba(255,255,255,0.8);
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+  padding: 25rpx 0rpx;
+  width: 90%;
+  margin: auto;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  display: flex;
+  aligin-items:center;
+  justify-content:space-between;
+  color: #2B2D30;
+  box-sizing: border-box;
+}
+.withdrawInfo .withdrawItem{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+  box-sizing: border-box; 
+}
+.withdrawInfo .withdrawTotal{
+  border-right: 1px solid #dcd8d6;
+}
+
+.wrapRecord{
+  width: 100%;
+  padding: 0rpx 5%;
+  box-sizing: border-box;
+}
+
+.rowLine{
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 20rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  
+}
+.rowLine:first-child{
+  margin-top: 0;
+}
+.rowLine .childbox{
+  display: flex;
+  align-items: center;
+  
+}
+.rowLine .rigbox{
+  /* color: #FF4F4F; */
+  font-size: 36rpx;
+}
+.rowlogo{
+  width: 120rpx;
+  height: 120rpx;
+}
+.descbox{
+  display:inline-block;
+  margin-left: 30rpx;
+}
+.descbox .desctop{
+  font-size: 36rpx;
+  display: inline-block;
+  position: relative;
+}
+.descbox .descbot{
+  font-size: 24rpx;
+  color: #888FA1;
+  margin-top: 5rpx; 
+}
+.moreimg{
+  width: 48rpx;
+  height: 48rpx;
+  display: inline-block;
+  transform:rotate(180deg);
+}
+

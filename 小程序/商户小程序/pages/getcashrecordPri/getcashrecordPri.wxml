@@ -1,0 +1,11 @@
+<!--pages/getcashrecordPri/getcashrecordPri.wxml-->
+<view class='itemwrap'>
+   <view class='item' wx:for="{{getcashrecorddata}}" wx:key>
+      <view class='clearfu'>
+          <text class='lefttext'>{{item.empWithdrawalStatus==1?'申请成功':(item.empWithdrawalStatus==2?'申请失败':'默认状态')}}</text><text class='righttext'>{{item.empWithdrawalAmount}}元</text>
+      </view>
+      <view class='datetime'>{{item.createdAt}}</view>
+   </view>
+</view>
+<view class='checkmore' hidden='{{!judge}}'><text bindtap='moredata'>查看更多 <text class='iconfont iconsanjiaoxing1'></text></text>
+</view>

@@ -1,0 +1,33 @@
+/* pages/lookdetail/lookdetail.wxss */
+page{border-top: 1px solid #e5e5e5;}
+.detailwrap{overflow: hidden;}
+
+.wraplist{overflow: hidden;overflow-y: auto;position: fixed;
+width: 100%;}
+.detailwrap .title{width: 100%;padding: 20rpx 4%;box-sizing: border-box;
+font-size: 32rpx;overflow: hidden;margin-top: 30rpx;border-bottom: 1px solid #e5e5e5;
+}
+.title .title-info{float: left;color: #333;}
+.title .title-status{float: right;color: #ee1e1e;}
+
+.guzhanginfo{padding: 30rpx 0 30rpx 4%;border-bottom: 1px solid #e5e5e5;
+overflow: hidden;}
+.guzhanginfo .latticenum{display: inline-block;float: left;color: #333;
+font-size:84rpx;padding: 15rpx 42rpx;border: 4rpx solid #333;}
+.guzhanginfo .latticetype{display: inline-block;float: left;margin-left: 30rpx;
+font-size: 24rpx;color: #999;}
+.latticetype .guztype{font-size: 32rpx;}
+.guztype .guztypems{color: #ff9700;margin-left: 25rpx;}
+.guzhanginfo .applicant{margin-top: 25rpx;}
+.applicant .guztypems{margin-left: 25rpx;}
+
+
+.guzhanginfo .repairtime{margin-top: 10rpx;}
+.repairtime .guztypems{margin-left: 25rpx;}
+
+.niuwrap{width: 100%;padding: 0 4%;box-sizing: border-box;
+margin-top: 20rpx;}
+.niuwrap .niuitem{font-size: 28rpx;color: #fff;display: inline-block;
+border-radius: 5rpx;padding: 15rpx 50rpx;background: #fbbd62;float: right;}
+.niuwrap .weixiu{background: #ff9700;margin-left: 20rpx;}
+.niuwrap .canniu{background: #fbbd62;}

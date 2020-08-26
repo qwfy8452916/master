@@ -1,0 +1,174 @@
+<view class="classtypebox">
+  <view class="flexbox-around view-w">
+    <view class="classbtn {{classindex==1?'classbtnactive':''}}" data-index="1" bindtap="changeclasstypefun">卡券核销</view>
+    <view class="classbtn {{classindex==2?'classbtnactive':''}}" data-index="2" bindtap="changeclasstypefun">自提核销</view>
+  </view>
+  <view class="seachbox">
+    <view class="flexbox-between seachbox-t" bindtap="toggleseach">
+      <view class="flexbox-start">
+        <image class="seachicon" src="../../img/searchlogo.png"></image>
+        <text class="seachtext">搜索</text>
+      </view>
+      <image class="seachicon2 {{seachtype?'seachicon2-rotate':''}}" src="../../img/expendlogo.png"></image>
+    </view>
+    <view class="formbox borderT" wx:if="{{seachtype == true}}">
+      <view class="flexbox-between formbox-li borderB">
+        <view class="form-text">顾客ID</view>
+        <input class="form-inp" type="number" placeholder="输入顾客ID" placeholder-style="color: #C5C9CF;" bindinput="useridfun"></input>
+      </view>
+      <block wx:if='{{classindex == 1}}'>
+        <view class="flexbox-between formbox-li borderB">
+          <view class="form-text">卡券名称</view>
+          <picker class="pickerbox form-inp" mode="selector" bindchange="vouNamefun" value="{{vouNameindex}}" range="{{vouNamelist}}" range-key="vouName">
+            <view class="flexbox-between">{{vouNamelist[vouNameindex].vouName}} <image src='../../img/my-icon3.png' class='pickeicon'></image></view>
+          </picker>
+        </view>
+      </block>
+      <block wx:if='{{classindex == 2}}'>
+        <view class="flexbox-between formbox-li borderB">
+          <view class="form-text">配送单号</view>
+          <input class="form-inp" type="number" placeholder="输入配送单号" placeholder-style="color: #C5C9CF;" bindinput="deliveryCodefun"></input>
+        </view>
+        <view class="flexbox-between formbox-li borderB">
+          <view class="form-text">自提点</view>
+          <picker class="pickerbox form-inp" mode="selector" bindchange="pointfun" value="{{pointlistindex}}" range="{{pointlist}}" range-key="pointName">
+            <view class="flexbox-between">{{pointlist[pointlistindex].pointName}} <image src='../../img/my-icon3.png' class='pickeicon'></image></view>
+          </picker>
+        </view>
+      </block>
+      <view class="flexbox-between formbox-li borderB">
+        <view class="form-text">核销时间</view>
+        <picker class="pickerbox form-inp" mode="date" bindchange="satartTfun" value="{{date}}">
+          <view class="flexbox-between">
+            <view>{{formdata.StartTime}}</view>
+            <image src='../../img/my-icon3.png' class='pickeicon'></image></view>
+        </picker>
+      </view>
+      <view class="flexbox-between formbox-li borderB">
+        <view class="form-text" style="text-align: right;padding-right: 6%;width: 19%;">至</view>
+        <picker class="pickerbox form-inp" mode="date" start="{{formdata.StartTime}}"  bindchange="endTfun" value="{{date}}">
+          <view class="flexbox-between">
+            <view>{{formdata.EndTime}}</view>
+            <image src='../../img/my-icon3.png' class='pickeicon'></image></view>
+        </picker>
+      </view>
+      <view class="seachbtn seachbtn-bg" data-type="1" bindtap="submitfun">搜索</view>
+      <view class="seachbtn" data-type="2" bindtap="submitfun">重置</view>
+    </view>
+  </view>
+  <view class="searchcondition">
+    <view class="flexbox-between2 mgB20 ditionbox" wx:if="{{formdata.userId}}">
+      <view class="flexbox-start dition-font ">
+        <text class="dition-color1">顾客ID：</text>
+        <text class="dition-color2">{{formdata.userId}}</text>
+      </view>
+      <image class="ditionicon" src="../../img/closetj.png" data-parameter="1" bindtap="changeparameterfun"></image>
+    </view>
+    <view class="flexbox-between2 mgB20 ditionbox" wx:if="{{formdata.vouName}}">
+      <view class="flexbox-start dition-font">
+        <text class="dition-color1">卡券名称：</text>
+        <text class="dition-color2">{{formdata.vouName}}</text>
+      </view>
+      <image class="ditionicon" src="../../img/closetj.png" data-parameter="2" bindtap="changeparameterfun"></image>
+    </view>
+    <view class="flexbox-between2 mgB20 ditionbox" wx:if="{{formdata.deliveryCode}}">
+      <view class="flexbox-start dition-font">
+        <text class="dition-color1">配送单号：</text>
+        <text class="dition-color2">{{formdata.deliveryCode}}</text>
+      </view>
+      <image class="ditionicon" src="../../img/closetj.png" data-parameter="3" bindtap="changeparameterfun"></image>
+    </view>
+    <view class="flexbox-between2 mgB20 ditionbox" wx:if="{{formdata.pointName}}">
+      <view class="flexbox-start dition-font">
+        <text class="dition-color1">自提点：</text>
+        <text class="dition-color2">{{formdata.pointName}}</text>
+      </view>
+      <image class="ditionicon" src="../../img/closetj.png" data-parameter="4" bindtap="changeparameterfun"></image>
+    </view>
+    <view class="flexbox-between2 mgB20 ditionbox" wx:if="{{formdata.StartTime != '' || formdata.EndTime != ''}}">
+      <view class="flexbox-start dition-font">
+        <text class="dition-color1">核销时间：</text>
+        <view class="dition-color2">
+          {{formdata.StartTime}}
+          <block wx:if="{{formdata.StartTime == '' || formdata.EndTime == ''}}"></block>
+          <block wx:else>至</block>
+          {{formdata.EndTime}}
+        </view>
+      </view>
+      <image class="ditionicon" src="../../img/closetj.png" data-parameter="5" bindtap="changeparameterfun"></image>
+    </view>
+  </view>
+</view>
+<view class="box-w">
+  <block wx:if="{{classindex == 1 && voulist.length > 0}}">
+    <block wx:for="{{voulist}}" wx:for-item="item" wx:key="index">
+      <view class="itembox mgB20">
+        <view class="itembox-t">
+          <view class="itembox-font1">{{item.vouName}}</view>
+          <view class="itembox-font1 font-color3">¥ {{item.vouBasicPrice}}</view>
+          <view class="flexbox-start itembox-font1">
+            <text>用户ID</text>
+            <text>{{item.cusId}}  {{item.cusNickName}}</text>
+          </view>
+          <view class="flexbox-start itembox-font2">总次数 {{item.vouVerifiedTotal}}，已核销次数 {{item.vouVerifiedNum}}</view>
+          <view class="flexbox-start itembox-font2">有效期 {{item.vouStartDate}} 至 {{item.vouEndDate}}</view>
+        </view>
+        <image class="itemimg" mode="widthFix" src="../../img/dashed.png"></image>
+        <view class="itembox-b">
+          <view class="flexbox-start itembox-font2">
+            <text>卡券编号</text>
+            <text>{{item.vouId}}</text>
+          </view>
+          <view class="flexbox-start itembox-font2">
+            <text>核销人</text>
+            <text>{{item.verifiedEmpName}}</text>
+          </view>
+          <view class="flexbox-start itembox-font2">
+            <text>核销时间</text>
+            <text>{{item.vouUsedTime}}</text>
+          </view>
+          <view class="flexbox-start itembox-font2">
+            <text>核销地</text>
+            <text>{{item.verifiedAddress}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:elif="{{classindex == 2 && prodpointlist.length > 0}}">
+    <block wx:for="{{prodpointlist}}" wx:for-item="item" wx:key="index">
+      <view class="itembox mgB20">
+        <view class="itembox-t">
+          <view class="flexbox-start itembox-font1">
+            <text>配送单号</text>
+            <text>{{item.deliveryCode}}</text>
+          </view>
+          <view class="flexbox-start itembox-font1">
+            <text>自提点</text>
+            <text>{{item.pointName}}</text>
+          </view>
+          <view class="flexbox-start itembox-font1">
+            <text>用户ID</text>
+            <text>{{item.customerId}} {{item.customerName}}</text>
+          </view>
+          <view class="flexbox-start itembox-font1">
+            <text>核销时间</text>
+            <text>{{item.verifyTime}}</text>
+          </view>
+        </view>
+        <image class="itemimg" mode="widthFix" src="../../img/dashed.png"></image>
+        <view class="itembox-b flexbox-between" style="align-items: flex-start;">
+          <view class="itembox-font2 itembox-b-l">{{item.prodName}}</view>
+          <view class="itembox-b-r flexbox-end">
+            <view class="itembox-font2 font-color3 mgR15">¥ {{item.prodPrice}}</view>
+            <view class="itembox-font2">x {{item.prodCount}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:else>
+    <view class="datanull">暂无数据</view>
+  </block>
+</view>
+<image src="../../img/expendlogo.png" hidden="{{!floorstatus && floorstatus2}}" class="gotopicon" bindtap="goTop"></image>

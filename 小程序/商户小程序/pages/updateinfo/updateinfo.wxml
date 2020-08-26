@@ -1,0 +1,26 @@
+<!--pages/updateinfo/updateinfo.wxml-->
+<view class="mainbg">
+  <form bindsubmit='infoSubmit'>
+    <view class='userinfo'>
+      <text class='labuser'><text class="iconcolor">* </text>账号</text>
+      <input disabled='true' name="account" placeholder='请填写账号' placeholder-style='color:#cecece;' maxlength='20' class="txtuser discolor" value='{{userinfoData.account}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'>工号</text>
+      <input disabled='true' name="jobnum" placeholder='请填写工号' placeholder-style='color:#cecece;' maxlength='20' class="txtuser discolor" value='{{userinfoData.jobnum}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'>姓名</text>
+      <input name="name" placeholder='请填写姓名' placeholder-style='color:#cecece;' maxlength='20' class="txtuser" value='{{userinfoData.name}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'><text class="iconcolor">* </text>手机号</text>
+      <input type='number' name="phone" placeholder='请填写手机号' placeholder-style='color:#cecece;' maxlength='11' class="txtuser" value='{{userinfoData.phone}}'></input>
+    </view>
+    <view class='userinfo'>
+      <text class='labuser'>邮箱</text>
+      <input name="email" placeholder='请填写邮箱' placeholder-style='color:#cecece;' maxlength='32' class="txtuser" value='{{userinfoData.email}}'></input>
+    </view>
+    <button form-type='submit' class="submitbtn">确认</button>
+  </form>
+</view>

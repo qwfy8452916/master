@@ -1,0 +1,111 @@
+page{
+  padding-bottom: 120rpx;
+}
+.flexbox{
+  background: #ffffff;
+  padding: 20rpx 30rpx;
+  border-bottom: 0.5rpx solid #e5e5e5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.subicon{
+  display: block;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 25rpx;
+}
+.font-1{
+  font-size: 28rpx;
+  color: #2B2D30;
+  margin-bottom: 15rpx;
+}
+.font-2{
+  font-size: 24rpx;
+  color: #888FA1;
+}
+.subbtn{
+  position: fixed;
+  z-index: 2;
+  left: 15rpx;
+  right: 15rpx;
+  bottom: 30rpx;
+  font-size: 36rpx;
+  color: #ffffff;
+  background: rgba(246,91,91,1);
+  text-align: center;
+  line-height: 88rpx;
+  border-radius: 20rpx 20rpx;
+}
+.popups-boxbg{
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.popups-box{
+  position: absolute;
+  z-index: 2;
+  width: 90%;
+  left: 0;
+  right: 0;
+  top: 20%;
+  margin: 0 auto;
+}
+.popups-box-wh{
+  background: #ffffff;
+  border-radius: 20rpx 20rpx;
+  padding: 30rpx 40rpx;
+}
+.closebtn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 30rpx auto 0;
+}
+.popups-box-title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 30rpx;
+  font-weight: bold;
+}
+.mgbox{
+  padding-bottom: 20rpx;
+  border-bottom: 0.5rpx solid #e5e5e5;
+}
+.popups-box-font1{
+  font-size: 24rpx;
+  color: rgba(246,91,91,1);
+  line-height: 45rpx;
+  margin-bottom: 10rpx;
+}
+.popups-box-formbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5rpx solid #e5e5e5;
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 80rpx;
+}
+.form-l{
+  width: 20%;
+  letter-spacing: 14rpx;
+}
+.inpbox{
+  width: 78%;
+  height: 80rpx;
+}
+.sub-btn{
+  text-align: center;
+  font-size: 32rpx;
+  color: #ffffff;
+  line-height: 80rpx;
+  background: rgba(246,91,91,1);
+  margin-top: 60rpx;
+  border-radius: 20rpx 20rpx;
+}

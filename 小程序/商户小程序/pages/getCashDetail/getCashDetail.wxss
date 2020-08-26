@@ -1,0 +1,97 @@
+/* pages/getCashDetail/getCashDetail.wxss */
+page{
+  background: #ecedf3;
+  border-top: 1px solid #e4e4e5;
+  padding-bottom: 20rpx;
+}
+.wrap{
+  width: 100%;
+  padding:0 3%;
+  box-sizing: border-box; 
+  overflow: hidden;
+}
+.section{
+  border-radius: 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.titlebox{
+  padding: 25rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e9eaea;
+}
+.lineblock{
+   background: #10bbbb;
+   width: 8rpx;
+   height: 24rpx;
+   display: inline-block;
+   margin-right: 15rpx;
+   border-radius: 4rpx;
+}
+
+.inner{
+  overflow: hidden;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+.rowbox{
+  display: flex;
+  font-size: 28rpx;
+  align-items: center;
+  padding: 10rpx 3%;
+  box-sizing: border-box;
+}
+.rowboxTitle{
+  width: 130rpx;
+  margin-right:65rpx;
+  color:#888FA1; 
+}
+.rowboxInfo{
+  color:#2B2D30;
+  margin-right:90rpx; 
+}
+.rowboxInfo{
+  display: block !important;
+}
+.linebot{
+  border-bottom: 1px solid #e9eaea;
+  padding-bottom: 30rpx;
+}
+.padtop30{
+  padding-top:30rpx;
+}
+.imgbox{
+  overflow: hidden;
+  width: 100%;
+  padding: 15rpx 0rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content:space-around;
+  flex-wrap: wrap;
+}
+.imgbox .subimg{
+  width: 200rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.subimg image{
+  width: 100%;
+  height: 100%;
+}
+.tradebox{
+  overflow: hidden;
+  font-size: 28rpx;
+  padding: 25rpx 3%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+}
+.infoblock{
+  margin-top: 15rpx;
+}
+.padtop25{
+  padding-top: 25rpx;
+}

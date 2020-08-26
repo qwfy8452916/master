@@ -1,0 +1,35 @@
+<!--pages/applysuccess/applysuccess.wxml-->
+<view class="section">
+   <view class="ciclebox">
+     <image src="../../img/success.png"></image>
+   </view>
+   <view class="descbox">提交申请成功</view>
+   <view class="subdescbox">审核中...</view>
+</view>
+
+<view class="examBox">
+  <view class="listimg">
+    <view class="ciclebak cicletop">
+       <view class="subcicle"></view>
+    </view>
+    <view class="itemline"></view>
+    <view class="ciclebak ciclebott">
+       <view class="subcicle"></view>
+    </view>
+  </view>
+  <view class="listdesc">
+     <view class="listrow">
+        <view class="listrow_title">审核阶段</view>
+        <view class="listrow_info">申请提现后，提现金额进入审核阶段</view>
+     </view>
+     <view class="listrow listrowtip">
+        <view class="listrow_title">审核通过后</view>
+        <view class="listrow_info">提现金额将转入您的账户，请注意查收</view>
+     </view>
+  </view>
+</view>
+
+<view class="checkDetail">
+     <text bindtap="getCashRecord">查看提现记录></text>
+</view>
+

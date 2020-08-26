@@ -1,0 +1,66 @@
+<!--pages/miniNav/miniNav.wxml-->
+<view class="rowLine" bindtap="install" wx:if="{{pageAuthority['F:MS_CAB_CAB_INSTALL']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/install.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>安装</text>
+         <!-- <view class="redcircle"></view> -->
+       </view>
+       <view class="descbot">INSTALL</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>     
+
+<view class="rowLine" bindtap="replace" wx:if="{{pageAuthority['F:MS_CAB_CAB_REPLACEMANAGE']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/replace.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>更换</text>
+         <!-- <view class="redcircle"></view> -->
+       </view>
+       <view class="descbot">REPLACE</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>   
+
+<view class="rowLine" bindtap="replenishment" wx:if="{{pageAuthority['F:MS_REPL_RESTOCKMANAGE']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/replenish.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>补货</text>
+         <!-- <view class="redcircle"></view> -->
+       </view>
+       <view class="descbot">REPLENISHMENT</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<view class="rowLine" bindtap="repair" wx:if="{{pageAuthority['F:MS_CAB_REPAIRMANAGE']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/repair.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>维修</text>
+         <!-- <view class="redcircle"></view> -->
+       </view>
+       <view class="descbot">REPAIR</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<my-tabbar id="tabbar"></my-tabbar>

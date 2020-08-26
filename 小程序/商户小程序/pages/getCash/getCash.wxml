@@ -1,0 +1,56 @@
+<!--pages/getCash/getCash.wxml-->
+<view class="wrap">
+   <view class="section">
+      <view class="section_price">{{bankInfoData.withdrawMayAmount}}</view>
+      <view class="section_des">可提现金额(元)</view>
+      <view class="amountBox">
+        <view class="amountBox_item">￥</view>
+        <input class="amountBox_input" placeholder="请输入提现金额" placeholder-style="color:#C5C9CF" bindinput="jine"></input>
+      </view>
+   </view>
+
+   <view class="orderBox">
+      <view class="orderBox_title">
+        <view class="subline"></view>订单信息
+      </view>
+      <view class="itemrow">
+        <view class="itemrow_title">开户银行</view>
+        <view class="itemrow_info">{{bankInfoData.bank}}</view>
+      </view>
+      <view class="itemrow">
+        <view class="itemrow_title">账户名称</view>
+        <view class="itemrow_info">{{bankInfoData.bankAccountName}}</view>
+      </view>
+      <view class="itemrow">
+        <view class="itemrow_title">账号</view>
+        <view class="itemrow_info">{{bankInfoData.bankAccount}}</view>
+      </view>
+   </view>
+
+</view>
+
+<view class="examBox">
+  <view class="listimg">
+    <view class="ciclebak cicletop">
+       <view class="subcicle"></view>
+    </view>
+    <view class="itemline"></view>
+    <view class="ciclebak ciclebott">
+       <view class="subcicle"></view>
+    </view>
+  </view>
+  <view class="listdesc">
+     <view class="listrow">
+        <view class="listrow_title">审核阶段</view>
+        <view class="listrow_info">申请提现后，提现金额进入审核阶段</view>
+     </view>
+     <view class="listrow listrowtip">
+        <view class="listrow_title">审核通过后</view>
+        <view class="listrow_info">提现金额将转入您的账户，请注意查收</view>
+     </view>
+  </view>
+</view>
+
+<view class="sureBtn" bindtap="sureBtn" wx:if="{{authzData['F:MS_FIN_APPLYWITHDRA_SUB']}}">确定</view>
+
+

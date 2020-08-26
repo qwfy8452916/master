@@ -1,0 +1,34 @@
+<!--pages/hexCardTicket/hexCardTicket.wxml-->
+<view class="wrap">
+  <view class="cardsec">
+    <image class="cardsec_pic" src="../../img/cardticket.png"></image>
+    <view class="cishu">{{cardDetail.vouRemainingVerifiedNum}}</view>
+    <view class="yucishu">剩余使用次数</view>
+  </view>
+
+  <view class="whitebox">
+    <view class="prdbox">
+        <view class="prdboxlef">
+           <view class="prodpicbox">
+             <image src="{{cardDetail.vouImageUrl}}"></image>
+           </view>
+           <view class="proddescbox">
+              <view class="proddescbox_title">{{cardDetail.vouName}}</view>
+              <view class="proddescbox_price">￥{{cardDetail.vouBasicPrice}}</view>
+           </view>
+        </view>
+        <view class="prodhex">到店核销</view>
+    </view>
+
+      <view class="carddescbox">
+      {{cardDetail.vouInstruction}}
+    </view>
+    <view class="lastdate">最后使用时间：{{cardDetail.vouEndDate}}</view>
+  </view>
+  
+  <view class="tiptitle"><text class="iconfont icon2"></text>提示</view>
+  <view class="tipinfo">核销表示顾客已经使用了此卡券，核销后不可撤销，请仔细核对卡券内容，并和顾客当面确认无误！</view>
+
+<view class="surehx" bindtap="surehx">确认核销</view>
+
+</view>

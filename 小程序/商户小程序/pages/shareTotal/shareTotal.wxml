@@ -1,0 +1,60 @@
+<!--pages/shareTotal/shareTotal.wxml-->
+<view class="content">
+    <view class="share">
+        <view class="share1">
+            <view class="share1_1">
+                <view class="image">
+                    <image style="width:15px;height:15px;" src="../../img/employ.png" />
+                </view>
+                <view class="grade">
+                    分销管理员
+                </view>
+            </view>
+            <view class="share1_2">
+                <view class="nums">{{shareData.shareDataTotal}}</view>
+                <view class="numwords">分享奖励总额（元）</view>
+            </view>
+        </view>
+        <view class="share2">
+            <view class="item2_2">
+                <view class="data1">
+                    <text class="numstyle">{{shareData.prodSaleCount}}</text>
+                    <text class="numword">售出商品数量</text>
+                </view>
+                <view class="data1">
+                    <text class="numstyle">{{shareData.orderAmount}}</text>
+                    <text class="numword">订单总额</text>
+                </view>
+                <view class="data1">
+                    <text class="numstyle">{{shareData.shareBonus}}</text>
+                    <text class="numword">分享奖励总额</text>
+                </view>
+                <view class="data1">
+                    <text class="numstyle">{{shareData.shareManageBonus}}</text>
+                    <text class="numword">管理奖励总额</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="share3">
+            <view class="item3_1">
+                <image style="width:13px;height:13px" src="../../img/share.png" />
+                <text class="visit">分享次数</text>
+                <text class="num">{{shareData.shareCount}}</text>
+            </view>
+            <view class="item3_1">
+                <image style="width:13px;height:13px" src="../../img/eye.png" />
+                <text class="visit">分享访问次数</text>
+                <text class="num">{{shareData.shareVisitCount}}</text>
+            </view>
+            <view class="item3_1">
+                <image style="width:13px;height:13px" src="../../img/order.png" />
+                <text class="visit">订单数量</text>
+                <text class="num">{{shareData.orderCount}}</text>
+            </view>
+            <navigator wx:if="{{authzData['F:MS_BRANCH_DETAIL']}}" url="/pages/shareRecords/shareRecords" hover-class="navigator-hover" class="view">
+                查看详情
+            </navigator>
+        </view>
+    </view>
+</view>

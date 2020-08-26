@@ -10,7 +10,21 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/longan': {
+        // target: 'http://192.168.1.121:9001',  // 接口域名  李刘刚
+        // target: 'http://192.168.1.122:9001', // 接口域名  孙志扬
+        target: 'http://122.51.200.225',  // 接口域名
+        // target: 'http://192.168.1.83:9001',  // 接口域名  纪立
+        // target: 'http://172.16.200.90:9001',     // 接口域名
+        // target: 'http://172.16.200.165:9001',     // 接口域名
+
+        changeOrigin: true,  //是否跨域
+        pathRewrite: {
+            '^/longan': '/longan'   //需要rewrite重写的,
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

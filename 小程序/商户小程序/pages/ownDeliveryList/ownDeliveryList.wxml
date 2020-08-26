@@ -1,0 +1,265 @@
+<!--pages/ownDeliveryList/ownDeliveryList.wxml-->
+<picker class="pickbox orderstatus" bindchange="bindPickerOrder" range-key="name" value="{{orderStatusIndex}}" range="{{orderStatusData}}">
+  <view class="picker">
+    <text class="alignlef">
+              <text class="pickeritem">配送单状态</text>
+              <text wx:if="{{orderStatusData[orderStatusIndex].id}}">{{orderStatusData[orderStatusIndex].name}}</text>
+    </text>
+    <text class="alignrig">
+                
+    <text wx:if="{{!orderStatusData[orderStatusIndex].id}}" class="placemsall">全部</text>
+    <text class="iconfont iconwangyou"></text>
+    </text>
+  </view>
+</picker>
+
+<view class="searchWrap">
+  <view class="expandbox">
+    <view class="searchdesc expenditem">
+      <image class="searchlogo" src="../../img/searchlogo.png"></image>
+      搜索
+    </view>
+    <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+      <image src="../../img/expendlogo.png"></image>
+    </view>
+  </view>
+  <view wx:if="{{switchJudge}}">
+
+    <view class="rowbox">
+      <view class="rowtitle">配送单号</view>
+      <view>
+        <input placeholder="请输入配送单号" bindinput="deliveryCode" value="{{deliveryCode}}"></input>
+      </view>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerFun" range-key="funcCnName" value="{{funcIndex}}" range="{{functionList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">功能区</text>
+              <text wx:if="{{functionList[funcIndex].id}}">{{functionList[funcIndex].funcCnName}}</text>
+        
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!functionList[funcIndex].id}}" class="placems">全部</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+
+
+    <view class="pickbox">
+      <text class="alignlef selectdate">支付时间</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text wx:if="{{date}}">{{date}}</text>
+            <text wx:else class="placems">起始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" value="{{date2}}" bindchange="bindDateChange2">
+          <view class="picker">
+            <text wx:if="{{date2}}">{{date2}}</text>
+            <text wx:else class="placems">终止时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerDeliv" range-key="name" value="{{deliStausIndex}}" range="{{deliStatusData}}">
+      <view class="picker">
+        <text class="alignlef">
+                <text class="pickeritem">外卖状态</text>
+                <text wx:if="{{deliStatusData[deliStausIndex].id}}">{{deliStatusData[deliStausIndex].name}}</text>
+        
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!deliStatusData[deliStausIndex].id}}" class="placems">全部</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+    <view class="searchBtn" bindtap="searchBtn">搜索</view>
+    <view class="reset" bindtap="reset">重置</view>
+  </view>
+</view>
+
+<view class="wrap">
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+          <view class="searitembox" wx:else>
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="delivBox" wx:for="{{deliveryDataList}}" wx:key>
+    <view class="headbox">
+      <view class="headlef">配送单号 {{item.delivCode}}</view>
+      <view class="orabtn">
+        <text wx:if="{{item.status===0}}">待确认</text>
+        <text wx:if="{{item.status==1}}">已确认</text>
+        <text wx:if="{{item.status==2}}">已发货</text>
+        <text wx:if="{{item.status==3}}">部分退款</text>
+        <text wx:if="{{item.status==4}}">全部退款</text>
+        <text wx:if="{{item.status==5}}">已售后</text>
+      </view>
+    </view>
+  <view class="funwrap">
+    <view class="funbox">
+      <view class="funsign">{{item.roomFloor}}-{{item.roomCode}}</view>
+      <view class="funName">{{item.funcName}}</view>
+    </view>
+    <view class="backbox">
+     <view>
+      <view class="eximg">
+        <image src="../../img/expimg.png"></image>
+      </view>
+      <view class="express">
+        <text wx:if="{{item.delivWay==1}}">店内送</text>
+        <text wx:if="{{item.delivWay==2}}">快递送</text>
+        <text wx:if="{{item.delivWay==3}}">迷你吧</text>
+        <text wx:if="{{item.delivWay==4}}">自提</text>
+        <text wx:if="{{item.delivWay==5}}">电子券</text>
+        <text wx:if="{{item.delivWay==6}}">堂食</text>
+        <text wx:if="{{item.delivWay==7}}">外卖</text>
+        <text wx:if="{{item.delivWay==8}}">外带</text>
+      </view>
+     </view>
+     <view wx:if="{{item.delivWay==7}}">
+        <text wx:if="{{item.lgcStatus==1}}">待接单</text>
+        <text wx:if="{{item.lgcStatus==2}}">待取货</text>
+        <text wx:if="{{item.lgcStatus==3}}">配送中</text>
+        <text wx:if="{{item.lgcStatus==4}}">已完成</text>
+        <text wx:if="{{item.lgcStatus==5}}">已取消</text>
+        <text wx:if="{{item.lgcStatus==6}}">异常</text>
+     </view>
+    </view>
+    <view class="idbox">
+      <view>用户ID</view>
+      <view class="idtext">{{item.customerId}}</view>
+    </view>
+    <view class="descbox">
+      <view>商品金额</view>
+      <view>￥{{item.totalAmount}}</view>
+    </view>
+    <view class="descbox">
+      <view>优惠金额</view>
+      <view>￥{{item.couponAmount}}</view>
+    </view>
+    <view class="descbox botborder">
+      <view>减免金额</view>
+      <view>￥{{item.discountAmount}}</view>
+    </view>
+    <view class="amounbox">
+      <view>共{{item.prodCount}}件商品</view>
+      <view class="marginjv">实付金额</view>
+      <view>¥{{item.actualPay}}</view>
+    </view>
+   </view>
+    <view class="paybox">
+      <view>支付时间</view>
+      <view class="marginjv">{{item.payCompleteTime}}</view>
+    </view>
+    <view class="btnbox">
+      <view class="btndefa btndetail" data-id="{{item.id}}" bindtap="btndetail" wx:if="{{authzData['F:MS_ORDER_OWNDELIV_DETAIL']}}">详情</view>
+      <view class="btnsure" data-id="{{item.id}}">
+        <text class="btndefa blueBen" wx:if="{{item.status===0 && authzData['F:MS_ORDER_OWNDELIV_CONFIRM']}}" data-id="{{item.id}}" bindtap="delisure">确认</text>
+        <text class="btndefa fahuo" wx:if="{{(item.delivWay == 2 || item.delivWay == 7) && item.status == 1 && authzData['F:MS_ORDER_OWNDELIV_DELIVGOOD']}}" bindtap="fahuo" data-delivway="{{item.delivWay}}" data-id="{{item.id}}">发货</text>
+        <text class="btndefa blueBen" wx:if="{{item.lgcStatus==5 && item.status==2 && authzData['F:MS_ORDER_OWNDELIV_AGAINSEND']}}" bindtap="againShipmentsDelivery" data-delivcode="{{item.delivCode}}">重新发单</text>
+        <text class="btndefa blueBen" wx:if="{{item.lgcHotelId!==0 && item.lgcStatus!=4 && item.status !== 0 && item.status!=1 && authzData['F:MS_ORDER_OWNDELIV_UPDATE']}}" bindtap="updateLgcStatus" data-delivcode="{{item.delivCode}}">更新状态</text>
+      </view>
+    </view>
+  </view>
+
+</view>
+<!-- 发货 -->
+<view class="saleDoalog" wx:if="{{diajudge}}">
+  <view class="saleContent2">
+    <view class="diotitle">发货</view>
+    <view class="diarow">
+      <view class="rowtitle2">物流公司
+      </view>
+      <view class="inputbox2">
+        <input value="{{wlcompany}}" maxlength="20" bindinput="inputwlcompany"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle2">快递单号</view>
+      <view class="inputbox2">
+        <input value="{{wlcode}}" maxlength="30" bindinput="inputwlcode"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle2">发货时间</view>
+      <view class="inputbox2 fahuotime">
+        <picker class="pickertime" mode="date" value="{{fahuodate}}" bindchange="bindDateChangefh">
+          <view class="picker">
+            <text wx:if="{{fahuodate}}">{{fahuodate}}</text>
+            <text wx:else class="fahuotip">选择发货时间</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="diabtnbox">
+      <view class="refusebtn" bindtap="fahuocancel">取消</view>
+      <view class="adoptbtn" bindtap="delivfahuo">发货</view>
+    </view>
+  </view>
+</view>
+<!-- 发货 -->
+
+<!-- 物流公司 -->
+<view class="dialogyy" wx:if="{{fahuojudge}}">
+  <view class="diacontent">
+    <view class="diatitle">是否确认发货</view>
+    <view class="radioBox">
+      <radio-group class="danxuanzu" bindchange="radioChange">
+        <view class='statuone'>
+          <label class="radio">
+            <radio name="jieguo" value="2" />
+          </label>商家自送</view>
+        <view class='statutwo'>
+          <label class="radio">
+            <radio name="jieguo" value="1" />
+          </label>外部物流配送</view>
+      </radio-group>
+    </view>
+    <picker class="pickbox logisticsxz" bindchange="bindPickerlogistics" range-key="logisticsName" value="{{logisticsIndex}}" range="{{logisticsList}}">
+      <view class="picker">
+        <text class="alignlef selectdefault">
+              <text wx:if="{{logisticsList[logisticsIndex].id}}">{{logisticsList[logisticsIndex].logisticsName}}</text>
+              <text class="defaultcolor" wx:else>请选择</text>
+        </text>
+        <text class="alignrig">
+                
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+    <view class="fahuobtnbox">
+      <view class="fahuocan btnniu" bindtap="fahuocan">取消</view>
+      <view class="fahuosure btnniu" bindtap="fahuosure">确认</view>
+    </view>
+  </view>
+</view>
+<!-- 物流公司 -->

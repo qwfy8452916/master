@@ -1,0 +1,123 @@
+/* pages/couponGroup/couponGroup.wxss */
+page{
+  background: #f6f6f6;
+}
+.wrap{
+  width: 100%;
+  padding: 0rpx 3%;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 150rpx;
+}
+.groupBox{
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+.groupTitle{
+  font-size: 32rpx;
+  color: #2B2D30;
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+}
+.linebak{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  border-radius: 4rpx;
+  margin-right: 15rpx;
+}
+.btnbox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.btnitem{
+  font-size: 24rpx;
+  color: #2B2D30;
+  padding: 10rpx 35rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  border: 1px solid #d8d8d9;
+}
+.editbtn{
+  margin-right: 20rpx;
+}
+.fenzu{
+  width: 100%;
+  text-align: center;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background: linear-gradient(to right,#F0904D,#ED7142);
+  color: #fff;
+  font-size: 36rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+
+
+.shadowBox{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.groupbox{
+  width: 84%;
+  border-radius: 20rpx;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200rpx;
+  margin: auto;
+  padding: 40rpx 50rpx;
+  box-sizing: border-box;
+}
+.addtitle{
+  text-align: center;
+  font-size: 36rpx;
+  color: #060C27;
+  margin-top: 20rpx;
+}
+.inputBox{
+  margin-top: 70rpx;
+  text-align: center;
+  border-bottom: 1px solid #d5d5d6;
+  font-size: 32rpx;
+  padding: 20rpx 0rpx;
+  box-sizing: border-box;
+}
+.addbtn{
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  background-image: linear-gradient(to right,#F0904D,#ED7142);
+  padding: 15rpx 0rpx;
+  border-radius: 34rpx;
+  margin-top: 60rpx;
+}
+.iconguanbi{
+  position: absolute;
+  color: #838694;
+  font-size: 46rpx;
+  left: 50%;
+  transform: translateX(-50%,0);
+  bottom: -120rpx;
+  display: inline-block;
+}
+

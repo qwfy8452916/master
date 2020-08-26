@@ -1,0 +1,133 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"preloadBackgroundData": false,
+		"compileHotReLoad": false,
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.4",
+	"appid": "wx0f0f77d87e8e567c",
+	"projectname": "%E5%95%86%E6%88%B7%E5%B0%8F%E7%A8%8B%E5%BA%8F",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "90-006",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01001909250006&scancode_time=1579163318",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "90-089",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01001909250089&scancode_time=1584003907",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上柜子216",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01111911280017&scancode_time=1585381715",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "开发库",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01111901134001&scancode_time=1585625305",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "转增",
+					"pathName": "pages/login/login",
+					"query": "sharecode=m_gm45x4rt",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "900585",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D05111911280085&scancode_time=1587643667",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "900185",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D01111911280085&scancode_time=1587649070",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "分享",
+					"pathName": "pages/login/login",
+					"query": "employee=m_8x75x4rt",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线上大堂",
+					"pathName": "pages/login/login",
+					"query": "q=http%3A%2F%2Fcab.kefangbao.com.cn%2F%3Fc%3D04000049001001&scancode_time=1589014807",
+					"scene": null
+				}
+			]
+		}
+	}
+}

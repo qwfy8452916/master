@@ -1,0 +1,135 @@
+/* pages/foodOrderEdit/foodOrderEdit.wxss */
+page{
+  border-top: 1px solid #e5e5e5;
+}
+.wrap{
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 100rpx;
+}
+.orderBox{
+  width: 100%;
+  padding:30rpx 4%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+}
+.imgTextbox{
+  display: flex;
+  align-items: top;
+  justify-content: flex-start;
+}
+.imgbox{
+  width:160rpx;
+  height: 128rpx; 
+}
+.imgbox image{
+  width: 100%;
+  height: 100%;
+}
+.orderdesc{
+  width: calc(100% - 190rpx);
+  margin-left: 30rpx;
+  font-size: 24rpx;
+  color: #888FA1;
+  position: relative;
+}
+.prodSpecs{
+  font-size: 20rpx;
+  color: #EE1E1E;
+  position: absolute;
+  bottom:10rpx; 
+}
+.specsbak{
+  background:#ffeeed;
+  display: inline-block;
+  padding: 5rpx 10rpx; 
+}
+.btnbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.removebtn{
+  display: inline-block;
+  padding: 10rpx 35rpx;
+  box-sizing: border-box;
+  font-size:24rpx;
+  color: #FF6930; 
+  background: #ffe1d9;
+  border-radius: 24rpx;
+}
+.lefbox{
+  display: flex;
+}
+.jinebox{
+  color: #EE1E1E;
+  font-size: 20rpx;
+  margin-left: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.inputmoney{
+  display: inline-block;
+  width: 136rpx;
+  height: 48rpx;
+  background: #f3f5f7;
+  text-align: center;
+  margin-left: 10rpx;
+  border-radius: 5rpx;
+}
+.rigbox{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.reduce,.plus{
+  width: 42rpx;
+  height: 42rpx;
+  overflow: hidden;
+}
+.reduce image,.plus image{
+  width: 100%;
+  height: 100%;
+}
+.number{
+  margin: 0rpx 30rpx;
+}
+
+.botbox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+.addprod{
+  display: flex;
+  align-items: center;
+  margin-left: 50rpx;
+  vertical-align: middle;
+  font-size: 28rpx;
+  color: #FF6930;
+}
+.addimg{
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 15rpx;
+  overflow: hidden;
+}
+.addimg image{
+  width: 100%;
+  height: 100%;
+}
+.surebtn{
+  color: #fff;
+  font-size: 36rpx;
+  padding: 30rpx 95rpx;
+  box-sizing: border-box;
+  background-image: linear-gradient(to right,#ee8d4e,#eb7142)
+}
+
+

@@ -1,0 +1,51 @@
+<!--pages/addProd/addProd.wxml-->
+<view class="wrap">
+  <view class="titlebox">
+    <view class="linebak"></view>{{funcName}}
+  </view>
+
+  <picker class="pickbox" bindchange="bindPickerCategory" range-key="categoryName" value="{{categoryIndex}}" range="{{categoryList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">市场分类</text>
+              <text wx:if="{{categoryList[categoryIndex].id}}">{{categoryList[categoryIndex].categoryName}}</text>
+        
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!categoryList[categoryIndex].id}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+    <picker class="pickbox" bindchange="bindPickerProd" range-key="prodName" value="{{prodListIndex}}" range="{{prodList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">商品</text>
+              <text wx:if="{{prodList[prodListIndex].id}}">{{prodList[prodListIndex].prodName}}</text>
+        
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!prodList[prodListIndex].id}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+    <picker class="pickbox" bindchange="bindPickerSpec" range-key="specName" value="{{specListIndex}}" range="{{specList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">规格</text>
+              <text wx:if="{{specList[specListIndex].id}}">{{specList[specListIndex].specName}}</text>
+        
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!specList[specListIndex].id}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
+
+

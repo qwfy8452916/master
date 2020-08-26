@@ -1,0 +1,14 @@
+/* pages/getcashrecordPri/getcashrecordPri.wxss */
+page{border-top: 1px solid #cccccc;}
+.itemwrap{overflow: hidden;padding-left: 4%;box-sizing: border-box;}
+.itemwrap .item{width: 100%;padding:20rpx 0;box-sizing: border-box;
+border-bottom: 1px solid #cccccc;overflow: hidden;font-size: 30rpx;
+}
+.item .lefttext{float: left;}
+.item .righttext{float: right;margin-right:4%;}
+.item .clearfu{overflow: hidden;}
+.item .datetime{font-size: 30rpx;color: #999;overflow: hidden;display: block;
+clear: both;margin-top: 12rpx;}
+
+.checkmore{text-align: center;color: #ffa400;font-size: 30rpx;
+margin-top: 27rpx;}

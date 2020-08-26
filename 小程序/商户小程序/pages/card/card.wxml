@@ -1,0 +1,33 @@
+<!--pages/card/card.wxml-->
+<view class="rowLine" bindtap="cardManage" wx:if="{{authzData['F:MS_VOU_CARDCOUPONMANAGE']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/minilogo.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>卡券管理</text>
+       </view>
+       <view class="descbot">CARD MANAGEMENT</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>     
+
+<view class="rowLine" bindtap="userCard" wx:if="{{authzData['F:MS_VOU_USERCARDMANAGE']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/minilogo.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>用户卡券</text>
+       </view>
+       <view class="descbot">USER CARD VOUCHER</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>   
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello world</title>
+</head>
+<body>
+    首页
+    <h4>{{title}}</h4>
+
+    <div class="aa">点击按钮</div>
+  
+  <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+     $(function(){
+      
+      $('.aa').click(function(){
+
+        $.ajax({
+                type: "POST",
+                url: "http://122.51.200.225/longan/api/user/login",
+                contentType:'application/json',
+                data:{
+                  account: '156301201',
+                  password: '123456',
+                  orgTypes: [3],
+                },
+                dataType:'json',
+                success:function (response) {
+                    console.log(response)
+                    alert('操作成功！')
+                    
+                    
+                },
+                error:function(xhr){
+                   console.log("报错")
+                   alert(xhr)
+                }
+            })
+
+      })
+    
+
+     })
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* pages/sceneSelect/sceneSelect.wxss */
+page{
+  background: #f5f5f6;
+  border-top: 1px solid #e5e5e5;
+}
+.wrap{
+  width: 100%;
+  padding: 0rpx 3%;
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+.funitem{
+  padding: 30rpx 0rpx;
+  font-size: 36rpx;
+  background: #fff;
+  border-radius:44rpx; 
+  text-align: center;
+  margin-top: 40rpx;
+}
+.active{
+  background: #83d8d8;
+  color: #fff;
+}
+.surebtn{
+  font-size:36rpx;
+  color: #fff;
+  background-image:linear-gradient(to right,#F0904D,#ED7142);
+  text-align: center;
+  padding: 30rpx 0rpx;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+
+
+

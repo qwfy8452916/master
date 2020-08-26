@@ -1,0 +1,73 @@
+<!--pages/shareRecords/shareRecords.wxml-->
+<view class="share">
+    <!-- <view class="menu">
+        <text class="menu1">分享记录</text>
+        <text class="menu1">分享访问记录</text>
+        <text class="menu1">分享订单记录</text>
+    </view> -->
+    <view class="shareContent">
+        <view class="shareItem" wx:for="{{shareData}}" wx:key>
+            <view class="item1">
+                <text style="color:#333">分享记录ID：{{item.id}}</text>
+                <text style="color:#888C8F" wx:if="{{item.shareType == 1}}">-列表-</text>
+                <text style="color:#888C8F" wx:if="{{item.shareType == 2}}">-单项-</text>
+                <text style="color:#888C8F" wx:if="{{item.shareType == 3}}">-分类-</text>
+            </view>
+            <view class="item2">
+                <view class="item2_1">
+                    <image style="width:13px;height:13px;" src="../../img/menu.png" />
+                    <text style="margin-left:5px">{{item.modelName}}</text>
+                </view>
+                <view class="item2_2">
+                    <view class="data1">
+                        <text class="numstyle">{{item.saleProdCount}}</text>
+                        <text class="numword">售出商品数量</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.orderAmount}}</text>
+                        <text class="numword">订单总额</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.shareBonus}}</text>
+                        <text class="numword">分享奖励总额</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.shareManageBonus}}</text>
+                        <text class="numword">管理奖励总额</text>
+                    </view>
+                </view>
+            </view>
+            <view class="item3">
+                <view class="item3_1" wx:if="{{item.shareType != 1}}">
+                    <image style="width:13px;height:13px" src="../../img/people.png" />
+                    <text class="visit">分享对象</text>
+                    <text class="num">{{item.shareObjName}}</text>
+                </view>
+                <view class="item3_1">
+                    <image style="width:13px;height:13px" src="../../img/eye.png" />
+                    <text class="visit">分享访问次数</text>
+                    <text class="num">{{item.visitCount}}</text>
+                    <navigator url="{{'/pages/visitRecords/visitRecords?shareCode='+item.shareCode+'&shareId='+item.id}}}}" hover-class="navigator-hover" class="view">
+                        查看详情
+                        <text style="font-size:12px;" class="iconfont icon-wangyou"></text>
+                    </navigator>
+                </view>
+                <view class="item3_1">
+                    <image style="width:13px;height:13px" src="../../img/order.png" />
+                    <text class="visit">订单数量</text>
+                    <text class="num">{{item.orderCount}}</text>
+                    <navigator url="{{'/pages/orderRecords/orderRecords?shareCode='+item.shareCode+'&shareId='+item.id}}" hover-class="navigator-hover" class="view">
+                        查看详情
+                        <text style="font-size:12px;" class="iconfont icon-wangyou"></text>
+                    </navigator>
+                </view>
+            </view>
+            <view class="item4">
+                分享时间 {{item.shareTime}}
+            </view>
+        </view>
+    </view>
+    <view class="none" style="padding:30px 30px;font-size:14px;color:#ccc" wx:if="{{ifshow}}">
+        暂无分享记录
+    </view>
+</view>

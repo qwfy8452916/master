@@ -1,0 +1,381 @@
+/* pages/foodOrderDetail/foodOrderDetail.wxss */
+
+
+page{
+  background: #ecedf3;
+  border-top: 1px solid #e4e4e5;
+  padding-bottom: 20rpx;
+}
+.wrap{
+  width: 100%;
+  padding:0 3%;
+  box-sizing: border-box; 
+  overflow: hidden;
+  margin-bottom: 100rpx;
+}
+.section{
+  border-radius: 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.borradius{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.titlebox{
+  padding: 25rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e9eaea;
+  justify-content: space-between;
+}
+.lineblock{
+   background: #10bbbb;
+   width: 8rpx;
+   height: 24rpx;
+   display: inline-block;
+   margin-right: 15rpx;
+   border-radius: 4rpx;
+}
+.statuScolor{
+  color:#10bbbb; 
+}
+.waiitStatus{
+  color:#FF6930; 
+}
+
+.inner{
+  overflow: hidden;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+.rowbox{
+  display: flex;
+  font-size: 28rpx;
+  align-items: top;
+  padding: 10rpx 3%;
+  box-sizing: border-box;
+}
+.rowboxTitle{
+  width: 140rpx;
+  margin-right:20rpx;
+  color:#888FA1; 
+}
+.rowboxTitle2{
+  width: 175rpx;
+  margin-right:20rpx;
+  color:#888FA1; 
+}
+.rowboxInfo{
+  color:#2B2D30;
+  margin-right:90rpx; 
+  display: block !important;
+}
+.rowboxInfo2{
+  width: calc(100% - 200rpx);
+  margin-right: 0rpx !important;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.linebot{
+  border-bottom: 1px solid #e9eaea;
+  padding-bottom: 30rpx;
+}
+.padtop30{
+  padding-top:30rpx;
+}
+.imgbox{
+  overflow: hidden;
+  width: 100%;
+  padding: 15rpx 0rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content:space-around;
+  flex-wrap: wrap;
+}
+.imgbox .subimg{
+  width: 200rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.subimg image{
+  width: 100%;
+  height: 100%;
+}
+.tradebox{
+  overflow: hidden;
+  font-size: 28rpx;
+  padding: 25rpx 3%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+}
+.infoblock{
+  margin-top: 15rpx;
+}
+.padtop25{
+  padding-top: 25rpx;
+}
+ .refund{
+  width: 100%;
+  height:98rpx;
+  line-height: 98rpx;
+  color: #fff;
+  font-size:36rpx;
+  background-image: linear-gradient(to right,#f0904d,#ed7142);  
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+
+.saleDoalog{
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99;
+}
+.saleContent{
+  background: #fff;
+  width: 80%;
+  height:400rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; 
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+.saleContent2{
+  background: #fff;
+  width: 80%;
+  height:480rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; 
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+.diotitle{
+  text-align: center;
+  margin: 20rpx 0;
+}
+.diarow{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20rpx 0;
+}
+.rowtitle{
+  width:130rpx; 
+  text-align: right;
+  margin-right: 10rpx;
+}
+.rowtitle2{
+  width:240rpx; 
+  text-align: right;
+  margin-right: 10rpx;
+}
+.inputbox{
+  width: calc(100% - 180rpx);
+}
+.inputbox2{
+  width: calc(100% - 270rpx);
+}
+.inputbox input,.inputbox2 input{
+  border: 1px solid #d7d7d7;
+  height: 60rpx;
+  line-height: 30rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.inputbox textarea,.inputbox2 textarea{
+  border: 1px solid #d7d7d7;
+  height: 120rpx;
+  line-height: 40rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.diabtnbox{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 25rpx;
+}
+.refusebtn{
+  padding: 10rpx 25rpx;
+  border: 1px solid #bcbcbc;
+  border-radius: 10rpx;
+}
+.adoptbtn{
+  padding: 10rpx 25rpx;
+  border-radius: 10rpx;
+  background: #409eff;
+  color: #fff;
+  margin-left:15rpx; 
+}
+.greencol{
+  color:#10BBBB;
+  margin-top: 10rpx; 
+}
+.shuzhan{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff6f3;
+  color: #ff6930;
+  justify-content: center;
+  font-size:28rpx;
+  padding:20rpx 0;  
+  box-sizing: border-box;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+.suocontent{
+  height: 0;
+  overflow: hidden;
+}
+.icon-wangyou{
+  font-size: 26rpx;
+  transform: rotate(-90deg);
+  margin-left: 15rpx;
+  position: relative;
+  top: 7rpx;
+}
+.wangyouxz{
+  transform: rotate(-270deg);
+  position: relative;
+  top: -3rpx;
+}
+
+.infobox{
+  width: 100%;
+  display: flex;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  align-items: top;
+}
+.prdimgbox{
+  width: 160rpx;
+  height: 128rpx;
+  overflow: hidden;
+  border-radius: 5rpx;
+}
+.prdimgbox image{
+  width: 100%;
+  height: 100%;
+}
+.contentrig{
+  margin-left: 20rpx;
+  width: calc(100% - 180rpx);
+  position: relative;
+}
+.contentdesc{
+  font-size: 24rpx;
+  color: #888FA1;
+}
+.prodcount{
+  font-size: 24rpx;
+  color: #2B2D30;
+  position: absolute;
+  right: 10rpx;
+  top: 35rpx;
+}
+.guigemc{
+  background: #ffeded;
+  color: #EE1E1E;
+  font-size: 20rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 5rpx;
+  display: inline-block;
+}
+.tagbox{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10rpx;
+}
+.tagbtn{
+  background: #fff0ea;
+  color: #ff6930;
+  font-size: 20rpx;
+  padding: 5rpx 15rpx;
+  margin-right: 10rpx;
+}
+.prodprice{
+  color:#EE1E1E;
+  font-size: 20rpx; 
+  text-align: right;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  padding-bottom:15rpx; 
+}
+.betwbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #888FA1;
+  margin-top: 10rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.jinebtw{
+  color: #2B2D30;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.actual{
+  color: #888FA1;
+  font-size: 24rpx;
+  margin-right: 10rpx;
+}
+.btnwrap{
+  width: 100%;
+  padding: 20rpx 20rpx 0rpx 20rpx;
+  box-sizing: border-box;
+  text-align: right;
+}
+.exitbtn{
+  padding: 5rpx 35rpx;
+  box-sizing: border-box;
+  border-radius: 40rpx;
+  color: #ff6930;
+  border: 1px solid #ff6930;
+  display: inline-block;
+}
+.btnsub{
+  width: 100%;
+  font-size: 36rpx;
+  color: #fff;
+  
+  text-align: center;
+  padding: 30rpx 0rpx;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+}
+.oraginse{
+  background: #FF6930;
+}
+.bluese{
+  background:#15bebe;
+}
+
+
+

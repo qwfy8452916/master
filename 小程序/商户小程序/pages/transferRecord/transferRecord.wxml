@@ -1,0 +1,61 @@
+<!--pages/transferRecord/transferRecord.wxml-->
+<block wx:if="{{giveRecordData.length>0}}">
+<view class="itemBox" wx:for="{{giveRecordData}}" wx:key>
+   <view class="itemlef">
+      <view class="daterq">
+         <text wx:if="{{item.isFirstGetUser===0}}">{{item.givedTimedate}}</text>
+         <text wx:if="{{item.isFirstGetUser===1}}">{{item.firstGetTimedate}}</text>
+      </view>
+      <view>
+         <text wx:if="{{item.isFirstGetUser===0}}">{{item.givedTime}}</text>
+         <text wx:if="{{item.isFirstGetUser===1}}">{{item.firstGetTime}}</text>
+      </view>
+      <view class="wrapcircle">
+         <view class="wkcicle recewkcicle" wx:if="{{item.isFirstGetUser===0}}">
+            <view class="smallcircle recesmallcircle"></view>
+         </view>
+         <view class="wkcicle" wx:if="{{item.isFirstGetUser===1}}">
+            <view class="smallcircle"></view>
+         </view>
+      </view>
+      <view class="linexian"></view>
+      
+   </view>
+   <view class="itemrig" wx:if="{{item.isFirstGetUser===0}}">
+      <view class="rowrig">
+         <text class="receman rowtitle">接收人</text>
+         <text class="rowinfo">{{item.receivedUserNickName}}</text>
+      </view>
+      <view class="rowrig">
+         <text class="rowtitle">联系电话</text>
+         <text class="rowinfo">{{item.receivedUserPhone}}</text>
+      </view>
+      <view class="rowrig">
+         <text class="rowtitle">接收人ID</text>
+         <text class="rowinfo">{{item.receivedUserId}}</text>
+      </view>
+   </view>
+
+   <view class="itemrig" wx:if="{{item.isFirstGetUser===1}}">
+      <view class="rowrig">
+         <text class="buyman rowtitle">购买人</text>
+         <text class="rowinfo">{{item.firstGetUserNickName}}</text>
+      </view>
+      <view class="rowrig">
+         <text class="rowtitle">联系电话</text>
+         <text class="rowinfo">{{item.firstGetUserPhone}}</text>
+      </view>
+      <view class="rowrig">
+         <text class="rowtitle">购买人ID</text>
+         <text class="rowinfo">{{item.firstGetUserId}}</text>
+      </view>
+   </view>
+
+</view>
+</block>
+<block wx:else>
+    <view class="nodata">暂无数据</view>
+</block>
+
+
+

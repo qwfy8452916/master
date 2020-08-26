@@ -1,0 +1,116 @@
+<!--pages/roomDelivDetail/roomDelivDetail.wxml-->
+
+<view class="wrap">
+  <view class="section borradius {{shuzhanJudge?'':'suocontent'}}">
+    <view class="titlebox">
+      <view>
+        <view class="lineblock"></view>订单信息
+      </view>
+      <view>
+        <text class="statuScolor">
+              <text class="waiitStatus" wx:if="{{deliveryDateDetail.status==0}}">待确认</text>
+              <text wx:if="{{deliveryDateDetail.status==1}}">已确认</text>
+              <text wx:if="{{deliveryDateDetail.status==2}}">已配送</text>
+              <text wx:if="{{deliveryDateDetail.status==3}}">部分退款</text>
+              <text wx:if="{{deliveryDateDetail.status==4}}">全部退款</text>
+              <text wx:if="{{deliveryDateDetail.status==5}}">已收货</text>
+        </text>
+      </view>
+    </view>
+    <view class="inner">
+      <view class="rowbox">
+        <view class="rowboxTitle">配送单号</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.delivCode}}</view>
+      </view>
+      <!-- <view class="rowbox">
+        <view class="rowboxTitle">{{deliveryDateDetail.funcName}}</view>
+        <view class="rowboxInfo">
+           <text wx:if="{{deliveryDateDetail.delivWay == 1}}">店内送</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 2}}">快递送</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 3}}">迷你吧</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 4}}">自提</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 5}}">电子商品</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 6}}">堂食</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 7}}">外卖</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 8}}">外带</text>
+        </view>
+      </view> -->
+      <view class="rowbox">
+        <view class="rowboxTitle">楼层</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.roomFloor}}楼</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">房间号</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.roomFloor}}-{{deliveryDateDetail.roomCode}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">服务类型</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.rmavcRecordsDto.hotelCategoryName}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">用户id</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.customerId}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">手机号</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.contactPhone}}</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">用户备注</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.roomDeliveryRemark}}</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">提交时间</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.payTime}}</view>
+      </view>
+    
+      <view class="rowbox" wx:if="{{deliveryDateDetail.status != 0}}">
+        <view class="rowboxTitle">确认人</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.confirmPeople}}</view>
+      </view>
+      <view class="rowbox linebot" wx:if="{{deliveryDateDetail.status != 0}}">
+        <view class="rowboxTitle">确认时间</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.confirmTime}}</view>
+      </view>
+
+      
+     
+    </view>
+  </view>
+  <view class="shuzhan" bindtap="shuzhan">
+    <text wx:if="{{shuzhanJudge}}">收起</text>
+    <text wx:else>展开</text>
+    <text class="iconfont icon-wangyou {{shuzhanJudge?'':'wangyouxz'}}"></text>
+  </view>
+
+  <view class="section">
+    <view class="titlebox">
+      <view>
+        <view class="lineblock"></view>客房服务信息
+      </view>
+    </view>
+    <view class="inner" wx:for="{{selectDataList}}" wx:key="index" wx:if="{{isShowSelectList}}">
+      <view class="serverName">{{item.commonStyleDTO.name}}</view>
+      <view class="pricebox">{{item.commonStyleDTO.price}}元/{{item.commonStyleDTO.unit}}</view>
+   </view>   
+
+   <view class="inner" wx:for="{{bannerDataList}}" wx:key="index" wx:if="{{isShowBannerList}}">
+      <view class="serverName">{{item.commonStyleDTO.name}}</view>
+      <view class="pricebox">x{{item.count}}</view>
+      <view class="serverName">{{item.commonStyleDTO.description}}</view>
+   </view>   
+
+   <view class="inner" wx:for="{{iconDataList}}" wx:key="index" wx:if="{{isShowIconList}}">
+      <view class="serverName">{{item.commonStyleDTO.name}}</view>
+      <view class="pricebox">x{{item.count}}</view>
+   </view>   
+
+   <view class="inner" wx:for="{{formDataList}}" wx:key="index" wx:if="{{isShowFormList}}">
+      <view class="serverName">{{item.commonStyleDTO.name}}</view>
+   </view> 
+
+  </view>
+</view>
+
+
+<view class="btnsub bluese" wx:if="{{deliveryDateDetail.status == 0}}" data-id="{{deliveryDateDetail.id}}" bindtap="delisure">确定</view>

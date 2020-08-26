@@ -1,0 +1,189 @@
+<!--pages/couponBatch/couponBatch.wxml-->
+<view class="searchWrap">
+  <view class="expandbox">
+    <view class="searchdesc expenditem">
+      <image class="searchlogo" src="../../img/searchlogo.png"></image>
+      搜索
+    </view>
+    <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+      <image src="../../img/expendlogo.png"></image>
+    </view>
+  </view>
+  <view wx:if="{{switchJudge}}">
+
+
+    <view class="rowbox">
+      <view class="rowtitle">批次名称</view>
+      <view>
+        <input placeholder="请输入批次名称" bindinput="batchInput" value="{{formdata.couponBatchName}}"></input>
+      </view>
+    </view>
+
+    <view class="rowbox">
+      <view class="rowtitle">优惠券名称</view>
+      <view>
+        <input placeholder="请输入优惠券" bindinput="couponInput" value="{{formdata.couponName}}"></input>
+      </view>
+    </view>
+
+    <view class="rowbox">
+      <view class="rowtitle">金额</view>
+      <view class="jinebox">
+        <input placeholder="请输入金额" bindinput="moneyInput" value="{{formdata.reduceMoney}}"></input>
+      </view>
+      <text>元</text>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerChange" range-key="name" value="{{formdata.index}}" range="{{isActiveData}}">
+      <view class="picker">
+        <text class="alignlef">
+                <text class="pickeritem">禁/启用</text>
+        <text wx:if="{{isActiveData[formdata.index].id!==''}}">{{isActiveData[formdata.index].name}}</text>
+
+        </text>
+        <text class="alignrig">
+               <text wx:if="{{isActiveData[formdata.index].id===''}}" class="placems">全部</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+    <view class="pickbox">
+      <text class="alignlef selectdate">领取/发放有效期</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" value="{{formdata.date}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text wx:if="{{formdata.date}}">{{formdata.date}}</text>
+            <text wx:else class="placems">起始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" value="{{formdata.date2}}" bindchange="bindDateChange2">
+          <view class="picker">
+            <text wx:if="{{formdata.date2}}">{{formdata.date2}}</text>
+            <text wx:else class="placems">终止时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+    <view class="searchBtn" bindtap="searchBtn">搜索</view>
+    <view class="reset" bindtap="reset">重置</view>
+  </view>
+</view>
+
+<view class="wrap">
+
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+          <view class="searitembox" wx:else>
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+  <block wx:if="{{batchData.length>0}}">
+    <view class="contentbox" wx:for="{{batchData}}" wx:key>
+      <view class="contenttitle">
+        <view class="titleleft">
+          <view class="linebk"></view>
+          {{item.couponBatchName}}
+        </view>
+        <view class="price">
+          <text class="proSize">{{item.couponRange == 1?'商品':'订房'}}{{item.discountWay == 1?'满减券':'折扣券'}}</text>
+        </view>
+      </view>
+      <view class="contentitem">
+        <view class="controw">
+          <view>
+            <text class="couponName">{{item.couponName}}</text>
+            <!-- <text class="daycount">
+              <text wx:if="{{item.vouTermType===0}}">{{item.vouTermDays}}</text>
+            <text wx:if="{{item.vouTermType===1}}">{{item.vouTermStartDate}}~{{item.vouTermEndDate}}</text>
+            </text> -->
+          </view>
+          <view class="isgive">
+            <text wx:if="{{item.discountWay=='1'}}">￥{{item.reduceMoney}}</text>
+            <text wx:if="{{item.discountWay=='2'}}">{{item.couponDiscount}}折</text>
+          </view>
+        </view>
+        <view class="controw mgtop10">
+          <view>
+            <text wx:if="{{item.discountWay=='1'}}">满{{item.useLimitMoney}}减{{item.reduceMoney}}</text>
+            <text wx:if="{{item.discountWay=='2'}}"><text wx:if="{{item.discountMinBuyMoney}}">满{{item.discountMinBuyMoney}}元可用，</text><text wx:if="{{item.discountMaxMoney}}">最高减{{item.discountMaxMoney}}元</text></text>
+          </view>
+        </view>
+        <view class="controw mgtop10">
+          <view>
+             {{item.batchStartTime}}至{{item.batchEndTime}}
+          </view>
+        </view>
+      </view>
+      <view class="btnbox">
+        <view>
+          <switch checked="{{item.isActive}}" bindchange="switch1Change" color="#FF6930" data-id="{{item.id}}" />
+          <text>
+             <text class="switchstatus" wx:if="{{item.isActive===1}}">已开启</text>
+          <text class="noswitchstatus" wx:if="{{item.isActive===0}}">未禁用</text>
+          </text>
+        </view>
+        <view class="btnitem" bindtap="couponEdit" data-id="{{item.id}}">编辑></view>
+        <view class="btnitem" bindtap="grant" data-id="{{item.id}}" data-name="{{item.couponBatchName}}">发放</view>
+        <view class="btnitem" bindtap="couponDetail" data-id="{{item.id}}">详情</view>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="nodata">暂无数据</view>
+
+</view>
+
+<view class="addCard" bindtap="couponAdd">新增优惠券批次</view>
+
+
+<view class="saleDoalog" wx:if="{{diajudge}}" bindtap="saleDoalog"></view>
+
+  <view class="saleContent" wx:if="{{diajudge}}">
+    <view class="diotitle">发放</view>
+    <view class="diarow">
+      <view class="rowtitle">批次名称</view>
+      <view class="inputbox">
+        <input value="{{couponBatchName}}" disabled></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle">每用户数量</view>
+      <view class="inputbox">
+        <input value="{{countPerUser}}" bindinput="countPerUser"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle">发放对象</view>
+      <view class="inputbox">
+        <textarea type="textarea" value="{{users}}" bindinput="users"></textarea>
+      </view>
+    </view>
+    <view class="diabtnbox">
+      <view class="refusebtn" bindtap="saleDoalog">取消</view>
+      <view class="adoptbtn" bindtap="adoptbtn">确定</view>
+    </view>
+  </view>

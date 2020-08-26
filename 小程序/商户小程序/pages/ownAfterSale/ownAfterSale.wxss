@@ -1,0 +1,387 @@
+/* pages/ownAfterSale/ownAfterSale.wxss */
+page{
+  background: #ecedf3;
+  border-top: 1px solid #dbdce2;
+}
+.wrap{
+  width: 100%;
+  padding:20rpx 3%;
+  box-sizing:border-box;
+  padding-bottom: 150rpx;
+} 
+.searchWrap{
+  width: 100%;
+  background:#fff;
+  box-sizing:border-box;
+  overflow: hidden;
+  font-size: 32rpx;
+  position: fixed;
+  top: 120rpx;
+  left: 0;
+  z-index: 9;
+
+}
+.orderstatus{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 20rpx solid #ecedf3 !important;
+  z-index: 1;
+}
+.expandbox{
+  width: 100%;
+  padding:15rpx 4%; 
+  box-sizing: border-box; 
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  border-bottom: 1px solid #e9eaea;
+}
+.expandbox .expenditem{
+  display: flex;
+  align-items:center;
+}
+.searchlogo{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 15rpx;
+}
+.searchlogoclose{
+  transform: rotate(180deg);
+}
+.expandlogo{
+  width: 42rpx;
+  height: 42rpx;
+  overflow: hidden;
+}
+.expandlogo image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 下拉选择 */
+
+
+.pickbox{
+    padding: 30rpx 4%;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    border-radius:15rpx;
+    border-bottom: 1px solid #e9eaea;
+}
+.pickbox .pickeritem{
+  display: inline-block;
+  width:160rpx;
+  text-align: left;
+  margin-right: 20rpx;
+  color:#888FA1;
+  }
+.alignlef{
+  float: left;
+  }
+.alignrig{
+  float: right;
+}
+.placemsall{
+   color: #FF6930;
+  }
+.iconwangyou{
+  color: #888c8f;
+  font-size: 28rpx;
+}
+
+/* 时间选择 */
+.picker_group{overflow: hidden;vertical-align: middle;
+font-size: 28rpx;clear: both;padding: 30rpx 4% 30rpx 0;
+box-sizing: border-box;}
+.pickertime{display: inline-block;}
+.selectdate{
+  margin-right: 20rpx;
+  font-size: 32rpx;
+  color: #888FA1;
+  }
+.sectionitem{overflow: hidden;display: inline-block;width: (calc(100% - 115rpx))}
+.hengxian{color: #666;margin:0 20rpx;}
+
+/* 下拉选择 */
+
+.rowbox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing:border-box;
+  border-bottom: 1px solid #e9eaea;
+  display: flex;
+  align-items:center;
+  font-size: 32rpx;
+}
+.rowtitle{
+  color:#888FA1;
+  margin-right:30rpx;
+  width: 130rpx;
+}
+.searchBtn{
+  width: 86%;
+  height:70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-image:linear-gradient(to right,#f0904d,#ed7142); 
+  color: #fff;
+  font-size: 36rpx;
+  border-radius: 30rpx;
+  margin:30rpx auto;
+}
+.reset{
+  font-size: 36rpx;
+  color: #888FA1;
+  text-align: center;
+  padding: 30rpx 0rpx;
+}
+
+.searchblock{
+  overflow: hidden;
+  width: 100%;
+  margin-top: 205rpx;
+}
+
+.searitembox{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 15rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 25rpx;
+  font-size:28rpx; 
+  margin-bottom: 20rpx;
+}
+.searTitle{
+  color:#797f92; 
+}
+.desc{
+  margin-left: 10rpx;
+  color: #212325;
+}
+.closetjbox{
+  width: 35rpx;
+  height: 35rpx;
+  overflow: hidden;
+  margin-left: 10rpx;
+}
+.closetjbox image{
+  width: 100%;
+  height: 100%;
+}
+
+
+.saleBox{
+  background: #fff;
+  border-radius:20rpx; 
+  margin-top: 20rpx;
+}
+.headerbox{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding:30rpx 3%;
+  box-sizing: border-box; 
+  border-bottom: 1px solid #e9eaea;
+  font-size: 28rpx;
+}
+.dancode{
+   color: #888FA1;
+}
+.orderCode{
+  color:#FF6930; 
+}
+.funBox{
+  width: 100%;
+  padding:20rpx 3%;
+  box-sizing: border-box; 
+  display: flex;
+  align-items: center;
+  font-size:28rpx;
+  color:#FF6930; 
+}
+.funcode{
+  background: #ffe1d6;
+  padding:10rpx 25rpx;
+  box-sizing: border-box; 
+  border-radius:25rpx; 
+  margin-right: 20rpx;
+}
+.infoBox{
+  width: 100%;
+  box-sizing: border-box;
+}
+.infoBoxtop{
+  width: 100%;
+  padding: 0 3%;
+  display: flex;
+}
+.imgbox{
+  width: 160rpx;
+  height: 128rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+.imgbox image{
+  width: 100%;
+  height: 100%;
+}
+.descbox{
+  margin-left: 20rpx;
+  width: calc(100% - 230rpx);
+  font-size: 24rpx;
+  color:#888FA1; 
+  position: relative;
+}
+.prodcount{
+  color:#2B2D30; 
+  position: absolute;
+  right: 0rpx;
+  top: 40rpx;
+}
+.priceBox{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20rpx;
+  color:#EE1E1E; 
+  margin-top: 40rpx;
+}
+.refund{
+  padding:5rpx 25rpx;
+  box-sizing: border-box;
+  border: 1px solid #ef2a2a;
+  border-radius: 5rpx;
+}
+.btnbox{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20rpx 3%;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  border-top: 1px solid #e9eaea;
+  margin-top: 30rpx;
+}
+.detailbtn{
+   padding: 10rpx 35rpx;
+   border: 1px solid #e9eaea;
+   border-radius: 20rpx;
+}
+.refundbtn{
+  color: #fff;
+  background: #ff6930;
+  padding: 10rpx 35rpx;
+  border-radius: 20rpx;
+  margin-left:20rpx; 
+}
+
+
+.saleDoalog{
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9;
+}
+.saleContent{
+  background: #fff;
+  width: 80%;
+  height:400rpx;
+  position: fixed;
+  top: 200rpx;
+  left: 0;
+  right: 0;
+  margin: auto; 
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  z-index: 10;
+}
+.saleContent2{
+  background: #fff;
+  width: 80%;
+  height:480rpx;
+  position: fixed;
+  top: 200rpx;
+  left: 0;
+  right: 0;
+  margin: auto; 
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  z-index: 10;
+}
+.iconguanbi1{
+  position: absolute;
+  top: 5rpx;
+  right: 10rpx;
+  color: #333;
+}
+.diotitle{
+  text-align: center;
+  margin: 20rpx 0;
+}
+.diarow{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20rpx 0;
+}
+.rowtitle{
+  width:130rpx; 
+  text-align: right;
+  margin-right: 10rpx;
+}
+.rowtitle2{
+  width:240rpx; 
+  text-align: right;
+  margin-right: 10rpx;
+}
+.inputbox{
+  width: calc(100% - 180rpx);
+}
+.inputbox2{
+  width: calc(100% - 270rpx);
+}
+.inputbox input,.inputbox2 input{
+  border: 1px solid #d7d7d7;
+  height: 60rpx;
+  line-height: 30rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.inputbox textarea,.inputbox2 textarea{
+  border: 1px solid #d7d7d7;
+  height: 120rpx;
+  line-height: 40rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.diabtnbox{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 25rpx;
+}
+.refusebtn{
+  padding: 10rpx 25rpx;
+  border: 1px solid #bcbcbc;
+  border-radius: 10rpx;
+}
+.adoptbtn{
+  padding: 10rpx 25rpx;
+  border-radius: 10rpx;
+  background: #409eff;
+  color: #fff;
+  margin-left:15rpx; 
+}

@@ -1,11 +1,13 @@
 // import zujian01data from '@/components/layer/zujian/zujian01'
 
 export const state={
+    searchList:{},
     isRed:false,
     datasj:1,
     hello:"组件通信测试",
     // zjdata:zujian01data.zujianxx,
 };
+
 
 export const mutations={
 
@@ -22,6 +24,13 @@ export const mutations={
             state.datasj=0
         }
      },
+
+     resetSearch(state) { //重置搜索条件
+      state.searchList = {};
+    },
+    setSearchList(state,params){//储存搜索条件
+        state.searchList = params
+    }
 
 
 

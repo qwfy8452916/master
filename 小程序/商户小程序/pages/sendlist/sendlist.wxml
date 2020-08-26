@@ -1,0 +1,64 @@
+<block wx:if="{{sendlis.length > 0}}" wx:for="{{sendlis}}" wx:for-item="item" wx:for-index="idx" wx:key="index">
+  <view class="couponlist">
+    <view class="sendlist-t paddAll30 borderB flexbox-between">
+      <view class="flexbox-start sendlist-t-l">
+        <view class="line"></view>
+        <view class="sendlist-font1">优惠券ID：{{item.couponId}}</view>
+      </view>
+      <view class="sendlist-t-r">
+        <text class="font-color3">未领取</text>
+        <text wx:if="{{item.isUsed == 0}}" class="font-color1">已领取</text>
+        <text wx:if="{{item.isUsed == 1}}" class="font-color6">已使用</text>
+      </view>
+    </view>
+    <view class="userfont paddAll30">
+      <view>· 领用人ID：{{item.cusId}}  {{item.cusNickName}}</view>
+      <view>· 领用时间：{{item.giftTime}}</view>
+      <view>· 发送时间：{{item.createdAt}}</view>
+    </view>
+    <block wx:if="{{item.isUsed == 1}}">
+      <view wx:if="{{item.discountWay == 1}}" class="couponlist-top couponlist-top-bg">
+        <view class="top-left">{{item.couponName}}</view>
+        <view wx:if="{{item.discountWay == 1}}" class="top-right"><view class="right-m">￥</view>{{item.reduceMoney}}</view>
+        <view wx:if="{{item.discountWay == 2}}" class="top-right">{{item.couponDiscount}}<view class="right-m">折</view></view>
+      </view>
+    </block>
+    <block wx:if="{{item.isUsed != 1}}">
+      <view wx:if="{{item.discountWay == 1}}" class="couponlist-top {{item.couponRange == 1?'bgimg':'bgimg2'}}">
+        <view class="top-left">{{item.couponName}}</view>
+        <view wx:if="{{item.discountWay == 1}}" class="top-right"><view class="right-m">￥</view>{{item.reduceMoney}}</view>
+        <view wx:if="{{item.discountWay == 2}}" class="top-right">{{item.couponDiscount}}<view class="right-m">折</view></view>
+      </view>
+      <view wx:if="{{item.discountWay == 2}}" class="couponlist-top item.couponRange == 1?'bgimg1':'bgimg3'">
+        <view class="top-left">{{item.couponName}}</view>
+        <view wx:if="{{item.discountWay == 1}}" class="top-right"><view class="right-m">￥</view>{{item.reduceMoney}}</view>
+        <view wx:if="{{item.discountWay == 2}}" class="top-right">{{item.couponDiscount}}<view class="right-m">折</view></view>
+      </view>
+      <view wx:if="{{item.discountWay == 3}}" class="couponlist-top bgimg4">
+        <view class="top-left">{{item.couponName}}</view>
+      </view>
+    </block>
+    <image class="top-img" mode="widthFix" src="../../img/border.png"></image>
+    <view class="couponlist-bottom">
+      <view wx:if="{{item.discountWay == 1}}" class="bottom-coupon1">{{item.couponRange == 1?'商品':'订房'}}满减券(满{{item.useLimitMoney}}减{{item.reduceMoney}})</view>
+      <view wx:if="{{item.discountWay == 2}}" class="bottom-coupon1">{{item.couponRange == 1?'商品':'订房'}}折扣券(满{{item.discountMinBuyMoney}}元可用，最高减{{item.discountMaxMoney}}元)</view>
+      <view wx:if="{{item.discountWay == 3}}" class="bottom-coupon1">{{item.couponRangeAndWayShowName}}</view>
+      <view class="bottom-coupon2">{{item.batchStartTime}} 至 {{item.batchEndTime}}</view>
+      <image class="bottom-img" mode="widthFix" src="../../img/dashed.png"></image>
+      <view class="bottom-hint" data-id="{{item.id}}" data-idx="{{idx}}" bindtap="lookexplain">
+        <view class="hint-txt">{{item.couponBatchName}}</view>
+        <view class="flexbox-end">
+          <view class="hint-txt">使用说明</view>
+          <view class="hint-btn"><image class="hint-img {{item.exstate? 'trans':''}}" mode="widthFix" src="../../img/my-icon3.png"></image></view>
+        </view>
+      </view>
+      <view wx:if="{{item.exstate}}" class="direction-use">
+        <view>优惠范围：{{coupon_explain.generalInstructions}}</view>
+        <view>
+          <block wx:for="{{coupon_explain.names}}" wx:for-item="explainitem" wx:key="index">{{explainitem}}</block>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<view wx:if="{{sendlis.length == 0}}" class="datanullbox">暂无数据</view>

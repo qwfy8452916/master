@@ -1,0 +1,19 @@
+
+<block wx:if="{{showform == true}}">
+  <image class="imgbox" src='{{globalData.imgUrl}}bg-img.jpg'></image>
+  <view class="formbox">
+    <form bindsubmit="formSubmit">
+      <input class="weui-input" name='userName' value='{{form.userName}}' placeholder="请输入账号" />
+      <input class="weui-input" name='passWord' value='{{form.passWord}}' placeholder="请输入密码" />
+      <view class="font-text1 flexbox-between paddLR10">
+        <view class="flexbox-start" bindtap="changebindFlag">
+          <image wx:if="{{bindFlag == 1}}" class="icon-size" src="../../img/icon-img2.png"></image>
+          <image wx:else class="icon-size" src="../../img/icon-img1.png"></image>
+          绑定微信号
+        </view>
+        <view bindtap="showprompt">忘记密码？</view>
+      </view>
+      <button form-type="submit" class="submit-btn">登陆</button>
+    </form>
+  </view>
+</block>

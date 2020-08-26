@@ -1,0 +1,168 @@
+/* pages/personalcenter/personalcenter.wxss */
+page{background: #f3f3f3;}
+.boxwrap{
+  width: 100%;
+  padding: 20rpx 4%;
+  box-sizing:border-box;
+  overflow: hidden;
+}
+.mywrapbj{
+  width: 100%;
+  height: 201rpx;
+  position: relative;
+  background-image:linear-gradient(to right,#efac2b,#ff6a30);
+  border-radius: 25rpx;
+}
+.mywrapbj .niudj{width: 150rpx;height: 50rpx;line-height: 50rpx;
+position: absolute;
+font-size: 26rpx;padding: 0 5rpx;top:73rpx;left:175rpx;}
+.mywrapbj .pictopbj{width: 100%;height: 100%;position: absolute;
+z-index: -1;}
+.mywrapbj .touxiang{width: 120rpx;height: 120rpx;background: #ece6e6;
+border-radius: 50%;border: 6rpx solid #fae0a3;
+position: absolute;top: 34rpx;left: 34rpx;}
+.mywrapbj .ningchegn{font-size: 32rpx;color: #fff;font-weight: bold;
+position: absolute;top: 65rpx;left: 180rpx;}
+.mywrapbj .bindbtn{font-size: 24rpx;color: #fff;
+position: absolute;top: 113rpx;left: 180rpx;}
+.bindbtn .iconwangyou{
+  font-size: 24rpx;
+}
+.bindbtn .iconrenyuan{
+  font-size: 24rpx;
+  color: #ff9700;
+  margin-right: 8rpx;
+}
+.mywrapbj .myAccount{
+  display: inline-block;
+  width: 200rpx;
+  height: 58rpx;
+  background: rgba(255,255,255,0.5);
+  position: absolute;
+  right: 0rpx;
+  top: 70rpx;
+  border-top-left-radius:30rpx;
+  border-bottom-left-radius:30rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #FEFEFE;
+  line-height: 58rpx;
+}
+.myAccount .iconwodezhanghu{
+  font-size:28rpx; 
+}
+.mywrapbj .exitbtn{font-size: 24rpx;color: #F5A033;font-weight: bold;
+position: absolute;top: 150rpx;left: 355rpx;display: inline-block;padding: 8rpx 25rpx;background: #fff;border-radius: 25rpx;}
+.replenishment{overflow: hidden;padding: 25rpx 4%;background: #fff;}
+.topline{border-top: 1px solid #eee;}
+.replenishment .leftblok{float: left;display: inline-block;
+font-size: 28rpx;color: #666;}
+.leftblok .iconicon{color: #ccc;margin-right: 20rpx;}
+.leftblok .iconchangepassword{color: #ccc;margin-right: 20rpx;font-size: 20px;}
+.leftblok .iconxinxiweihu{
+  color: #ccc;margin-right: 7rpx;font-size: 20px;
+  position: relative;
+  left: -9rpx;
+}
+.leftblok .iconsaoma1{color: #ccc;margin-right: 15rpx;font-size: 16px;}
+.leftblok .iconliwu{color: #ccc;margin-right: 15rpx;font-size: 16px;}
+.leftblok .iconanzhuang{color: #ccc;margin-right: 15rpx;font-size: 16px;}
+.replenishment .rightblok{float: right;display: inline-block;color: #d1d1d1;}
+.rightblok .iconwangyou{padding: 5rpx 10rpx;}
+
+
+
+/* 分销下级 */
+.distwrap{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-top: 20rpx;
+}
+.distwrap .distitem{
+  display: flex;
+  align-items: center;
+  width: 48%;
+  height: 120rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  justify-content: center;
+  padding: 10rpx 30rpx;
+  box-sizing: border-box;
+}
+.imgbak{
+  width: 80rpx;
+  height: 80rpx;
+  display: inline-block;
+  border-radius: 50%;
+  background: #f0f7fc;
+}
+.imgbak image{
+  width: 100%;
+  height: 100%;
+}
+.distitem .desctext{
+  width:calc(100% - 90rpx);
+  margin-left: 10rpx;
+  
+}
+.desctext .huizongdesc{
+    color: #2b2d30;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+.desctext .shujvdesc{
+  color: #ff9700;
+  font-size: 20rpx;
+  margin-top: 5rpx;
+}
+.shujvdesc .iconwangyou{
+  font-size: 20rpx;
+  margin-right: 5rpx;
+}
+/* 分销下级 */
+
+
+/* 功能行模块 */
+.rowitem{
+  width: 100%;
+  background: #fff;
+  border-radius: 30rpx;
+  margin-top: 20rpx;
+  padding: 15rpx 50rpx;
+  box-sizing:border-box;
+  display: flex;
+  align-items: center;
+}
+.rowitem .imgwrap{
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+}
+.imgwrap image{
+  width: 100%;
+  height: 100%;
+}
+.rowitem .desctext{
+  display: inline-block;
+  font-size: 28rpx;
+  color: #888C8F;
+  margin-left: 20rpx;
+}
+/* 功能行模块 */
+
+/* 账号切换 */
+.switchAccount{
+  background: #fff;
+  padding: 35rpx;
+  width: 100%;
+  text-align: center;
+  font-size:28rpx;
+  color: #888C8F;
+  margin-top: 20rpx;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+}
+/* 账号切换 */

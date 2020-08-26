@@ -1,0 +1,64 @@
+<!--pages/myshare/myshare.wxml-->
+<view class="wrap">
+  <block wx:for="{{sharedata}}" wx:key="index">
+   <view class="itembox" wx:if="{{item.shareType==1}}">
+      <view class="title">
+         <view class="flexbox-start">
+            <view class="line"></view>
+            <view class="title_bt">{{item.modelName}}</view>
+         </view>
+         <view class="shangcti">列表分享</view>
+      </view>
+      <view class="reward flexbox-start" wx:if="{{item.listMktgShareSettingDTO!=null}}">
+         <image class="reward-icon" src="../../img/reward.png"></image>
+         <text class="reward_bfb">分享奖励：{{item.listMktgShareSettingDTO.firstBonus}}<text wx:if="{{item.listMktgShareSettingDTO.bonusType==1}}">%</text></text>
+         <text class="reward_bfb">二级奖励：{{item.listMktgShareSettingDTO.secBounus}}<text wx:if="{{item.listMktgShareSettingDTO.bonusType==1}}">%</text></text>
+      </view>
+      <view class="sharebox">
+         <text bindtap="forward" data-modelType="{{item.modelType}}" data-modelId="{{item.modelId}}" data-hotelId="{{item.hotelId}}" data-listordan="listOnOff" data-btntype="zhuanfa">
+            <text class="iconfont iconweixin iconweixinN"></text>
+         </text>
+         <view class="haibaoshare" bindtap="haibaoshare" wx:if="{{item.posterFlag==1}}" data-modelType="{{item.modelType}}" data-modelId="{{item.modelId}}" data-hotelId="{{item.hotelId}}" data-btntype="haibao" data-shareType="1">
+            <view class="zfpyq">
+               <image src="../../img/pyquanlogin.png"></image>
+            </view>
+         </view>
+      </view>
+   </view>
+
+   <view class="itembox" wx:if="{{item.shareType==2}}">
+      <view class="title">
+         <view class="flexbox-start">
+            <view class="line"></view>
+            <view class="title_bt">{{item.modelName}}</view>
+         </view>
+         <view class="shangcti">单项分享</view>
+      </view>
+      <view class="reward" wx:if="{{item.bonusSettingType==1}}">
+         <text class="reward_bfb">分享奖励：{{item.firstBonus}}<text wx:if="{{item.bonusType==1}}">%</text></text>
+         <text class="reward_bfb">二级奖励：{{item.secBounus}}<text wx:if="{{item.bonusType==1}}">%</text></text>
+      </view>
+      <view class="sharebox">
+         <text bindtap="forward" data-modelType="{{item.modelType}}" data-modelId="{{item.modelId}}" data-hotelId="{{item.hotelId}}" data-listordan="itemOnOff" data-btntype="zhuanfa">
+            <text class="iconfont iconweixin iconweixinN"></text>
+         </text>
+         <view class=" haibaoshare" bindtap="haibaoshare" wx:if="{{item.posterFlag==1}}" data-modelType="{{item.modelType}}" data-modelId="{{item.modelId}}" data-hotelId="{{item.hotelId}}" data-btntype="haibao" data-shareType="2">
+            <view class="zfpyq">
+               <image src="../../img/pyquanlogin.png"></image>
+            </view>
+         </view>
+      </view>
+   </view>
+  </block>
+</view>
+
+<view class="bkbeijing" hidden="{{showHide}}">
+  <view class="wraphaibao">
+    <text class="iconfont iconguanbi" bindtap="closepic"></text>
+    <view class="picbox">
+        <image class="haibaopic" src="{{haibaoUrl}}"></image>
+    </view>
+    <view class="btnpic" bindtap="saveImg">保存到手机相册</view>
+    <view class="btnpic preview" bindtap="preview">预览海报</view>
+  </view>
+</view>

@@ -1,0 +1,115 @@
+<!--pages/cardManage/cardManage.wxml-->
+<view class="searchWrap">
+    <view class="expandbox">
+      <view class="searchdesc expenditem">
+        <image class="searchlogo" src="../../img/searchlogo.png"></image>
+        搜索
+      </view>
+      <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+        <image src="../../img/expendlogo.png"></image>
+      </view>
+    </view>
+    <view wx:if="{{switchJudge}}">
+
+
+      <view class="rowbox">
+        <view class="rowtitle">卡券名称</view>
+        <view>
+          <input placeholder="请输入卡券名称" bindinput="nameInput" value="{{formdata.cardName}}"></input>
+        </view>
+      </view>
+
+      <picker class="pickbox" bindchange="bindPickerChange" range-key="dictName" value="{{formdata.index}}" range="{{scenData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">使用场景</text>
+                <text wx:if="{{scenData[formdata.index].dictValue}}">{{scenData[formdata.index].dictName}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="searchBtn" bindtap="searchBtn">搜索</view>
+      <view class="reset" bindtap="reset">重置</view>
+    </view>
+  </view>
+
+<view class="wrap">
+  
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+  <block wx:if="{{cardData.length>0}}">
+    <view class="contentbox" wx:for="{{cardData}}" wx:key>
+      <view class="contenttitle">
+        <view class="titleleft">
+          <view class="linebk"></view>
+          {{item.vouName}}
+        </view>
+        <view class="price">
+          <text class="proSize">￥</text>{{item.vouBasicPrice}}</view>
+      </view>
+      <view class="contentitem">
+        <view class="controw">
+          <view>
+            <text>使用有效期</text>
+            <text class="daycount">
+              <text wx:if="{{item.vouTermType===0}}">{{item.vouTermDays}}</text>
+            <text wx:if="{{item.vouTermType===1}}">{{item.vouTermStartDate}}~{{item.vouTermEndDate}}</text>
+            </text>
+          </view>
+          <view class="isgive">
+            <text wx:if="{{item.canGive===0}}">不可转赠</text>
+            <text wx:if="{{item.canGive===1}}">可以转赠</text>
+          </view>
+        </view>
+        <view class="controw mgtop10">
+          <view wx:if="{{item.vouUseScene==1}}">
+            <text>到店核销-核销次数</text>
+            <text class="daycount">{{item.vouVerifiedTotal}}次</text>
+          </view>
+          <view wx:if="{{item.vouUseScene==2}}">
+            <text>线上抵扣</text>
+          </view>
+        </view>
+      </view>
+      <view class="btnbox">
+        <view wx:if="{{authzData['F:MS_VOU_CARDCOUPON_SWITCH']}}">
+          <switch checked="{{item.isActive}}" bindchange="switch1Change" color="#FF6930" data-id="{{item.id}}" />
+          <text>
+             <text class="switchstatus" wx:if="{{item.isActive===1}}">已开启</text>
+          <text class="noswitchstatus" wx:if="{{item.isActive===0}}">未开启</text>
+          </text>
+        </view>
+        <view class="btnitem" bindtap="deleteCard" data-id="{{item.id}}" wx:if="{{authzData['F:MS_VOU_CARDCOUPON_DELETE']}}">删除</view>
+        <view class="btnitem" bindtap="editCard" data-id="{{item.id}}" wx:if="{{authzData['F:MS_VOU_CARDCOUPON_MODIFY']}}">修改</view>
+        <view class="btnitem" bindtap="cardDetail" data-id="{{item.id}}" wx:if="{{authzData['F:MS_VOU_CARDCOUPON_DETAIL']}}">详情</view>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="nodata">暂无数据</view>
+
+</view>
+
+<view class="addCard" bindtap="addCard">新增卡券</view>

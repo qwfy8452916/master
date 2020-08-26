@@ -1,0 +1,23 @@
+<!--pages/groupSelect/groupSelect.wxml-->
+<view class="wrap">
+   <view class="groupItem {{groupActive[index]?'groupItemActive':''}}" wx:for="{{groupList}}" wx:key bindtap="groupItem" data-index="{{index}}" data-itemvalue="{{item}}">{{item.groupName}}</view>
+</view>
+
+<view class="addbox" bindtap="addbox">
+   <view class="rowadd"></view>
+   <view class="lineadd"></view>
+</view>
+
+<view class="surebtn" bindtap="groupbtn">确定</view>
+
+<view class="shadowBox" wx:if="{{shadowpd}}">
+  <view class="groupbox">
+      <view class="addtitle">新增分组</view>
+      <view class="inputBox">
+         <input placeholder="请输入分组的名称" bindinput="groupput"></input>
+      </view>
+      <view class="addbtn" bindtap="addbtn">新增</view>
+      <text class="iconfont iconguanbi" bindtap="closebtn"></text>
+  </view>
+</view>
+

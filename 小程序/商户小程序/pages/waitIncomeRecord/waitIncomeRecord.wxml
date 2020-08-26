@@ -1,0 +1,154 @@
+<!--pages/waitIncomeRecord/waitIncomeRecord.wxml-->
+<view class="searchWrap">
+    <view class="expandbox">
+      <view class="searchdesc expenditem">
+        <image class="searchlogo" src="../../img/searchlogo.png"></image>
+        搜索
+      </view>
+      <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+        <image src="../../img/expendlogo.png"></image>
+      </view>
+    </view>
+
+    <view wx:if="{{switchJudge}}">
+      <picker class="pickbox" bindchange="bindPickerChange" range-key="asName" value="{{index}}" range="{{identitydata}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">分成身份</text>
+                <text wx:if="{{identitydata[index].as}}">{{identitydata[index].asName}}</text>
+          </text>
+          <text class="alignrig">
+                
+          <text wx:if="{{!identitydata[index].as}}" class="placems">全部</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <picker class="pickbox" bindchange="bindPickerChange2" range-key="funcCnName" value="{{index2}}" range="{{orderTypeData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">订单类型</text>
+                <text wx:if="{{orderTypeData[index2].id}}">{{orderTypeData[index2].funcCnName}}</text>
+          </text>
+          <text class="alignrig">
+                
+          <text wx:if="{{!orderTypeData[index2].id}}" class="placems">全部</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="rowbox">
+        <view class="rowtitle">楼层房号</view>
+        <view>
+          <input placeholder="请输入楼层房间号" bindinput="floorRoom" value="{{roomFloorAndCode}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">订单号</view>
+        <view>
+          <input placeholder="请输入订单号" bindinput="orderInput" value="{{orderCode}}"></input>
+        </view>
+      </view>
+
+      <view class="pickbox">
+        <text class="alignlef selectdate">下单时间</text>
+        <section class="alignlef sectionitem">
+          <picker class="pickertime" mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">
+              <text wx:if="{{date}}">{{date}}</text>
+              <text wx:else class="placems">起始时间</text>
+            </view>
+          </picker>
+          <text class="hengxian">至</text>
+          <picker class="pickertime" mode="date" value="{{date2}}" bindchange="bindDateChange2">
+            <view class="picker">
+              <text wx:if="{{date2}}">{{date2}}</text>
+              <text wx:else class="placems">终止时间</text>
+            </view>
+          </picker>
+        </section>
+      </view>
+
+      <view class="searchBtn" bindtap="searchBtn">搜索</view>
+      <view class="reset" bindtap="reset">重置</view>
+    </view>
+  </view>
+
+<view class="wrap">
+  
+
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+    <view>
+    <view class="inlinebox">
+    
+     <view class="searitembox" wx:if="{{item.codeName!='startTime'}}">
+        <view class="searTitle">{{item.name}}:</view>
+        <view class="desc">{{item.desc}}</view>
+        <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+           <image src="../../img/closetj.png"></image>
+        </view>
+      </view>
+
+      <view class="searitembox" wx:else>
+        <view class="searTitle">{{item.name}}:</view>
+        <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+        <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+           <image src="../../img/closetj.png"></image>
+        </view>
+      </view>
+  </view>
+</view>
+     </block>
+
+</view>
+
+
+  <block wx:if="{{waiteEntryRecordDataList.length}}">
+    <view class="orderWrap" wx:for="{{waiteEntryRecordDataList}}" wx:key>
+      <view class="orderTop">
+        <view class="lefitem orderTopitem">
+          <view class="orderNum">订单号 {{item.orderCode}}</view>
+          <view class="orderDate">{{item.payCompleteTime}}</view>
+        </view>
+        <view class="rigitem orderTopitem bluecolor">
+          {{item.funcName}}
+        </view>
+      </view>
+      <view class="orderBotbox">
+        <view class="identext">分成身份
+          <text wx:if="{{item.revenueAs==3}}">酒店</text>
+          <text wx:if="{{item.revenueAs==4}}">供应商</text>
+        </view>
+        <view class="amount">
+          <view class="amountlef">实付金额: {{item.actualPay}}
+            <!-- <text class="refund">已退款</text> -->
+          </view>
+          <view class="amountrig">待入账金额 {{item.revenueAmount}}</view>
+        </view>
+        <view class="descbox">
+          <view class="photobox">
+            <image src="{{item.prodLogoUrlBak}}"></image>
+          </view>
+          <view class="textBox">
+            <view class="titledesc">{{item.prodName}}</view>
+            <view class="pricebox">
+              <view>￥{{item.prodAmount}}</view>
+              <view>x{{item.prodCount}}</view>
+            </view>
+            <view class="detailwrap">
+              <text class="detailtext" bindtap="waitIncomeRecordDetail" data-id="{{item.id}}" wx:if="{{authzData['F:MS_FIN_WAITINCOME_DETAIL']}}">详情</text>
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <!-- <view class="rowItem">配送单号 1234567893214556</view> -->
+    </view>
+  </block>
+  <view wx:else class="nodata">暂无数据</view>
+
+</view>

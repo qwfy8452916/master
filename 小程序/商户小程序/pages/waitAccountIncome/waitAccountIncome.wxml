@@ -1,0 +1,41 @@
+<!--pages/waitAccountIncome/waitAccountIncome.wxml-->
+<block wx:if="{{waitIncomData.length>0}}">
+<view class="lineitem" bindtap="detail" wx:for="{{waitIncomData}}" wx:key data-id="{{item.id}}">
+   <view class="colitem yuanbj" wx:if="{{item.incomeType==1}}">
+      <text class="iconfont iconfenxiangjiangli"></text>
+   </view>
+   <view class="colitem yuanbj yuanbj1" wx:if="{{item.incomeType==2}}">
+      <text class="iconfont iconerji"></text>
+   </view>
+   <view class="colitem rewarddesc">
+     <view class="rewardTitle">
+        <text wx:if="{{item.incomeType==1}}">分享奖励</text>
+        <text wx:if="{{item.incomeType==2}}">管理奖励</text>
+     </view>
+     <view class="rewardHead">{{item.hotelName}}</view>
+     <view>{{item.settlingTime}}</view>
+   </view>
+   <view class="colitem rewardjia">
+     <view>￥{{item.pendingAmount}}<text class='iconfont iconwangyou'></text></view>
+   </view>
+</view>
+</block>
+
+<block wx:else>
+    <view class="nodatadesc">暂无数据</view>
+</block>
+
+<!-- <view class="lineitem" bindtap="detail">
+   <view class="colitem yuanbj yuanbj1">
+      <text class="iconfont iconerji"></text>
+   </view>
+   <view class="colitem rewarddesc">
+     <view class="rewardTitle">二级奖励</view>
+     <view class="rewardHead">苏州东太湖大酒店苏州东太湖大酒店苏州东太湖大酒店</view>
+     <view>2019-10-12 12:25</view>
+   </view>
+   <view class="colitem rewardjia">
+     <view>￥465<text class='iconfont iconwangyou'></text></view>
+   </view>
+</view> -->
+                                                                                                                                                                                                                  

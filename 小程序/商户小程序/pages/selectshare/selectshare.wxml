@@ -1,0 +1,46 @@
+<!--pages/selectshare/selectshare.wxml-->
+<view class="title">选择分享的内容</view>
+<scroll-view wx:if="{{modelType==1}}" bindscrolltolower="downLoad" class="scrollbox" style='height:calc(100% - 188rpx);' scroll-y>
+  <radio-group bindchange="radiochange">
+    <view wx:for="{{listData}}" wx:key="index" class="proditem {{listData[index].select?'selectproditem':''}}">
+      <view class="radiobox">
+        <radio value='{{index}}' color="#ff9700"></radio>
+      </view>
+      <image class="prodpic" src="{{item.prodLogoUrl}}"></image>
+      <view class="prodtext">
+        <view class="prodtext_title">{{item.prodShowName}}</view>
+        <view class="prodtext_price">￥{{item.prodRetailPrice}}</view>
+      </view>
+    </view>
+  </radio-group>
+</scroll-view>
+
+<scroll-view wx:elif="{{modelType==2}}" class="scrollbox" bindscrolltolower="downLoad" style='height:calc(100% - 188rpx);' scroll-y>
+  <radio-group bindchange="radiochange">
+    <view wx:for="{{listData}}" wx:key class="proditem {{listData[index].select?'selectproditem':''}}">
+      <view class="radiobox">
+        <radio value='{{index}}' color="#ff9700"></radio>
+      </view>
+      <image class="prodpic" src="{{item.roomType.imageListDTOS.url}}"></image>
+      <view class="prodtext">
+        <view class="prodtext_title">{{item.resourceName}}</view>
+        <view class="prodtext_price">￥{{item.averagePrice}}</view>
+      </view>
+    </view>
+  </radio-group>
+</scroll-view>
+
+<view class="confirmbtn {{selectcolor!==''?'selectconfirmbtn':''}}" bindtap="surebtn">确认</view>
+
+
+
+<view class="bkbeijing" hidden="{{showHide}}">
+  <view class="wraphaibao">
+    <text class="iconfont iconguanbi" bindtap="closepic"></text>
+    <view class="picbox">
+        <image class="haibaopic" src="{{haibaoUrl}}"></image>
+    </view>
+    <view class="btnpic" bindtap="saveImg">保存到手机相册</view>
+    <view class="btnpic preview" bindtap="preview">预览海报</view>
+  </view>
+</view>

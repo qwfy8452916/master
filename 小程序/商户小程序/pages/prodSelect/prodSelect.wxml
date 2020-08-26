@@ -1,0 +1,23 @@
+<!--pages/prodSelect/prodSelect.wxml-->
+<view class="wrap">
+   <!-- <view class="inputbox">
+      <input class="inputitem" placeholder="请输入商品名称"></input>
+      <view class="searchbox" bindtap="search">
+         <image src="../../img/searchlogo.png"></image>
+      </view>
+   </view> -->
+
+   <view class="proditem {{selectActive[index]?'proditemActive':''}}" wx:for="{{prodData}}" wx:key bindtap="selectProd" data-index="{{index}}">
+     <view class="prodName {{selectActive[index]?'prodNameActive':''}}">商品名称</view>
+     <view class="prodContent">{{item.prodProductDTO.prodName}}</view>
+     <view class="prodName {{selectActive[index]?'prodNameActive':''}}">商品显示名称</view>
+     <view class="prodContent">{{item.prodProductDTO.prodShowName}}</view>
+   </view>
+   
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
+
+
+
+

@@ -1,0 +1,192 @@
+<!--pages/useCardDetail/useCardDetail.wxml-->
+
+<view class="wrap">
+  <view class="box">
+    <view class="title">
+      <view class="titlecol"></view>
+      用户信息
+    </view>
+
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">使用人</view>
+        <view class="regionboxInfo">{{detailData.cusNickName}}</view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">联系电话</view>
+        <view class="regionboxInfo">{{detailData.cusPhone}}</view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">使用人ID</view>
+        <view class="regionboxInfo">{{detailData.cusId}}</view>
+      </view>
+    </view>
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">购买人</view>
+        <view class="regionboxInfo">{{detailData.firstGetUserNickName}}</view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">联系电话</view>
+        <view class="regionboxInfo">{{detailData.firstGetUserPhone}}</view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">购买人ID</view>
+        <view class="regionboxInfo">{{detailData.firstGetUserId}}</view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">购买时间</view>
+        <view class="regionboxInfo">{{detailData.createdAt}}</view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class="box" wx:if="{{detailData.vouUseScene==1}}">
+    <view class="title">
+      <view class="titlecol"></view>
+      核销信息
+    </view>
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">使用场景</view>
+        <view class="regionboxInfo">到店核销</view>
+      </view>
+    </view>
+
+    <view class="region">
+      <view class="regionbox nomrg">
+        <view class="regionboxTitle">核销明细</view>
+        <view class="regionboxInfo">可核销次数 {{detailData.vouVerifiedTotal}}，剩余核销次数 <text class="coqing">{{detailData.vouRemainingVerifiedNum}}</text></view>
+      </view>
+    </view>
+
+    <view class="recordBox {{openstatus?'guheight':''}}" >
+       <view class="recorditem" wx:for="{{cardRecordData}}" wx:key>
+          <view class="datebox">
+             <view class="waicircle">
+               <text class="sortxh">{{index+1}}</text>
+             </view>
+             <view class="fontcolor">{{item.createdAt}}</view>
+          </view>
+          <view class="rowrecord">
+              <view class="recordTitle">核销人</view>
+              <view class="recordInfo">{{item.verifiedEmpName}}</view>
+          </view>
+          <view class="rowrecord">
+              <view class="recordTitle">核销地点</view>
+              <view class="recordInfo">{{item.verifiedAddress}}</view>
+          </view>
+       </view>
+       
+    </view>
+    
+    <view class="checkbox" bindtap="checkAll">
+       <view>
+           <text wx:if="{{openstatus}}">查看全部</text>
+           <text wx:else>收起</text>
+       </view>
+       <view class="checklogobox {{openstatus?'':'checklogoboxxz'}}">
+          <image src="../../img/checklogo.png"></image>
+       </view>
+    </view>
+
+  </view>
+
+
+
+
+  <view class="box" wx:if="{{detailData.vouUseScene==2}}">
+    <view class="title">
+      <view class="titlecol"></view>
+      抵扣信息
+    </view>
+
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">使用场景</view>
+        <view class="regionboxInfo">线上抵扣
+           <text wx:if="{{detailData.vouDeductibleType===0}}">（抵扣现金）</text>
+           <text wx:if="{{detailData.vouDeductibleType===1}}">（抵扣商品）</text>
+        </view>
+      </view>
+    </view>
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">订单编号</view>
+        <view class="regionboxInfo">123134564456466456</view>
+      </view>
+    </view>
+    <view class="region">
+      <view class="regionbox" wx:if="{{detailData.vouDeductibleType===0}}">
+        <view class="regionboxTitle">抵扣金额</view>
+        <view class="regionboxInfo">{{detailData.vouDeductibleMoney}}元</view>
+      </view>
+      <view class="regionbox" wx:if="{{detailData.vouDeductibleType===1}}">
+        <view class="regionboxTitle">抵扣商品</view>
+        <view class="regionboxInfo">{{detailData.deductHotelProdName}}({{detailData.deductHotelProdSpecName}})</view>
+      </view>
+    </view>
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">使用时间</view>
+        <view class="regionboxInfo">2020-06-12 12:12:34</view>
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class="box">
+    <view class="title">
+      <view class="titlecol"></view>
+      卡券信息
+    </view>
+
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">卡券名称</view>
+        <view class="regionboxInfo">{{detailData.vouName}}</view>
+      </view>
+    </view>
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">卡券编号</view>
+        <view class="regionboxInfo">12313456</view>
+      </view>
+    </view>
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">卡券说明</view>
+        <view class="regionboxInfo">{{detailData.vouInstruction}}</view>
+      </view>
+    </view>
+    <view class="region">
+      <view class="regionbox">
+        <view class="regionboxTitle">基础价格</view>
+        <view class="regionboxInfo">{{detailData.vouBasicPrice}}元</view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">允许转赠</view>
+        <view class="regionboxInfo">
+           <text wx:if="{{detailData.canGive===0}}">否</text>
+           <text wx:if="{{detailData.canGive===1}}">是</text>
+        </view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">是否转赠</view>
+        <view class="regionboxInfo">
+           <text wx:if="{{detailData.isGived===0}}">不是</text>
+           <text wx:if="{{detailData.isGived===1}}">是</text>
+        </view>
+      </view>
+      <view class="regionbox">
+        <view class="regionboxTitle">有效期</view>
+        <view class="regionboxInfo">{{detailData.vouStartDate}} 至 {{detailData.vouEndDate}}</view>
+      </view>
+    </view>
+
+  </view>
+
+</view>

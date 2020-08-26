@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ tip }}</h1>
+    <h3>{{msg}}</h3>
     <h2 @click="dianji(123)">Essential Links</h2>
     <ul>
       <li>
@@ -88,7 +89,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      tip:'这是从yiyong项目引用到vueniu中的数据'
     }
   },
   methods:{

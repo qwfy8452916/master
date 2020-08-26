@@ -1,0 +1,126 @@
+<!--pages/mygroup/mygroup.wxml-->
+<view class="ordinarybox" wx:if="{{groupjudge==0}}">
+  <view class="blockitembox">
+     <view class="identity">
+        <view class="identity_text">您还不是分销管理员</view>
+        <view class="identity_text rulesdesc" bindtap="rulesdesc"><text class="iconfont iconguanbi"></text>规则说明</view>
+     </view>
+     <view class="explain">可以通过如下两种方式之一成为分销管理员</view>
+     <view class="explain">成为分销管理员后即可获得二级分享奖励</view>
+  </view>
+  
+  <view class="blockitembox">
+     <view class="methodms">
+       <text class="iconfont iconguanbi"></text><text>方法一</text>
+     </view>
+     <view class="methdetail">输入邀请码成为分销管理员</view>
+     <view class="invitecode" bindtap="invitecode">输入邀请码</view>
+  </view>
+
+  <view class="blockitembox">
+     <view class="methodms">
+       <text class="iconfont iconguanbi"></text><text>方法二</text>
+     </view>
+     <view class="alreadypeo">目前已有<text class="numbernum">{{teamCount}}</text>人通过您的链接做了分享,请加油哦</view>
+     <view class="needmatt">超过 6 个人通过您分享的链接打开小程序后再次分享</view>
+  </view>
+</view>
+
+<view class="groupbox" wx:elif="{{groupjudge==1}}">
+
+   <view class="yaoqingmabox">
+      <view class="blockitembox2">
+        <view class="whitebox">
+         <view class="mycode">我的邀请码</view>
+         <view class="copycodebox">
+           <text class="yqmcode">{{yqmcode}}</text>
+           <text class="copybtn" bindtap="copybtn">复制邀请码</text>
+          </view>
+         </view>
+         <view class="yaoqingmams">
+            <text class="iconfont icontishi"></text>
+            <text>   此邀请码发给您分享的目标对象，他们可以通过此邀请码成为分销管理员，</text>
+         </view>
+         <view class="yaoqingmams">这些分销管理员将成为你的下线，您将拥有他们分享奖励的二级奖励。</view>
+      </view>
+   </view>
+
+   <view class="groupnumber">
+      <view class="membertitle">下级成员</view>
+      <block wx:if="{{teamCount}}">
+
+       <view class="shareItem" wx:for="{{teamData}}" wx:key>
+            <view class="item1">
+                <text style="color:#333">ID：{{item.id}} {{item.userNickName}}</text>
+            </view>
+            <view class="item2">
+                <view class="item2_2">
+                    <view class="data1">
+                        <text class="numstyle">{{item.prodSaleCount}}</text>
+                        <text class="numword">售出商品数量</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.orderAmount}}</text>
+                        <text class="numword">订单总额</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.shareBonus}}</text>
+                        <text class="numword">分享奖励总额</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.shareManageBonus}}</text>
+                        <text class="numword">管理奖励总额</text>
+                    </view>
+                </view>
+            </view>
+            <view class="item3">
+                <view class="item3_1">
+                     <image style="width:13px;height:13px" src="../../img/eye.png" />
+                     <text class="visit">分享次数</text>
+                     <text class="num">{{item.shareCount}}</text>
+                </view>
+                <view class="item3_1">
+                    <image style="width:13px;height:13px" src="../../img/eye.png" />
+                    <text class="visit">分享访问次数</text>
+                    <text class="num">{{item.shareVisitCount}}</text>
+                </view>
+                <view class="item3_1">
+                    <image style="width:13px;height:13px" src="../../img/order.png" />
+                    <text class="visit">订单数量</text>
+                    <text class="num">{{item.orderCount}}</text>
+                </view>
+                <navigator url="{{'/pages/shareRecords/shareRecords?userId='+item.userId}}" hover-class="navigator-hover" class="view">
+                  查看详情
+               </navigator>
+            </view>
+            <view class="item4">
+                加入时间 {{item.createdAt}}
+            </view>
+        </view>
+      </block>
+      <view class="nonumberbox" wx:else>
+         <image class="nonumber_pic" src="../../img/npgroup.jpg"></image>
+         <view class="nonumber_ms">赶紧去发展你的财团吧！</view>
+      </view>    
+   </view>
+</view>
+
+<view class="transback" hidden="{{rulesjudge}}">
+   <view class="tancms">
+   <view class="tancms_title">普通弹框</view>
+   <text>告知当前状态，信息和解决方式，如果文字换行的情况告知当前状态，信息和解决方式，如果文字换行的情况告知当前状态，信息和解决方式，如果文字换行的情况告知当前状态告知当前状态，信息和解决方式，如果文字换行的情况告知当前状态，信息和解决方式，如果文字换行的情况告知当前状态，信息和解决方式，如果文字换行的情况告知当前状态</text>
+   <view class="knowbtn" bindtap="knowbtn">我知道了</view>
+   </view>
+</view>
+
+<view class="yaoqingmaback" hidden="{{invitecode}}">
+   <view class="yanzmabox">
+      <input class="yanzmcode" placeholder="请输入邀请码" placeholder-style="color:#999;" auto-focus="{{autokey}}" focus="{{autokey}}"></input>
+      <view class="yanbtnbox">
+      <view class="btnitem" bindtap="cancelyqm">取消</view>
+      <view class="btnitem btnitemsure" bindtap="btnitemsure">确定</view>
+   </view>
+   </view>
+   
+</view>
+

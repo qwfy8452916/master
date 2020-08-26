@@ -1,0 +1,98 @@
+/* pages/selfTakingList/selfTakingList.wxss */
+page{
+  background: #f6f6f6;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 100%;
+  padding:20rpx 3%;
+  box-sizing: border-box;  
+  margin-bottom: 100rpx;
+}
+.rowbox{
+  background: #fff;
+  width: 100%;
+  border-radius: 25rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.titlebox{
+  font-size: 28rpx;
+  color: #2B2D30;
+  display: flex;
+  align-items: center;
+  margin: 25rpx 0 0 25rpx;
+}
+.linex{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  border-radius: 4rpx;
+  margin-right: 15rpx;
+}
+.desctext{
+  width: 100%;
+  padding:20rpx 50rpx 30rpx 50rpx; 
+  box-sizing: border-box;
+  color: #888FA1;
+  font-size: 24rpx;
+  line-height: 35rpx;
+  border-bottom: 1px solid #e9eaea;
+}
+.funbox{
+  width: 100%;
+  padding: 20rpx 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  justify-items: left;
+
+}
+.switchstaus{
+  margin-left: 20rpx;
+  font-size:28rpx;
+  color: #FF6930; 
+}
+.noswitchstaus{
+  margin-left: 20rpx;
+  font-size:28rpx;
+  color: #999; 
+}
+.btnitem{
+  padding: 10rpx 35rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx;
+  border: 1px solid #d5d5d6;
+  font-size:24rpx;
+  color: #2B2D30;
+}
+.addbtn{
+  width: 100%;
+  background-image: linear-gradient(to right,#f0904d,#ed7242);
+  padding:30rpx 0; 
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+
+
+/* swtich整体大小 */
+.wx-switch-input{
+  width: 80rpx !important;
+  height: 48rpx !important;
+}
+/* false的样式 */
+.wx-switch-input::before{
+  width: 80rpx !important;
+  height: 48rpx !important;
+}
+/* true的样式 */
+.wx-switch-input::after{
+  width: 45rpx !important;
+  height: 46rpx !important;
+}

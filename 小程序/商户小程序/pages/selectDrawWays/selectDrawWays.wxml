@@ -1,0 +1,7 @@
+<!--pages/selectDrawWays/selectDrawWays.wxml-->
+<view class="wrap">
+   <view class="funitem {{selectActive[index]?'active':''}}" bindtap="drawWaysitem" wx:for="{{drawWaysList}}" data-index="{{index}}">{{item.dictName}}</view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
