@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/test_components/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#262930",
+    "navigationBarTitleText": "二维码生成工具",
+    "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 6000
+  },
+  "sitemapLocation": "sitemap.json"
+}
