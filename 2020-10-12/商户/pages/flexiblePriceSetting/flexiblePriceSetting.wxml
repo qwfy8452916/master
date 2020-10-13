@@ -1,0 +1,21 @@
+<!--pages/flexiblePriceSetting/flexiblePriceSetting.wxml-->
+<view class="wrap">
+	<view class="hexBox">
+		<picker class="pickbox" bindchange="bindPickerChange" range-key="dictName" value="{{formdata.index}}" range="{{scenData}}">
+			<view class="bigBoxItem">
+				<view class="hexRow">
+					<text wx:if="{{scenData[formdata.index].dictValue}}">{{scenData[formdata.index].dictName}}</text>
+					<text wx:else>该酒店未设置最优弹性价！</text>
+					<image wx:if="{{showSelect}}" class="moreimg" src="../../img/back.png"></image>
+				</view>
+			</view>
+		</picker>
+		<view class="inpuBox" wx:if="{{formdata.scenName=='加价百分比'}}">
+			<input placeholder="输入范围为{{adaptLowestPercent}}%至{{adaptHighestPercent}}% " placeholder-style="color:#C5C9CF" bindinput="startPercent"></input> %
+		</view>
+		<view class="inpuBox" wx:if="{{formdata.scenName=='加价金额'}}">
+			<input placeholder="输入范围为{{adaptLowestMoney}}元至{{adaptHighestMoney}}元 " placeholder-style="color:#C5C9CF" bindinput="startAcount"></input> 元
+		</view>
+	</view>
+</view>
+<view wx:if="{{formdata.scenName!=''}}" class="bottomSubmitBtn" bindtap="adaptSettingSubmit">确定</view>

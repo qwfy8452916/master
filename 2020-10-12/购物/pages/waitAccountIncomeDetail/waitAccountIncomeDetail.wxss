@@ -1,0 +1,41 @@
+/* pages/waitAccountIncomeDetail/waitAccountIncomeDetail.wxss */
+page{
+  background: #f6f6f6;
+  width: 100%;
+  padding: 0 4%;
+  box-sizing: border-box;
+}
+
+.headtext{
+  padding:25rpx 30rpx;
+  box-sizing:border-box;
+  font-size: 28rpx;
+  color:#292E34; 
+}
+.headtext .iconfont{
+  margin-right:20rpx; 
+}
+.lineitemwrap{
+  overflow: hidden;
+}
+.lineitem{
+  background: #fff;
+  width: 100%;
+  border-radius: 15rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.linedesc{
+  font-size:24rpx;
+  color:  #888FA1;
+  margin-bottom: 10rpx;
+}
+.linedesc .linedescTitle{
+  margin-right: 15rpx;
+}
+
+image.titlelogo{
+  width:40rpx;
+  height: 40rpx; 
+  vertical-align: middle;
+}

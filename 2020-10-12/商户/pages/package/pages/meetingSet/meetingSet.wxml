@@ -1,0 +1,175 @@
+<!--pages/package/pages/meetingSet/meetingSet.wxml-->
+<view class="columBox">
+   <view class="title">
+    <view class="titlelef">
+       <view class="lineBak"></view>活动信息
+     </view>
+   </view>
+   <view class="detailBox">
+      <view class="rowitem">
+          <view class="rowTitle">活动名称</view>
+          <view>{{actName}}</view>
+      </view>
+      <view class="rowitem">
+          <view class="rowTitle">活动类型</view>
+          <view>{{actType}}</view>
+      </view>
+      <view class="rowitem">
+          <view class="rowTitle">活动时间</view>
+          <view>{{actBegin}} 至 {{actEnd}}</view>
+      </view>
+   </view>
+</view>
+
+<view class="columBox">
+   <view class="title">
+    <view class="titlelef">
+       <view class="lineBak"></view>活动设置
+     </view>
+   </view>
+   <view class="rowhdBox">
+      <view class="rowhlef">会议名称</view>
+      <view class="rowhrig">2020年度动员大会</view>
+   </view>
+   <view class="rowhdBox">
+      <view class="rowhlef">会议地点</view>
+      <view class="rowhrig">苏州</view>
+   </view>
+   <view class="switchBox">
+      <view>是否要报名<text class="iconfont icontishi1"></text></view>
+      <switch name="repeatFlag" bindchange="repeatFlag" checked="{{commoditygai.repeatFlag}}" color="#ff6930"></switch>
+    </view>
+
+    <view class="pickbox">
+      <text class="alignlef selectdate">报名截止时间</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" name="couponTermStartDate" value="{{addCoupondata.couponTermStartDate}}" bindchange="bindfixedDateChange">
+          <view class="picker">
+            <text wx:if="{{addCoupondata.couponTermStartDate}}">{{addCoupondata.couponTermStartDate}}</text>
+            <text wx:else class="placems">选择时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+    <view class="switchBox">
+      <view>是否要审核<text class="iconfont icontishi1"></text></view>
+      <switch name="repeatFlag" bindchange="repeatFlag" checked="{{commoditygai.repeatFlag}}" color="#ff6930"></switch>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerDiscount" range-key="name" value="{{discountIndex}}" range="{{discountWayData}}">
+      <view class="picker" name="discountWay" value="{{addCoupondata.discountWay}}">
+        <text class="alignlef">
+         <text class="pickeritem">进场配置</text>
+         <text wx:if="{{discountWayData[discountIndex].id}}">{{discountWayData[discountIndex].name}}</text>
+         <text wx:if="{{!discountWayData[discountIndex].id}}" class="placems">请选择进场配置</text>
+         <input hidden="true" name="discountWay" value="{{addCoupondata.discountWay}}"></input>
+        </text>
+        <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+    <view class="rowbox">
+        <view class="rowtitle">会议描述图片</view>
+        <view class="picbox">
+          <view class="showpicbox">
+            <view class="picitem" wx:for="{{ownProdData.bannerImageList}}" wx:key="index">
+              <view class="iconbox" bindtap="removeBan" data-index="{{index}}">
+                <image src="../../../../img/closepic.png"></image>
+              </view>
+              <image src="{{item.imageUrl}}"></image>
+            </view>
+            <view class="addpic" bindtap="addfunBanner">
+              <view class="hengline"></view>
+              <view class="suline"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+</view>
+
+<view class="columBox">
+   <view class="title">
+    <view class="titlelef">
+       <view class="lineBak"></view>会议资料设置
+     </view>
+   </view>
+    <view class="fileBox">
+       <view class="fileBoxlef">
+           <view>会议资料</view>
+           <view class="geshi">支持上传jpg、jpeg、png、pdf、doc、xsl等文件类型 文件不超过3Mb</view>
+       </view>
+       <view class="uploadbtn" bindtap="uploadbtn">上传</view>
+    </view>
+</view>
+
+<!-- <view class="columBox">
+   <view class="title">
+      <view class="titlelef">
+        <view class="lineBak"></view>优惠内容
+      </view>
+      <view class="addBtn" bindtap="addDis">+添加</view>
+    </view>
+    <view class="disBox">
+        <view class="disRow" wx:for="{{commoditygai.disCountLad}}" wx:key="index">
+           <view class="disColu">第</view>
+           <view class="disColu">
+            {{item.prodNumber}}
+           </view>
+           <view class="disColu">件折扣</view>
+           <view class="disColu">
+              <input class="inputBox" bindinput="disCount" value="{{item.discount}}" data-index="{{index}}"></input>
+           </view>
+           <view class="disColu">%，</view>
+           <view class="disColu">每单一次</view>
+           <view class="disColu delstyle" bindtap="deleDis" data-index="{{index}}">删除</view>
+        </view>
+    </view>
+    <view class="switchBox">
+      <view>是否重复计算<text class="iconfont icontishi1"></text></view>
+      <switch name="repeatFlag" bindchange="repeatFlag" checked="{{commoditygai.repeatFlag}}" color="#ff6930"></switch>
+    </view>
+</view> -->
+
+<view class="prodBox">
+  <view class="title">
+      <view class="titlelef">
+        礼品券设置
+      </view>
+      <view class="addBtn" bindtap="prodSelect">+添加</view>
+    </view>
+    <view class="prodContent">
+        <view class="prodItem" wx:for="{{3}}" wx:key="index">
+           <!-- <text class="iconfont iconguanbi1" bindtap="closeProd" data-index="{{index}}"></text> -->
+            <view class="btnwrap">
+                <view>礼包1</view>
+                <view class="btnwraprig">
+                    <view class="btnwrapItem">删除</view>
+                    <view class="btnwrapItem">修改</view>
+                </view>
+            </view>
+           <view class="itemBox">
+             <view class="prodTitle">礼包类型</view>
+             <view class="prodDesc">分享红包</view>
+           </view>
+           <view class="itemBox">
+             <view class="prodTitle">礼包名称</view>
+             <view class="prodDesc">XXXXXX红包活动</view>
+           </view>
+           <view class="itemBox">
+             <view class="prodTitle">礼包数量</view>
+             <view class="prodDesc">50</view>
+           </view>
+           <view class="itemBox">
+             <view class="prodTitle">排序</view>
+             <view class="prodDesc">0</view>
+           </view>
+           
+        </view>
+    </view>
+</view>
+
+<view class="sureBtn" bindtap="sureBtn">确定</view>

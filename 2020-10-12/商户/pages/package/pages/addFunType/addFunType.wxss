@@ -1,0 +1,145 @@
+/* pages/package/pages/addFunType/addFunType.wxss */
+
+page{
+  border-top: 1px solid #e5e5e5;
+}
+.wrap{
+  width: 100%;
+  overflow: hidden;
+}
+.titlebox{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  color: #2B2D30;
+  font-size: 32rpx;
+  border-bottom: 1px solid #e9eaea;
+}
+.linebak{
+  width: 8rpx;
+  height: 30rpx;
+  background: #10bbbb;
+  border-radius: 4rpx;
+  margin-right: 15rpx;
+}
+
+
+/* 下拉选择 */
+
+.pickbox{
+    padding: 30rpx 4%;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e9eaea;
+}
+.pickbox .pickeritem{
+  display: inline-block;
+  width:160rpx;
+  text-align: left;
+  margin-right: 20rpx;
+  color:#888FA1;
+  font-size: 32rpx;
+  }
+.alignlef{
+  float: left;
+  }
+.alignrig{
+  float: right;
+}
+.placems{
+  color:#C5C9CF; 
+  font-size: 28rpx;
+}
+  .placemsall{
+   color: #FF6930;
+  }
+.iconwangyou{
+  color: #888c8f;
+  font-size: 28rpx;
+}
+
+/* 下拉选择 */
+.surebtn{
+  width: 92%;
+  padding: 30rpx 0rpx;
+  box-sizing: border-box;
+  background-image: linear-gradient(to right,#f0904d,#ed7142);
+  color: #FFFFFF;
+  text-align: center;
+  border-radius:20rpx;
+  position: fixed;
+  bottom: 30rpx;
+  right: 0;
+  left: 0;
+  margin: auto;
+  font-size: 36rpx;
+}
+
+.rowbox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+}
+.rowtitle{
+  width: 170rpx;
+  margin-right:20rpx;
+  font-size:28rpx;
+  color: #888FA1;
+  flex-shrink: 0;
+  position: relative;
+}
+.choiceitemActive{
+  background: #ffe1d6;
+  color: #FF6930 !important;
+  border: none !important;
+}
+/* .star{
+  position: absolute;
+  color: #FF4F4F;
+  top: -4rpx;
+  right: 5rpx;
+} */
+
+.danhang{
+  flex-basis: 100%;
+  display: flex;
+  margin-top: 10rpx;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+}
+.danhang:after {
+   content: "";
+   flex: auto;
+  }
+.danhang .choiceitem{
+  padding: 10rpx 26rpx;
+  box-sizing: border-box;
+  border-radius: 24rpx;
+  border: 1px solid #d5d5d6;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #888FA1;
+  margin-right: 10rpx;
+}
+
+.putbox{
+  width: calc(100% -180rpx);
+}
+.putbox input{
+  width: 100%;
+}
+
+
+

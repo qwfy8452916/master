@@ -1,0 +1,17 @@
+<!--pages/getCashPri/getCashPri.wxml-->
+<view class='tixiantitle'>请输入提现金额</view>
+<view class='inputwrap'>
+   <text class='danwei'>￥</text>
+   <input class='shuruput' bindinput='inputevent' type='digit' placeholder='0.00' placeholder-style='color:#c1c1c1;'></input>
+</view>
+<view class='beyondje'>
+    <text class='ketixian' wx:if="{{tishijudge}}">可提现金额 {{balance}} 元</text>
+    <text class='chaoxian' wx:else>转出金额超限</text>
+</view>
+
+<view class='tijiaoniu {{tijijudge?"tijiaobj":""}}' bindtap='carryapply' wx:if="{{authzData['F:MS_MY_WITHDRAW_SUBMIT']}}">提交</view>
+
+<view class='ruleswrap'>
+   <view class='rulesitem'>说明:</view>
+   <view class='rulesitem'>提交成功后，提现金额将进入微信零钱，请查收。</view>
+</view>

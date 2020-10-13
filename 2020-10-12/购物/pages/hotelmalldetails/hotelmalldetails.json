@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "地方特产",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "pop": "../common/pop/pop",
+    "couponbox": "../common/couponbox/couponbox"
+  }
+}

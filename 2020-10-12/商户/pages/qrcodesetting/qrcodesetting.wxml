@@ -1,0 +1,4 @@
+<!--pages/qrcodesetting/qrcodesetting.wxml-->
+<view class="wrap">
+  <image style="width: 200px; height: 200px;" src="{{imgUrl}}"></image>
+</view>

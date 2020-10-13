@@ -1,0 +1,88 @@
+page{
+  padding-bottom: 20rpx;
+}
+.datanull-font{
+  text-align: center;
+  font-size: 32rpx;
+  color: #999999;
+  margin-top: 200rpx;
+}
+.iconimg1{
+  display: inline-block;
+  width: 25%;
+}
+.datanull-font text{
+  display: block;
+  width: 100%;
+}
+
+.libox{
+  width: 93%;
+  margin: 20rpx auto 0;
+  padding-right: 20rpx;
+}
+.libox-t{
+  margin-bottom: 20rpx;
+}
+.history-icon{
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}
+.libox-l{
+  width: 88%;
+}
+.font-openway{
+  display: inline-block;
+  font-size: 28rpx;
+  color: #FFBB51;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 50rpx;
+  background: #ffffff;
+}
+.libox-b-l{
+  background: #ffffff;
+  border-radius: 20rpx 20rpx;
+}
+.font-size1{
+  font-size: 28rpx;
+  color: #10BBBB;
+}
+.font-size2{
+  font-size: 24rpx;
+  color: #FFFFFF;
+  background: #EE1E1E;
+  border-radius: 50px;
+  padding: 10rpx 25rpx;
+  line-height: 30rpx;
+}
+.font-size2 image{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-left: 15rpx;
+}
+.font-size3{
+  font-size: 24rpx;
+  color: #2B2D30;
+  margin-bottom: 10rpx;
+}
+.font-size4{
+  font-size: 24rpx;
+  color: #888C8F;
+}
+.libox-b{
+  position: relative;
+}
+.leftlink{
+  position: absolute;
+  top: 0;
+  left: 29rpx;
+  bottom: 0;
+  width: 1px;
+  height: 100%;
+  background: #888C8F;
+}

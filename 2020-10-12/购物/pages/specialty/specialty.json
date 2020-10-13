@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "pop": "../common/pop/pop",
+    "tabbar": "../common/tabbar/tabbar",
+    "redbagact": "../common/redbagact/redbagact",
+    "newcomer": "../common/newcomer/newcomer",
+    "couponbox": "../common/couponbox/couponbox"
+  },
+  "enablePullDownRefresh": true
+}

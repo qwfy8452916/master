@@ -1,0 +1,88 @@
+<!--pages/package/pages/secondHalf/secondHalf.wxml-->
+<view class="columBox">
+   <view class="title">
+    <view class="titlelef">
+       <view class="lineBak"></view>活动信息
+     </view>
+   </view>
+   <view class="detailBox">
+      <view class="rowitem">
+          <view class="rowTitle">活动名称</view>
+          <view>{{actName}}</view>
+      </view>
+      <view class="rowitem">
+          <view class="rowTitle">活动类型</view>
+          <view>{{actType}}</view>
+      </view>
+      <view class="rowitem">
+          <view class="rowTitle">活动时间</view>
+          <view>{{actBegin}} 至 {{actEnd}}</view>
+      </view>
+      <view class="rowitem">
+          <view class="rowTitle">参与次数</view>
+          <view>{{actPartInCountType}}</view>
+      </view>
+      <view class="rowitem">
+          <view class="rowTitle">级别</view>
+          <view>{{actScopeLevel}}</view>
+      </view>
+      <!-- <view class="rowitem">
+          <view class="rowTitle">所属组织</view>
+          <view>苏州XXXX大酒店</view>
+      </view> -->
+   </view>
+</view>
+
+<view class="columBox">
+   <view class="title">
+      <view class="titlelef">
+        <view class="lineBak"></view>优惠内容
+      </view>
+      <view class="addBtn" bindtap="addDis">+添加</view>
+    </view>
+    <view class="disBox">
+        <view class="disRow" wx:for="{{commoditygai.disCountLad}}" wx:key="index">
+           <view class="disColu">第</view>
+           <view class="disColu">
+            {{item.prodNumber}}
+           </view>
+           <view class="disColu">件折扣</view>
+           <view class="disColu">
+              <input class="inputBox" bindinput="disCount" value="{{item.discount}}" data-index="{{index}}"></input>
+           </view>
+           <view class="disColu">%，</view>
+           <view class="disColu">每单一次</view>
+           <view class="disColu delstyle" bindtap="deleDis" data-index="{{index}}">删除</view>
+        </view>
+    </view>
+    <view class="switchBox">
+      <view>是否重复计算<text class="iconfont icontishi1"></text></view>
+      <switch name="repeatFlag" bindchange="repeatFlag" checked="{{commoditygai.repeatFlag}}" color="#ff6930"></switch>
+    </view>
+</view>
+
+<view class="prodBox">
+  <view class="title">
+      <view class="titlelef">
+        选择商品
+      </view>
+      <view class="addBtn" bindtap="prodSelect">+添加</view>
+    </view>
+    <view class="prodContent">
+        <view class="prodItem" wx:for="{{selectprodData}}" wx:key="index">
+           <text class="iconfont iconguanbi1" bindtap="closeProd" data-index="{{index}}"></text>
+           <view class="prodTitle">商品名称</view>
+           <view class="prodDesc">{{item.prodName}}</view>
+           <view class="prodTitle">商品显示名称</view>
+           <view class="prodDesc">{{item.prodShowName}}</view>
+           <view class="prodTitle">供货价</view>
+           <view class="prodDesc">¥ {{item.prodSupplyPrice}}</view>
+           <view class="prodTitle">零售价</view>
+           <view class="prodDesc">¥ {{item.prodRetailPrice}}</view>
+        </view>
+    </view>
+</view>
+
+<view class="sureBtn" bindtap="sureBtn">确定</view>
+
+

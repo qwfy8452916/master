@@ -1,0 +1,178 @@
+<view class='pagebox' style="padding-bottom: {{buylist.length == 0?'112rpx':'250rpx'}}">
+  <view class='swiperbox'>
+    <swiper
+      autoplay="{{autoplay}}"
+      interval="{{interval}}"
+      duration="{{duration}}"
+      circular="{{circular}}"
+    >
+      <swiper-item class="swiperitembox" data-url="{{hotelAddImagesfirst.linkUrl}}" bindtap="tzurl">
+        <image src="{{hotelAddImagesfirst.imageUrl}}" class="slide-image" mode='widthFix' />
+        <view class='jdinfobox'>
+          <view class='banner-img' bindtap="hotelstoryfun"><image src='../../img/index-img1.png' mode='widthFix'></image></view>
+          <view class='hotelinfobox'>
+            <text class='jd-name' style="margin-top: 0;">{{hotelName}}</text>
+            <view class="mgB10">
+              <image src="../../img/star.png" wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class="stars"></image>
+            </view>
+            <view class='labellist'>
+                <view class='labelbox' wx:if="{{hotelDecorationYear != ''}}">{{hotelDecorationYear}}年装修</view>
+                <view class='labelbox' wx:if="{{isHasPark==1}}">停车位</view>
+                <view class='labelbox' wx:if="{{hotelStyle != ''}}">{{hotelStyle}}</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+      <block wx:for="{{hotelAddImages}}" wx:for-item="item" wx:key='index'>
+        <swiper-item class="swiperitembox" data-url="{{item.linkUrl}}" bindtap="tzurl"> 
+          <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='jdinfo-bg' style="padding-bottom: {{oprInvoiceSup == 1?'10rpx':'0rpx'}};">
+    <view class='jdinfo' style="border-bottom: {{oprInvoiceSup == 1?'0.5px solid #e5e5e5;':'none'}};">
+      <view class='jdinfo-position' bindtap='mabview'>
+        <image src="../../img/position-img.png" class="position-img"></image>
+        <text class='position-text'>{{city}}/{{area}}\n{{hotelAddress}}</text>
+      </view>
+      <view class="jdinfoR">
+        <view class='jdinfo-tel' bindtap='tel'>
+          <image src="../../img/tel.png" class="jdinfo-telimg"></image>
+        </view>
+        <view class='jdinfo-wifi' bindtap='connect' wx:if="{{wifiSsid != ''}}">
+          <image class="icon-wifi" src="../../img/wifi.png" mode=""></image>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{isShowInvoiceReminder == 1}}">
+      <view class='honorbox' wx:if="{{oprInvoiceSup == 1}}"><!-- 开票 -->
+        <text class='iconfont icon-laba honorbox-img' style='color: {{themecolor.skintone}};'></text>
+        <view class='honorbox-text' style='color: {{themecolor.skintone}};'>
+          <text class="txt" decode="{{true}}"><block wx:if="{{isInvoice == 1}}">所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有消费均可开入酒店房费发票&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All purchases can be covered in  the hotel room rate invoice.</block><block wx:else>所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有商品发票由第三方开具，订房发票由酒店开具&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All invoices for goods are issued by a third party, and the invoice for reservation is issued by the hotel.</block></text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{isMinibar != 0 && isSupportCab == 1}}">
+    <view class="index-bt">
+      <view class="index-bt-l">智能迷你吧</view>
+      <view class="index-bt-r">{{roomCode}}</view>
+    </view>
+    <view class="border-none"><!--  wx:if="{{cabinetStatus == 1}}" -->
+      <block wx:for="{{mnb_commodity}}" wx:for-item="item" wx:key='index'>
+        <view wx:if="{{item.prodShowName != null && item.prodShowName != ''}}" class='commoditybox-bg' data-prodcode="{{item.prodCode}}" data-latticeid='{{item.latticeId}}' data-cabid='{{item.cabId}}' data-latticecode="{{item.latticeCode}}" data-hotelprodid="{{item.hotelProdId}}" data-img="{{item.prodLogoUrl}}" data-funcprodid="{{item.funcProdId}}" data-ptype="1" data-isempty="{{item.isEmpty}}" data-prodamt="{{item.prodnum}}" data-prodnumtype="{{item.prodnumtype}}" bindtap='details'>
+          <view class="commoditybox">
+            <view class='commoditybox-img'>
+              <image class='commodityboximg' src='{{item.prodLogoUrl}}'></image>
+            </view>
+            <view class='commoditybox-right'>
+              <view class='commoditybox-right-info'>
+                <image wx:if='{{item.actSecDiscountSettingId}}' class="activityiconfont" mode="widthFix" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{item.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+                <text class="latticeCode">{{item.latticeCode}}</text> {{item.prodShowName}}
+              </view>
+              <view wx:if="{{item.isEmpty == 1 && item.isFree != 1 && item.prodRetailPrice != 0 && item.prodRetailPrice != 0.00}}" class="font-tsy">
+                <block wx:if="{{convenienceStore != 0 && item.funcProdId != 0 && item.invProdAmount != 0 && item.invProdAmount != null}}">可再次购买 商品由服务员配送至客房</block>
+              </view>
+              <view class='commoditybox-right-btm'>
+                <view class='commoditybox-right-btm-price'>¥ <block wx:if="{{item.isFree != 1}}">{{item.latticeProdAmt}}</block><block wx:else>0.00</block> <text wx:if="{{item.latticeProdAmt < item.prodMarketPrice}}" class="commoditybox-right-btm-pricemf fontsize20">¥ {{item.prodMarketPrice}}</text></view>
+                <view>
+                  <image wx:if="{{item.isHasRed == 1}}" class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>
+                  <image wx:if="{{item.isHasCoupon == 1}}" catchtap='get_couponlist' data-proddata="{{item}}" class="icon-discounts" mode="widthFix" src="../../img/couponicon.png"></image>
+                </view>
+              </view>
+            </view>
+            <block wx:if="{{Approachtype == 1}}">
+              <block wx:if="{{(item.isEmpty == 1 && convenienceStore != 0 && item.funcProdId != 0 && item.invProdAmount != 0 && item.invProdAmount != null) || item.isEmpty == 0}}">
+                <block wx:if="{{item.prodRetailPrice != 0 && item.prodRetailPrice != 0.00 && item.isFree != 1}}">
+                  <view wx:if="{{item.delivWays.length > 0}}" class='buybtn-box' style="justify-content: {{item.prodnumtype == true?'space-between':'flex-end'}}">
+                    <block wx:if="{{item.prodnumtype == true}}">
+                      <view class="btnstyle" data-ptype="1" data-latticecode="{{item.latticeCode}}" data-prodcode="{{item.prodCode}}" catchtap="lessfun"><image src="../../img/icon-img2.png"></image></view>
+                      <view class="prodnum">{{item.prodnum}}</view>
+                    </block>
+                    <view class="btnstyle" data-isclock="{{item.isclock}}" data-ptype="1" data-latticecode="{{item.latticeCode}}" data-prodcode="{{item.prodCode}}" data-prodnumtype="{{item.prodnumtype}}" data-hotelprodid="{{item.hotelProdId}}" data-isempty="{{item.isEmpty}}" data-prodamt="{{item.prodnum}}" data-isneedinv="{{item.isNeedInv}}" catchtap="plusfun"><image src="../../img/icon-img1.png"></image></view>
+                  </view>
+                </block>
+                <block wx:else>
+                  <block wx:if="{{item.isEmpty !=1 }}">
+                    <view wx:if="{{item.prodnumtype != true}}" style='background: {{themecolor.skintone}};border: 0.5px solid {{themecolor.skintone}};' class='buybtn buybtnbg' data-isclock="{{item.isclock}}" data-ptype="1" data-latticecode="{{item.latticeCode}}" data-prodcode="{{item.prodCode}}" data-prodamt="{{item.prodnum}}" catchtap="plusfun">免费领 <block wx:if="{{isSupportEn == 1}}">Free</block></view>
+                    <view wx:else style='color: {{themecolor.skintone}}"' class='buybtn buybtnbg' data-prodcode="{{item.prodCode}}" data-ptype="1" data-latticecode="{{item.latticeCode}}" catchtap="lessfun">取消 <block wx:if="{{isSupportEn == 1}}">Cancel</block></view>
+                  </block>
+                  <block wx:else>
+                    <view class='buybtn buybtnbg'>已领取 <block wx:if="{{isSupportEn == 1}}">Sold out</block></view>
+                  </block>
+                </block>
+              </block>
+              <block wx:elif="{{item.prodRetailPrice == 0 || item.prodRetailPrice == 0.00 || item.isFree == 1}}"><view class='buybtn buybtnbg'>已领取 <block wx:if="{{isSupportEn == 1}}">Sold out</block></view></block>
+              <block wx:else><view class='buybtn buybtnbg'>已售出 <block wx:if="{{isSupportEn == 1}}">Sold out</block></view></block>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- <view wx:else class='faultbox'>
+      <image src='../../img/u485.png' mode='widthFix'></image>
+      柜子故障，暂不能购买...
+    </view> -->
+  </block>
+  
+  <block wx:if="{{isConvenienceStore != 0}}">
+    <view class="index-bt">
+      <view class="index-bt-l">智能便利店<text class="index-bt-r">（购买后服务员送入客房）</text></view>
+      <view class="index-bt-r">{{roomCode}}</view>
+    </view>
+    <block wx:for="{{storelist}}" wx:for-item="item" wx:key='index'>
+      <view wx:if="{{item.prodShowName != null && item.prodShowName != ''}}" class='commoditybox-bg' data-prodcode="{{item.prodCode}}"  data-hotelprodid="{{item.hotelProdId}}" data-funcprodid="{{item.funcProdId}}" data-img="{{item.prodLogoUrl}}" data-ptype="2" data-isempty="3" data-prodamt="{{item.prodnum}}" data-prodnumtype="{{item.prodnumtype}}" bindtap='details'>
+        <view class="commoditybox">
+          <view class='commoditybox-img'>
+            <image class='commodityboximg' src='{{item.prodLogoUrl}}'></image>
+          </view>
+          <view class='commoditybox-right'>
+            <view class='commoditybox-right-info'>
+              <image wx:if='{{item.actSecDiscountSettingId}}' class="activityiconfont" mode="widthFix" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{item.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+              {{item.prodShowName}}
+            </view>
+            <view class='commoditybox-right-btm'>
+              <view class='commoditybox-right-btm-price'>¥ <block wx:if="{{item.isFree != 1}}">{{item.prodRetailPrice}}</block><block wx:else>0.00</block> <text wx:if="{{item.prodRetailPrice < item.prodMarketPrice}}" class="commoditybox-right-btm-pricemf fontsize20">¥ {{item.prodMarketPrice}}</text></view>
+              <view>
+                <image wx:if="{{item.isHasRed == 1}}" class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>       
+                <image wx:if="{{item.isHasCoupon == 1}}" catchtap='get_couponlist' data-proddata="{{item}}" class="icon-discounts" mode="widthFix" src="../../img/couponicon.png"></image>
+              </view>
+            </view>
+          </view>
+          <block wx:if="{{Approachtype == 1}}">
+            <view wx:if="{{item.delivWays.length > 0}}" class='buybtn-box' style="justify-content: {{item.prodnumtype == true?'space-between':'flex-end'}}">
+              <block wx:if="{{item.prodnumtype == true}}">
+                <view class="btnstyle" data-ptype="2" data-prodcode="{{item.prodCode}}" catchtap="lessfun"><image src="../../img/icon-img2.png"></image></view>
+                <view class="prodnum">{{item.prodnum}}</view>
+              </block>
+                <view class="btnstyle" data-isclock="{{item.isclock}}" data-ptype="2" data-prodcode="{{item.prodCode}}" data-prodnumtype="{{item.prodnumtype}}" data-hotelprodid="{{item.hotelProdId}}" data-prodamt="{{item.prodnum}}" data-isneedinv="{{item.isNeedInv}}" catchtap="plusfun">
+                  <image src="../../img/icon-img1.png"></image>
+                </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </block>
+
+  <image wx:if="{{adtype == 1}}" class="ad-img" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+
+  <view class="buybox {{buylist.length != 0 || shopcartvoucherlist.length != 0?'btm108':'btm0'}}" wx:if="{{buylist.length != 0 || shopcartvoucherlist.length != 0}}" style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+    <view class="promptbox">购买多数量同一商品， 智能迷你吧内商品自取，剩余商品服务员会送至客房。</view>
+    <view class="buybox-font">合计：<text class="font-color3">¥ {{money}}</text></view>
+    <view wx:if="{{hasfuncprod == 1}}" class="shopcar-view" bindtap="goshopcar"><image src="../../img/shoppingcart.png"></image></view>
+    <view wx:if="{{subordertype == true}}" class="buybtn2" style='background: {{themecolor.skintone}};' bindtap="getshoppingcart">结算 ({{prodlength}})</view>
+    <view wx:else class="buybtn2" style="background: #bbbec4;">已提交</view>
+  </view>
+  <tabbar funcId="{{funcid}}"></tabbar>
+</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>
+<block wx:if="{{redPacketShowFlag == 1 && shareObj == 10 && regbagact_type == 0}}">
+  <redbagact imgurldata='{{global_Data.imgurldata}}' shareUserAvatarUrl='{{shareUserAvatarUrl}}' shareUserNickName='{{shareUserNickName}}' redbagtype='{{redbagtype}}'></redbagact>
+</block>
+<block wx:if="{{act_newcomer != '' && act_newcomer.isOpen == 0 && (shareObj != 3 || redPacketShowFlag == 0) && regbagact_type != 0}}">
+  <newcomer actAdImageUrl='{{act_newcomer.curActHotelDTO.actAdImageUrl}}' actImageUrl='{{act_newcomer.curActHotelDTO.actImageUrl}}' actId="{{act_newcomer.id}}"></newcomer>
+</block>
+
+<couponbox id="couponlist" couponRange="1" couponlist="{{coupon_list}}"></couponbox>

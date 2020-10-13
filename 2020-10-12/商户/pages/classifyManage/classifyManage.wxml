@@ -1,0 +1,37 @@
+<!--pages/classifyManage/classifyManage.wxml-->
+<view class="wrap">
+   <view class="rowbox" wx:for="{{typeDataDetail}}" wx:key="index">
+       <view class="titlebox">
+          <view class="titlef">
+            <view class="sortbox">
+               <text class="sortnum">{{item.sort}}</text>
+               <image src="../../img/sortbak.png"></image>
+            </view>
+            <text class="spec">{{item.categoryName}}</text>
+         </view>
+         <view class="onebtnbox">
+            <view class="oneEdit delestyle" wx:if="{{(item.childDtoList.length<=0 || item.childDtoList==null) && authzData['F:MS_BASIC_CLASS_DELETEONE']}}" bindtap="oneDele" data-typedata="{{item}}">删除</view>
+            <view class="oneEdit" wx:if="{{authzData['F:MS_BASIC_CLASS_MODIFYONE']}}" bindtap="oneEdit" data-id="{{item.id}}">修改</view>
+         </view>
+       </view>
+       <view class="rowblock" wx:for="{{item.childDtoList}}" wx:for-item="cell">
+           <view class="lefbox">
+              <view class="sortshu">{{cell.sort}}</view>{{cell.categoryName}}
+           </view>
+           <view class="rigbox">
+              <view class="btnitem" wx:if="{{authzData['F:MS_BASIC_CLASS_DELETETWO']}}" bindtap="twoDele" data-id="{{cell.id}}">删除</view>
+              <view class="btnitem" bindtap="twoEdit" wx:if="{{authzData['F:MS_BASIC_CLASS_MODIFYTWO']}}" data-id="{{cell.id}}">修改</view>
+           </view>
+       </view>
+       <view class="twoadd" bindtap="twoadd" data-categorydata="{{item}}" data-categoryName="{{item.categoryName}}" wx:if="{{authzData['F:MS_BASIC_CLASS_ADDTWO']}}">+新增二级目录</view>
+   </view>
+</view>
+
+<view class="oneadd" wx:if="{{authzData['F:MS_BASIC_CLASS_ADDONE']}}" bindtap="oneadd">新增一级目录</view>
+
+
+
+
+
+
+

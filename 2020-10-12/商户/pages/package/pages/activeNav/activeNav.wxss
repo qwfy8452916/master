@@ -1,0 +1,52 @@
+/* pages/package/pages/activeNav/activeNav.wxss */
+page{
+  background: #f2f2f5;
+  width: 100%;
+  padding: 0 3%;
+  box-sizing: border-box;
+}
+.rowLine{
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 20rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  
+}
+.rowLine .childbox{
+  display: flex;
+  align-items: center;
+}
+.rowlogo{
+  width: 120rpx;
+  height: 120rpx;
+}
+.descbox{
+  display:inline-block;
+  margin-left: 30rpx;
+}
+.descbox .desctop{
+  font-size: 36rpx;
+  display: inline-block;
+  position: relative;
+}
+.descbox .descbot{
+  font-size: 24rpx;
+  color: #888FA1;
+  margin-top: 5rpx; 
+}
+
+.moreimg{
+  width: 48rpx;
+  height: 48rpx;
+  display: inline-block;
+  transform:rotate(180deg);
+}
+
+
+
+
+

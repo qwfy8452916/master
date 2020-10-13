@@ -1,0 +1,146 @@
+<!--pages/package/pages/ownProdSpecsList/ownProdSpecsList.wxml-->
+
+<view class="wrap">
+  
+
+   <view class="rowbox {{opencloseJudge?'':'openclose'}}">
+       <view class="titleBox">
+           <view class="linebak"></view>商品信息
+       </view>
+
+       <view class="hangBox">
+         <view class="hangTitle yihang">商品名称</view>
+         <view class="showName">{{prodData.prodName}}</view>
+       </view>
+
+       <view class="hangBox">
+         <view class="hangTitle yihang">显示名称</view>
+         <view class="showName">{{prodData.prodShowName}}</view>
+       </view>
+
+      <view class="hangBox">
+         <view class="inhangbox">
+            <view class="hangTitle">商品编码</view>
+            <view>{{prodData.prodCode}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">商品形式</view>
+            <view>
+                <text wx:if="{{prodData.prodType==1}}">实物</text>
+                <text wx:if="{{prodData.prodType==2}}">电子</text>
+                <text wx:if="{{prodData.prodType==3}}">菜品</text>
+            </view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">保质期</view>
+            <view>{{prodData.prodWarrantyPeriod}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">单位</view>
+            <view>{{prodData.prodUnitMeasure}}</view>
+         </view>  
+      </view>
+
+      <view class="hangBox">
+         <view class="inhangbox">
+            <view class="hangTitle">供货价</view>
+            <view>{{prodData.prodSupplyPrice}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">零售价</view>
+            <view>{{prodData.prodRetailPrice}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">划线价</view>
+            <view>{{prodData.prodMarketPrice}}元</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">配送方式</view>
+            <view>{{prodData.delivWayNames}}</view>
+         </view>
+      </view>
+
+      
+
+      <view class="hangBox">
+         
+         <view class="rowbox switchbox" wx:if="{{isInvShow}}">
+          <view class="rowtitle">酒店库存</view>
+            <switch disabled checked="{{prodData.isNeedInv}}" color="#ff6930"></switch>
+        </view>
+         
+         <view class="inhangbox" wx:if="{{isInvShow && isSafeInv}}">
+            <view class="hangTitle">安全库存</view>
+            <view>{{prodData.prodSafeCount}}</view>
+         </view>
+
+         <view class="inhangbox">
+            <view class="hangTitle">可售数量</view>
+            <view>{{prodData.availableSaleQty}}</view>
+         </view>
+
+      </view>
+       
+    </view>
+
+    <view class="switchClose" bindtap="switchClose">
+       <text wx:if="{{opencloseJudge}}">不展开</text>
+       <text wx:else>展开</text>
+       <text class="iconfont icon-wangyou {{opencloseJudge?'stclose':'stopen'}}"></text>
+    </view>
+
+    <view class="rowbox" wx:for="{{prodSpecsDataList}}" wx:key="index">
+       <view class="specbox">
+          <view class="specContent">
+              <view class="speclef">
+                 <image src="{{item.bannerImageUrl}}"></image>
+              </view>
+              <view class="specrig">
+                 <view class="inhangbox2">
+                    <view class="specTitle">规格名称</view>
+                    <view>{{item.specName}}</view>
+                 </view>
+                 <view class="inhangbox2">
+                    <view class="specTitle">显示名称</view>
+                    <view>{{item.showName}}</view>
+                 </view>
+                 <view class="inhangbox2">
+                    <view class="specTitle">可售数量</view>
+                    <view>{{item.availableSaleQty}}</view>
+                 </view>
+                 <view class="inhangbox2">
+                    <view class="priceBox">
+                        <view class="specTitle2">零售价</view>
+                        <view class="pricestyle">{{item.retailPrice}}元</view>
+                    </view>
+                    <view class="priceBox">
+                        <view class="specTitle2">划线价</view>
+                        <view class="pricestyle">{{item.marketPrice}}元</view>
+                    </view>
+                 </view>
+                 <view class="inhangbox2">
+                    <view class="specTitle2">供货价</view>
+                    <view class="pricestyle">{{item.supplyPrice}}元</view>
+                 </view>
+              </view>
+           </view>
+           <view class="btnBox">
+             <view class="sortBox">排序{{item.sort}}</view>
+             <view class="wrapbtn">
+                <view class="btnitem" bindtap="removeBtn" data-id="{{item.id}}">移除</view>
+                <view class="btnitem" bindtap="editBtn" data-id="{{item.id}}">修改</view>
+                <view class="btnitem" bindtap="detailBtn" data-id="{{item.id}}">详情</view>
+             </view>
+           </view>
+       </view>
+       
+    </view>
+
+</view>
+
+<view class="addSpec" bindtap="addSpec">添加商品规格</view>
+
+
+
+
+

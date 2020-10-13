@@ -1,0 +1,86 @@
+<view class="redbag-bg" wx:if="{{showtype == true}}">
+  <view 
+  wx:if="{{redbag_type == 0 || redbag_type == 3 || redbag_type == 2 || redbag_type == 4}}"
+   class="redbag-box">
+    <image wx:if="{{redbag_type == 0}}" class="redbag-box-bgimg" mode="widthFix" src="{{imgurldata}}redbag-bg.png"></image>
+    <image wx:elif="{{redbag_type == 2}}" class="redbag-box-bgimg" mode="widthFix" src="{{imgurldata}}redbag-bg2.png"></image>
+    <image wx:elif="{{redbag_type == 3}}" class="redbag-box-bgimg" mode="widthFix" src="{{imgurldata}}redbag-bg2.png"></image>
+    <image wx:elif="{{redbag_type == 4}}" class="redbag-box-bgimg" mode="widthFix" src="{{imgurldata}}redbag-bg2.png"></image>
+    <view class="closebtn" bindtap="closefun"></view>
+    <view class="redbag-info" bindtap="openfun">
+      <image class="share-img" src="{{shareUserAvatarUrl}}"></image>
+      <block wx:if="{{redbagtype == 1}}">
+        <view class="share-name">{{shareUserNickName}}</view>
+        <view wx:if="{{redbag_type == 0}}" class="font-text1">给你发了一个红包</view>
+      </block>
+      <!-- <block wx:else>
+        <view class="share-name">恭喜您！</view>
+        <view class="font-text1">获得一个返现红包</view>
+      </block> -->
+      <view class="font-text2">
+        <block wx:if="{{redbag_type == 2}}"><view style="font-size:16px">手慢了，红包派完了</view></block>
+        <block wx:if="{{redbag_type == 4}}"><view style="font-size:12px">该红包已超过24小时，红包已失效</view></block>
+        <block wx:if="{{redbag_type == 3}}">
+          <view style="font-size:12px">你已领取</view>
+          <view style="margin-top：50px"><text style="font-size:26px">{{redbagdata.amount}}</text><text style="font-size:14px">元</text></view>
+        </block>
+        <!-- <block wx:if="{{redbag_type == 0}}"><view style="font-size:18px">分享红包</view></block> -->
+        <block wx:if="{{redbag_type != 0}}">
+          <view wx:if="{{redbag_type != 4}}" class="viewdetail" bindtap="viewdetail">查看领取详情</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="redbag-box2-bg">
+    <scroll-view scroll-y style="height: 100%;">
+      <view class="redbag-box2">
+        <view class="closebtn2" bindtap="closefun"><image src="../../../img/my-btnimg23.png"></image></view>
+        <image class="redbag-box2-img" mode="widthFix" src="{{shareUserAvatarUrl}}"></image>
+        <view class="share-name2">
+          <block wx:if="{{redbagtype == 1}}">{{shareUserNickName}}的红包</block>
+          <block wx:else>XXX好友的红包</block>
+        </view>
+        <!-- <view class="font-text3">红包返现</view> -->
+        <view class="redbag-amount">
+          {{redbagdata.amount}}
+          <text>元</text>
+        </view>
+        <view class="font-text4">已存入我的账户，可直接提现</view>
+        <navigator url="/pages/my/my" class="clickView">点击提现</navigator>
+        <view class="redbaginfo-box">
+          <view class="borderB redbaginfo-box-top">
+            <text class="redtop1">{{redbagdata.actRedPacketDTO.totalNum}}个红包 / 已领{{redbagdata.actRedPacketDTO.receivedNum}}个</text>
+            <text class="redtop2">总金额{{redbagdata.actRedPacketDTO.totalAmount}} / 已领{{redbagdata.actRedPacketDTO.receviedAmount}}</text>
+          </view>
+          <block wx:for="{{redbagdata.actRedPacketRecordDTOS}}" wx:for-item="item" wx:key="index">
+            <view class="borderB redbag-libox">
+              <view class="redbag-libox-l">
+                <image wx:if="{{item.receiveCustomAvatarUrl}}" class="tx-img" src="{{item.receiveCustomAvatarUrl}}"></image>
+                <image wx:else class="tx-img" src="../../../img/my-btnimg25.png"></image>
+                <view>
+                  <view class="font-name">
+                    <block wx:if="{{item.receiveCustomNickName}}">{{item.receiveCustomNickName}}</block>
+                    <block wx:else>XXX</block>
+                  </view>
+                  <view class="font-time">{{item.createdAt}}</view>
+                </view>
+              </view>
+              <view class="redbag-libox-r">{{item.receivceAmount}}元</view>
+            </view>
+          </block>
+        </view>
+        <!-- <view class="font-btm">可于“我的-我的红包”<text style="color:#EE1E1E" bindtap="viewDetail">查看记录</text></view> -->
+        <view class="getMore">
+          <view class="getmore1" bindtap="closefun">
+            <image class='redImg' mode="widthFix" src="../../../img/getMore.png"/>
+            <text>我还想领红包</text>
+          </view>
+          <button class="getmore2" open-type="share" data-type="1">
+            <image class='redImg' mode="widthFix" src="../../../img/shareToOther.png"/>
+            <text>转发红包给好友</text>
+          </button>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

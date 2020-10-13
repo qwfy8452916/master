@@ -1,0 +1,354 @@
+/* pages/package/pages/activeDetail/activeDetail.wxss */
+
+
+page{
+  background: #f3f4f5;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 95%;
+  background: #fff;
+  margin: 20rpx auto;
+  border-radius: 25rpx;
+  
+}
+
+
+/* 下拉选择 */
+
+
+.pickbox{
+    padding: 30rpx 4%;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    border-radius:15rpx;
+    border-bottom: 1px solid #e9eaea;
+}
+.pickbox .pickeritem{
+  display: inline-block;
+  width:165rpx;
+  text-align: left;
+  margin-right: 20rpx;
+  color:#888FA1;
+  position: relative;
+  }
+.pickbox .nowrequ{
+   display: inline;
+  }
+ .required{
+   color:#FF4F4F;
+   font-size: 28rpx; 
+   position: absolute;
+   top: -10rpx;
+   right: -15rpx;
+  }
+  .requiredcj{
+    color:#FF4F4F;
+   font-size: 28rpx; 
+   position: absolute;
+   top: -10rpx;
+   right: 15rpx;
+  }
+.alignlef{
+  float: left;
+  }
+.alignrig{
+  float: right;
+}
+.placems{
+   color: #C5C9CF;
+  }
+.iconwangyou{
+  color: #888c8f;
+  font-size: 28rpx;
+}
+
+/* 时间选择 */
+.picker_group{overflow: hidden;vertical-align: middle;
+font-size: 28rpx;clear: both;padding: 30rpx 4% 30rpx 0;
+box-sizing: border-box;}
+.pickertime{display: inline-block;}
+.selectdate{
+  margin-right: 20rpx;
+  font-size: 32rpx;
+  color: #888FA1;
+  }
+.sectionitem{
+  overflow: hidden;
+  display: inline-block;
+}
+.hengxian{color: #666;margin:0 20rpx;}
+
+/* 下拉选择 */
+
+.rowbox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing:border-box;
+  border-bottom: 1px solid #e9eaea;
+  display: flex;
+  align-items:center;
+  font-size: 32rpx;
+}
+.rowtitle{
+  color:#888FA1;
+  margin-right:30rpx;
+  width: 185rpx;
+  position: relative;
+}
+.rowtitle .reqred{
+   color:#FF4F4F;
+   font-size: 28rpx; 
+   position: absolute;
+   top: -10rpx;
+   right: 35rpx;
+}
+.rowtitle .reqredcs{
+   color:#FF4F4F;
+   font-size: 28rpx; 
+   position: absolute;
+   top: -10rpx;
+   right: 12rpx;
+}
+.secrig{
+  left: 70rpx !important;
+}
+.dwright{
+  right: 15rpx !important;
+}
+.wrapput{
+  width: calc(100% - 130rpx);
+  position: relative;
+}
+.wrapput .unit{
+  position: absolute;
+  top: 0rpx;
+  right: 30rpx;
+}
+.linebox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing:border-box;
+  border-bottom: 1px solid #e9eaea;
+  font-size: 32rpx;
+}
+.alignrig{
+  text-align: right;
+}
+.wrapblock{
+  display: block;
+  margin-top: 20rpx;
+}
+.uploadBtn{
+  width: 200rpx;
+  height: 160rpx;
+  border-radius: 5rpx;
+  border: 1px dashed #888fa1;
+  position: relative;
+}
+.linebor{
+  width:5rpx;
+  height: 90rpx;
+  background: #747c92;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.rowbor{
+  width:90rpx;
+  height: 5rpx;
+  background: #747c92;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.wrapimage{
+  width: 200rpx;
+  height: 160rpx;
+  border-radius: 5rpx;
+  overflow: hidden;
+  position: relative;
+}
+.wrapimage image{
+  width: 100%;
+  height: 100%;
+}
+.wrapimage .iconguanbi{
+  position: absolute;
+  top:10rpx;
+  left: 10rpx;
+  color: #3f4247;
+}
+
+/* swtich整体大小 */
+.wx-switch-input{
+  width: 80rpx !important;
+  height: 48rpx !important;
+}
+/* false的样式 */
+.wx-switch-input::before{
+  width: 80rpx !important;
+  height: 48rpx !important;
+}
+/* true的样式 */
+.wx-switch-input::after{
+  width: 45rpx !important;
+  height: 46rpx !important;
+}
+.sureBtn{
+  width: 95%;
+  padding: 30rpx 0rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  color: #fff;
+  font-size: 36rpx;
+  background-image:linear-gradient(to right,#f0904d,#ed7142);
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 40rpx;
+}
+.dayBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+  flex-wrap: wrap;
+}
+.dayBox::after{
+  content:"";
+  flex: auto;
+}
+.dayBox .dayitem{
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #e7e9ec;
+  color: #2C2E30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  margin:20rpx 20rpx;
+}
+.choiceitemActive{
+  background: #ffe1d6 !important;
+  color: #FF6A31 !important;
+  border: none !important;
+}
+.weekBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e9eaea;
+}
+.weekBox::after{
+  content:"";
+  flex:auto;
+}
+.weekitem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #2C2E30;
+  background: #e7e9ec;
+  padding: 10rpx 30rpx;
+  box-sizing: border-box;
+  margin: 20rpx 10rpx;
+}
+.monthBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+  flex-wrap: wrap;
+}
+.monthBox::after{
+  content: "";
+  flex: auto;
+}
+.monthitem{
+  padding: 10rpx 30rpx;
+  background: #e7e9ec;
+  color: #2C2E30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  margin:20rpx 15rpx;
+
+}
+.timeBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+}
+.timeBox .addTime{
+  color: #FF6A31;
+}
+.pickTime{
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 !important;
+  align-items: center;
+  overflow: hidden;
+}
+.removeBox{
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #ff6930;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin-right: 40rpx;
+  margin-left: 4%;
+}
+.removeItem{
+  width: 28rpx;
+  height:4rpx;
+  background: #fff;
+}
+.timeleft{
+  width: 90%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  background: #f9f9f9;
+}
+.dateType{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dateinput{
+  width: 200rpx;
+}
+.pickDate{
+  padding: 0rpx !important;
+}
+.boxright{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+
+

@@ -1,0 +1,100 @@
+<!--pages/package/pages/enterConfig/enterConfig.wxml-->
+
+
+<view class="searchWrap">
+  <view class="expandbox">
+    <view class="searchdesc expenditem">
+      <image class="searchlogo" src="{{pathUrl}}/searchlogo.png" wx:if="{{pathUrl}}"></image>
+      搜索
+    </view>
+    <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+      <image src="/../../../img/expendlogo.png"></image>
+    </view>
+  </view>
+  <view wx:if="{{switchJudge}}">
+
+
+
+    <picker class="pickbox" bindchange="bindPickerChangeCabType" range-key="cabTypeName" value="{{cabTypeIndex}}" range="{{cabTypeList}}">
+      <view class="picker">
+        <text class="alignlef">
+          <text class="pickeritem">柜子类型</text>
+          <text wx:if="{{cabTypeList[cabTypeIndex].id!==''}}">{{cabTypeList[cabTypeIndex].cabTypeName}}</text>
+        </text>
+        <text class="alignrig">
+              <text wx:if="{{cabTypeList[cabTypeIndex].id===''}}" class="placems">全部</text>
+           <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+    <view class="searchBtn" bindtap="searchBtn">搜索</view>
+    <view class="reset" bindtap="reset">重置</view>
+  </view>
+</view>
+
+<view class="wrap">
+
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../../../img/closetj.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+  <block>
+    <view class="contentbox" wx:for="{{configData}}" wx:key="index">
+      <view class="contenttitle">
+        <view class="titleleft">
+          <view class="linebk"></view>
+            {{item.settingName}}
+        </view>
+        <view class="typeName">{{item.cabTypeName}}</view>
+      </view>
+      <view class="contentitem">
+        <view class="controw">
+          <view>
+            <text class="couponName">
+               默认配置：  <text wx:if="{{item.isDefault==0}}">否</text><text wx:if="{{item.isDefault==1}}">是</text>
+            </text>
+          </view>
+        </view>
+        <view class="controw">
+          <view>
+            <text class="couponName">支持默认开放功能区：<text wx:if="{{item.availableFuncSupport==0}}">否</text><text wx:if="{{item.availableFuncSupport==1}}">是</text>
+            </text>
+          </view>
+        </view>
+      </view>
+
+      
+
+      <view class="btnbox">
+        <view class="btnitem" bindtap="deleBtn" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+        <view class="btnitem" bindtap="enterConfigEdit" data-id="{{item.id}}" data-index="{{index}}">修改</view>
+        <view class="btnitem" bindtap="enterConfigDetail" data-id="{{item.id}}">详情</view>
+
+      </view>
+    </view>
+  </block>
+  <!-- <view wx:else class="nodata">暂无数据</view> -->
+
+</view>
+
+<view class="addCard" bindtap="funProdAdd" bindtap="enterConfigAdd">新增</view>
+
+
+

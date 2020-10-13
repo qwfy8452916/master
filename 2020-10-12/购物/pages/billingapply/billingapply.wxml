@@ -1,0 +1,49 @@
+<block wx:if="{{type == true}}">
+  <include src="billingtype.wxml" />
+</block>
+<block wx:else>
+  <block wx:if="{{listdata.length != 0}}">
+    <view class="paddB110">
+      <block wx:for="{{listdata}}" wx:for-item="item" wx:key="index">
+        <view class="bgfff libox mgB20">
+          <view class="paddAll borderB flexbox">
+            <view class="font30 font-color2">订单号: {{item[0].orderCode}}</view>
+          </view>
+          <block wx:for="{{item}}" wx:for-item="item2" wx:for-index="item2index" wx:key="index">
+            <view class='paddAll listbox' data-itemindex='{{index}}' data-item2index='{{item2index}}' bindtap='checkboxChange'>
+              <view class='listbox-l'>
+                <image wx:if="{{item2.isSelect}}" src='../../img/icon-img5.png' class='checkboximg' mode='aspectFill'></image>
+                <image wx:else src='../../img/icon-img7.png' class='checkboximg' mode='aspectFill'></image>
+              </view>
+              <view class='listbox-c'>
+                <image src='{{item2.prodPath}}' class='commodityimg' mode='aspectFill'></image>
+              </view>
+              <view class='listbox-r'>
+                <view class='listbox-r-t'>
+                  <view class="font30 w80">{{item2.prodName}}</view>
+                  <view class="font26 w20">x {{item2.quantity}}</view>
+                </view>
+                <view class='unitPrice'>¥ {{item2.unitPrice}}</view>
+                <view class='orderTime'>{{item2.orderTime}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+    <view class="footbox">
+      <view class='selectallbtn' bindtap='selectall'>
+        <image wx:if="{{selectalltype}}" src='../../img/icon-img5.png' class='checkboximg mgR10' mode='aspectFill'></image>
+        <image wx:else src='../../img/icon-img7.png' class='checkboximg mgR10' mode='aspectFill'></image>
+        全选
+      </view>
+      <view class="footbox-r" bindtap="nextfun">下一步</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='datanull-font'>
+      <image src='../../img/my-btnimg15.png' class='iconimg1' mode='widthFix'></image>
+      <text>您最近30天暂无购买商品记录</text>
+    </view>
+  </block>  
+</block>

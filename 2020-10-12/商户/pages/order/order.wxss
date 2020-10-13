@@ -1,0 +1,86 @@
+/* pages/order/order.wxss */
+page{
+  border-top: 1px solid #e5e5e5;
+  background: #f6f6f6;
+}
+.wrap{
+  width: 100%;
+  padding: 0rpx 3%;
+  box-sizing: border-box;
+  padding-bottom: 260rpx;
+}
+.linebk{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  display: inline-block;
+  border-radius: 10rpx;
+  margin-right:20rpx; 
+}
+.titlebox{
+  display: flex;
+  font-size: 36rpx;
+  color: #2B2D2F;
+  font-weight: 500;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+
+.rowLine{
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 20rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  
+}
+.rowLine .childbox{
+  display: flex;
+  align-items: center;
+}
+.childCount{
+  color: #ff6930;
+  background: #fdf1ec;
+  font-size:36rpx;
+  width: 100rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  box-sizing: border-box;
+  border-radius: 25rpx; 
+  margin-right: 20rpx;
+  text-align: center;
+}
+.bluecolor{
+  color: #10bbbb !important;
+  background: #e7f8f8 !important;
+}
+.rowlogo{
+  width: 120rpx;
+  height: 120rpx;
+}
+.descbox{
+  display:inline-block;
+  margin-left: 30rpx;
+}
+.descbox .desctop{
+  font-size: 36rpx;
+  display: inline-block;
+  position: relative;
+}
+.descbox .descbot{
+  font-size: 24rpx;
+  color: #888FA1;
+  margin-top: 5rpx; 
+}
+
+.moreimg{
+  width: 48rpx;
+  height: 48rpx;
+  display: inline-block;
+  transform:rotate(180deg);
+}

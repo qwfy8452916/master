@@ -1,0 +1,45 @@
+<view class="enterprises">
+    <view wx:for="{{EnterpriseCodeList}}" wx:key="index" class="splice">
+        <view class="splice1">
+            <view class="splice1_1">
+                <text class="tabInfo">授权码</text>
+                <text class="tabInfo1">{{item.license}}</text>
+                <text class="tabInfo">{{item.bindFlag?'已绑定':'未绑定'}}</text>
+            </view>
+            <view class="splice1_2" wx:if="{{item.bindFlag}}">
+                <text class="tabInfo">{{item.bindUserName}}</text>
+                <text class="tabInfo1">{{item.bindUserMobile}}</text>
+            </view>
+            <view class="splice1_2" wx:if="{{item.bindFlag}}">
+                <text class="tabInfo">有效期至</text>
+                <text class="tabInfo1">{{item.useTimeEnd}}</text>
+                <view class="tabInfo2" data-item="{{item}}" bindtap="changeTime"><image src="../../img/change.png" mode="widthFix" style="width:14px;margin-right:2px"/><text>修改</text></view>
+            </view>
+        </view>
+        <view class="splice2">
+            <switch color="#10BBBB" data-id="{{item.id}}" data-status="{{item.status}}" checked='{{item.status}}' bindchange="switch1idChange"/>
+            <navigator url="/pages/enterprisePage/enterprisePage?codeID={{item.id}}" class="funcBtn" wx:if="{{item.bindFlag}}" style="margin-left:10px;">详情</navigator>
+            <view class="funcBtn" wx:if="{{item.bindFlag}}" data-license="{{item.license}}" bindtap="unbindCode" style="margin-left:10px;">解绑</view>
+            <view class="funcBtn" data-id="{{item.id}}" bindtap="cancelCode">删除</view>
+        </view>
+    </view>
+    <view wx:if="{{ifhasNone}}" class="none">
+        暂无可管理授权码，点击下方红色按钮生成~
+    </view>
+</view>
+<view class="codeBox" catch:tap="closeCode" wx:if="{{ifShowcode}}">
+    <view class="codeBoxIn" catch:tap="returnTap">
+        <view class="codeTitle">{{alldata.license}}</view>
+        <view class="codeTitle1">
+            <text class="dateCode">授权码有效期至</text>
+            <date-time-picker class="myInfos" value="{{dateValue}}" bindtap="getNowTime" bind:change="handleChange">
+                <view class="choosetime">
+                    <text style="color: #C5C9CF;margin-right:4px">{{chooseTime}}</text>
+                    <image src="../../img/toright.png" mode="widthFix" style="width:14px"/>
+                </view>
+            </date-time-picker>
+        </view>
+        <view class="codeTitle2"><view bindtap="ensureChange" class="ensure">确定</view></view>
+    </view>
+</view>
+<view class="submitbtn" bindtap="creatCode">生成授权码</view>

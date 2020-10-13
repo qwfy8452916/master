@@ -1,0 +1,203 @@
+<!--pages/storeDeliv/storeDeliv.wxml-->
+
+
+<view class="searchWrap">
+  <view class="expandbox">
+    <view class="searchdesc expenditem">
+      <image class="searchlogo" src="../../img/searchlogo.png"></image>
+      搜索
+    </view>
+    <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+      <image src="../../img/expendlogo.png"></image>
+    </view>
+  </view>
+  <view wx:if="{{switchJudge}}">
+    
+    <picker class="pickbox" bindchange="bindPickerOrder" range-key="name" value="{{orderStatusIndex}}" range="{{orderStatusData}}">
+  <view class="picker">
+    <text class="alignlef">
+              <text class="pickeritem">订单状态</text>
+    <text wx:if="{{orderStatusData[orderStatusIndex].id}}">{{orderStatusData[orderStatusIndex].name}}</text>
+    </text>
+    <text class="alignrig">
+                
+    <text wx:if="{{!orderStatusData[orderStatusIndex].id}}" class="placemsall">全部</text>
+    <text class="iconfont iconwangyou"></text>
+    </text>
+  </view>
+</picker>
+
+    <view class="rowbox">
+      <view class="rowtitle">配送单号</view>
+      <view>
+        <input placeholder="请输入配送单号" bindinput="deliveryCode" value="{{deliveryCode}}"></input>
+      </view>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerFun" range-key="funcCnName" value="{{funcIndex}}" range="{{functionList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">功能区</text>
+        <text wx:if="{{functionList[funcIndex].id}}">{{functionList[funcIndex].funcCnName}}</text>
+
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!functionList[funcIndex].id}}" class="placems">全部</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+
+    <view class="pickbox">
+      <text class="alignlef selectdate">支付时间</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text wx:if="{{date}}">{{date}}</text>
+            <text wx:else class="placems">起始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" value="{{date2}}" bindchange="bindDateChange2">
+          <view class="picker">
+            <text wx:if="{{date2}}">{{date2}}</text>
+            <text wx:else class="placems">终止时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+
+
+    <view class="searchBtn" bindtap="searchBtn">搜索</view>
+    <view class="reset" bindtap="reset">重置</view>
+  </view>
+</view>
+
+<view class="wrap">
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+          <view class="searitembox" wx:else>
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+ <block wx:for="{{deliveryDataList}}" wx:key>
+  <view class="delivBox" wx:if="{{item.funcId!==0}}">
+    <view class="headbox">
+      <view class="headlef">订单编号 {{item.delivCode}}</view>
+      <view class="orabtn">
+        <text wx:if="{{item.status===0}}">待确认</text>
+        <text class="alreadybtn" wx:if="{{item.status==1}}">已确认</text>
+        <text wx:if="{{item.status==2}}">已发货</text>
+        <text wx:if="{{item.status==3}}">部分退款</text>
+        <text wx:if="{{item.status==4}}">全部退款</text>
+        <text wx:if="{{item.status==5}}">已售后</text>
+        <text wx:if="{{item.status==6}}">已取消</text>
+      </view>
+    </view>
+    <view class="funwrap">
+      <view class="funbox">
+        <view class="funsign">{{item.roomFloor}}-{{item.roomCode}}</view>
+        <view class="funName">{{item.funcName}}</view>
+      </view>
+
+      <view class="idbox">
+        <view class="inid">
+            <view>用户ID</view>
+            <view class="idtext">{{item.customerId}}</view>
+         </view>
+      </view>
+      <view class="descbox">
+        <view>商品金额</view>
+        <view>￥{{item.totalAmount}}</view>
+      </view>
+      <view class="descbox">
+        <view>优惠金额</view>
+        <view>￥{{item.couponAmount}}</view>
+      </view>
+      <view class="descbox botborder">
+        <view>减免金额</view>
+        <view>￥{{item.discountAmount}}</view>
+      </view>
+      <view class="amounbox">
+        <view>共{{item.prodCount}}件商品</view>
+        <view class="marginjv">实付金额</view>
+        <view>¥{{item.actualPay}}</view>
+      </view>
+    </view>
+    <view class="paybox">
+      <view>支付时间</view>
+      <view class="marginjv">{{item.payCompleteTime}}</view>
+    </view>
+    <view class="btnbox">
+      <view class="btndefa btndetail" data-id="{{item.id}}" data-delivtype="{{item.delivType}}" bindtap="btndetail" wx:if="{{authzData['F:MS_ORDER_STOREDELIV_DETAIL']}}">详情</view>
+      <view class="btnsure" data-id="{{item.id}}">
+        <text class="btndefa blueBen" wx:if="{{item.status===0}}" data-id="{{item.id}}" bindtap="delisure">确认</text>
+      </view>
+    </view>
+   </view>
+
+   <view class="delivBox" wx:else>
+    <view class="headbox">
+      <view class="headlef">订单编号 {{item.delivCode}}</view>
+      <view class="orabtn">
+        <text wx:if="{{item.status===0}}">待确认</text>
+        <text class="alreadybtn" wx:if="{{item.status==1}}">已确认</text>
+        <text wx:if="{{item.status==2}}">已发货</text>
+        <text wx:if="{{item.status==3}}">部分退款</text>
+        <text wx:if="{{item.status==4}}">全部退款</text>
+        <text wx:if="{{item.status==5}}">已售后</text>
+        <text wx:if="{{item.status==6}}">已取消</text>
+      </view>
+    </view>
+    <view class="funwrap">
+      <view class="funbox">
+        <view class="funsign">{{item.roomCode}}</view>
+        <view class="funName">客房服务</view>
+      </view>
+      
+      <view class="idbox">
+         <view class="inid">
+            <view>用户ID</view>
+            <view class="idtext">{{item.customerId}}</view>
+         </view>
+        <view>{{item.rmavcRecordsDto.hotelCategoryName}}</view>
+      </view>
+        
+
+    </view>
+    <view class="paybox">
+       <view></view>
+      <view>下单时间</view>
+      <view class="marginjv">{{item.payTime}}</view>
+    </view>
+    <view class="btnbox">
+      <view class="btndefa btndetail" data-id="{{item.id}}" data-delivtype="{{item.delivType}}" bindtap="btndetail" wx:if="{{authzData['F:MS_ORDER_STOREDELIV_DETAIL']}}">详情</view>
+      <view class="btnsure" data-id="{{item.id}}">
+        <text class="btndefa blueBen" wx:if="{{item.status===0}}" data-id="{{item.id}}" bindtap="delisure">确认</text>
+      </view>
+    </view>
+   </view>
+  </block>
+
+</view>

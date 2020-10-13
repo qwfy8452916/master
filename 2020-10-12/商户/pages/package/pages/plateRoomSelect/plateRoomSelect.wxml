@@ -1,0 +1,9 @@
+<!--pages/package/pages/plateRoomSelect/plateRoomSelect.wxml-->
+
+<view class="wrap">
+   <view class="funitem {{selectActive[index]?'active':''}}" bindtap="roomitem" wx:for="{{resourceList}}" data-index="{{index}}">{{item.resourceName}}</view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
+

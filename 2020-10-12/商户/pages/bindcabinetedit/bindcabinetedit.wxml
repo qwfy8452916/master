@@ -1,0 +1,107 @@
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont iconpeiwangWiFimima'></text>绑定地点</view>
+  <picker class="pickbox" bindchange="bindPickerArea" range-key="name" value="{{areaInex}}" range="{{bindAreaData}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left">
+          <text class="iconfont iconxuanzeleixing"></text>
+      <text wx:if="{{bindAreaId || bindAreaId===0}}">{{bindAreaFlagName}} 
+            </text>
+      <text wx:else class="placems">请选择绑定地点</text>
+      </text>
+
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+</view>
+
+<view class='hangtiem' wx:if="{{bindAreaId!==0 && floorName}}">
+   <view class='titlename'><text class='iconfont iconlouceng'></text>{{floorName}}</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='10' placeholder='请填写{{floorName}}' placeholder-class='color:#cecece;' bindinput='Loufloor' value='{{floorval}}'></input>
+   </view>
+</view>
+<view class='hangtiem' wx:if="{{bindAreaId!==0 && codeName}}">
+   <view class='titlename'><text class='iconfont iconfanghao'></text>{{codeName}}</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='10' placeholder='请填写{{codeName}}' placeholder-class='color:#cecece;' bindinput='Housenumber' value='{{housenumberval}}'></input>
+   </view>
+</view>
+<view class='hangtiem' wx:if="{{fictitious=='0'}}">
+   <view class='titlename'><text class='iconfont iconcard2'></text>物联卡</view>
+   <view class='inputwk iotcard'>
+      <input class='iteminput' maxlength='30' placeholder='请填写物联卡号' placeholder-class='color:#cecece;' bindblur='yanzhengcode' bindinput='Iotcart' value='{{iotcartval}}'></input><text class="iconfont iconsaoma" bindtap="sweepCode"></text>
+   </view>
+</view>
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconwifiwofi'></text>WiFi名称</view>
+   <!-- <view class='inputwk'>
+      <input class='iteminput' maxlength='50' placeholder='请填写WiFi名称' placeholder-class='color:#cecece;' bindinput='wifiname' value='{{wifiname}}'></input>
+   </view> -->
+   <view wx:if="{{isAuthLocation}}" class='inputwk'>
+    <picker bindchange='bindWifiChange' value='{{wifiIndex}}' range='{{wifiDataList}}'>
+      <input class='iteminput' disabled='true' value='{{wifiDataList[wifiIndex]}}' placeholder='请选择WiFi名称' placeholder-class='color:#cecece;'></input>
+    </picker>
+   </view>
+   <view wx:else class='inputwk'>
+      <input class='iteminput' maxlength='50' placeholder='请填写WiFi名称' placeholder-class='color:#cecece;' bindinput='wifiname' value='{{wifiname}}'></input>
+   </view>
+</view>
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconpeiwangWiFimima'></text>WiFi密码</view>
+   <view class='inputwk'>
+      <input class='iteminput' maxlength='50' placeholder='请填写WiFi密码' placeholder-class='color:#cecece;' bindinput='wifipass' value='{{wifipassword}}'></input>
+   </view>
+</view>
+
+<!-- <view class='hangtiem' wx:if="{{fictitious=='1'}}">
+   <view class='titlename'><text class='iconfont iconpeiwangWiFimima'></text>虚拟柜配置</view>
+   <picker class="pickbox" bindchange="bindPickerChange2" range-key="settingName" value="{{index}}" range="{{fictitiousdata}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left">
+          <text class="iconfont iconxuanzeleixing"></text>
+          <text wx:if="{{xunicabId}}">{{visualSettingName}} 
+            </text>
+          <text wx:else class="placems">请选择柜子类型</text>
+      </text>
+
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+</view> -->
+
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconpeiwangWiFimima'></text>进场配置</view>
+   <picker class="pickbox" bindchange="bindPickerChange3" range-key="settingName" value="{{index}}" range="{{approachData}}">
+    <view class="picker">
+      <text class="alignlef" style="text-align:left">
+          <text class="iconfont iconxuanzeleixing"></text>
+          <text wx:if="{{approachId}}">{{enterSettingName}} 
+            </text>
+          <text wx:else class="placems">请选择进场配置</text>
+      </text>
+
+      <text class="alignrig">
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+</view>
+
+<view class='hangtiem' wx:if="{{fictitious=='0'}}">
+   <view class='titlename'><text class='iconfont iconpeiwangWiFimima'></text>是否断电</view>
+   <view class='inputwk'>
+      <switch checked="{{isPowerFailure=='1'?true:false}}" bindchange="switch1Change"/>
+   </view>
+</view>
+
+
+
+<view class='wraptesting'>
+   <view class='testingniu' hidden="{{!niujudge}}" bindtap='sureniu'>确定</view>
+   <view class='testingniu' hidden="{{niujudge}}" bindtap='testingniu'>去检测</view>
+</view>

@@ -1,0 +1,231 @@
+<!--pages/package/pages/plateAdd/plateAdd.wxml-->
+
+<form bindsubmit="formSubmit">
+
+<view class="wrap">
+
+  <view class="titlebox">
+    <view class="linebak"></view>添加设置</view>
+
+ 
+  <picker class="pickbox" bindchange="bindPickerModelType" range-key="name" value="{{modelTypeIndex}}" range="{{modelTypeList}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">板块类型</text>
+      <text wx:if="{{modelTypeList[modelTypeIndex].id}}">{{modelTypeList[modelTypeIndex].name}}</text>
+      <input hidden="true" name="modelType" value="{{addFormData.modelType}}"></input>
+      </text>
+      <text class="alignrig">
+    <text wx:if="{{!modelTypeList[modelTypeIndex].id}}" class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <picker class="pickbox" bindchange="bindPickerModel" range-key="label" value="{{modelIndex}}" range="{{modelList}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">板块</text>
+      <text wx:if="{{modelList[modelIndex].id}}">{{modelList[modelIndex].label}}</text>
+      <input hidden="true" name="funcId" value="{{addFormData.funcId}}"></input>
+      </text>
+      <text class="alignrig">
+    <text wx:if="{{!modelList[modelIndex].id}}" class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <block wx:if="{{addFormData.modelType==1}}">
+  <picker class="pickbox" bindchange="bindPickerType" range-key="name" value="{{typeIndex}}" range="{{typeData}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">分类</text>
+      <text wx:if="{{typeData[typeIndex].id!==''}}">{{typeData[typeIndex].name}}</text>
+      <input hidden="true" name="categoryScopeType" value="{{addFormData.categoryScopeType}}"></input>
+      </text>
+      <text class="alignrig">
+    <text wx:if="{{!typeData[typeIndex].id===''}}" class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+<block wx:if="{{addFormData.categoryScopeType==1 || addFormData.categoryScopeType==2}}">
+  <view class="rowbox betspace">
+    <view>选择分类</view>
+    <view class="selectfl" bindtap="plateTypeSlect">+选择分类</view>
+  </view>
+  <view class="typeBox">
+     <view class="typewrap" wx:for="{{selectTypeData}}" wx:key="index">
+         <view>{{item.categoryName}}</view><view class="typeDel" bindtap="typeDel" data-index="{{index}}">删除</view>
+     </view>
+  </view>
+</block>
+
+  <picker class="pickbox" bindchange="bindPickerProd" range-key="name" value="{{prodIndex}}" range="{{prodData}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">商品</text>
+      <text wx:if="{{prodData[prodIndex].id!==''}}">{{prodData[prodIndex].name}}</text>
+      <input hidden="true" name="prodScopeType" value="{{addFormData.prodScopeType}}"></input>
+      </text>
+      <text class="alignrig">
+    <text wx:if="{{!prodData[prodIndex].id===''}}" class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <block wx:if="{{addFormData.prodScopeType==1 || addFormData.prodScopeType==2}}">
+  <view class="rowbox betspace">
+    <view>选择商品</view>
+    <view class="selectfl" bindtap="plateProdSlect">+选择商品</view>
+  </view>
+
+  <view class="prodwrap">
+     <view class="prodCont" wx:for="{{selectprodData}}" wx:key="index">
+         <text class="iconfont iconguanbi1" bindtap="delProd" data-index="{{index}}"></text>
+        <view class="prodRow">
+            <view class="prodRowTitle">商品显示名称</view>
+            <view class="prodRowDesc">{{item.prodShowName}}</view>
+        </view>
+        <view class="prodRow">
+            <view class="prodRowTitle">商品名称</view>
+            <view class="prodRowDesc">{{item.prodName}}</view>
+        </view>
+        <view class="prodRow">
+            <view class="prodRowTitle">商品类型</view>
+            <view class="prodRowDesc prodRowDesc2">{{item.prodKindName}}</view>
+        </view>
+        <view class="prodRow">
+            <view class="prodRowTitle">所属组织</view>
+            <view class="prodRowDesc prodRowDesc2">{{item.prodOwnerOrgName}}</view>
+        </view>
+     </view>
+  </view>
+</block>
+
+</block>
+
+
+<block wx:if="{{addFormData.modelType==2}}">
+
+  <picker class="pickbox" bindchange="bindPickerRoom" range-key="name" value="{{roomSourceIndex}}" range="{{roomSourceData}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">房源</text>
+      <text wx:if="{{roomSourceData[roomSourceIndex].id!==''}}">{{roomSourceData[roomSourceIndex].name}}</text>
+      <input hidden="true" name="roomsType" value="{{addFormData.roomsType}}"></input>
+      </text>
+      <text class="alignrig">
+        <text wx:if="{{!roomSourceData[roomSourceIndex].id===''}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+ <block wx:if="{{addFormData.roomsType==1 || addFormData.roomsType==2}}">
+  <view class="rowbox betspace">
+    <view>选择房源</view>
+    <view class="selectfl" bindtap="plateRoomSelect">+选择房源</view>
+  </view>
+
+  <view class="prodwrap">
+     <view class="prodCont" wx:for="{{selectResource}}" wx:key="index">
+         <text class="iconfont iconguanbi1" bindtap="delResource" data-index="{{index}}"></text>
+        <view class="prodRow">
+            <view class="prodRowTitle">房型名称</view>
+            <view class="prodRowDesc">{{item.roomTypeName}}</view>
+        </view>
+        <view class="prodRow">
+            <view class="prodRowTitle">房源名称</view>
+            <view class="prodRowDesc">{{item.resourceName}}</view>
+        </view>
+        <view class="prodRow">
+            <view class="prodRowTitle">房量</view>
+            <view class="prodRowDesc prodRowDesc2">{{item.roomCount}}</view>
+        </view>
+        <view class="prodRow">
+            <view class="prodRowTitle">基础价格</view>
+            <view class="prodRowDesc prodRowDesc2">{{item.basicPrice}}元</view>
+        </view>
+     </view>
+    </view>
+  </block>
+
+</block>
+
+
+  <picker class="pickbox" bindchange="bindPickerBonus" range-key="label" value="{{bonusIndex}}" range="{{bonusAmountList}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">红包奖励来源</text>
+      <text wx:if="{{bonusAmountList[bonusIndex].id!==''}}">{{bonusAmountList[bonusIndex].label}}</text>
+      <input hidden="true" name="redPacketAmountFrom" value="{{addFormData.redPacketAmountFrom}}"></input>
+      </text>
+      <text class="alignrig">
+    <text wx:if="{{!bonusAmountList[bonusIndex].id===''}}" class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <picker class="pickbox" bindchange="bindPickerReward" range-key="name" value="{{rewardTypeIndex}}" range="{{rewardTypeData}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">红包奖励类型</text>
+      <text wx:if="{{rewardTypeData[rewardTypeIndex].id!==''}}">{{rewardTypeData[rewardTypeIndex].name}}</text>
+      <input hidden="true" name="redSetType" value="{{addFormData.redSetType}}"></input>
+      </text>
+      <text class="alignrig">
+    <text wx:if="{{!rewardTypeData[rewardTypeIndex].id===''}}" class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <block wx:if="{{addFormData.redSetType==1}}">
+  <picker class="pickbox" bindchange="bindPickerBase" range-key="label" value="{{BaselineIndex}}" range="{{BaselineList}}">
+    <view class="picker">
+      <text class="alignlef">
+       <text class="pickeritem">计算基准</text>
+      <text wx:if="{{BaselineList[BaselineIndex].id!==''}}">{{BaselineList[BaselineIndex].label}}</text>
+      <input hidden="true" name="bonusBaselineType" value="{{addFormData.bonusBaselineType}}"></input>
+      </text>
+      <text class="alignrig">
+    <text wx:if="{{!BaselineList[BaselineIndex].id===''}}" class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <view class="rowbox">
+    <view class="rowtitle">红包比例
+    </view>
+    <view class="wrapput useLimitBox">
+      <input class="lineinput" placeholder="请填写比例" name="redPacketRate" placeholder-style="color:#C5C9CF" value="{{addFormData.redPacketRate}}"></input>
+      <text class="floatrit">%</text>
+    </view>
+   </view>
+
+  </block>
+
+   <view class="rowbox" wx:if="{{addFormData.redSetType==2}}">
+    <view class="rowtitle">红包金额
+    </view>
+    <view class="wrapput useLimitBox">
+      <input class="lineinput" placeholder="请填写金额" name="redAmount" placeholder-style="color:#C5C9CF" value="{{addFormData.redAmount}}"></input>
+      <text class="floatrit">元</text>
+    </view>
+   </view>
+
+
+
+</view>
+
+<button form-type="submit" class="sureBtn">确定</button>
+</form>
+
+
+

@@ -1,0 +1,80 @@
+/* pages/waitAccountIncome/waitAccountIncome.wxss */
+page{
+  background: #f6f6f6;
+}
+.lineitem{
+  width: 94%;
+  margin: auto;
+  background: #fff;
+  border-radius: 15rpx;
+  margin-top:20rpx; 
+  padding: 30rpx;
+  box-sizing: border-box;   
+}
+.lineitem .colitem{
+  display: inline-block;
+  vertical-align: middle;
+}
+.lineitem .yuanbj{
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-radius: 50%;
+  background: #e6f7f7;
+  text-align: center;
+  vertical-align: middle;
+}
+.yuanbj image{
+  width: 100%;
+  height: 100%;
+}
+.yuanbj1{
+  background:#fef3e4 !important; 
+}
+.yuanbj .iconfont{
+   font-size: 58rpx;
+   color: #10bbbb;
+}
+.yuanbj .iconfenxiangjiangli{
+  font-size: 62rpx;
+}
+.yuanbj .iconerji{
+  color: #ff9700;
+  font-size: 48rpx;
+}
+.rewarddesc{
+  color: #888C8F;
+  font-size: 24rpx;
+  margin-left: 30rpx; 
+  width: 54%;
+  
+}
+.rewardHead{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rewardTitle{
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+.rewardjia{
+  float: right;
+  color: #EE1E1E;
+  font-size: 32rpx;
+  margin-top: 40rpx;
+}
+.rewardjia .iconfont{
+  color: #888C8F;
+}
+.nodatadesc{
+  text-align: center;
+  margin-top: 50rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+
+

@@ -1,0 +1,44 @@
+<view class='ordertype'>
+  <view class='ordertype-btn' bindtap='smgw'>商品订单</view>
+  <view class='ordertype-btn' style='color: {{themecolor.skintone}};border-color: {{themecolor.skintone}};'>客房订单</view>
+  <view class='ordertype-btn' bindtap='kffw'>客房服务</view>
+</view>
+
+<block wx:if="{{orderlist == null || orderlist == ''}}">
+  <view class='datanull-font'>
+    <image src='../../img/my-btnimg17.png' class='iconimg1' mode='widthFix'></image>
+    <text>您还没有相关订单</text>
+  </view>
+</block>
+<block wx:else>
+  <block wx:for="{{orderlist}}" wx:for-item="item" wx:key="index">
+    <view class="mgT20">
+      <view class="bgfff mgB20" data-id="{{item.id}}" bindtap="detailsfun">
+        <view class='orderlistbox borderB'>
+          <view class='font-name'>订单编号 {{item.orderCode}}</view>  
+          <text class="font-color2" wx:if="{{item.dealStatus == 0}}">订单待确认</text>
+          <text class="font-color1" wx:elif="{{item.dealStatus == 1}}">预订成功</text>
+          <text class="font-color1" wx:elif="{{item.dealStatus == 2}}">已拒单</text>
+          <text class="font-color2" wx:elif="{{item.dealStatus == 3}}">申请退订中</text>
+          <text class="font-color3" wx:elif="{{item.dealStatus == 4}}">已退订</text>
+          <text class="font-color3" wx:elif="{{item.dealStatus == 5}}">已拒绝</text>
+          <text class="font-color1" wx:elif="{{item.dealStatus == 6}}">已消费</text>
+        </view>
+        <view class='orderlistbox-c' style="padding-bottom: 40rpx;">
+          <view class='contentbox1'>
+            <image src='../../img/my-btnimg12.png' class='spimg'></image>
+            <view class='font-content'>
+              <view class='mgB10 flexbox'>
+                <text class="font-name4">{{item.hotelName}}</text><text class="font-color3">¥ {{item.actualPay}}</text>
+              </view>
+              <view class='font-name3 mgB20'>{{item.hotelAddress}}</view>
+              <view class='font-name3 flexbox'>
+                <text>{{item.arrivalDate}} 至 {{item.leaveDate}}</text><text>{{item.roomCount}}间/{{item.days}}晚</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>

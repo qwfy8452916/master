@@ -1,0 +1,139 @@
+/* pages/package/pages/ownProdSpecsDetail/ownProdSpecsDetail.wxss */
+
+
+page{
+  background: #f2f2f5;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 100%;
+  padding: 0rpx 3%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-bottom: 200rpx;
+  font-size: 28rpx;
+}
+.contentkbox{
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+.titlebox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 32rpx;
+  color: #2B2D30;
+  padding: 30rpx 3%;
+  box-sizing: border-box;
+
+}
+.linebak{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  border-radius: 4rpx;
+  margin-right:15rpx; 
+}
+.rowbox{
+  width: 100%;
+  padding: 30rpx 3%;
+  box-sizing: border-box;
+  border-top: 1px solid #e9eaea;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+}
+.rowtitle{
+  width: 170rpx;
+  margin-right:20rpx;
+  font-size:28rpx;
+  color: #888FA1;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.putbox{
+  width: calc(100% -180rpx);
+}
+.putbox input{
+  width: 100%;
+}
+.picbox{
+  flex-basis: 100%;
+  overflow: hidden;
+  margin-top:10rpx; 
+}
+
+
+.showpicbox{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.picitem{
+  width: 200rpx;
+  height: 160rpx;
+  overflow: hidden;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  position: relative;
+}
+.picitem :nth-child(3){
+  margin-right: 0;
+}
+.picitem image{
+  width: 100%;
+  height: 100%;
+}
+.picitem .iconbox{
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  top: 10rpx;
+  left: 10rpx;
+  color: #fff;
+}
+
+.notopbor{
+  border: 0 !important;
+}
+.nopadd{
+  padding: 0 !important;
+}
+
+
+.hangBox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+  font-size: 28rpx;
+  border-top: 1px solid #e9eaea;
+}
+.inhangbox{
+  width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: flex-start;
+  line-height: 44rpx;
+}
+.hangBox .hangTitle{
+  width: 130rpx;
+  margin-right: 30rpx;
+  flex-shrink:0;
+  font-size: 28rpx;
+  color: #888FA1;
+}
+
+

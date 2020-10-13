@@ -1,0 +1,143 @@
+<!--pages/package/pages/functionProdEdit/functionProdEdit.wxml-->
+
+<view class="wrap">
+   <view class="rowbox">
+       <view class="titleBox">
+           <view class="linebak"></view>选择功能区及分类
+       </view>
+       <!-- <picker class="pickbox" bindchange="bindPickerFun" range-key="funcCnName" value="{{functionIndex}}" range="{{functionList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">功能区</text>
+              <text wx:if="{{functionList[functionIndex].id}}">{{functionList[functionIndex].funcCnName}}</text>
+        
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!functionList[functionIndex].id}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+    <picker class="pickbox" bindchange="bindPickerProd" range-key="prodName" value="{{prodIndex}}" range="{{prodList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">商品</text>
+              <text wx:if="{{prodList[prodIndex].id}}">{{prodList[prodIndex].prodName}}</text>
+        </text>
+        <text class="alignrig">
+            <text wx:if="{{!prodList[prodIndex].id}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker> -->
+
+    <view class="hangBox">
+         <view class="hangTitle">功能区</view>
+         <view>{{functionProdData.funcName}}</view>
+    </view>
+
+    <view class="hangBox">
+         <view class="hangTitle">商品</view>
+         <view>{{functionProdData.prodName}}</view>
+    </view>
+
+
+       <view class="itembox">
+          <view class="itemTitle">分类</view>
+          <view class="onetypeBox" wx:if="{{typeData.length>0}}">
+            <block wx:for="{{typeData}}" wx:key="index">
+             <view class="typeitem {{item.oneJudge?'typeitemActive':''}}"  bindtap="oneType" data-index="{{index}}" data-id="{{item.id}}">{{item.categoryName}}</view>
+               <view class="childrenBox" hidden="{{!item.closeJudge && !item.oneJudge}}">
+                  <view class="childrenitem {{cell.twoJudge?'childrenitemActive':''}}"  wx:for="{{item.childDtoList}}" wx:for-item="cell" wx:for-index="cellindex" wx:key="id" bindtap="twoType" data-oneindex="{{index}}" data-twoindex="{{cellindex}}" data-twoid="{{cell.id}}">{{cell.categoryName}}</view>
+               </view>
+             </block>
+          </view>
+       </view>
+      
+      <view class="hangBox">
+         <view class="hangTitle">排序</view>
+         <view class="putbox">
+           <input name="sort" bindinput="sortpx" value="{{functionProdData.sort}}"></input>
+         </view>
+      </view>
+
+   </view>
+
+   <view class="rowbox {{opencloseJudge?'':'openclose'}}">
+       <view class="titleBox">
+           <view class="linebak"></view>商品信息
+       </view>
+
+       <view class="hangBox">
+         <view class="hangTitle yihang">显示名称</view>
+         <view class="showName">{{functionProdData.prodShowName}}</view>
+      </view>
+
+      <view class="hangBox">
+         <view class="inhangbox">
+            <view class="hangTitle">商品形式</view>
+            <view>{{functionProdData.prodTypeName}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">类型</view>
+            <view>{{functionProdData.prodKindName}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">供应商</view>
+            <view>{{functionProdData.prodSupplName}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">配送方式</view>
+            <view>{{functionProdData.delivWayNames}}</view>
+         </view>  
+      </view>
+
+      <view class="hangBox">
+         <view class="inhangbox">
+            <view class="hangTitle">保质期</view>
+            <view>{{functionProdData.prodWarrantyPeriod}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">单位</view>
+            <view>{{functionProdData.prodUnitMeasure}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">供货价</view>
+            <view>{{functionProdData.prodSupplyPrice}}元</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">零售价</view>
+            <view>{{functionProdData.prodRetailPrice}}元</view>
+         </view>  
+         <view class="inhangbox">
+            <view class="hangTitle">划线价</view>
+            <view>{{functionProdData.prodMarketPrice}}元</view>
+         </view>
+         <view class="inhangbox" wx:if="{{isPickUp}}">
+            <view class="hangTitle">自提点</view>
+            <view>{{functionProdData.pickUpPointNames}}元</view>
+         </view>
+      </view>
+
+      <view class="hangBox">
+         <view class="inhangbox">
+            <view class="hangTitle">可售数量</view>
+            <view>{{functionProdData.availableSaleQty}}</view>
+         </view>
+      </view>
+       
+    </view>
+
+    <view class="switchClose" bindtap="switchClose">
+       <text wx:if="{{opencloseJudge}}">不展开</text>
+       <text wx:else>展开</text>
+       <text class="iconfont icon-wangyou {{opencloseJudge?'stclose':'stopen'}}"></text>
+    </view>
+
+
+</view>
+
+<view class="sureBtn" bindtap="sureBtn">确定</view>
+
+

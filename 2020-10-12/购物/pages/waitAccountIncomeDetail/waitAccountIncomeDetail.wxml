@@ -1,0 +1,116 @@
+<!--pages/waitAccountIncomeDetail/waitAccountIncomeDetail.wxml-->
+ <view class="lineitemwrap">
+    <view class="headtext">
+    <image class="titlelogo" src="../../img/orderlogo.png"></image>
+    订单信息</view>
+    <view class="lineitem">
+      <view class="linedesc">
+        <text class="linedescTitle">酒店名称</text><text>{{detailData.hotelName}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">楼层房间号</text><text>{{detailData.roomFloor}}-{{detailData.roomCode}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">订单类型</text><text>{{detailData.funcName}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">订单编号</text><text>{{detailData.orderCode}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">收入类型</text>
+        <text>
+              <text wx:if="{{detailData.incomeType==1}}">分享奖励</text>
+              <text wx:if="{{detailData.incomeType==2}}">管理奖励</text>
+        </text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">待入账金额</text><text>￥{{detailData.pendingAmount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="lineitemwrap" wx:if="{{detailData.delivCode!==-1}}">
+    <view class="headtext">
+    <image class="titlelogo" src="../../img/prodlogo.png"></image>
+    商品信息</view>
+    <view class="lineitem">
+      <view class="linedesc">
+        <text class="linedescTitle">配送单号</text><text>{{detailData.delivCode}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">商品名称</text><text>{{detailData.prodName}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">商品显示名称</text><text>{{detailData.prodShowName}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">规格</text><text>{{detailData.prodSpecs}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">商品数量</text><text>{{detailData.prodCount}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">商品金额</text><text>￥{{detailData.prodAmount}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">实付金额</text><text>￥{{detailData.actualPay}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">下单时间</text><text>{{detailData.payCompleteTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="lineitemwrap" wx:if="{{detailData.delivCode===-1}}">
+    <view class="headtext">
+    <image class="titlelogo" src="../../img/houselogo.png"></image>
+    客房信息</view>
+    <view class="lineitem">
+      <view class="linedesc">
+        <text class="linedescTitle">房型名称</text><text>{{detailData.prodName}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">房源名称</text><text>{{detailData.prodShowName}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">入住日期</text><text>{{detailData.arrivalDate}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">房价</text><text>￥{{detailData.prodAmount}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">实付金额</text><text>￥{{detailData.actualPay}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">下单时间</text><text>{{detailData.payCompleteTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="lineitemwrap">
+    <view class="headtext">
+    <image class="titlelogo" src="../../img/sharelogo.png"></image>
+    分享人信息</view>
+    <view class="lineitem">
+      <view class="linedesc">
+        <text class="linedescTitle">顾客id</text><text>{{detailData.customerId}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">顾客昵称</text><text>{{detailData.customerName}}</text>
+      </view>
+      <view class="linedesc">
+        <text class="linedescTitle">顾客手机号</text><text>{{detailData.customerPhone}}</text>
+      </view>
+      <view class="linedesc" wx:if="{{detailData.incomeType==2}}">
+        <text class="linedescTitle">分享人id</text><text>{{detailData.shareId}}</text>
+      </view>
+      <view class="linedesc" wx:if="{{detailData.incomeType==2}}">
+        <text class="linedescTitle">分享人昵称</text><text>{{detailData.shareUserName}}</text>
+      </view>
+      <view class="linedesc" wx:if="{{detailData.incomeType==2}}">
+        <text class="linedescTitle">分享人手机号</text><text>{{detailData.shareUserPhone}}</text>
+      </view>
+    </view>
+  </view>
+
+

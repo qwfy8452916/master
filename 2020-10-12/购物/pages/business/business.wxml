@@ -1,0 +1,3 @@
+<image mode="widthFix" src='{{global_Data.imgurldata}}adimg.jpg' class="business-img"></image>
+<!-- <image mode="widthFix" src='{{global_Data.imgurldata}}business-b.jpg' class="business-img business-position"></image>
+<image mode="widthFix" src='{{global_Data.imgurldata}}more.png' class="business-img business-position2" bindtap="tel"></image> -->

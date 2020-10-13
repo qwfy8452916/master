@@ -1,0 +1,71 @@
+<view class='pagebox paddB3 {{coupontype == true?"showclass":""}}'>
+  <swiper
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="{{circular}}"
+    indicator-dots="true"
+    indicator-color="#fff"
+    indicator-active-color="#ff9c01"
+    style="height:{{imgheights[current]}}rpx;"
+    bindchange="bindchange"
+  >
+    <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+      <swiper-item class="swiperitembox">
+        <image src="{{item}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view wx:if="{{ptype == 1}}" class="roomcode">{{roomCode}}-{{latticeCode}}</view>
+  <view class='details-info mgB20'>
+    <image wx:if='{{prodinfo.actSecDiscountSettingId}}' class="activityiconfont" mode="widthFix" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{prodinfo.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+    {{prodShowName}}
+    <view class='details-price'>
+      <view class="price-info">
+        ¥ <block wx:if="{{isFree==1}}">0.00 </block><block wx:else>{{prodRetailPrice}} </block>
+        <text class="freetext" wx:if="{{prodMarketPrice > prodRetailPrice}}">¥ {{prodMarketPrice}}</text>
+      </view>
+      <view class="price-info">
+        <!-- <image wx:if="{{prodinfo.isHasRed == 1}}" class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>        -->
+        <image wx:if="{{prodinfo.isHasCoupon == 1}}" catchtap='get_couponlist' class="icon-discounts" mode="widthFix" src="../../img/couponicon.png"></image>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{total != 0}}" class="paddAll borderB font-bttext" bindtap="evaluatefun">
+    <view>商品评价<text class="font-bttext-text">({{total}})</text></view>
+    <view class="lookall">查看全部 <image class="iconimgwh" src="../../img/my-bgimg2.png"></image></view>
+  </view>
+  <view class="lastnoneborder">
+    <block wx:for="{{evaluatelist}}" wx:for-item="item" wx:key="index"><!-- 评价 -->
+      <view class="paddAll evaluation">
+        <view class="evaluationT">
+          <image class="userimg" src="{{item.avatarUrl != null?item.avatarUrl:'../../img/icon-img10.png'}}"></image>
+          <text wx:if="{{item.nickName != null}}" class="font-username">{{item.nickName}}</text>
+        </view>
+        <view class="conttent-font contenthide">{{item.remarkContent}}</view>   
+      </view>
+    </block>
+  </view>
+  <view class="paddAll borderB font-bttext mgT20">商品详情</view>
+  <block wx:for="{{descImageList}}" wx:for-item="item" wx:key="index">
+    <image class='details-img' mode='widthFix' src='{{item}}'></image>
+  </block>
+  <image wx:if="{{adtype == 1}}" class="ad-img" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+  <block wx:if="{{canbuy == 1 && spotpurchaseflag == 1}}">
+    <view class="buybtn">
+      <view class="shopcarbox" bindtap="shopcarfun"><image src="../../img/shoppingcart.png"></image></view>
+      <block wx:if='{{isClock != 1}}'>
+        <view wx:if="{{jointype != -2}}" class="joincar" bindtap="joincarfun">加入购物车</view>
+        <view wx:if="{{buybtntype == 1}}" class="buy-btn" bindtap="purchase">立即购买</view>
+        <view wx:else class="buy-btn buybtnbg"><block wx:if="{{buybtntype == 2}}">下单中</block><block wx:else>暂不支持购买</block></view>
+      </block>
+      <block wx:else>
+        <view class="buy-btn buybtnbg">柜子已锁定</view>
+      </block>
+    </view>
+  </block>
+</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>
+
+
+<couponbox id="couponlist" couponRange="1" couponlist="{{coupon_list}}"></couponbox>

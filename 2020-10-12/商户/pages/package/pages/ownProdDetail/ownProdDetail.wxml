@@ -1,0 +1,207 @@
+<!--pages/package/pages/ownProdDetail/ownProdDetail.wxml-->
+
+<view class="wrap">
+
+    <view class="contentkbox">
+      <view class="titlebox">
+        <view class="linebak"></view>商品信息
+      </view>
+      <view class="rowbox">
+        <view class="rowtitle">商品名称
+        </view>
+        <view class="putbox alonerow">
+        {{ownProdData.prodName}}
+        </view>
+      </view>
+      <view class="rowbox">
+        <view class="rowtitle">显示名称</view>
+        <view class="putbox alonerow">{{ownProdData.prodShowName}}</view>
+      </view>
+
+      <view class="hangBox">
+         <view class="inhangbox">
+            <view class="hangTitle">商品编码</view>
+            <view>{{ownProdData.prodCode}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">商品形式</view>
+            <view>
+                <text wx:if="{{ownProdData.prodType==1}}">实物</text>
+                <text wx:if="{{ownProdData.prodType==2}}">电子</text>
+                <text wx:if="{{ownProdData.prodType==3}}">菜品</text>
+           </view>
+         </view> 
+      </view>
+
+     <block wx:if="{{ownProdData.prodType==2}}">
+      <view class="rowbox" >
+        <view class="rowtitle">电子券选择
+        </view>
+        <view class="addcoupon" bindtap="addcoupon">添加</view>
+      </view>
+      <view class="voucherBox" wx:for="{{eleCouponsData}}" wx:key="index">
+         <view class="sortBox">{{item.couponSort}}</view>
+         <view class="voulef">
+            <view>{{item.couponName}}</view>
+            <view class="cardcou">
+               <text wx:if="{{item.couponType==1}}">卡券类型:卡券</text>
+               <text wx:if="{{item.couponType==2}}">卡券类型:优惠券</text>
+            </view>
+         </view>
+         <view>x{{item.couponCount}}</view>
+       </view>
+      </block>
+
+      <view class="hangBox">
+         <view class="inhangbox">
+            <view class="hangTitle">保质期</view>
+            <view>{{ownProdData.prodWarrantyPeriod}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">单位</view>
+            <view>{{ownProdData.prodUnitMeasure}}</view>
+         </view> 
+         <view class="inhangbox">
+            <view class="hangTitle">供货价</view>
+            <view>{{ownProdData.prodSupplyPrice}}元</view>
+         </view> 
+         <view class="inhangbox">
+            <view class="hangTitle">零售价</view>
+            <view>{{ownProdData.prodRetailPrice}}元</view>
+         </view> 
+         <view class="inhangbox">
+            <view class="hangTitle">划线价</view>
+            <view>{{ownProdData.prodMarketPrice}}元</view>
+         </view> 
+      </view>
+
+      <view class="rowbox" wx:if="{{ownProdData.prodType==2}}">
+        <view class="rowtitle">配送方式
+        </view>
+        <view class="yuanUnit">电子券</view>
+      </view>
+
+      <view class="rowbox" wx:if="{{ownProdData.prodType!=2 && ownProdData.prodType!=''}}">
+        <view class="rowtitle">配送方式
+        </view>
+        <view class="danhang" wx:if="{{ownProdData.prodType==1}}">
+          <view class="choiceitem {{delivWayList[index].delivejudge?'choiceitemActive':''}}" wx:for="{{delivWayList}}" wx:key="index" data-index="{{index}}" wx:if="{{item.id!=5 && item.id!=6 && item.id!=7 && item.id!=8}}">{{item.delivWayName}}</view>
+        </view>
+
+        <view class="danhang" wx:if="{{ownProdData.prodType==3}}">
+          <view class="choiceitem {{delivWayList[index].delivejudge?'choiceitemActive':''}}" wx:for="{{delivWayList}}" wx:key="index" data-index="{{index}}" wx:if="{{item.id!=1 && item.id!=2 && item.id!=3 && item.id!=4 && item.id!=5}}">{{item.delivWayName}}</view>
+        </view>
+
+      </view>
+
+    </view>
+
+    <view class="contentkbox">
+      <view class="titlebox">
+        <view class="linebak"></view>其他信息
+      </view>
+      
+
+      <view class="rowbox switchbox" wx:if="{{isInvShow}}">
+        <view class="rowtitle">酒店库存</view>
+        <switch disabled checked="{{ownProdData.isNeedInv}}" color="#ff6930" name="isNeedInv" value="{{ownProdData.isNeedInv}}"></switch>
+       </view>
+
+       <view class="hangBox">
+         <view class="inhangbox" wx:if="{{isInvShow && isSafeInv}}">
+            <view class="hangTitle">安全库存</view>
+            <view>{{ownProdData.prodSafeCount}}</view>
+         </view>
+         <view class="inhangbox">
+            <view class="hangTitle">可售数量</view>
+            <view>{{ownProdData.availableSaleQty}}</view>
+         </view> 
+      </view>
+
+     <block wx:if="{{isFreeShip}}">
+      <view class="rowbox switchbox">
+        <view class="rowtitle">快递费</view>
+        <switch disabled checked="{{ownProdData.isFreeShipping}}" color="#ff6930" name="isFreeShipping" value="{{ownProdData.isFreeShipping}}"></switch>
+       </view>
+
+       <picker class="pickbox" disabled range-key="exFeeName" value="{{expressFeeIndex}}" range="{{expressFeeList}}" wx:if="{{!ownProdData.isFreeShipping}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">快递费模板<text class="requiredcj fiveStar">*</text></text>
+          <input hidden="true" name="expressFeeId" value="{{ownProdData.expressFeeId}}"></input>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{expressFeeList[expressFeeIndex].id}}">{{expressFeeList[expressFeeIndex].exFeeName}}</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+       </picker>
+      </block>
+
+      <view class="rowbox" wx:if="{{isPickUp}}">
+        <view class="rowtitle">自提点
+        </view>
+        <view class="danhang">
+          <view class="zitiitem {{pickUpPointList[index].pickjudge?'zitiitemActive':''}}" wx:for="{{pickUpPointList}}" wx:key="index" data-index="{{index}}">{{item.pickUpPointName}}</view>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">功能区
+        </view>
+      </view>
+      <view class="voucherBox" wx:for="{{functionData}}" wx:key="index">
+         <view class="voulef nomarrig">
+            <view class="cardcou">功能区：<text class="sweetFood">{{item.funcName}}</text></view>
+            <view class="cardcou" wx:for="{{item.classifyData}}" wx:for-item="cell">分类：<text class="sweetFood">{{cell.categoryName}}</text></view>
+         </view>
+      </view>
+
+    </view>
+
+    <view class="contentkbox">
+      <view class="titlebox">
+        <view class="linebak"></view>图片信息
+      </view>
+      
+       <view class="rowbox">
+        <view class="rowtitle">列表图</view>
+        <view class="picbox">
+          <view class="showpicbox">
+            <block wx:if="{{ownProdData.prodLogoUrl}}">
+              <view class="picitem">
+                <image src="{{ownProdData.prodLogoUrl}}"></image>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+
+      <view class="rowbox notopbor">
+        <view class="rowtitle">详情banner</view>
+        <view class="picbox">
+          <view class="showpicbox">
+            <view class="picitem" wx:for="{{ownProdData.bannerImageList}}" wx:key="index">
+              <image src="{{item.imageUrl}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="rowbox notopbor">
+        <view class="rowtitle">商品描述图</view>
+        <view class="picbox">
+          <view class="showpicbox">
+            <view class="picitem" wx:for="{{ownProdData.descImageList}}" wx:key="index">
+              
+              <image src="{{item.imageUrl}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+</view>
+
+

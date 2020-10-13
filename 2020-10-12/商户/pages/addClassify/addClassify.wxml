@@ -1,0 +1,33 @@
+<!--pages/addClassify/addClassify.wxml-->
+<view class="wrap">
+   <view class="rowbox">
+      <view class="titlebox"><view class="linebak"></view>功能区：{{funcCnName}}</view>
+      <view class="rowitem">
+          <view class="rowtitle"><text class="star">*</text>分类名称</view>
+          <view class="inputbox">
+            <input placeholder="请输入一级目录名称" bindinput="categoryName" value="{{categoryName}}"></input>
+          </view>
+      </view>
+
+      <view class="rowitem">
+          <view class="rowtitle">排序</view>
+          <view class="inputbox">
+            <input placeholder="0" bindinput="sort" value="{{sort}}"></input>
+          </view>
+      </view>
+      <view class="rowitem">
+          <view class="rowtitle">是否显示</view>
+          <view class="inputbox showswitch">
+            <switch checked="{{isshow}}" bindchange="bindisshow" color="#ff6930"></switch>
+          </view>
+      </view>
+
+   </view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn" wx:if="{{authzData['F:MS_BASIC_CLASS_ADDONE_SURE']}}">确定</view>
+
+
+
+

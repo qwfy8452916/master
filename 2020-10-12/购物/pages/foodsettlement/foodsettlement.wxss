@@ -1,0 +1,393 @@
+
+page{
+  padding-bottom: 200rpx;
+}
+.linebox{
+  width: 6rpx;
+  height: 30rpx;
+  background: #10BBBB;
+  margin-right: 20rpx;
+}
+.font1{
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.font2{
+  font-size: 24rpx;
+  color: #888C8F;
+}
+.hoteladdress{
+  font-size: 30rpx;
+  color: #999999;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.hoteladdress2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.iconimg{
+  width: 15rpx;
+  height: 25rpx;
+}
+.addresstag{
+  font-size: 22rpx;
+  color: #FF9700;
+  background: rgba(255, 151, 0, 0.2);
+  padding: 5rpx 15rpx;
+}
+.font-address{
+  font-size: 27rpx;
+  color: #999999;
+  width: 90%;
+}
+.food-img{
+  display: block;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 4px;
+}
+.cnetent-w{
+  width: 64%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  height: 170rpx;
+}
+.cnetent-w .cnetent-w-box{
+  display: block;
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+.font3{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-size: 24rpx;
+  color: #2B2D30;
+}
+.font4{
+  font-size: 20rpx;
+  color: #888C8F;
+}
+.font5{
+  font-size: 28rpx;
+  color: #2B2D30;
+}
+.font6{
+  font-size: 24rpx;
+  color: #888C8F;
+}
+.font7{
+  color: #EE1E1E;
+}
+.font8{
+  font-size: 28rpx;
+  color: #888C8F;
+}
+
+.couponjh{
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  right: 0;
+  bottom: 100rpx;
+  background: #fff;
+  border-top: 0.5px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.couponjh-l{
+  font-size: 32rpx;
+  color: #333333;
+  width: 30%;
+}
+.couponjh-r{
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+
+.couponlistbox-bg{
+  position: fixed;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.couponlistbox{
+  background: #fff;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px 20px 0 0;
+  padding: 30rpx 3%;
+}
+.font-title{
+  font-size: 36rpx;
+  color: #999999;
+  margin-bottom: 35rpx;
+  text-align: center;
+}
+.select-li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 3%;
+}
+.select-li-l{
+  font-size: 32rpx;
+  color: #333333;
+  width: 85%;
+}
+.select-li-l-name{
+  font-size: 28rpx;
+}
+.icon-img{
+  width: 40rpx;
+  height: 40rpx;
+}
+.closebtn{
+  background: #EC4C4C;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  margin-top: 30rpx;
+  border-radius: 25px;
+}
+.font-prod2{
+  font-size: 32rpx;
+  color: #999999;
+}
+.font-none{
+  font-size: 30rpx;
+  color: #999999;
+  margin-top: 50rpx;
+  text-align: center;
+}
+.Limit{
+  font-size: 25rpx;
+  color: #999999;
+}
+.foot-font{
+  font-size: 32rpx;
+  color: #333333;
+  width: 50%;
+  padding-left: 3%;
+  line-height: 98rpx;
+}
+.foot-font text{
+  color: #EE1E1E;
+}
+.foot-btn{
+  width: 25%;
+  background: #EE1E1E;
+  text-align: center;
+  line-height: 98rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+}
+.footbox{
+  position: fixed;
+  z-index: 9;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.textarea-font{
+  font-size: 28rpx;
+  color: #2B2D30;
+  width: 70%;
+  height: 200rpx;
+  margin-left: 20rpx;
+}
+.inp-font{
+  font-size: 28rpx;
+  color: #2B2D30;
+  width: 70%;
+  margin-left: 20rpx;
+}
+.roomcodebox{
+  position: absolute;
+  z-index: 99;
+  top: 30%;
+  left: 10%;
+  right: 10%;
+  background: #FFFFFF;
+  border-radius: 20rpx 20rpx;
+  overflow: hidden;
+}
+.roomcodebox-titel{
+  font-size: 36rpx;
+  color: #888C8F;
+  text-align: center;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.roomcodebox-inp{
+  width: 70%;
+  margin: 0 auto;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx 20rpx;
+  background: #F6F6F6;
+  font-size: 32rpx;
+  color: #2B2D30;
+  margin-bottom: 30rpx;
+}
+.roomcodebox-btn view{
+  width: 49%;
+  border-right: 0.5rpx solid #E9EAEA;
+  font-size: 36rpx;
+  color: #2B2D30;
+  text-align: center;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.roomcodebox-btn view:last-child{
+  border: none;
+  color: #10BBBB;
+}
+.delivwaybox{
+  position: relative;
+}
+.wblogisticsbox{
+  position: absolute;
+  width: 50%;
+  top: 0;
+  left: 35%;
+  z-index: 2;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.font1-color{
+  color: #10BBBB;
+}
+.iconimg2{
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.activity-font{
+  font-size: 22rpx;
+  color: #FFFFFF;
+  border-radius: 50px 50px;
+  background: #FF9700;
+  padding: 5rpx 20rpx;
+  margin-right: 20rpx;
+}
+.redpack{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #FDE8E8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2px;
+}
+.redRule{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redCenter{
+  width: 285px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.redCenter1{
+  margin-bottom: 40px;
+  position: relative;
+}
+.ruleBox{
+  position: absolute;
+  bottom: 20px;
+  width: 232px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.ruleboxItem{
+  display: flex;
+  border-bottom:1px rgba(255,255,255,.7) dashed;
+  align-items: center;
+  height: 68px;
+}
+.ruleboxItem1{
+  margin-left: 15px;
+}
+.redIconBox{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redIcon{
+  width: 17px;
+  height: 17px;
+}
+.itemTitle1{
+  color:#F2CE8A;
+  margin-bottom: 4px;
+}
+.itemTitle2{
+  font-size:12px;
+  color:#fff;
+}
+.iKnow{
+  width: 232px;
+  height: 32px;
+  line-height: 32px;
+  background: #F2CE8A;
+  color: #8D1D0D;
+  border-radius: 16px;
+  text-align: center;
+}
+.activity-font2{
+  width: 100%;
+  font-size: 28rpx;
+  color: #333333;
+  height: 38rpx;
+  line-height: 38rpx;
+  margin-top: 20rpx;
+}
+.activity-font2 text{
+  border: 0.1rpx solid #333333;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  margin-right: 20rpx;
+}
+.line-through{
+  text-decoration: line-through;
+  color: #e5e5e5;
+}

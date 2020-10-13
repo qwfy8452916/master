@@ -1,0 +1,8 @@
+<view class="inp-box-flex">
+  <view class='form-inputname'>{{forminfo.showName}}<text wx:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text></view>
+  <radio-group bindchange="enterValue" class="form-radiobox">
+    <block wx:for="{{forminfo.valueScopeJson}}" wx:for-item='items' wx:key='index'>
+      <radio class="form-radiobox-radio" checked="{{index == 0}}" value='{{items.val}}'>{{items.val}}</radio>
+    </block>
+  </radio-group>
+</view>

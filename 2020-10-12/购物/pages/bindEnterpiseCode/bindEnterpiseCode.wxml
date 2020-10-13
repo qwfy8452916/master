@@ -1,0 +1,35 @@
+<!--pages/bindEnterpiseCode/bindEnterpiseCode.wxml-->
+<view class="bindcode">
+    <form bindsubmit="codeSubmit">
+        <view class="userinfo">
+            <view class="valuekey"><span>姓名</span><span style="color:#EE1E1E">*</span></view>
+            <input name="bindUserName" placeholder='请输入姓名' placeholder-style='color:#C5C9CF;' maxlength='20' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>手机号</span><span style="color:#EE1E1E">*</span></view>
+            <input name="bindUserMobile" type="number" placeholder='请输入手机号码' placeholder-style='color:#C5C9CF;' maxlength='11' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>部门</span></view>
+            <input name="bindUserDept" placeholder='请输入部门' placeholder-style='color:#C5C9CF;' maxlength='20' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>职位</span></view>
+            <input name="bindUserPosition" placeholder='请输入职位' placeholder-style='color:#C5C9CF;' maxlength='20' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>Email</span><span style="color:#EE1E1E">*</span></view>
+            <input name="bindUserEmail" placeholder='请输入邮箱' placeholder-style='color:#C5C9CF;' maxlength='20' class="txtuser"></input>
+        </view>
+        <!-- <view class="userinfo">
+            <view class="valuekey"><span>根授权码</span></view>
+            <input name="bindUserPosition" placeholder='请输入职位' placeholder-style='color:#C5C9CF;' maxlength='20' class="txtuser"></input>
+        </view> -->
+        <view class="userinfo">
+            <view class="valuekey"><span>绑定微信</span></view>
+            <view class="txtuser" wx:if="{{ifDetail}}" style="line-height:42px">已绑定</view>
+            <view class="txtuser" wx:else style="line-height:42px">未绑定</view>
+        </view>
+        <button style="width:90%;" form-type='submit' class="submitbtn">确 定</button>
+    </form>
+</view>

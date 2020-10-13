@@ -1,0 +1,57 @@
+<!--pages/common/tabbar/tabbar.wxml-->
+<view class="tabbar">
+    <view class="bottomtab">
+        <block wx:for="{{hotelFuncDTOS}}" wx:for-item="item" wx:key="index">
+            <view wx:if="{{!item.expandflag}}" class='footerbox-btn func-box' data-funcType="{{item.funcType}}" data-id="{{item.id}}" bindtap='hotelmall'>
+                <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+                <block wx:if="{{item.id == funcId}}">
+                    <view class='footerbox-btnname' style='color: {{themecolor.skintone}}; font-weight: 800;'>{{item.funcCnName}}</view>
+                    <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: {{themecolor.skintone}}; font-weight: 800;'>{{item.funcEnName}}</view>
+                </block>
+                <block wx:else>
+                    <view class='footerbox-btnname' style='color: #999999;'>{{item.funcCnName}}</view>
+                    <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>{{item.funcEnName}}</view>
+                </block>
+            </view>
+            <view bindtap="expandMenu" wx:else class="expand">
+                <image src="../../../img/arrow.png" style="{{ifExpand!==''?ifExpand?'transform:rotate(180deg);transition: transform .6s;':'transform:rotate(0deg);transition: transform .6s;':''}}" class="arrow" mode="widthFix" />
+            </view>
+        </block>
+        <block>
+            <view class='footerbox-btn func-box'
+             bindtap='jumpToMy'>
+                <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+                <block wx:if="{{funcId == -1}}">
+                    <view class='footerbox-btnname' style='color: {{themecolor.skintone}}; font-weight: 800;'>我的</view>
+                    <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: {{themecolor.skintone}}; font-weight: 800;'>Mine</view>
+                </block>
+                <block wx:else>
+                    <view class='footerbox-btnname' style='color: #999999;'>我的</view>
+                    <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Mine</view>
+                </block>
+            </view>
+        </block>
+    </view>
+    <block>
+        <view class='expandPage' animation="{{expandClose}}">
+            <view class="menuItem">
+                <image src="../../../img/tabMune.png" mode="widthFix" style="width:14px;margin-right:5px"/>
+                <view class="MenuText">菜单 <text style="font-szie:12px">|</text> MENU</view>
+            </view>
+            <view class="menuItems" style="{{hotelFuncDTOS1.length>5?'overflow:auto;height:216px':''}}">
+                <view wx:for="{{hotelFuncDTOS1}}" wx:key="index" data-funcType="{{item.funcType}}" data-id="{{item.id}}"  class="menuItem menuItem-li" bindtap='hotelmall'>
+                    <view>
+                        <image wx:if="{{item.funcLogoUrl}}" class="nav-icon" src="{{item.funcLogoUrl}}" />
+                        <image wx:else class="nav-icon" src="../../../img/success-img2.png" />
+                    </view>
+                    <view class="menuName">
+                        <view class="menuName1">{{item.funcCnName}}</view>
+                        <view wx:if="{{isSupportEn == 1}}" class="menuName2">{{item.funcEnName}}</view>
+                    </view>
+                    <!-- <image wx:if="{{item.id == funcId}}" src="../../../img/checked.png" mode="widthFix" style="width:16px"/> -->
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+<view wx:if="{{ifshowtabBack}}" class="tabBack"></view>

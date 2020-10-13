@@ -1,0 +1,236 @@
+<!--pages/useCoupon/useCoupon.wxml-->
+
+<view class="searchWrap">
+    <view class="expandbox">
+      <view class="searchdesc expenditem">
+        <image class="searchlogo" src="../../img/searchlogo.png"></image>
+        搜索
+      </view>
+      <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+        <image src="../../img/expendlogo.png"></image>
+      </view>
+    </view>
+    <view wx:if="{{switchJudge}}">
+
+       <view class="rowbox">
+        <view class="rowtitle">用户ID</view>
+        <view>
+          <input placeholder="请输入用户ID" bindinput="cusIdInput" value="{{cusId}}"></input>
+        </view>
+      </view>
+      <view class="rowbox">
+        <view class="rowtitle">手机号</view>
+        <view>
+          <input placeholder="请输入手机号" bindinput="cusPhoneInput" value="{{cusPhone}}"></input>
+        </view>
+      </view>
+
+      <picker class="pickbox" bindchange="bindPickerBatch" range-key="couponBatchName" value="{{batchIndex}}" range="{{batchData}}">
+        <view class="picker">
+          <text class="alignlef">
+              <text class="pickeritem">批次名称</text>
+              <text wx:if="{{batchData[batchIndex].id}}">{{batchData[batchIndex].couponBatchName}}</text>
+              <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <!-- <picker class="pickbox" bindchange="bindPickerUser" range-key="nickName" value="{{userIndex}}" range="{{cardUserData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">优惠券名称</text>
+                <text wx:if="{{cardUserData[userIndex].id}}">{{cardUserData[userIndex].nickName}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker> -->
+
+      <picker class="pickbox" bindchange="bindChangeStatus" range-key="name" value="{{statusIndex}}" range="{{statusData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">优惠券状态</text>
+                <text wx:if="{{statusData[statusIndex].id!==''}}">{{statusData[statusIndex].name}}</text>
+                <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <picker class="pickbox" bindchange="bindChangeAcive" range-key="name" value="{{isAciveIndex}}" range="{{isAciveData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">是否有效</text>
+                <text wx:if="{{isAciveData[isAciveIndex].id!==''}}">{{isAciveData[isAciveIndex].name}}</text>
+                <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="pickbox">
+        <text class="alignlef selectdate">使用有效期</text>
+        <section class="alignlef sectionitem">
+          <picker class="pickertime" mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">
+              <text wx:if="{{date}}">{{date}}</text>
+              <text wx:else class="placems">起始时间</text>
+            </view>
+          </picker>
+          <text class="hengxian">至</text>
+          <picker class="pickertime" mode="date" value="{{date2}}" bindchange="bindDateChange2">
+            <view class="picker">
+              <text wx:if="{{date2}}">{{date2}}</text>
+              <text wx:else class="placems">终止时间</text>
+            </view>
+          </picker>
+        </section>
+      </view>
+
+      <view class="searchBtn" bindtap="searchBtn">搜索</view>
+      <view class="reset" bindtap="reset">重置</view>
+    </view>
+  </view>
+
+<view class="wrap">
+
+ <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+    <view>
+    <view class="inlinebox">
+    
+     <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+        <view class="searTitle">{{item.name}}:</view>
+        <view class="desc">{{item.desc}}</view>
+        <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+           <image src="../../img/closetj.png"></image>
+        </view>
+      </view>
+
+      <view class="searitembox" wx:else>
+        <view class="searTitle">{{item.name}}:</view>
+        <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+        <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+           <image src="../../img/closetj.png"></image>
+        </view>
+      </view>
+  </view>
+</view>
+     </block>
+
+</view>
+
+
+  <view class="itembox" wx:for="{{couponList}}" wx:key>
+
+    <view class="contenttitle">
+      <view class="titleleft">
+        <view class="linebk"></view>
+        {{item.cusNickName}}
+      </view>
+      <view class="useStatus">
+        <text class="noUse" wx:if="{{item.isUsed===0}}">未使用</text>
+        <text class="use" wx:if="{{item.isUsed===1}}">已使用</text>
+      </view>
+    </view>
+    <view class="userInfo">
+      <text class="userPhone">{{item.cusPhone}}</text>
+      <text>顾客ID {{item.cusId}}</text>
+    </view>
+
+    <view class="couponBox">
+      <view class="couTitle">
+        <view>{{item.couponName}}</view>
+        <view>
+           <text wx:if="{{item.discountWay==1}}">{{item.reduceMoney}}元</text>
+           <text wx:if="{{item.discountWay==2}}">{{item.couponDiscount/10}}折</text>
+        </view>
+      </view>
+      <view class="couContent">
+
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">批次名称</text>
+              <text>{{item.couponBatchName}}</text>
+            </view>
+            <view>
+               <text wx:if="{{item.discountWay==1}}">
+                  <text wx:if="{{item.couponRange==1}}">商品</text>
+                  <text wx:if="{{item.couponRange==2}}">订房</text>
+                  <text>满减券</text>
+               </text>
+               <text wx:if="{{item.discountWay==2}}">
+                  <text wx:if="{{item.couponRange==1}}">商品</text>
+                  <text wx:if="{{item.couponRange==2}}">订房</text>
+                  <text>折扣券</text>
+               </text>
+            </view>
+          </view>
+
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">优惠方式</text>
+              <text wx:if="{{item.discountWay==1}}">满{{item.useLimitMoney}}减{{item.reduceMoney}}</text>
+              <text wx:if="{{item.discountWay==2}}">{{item.couponDiscount/10}}折</text>
+            </view>
+          </view>
+
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">有效期</text>
+              <text>{{item.couponStartDate}} 至 {{item.couponEndDate}}</text>
+            </view>
+          </view>
+
+      </view>
+
+      <view class="couContent dashedtop" wx:if="{{item.isUsed===1}}">
+
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">订单编号</text>
+              <text>{{item.orderCode}}</text>
+            </view>
+          </view>
+
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">使用时间</text>
+              <text>{{item.useTime}}</text>
+            </view>
+          </view>
+
+      </view>
+
+    </view>
+    <view class="btnBox">
+      
+      <view>
+          <switch checked="{{item.isActive}}" bindchange="switch1Change" color="#FF6930" data-id="{{item.id}}" wx:if="{{authzData['F:MS_COUPON_USERCOUPON_SWITCH']}}" />
+          <text>
+             <text class="switchstatus" wx:if="{{item.isActive===1}}">已开启</text>
+          <text class="noswitchstatus" wx:if="{{item.isActive===0}}">已禁用</text>
+          </text>
+        </view>
+
+      <picker wx:if="{{item.isUsed!=1}}" class="pickertime" mode="date" value="{{item.couponEndDate}}" bindchange="bindExtendChange" data-id="{{item.id}}" data-batchname="{{item.couponBatchName}}" data-couponname="{{item.couponName}}">
+        <view class="btnniu" wx:if="{{authzData['F:MS_COUPON_USERCOUPON_YANSHI']}}">延长有效期</view>
+      </picker>
+    </view>
+
+  </view>
+
+</view>

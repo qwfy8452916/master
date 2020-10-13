@@ -1,0 +1,48 @@
+<!--pages/hexiaofail/hexiaofail.wxml-->
+<view class="wrap">
+   <view class="itembox" wx:if="{{failStatus==1}}">
+       <view class="item">
+          <view class="yuanbk">
+            <text class="iconfont iconguoqiyaopin"></text>
+          </view>
+       </view>
+       <view class="item itemdesc">
+          <view class="erweimaone">二维码已过期</view>
+          <view class="erweimatwo">请用户重新打开二维码页面</view>
+       </view>
+       <view class="item fanhui">
+          <text class="fanhuiBtn" bindtap="fanhuiBtn">返回核销页</text>
+       </view>
+   </view>
+
+   <view class="itembox" wx:if="{{failStatus==2}}">
+       <view class="item">
+          <view class="yuanbk">
+            <text class="iconfont iconguoqiyaopin"></text>
+          </view>
+       </view>
+       <view class="item itemdesc">
+          <view class="erweimaone">无效二维码</view>
+          <view class="erweimatwo">请确认二维码是否正确</view>
+       </view>
+       <view class="item fanhui">
+          <text class="fanhuiBtn" bindtap="fanhuiBtn">返回核销页</text>
+       </view>
+   </view>
+
+   <view class="itembox" wx:if="{{failStatus==3}}">
+       <view class="item">
+          <view class="yuanbk">
+            <text class="iconfont iconguoqiyaopin"></text>
+          </view>
+       </view>
+       <view class="item itemdesc">
+          <view class="erweimaone">卡券已使用完</view>
+          <view class="erweimatwo">该卡券已使用完</view>
+       </view>
+       <view class="item fanhui">
+          <text class="fanhuiBtn" bindtap="fanhuiBtn">返回核销页</text>
+       </view>
+   </view>
+
+</view>

@@ -1,0 +1,8 @@
+<view class="inp-box-flex">
+  <view class='form-inputname'>{{forminfo.showName}}<text wx:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text></view>
+  <view class="inp-box-flex-r">
+    <image src="../../../img/icon-img2-1.png" bindtap="cutbackfun"></image>
+    <view class="inp-box-flex-num">{{input_number}}</view>
+    <image src="../../../img/icon-img1-1.png" bindtap="increasefun"></image>
+  </view>
+</view>

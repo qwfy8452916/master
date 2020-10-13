@@ -1,0 +1,95 @@
+/* pages/transferRecord/transferRecord.wxss */
+page{
+  background: #f6f6f6;
+  padding-top: 50rpx;
+}
+.itemBox{
+  width: 100%;
+  padding: 0rpx 6%;
+  box-sizing: border-box;
+  display: flex;
+}
+.itemlef{
+  font-size: 28rpx;
+  color: #888FA1;
+  margin-right: 30rpx;
+  text-align: center;
+  margin-top: 25rpx;
+}
+.daterq{
+  color: #2B2D30;
+  margin-bottom: 5rpx;
+}
+.wrapcircle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wkcicle{
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  background: #c8eaea;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.smallcircle{
+  width:24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: #35c4c4; 
+}
+.recewkcicle{
+  background: #f8dace !important; 
+}
+.recesmallcircle{
+  background: #fe8050 !important;
+}
+.linexian{
+  width: 1rpx;
+  height:117rpx;
+  background: #d5d7dc; 
+  display: inline-block;
+  margin-top: 10rpx;
+}
+.linexian:last-child{
+  display: none;
+}
+.itemrig{
+   width: 70%;
+   height: 170rpx;
+   background: #fff;
+   padding: 30rpx 40rpx;
+   box-sizing: border-box;
+   border-radius: 20rpx;
+   font-size: 28rpx;
+   color: #888FA1;
+  }
+.rowrig{
+   margin-bottom: 5rpx;
+  }
+.buyman{
+  color:#10BBBB; 
+}
+.receman{
+  color: #FE8050;
+}
+.receiver{
+  color: #FE8050;
+}
+.rowtitle{
+  display: inline-block;
+  width: 120rpx;
+  text-align: left;
+  margin-right: 15rpx;
+}
+.rowinfo{
+  color: #2b2d30;
+}
+.nodata{
+  text-align: center;
+}
+
+

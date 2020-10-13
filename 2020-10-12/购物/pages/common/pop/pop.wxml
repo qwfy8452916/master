@@ -1,0 +1,7 @@
+<view class="popboxbg" wx:if="{{isShow == true}}">
+  <view class="popbox">
+    <view bindtap="hideDialog" class="closebtn"></view>
+    <image src="../../../img/loading.png" mode="widthFix"></image>
+    <button class="btnbox" open-type="getUserInfo" bindgetuserinfo="_getUserInfo" bindtap="hideDialog">授权登录</button>
+  </view>
+</view>

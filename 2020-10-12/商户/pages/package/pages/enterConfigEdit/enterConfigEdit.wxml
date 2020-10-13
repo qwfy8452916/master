@@ -1,0 +1,139 @@
+<!--pages/package/pages/enterConfigEdit/enterConfigEdit.wxml-->
+
+
+<view class="wrap">
+
+
+    <view class="contentkbox">
+
+      <picker class="pickbox" bindchange="bindPickerpCabType" range-key="cabTypeName" value="{{cabTypeIndex}}" range="{{cabTypeList}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">柜子类型<text class="requiredcj fourStar">*</text></text>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{cabTypeList[cabTypeIndex].id}}">{{cabTypeList[cabTypeIndex].cabTypeName}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      
+
+      <view class="rowbox">
+        <view class="rowtitle">进场配置名称<text class="requiredcj sixStar">*</text></view>
+        <view class="putbox">
+          <input placeholder="请输入进场配置名称" bindinput="settingName" value="{{configdata.settingName}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">默认进场
+          <text class="star fourStar">*</text>
+        </view>
+        <view class="choice">(可多选)</view>
+        <view class="danhang">
+          <view class="choiceitem {{deviData[index].enterSet?'choiceitemActive':''}}" wx:for="{{deviData}}" wx:key="index" bindtap="delive" data-index="{{index}}">{{item.dictName}}</view>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">分享进场
+          <text class="star fourStar">*</text>
+        </view>
+        <view class="choice">(可多选)</view>
+        <view class="danhang">
+          <view class="choiceitem {{shareData[index].enterSet?'choiceitemActive':''}}" wx:for="{{shareData}}" wx:key="index" bindtap="shareEnter" data-index="{{index}}">{{item.dictName}}</view>
+        </view>
+      </view>
+
+
+
+
+
+      <view class="titlebox">
+        <view class="linebak"></view>功能区设置
+      </view>
+
+      <view class="rowbox switchbox">
+        <view class="rowtitle rowtitlesupper">支持默认开放功能区<text class="star sixStar">*</text></view>
+        <switch checked="{{configdata.availableFuncSupport}}" color="#ff6930" name="availableFuncSupport" value="{{configdata.availableFuncSupport}}" bindchange="selectSwitch"></switch>
+       </view>
+       
+    <block wx:if="{{!configdata.availableFuncSupport}}" wx:for="{{configdata.areaList}}" wx:key="index">
+      <picker class="pickbox" bindchange="bindPickerfunType" range-key="name" value="{{item.funTypeIndex}}" range="{{item.funTypedata}}" data-index="{{index}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">{{item.areaName}}</text>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{configdata.areaList[index].defaultValue!==''}}">{{item.funTypedata[item.funTypeIndex].name}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+     
+     <block wx:if="{{configdata.areaList[index].defaultValue==2}}">
+      <view class="rowbox">
+        <view class="rowtitle widthreset">默认进场配送方式
+          <text class="star sevenStar">*</text>
+        </view>
+        <view class="choice">(可多选)</view>
+        <view class="danhang">
+          <view class="choiceitem {{item.funnterData[defIndex].enterSet?'choiceitemActive':''}}" wx:for="{{item.funnterData}}" wx:for-item="defitem" wx:for-index="defIndex" bindtap="funEenter" data-index="{{defIndex}}" data-fuindex="{{index}}">{{defitem.dictName}}</view>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle widthreset">分享进场配送方式
+          <text class="star sevenStar">*</text>
+        </view>
+        <view class="choice">(可多选)</view>
+        <view class="danhang">
+          <view class="choiceitem {{item.funshareData[defIndex].enterSet?'choiceitemActive':''}}" wx:for="{{item.funshareData}}" wx:for-item="defitem" wx:for-index="defIndex" bindtap="funshare" data-index="{{defIndex}}" data-fuindex="{{index}}">{{defitem.dictName}}</view>
+        </view>
+       </view>
+      </block>
+
+        <view class="rowbox" wx:if="{{configdata.areaList[index].defaultValue!=0}}">
+          <view class="rowtitle">排序<text class="requiredcj twoStar">*</text></view>
+          <view class="putbox">
+            <input placeholder="请输入排序" bindinput="inputSort" value="{{item.sort}}" data-index="{{index}}"></input>
+          </view>
+        </view>
+
+      </block>
+
+
+    </view>
+   
+
+   <view class="contentkbox">
+      <view class="titlebox">
+        <view class="linebak"></view>默认首页设置
+      </view>
+
+      <picker class="pickbox" bindchange="bindPickerpHomePage" range-key="areaName" value="{{pageIndex}}" range="{{pageData}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">功能区名称<text class="requiredcj fiveStar">*</text></text>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{pageData[pageIndex].homePage}}">{{pageData[pageIndex].areaName}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+    </view>
+    
+    <view class="surebtn" bindtap="sureBtn">确定</view>
+
+</view>
+
+
+
+

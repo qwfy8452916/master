@@ -1,0 +1,181 @@
+page{
+  background: #f2f2f5;
+}
+.couponlist{
+  width: 96%;
+  margin: 20rpx auto 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 0.1rpx solid #e5e5e5;
+}
+.couponlist-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 52px;
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0px 15px;
+}
+.bgimg{
+  background: linear-gradient(to right, #dd8824, #dd4224);
+}
+.bgimg1{
+  background: linear-gradient(to right, #1ecad5, #7224dd);
+}
+.bgimg2{
+  background: linear-gradient(to right, #cf66e5, #d2289c);
+}
+.bgimg3{
+  background: linear-gradient(to right, #549beb, #8130cd);
+}
+.bgimg4{
+  background: linear-gradient(to right, #1ecad5, #549beb);
+}
+.couponlist-top .top-left{
+  font-size: 16px;
+}
+.couponlist-top .top-right{
+  font-size: 22px;
+  display: flex;
+  align-items: flex-start;
+}
+.couponlist-top .top-right .right-m{
+  font-size: 10px;
+  margin: 5px 3px 0px 3px;
+}
+.top-img{
+  width: 100%;
+  display: inherit;
+  margin-top: -3px;
+}
+.couponlist-bottom{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 0px 0px 10px 0px;
+}
+.couponlist-bottom .bottom-coupon1{
+  font-size: 14px;
+  color: #2b2d30;
+  line-height: 22px;
+  padding: 10px 15px 0;
+  background: #ffffff;
+}
+.couponlist-bottom .bottom-coupon2{
+  font-size: 12px;
+  color: #2b2d30;
+  line-height: 20px;
+  padding: 5px 15px;
+  background: #ffffff;
+}
+.bottom-img{
+  display: block;
+  width: 100%;
+}
+.bottom-hint{
+  color: #888c8f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px 10px;
+  background: #ffffff;
+  margin-top: -0.5px;
+}
+.bottom-hint .hint-txt{
+  font-size: 14px;
+}
+.bottom-hint .hint-btn{
+  font-size: 12px;
+  margin-left: 3px;
+}
+.hint-img{
+  width: 10px;
+}
+.trans{
+  transform: rotate(90deg);
+}
+.direction-use{
+  font-size: 12px;
+  color: #888c8f;
+  border-top: 1px dashed #ddd;
+  padding: 8px 10px 8px 10px;
+  background: #ffffff;
+}
+.sendbtn{
+  width: 25%;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 50px 50px;
+  background: #FF4F4F;
+  font-size: 28rpx;
+  color: #ffffff;
+}
+.font-id{
+  font-size: 28rpx;
+  color: #888FA1;
+}
+.font-class{
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 65rpx;
+  width: 30%;
+  margin-right: 10px;
+  text-align: right;
+}
+.font-class text{
+  color: #f56c6c;
+}
+.font-r{
+  width: 68%;
+  border-radius: 20rpx 20rpx;
+  border: 0.1rpx solid #e5e5e5;
+  line-height: 42rpx;
+  font-size: 26rpx;
+  color: #333333;
+  padding: 10rpx 20rpx;
+  min-height: 45rpx;
+}
+.footbtnbox{
+  margin-top: 60rpx;
+}
+.footbtnbox-btn{
+  width: 30%;
+  text-align: center;
+  line-height: 65rpx;
+  font-size: 26rpx;
+  color: #409eff;
+  border: 0.1rpx solid #409eff;
+  border-radius: 20rpx;
+}
+.btnbg{
+  background: #409eff;
+  color: #ffffff;
+}
+.sendlistbox{
+  position: fixed;
+  z-index: 2;
+  bottom: 10%;
+  right: 0;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(43, 45, 48, 0.5);
+  border-radius: 50px 0 0 50px;
+  padding: 10rpx 15rpx;
+}
+.sendicon{
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}
+.sendfont{
+  font-size: 28rpx;
+  color: #ffffff;
+}
+.sendicon2{
+  display: block;
+  width: 11rpx;
+  height: 20rpx;
+}
+

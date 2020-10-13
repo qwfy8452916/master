@@ -1,0 +1,225 @@
+<view style="height:{{imgheights[current]}}rpx;" class="swiperbox">
+  <swiper autoplay='true' interval='3000' duration='500' circular='true' display-multiple-items='1' style="height:{{imgheights[current]}}rpx;" bindchange="bindchange">
+    <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" data-id='{{index}}' class="slide-image" mode="widthFix" bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="room-name">
+    <view>
+      <block wx:if="{{type == 1}}">{{roomdetail.typeName}}</block>
+      <block wx:else>{{roomdetail.resourceName}}</block>
+    </view>
+    <view>
+      <image wx:if="{{redPacketFlag == 1}}" catchtap='getRules' class="icon-discounts" mode="widthFix" src="../../img/redpacket1.png"></image>       
+      <image wx:if="{{couponFlag == 1 && type != 1}}" catchtap='get_couponlist' data-proddata="{{roomdetail}}" class="icon-discounts" mode="widthFix" src="../../img/couponicon1.png"></image>
+    </view>
+  </view>
+</view>
+<view class="mgB20 kfinfobox">
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img1.png"></image>
+    <text class="kfinfobox-li-text">{{roomdetail.roomSize}}㎡</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{type == 2}}"><!-- 仅房源详情展示 -->
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img2.png"></image>
+    <text class="kfinfobox-li-text">可住{{roomdetail.livePeople}}人</text>
+  </view>
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img3.png"></image>
+    <text class="kfinfobox-li-text">{{roomdetail.floor}}层</text>
+  </view>
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img4.png"></image>
+    <text class="kfinfobox-li-text">{{roomdetail.bedTypeName}} {{roomdetail.bedWidth}}米</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{type == 2}}"><!-- 仅房源详情展示 -->
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img6.png"></image>
+    <text class="kfinfobox-li-text">
+      <block wx:if="{{roomdetail.windowFlag == 0}}">无窗</block>
+      <block wx:elif="{{roomdetail.windowFlag == 1}}">有窗</block>
+      <block wx:elif="{{roomdetail.windowFlag == 2}}">飘窗</block>
+      <block wx:elif="{{roomdetail.windowFlag == 3}}">落地窗</block>
+    </text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{type == 2}}"><!-- 仅房源详情展示 -->
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img7.png"></image>
+    <text class="kfinfobox-li-text">
+      <block wx:if="{{roomdetail.breakfastFlag == 0}}">无早餐</block>
+      <block wx:elif="{{roomdetail.breakfastFlag == 1}}">单早</block>
+      <block wx:elif="{{roomdetail.breakfastFlag == 2}}">双早</block>
+    </text>
+  </view>
+  <view class="kfinfobox-li">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img8.png"></image>
+    <text class="kfinfobox-li-text">
+      <block wx:if="{{roomdetail.bedAddFlag == 0}}">不支持加床</block>
+      <block wx:elif="{{roomdetail.bedAddFlag == 1}}">无偿加床</block>
+      <block wx:elif="{{roomdetail.bedAddFlag == 2}}">有偿加床 {{roomdetail.bedAddPrice}}/张</block>
+    </text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{roomdetail.breakfastInRoom == 1}}">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img11.png"></image>
+    <text class="kfinfobox-li-text">早餐可送入房</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{roomdetail.laundryServiceFlag == 1}}">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img10.png"></image>
+    <text class="kfinfobox-li-text">有洗衣服务</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{roomdetail.bathtubFlag == 1}}">
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img9.png"></image>
+    <text class="kfinfobox-li-text">有浴缸</text>
+  </view>
+  <view class="kfinfobox-li" wx:if="{{roomdetail.smokingFlag == 1 && type == 1}}"><!-- 仅房源详情展示 -->
+    <image class="kfinfobox-li-img" src="../../img/kfyd-img12.png"></image>
+    <text class="kfinfobox-li-text">禁止吸烟</text>
+  </view>
+</view>
+<view class="roomFeatrue">
+  <view class="title1">房间特色</view>
+  <block wx:for="{{roomdetail.featureDTOS}}" wx:for-item="item" wx:key="index">
+    <view class="facilitybox-li" wx:if="{{item.featureContent != ''}}">
+      <view class="facilitybox-li-L">
+        <text class="dian"></text>
+        <text class="facilityType">{{item.featureContent}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="roomFeatrue">
+  <view class="title1">房间设施</view>
+  <block wx:for="{{roomdetail.facilityDTOS}}" wx:for-item="item" wx:key="index">
+    <view class="facilitybox-li" wx:if="{{item.facilityContent != ''}}">
+      <view class="facilitybox-li-L">
+        <text class="dian"></text>
+        <text class="facilityType">{{item.facilityType}}</text>
+      </view>
+      <view class="facilitybox-li-R" wx:for="{{item.facilityContent}}" wx:for-item="item2" wx:key="index2">{{item2}}</view>
+    </view>
+  </block>
+</view>
+<image wx:if="{{adtype == 1}}" class="ad-img" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+<view wx:if="{{type == 2}}" style="height: 120rpx;"></view>
+<view class="footbox" wx:if="{{type == 2}}">
+  <view class="footbox-L">
+    <view class="backbtn" bindtap="backfun">首页</view>
+    在线付：<text class="font-color2"><block wx:if="{{day > 1}}">均</block> ¥ {{price}} </text>
+  </view>
+  <block wx:if="{{fullflag == 0}}">
+    <view class="btnbox" style='background: {{themecolor.skintone}};' data-id="{{roomdetail.id}}" bindtap="formfun">预订</view>
+  </block>
+  <block wx:else>
+    <view class="btnbox btnbox2-bg">预订</view>
+  </block>
+</view>
+<view wx:else class="backbtn2" bindtap="backfun">首页</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>
+
+<!-- 分享按钮  -->
+<block wx:if="{{sharenum == 1 || sharenum == 11}}">
+  <view wx:if="{{sharenum != -1}}" class="share_btnbox2" catchtouchmove="return">
+    <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+    <view class="link"></view>
+    <image wx:if="{{iscertification == 1}}" mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+    <button class='certification-box2' wx:else plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+      <image mode="widthFix" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+    </button>
+  </view>
+</block>
+<block wx:else>
+  <view wx:if="{{sharenum != -1}}" class="share_btnbox2 share_btnbox_b" catchtouchmove="return">
+    <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+  </view>
+</block>
+
+<!-- 分享弹窗 -->
+<view wx:if="{{showtype == 1}}" class="shareboxbg" bindtap="closefun" catchtouchmove="return">
+  <view class="shareway">
+    <view class="share-font1">选择分享方式</view>
+    <view class="shareway-b">
+      <view class="imgbtn" catchtap="sharefun1"><image mode="widthFix" src="../../img/shareimg1.jpg"></image></view>
+      <view class="imgbtn" wx:if="{{sharenum == 10 || sharenum == 11}}" catchtap="get_poster"><image mode="widthFix" src="../../img/shareimg2.jpg"></image></view>
+    </view>
+  </view>
+</view>
+<!-- 海报分享弹窗 -->
+<view wx:if="{{showtype == 2}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2">
+    <view class="closebtn-img" bindtap="closefun"><image src="../../img/my-btnimg23.png"></image></view>
+    <image class="posterimg" bindtap="previewImg" mode="widthFix" src="{{posterurl}}"></image>
+    <view class="posterbtn posterbtn1" bindtap="saveimg">保存到手机相册</view>
+    <view class="posterbtn posterbtn2" bindtap="previewImg">预览海报长按分享</view>
+  </view>
+</view>
+<!-- 选择是否认证 -->
+<view wx:if="{{showtype == 3}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2 mgT035">
+    <button class='certification-box' plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+      <image class="certification-icon" src="../../img/certification-img1.png"></image>
+      <view class="certification-r">
+        <view class="certification-font1 mgB20">认证分享</view>
+        <view class="certification-font2">可获得通过链接购买的<text>佣金奖励</text>,可在我的账户页面中查看佣金奖励收入</view>
+      </view>
+    </button>
+    <view class="certification-box" bindtap="certificationNo">
+      <image class="certification-icon" src="../../img/certification-img2.png"></image>
+      <view class="certification-r">
+        <view class="certification-font1 mgB20">直接分享</view>
+        <view class="certification-font2">直接分享不享受佣金奖励，但也可以将你喜欢的商品分享给好友</view>
+      </view>
+    </view>
+    <view class="closebtn-icon" bindtap="closefun"><image src="../../img/my-btnimg23-1.png"></image></view>
+  </view>
+</view>
+<!-- 认证表单 -->
+<view wx:if="{{showtype == 4}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway3">
+    <view class="form-certification-font1">认证分享</view>
+    <input class="form-certification-inp" type="text" placeholder="填写您的称呼" placeholder-style="color: #C5C9CF" bindinput="certificationnamefun"></input>
+    <input class="form-certification-inp" type="number" placeholder="填写您的手机号码" placeholder-style="color: #C5C9CF" bindinput="certificationtelfun"></input>
+    <view class="form-certification-font2"><image src="../../img/my-btnimg22.png"></image>为确保佣金奖励正确到达您的账户，请正确填写认证信息</view>
+    <view class="form-certification-sub" bindtap="certificationfun">确定</view>
+  </view>
+  <view class="closebtn-icon" bindtap="closefun"><image src="../../img/my-btnimg23-1.png"></image></view>
+</view>
+
+<view class="redRule" wx:if="{{ifshowRules}}" catchtouchmove='true'>
+  <view class="redCenter">
+    <view class="redCenter1">
+      <image src="../../img/redRule.png" class="imagebox" style="width:285px" mode="widthFix"/>
+      <view class="ruleBox">
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可多人领取</view>
+            <view class="itemTitle2">下单满{{ruleData.amount}}元即获得现金红包奖励</view>
+          </view>
+        </view>
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/24hour.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">有效期{{ruleData.hour}}小时</view>
+            <view class="itemTitle2">超过{{ruleData.hour}}小时未领取即为失效</view>
+          </view>
+        </view>
+        <view class="ruleboxItem" style="border:none">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可直接提现</view>
+            <view class="itemTitle2">领取成功的红包可直接提现到微信</view>
+          </view>
+        </view>
+        <view bindtap="closeRule" class="iKnow">我懂了！</view>
+      </view>
+    </view>
+    <image bindtap="closeRule" src="../../img/my-btnimg23-1.png" style="width:33px;height:33px;"/>
+  </view>
+</view>
+<couponbox id="couponlist" couponRange="2" couponlist="{{coupon_list}}"></couponbox>

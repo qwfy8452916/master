@@ -1,0 +1,36 @@
+<block wx:for="{{SubList}}" wx:for-item="item" wx:key="index">
+  <view class="flexbox" data-index="{{index}}" bindtap="changetype">
+    <image class="subicon" src="{{item.isSubscribe == 1?'icon/success.png':'icon/icon.png'}}"></image>
+    <view>
+      <view class="font-1">{{item.classificationKey}}</view>
+      <view class="font-2">订阅后，您将受到该消息提醒</view>
+    </view>
+  </view>
+</block>
+<view class="subbtn" bindtap="subfun">确定</view>
+<view class="popups-boxbg" wx:if="{{prompt.length > 0}}">
+  <view class="popups-box">
+    <view class="popups-box-wh">
+      <view class="popups-box-title">提示</view>
+      <view class="mgbox">
+        <block wx:for="{{prompt}}" wx:for-item="item" wx:key="index">
+          <view class="popups-box-font1">{{item.msg}}</view>
+        </block>
+      </view>
+      <block wx:for="{{prompt}}" wx:for-item="item" wx:key="index">
+        <!-- 1.公众号消息,2.订阅号,3.手机号,4.邮箱,5.站内信 -->
+        <view class="popups-box-formbox" wx:if='{{item.ctpType == 3}}'>
+          <view class="form-l">手机号</view>
+          <input class="inpbox" type="number" maxlength="11" placeholder="请输入手机号" placeholder-style="color: #e5e5e5;" bindinput="telfun"></input>
+        </view>
+        <view class="popups-box-formbox" wx:if='{{item.ctpType == 4}}'>
+          <view class="form-l">邮箱号</view>
+          <input class="inpbox" placeholder="请输入邮箱" placeholder-style="color: #e5e5e5;" bindinput="emailfun"></input>
+        </view>
+      </block>
+      <view wx:if="{{forminp1 != -1 || forminp2 != -1}}" class="sub-btn" bindtap="bindfun">提交</view>
+      <view wx:else class="sub-btn" bindtap="closefun">关闭</view>
+    </view>
+    <image wx:if="{{forminp1 != -1 || forminp2 != -1}}" src="icon/my-btnimg23-1.png" class="closebtn" bindtap="closefun"></image>
+  </view>
+</view>

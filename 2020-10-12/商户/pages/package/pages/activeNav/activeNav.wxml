@@ -1,0 +1,31 @@
+<!--pages/package/pages/activeNav/activeNav.wxml-->
+<view class="rowLine" bindtap="activeList">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../../../img/acivelog.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>活动管理</text>
+       </view>
+       <view class="descbot">ACTIVITY MANAGEMENT</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../../../img/back.png"></image>
+   </view>
+</view>     
+
+<view class="rowLine" bindtap="userCard">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../../../img/activstatis.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>活动统计</text>
+       </view>
+       <view class="descbot">ACTIVITY STATISTICS</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../../../img/back.png"></image>
+   </view>
+</view>   
+

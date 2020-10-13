@@ -1,0 +1,9 @@
+<view class="inp-box-flex">
+  <view class='form-inputname'>{{forminfo.showName}}<text wx:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text></view>
+  <picker class='form-inputtext' bindchange="bindPickerChange" value="{{selectlist[index].id}}" range-key="val" range="{{selectlist}}">
+    <view class="picker">
+      {{selectlist[index].val}}
+      <image src="../../../img/my-bgimg2.png"></image>
+    </view>
+  </picker>
+</view>

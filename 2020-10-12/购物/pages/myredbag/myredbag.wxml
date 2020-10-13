@@ -1,0 +1,68 @@
+<block wx:if="{{redbaglist.length > 0}}">
+  <block wx:for="{{redbaglist}}" wx:for-item="item" wx:key="index">
+    <view class="redbagitem">
+      <view class="redHead">
+        <view wx:if="{{item.businessType == 1}}" class="redHead1">购物红包</view>
+        <view wx:else class="redHead1">订房红包</view>
+        <view class="redHead2">（剩{{item.totalNum-item.receivedNum}}/{{item.totalNum}}）</view>
+        <view class="redHead3">
+          <image wx:if="{{item.status == 0 || item.status == 1}}" style="width:40px" mode="widthFix" src="../../img/noOver.png" />
+          <image wx:if="{{item.status == 3}}" style="width:40px" mode="widthFix" src="../../img/noActive.png" />
+          <image wx:if="{{item.status == 4}}" style="width:40px" mode="widthFix" src="../../img/overTime.png" />
+          <image wx:if="{{item.status == 5}}" style="width:40px" mode="widthFix" src="../../img/isOver.png" />
+        </view>
+        <view class="redHead4" bindtap="viewDetail" data-redpack='{{item}}'>
+          <text class="viewdetail">查看详情</text>
+          <image style="width:10px;margin-left:4px" mode="widthFix" src="../../img/my-icon3.png" />
+        </view>
+      </view>
+      <view class="redCenter">
+        <image src="../../img/redpack.png" style="width:26px" mode="widthFix"/>
+        <view class="redRight">
+          <view class="redRight1">
+            <text class="redRight11_1">红包总金额：</text>
+            <text class="redRight11_2">{{item.totalAmount}}元</text>
+          </view>
+          <view class="redRight2">{{item.createdAt}}</view>
+        </view>
+        <view wx:if="{{item.status == 0 || item.status == 1}}" data-posterflag="{{item.posterFlag}}" data-code="{{item.shareCode}}" bindtap="shareredbagfun" class="toShare">去分享</view>
+      </view>
+    </view>
+  </block>
+</block>
+
+<block wx:else>
+  <view class='datanull-font'>
+    <image src='../../img/my-btnimg24.png' class='iconimg1' mode='widthFix'></image>
+    <text>您还未下单，暂无红包记录哦~</text>
+  </view>
+</block>
+<view wx:if="{{showtype}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">{{shareTitle?shareTitle:(user_name?user_name+'给你发了一个现金红包，领取后可提入微信零钱':'好友给你发了一个现金红包，领取后可提入微信零钱')}}</view>
+    <image wx:if="{{imgurldata}}" src="{{imgurldata}}" class="imgbox" mode="widthFix"></image>
+    <image wx:else src="{{global_Data.imgurldata}}shareimg.png" class="imgbox" mode="widthFix"></image>
+    <view class="ts-font"><text>提示：</text>红包发出后可多人领取，包括自己</view>
+    <view class="sharebtnbox2">
+      <view class="btn" bindtap="closefun">取消</view>
+      <button open-type="share" data-type="1" class="btn btncss">发出红包</button>
+    </view>
+  </view>
+</view>
+<view wx:if="{{sharetype}}" class="shareboxbg" bindtap="closefuns" catchtouchmove="return">
+  <view class="shareway">
+    <view class="share-font1">选择分享方式</view>
+    <view class="shareway-b">
+      <view class="imgbtn" catchtap="sharefun1"><image mode="widthFix" style="width:100%" src="../../img/shareimg1.jpg"></image></view>
+      <view class="imgbtn" catchtap="get_poster"><image mode="widthFix" style="width:100%" src="../../img/shareimg2.jpg"></image></view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{showPoster}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2">
+    <view class="closebtn-img" bindtap="closefunP"><image src="../../img/my-btnimg23.png"></image></view>
+    <image class="posterimg" bindtap="previewImg" mode="widthFix" src="{{posterurl}}"></image>
+    <view class="posterbtn posterbtn1" bindtap="saveimg">保存到手机相册</view>
+    <view class="posterbtn posterbtn2" bindtap="previewImg">预览海报长按分享</view>
+  </view>
+</view>

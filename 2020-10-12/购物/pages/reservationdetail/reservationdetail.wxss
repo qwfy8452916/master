@@ -1,0 +1,502 @@
+.swiperbox{
+  position: relative;
+}
+.slide-image{
+  width: 100%;
+  height: auto;
+}
+.room-name{
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  color: #fff;
+  padding: 3% 15rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+.icon-discounts{
+  width: 34px;
+  margin: 0px 5px;
+}
+.kfinfobox{
+  background: #fff;
+  padding: 15rpx 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.kfinfobox-li{
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.kfinfobox-li-img{
+  display: block;
+  width: 65rpx;
+  height: 65rpx;
+  margin-right: 10rpx;
+}
+.kfinfobox-li-text{
+  font-size: 26rpx;
+  color: #333333;
+}
+.facilitybox{
+  background: #fff;
+}
+.facilitybox-li{
+  padding-left: 20px;
+  margin: 10px 0;
+  font-size: 13px;
+  color: #888FA1;
+}
+.dian{
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #B59E5F;
+  margin-right: 5px;
+}
+.facilitybox-li-L{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.facilitybox-li-R{
+  padding-left: 10px;
+  line-height: 20px;
+}
+.facilitybox-li-Lw{
+  width: 45%;
+}
+.facilitybox-li-Lw2{
+  width: 55%;
+}
+.footbox{
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-top: 0.5px solid #e5e5e5;
+}
+.footbox-L{
+  width: 57%;
+  font-size: 30rpx;
+  color: #999999;
+}
+.footbox-L text{
+  font-size: 30rpx;
+}
+.btnbox{
+  width: 35%;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  background: #FF9700;
+}
+.font-text25{
+  font-size: 25rpx !important;
+}
+.btnbox2-bg{
+  background: #ccc;
+}
+
+.sharebtnbox{
+  position: absolute;
+  z-index: 999;
+  right: 0;
+  top: 30rpx;
+  width: 20%;
+  background: #ee1e1e;
+  border-radius: 50px 0 0 50px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #ffffff;
+}
+.shareicon{
+  vertical-align: middle;
+  line-height: 60rpx;
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.shareboxbg{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.sharebox{
+  position: absolute;
+  z-index: 9999;
+  top: 200rpx;
+  width: 75%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  padding: 50rpx 50rpx;
+  background: #fff;
+  border-radius: 15px;
+}
+.fontts{
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.sharebtnbox2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sharebtnbox2 .btn{
+  width: 45%;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 80rpx;
+  border-radius: 15rpx;
+  border: 1rpx solid #e5e5e5;
+  text-align: center;
+}
+.sharebtnbox2 .btncss{
+  background: #ff9700;
+  color: #fff;
+}
+.imgbox{
+  width: 100%;
+}
+
+.share_btnbox{
+  position: fixed;
+  z-index: 10;
+  top: 10rpx;
+  right: 10rpx;
+  width: 32%;
+  margin: 0 auto;
+}
+.share_btnbox image{
+  width: 100%;
+}
+.shareway{
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f6f6f6;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+.share-font1{
+  font-size: 32rpx;
+  color: #2B2D30;
+  line-height: 90rpx;
+  text-align: center;
+}
+.shareway-b{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+.imgbtn{
+  width: 49%;
+}
+.imgbtn image{
+  display: block;
+  width: 100%;
+}
+.shareway2{
+  width: 80%;
+  margin: 20rpx auto 0;
+}
+.closebtn-img{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.closebtn-img image{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+}
+.posterimg{
+  display: block;
+  width: 100%;
+  margin-bottom: 50rpx;
+  max-height: 700rpx;
+  border-radius: 20rpx 20rpx;
+}
+.posterbtn{
+  width: 100%;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 80rpx;
+  border-radius: 40px;
+  text-align: center;
+}
+.posterbtn1{
+  background: #FEB955;
+}
+.posterbtn2{
+  margin-top: 50rpx;
+  background: #E06930;
+}
+.mgT035{
+  margin-top: 35%;
+}
+.certification-box{
+  padding: 30rpx 30rpx;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30rpx;
+  background-color: #ffffff !important;
+  text-align: left;
+}
+.certification-icon{
+  display: block;
+  width: 38rpx;
+  height: 38rpx;
+}
+.certification-r{
+  width: 89%;
+}
+.certification-font1{
+  font-size: 28rpx;
+  color: #2B2D30;
+}
+.certification-font2{
+  font-size: 24rpx;
+  color: #888C8F;
+}
+.certification-font2 text{
+  color: #EE1E1E;
+}
+.closebtn-icon{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 186rpx;
+}
+.closebtn-icon image{
+  display: block;
+  width: 68rpx;
+  height: 68rpx;
+}
+button::after {
+  border: none;
+}
+button {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  line-height:inherit;
+}
+button {
+  border-radius:0;
+}
+.shareway3{
+  width: 75%;
+  margin: 25% auto 0;
+  padding: 30rpx 30rpx;
+  background: #fff;
+  border-radius: 4px;
+}
+.form-certification-font1{
+  font-size: 32rpx;
+  color: #2B2D30;
+  font-weight: bold;
+  margin-bottom: 50rpx;
+  text-align: center;
+}
+.form-certification-inp{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background: #F6F6F6;
+  font-size: 28rpx;
+  color: #2B2D30;
+  margin-bottom: 30rpx;
+}
+.form-certification-font2{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 20rpx;
+  color: #888C8F;
+  margin-bottom: 50rpx;
+}
+.form-certification-font2 image{
+  display: block;
+  width: 21rpx;
+  height: 21rpx;
+  margin-right: 15rpx;
+}
+.form-certification-sub{
+  font-size: 36rpx;
+  color: #FFFFFF;
+  background: #EE1E1E;
+  line-height: 68rpx;
+  border-radius: 40px;
+  text-align: center;
+}
+.backbtn{
+  display: inline-block;
+  font-size: 28rpx;
+  color: #fff;
+  background: #10BBBB;
+  border-radius: 0 10rpx 10rpx 0;
+  padding: 8rpx 25rpx;
+  margin-right: 20rpx;
+}
+.backbtn2{
+  font-size: 32rpx;
+  color: #fff;
+  background: #10BBBB;
+  line-height: 98rpx;
+  text-align: center;
+}
+.share_btnbox2{
+  position: fixed;
+  z-index: 10;
+  top: 30rpx;
+  right: 10rpx;
+  width: 32%;
+  margin: 0 auto;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+.share_btnbox2 image{
+  display: block;
+  flex: 1;
+}
+.share_btnbox_b{
+  width: 20%
+}
+.certification-box2{
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: rgba(0, 0, 0, 0);
+}
+.certification-box2 image{
+  display: block;
+  width: 100%;
+}
+.link{
+  width: 1px;
+  height: 20rpx;
+  background: rgba(190, 190, 190, 1);
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.redRule{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  background: rgba(0, 0, 0, .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redCenter{
+  width: 285px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.redCenter1{
+  margin-bottom: 40px;
+  position: relative;
+}
+.ruleBox{
+  position: absolute;
+  bottom: 20px;
+  width: 232px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.ruleboxItem{
+  display: flex;
+  border-bottom:1px rgba(255,255,255,.7) dashed;
+  align-items: center;
+  height: 68px;
+}
+.ruleboxItem1{
+  margin-left: 15px;
+}
+.redIconBox{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redIcon{
+  width: 17px;
+  height: 17px;
+}
+.itemTitle1{
+  color:#F2CE8A;
+  margin-bottom: 4px;
+}
+.itemTitle2{
+  font-size:12px;
+  color:#fff;
+}
+.iKnow{
+  width: 232px;
+  height: 32px;
+  line-height: 32px;
+  background: #F2CE8A;
+  color: #8D1D0D;
+  border-radius: 16px;
+  text-align: center;
+}
+.roomFeatrue{
+  width: 100%;
+  padding: 14px 0;
+  background: #fff;
+  margin-bottom: 10px;
+}
+.title1{
+  height: 18px;
+  border-left: #B59E5F 4px solid;
+  font-weight: bold;
+  color: #2B2D30;
+  font-size: 13px;
+  padding-left: 14px;
+}

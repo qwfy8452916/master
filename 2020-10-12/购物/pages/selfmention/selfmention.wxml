@@ -1,0 +1,48 @@
+<view class="bgfff cardcouponbox">
+  <view class="flexbox paddLR302 mgB30 cardcouponbox-t">
+    <view class="cardcouponbox-font1 cardcouponbox-w1">自提地点：{{voucherdata.hotelPickUpPointDTO.pointName}}</view>
+  </view>
+  <view class="cardcouponbox-b">
+    <view class="paddLR302 flexbox mgB20">
+      <image class="cardcouponbox-img" src="../../img/position-img1.png"></image>
+      <view class="cardcouponbox-b-t-w1">
+        <view>{{voucherdata.hotelPickUpPointDTO.pointInstruction}}</view>
+        <!-- <view>联系电话：18954645611</view> -->
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bgfff cardcouponbox">
+  <view class="borderT paddAll30">
+    <!-- 存放二维码的图片-->
+    <view class='container'>
+      <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}"></image>
+    </view>
+    <!-- 画布，用来画二维码，只用来站位，不用来显示-->
+    <view class="canvas-box">
+      <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+    </view>
+    <view class="flexboxstart mgT30 mgB30 cardcouponbox-font11">
+      <image src="../../img/icon-img3.png"></image>
+      请到以上自提点后出示此二维码，5分钟后会刷新二维码
+    </view>
+    <view class="borderT paddT30">
+      <block wx:for="{{voucherdata.orderDeliveryDetailDTOList}}" wx:for-item="item" wx:key="index">
+        <view class='orderlistbox-c'>
+          <view class='contentbox1'>
+            <image wx:if="{{item.prodHotelProductDTO.prodLogoUrl!=''&&item.prodHotelProductDTO.prodLogoUrl!=null}}" src='{{item.prodHotelProductDTO.prodLogoUrl}}' class='spimg' mode='aspectFill'></image>
+            <image wx:else src='{{item.prodProductDTO.prodLogoUrl}}' class='spimg' mode='aspectFill'></image>
+            <view class='font-content'>
+              <view wx:if="{{item.prodHotelProductDTO.prodShowName!=''&&item.prodHotelProductDTO.prodShowName!=null}}" class='font-name font-overflow fontcolor' style='width: 100%;'>{{item.prodHotelProductDTO.prodShowName}}</view>
+              <view wx:else class='font-name font-overflow fontcolor' style='width: 100%;'>{{item.prodProductDTO.prodShowName}}</view>
+              <view class='font-name2 alignright' style='width: 100%;'>
+                <text style="color:#EE1E1E">¥ {{item.prodPrice}}</text>
+              </view>
+            </view>
+            <view class='font-name2 font-width'>x {{item.prodCount}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

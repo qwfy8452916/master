@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "首页 Home Page",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "pop": "../common/pop/pop",
+    "redbagact": "../common/redbagact/redbagact",
+    "tabbar": "../common/tabbar/tabbar",
+    "newcomer": "../common/newcomer/newcomer",
+    "couponbox": "../common/couponbox/couponbox"
+  },
+  "enablePullDownRefresh": true
+}

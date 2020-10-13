@@ -1,0 +1,137 @@
+<!--pages/foodOrder/foodOrder.wxml-->
+
+<view class="searchWrap">
+  <view class="expandbox">
+    <view class="searchdesc expenditem">
+      <image class="searchlogo" src="../../img/searchlogo.png"></image>
+      搜索
+    </view>
+    <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+      <image src="../../img/expendlogo.png"></image>
+    </view>
+  </view>
+  <view wx:if="{{switchJudge}}">
+
+    <view class="rowbox">
+      <view class="rowtitle">流水号</view>
+      <view>
+        <input placeholder="请输入流水号" bindinput="serialNumber" value="{{serialNumber}}"></input>
+      </view>
+    </view>
+
+    <view class="rowbox">
+      <view class="rowtitle">桌号</view>
+      <view>
+        <input placeholder="请输入桌号" bindinput="roomCode" value="{{roomCode}}"></input>
+      </view>
+    </view>
+
+
+    <view class="pickbox">
+      <text class="alignlef selectdate">下单时间</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text wx:if="{{date}}">{{date}}</text>
+            <text wx:else class="placems">起始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" value="{{date2}}" bindchange="bindDateChange2">
+          <view class="picker">
+            <text wx:if="{{date2}}">{{date2}}</text>
+            <text wx:else class="placems">终止时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+
+
+    <view class="searchBtn" bindtap="searchBtn">搜索</view>
+    <view class="reset" bindtap="reset">重置</view>
+  </view>
+</view>
+
+<view class="wrap">
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+          <view class="searitembox" wx:else>
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+ <block wx:if="{{deliveryDataList.length>0}}">
+  <view class="delivBox" wx:for="{{deliveryDataList}}" wx:key>
+    <view class="headbox">
+      <view class="headlef">订单编号 {{item.orderCode}}</view>
+      <view class="orabtn">
+        <text wx:if="{{item.orderStatus===0}}">待支付</text>
+        <text class="alreadybtn" wx:if="{{item.orderStatus==1}}">已支付</text>
+        <text wx:if="{{item.orderStatus==2}}">已取消</text>
+        <text wx:if="{{item.orderStatus==3}}">部分退款</text>
+        <text wx:if="{{item.orderStatus==4}}">全部退款</text>
+      </view>
+    </view>
+    <view class="funwrap">
+      <view class="funbox">
+        <view class="funlef">
+          <view class="funsign">{{item.roomFloor}}-{{item.roomCode}}</view>
+          <view class="funName">{{item.funcName}}</view>
+        </view>
+        <view>流水号{{item.serialNumber}}</view>
+      </view>
+
+      <view class="idbox">
+        <view>用户ID</view>
+        <view class="idtext">{{item.customerId}}</view>
+      </view>
+      <view class="descbox">
+        <view>商品金额</view>
+        <view>￥{{item.totalAmount}}</view>
+      </view>
+      <!-- <view class="descbox">
+      <view>优惠金额</view>
+      <view>￥{{item.couponAmount}}</view>
+    </view>
+    <view class="descbox botborder">
+      <view>减免金额</view>
+      <view>￥{{item.discountAmount}}</view>
+    </view> -->
+      <view class="amounbox">
+        <view>共{{item.prodCount}}件商品</view>
+        <view class="marginjv" wx:if="{{item.orderStatus==1}}">实付金额</view>
+        <view wx:if="{{item.orderStatus==1}}">¥{{item.actualPay}}</view>
+      </view>
+    </view>
+    <view class="paybox" wx:if="{{item.orderStatus==1}}">
+      <view>支付时间</view>
+      <view class="marginjv">{{item.payCompleteTime}}</view>
+    </view>
+    <view class="btnbox">
+      <view class="btndefa btndetail" data-id="{{item.id}}" bindtap="btndetail" wx:if="{{authzData['F:MS_ORDER_FOODORDER_DETAIL']}}">详情</view>
+      <view class="btndefa btnedit" data-id="{{item.id}}" bindtap="btnedit" wx:if="{{authzData['F:MS_ORDER_FOODORDER_MODIFY']}}">修改订单</view>
+    </view>
+   </view>
+  </block>
+  <view wx:if="{{deliveryDataList.length<1}}" class="nodata">暂无数据</view>
+
+</view>

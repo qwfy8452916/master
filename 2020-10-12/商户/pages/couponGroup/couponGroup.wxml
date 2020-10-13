@@ -1,0 +1,25 @@
+<!--pages/couponGroup/couponGroup.wxml-->
+<view class="wrap">
+   <view class="groupBox" wx:for="{{groupData}}" wx:key>
+      <view class="groupTitle"><view class="linebak"></view>{{item.groupName}}</view>
+      <view class="btnbox">
+         <view class="btnitem editbtn" bindtap="editGroup" data-id="{{item.id}}" data-judge="2" wx:if="{{authzData['F:MS_COUPON_GROUP_MODIFY']}}">修改</view>
+         <view class="btnitem" bindtap="deleGroup" data-id="{{item.id}}" wx:if="{{authzData['F:MS_COUPON_GROUP_DELETE']}}">删除</view>
+      </view>
+   </view>
+</view>
+
+<view class="fenzu" bindtap="fenzu" data-judge="1" wx:if="{{authzData['F:MS_COUPON_GROUP_ADD']}}">新增分组</view>
+
+<view class="shadowBox" wx:if="{{shadowpd}}">
+  <view class="groupbox">
+      <view class="addtitle">新增分组</view>
+      <view class="inputBox">
+         <input placeholder="请输入分组的名称" value="{{groupName}}" bindinput="groupput"></input>
+      </view>
+      <view class="addbtn" bindtap="sureBtn">确定</view>
+      <text class="iconfont iconguanbi" bindtap="closebtn"></text>
+  </view>
+</view>
+
+

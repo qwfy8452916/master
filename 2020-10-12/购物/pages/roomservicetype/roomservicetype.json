@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "客房服务",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "text-input": "../common/text-input/text-input",
+    "text-time": "../common/text-time/text-time",
+    "region-picker": "../common/region-picker/region-picker",
+    "text-radio": "../common/text-radio/text-radio",
+    "text-textarea": "../common/text-textarea/text-textarea",
+    "text-data": "../common/text-data/text-data",
+    "input-number": "../common/input-number/input-number",
+    "text-picker": "../common/text-picker/text-picker"
+  }
+}

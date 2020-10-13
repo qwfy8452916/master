@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发表评价",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "imgup": "../../component/imgUp/imgUp"
+  }
+}

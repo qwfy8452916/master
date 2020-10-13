@@ -1,0 +1,35 @@
+<!--pages/finance/finance.wxml-->
+<view class="wrap">
+
+  <view class="rowLine" bindtap="repair" bindtap="accountInfo" wx:if="{{authzData['F:MS_FIN_FININFO']}}">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/minilogo.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>账户信息</text>
+       </view>
+       <view class="descbot">ACCOUNT INFO</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <text>{{accountdetail.withdrawMayAmount}}</text>
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+<view class="rowLine" bindtap="repair" bindtap="financeCount">
+   <view class="childbox lefbox">
+     <image class="rowlogo" src="../../img/minilogo.png"></image>
+     <view class="descbox">
+       <view class="desctop">
+         <text>财务统计</text>
+       </view>
+       <view class="descbot">FINANCIAL STATISTICS</view>
+     </view>
+   </view>
+   <view class="childbox rigbox">
+     <image class="moreimg" src="../../img/back.png"></image>
+   </view>
+</view>
+
+</view>

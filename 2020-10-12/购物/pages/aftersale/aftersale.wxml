@@ -1,0 +1,55 @@
+<view class='tips-font'>
+  <image class='tips-font-img' src='../../img/icon-img3.png' mode='widthFix'></image>
+  请输入您的信息，我们将立即安排人员送货到您房间
+</view>
+<view class='bgfff'>
+  <view class="section paddLR03">
+    
+      <view class="picker">
+        <view>售后商品</view>
+        <view class='picker-right'>{{prodShowName}}</view>
+      </view>
+  </view>
+  <view class="section paddLR03">
+    <picker bindchange="bindPickerChange" value="{{dictValue}}" range="{{aftersaletype}}" range-key="dictName">
+      <view class="picker">
+        <view>
+          申请售后原因<text class='font-red'>*</text>
+        </view>
+        <view class='picker-right'>
+          {{aftersaletype[dictValue].dictName}} 
+          <image class='tbimg' src='../../img/my-bgimg2.png'></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class='userinfobox-form-box paddLR03'>
+    <view class='userinfobox-box-name'>姓名<text class='font-red'>*</text></view>
+    <input type="text" bindinput="username" maxlength="18" placeholder="请填写姓名" placeholder-style="color: #bbbec4;" focus="{{usernamefocus}}" />
+  </view>
+  <view class='userinfobox-form-box paddLR03'>
+    <view class='userinfobox-box-name'>手机号<text class='font-red'>*</text></view>
+    <input type="number" bindinput="usertel" placeholder="请填写手机号" placeholder-style="color: #bbbec4;" focus="{{usertelfocus}}" />
+  </view>
+  <view class='userinfobox-form-box paddLR03'>
+    <view class='userinfobox-box-name'>房间号<text class='font-red'>*</text></view>
+    <input type="number" placeholder-style="color: #bbbec4;" value='{{roomCode}}' disabled="true" />
+  </view>
+  <view class='uploadimg paddLR03'>
+    <view class='userinfobox-box-name'>上传凭证<text class='font-red'>*</text></view>
+    <view>
+      <view bindtap='bindChooiceProduct' class='upbtn' style='background: {{themecolor.skintone}};'>{{uptext}}</view>
+      <view class='upfont'>(最多上传3张)</view>
+    </view>
+  </view>
+  <view class='uploadimg-list paddLR03'>
+    <image wx:for="{{showproductInfo}}" wx:for-item="item" wx:key="index" src='{{item}}' mode='widthFix'></image>
+  </view>
+  <view class='userinfobox-form-box paddLR03' style='border-top: 0.5px solid #e5e5e5;'>
+    <view class='userinfobox-box-name w15'>备注</view>
+    <textarea class='remarks' auto-height placeholder="请填写备注信息" placeholder-style="color: #bbbec4;" bindinput="userremark" focus="{{remarkfocus}}" />
+  </view>
+</view>
+
+<view wx:if="{{subtype == 1}}" class='btnbox-btn2' bindtap='subfun' style='background: {{themecolor.skintone}};'>提交</view>
+<view wx:else class='btnbox-btn2' style='background: #bbbec4;'>提交</view>

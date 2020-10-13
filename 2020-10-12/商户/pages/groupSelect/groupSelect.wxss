@@ -1,0 +1,122 @@
+/* pages/groupSelect/groupSelect.wxss */
+page{
+  background: #f6f6f6;
+  border-top: 1px solid #e5e5e5;
+}
+.wrap{
+  width: 100%;
+  padding:0rpx 3%;
+  box-sizing: border-box; 
+  margin-bottom: 120rpx;
+}
+.groupItem{
+  padding: 25rpx 0rpx;
+  width: 100%;
+  background: #fff;
+  color: #2B2D30;
+  text-align: center;
+  margin-top: 40rpx;
+  border-radius: 44rpx;
+}
+.groupItemActive{
+  background: #83d8d8;
+  color: #fff;
+}
+.addbox{
+  width: 120rpx;
+  height: 120rpx;
+  background: #fff;
+  border-radius: 50%;
+  color: #ff6930;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 60rpx;
+  bottom: 160rpx;
+}
+.rowadd{
+  width: 64rpx;
+  height: 4rpx;
+  background: #ff6930;
+}
+.lineadd{
+  width: 4rpx;
+  height: 64rpx;
+  background: #ff6930;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.surebtn{
+  font-size:36rpx;
+  color: #fff;
+  background-image:linear-gradient(to right,#F0904D,#ED7142);
+  text-align: center;
+  padding: 30rpx 0rpx;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+
+.shadowBox{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.groupbox{
+  width: 84%;
+  border-radius: 20rpx;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200rpx;
+  margin: auto;
+  padding: 40rpx 50rpx;
+  box-sizing: border-box;
+}
+.addtitle{
+  text-align: center;
+  font-size: 36rpx;
+  color: #060C27;
+  margin-top: 20rpx;
+}
+.inputBox{
+  margin-top: 70rpx;
+  text-align: center;
+  border-bottom: 1px solid #d5d5d6;
+  font-size: 32rpx;
+  padding: 20rpx 0rpx;
+  box-sizing: border-box;
+}
+.addbtn{
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  background-image: linear-gradient(to right,#F0904D,#ED7142);
+  padding: 15rpx 0rpx;
+  border-radius: 34rpx;
+  margin-top: 60rpx;
+}
+.iconguanbi{
+  position: absolute;
+  color: #838694;
+  font-size: 46rpx;
+  left: 50%;
+  transform: translateX(-50%,0);
+  bottom: -120rpx;
+  display: inline-block;
+}

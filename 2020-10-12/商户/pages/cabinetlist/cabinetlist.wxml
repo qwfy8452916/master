@@ -1,0 +1,91 @@
+<!--pages/cabinetlist/cabinetlist.wxml-->
+<view class='navwrap'>
+   <view wx:for="{{navtext}}" wx:key class='navitem navitemleft {{navarray[index]==true?"navitemactive":""}}' bindtap='navevent' data-index="{{index}}" data-id="{{item.id}}">{{item.name}}</view>
+</view>
+<scroll-view class='wraplist' style='height:{{gaodu}}rpx'  scroll-y bindscrolltolower="downLoad">
+
+    <view class='hiddenyc {{navindex==0?"xianshi":""}}'>
+     <view wx:if="{{cabinetlistdata.length>0}}">
+        <view class='hangitem' wx:for="{{cabinetlistdata}}" wx:key>
+          <text class='iconfont icongengduo' bindtap='showModalevent' data-id="{{item.id}}" data-target="bottomModal" data-floor="{{item.roomFloor}}" data-roomid="{{item.roomCode}}" data-index="{{index}}" data-cabcode="{{item.cabinetQrcode}}" data-bindareaflag="{{item.bindAreaFlag}}"></text>
+          <view class='miaosone'>
+            <text class='xuhao'>{{index+1}}</text>
+
+            <text class='statuszt'>
+              <text wx:if="{{item.cabinetStatus==1}}">正常</text>
+              <text class='fault' wx:elif="{{item.cabinetStatus==2}}">异常</text>
+            </text>
+          </view>
+          <view class='miaostwo' wx:if="{{item.bindAreaFlag!=0}}">{{item.bindAreaFlagName}}:{{item.roomFloor}}-{{item.roomCode}}</view>
+           <view class='miaostwo' wx:else>无绑定</view>
+        </view>
+      </view>
+     <view wx:else>
+      <image class='nodataimg' src='../../img/waiterlogo.png'></image>
+      <view class='nodatams'>暂无安装记录哦~</view>
+     </view>
+    </view>
+    <view class='hiddenyc {{navindex==1?"xianshi":""}}'>
+       <view wx:if="{{repairlistdata.length>0}}">
+         <view class='repairhangitem' wx:for="{{repairlistdata}}" wx:key>
+            <text class='iconfont iconwangyou' bindtap='checkdetail' data-id="{{item.id}}" data-index="{{index}}"></text>
+            <view class='miaosone'>
+              <text class='xuhao'>{{item.roomFloor}}-{{item.roomCode}}-{{item.latticeCode}}柜</text>
+
+            </view>
+            <view class='miaostwo'><text class='iconfont icongantan'></text>
+            <text wx:if="{{item.malType==2}}">柜门打不开</text>
+            <text wx:elif="{{item.malType==0}}">初始类型</text>
+            <text wx:elif="{{item.malType==1}}">扫码失败</text>
+            <text wx:elif="{{item.malType==3}}">锁具异常</text>
+            <text wx:elif="{{item.malType==4}}">其他</text>
+            </view>
+        </view>
+      </view>
+      <view wx:else>
+         <image class='nodataimg' src='../../img/waiterlogo.png'></image>
+         <view class='nodatams'>暂无维修记录哦~</view>
+      </view>
+    </view>
+    <view class='hiddenyc {{navindex==2?"xianshi":""}}'>
+       <view wx:if="{{replacelistdata.length>0}}">
+          <view class='replaceitem' wx:for="{{replacelistdata}}" wx:key>
+              <view class='leftext'>{{item.roomFloor}}-{{item.roomCode}}<view class='replacebj'>
+                 <image src='../../img/replacelogo.png'></image>
+                 <text class='statustext'>
+                    <text wx:if="{{item.replaceStatus==0}}">待处理</text>
+                    <text wx:elif="{{item.replaceStatus==1}}">待取货</text>
+                    <text wx:elif="{{item.replaceStatus==2}}">待更换</text>
+                    <text wx:else="{{item.replaceStatus==3}}">已更换</text>
+                 </text>
+              </view></view>
+              <view class='righttext' bindtap='replacehuan' data-replaceStatus="{{item.replaceStatus}}" data-id="{{item.cabinetId}}" wx:if="{{authzData['F:MS_CAB_CAB_REPLACE']}}">更换</view>
+          </view>
+        </view>
+      <view wx:else>
+         <image class='nodataimg' src='../../img/waiterlogo.png'></image>
+         <view class='nodatams'>暂无更换记录哦~</view>
+      </view>
+    </view>
+</scroll-view>
+
+<view class='wrapcontinue'>
+  <view wx:if="{{authzData['F:MS_CAB_CAB_ADD']}}" class='continueniu {{navindex==0?"showxs":""}}' bindtap='continueniu'>添加柜子信息</view>
+  <view class='continueniu {{navindex==1?"showxs":""}}' wx:if="{{authzData['F:MS_CAB_REPAIR']}}" bindtap='repairrecord'>维修记录</view>
+  <view class='continueniu {{navindex==2?"showxs":""}}' wx:if="{{authzData['F:MS_CAB_REPLACE_RECORD']}}" bindtap='replacerecord'>更换柜子记录</view>
+
+</view>
+
+<view bindtap='yinying' class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class='botcontent' catchtap='showxian'>
+    <view class='tantitle' wx:if="{{bindAreaFlag==1}}">酒店楼层 {{hotelfloor}} / 房间号 {{housenumber}}</view>
+    <view class='tantitle' wx:if="{{bindAreaFlag==2}}">区域 {{hotelfloor}} / 桌号 {{housenumber}}</view>
+    <view class='tantitle' wx:if="{{bindAreaFlag==3}}">区域 {{hotelfloor}} / 地点 {{housenumber}}</view>
+    <view class='wrapniu'>
+      <view class='delniu' wx:if="{{authzData['F:MS_CAB_CAB_DELETE']}}" catchtap='delevent' data-id="{{cabinetid}}">删除</view>
+      <view class='editniu' wx:if="{{authzData['F:MS_CAB_CAB_MODIFY']}}" catchtap='editevent' data-id="{{cabinetid}}">编辑</view>
+    </view>
+  </view>
+</view>
+
+<!-- <my-tabbar id="tabbar"></my-tabbar> -->

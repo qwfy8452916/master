@@ -1,0 +1,150 @@
+<!--pages/package/pages/ownProdList/ownProdList.wxml-->
+
+<view class="searchWrap">
+  <view class="expandbox">
+    <view class="searchdesc expenditem">
+      <image class="searchlogo" src="{{pathUrl}}/searchlogo.png" wx:if="{{pathUrl}}"></image>
+      搜索
+    </view>
+    <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+      <image src="/../../../img/expendlogo.png"></image>
+    </view>
+  </view>
+  <view wx:if="{{switchJudge}}">
+
+
+  <view class="rowbox">
+      <view class="rowtitle">商品名称</view>
+      <view>
+        <input placeholder="请输入商品名称" bindinput="prodName" value="{{formdata.prodName}}"></input>
+      </view>
+    </view>
+
+
+    <picker class="pickbox" bindchange="bindPickerChangeprodType" range-key="name" value="{{prodTypeIndex}}" range="{{prodTypeData}}">
+      <view class="picker">
+        <text class="alignlef">
+                <text class="pickeritem">形式</text>
+        <text wx:if="{{prodTypeData[prodTypeIndex].id!==''}}">{{prodTypeData[prodTypeIndex].name}}</text>
+
+        </text>
+        <text class="alignrig">
+               <text wx:if="{{prodTypeData[prodTypeIndex].id===''}}" class="placems">全部</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+    <picker class="pickbox" bindchange="bindPickerChangeStatus" range-key="name" value="{{reviewStatusIndex}}" range="{{reviewStatusData}}">
+      <view class="picker">
+        <text class="alignlef">
+                <text class="pickeritem">状态</text>
+        <text wx:if="{{reviewStatusData[reviewStatusIndex].id!==''}}">{{reviewStatusData[reviewStatusIndex].name}}</text>
+
+        </text>
+        <text class="alignrig">
+               <text wx:if="{{reviewStatusData[reviewStatusIndex].id===''}}" class="placems">全部</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+
+    <view class="searchBtn" bindtap="searchBtn">搜索</view>
+    <view class="reset" bindtap="reset">重置</view>
+  </view>
+</view>
+
+<view class="wrap">
+
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../../../img/closetj.png"></image>
+            </view>
+          </view>
+
+          <view class="searitembox" wx:else>
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+  <block>
+    <view class="contentbox" wx:for="{{ownProdData}}" wx:key="index">
+      <view class="contenttitle">
+        <view class="titleleft">
+          <view class="linebk"></view>
+            商品名称
+        </view>
+      </view>
+      <view class="contentitem">
+        <view class="controw">
+          <view>
+            <text class="couponName">{{item.prodProductDTO.prodName}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="midbox">
+        <view class="picBox">
+          <image src="{{item.prodProductDTO.prodLogoUrl}}"></image>
+        </view>
+        <view class="lefBox">
+           <view class="bmtypeBox">
+             <text>编码</text><text class="titleDesc">{{item.prodProductDTO.prodCode}}</text>
+             <view class="prodType">{{item.prodTypeName}}</view>
+             <text class="dealstatus">
+                <text wx:if="{{item.reviewStatus==0}}">驳回</text>
+                <text wx:if="{{item.reviewStatus==1}}">通过</text>
+                <text wx:if="{{item.reviewStatus==2}}">待审核</text>
+             </text>
+           </view>
+           <view class="guicount">
+             <text class="spec">规格数 {{item.specQty}}</text>
+             <text class="spec">可售数量 {{item.availableSaleQty}}件</text>
+             <text>保质期 {{item.prodProductDTO.prodWarrantyPeriod}}</text>
+           </view>
+           <view class="lefBtn">
+              <view class="lefBtnitem">{{item.delivWayNames}}</view>
+           </view>
+        </view>
+        <view class="prodShowTitle">商品显示名称</view>
+        <view class="prodShowName">{{item.prodProductDTO.prodShowName}}</view>
+        <view class="priceBox">
+           <view class="priceItem">供货价<text class="pricesz">￥{{item.prodSupplyPrice}}</text></view>
+           <view class="priceItem">零售价<text class="pricesz">￥{{item.prodRetailPrice}}</text></view>
+           <view class="priceItem">划线价<text class="pricesz">￥{{item.prodMarketPrice}}</text></view>
+        </view>
+      </view>
+
+      <view class="btnbox">
+        <view class="btnitem" bindtap="ownProdSpecsList" data-id="{{item.id}}" data-index="{{index}}">规格管理</view>
+        <view class="btnitem" bindtap="deleBtn" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+        <view class="btnitem" bindtap="ownProdEdit" data-id="{{item.id}}" data-index="{{index}}">修改</view>
+        <view class="btnitem" bindtap="detail" data-id="{{item.id}}">详情</view>
+
+      </view>
+    </view>
+  </block>
+  <!-- <view wx:else class="nodata">暂无数据</view> -->
+
+</view>
+
+<view class="addCard" bindtap="funProdAdd">添加自营商品</view>
+

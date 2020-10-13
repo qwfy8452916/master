@@ -1,0 +1,205 @@
+.slide-image{
+  width: 100%;
+  height: auto;
+}
+.details-info{
+  font-size: 32rpx;
+  color: #333333;
+  background: #fff;
+  padding: 20rpx 3%;
+  margin-bottom: 20rpx;
+}
+.details-info .details-price{
+  color: #ee1e1e;
+  font-weight: bold;
+  margin-top: 15rpx;
+  display: flex;
+}
+.price-info{
+  display: flex;
+  align-items: flex-end;
+}
+.icon-discounts{
+  width: 24px;
+  margin-left: 10px;
+}
+.details-img{
+  display: block;
+  width: 100%;
+}
+.buybtn{
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.shopcarbox{
+  width: 40%;
+}
+.shopcarbox image{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 7%;
+}
+.joincar,.buy-btn{
+  width: 30%;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #fff;
+  background: #F57878;
+}
+.buy-btn{
+  background: #EE1E1E;
+}
+
+.freetext{
+  text-decoration: line-through;
+  font-size: 24rpx;
+  color: #999999;
+}
+.lastnoneborder .evaluation:last-child{
+  border-bottom: none;
+}
+.roomcode{
+  background: #ee1e1e;
+  font-size: 32rpx;
+  color: #fff;
+  padding: 10rpx 20rpx;
+  padding-left: 10rpx;
+  position: absolute;
+  z-index: 99;
+  top: 50rpx;
+  left: 0;
+  border-radius: 0 50px 50px 0;
+}  
+.buybtnbg{
+  background: #bbbec4;
+}
+.couponbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 20rpx 3%;
+  background: #fff;
+}
+.couponboxL{
+  font-size: 28rpx;
+  color: #999999;
+  width: 12%;
+}
+.couponboxR{
+  width: 15%;
+  font-size: 28rpx;
+  color: #999999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.couponboxC{
+  width: 72%;
+}
+.coupon-box{
+  display: inline-block;
+  color: #EE1E1E;
+  font-size: 28rpx;
+  border: 1rpx solid #EE1E1E;
+  border-radius: 15rpx 15rpx;
+  padding: 10rpx 10rpx;
+}
+.couponlistbox-bg{
+  position: fixed;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.couponlistbox{
+  background: #fff;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px 20px 0 0;
+  padding: 30rpx 3%;
+}
+.showclass{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.font-title{
+  font-size: 36rpx;
+  color: #333333;
+  margin-bottom: 25rpx;
+  text-align: center;
+}
+.font-prod1{
+  font-size: 24rpx;
+  color: #333333;
+}
+.font-prod2{
+  font-size: 32rpx;
+  color: #999999;
+}
+.couponlist-li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 25rpx;
+  background:#ffe3d5;
+  color: #EE1E1E;
+  border-radius: 25rpx 25rpx;
+  margin-bottom: 20rpx;
+}
+.couponlist-li-l{
+  width: 65%;
+}
+.couponlist-li-r{
+  width: 35%;
+  text-align: right;
+}
+.font-l1{
+  font-size: 28rpx;
+}
+.font-l2{
+  font-size: 20rpx;
+}
+.font-l3{
+  font-size: 48rpx;
+}
+.font-l4{
+  font-size: 20rpx;
+  color: #999999;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.closebtn{
+  background: #EC4C4C;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  margin-top: 10rpx;
+  border-radius: 25px;
+}
+.activityiconfont{
+  display: inline-block;
+  width: 40px;
+  height: 14px;
+  margin-right: 10rpx;
+}

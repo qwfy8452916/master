@@ -1,0 +1,217 @@
+page{
+  margin-bottom: 50rpx;
+}
+.datanull-font{
+  text-align: center;
+  font-size: 32rpx;
+  color: #999999;
+  margin-top: 200rpx;
+}
+.iconimg1{
+  display: inline-block;
+  width: 25%;
+}
+.datanull-font text{
+  display: block;
+  width: 100%;
+}
+
+.paddAll{
+  padding: 16rpx 3%;
+  background: #fff;
+}
+.typelist{
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+}
+.typebtn{
+  display: inline-block;
+  padding: 0 25rpx;
+  font-size: 26rpx;
+  color: #999999;
+  background: rgba(219,219,219,0.2);
+  line-height: 55rpx;
+  margin-right: 20rpx;
+  border-radius: 4px;
+  min-width: 88rpx;
+  text-align: center;
+}
+.typelist .typebtn:last-child{
+  margin-right: 0;
+}
+.typeactive{
+  background: #FF9700;
+  color: #fff;
+}
+.borderT{
+  box-sizing: border-box;
+  border-top: 0.5px solid #e5e5e5;
+}
+.borderB{
+  box-sizing: border-box;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.orderlist{
+  margin-bottom: 25rpx;
+}
+.orderlistbox{
+  padding: 20rpx 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btnbox{
+  width: 25%;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  background: #FF9700;
+  border-radius: 5px;
+}
+
+.orderlistbox-c{
+  padding: 20rpx 3%;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.nopadding{
+  padding: 0 !important;
+}
+.bortop{
+  border-top: 0.5px solid #e5e5e5;
+}
+
+.contentbox1{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20rpx 3%;
+}
+.spimg{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.spimg-mgR{
+  margin-right: 20rpx;
+}
+.typelist .spimg-mgR:last-child{
+  margin-right: 0;
+}
+.font-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 62%;
+  height: 150rpx;
+}
+.font-overflow{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.font-width{
+  width: 10%;
+  text-align: right;
+  
+}
+.alignright{
+  position: relative;
+  right:-20%;
+  text-align: right;
+  color: #333 !important;
+}
+.ordertime{font-size: 24rpx;color: #999;}
+.fontcolor{color: #333 !important;}
+.nobotborder{border-bottom:none !important;}
+.btnwrap{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btnitem{
+  color: #999;
+  font-size: 26rpx;
+  display: inline-block;
+  border:0.5px solid #999;
+  border-radius: 5rpx;
+  margin-left: 20rpx;
+  border-radius: 50px 50px;
+  padding: 14rpx 35rpx;
+}
+.commentbtn{
+  color: #fff;
+  background: #10BBBB;
+  border: none;
+}
+.font-th{
+  padding: 14rpx 35rpx;
+  border-radius: 50px 50px;
+  background: #10BBBB;
+  font-size: 24rpx;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.font-ps{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 32rpx;
+  color: #333333;
+}
+.font-th-icon{
+  display: block;
+  width: 32rpx;
+  height: 34rpx;
+  margin-right: 15rpx;
+}
+
+.font-pj-icon{
+  display: block;
+  width: 18rpx;
+  height: 24rpx;
+  margin-right: 15rpx;
+}
+.lgcName{
+  display: block;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  color: #10BBBB;
+}
+.refreshbtn{
+  font-size: 28rpx;
+  color: #fff;
+  background: #10BBBB;
+  padding: 8rpx 25rpx;
+  border-radius: 20rpx;
+}
+
+.font-ts{
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 48rpx;
+}
+.font-ts text{
+  color: #EE1E1E;
+}
+.tspaybtn{
+  width: 160rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 20rpx 20rpx;
+  background: #EE1E1E;
+}
+.fontweight{
+  color: #333333;
+  font-weight: bold;
+}

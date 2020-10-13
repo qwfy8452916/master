@@ -1,0 +1,125 @@
+<!--pages/package/pages/enterConfigDetail/enterConfigDetail.wxml-->
+
+
+<view class="wrap">
+
+
+    <view class="contentkbox">
+
+      <picker class="pickbox" disabled range-key="cabTypeName" value="{{cabTypeIndex}}" range="{{cabTypeList}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">柜子类型</text>
+          <text wx:if="{{cabTypeList[cabTypeIndex].id}}">{{cabTypeList[cabTypeIndex].cabTypeName}}</text>
+          </text>
+          <text class="alignrig">
+          
+          </text>
+        </view>
+      </picker>
+
+      
+
+      <view class="rowbox">
+        <view class="rowtitle">进场配置名称</view>
+        <view class="putbox">
+          <input disabled value="{{configdata.settingName}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">默认进场
+        </view>
+        <view class="danhang">
+          <view class="choiceitem {{deviData[index].enterSet?'choiceitemActive':''}}" wx:for="{{deviData}}" wx:key="index" data-index="{{index}}">{{item.dictName}}</view>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">分享进场
+        </view>
+        <view class="danhang">
+          <view class="choiceitem {{shareData[index].enterSet?'choiceitemActive':''}}" wx:for="{{shareData}}" wx:key="index" bindtap="shareEnter" data-index="{{index}}">{{item.dictName}}</view>
+        </view>
+      </view>
+
+
+
+
+
+      <view class="titlebox">
+        <view class="linebak"></view>功能区设置
+      </view>
+
+      <view class="rowbox switchbox">
+        <view class="rowtitle rowtitlesupper">支持默认开放功能区</view>
+        <switch checked="{{configdata.availableFuncSupport}}" color="#ff6930" name="availableFuncSupport" value="{{configdata.availableFuncSupport}}" disabled></switch>
+       </view>
+       
+    <block wx:if="{{!configdata.availableFuncSupport}}" wx:for="{{configdata.areaList}}" wx:key="index">
+      <picker class="pickbox" range-key="name" value="{{item.funTypeIndex}}" range="{{item.funTypedata}}" data-index="{{index}}" disabled>
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">{{item.areaName}}</text>
+          <text wx:if="{{configdata.areaList[index].defaultValue!==''}}">{{item.funTypedata[item.funTypeIndex].name}}</text>
+          </text>
+          <text class="alignrig">
+          
+          </text>
+        </view>
+      </picker>
+     
+     <block wx:if="{{configdata.areaList[index].defaultValue==2}}">
+      <view class="rowbox">
+        <view class="rowtitle widthreset">默认进场配送方式
+        </view>
+        <view class="danhang">
+          <view class="choiceitem {{item.funnterData[defIndex].enterSet?'choiceitemActive':''}}" wx:for="{{item.funnterData}}" wx:for-item="defitem" wx:for-index="defIndex" data-index="{{defIndex}}" data-fuindex="{{index}}">{{defitem.dictName}}</view>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle widthreset">分享进场配送方式
+        </view>
+        <view class="danhang">
+          <view class="choiceitem {{item.funshareData[defIndex].enterSet?'choiceitemActive':''}}" wx:for="{{item.funshareData}}" wx:for-item="defitem" wx:for-index="defIndex" data-index="{{defIndex}}" data-fuindex="{{index}}">{{defitem.dictName}}</view>
+        </view>
+       </view>
+      </block>
+
+        <view class="rowbox" wx:if="{{configdata.areaList[index].defaultValue!=0}}">
+          <view class="rowtitle">排序</view>
+          <view class="putbox">
+            <input disabled value="{{item.sort}}" data-index="{{index}}"></input>
+          </view>
+        </view>
+
+      </block>
+
+
+    </view>
+   
+
+   <view class="contentkbox">
+      <view class="titlebox">
+        <view class="linebak"></view>默认首页设置
+      </view>
+
+      <picker class="pickbox" range-key="areaName" value="{{pageIndex}}" range="{{pageData}}" disabled>
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">功能区名称</text>
+          <text wx:if="{{pageData[pageIndex].homePage}}">{{pageData[pageIndex].areaName}}</text>
+          </text>
+          <text class="alignrig">
+          </text>
+        </view>
+      </picker>
+
+    </view>
+    
+    <!-- <view class="surebtn" bindtap="sureBtn">确定</view> -->
+
+</view>
+
+

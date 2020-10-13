@@ -1,0 +1,75 @@
+<block wx:if="{{isshowicon == true}}"><image class="img-my-icon" bindtap="hideiconfun" mode="widthFix" src="../../img/icon-img21.png"></image></block>
+<view class='font-warning {{cabopentype == true?"font-warning2":""}}' wx:if="{{ishasmnb == 0}}" bindtap="openagain"><!-- font-warning2 -->
+  <view class="font-warning-l">
+    <block wx:if="{{cabopentype == false}}"><image src="../../img/laba-1.png"></image></block>
+    <block wx:else><image src="../../img/laba-2.png"></image></block>
+    如柜门未打开，请点击"再次打开" 
+  </view>
+  <text class="openbtn">再次打开</text>
+</view>
+<view class='bgfff success-top'>
+  <image src='../../img/success-img2.png' class='iconimg'></image>
+  <view class='font-text1'>提交成功!</view>
+  <view class='font-text2'>
+    <block wx:if="{{ishasmnb == 1}}">您的商品正在整装待发...</block>
+    <block wx:else>柜门已打开，请取走商品</block>
+  </view>
+  <view class='successbtnbox'>
+    <view class='successbtn successbtn2' bindtap='backfun'>继续购买</view>
+    <view wx:if="{{ishasmnb == 1}}" class='successbtn successbtn1' bindtap='orderdetails'>查看详情</view>
+    <view wx:else class='successbtn successbtn1' bindtap='orderlist'>查看订单</view>
+  </view>
+</view>
+<view class="share_redbag" wx:if="{{redcode != -1}}">
+  <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}shareredbag.jpg"></image>
+  <view class="redbagInfo">
+    <view class="redbagInfo1">
+      <text class="yuan"></text>
+      <text class="redbagInfo2">红包有效期 {{redData.deadlineAt}}前有效</text>
+    </view>
+    <view class="redbagInfo1">
+      <text class="yuan"></text>
+      <text class="redbagInfo2">红包金额{{redData.totalAmount}}元，红包数量{{redData.totalNum}}个</text>
+    </view>
+  </view>
+</view>
+<!-- <view class="recommendbox">
+  <block wx:for="{{recommendprodlist}}" wx:for-item="item" wx:key="index">
+    <view class="recommend-box" data-funcid="{{item.funcId}}" data-prodcode="{{item.prodCode}}"  data-hotelprodid="{{item.hotelProdId}}" data-funcprodid="{{item.funcProdId}}" data-img="{{item.prodLogoUrl}}" data-ptype="2" data-isempty="3" data-prodamt="0" data-prodnumtype="false"  bindtap="detailfun">
+      <image class="recommend-img" src="{{item.prodLogoUrl}}"></image>
+      <view class="recommend-name">{{item.prodShowName}}</view>
+      <view class="recommend-price">
+        ¥ {{item.prodRetailPrice}} <text wx:if="{{item.prodMarketPrice != 0 && item.prodMarketPrice != item.prodRetailPrice}}">¥ {{item.prodMarketPrice}}</text>
+      </view>
+    </view>
+  </block>
+</view> -->
+<view wx:if="{{showtype}}" class="shareboxbg">
+  <view class="sharebox">
+    <view class="fontts">{{shareTitle?shareTitle:(user_name?user_name+'给你发了一个现金红包，领取后可提入微信零钱':'好友给你发了一个现金红包，领取后可提入微信零钱')}}</view>
+    <image wx:if="{{imgurldata}}" src="{{imgurldata}}" class="imgbox" mode="widthFix"></image>
+    <image wx:else src="{{global_Data.imgurldata}}shareimg.png" class="imgbox" mode="widthFix"></image>
+    <view class="ts-font"><text>提示：</text>红包发出后可多人领取，包括自己</view>
+    <view class="sharebtnbox2">
+      <view class="btn" bindtap="closefun">取消</view>
+      <button open-type="share" data-type="1" class="btn btncss">发出红包</button>
+    </view>
+  </view>
+</view>
+<view wx:if="{{sharetype}}" class="shareboxbg" bindtap="closefuns" catchtouchmove="return">
+  <view class="shareway">
+    <view class="share-font1">选择分享方式</view>
+    <view class="shareway-b">
+      <view class="imgbtn" catchtap="sharefun1"><image mode="widthFix" style="width:100%" src="../../img/shareimg1.jpg"></image></view>
+      <view class="imgbtn" catchtap="get_poster"><image mode="widthFix" style="width:100%" src="../../img/shareimg2.jpg"></image></view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{showPoster}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2">
+    <view class="closebtn-img" bindtap="closefunP"><image src="../../img/my-btnimg23.png"></image></view>
+    <image class="posterimg" bindtap="previewImg" mode="widthFix" src="{{posterurl}}"></image>
+    <view class="posterbtn posterbtn1" bindtap="saveimg">保存到手机相册</view>
+    <view class="posterbtn posterbtn2" bindtap="previewImg">预览海报长按分享</view>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+<block wx:for="{{storylist}}" wx:for-item="item" wx:key="index">
+  <view class="mgB20 storybox" data-id="{{item.id}}" bindtap="detailfun">
+    <image src="{{item.storyPath}}" class="storybox-img" mode="widthFix"></image>
+    <view class="storyname">{{item.cultureStoryName}}</view>
+  </view>
+</block>
+<view class="detailbox" wx:if="{{detailtype}}" catchtouchmove="move" bindtap="closefun">
+  <view class="detail-info" catchtap="move">
+    <image src="../../img/icon-img11.png" class="closebtn" catchtap="closefun"></image>
+    <scroll-view scroll-y style="height: 100%;">
+      <block wx:if="{{detailinfo.length != 0}}">
+        <block wx:for="{{detailinfo}}" wx:for-item="item" wx:key="index">
+          <image src="{{item.storyDetailsPath}}" mode="widthFix" class="mgB20 storybox-img"></image>
+          <view class="mgB20 detail-font">{{item.cultureStory}}</view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">暂无内容</view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

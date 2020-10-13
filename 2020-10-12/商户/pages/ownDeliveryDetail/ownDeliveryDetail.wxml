@@ -1,0 +1,262 @@
+<!--pages/ownDeliveryDetail/ownDeliveryDetail.wxml-->
+
+<view class="wrap">
+  <view class="section borradius {{shuzhanJudge?'':'suocontent'}}">
+    <view class="titlebox">
+      <view>
+        <view class="lineblock"></view>配送单信息
+      </view>
+      <view>
+        <text class="statuScolor">
+              <text wx:if="{{deliveryDateDetail.status==0}}">待确认</text>
+              <text wx:if="{{deliveryDateDetail.status==1}}">已确认</text>
+              <text wx:if="{{deliveryDateDetail.status==2}}">已配送</text>
+              <text wx:if="{{deliveryDateDetail.status==3}}">部分退款</text>
+              <text wx:if="{{deliveryDateDetail.status==4}}">全部退款</text>
+              <text wx:if="{{deliveryDateDetail.status==5}}">已收货</text>
+        </text>
+      </view>
+    </view>
+    <view class="inner">
+      <view class="rowbox">
+        <view class="rowboxTitle">配送单号</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.delivCode}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">功能区</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.funcName}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">配送方式</view>
+        <view class="rowboxInfo">
+            <text wx:if="{{deliveryDateDetail.delivWay == 1}}">店内送</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 2}}">快递送</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 3}}">迷你吧</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 4}}">自提</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 5}}">电子商品</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 6}}">堂食</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 7}}">外卖</text>
+            <text wx:if="{{deliveryDateDetail.delivWay == 8}}">外带</text>
+        </view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">区域</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.roomFloor}}</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">地点</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.roomCode}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">联系人</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.contactPeople}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">联系电话</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.contactPhone}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle" style="width:102px;">联系地址</view>
+        <view class="rowboxInfo" style="margin-right:0rpx;">{{deliveryDateDetail.consigneeSite}}</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle" style="width:102px;">留言</view>
+        <view class="rowboxInfo" style="margin-right:0rpx;">
+           <text>{{deliveryDateDetail.roomDeliveryRemark}}</text>
+        </view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">商品数量</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.prodCount}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">商品金额</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.totalAmount}}元</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">优惠金额</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.couponAmount}}元</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">减免金额</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.discountAmount}}元</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">实付金额</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.actualPay}}元</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">下单时间</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.payTime}}</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">支付时间</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.payCompleteTime}}</view>
+      </view>
+      <view class="rowbox" wx:if="{{deliveryDateDetail.delivWay == 2}}">
+        <view class="rowboxTitle">快递费</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.expressFee}}元</view>
+      </view>
+      <view class="rowbox" wx:if="{{deliveryDateDetail.delivWay == 2}}">
+        <view class="rowboxTitle">配送服务费</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.tipFee}}元</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">支付通道费</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.payChannelFee}}元</view>
+      </view>
+      <view class="rowbox" wx:if="{{deliveryDateDetail.status != 0}}">
+        <view class="rowboxTitle">确认人</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.confirmPeople}}</view>
+      </view>
+      <view class="rowbox linebot" wx:if="{{deliveryDateDetail.status != 0}}">
+        <view class="rowboxTitle">确认时间</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.confirmTime}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle greencol">快递信息</view>
+      </view>
+      <view class="rowbox" wx:if="{{deliveryDateDetail.delivWay == 2 && deliveryDateDetail.status != 0 && deliveryDateDetail.status != 1}}">
+        <view class="rowboxTitle">物流公司</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.logistics}}</view>
+      </view>
+      <view class="rowbox" wx:if="{{deliveryDateDetail.delivWay == 2 && deliveryDateDetail.status != 0 && deliveryDateDetail.status != 1}}">
+        <view class="rowboxTitle">物流单号</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.logisticsCode}}</view>
+      </view>
+      <view class="rowbox" wx:if="{{deliveryDateDetail.delivWay == 2 && deliveryDateDetail.status != 0 && deliveryDateDetail.status != 1}}">
+        <view class="rowboxTitle">发货时间</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.shipmentsTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="shuzhan" bindtap="shuzhan">
+    <text wx:if="{{shuzhanJudge}}">收起</text>
+    <text wx:else>展开</text>
+    <text class="iconfont icon-wangyou {{shuzhanJudge?'':'wangyouxz'}}"></text>
+  </view>
+
+  <view class="section">
+    <view class="titlebox">
+      <view>
+        <view class="lineblock"></view>商品信息
+      </view>
+    </view>
+    <view class="inner" wx:for="{{deliveryDateDetail.orderDeliveryDetailDTOList}}" wx:key>
+      <view class="infobox">
+        <view class="prdimgbox">
+          <image src="{{item.prodProductDTO.prodLogoUrl}}"></image>
+        </view>
+        <view class="contentrig">
+          <view class="contentdesc">{{item.prodProductDTO.prodName}}</view>
+          <text class="prodcount">x{{item.prodCount}}</text>
+          <view class="guigemc">{{item.prodSpecs}}</view>
+          <view class="tagbox">
+            <view class="tagbtn">{{item.prodOrgKindName}}</view>
+            <view class="tagbtn">{{item.prodGenre}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="prodprice">￥{{item.totalAmount}}</view>
+      <view class="betwbox">
+        <view>优惠金额</view>
+        <view class="jinebtw">-￥{{item.couponAmount}}</view>
+      </view>
+      <view class="betwbox">
+        <view>减免金额</view>
+        <view class="jinebtw">-￥{{item.discountAmount}}</view>
+      </view>
+      <view class="betwbox">
+        <view>抵扣金额</view>
+        <view class="jinebtw">-￥{{item.deductAmount}}</view>
+      </view>
+      <view class="prodprice linebot"><text class="actual">实付金额</text>￥{{item.actualPay}}</view>
+      <view class="btnwrap">
+         <view class="exitbtn" wx:if="{{item.prodStatus==1}}">确认前退款</view>
+         <view class="exitbtn" wx:if="{{item.prodStatus==2}}">退款</view>
+         <view class="exitbtn" wx:if="{{item.prodStatus==3}}">换货</view>
+         <view class="exitbtn" wx:if="{{item.prodStatus==4}}">退货退款</view>
+         <view class="exitbtn" wx:if="{{item.prodStatus==5}}">售后待处理</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="btnsub bluese" wx:if="{{deliveryDateDetail.status == 0 && authzData['F:MS_ORDER_OWNDELIV_CONFIRM']}}" data-id="{{deliveryDateDetail.id}}" bindtap="delisure">确定</view>
+<view class="btnsub bluese" wx:if="{{deliveryDateDetail.status == 2 && deliveryDateDetail.lgcStatus == 5 && authzData['F:MS_ORDER_OWNDELIV_AGAINSEND']}}" bindtap="againShipmentsDelivery" data-delivcode="{{deliveryDateDetail.delivCode}}">重新发单</view>
+<view class="btnsub bluese" wx:if="{{deliveryDateDetail.lgcHotelId != 0 && deliveryDateDetail.lgcStatus != 4 && deliveryDateDetail.status != 0 && deliveryDateDetail.status != 1 && authzData['F:MS_ORDER_OWNDELIV_UPDATE']}}" bindtap="updateLgcStatus" data-delivcode="{{deliveryDateDetail.delivCode}}">更新状态</view>
+<view class="btnsub oraginse" wx:if="{{deliveryDateDetail.delivWay == 2 && deliveryDateDetail.status == 1 & authzData['F:MS_ORDER_OWNDELIV_DELIVGOOD']}}" bindtap="fahuo" data-delivway="{{deliveryDateDetail.delivWay}}" data-id="{{deliveryDateDetail.id}}">发货</view>
+
+
+<!-- 发货 -->
+<view class="saleDoalog" wx:if="{{diajudge}}">
+  <view class="saleContent2">
+    <view class="diotitle">发货</view>
+    <view class="diarow">
+      <view class="rowtitle2">物流公司
+      </view>
+      <view class="inputbox2">
+        <input value="{{wlcompany}}" maxlength="20" bindinput="inputwlcompany"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle2">快递单号</view>
+      <view class="inputbox2">
+        <input value="{{wlcode}}" maxlength="30" bindinput="inputwlcode"></input>
+      </view>
+    </view>
+    <view class="diarow">
+      <view class="rowtitle2">发货时间</view>
+      <view class="inputbox2 fahuotime">
+        <picker class="pickertime" mode="date" value="{{fahuodate}}" bindchange="bindDateChangefh">
+          <view class="picker">
+            <text wx:if="{{fahuodate}}">{{fahuodate}}</text>
+            <text wx:else class="fahuotip">选择发货时间</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="diabtnbox">
+      <view class="refusebtn" bindtap="fahuocancel">取消</view>
+      <view class="adoptbtn" bindtap="delivfahuo">发货</view>
+    </view>
+  </view>
+</view>
+<!-- 发货 -->
+
+<!-- 物流公司 -->
+<view class="dialogyy" wx:if="{{fahuojudge}}">
+  <view class="diacontent">
+    <view class="diatitle">是否确认发货</view>
+    <view class="radioBox">
+      <radio-group class="danxuanzu" bindchange="radioChange">
+        <view class='statuone'>
+          <label class="radio">
+            <radio name="jieguo" value="2" />
+          </label>商家自送</view>
+        <view class='statutwo'>
+          <label class="radio">
+            <radio name="jieguo" value="1" />
+          </label>外部物流配送</view>
+      </radio-group>
+    </view>
+    <picker class="pickbox logisticsxz" bindchange="bindPickerlogistics" range-key="logisticsName" value="{{logisticsIndex}}" range="{{logisticsList}}">
+      <view class="picker">
+        <text class="alignlef selectdefault">
+              <text wx:if="{{logisticsList[logisticsIndex].id}}">{{logisticsList[logisticsIndex].logisticsName}}</text>
+              <text class="defaultcolor" wx:else>请选择</text>
+        </text>
+        <text class="alignrig">
+                
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+    <view class="fahuobtnbox">
+      <view class="fahuocan btnniu" bindtap="fahuocan">取消</view>
+      <view class="fahuosure btnniu" bindtap="fahuosure">确认</view>
+    </view>
+  </view>
+</view>
+<!-- 物流公司 -->

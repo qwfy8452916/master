@@ -1,0 +1,226 @@
+<view class="paddAll borderB delivwaybox">
+  <picker class="pickerbox" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name">
+    <view class="flexboxstart font1"><text class="linebox"></text> {{array[index].name}} <image src='../../img/my-bgimg2.png' class='iconimg mgL20'></image></view>
+  </picker>
+</view>
+<view wx:if="{{delivway == 6 || delivway == 8}}" class="paddAll borderB font2" bindtap="roomcodetoggle">{{roomCode}}</view>
+<view wx:elif="{{delivway == 2 || delivway == 7}}" class='paddAll hoteladdress hoteladdress2' bindtap='addressfun'>
+  <view wx:if="{{receipttype == true}}" class='font-address'>请添加收货信息</view>
+  <view wx:else class='font-address'>
+    <view class="mgB10">{{receiptlist.consignee}} {{receiptlist.consigneePhone}}</view>
+    <view><text class="addresstag" wx:if="{{receiptlist.addressTag}}">{{receiptlist.addressTag}}</text> {{receiptlist.address}}</view>
+  </view>
+  <image src='../../img/my-bgimg2.png' class='iconimg' mode='aspectFill'></image>
+</view>
+<block wx:for="{{fooddatalist}}" wx:for-item="item" wx:key="index">
+  <view class="font-bttext2 paddAll borderB" style="flex-wrap: wrap;">
+    <image src="{{item.prodLogoUrl}}" class="food-img"></image>
+    <view class="cnetent-w">
+      <view class="cnetent-w-box font3">{{item.prodShowName}}</view>
+      <view class="cnetent-w-box font4">{{item.specname}}</view>
+      <view class="flexboxstart mgB10">
+        <view class="activity-font" wx:if="{{item.actSecDiscountSettingId}}" data-ruleid="{{item.actSecDiscountSettingId}}" bindtap="rulefun">半价活动</view>
+        <view class="redpack" wx:if="{{item.isHasRed}}" catchtap='getRules'>
+          <image src="../../img/hongbao.png" style="width:12px;height:12px;"/>
+        </view>
+      </view>
+      <view class="cnetent-w-box font5 {{(item.discountPrice && item.discountPrice < item.prodRetailPrice) ? 'line-through' : ''}}">¥ {{item.prodRetailPrice}}</view>
+      <view class="cnetent-w-box font5" wx:if='{{item.discountPrice && item.discountPrice < item.prodRetailPrice}}'>优惠价 ¥ {{item.discountPrice}}</view>
+    </view>
+    <view class="font6">x {{item.prodnum}}</view>
+    <view class="activity-font2" wx:if="{{item.secDiscountTips}}"><text>活动</text>{{item.secDiscountTips}}</view>
+  </view>
+</block>
+<view class="paddAll borderB flexboxend" wx:if="{{delivway == 2}}">
+  <view class="font6 mgR10">运费</view>
+  <view class="font3">
+    <block wx:if='{{lgcId == -1}}'>{{courierfee}}</block>
+    <block wx:else>{{freight}}</block> 
+  </view>
+</view>
+<view class="paddAll flexboxend mgB30">
+  <view class="font6 mgR20">共计{{foodtotalnum}}件商品</view>
+  <view class="font6">小计: <text class="font7">¥ {{foodtotalmoney}}</text></view>
+</view>
+<block wx:if="{{iscanselectcoupon == 0 && delivway == 6}}"></block>
+<block wx:else>
+  <view class="flexbox paddAll borderB" wx:if="{{prodvou.length > 0}}" data-type='0' bindtap="prodvoutoggle">
+    <view class="font5">免费领用</view>
+    <view class="font8 flexboxstart">
+      <view>{{prodvou_name}}</view>
+      <image src='../../img/my-bgimg2.png' class='iconimg mgL20'></image>
+    </view>
+  </view>
+  <view class="paddAll borderB flexbox" bindtap="showcoupon" wx:if="{{coupontype == true}}">
+    <view class="couponjh-l font5">优惠券</view>
+    <view class="couponjh-r">
+      <text>
+        <block wx:if="{{coupon_selected.length>0}}">满{{coupon_selected[0].useLimitMoney}}减{{coupon_selected[0].reduceMoney}}</block>
+        <block wx:else>满{{coupon_optional[0].useLimitMoney}}减{{coupon_optional[0].reduceMoney}}</block>
+      </text> 
+      <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+    </view>
+  </view>
+  <view class="flexbox paddAll" wx:if="{{moneyvou.length > 0}}" data-type='0' bindtap="moneyvoutoggle">
+    <view class="font5">现金抵扣</view>
+    <view class="font8 flexboxstart">
+      <view>{{moneyvou_name}}</view>
+      <image src='../../img/my-bgimg2.png' class='iconimg mgL20'></image>
+    </view>
+  </view>
+</block>
+<block wx:if='{{delivway == 8}}'>
+  <view class="mgT20 paddAll borderB flexboxstart" wx:if="{{delivway != 2}}">
+    <view class="font5">联系人</view>
+    <input class="inp-font" type="text" placeholder="{{nameplaceholder}}" maxlength="20" value="{{usernamekf}}" bindinput="usernamekffun" ></input>
+  </view>
+  <view class="paddAll borderB flexboxstart" wx:if="{{delivway != 2}}">
+    <view class="font5">手机号</view>
+    <input class="inp-font" type="number" placeholder="{{telplaceholder}}" maxlength="20" value="{{userphone}}" bindinput="userphonefun" ></input>
+  </view>
+</block>
+<view class="paddAll borderB flexboxstart mgB20" style="align-items: flex-start;">
+  <view class="font5">订单备注</view>
+  <view wx:if='{{coupontype2 == true || prodvou_type == true || moneyvou_type == true}}'></view>
+  <textarea wx:else class="textarea-font" maxlength='50' bindinput="bindTextAreaBlur" focus="{{textareatype == true}}" bindfocus="toggletext" bindblur="toggletext" placeholder="请填写您的留言" placeholder-style="color: #C5C9CF;" value="{{remark}}" />
+</view>
+<view class="bgfff flexbox footbox">
+  <view class="foot-font">合计：<text>¥ {{foodtotalmoney2}}</text></view>
+  <view class="foot-btn" wx:if="{{paytype == 1}}" bindtap="settlementfun">
+    <block wx:if="{{iscanselectcoupon == 0 && delivway == 6}}">确认下单</block>
+    <block wx:else>支付</block>
+  </view>
+  <view class="foot-btn" style="background: #bbbec4;" wx:else>
+    <block wx:if="{{iscanselectcoupon == 0 && delivway == 6}}">下单中</block>
+    <block wx:else>支付中</block>
+  </view>
+</view>
+
+<!-- 优惠券 -->
+<view class="couponlistbox-bg" wx:if="{{coupontype2 == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择优惠券</view>
+    <view class="font-prod2 mgB20">已选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_selected.length > 0}}">
+        <block wx:for="{{coupon_selected}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="1" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/success-img2.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">请选择优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="font-prod2 mgB20">可选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_optional.length > 0}}">
+        <block wx:for="{{coupon_optional}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="2" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/icon-img7.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">暂无可选优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" bindtap="showcoupon">确定</view>
+  </view>
+</view>
+<!-- 免费领用 -->
+<view class="couponlistbox-bg" wx:if="{{prodvou_type == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择免费领用券</view>
+    <scroll-view scroll-y style="height: 80%;">
+      <block wx:for="{{prodvou}}" wx:for-item="item" wx:key="index">
+        <view class="select-li" data-index="{{index}}" bindtap="changeprodvou">
+          <view class="select-li-l">
+            <view>{{item.vouName}}</view>
+            <view class="select-li-l-name">{{item.vouInstruction}}</view>
+          </view>
+          <image wx:if="{{item.seletype == true}}" src="../../img/success-img2.png" class="icon-img"></image>
+          <image wx:else src="../../img/icon-img7.png" class="icon-img"></image>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" data-type='1' bindtap="prodvoutoggle">确定</view>
+  </view>
+</view>
+<!-- 现金抵扣 -->
+<view class="couponlistbox-bg" wx:if="{{moneyvou_type == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择现金抵扣券</view>
+    <scroll-view scroll-y style="height: 80%;">
+      <block wx:for="{{moneyvou}}" wx:for-item="item" wx:key="index">
+        <view class="select-li" data-index="{{index}}" data-vouid="{{item.id}}" data-money="{{item.vouDeductibleMoney}}" bindtap="changemoneyvou">
+          <view class="select-li-l">
+            <view>{{item.vouName}}</view>
+            <view class="select-li-l-name">{{item.vouInstruction}}</view>
+          </view>
+          <image wx:if="{{item.seletype == true}}" src="../../img/success-img2.png" class="icon-img"></image>
+          <image wx:else src="../../img/icon-img7.png" class="icon-img"></image>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" data-type='1' bindtap="moneyvoutoggle">确定</view>
+  </view>
+</view>
+
+<view class="couponlistbox-bg" wx:if="{{roomCodetype == true}}">
+  <view class="roomcodebox">
+    <view class="roomcodebox-titel">修改就餐位置</view>
+    <input class="roomcodebox-inp" type="text" value="{{roomCode}}" bindinput="changeroomcode"></input>
+    <view class="flexbox borderT roomcodebox-btn">
+      <view bindtap="roomcodetoggle">取消</view><view bindtap="changeroomcodefun">确定</view>
+    </view>
+  </view>
+</view>
+
+<view class="redRule" wx:if="{{ifshowRules}}" catchtouchmove='true'>
+  <view class="redCenter">
+    <view class="redCenter1">
+      <image src="../../img/redRule.png" class="imagebox" style="width:285px" mode="widthFix"/>
+      <view class="ruleBox">
+        <view class="ruleboxItem">
+          <view class="redIconBox">  
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可多人领取</view>
+            <view class="itemTitle2">下单满{{ruleData.amount}}元即获得现金红包奖励</view>
+          </view>
+        </view>
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/24hour.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">有效期{{ruleData.hour}}小时</view>
+            <view class="itemTitle2">超过{{ruleData.hour}}小时未领取即为失效</view>
+          </view>
+        </view>
+        <view class="ruleboxItem" style="border:none">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可直接提现</view>
+            <view class="itemTitle2">领取成功的红包可直接提现到微信</view>
+          </view>
+        </view>
+        <view bindtap="closeRule" class="iKnow">我懂了！</view>
+      </view>
+    </view>
+    <image bindtap="closeRule" src="../../img/my-btnimg23-1.png" style="width:33px;height:33px;"/>
+  </view>
+</view>

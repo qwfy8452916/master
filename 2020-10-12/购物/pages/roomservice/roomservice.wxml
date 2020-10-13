@@ -1,0 +1,102 @@
+<view class='pagebox' style="padding-bottom: 100rpx">
+  <view>
+    <!-- <view class='banner'>
+      <image mode='widthFix' src='{{rmsvcImageDTOs[0].url}}'></image>
+    </view> -->
+
+    <view class='swiperbox'>
+      <swiper
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        circular="{{circular}}"
+      >
+        <swiper-item class="swiperitembox">
+          <image src="{{hotelAddImagesfirst.imageUrl}}" class="slide-image" mode='widthFix' />
+          <view class='jdinfobox'>
+            <view class='banner-img' bindtap="hotelstoryfun"><image src='../../img/index-img1.png' mode='widthFix'></image></view>
+            <view class='hotelinfobox'>
+              <text class='jd-name' style="margin-top: {{windowHeight > 700?'160rpx':'196rpx'}};">{{hotelName}}</text>
+              <view style="margin-bottom: 20rpx;">
+                <!-- <image src="../../img/star.png" wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class="stars"></image> -->
+                <text wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class='iconfont icon-star_full stars' style='color: {{themecolor.skintone}};'></text>
+              </view>
+              <view class='labellist'>
+                  <view class='labelbox' wx:if="{{hotelDecorationYear != ''}}">{{hotelDecorationYear}}年装修</view>
+                  <view class='labelbox' wx:if="{{isHasPark==1}}">停车位</view>
+                  <view class='labelbox' wx:if="{{hotelStyle != ''}}">{{hotelStyle}}</view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+        <block wx:for="{{hotelAddImages}}" wx:for-item="item" wx:key='index'>
+          <swiper-item class="swiperitembox">
+            <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <view class='roomservice-top'>
+      <view class='roomservice-top-btn' style='color: {{themecolor.skintone}};border-bottom: 2px solid {{themecolor.skintone}};'>客房服务</view>
+      <view bindtap='characteristic' class='roomservice-top-btn'>客房设施</view>
+    </view>
+  </view>
+  <view class='roomservice-typeul' style="margin-top: 20rpx;">
+    <block wx:for="{{roomservicelist}}" wx:for-item="item" wx:key="index">
+      <view class='roomservice-typeli' data-id="{{item.id}}" bindtap='roomservicetype'>
+        <image class='roomservice-typeli-img' src='{{item.categoryIconUrl}}'></image>
+        <view class='roomservice-typeli-font'>{{item.showName}}</view>
+      </view>
+    </block>
+  </view>
+  <image wx:if="{{adtype == 1}}" class="ad-img" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+  <tabbar funcId="{{funcid}}"></tabbar>
+  <!-- <view class='footerbox' style="padding-top: {{isSupportEn == 1?'17rpx':'7rpx'}};padding-bottom: {{isSupportEn == 1?'18rpx':'8rpx'}};">
+    <scroll-view class="tablist-box" scroll-x="true" enable-flex="true">
+      <view class='footerbox-btn' bindtap='index' wx:if="{{minibar != 0 || convenienceStore != 0}}" style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-yonghuzhongxin-shouye' style='color: #999999;font-size: 45rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>迷你吧</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Home Page</view>
+      </view>
+      <block wx:for="{{hotelFuncDTOS1}}" wx:for-item="item" wx:key="index">
+        <view class='footerbox-btn func-box' data-id="{{item.id}}" bindtap='hotelmall' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+          <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+          <view class='footerbox-btnname' style='color: #999999;'>{{item.funcCnName}}</view>
+          <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>{{item.funcEnName}}</view>
+        </view>
+      </block>
+      <view wx:if="{{roomService != 0 && spotpurchaseflag == 1}}" class='footerbox-btn' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-zuanshi' style='color: {{themecolor.skintone}};font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: {{themecolor.skintone}};font-weight: 800;'>客房服务</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: {{themecolor.skintone}};font-weight: 800;'>Room Service</view>
+      </view>
+      <view wx:if="{{isSupportRoomAlloc != 0}}" class='footerbox-btn' bindtap='reservation' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-xieyiguanli' style='color: #999999;font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>客房协议价</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Reservation</view>
+      </view>
+      <view class='footerbox-btn' bindtap='mypage' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+        <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-yonghu_fill' style='color: #999999;font-size: 40rpx;'></text>
+        <view class='footerbox-btnname' style='color: #999999;'>我的</view>
+        <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>Mine</view>
+      </view>
+      <block wx:if="{{hotelFuncDTOS2.length != 0}}">
+        <block wx:for="{{hotelFuncDTOS2}}" wx:for-item="item" wx:key="index">
+          <view class='footerbox-btn func-box' data-id="{{item.id}}" bindtap='hotelmall' style="padding-bottom: {{isIpx?'40rpx':'0'}};">
+            <text wx:if="{{isSupportEn == 0}}" class='iconfont icon-fenqishangcheng' style='color: #999999;font-size: 40rpx;'></text>
+            <view class='footerbox-btnname' style='color: #999999;'>{{item.funcCnName}}</view>
+            <view wx:if="{{isSupportEn == 1}}" class="footerbox-btnname2" style='color: #999999;'>{{item.funcEnName}}</view>
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view> -->
+</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>
+<block wx:if="{{redPacketShowFlag == 1 && shareObj == 10 && regbagact_type == 0}}">
+  <redbagact imgurldata='{{global_Data.imgurldata}}' shareUserAvatarUrl='{{shareUserAvatarUrl}}' shareUserNickName='{{shareUserNickName}}' redbagtype='{{redbagtype}}'></redbagact>
+</block>
+<block wx:if="{{act_newcomer != '' && act_newcomer.isOpen == 0 && (shareObj != 3 || redPacketShowFlag == 0) && regbagact_type != 0}}">
+  <newcomer actAdImageUrl='{{act_newcomer.curActHotelDTO.actAdImageUrl}}' actImageUrl='{{act_newcomer.curActHotelDTO.actImageUrl}}' actId="{{act_newcomer.id}}"></newcomer>
+</block>

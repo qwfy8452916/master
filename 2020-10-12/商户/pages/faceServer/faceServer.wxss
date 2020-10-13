@@ -1,0 +1,175 @@
+/* pages/faceServer/faceServer.wxss */
+page{
+  border-top: 1px solid #e5e5e5;
+  background: #f6f6f6;
+}
+.wrap{
+  width: 100%;
+  padding: 0rpx 3%;
+  box-sizing: border-box;
+  margin-bottom: 50rpx;
+}
+.titlebox{
+  display: flex;
+  font-size: 36rpx;
+  color: #2B2D2F;
+  font-weight: 500;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+.linebk{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  display: inline-block;
+  border-radius: 10rpx;
+  margin-right:20rpx; 
+}
+.hexBox{
+  background: #fff;
+  border-radius:25rpx; 
+}
+.hexRow{
+  width: 100%;
+  padding: 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9eaea;
+}
+.itemlef{
+  display: flex;
+  align-items: center;
+}
+.imgbox{
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+  display: inline-block;
+}
+.imgbox image{
+  width: 100%;
+  height: 100%;
+}
+.hxdesc{
+  display: inline-block;
+  margin-left: 40rpx;
+}
+.descone{
+  font-size: 36rpx;
+  color: #2B2D30;
+}
+.desctwo{
+  font-size: 24rpx;
+  color: #878EA0;
+}
+.itemrig{
+  width: 100rpx;
+  height: 100rpx;
+}
+.itemrig image{
+  width: 100%;
+  height: 100%;
+}
+.hxtipBox{
+  width: 100%;
+  font-size:28rpx;
+  color: #878FA1;
+  text-align: right;
+  padding:30rpx 40rpx;
+  box-sizing: border-box;  
+  border-bottom: 1px dashed #e9eaea;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.tipimg{
+  width: 30rpx;
+  height: 30rpx;
+  overflow: hidden;
+  display: inline-block;
+  margin-left:20rpx; 
+}
+.tipimg image{
+  width: 100%;
+  height: 100%;
+}
+.explainBox{
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.suppbox{
+  color:#2B2D2F;
+  font-size: 28rpx; 
+}
+.suppbox text{
+  color: #FF6930;
+}
+.margdis{
+  margin: 0rpx 15rpx;
+}
+.tipdesc{
+  font-size: 24rpx;
+  color: #878FA1;
+  display: flex;
+  align-items: center;
+  margin-top:15rpx; 
+}
+.circlebk{
+  background: #888fa1;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.address{
+  margin-left: 20rpx;
+  color:#2b2d30; 
+}
+
+.rowLine{
+  width: 100%;
+  background: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 20rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  
+}
+.rowLine .childbox{
+  display: flex;
+  align-items: center;
+}
+.rowlogo{
+  width: 120rpx;
+  height: 120rpx;
+}
+.descbox{
+  display:inline-block;
+  margin-left: 30rpx;
+}
+.descbox .desctop{
+  font-size: 36rpx;
+  display: inline-block;
+  position: relative;
+}
+.descbox .descbot{
+  font-size: 24rpx;
+  color: #888FA1;
+  margin-top: 5rpx; 
+}
+
+.moreimg{
+  width: 48rpx;
+  height: 48rpx;
+  display: inline-block;
+  transform:rotate(180deg);
+}
+
+
+

@@ -1,0 +1,202 @@
+.signupbox{
+  position: relative;
+}
+.img-size{
+  display: block;
+  width: 100%;
+}
+.submitbtn{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-image: linear-gradient(to right, rgba(245, 68, 68, 1) , rgba(238, 30, 30, 1));
+  font-size: 32rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 90rpx;
+}
+.submitbtn-1{
+  position: relative;
+}
+.formbox{
+  width: 80%;
+  margin: 150rpx auto 68rpx;
+}
+.formt-img{
+  display: block;
+  width: 100%;
+}
+.close-img{
+  display: block;
+  width: 66rpx;
+  height: 66rpx;
+  margin: 0 auto;
+}
+.formB{
+  margin-top: -1px;
+  padding-bottom: 20rpx;
+  background: #ffffff;
+  border-radius: 0 0 20rpx 20rpx; 
+}
+.inpname{
+  width: 25%;
+  font-size: 28rpx;
+  color: rgba(136, 143, 161, 1);
+  
+}
+.inpname text{
+  color: rgba(238, 30, 30, 1);
+}
+.inpbox{
+  width: 69%;
+  font-size: 28rpx;
+  color: #333333;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.inpbox2{
+  width: 74%;
+  font-size: 28rpx;
+  color: #333333;
+}
+.turndown-font{
+  background: rgba(255, 244, 225, 1);
+  padding: 20rpx 20rpx;
+  font-size: 24rpx;
+  color: rgba(238, 30, 30, 1);
+}
+.clearbtn{
+  display: block;
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+}
+.submitbtn2{
+  width: 90%;
+  margin: 60rpx auto 0;
+  text-align: center;
+  font-size: 34rpx;
+  color: #ffffff;
+  border-radius: 50px 50px;
+  line-height: 80rpx;
+  background-image: linear-gradient(to right, rgba(245, 68, 68, 1) , rgba(238, 30, 30, 1));
+}
+.popups-box{
+  width: 80%;
+  margin: 150rpx auto 68rpx;
+  padding: 50rpx 20rpx;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 20rpx 20rpx;
+}
+.giftpackage-box{
+  width: 100%;
+  margin: 150rpx auto 68rpx;
+}
+.popups-img{
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto 50rpx;
+}
+.popups-img2{
+  display: block;
+  width: 180rpx;
+  height: 180rpx;
+  margin: 0 auto 20rpx;
+}
+.popups-font1{
+  font-size: 32rpx;
+  color: rgba(43, 45, 48, 1);
+  margin-bottom: 30rpx;
+}
+.popups-font2{
+  font-size: 24rpx;
+  color: rgba(136, 143, 161, 1);
+}
+.signinbox{
+  border-radius: 20rpx 20rpx;
+  width: 95%;
+  margin: 20rpx auto;
+}
+.signinbox2{
+  text-align: center;
+  padding-top: 86rpx;
+  padding-bottom: 30rpx;
+  background: #ffffff;
+}
+.btn-font{
+  background-image: linear-gradient(to right, rgba(245, 68, 68, 1) , rgba(238, 30, 30, 1));
+  font-size: 32rpx;
+  color: #ffffff;
+  text-align: center;
+  line-height: 90rpx;
+  border-radius: 20rpx 20rpx;
+  width: 95%;
+  margin: 0 auto 10rpx;
+}
+.download-icon{
+  display: block;
+  width: 67rpx;
+  height: 64rpx;
+  margin-right: 5rpx;
+}
+.download-l{
+  width: 65%;
+}
+.download-btn{
+  width: 30%;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 26rpx;
+  color: rgba(238, 30, 30, 1);
+  border-radius: 50px 50px;
+  border: 0.1rpx solid rgba(238, 30, 30, 1);
+}
+.giftpackage-img{
+  display: block;
+  width: 100%;
+}
+.fileimgbox{
+  position: fixed;
+  z-index: 99999999;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+}
+.popups-img3{
+  display: block;
+  width: 90%;
+  margin: 20rpx auto 0;
+}
+.filebtnbox{
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #ffffff;
+}
+.filebtn{
+  width: 50%;
+  text-align: center;
+  font-size: 26rpx;
+  line-height: 90rpx;
+  color: #ffffff;
+}
+.filebtn-1{
+  background: #EE1E1E;
+}
+.filebtn-2{
+  color: #333333;
+}
+.filename{
+  width: 78%;
+  text-align: left;
+  font-size: 26rpx;
+  color: rgba(46, 46, 46, 1);
+}

@@ -1,0 +1,256 @@
+<swiper autoplay='true' interval='3000' duration='500' display-multiple-items='1' class="bannerbox" style="height:163px;overflow: hidden;" bindchange="bindchange">
+  <!-- <swiper-item class="swiperitembox">
+    <image src="{{hotelAddImagesfirst.imageUrl}}" class="slide-image" mode='widthFix' />
+    <view class='jdinfobox'>
+      <view class='banner-img' bindtap="hotelstoryfun"><image src='../../img/index-img1.png' mode='widthFix'></image></view>
+      <view class='hotelinfobox'>
+        <text class='jd-name' style="margin-top: {{windowHeight > 700?'160rpx':'196rpx'}};">{{hotelinfo.hotelName}}</text>
+        <view style="margin-bottom: 20rpx;">
+          <text wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class='iconfont icon-star_full stars' style='color: {{themecolor.skintone}};'></text>
+        </view>
+        <view class='labellist'>
+            <view class='labelbox' wx:if="{{hotelDecorationYear != ''}}">{{hotelinfo.hotelDecorationYear}}年装修</view>
+            <view class='labelbox' wx:if="{{hotelinfo.isHasPark==1}}">停车位</view>
+            <view class='labelbox' wx:if="{{hotelinfo.hotelStyle != ''}}">{{hotelinfo.hotelStyle}}</view>
+        </view>
+      </view>
+    </view>
+  </swiper-item> -->
+  <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+    <swiper-item class="swiperitembox">
+      <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="foodbox" wx:if="{{showlisttype == true}}">
+  <scroll-view class="foodbox-l-scroll" scroll-y="true" scroll-with-animation="true" wx:if="{{foodlistdata.length > 0}}">
+    <block wx:for="{{foodlistdata}}" wx:for-item="item" wx:key="index">
+      <view class="foodbox-l-li" data-id="{{index}}" bindtap="bindToView">
+        <block wx:if="{{item.selectedIconUrl != null && item.selectedIconUrl != '' && item.notSelectedIconUrl != null && item.notSelectedIconUrl != ''}}">
+          <image wx:if="{{type_num == index}}" class="foodbox-l-li-img" mode="widthFix" src="{{item.selectedIconUrl}}"></image>
+          <image wx:else class="foodbox-l-li-img" mode="widthFix" src="{{item.notSelectedIconUrl}}"></image>
+        </block>
+        <text class="foodbox-l-li-font {{type_num == index?'foodbox-l-li-font2':''}}">{{item.categoryName}}</text>
+      </view>
+    </block>
+  </scroll-view>
+  <scroll-view class="foodbox-r {{foodlistdata.length > 0 ? '':'foodbox-r-w'}}" scroll-y="true" scroll-into-view="{{toView}}" scroll-with-animation="true">
+    <block wx:for="{{foodlistdata}}" wx:for-item="item" wx:for-index="itemindex" wx:key="index">
+      <view class="foodbox-r-li">
+        <view class="foodbox-r-li-t" id='list-{{itemindex}}' wx:if="{{foodlistdata.length > 0}}">
+          <image class="iconimg-wf" src="../../img/icon-img20.png"></image>
+          {{item.categoryName}}
+          <image class="iconimg-wf" src="../../img/icon-img20.png"></image>
+        </view>
+        <block wx:for="{{item.prods}}" wx:for-item="item2" wx:key="index">
+          <view class="foodbox-r-li-box">
+            <image class="foodbox-r-li-box-img" mode="widthFix" src="{{item2.prodLogoUrl}}" data-funcprodid="{{item2.funcProdId}}" data-categoryid="{{item2.categoryId}}" lazy-load="true" bindtap="detailpupsfun"></image>
+            <view class="foodbox-r-li-box-r {{foodlistdata.length > 0 ? '':'foodbox-r-li-box-r2'}}">
+              <view class="flexbox foodbox-r-li-box-r-t foodbox-r-li-box-font2" data-funcprodid="{{item2.funcProdId}}" data-categoryid="{{item2.categoryId}}" bindtap="detailpupsfun">
+                <!-- <text class="foodbox-r-li-box-font">推荐</text> -->
+                <image wx:if='{{item2.actSecDiscountSettingId != 0}}' class="activityiconfont" mode="widthFix" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{item2.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+                {{item2.prodShowName}}
+              </view>
+              <view class="redpack" wx:if="{{item.isHasRed}}" catchtap='getRules'>
+                <image src="../../img/hongbao.png" style="width:12px;height:12px"/>
+              </view>
+              <view class="flexbox foodbox-r-li-box-r-b">
+                <view class="foodbox-r-li-box-font3" data-funcprodid="{{item2.funcProdId}}" data-categoryid="{{item2.categoryId}}" bindtap="detailpupsfun">
+                  <view>¥ {{item2.prodRetailPrice}} <text class="foodbox-r-li-box-font4" wx:if='{{item2.prodMarketPrice != 0 && item2.prodMarketPrice != item2.prodRetailPrice}}'>¥ {{item2.prodMarketPrice}}</text>
+                  </view>
+                  <!-- <view class="redpack" wx:if="{{item2.isHasRed}}" catchtap='getRules'>
+                    <image src="../../img/hongbao.png" style="width:12px;height:12px"/>
+                  </view> -->
+                  <view>
+                    <image wx:if="{{item2.isHasRed == 1}}" catchtap='getRules' class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>       
+                    <image wx:if="{{item2.isHasCoupon == 1}}" catchtap='get_couponlist' data-proddata="{{item2}}" class="icon-discounts" mode="widthFix" src="../../img/couponicon.png"></image>
+                  </view>
+                </view>
+                <block wx:if="{{isCanOpen != 0}}">
+                  <image wx:if="{{item2.canBuy == 0}}" class="foodicon-btn" data-detaildata="{{item2}}" src="../../img/icon-img1-1.png"></image>
+                  <image wx:else class="foodicon-btn" data-detaildata="{{item2}}" bindtap="addnumfun" src="../../img/icon-img1.png"></image>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+    <image wx:if="{{adtype == 1}}" class="ad-img" style="margin-bottom: 120rpx;" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+  </scroll-view>
+</view>
+<view wx:else class="none-font">暂未开放，敬请期待</view>
+
+
+
+<view class="flexbox totalbox" wx:if="{{fooddatalist.length > 0 || unpaidOrders.orderDetailDTOList.length > 0}}" style="bottom: 130rpx;flex-wrap: wrap;">
+  <view class="flexbox hintbox" style="width: 100%;" wx:if="{{unpaidOrders.orderDetailDTOList.length > 0}}" bindtap="jumppay">
+    <view>该餐桌已点菜品清单</view>
+    <view>查看 ></view>
+  </view>
+  <block wx:if="{{fooddatalist.length > 0}}">
+    <view class="totalbox-l">
+      <text class="totalbox-l-font1">¥ {{foodtotalmoney}}</text>
+      <text class="totalbox-l-font2" bindtap="listdetailtoggle">查看明细 </text>
+      <text class="font-num">{{foodtotalnum}}</text>
+    </view>
+    <view class="totalbox-r" bindtap="settlementfun">
+      <block wx:if="{{isSupportManyTimesOrder == 0}}">去结算</block><block wx:else>下单</block>
+    </view>
+  </block>
+</view>
+<!-- 选择规格 -->
+<view class="foodflexbox-bg" catchtouchmove="return" wx:if="{{specificationtype == true}}">
+  <view class="foodflexbox">
+    <view class="foodflexbox-t">
+      <view class="flexbox foodflexbox-t-box1 mgB20">
+        <image class="foodflexbox-t-img" src="{{spec_img}}"></image>
+        <view class="foodflexbox-t-box1-r">
+          <view class="foodflexbox-t-box-font1">{{spec_prodname}}</view>
+          <view class="flexbox foodflexbox-t-box1-r-b">
+            <view class="foodflexbox-t-box-font2">¥ {{spec_retailprice}}</view>
+            <view class="flexbox foodflexbox-t-box1-r-b-r" wx:if="{{spec_num != 0}}">
+              <image class="numberbtn-icon" src="../../img/icon-img2.png" data-type="1" bindtap="specjoinfun"></image>
+              <view class="foodflexbox-t-box-font3">{{spec_num}}</view>
+              <image class="numberbtn-icon" src="../../img/icon-img1.png" data-type="2" bindtap="specjoinfun"></image>
+            </view>
+            <view wx:else class="font-null">已售罄</view>
+          </view>
+        </view>
+      </view>
+      <view class="foodflexbox-t-box2 mgB20">
+        <view class="specification-font mgB20">规格选择</view>
+        <view class="specification-box">
+          <block wx:for="{{speclist}}" wx:for-item='item' wx:key='index'>
+            <view class="specification-font1 {{spec_typenum == index?'specification-font2':''}}" data-num="{{index}}" bindtap="changespcfun">{{item.showName}}</view>
+          </block>
+        </view>
+      </view>
+      <view class="foodflexbox-t-box3">{{spec_instruction}}</view>
+    </view>
+    <view class="foodflexbox-b" bindtap="specaddfun">确定</view>
+  </view>
+  <image class="closebtn-icon2" bindtap="spectoggle" src="../../img/my-btnimg23-1.png"></image>
+</view>
+<!-- 购物车明细 -->
+<view class="listdetail-bg" wx:if="{{detaillistpupstype == true}}" bindtap="listdetailtoggle">
+  <scroll-view class="listdetailbox" scroll-y="true" scroll-into-view="{{toView}}" scroll-with-animation="true">
+    <block wx:for="{{fooddatalist}}" wx:for-item="item" wx:key="index">
+      <view class="listdetailbox-li">
+        <view class="listdetailbox-li-w1">
+          <view class="listdetailbox-li-font1">{{item.prodShowName}}</view>
+          <view class="listdetailbox-li-font2">{{item.specname}}</view>
+        </view>
+        <view class="listdetailbox-li-w2 listdetailbox-li-font3">
+          <view class="{{(item.discountPrice && item.discountPrice < item.prodRetailPrice)?'line-through':''}}">¥{{item.prodRetailPrice}}</view>
+          <view wx:if="{{item.discountPrice && item.discountPrice < item.prodRetailPrice}}">¥{{item.discountPrice}}</view>
+        </view>
+        <view class="flexbox listdetailbox-li-w3">
+          <image class="listdetailbox-iconbtn" src="../../img/icon-img2.png" data-type="1" data-typeindex="{{index}}" catchtap="speccarfun"></image>
+          <view class="listdetailbox-li-font4">{{item.prodnum}}</view>
+          <image class="listdetailbox-iconbtn" src="../../img/icon-img1.png" data-type="2" data-typeindex="{{index}}" catchtap="speccarfun"></image>
+        </view>
+        <view class="activity-font2" wx:if="{{item.secDiscountTips}}"><text>活动</text>{{item.secDiscountTips}}</view>
+      </view>
+    </block>
+  </scroll-view>
+</view>
+<!-- 餐饮详情 -->
+<view class="foodflexbox-bg flexbox-around" catchtouchmove="return" wx:if="{{detailpupstype == true}}" style="flex-wrap: wrap;z-index: 99999;">
+  <view class="foodflexbox2">
+    <view class="paddAll2020 borderradius20 mgB20 flexbox bgfff" style="padding-right: 0;">
+      <image class="cy-img" src="{{cy_detailsdata.prodLogoUrl}}"></image>
+      <view class="cy-detailinfobox">
+        <view class="foodbox-r-li-box-font2 cy-detailname">
+          <!-- <text class="foodbox-r-li-box-font" style="font-size: 20rpx;">推荐</text> -->
+          <image wx:if='{{cy_detailsdata.actSecDiscountSettingId}}' class="activityiconfont" mode="widthFix" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{cy_detailsdata.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+          {{cy_detailsdata.prodShowName}}
+          <!-- <view class="redpack2" wx:if="{{cy_detailsdata.isHasRed}}" catchtap='getRules'>
+            <image src="../../img/hongbao.png" style="width:12px;height:12px"/>
+          </view> -->
+        </view>
+        <view class="foodbox-r-li-box-font3">
+          <view>¥ {{cy_detailsdata.prodRetailPrice}} <text class="foodbox-r-li-box-font4">¥ {{cy_detailsdata.prodMarketPrice}}</text>
+          </view>
+          <view>
+            <image wx:if="{{cy_detailsdata.isHasRed == 1}}" catchtap="getRules" class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>       
+            <image wx:if="{{cy_detailsdata.isHasCoupon == 1}}" class="icon-discounts" mode="widthFix" src="../../img/couponicon.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="detail-sharebtn" bindtap="sharefun">
+        <image src="../../img/shareimg.png"></image>分享
+      </view>
+    </view>
+    <scroll-view class="foodbox-r" scroll-y="true" class="paddAll2020 borderradius20 bgfff" style="width: 93.5%;max-height: 660rpx;margin-bottom: 50rpx;">
+      <swiper autoplay='true' interval='3000' duration='500' circular='true' display-multiple-items='1' style="height: 480rpx;">
+        <block wx:for="{{cy_detailsdata.bannerImageList}}" wx:for-item="item" wx:key="index">
+          <swiper-item>
+            <image src="{{item}}" data-id='{{index}}' class="slide-image" mode="widthFix" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <block wx:for="{{cy_detailsdata.descImageList}}" wx:for-item="item" wx:key="index">
+        <image src="{{item}}" class="cy_detailsimg" mode="widthFix" />
+      </block>
+      <image wx:if="{{adtype == 1}}" class="ad-img" style="margin-bottom: 120rpx;" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+    </scroll-view>
+    <image class="closebtn-icon2" src="../../img/my-btnimg23-1.png" bindtap="detailpupstypefun"></image>
+  </view>
+</view>
+
+<!-- 分享按钮  -->
+<block wx:if="{{sharenum == 1 || sharenum == 11}}">
+  <view wx:if="{{sharenum != -1}}" class="share_btnbox2" catchtouchmove="return">
+    <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+    <view class="link"></view>
+    <image wx:if="{{iscertification == 1}}" mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+    <button class='certification-box2' wx:else plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+      <image mode="widthFix" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+    </button>
+  </view>
+</block>
+<block wx:else>
+  <view wx:if="{{sharenum != -1}}" class="share_btnbox2 share_btnbox_b" catchtouchmove="return">
+    <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+  </view>
+</block>
+
+<!-- <view class="redRule" wx:if="{{ifshowRules}}" catchtouchmove='true'>
+  <view class="redCenter">
+    <view class="redCenter1">
+      <image src="../../img/redRule.png" class="imagebox" style="width:285px" mode="widthFix"/>
+      <view class="ruleBox">
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可多人领取</view>
+            <view class="itemTitle2">下单满{{ruleData.amount}}元即获得现金红包奖励</view>
+          </view>
+        </view>
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/24hour.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">有效期{{ruleData.hour}}小时</view>
+            <view class="itemTitle2">超过{{ruleData.hour}}小时未领取即为失效</view>
+          </view>
+        </view>
+        <view class="ruleboxItem" style="border:none">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可直接提现</view>
+            <view class="itemTitle2">领取成功的红包可直接提现到微信</view>
+          </view>
+        </view>
+        <view bindtap="closeRule" class="iKnow">我懂了！</view>
+      </view>
+    </view>
+    <image bindtap="closeRule" src="../../img/my-btnimg23-1.png" style="width:33px;height:33px;"/>
+  </view>
+</view> -->

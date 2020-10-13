@@ -1,0 +1,134 @@
+page{
+  position: relative;
+  min-height: 100%;
+}
+.libox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 3%;
+  background: #ffffff;
+}
+.libox-l{
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.prodimg{
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 25rpx;
+}
+.prodinfo-name{
+  font-size: 28rpx;
+  color: #333333;
+}
+.prodinfo-price{
+  font-size: 22rpx;
+  color: #EE1E1E;
+}
+.prodinfo-num{
+  font-size: 28rpx;
+  color: #999999;
+}
+.roomCodesize{
+  font-size: 32rpx;
+  margin-top: 20rpx;
+}
+.roomCodetext{
+  font-size: 32rpx;
+  color: #333333;
+  margin-right: 25rpx;
+}
+.roomCodetext text{
+  color: #EE1E1E;
+}
+.roomCode-inp{
+  color: #999999;
+}
+.remarkbox{
+  width: 94%;
+  padding: 20rpx 3%;
+  background: #fff;
+  color: #999999;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  height: 100rpx;
+}
+.subbtn{
+  width: 94%;
+  margin: 50rpx auto;
+  bottom: 30rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+  background: #EE1E1E;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 4px;
+}
+.iconbtn{
+  padding: 20rpx 20rpx;  
+}
+.iconbtnimg{
+  width: 55rpx;
+  height: 55rpx;
+}
+.prodnum-font{
+  font-size: 30rpx;
+  color: #333333;
+}
+.prodnumbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.prodnumbox-r{
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.imglistbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pjimgwh{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 5px;
+  margin-right: 3.1%;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  position: relative;
+}
+.pjimgwh image{
+  display: block;
+  width: 220rpx;
+  height: 220rpx;
+}
+.imglistbox .pjimgwh:nth-child(3n){
+  margin-right: 0;
+}
+.pjimgwh .closebtn{
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+}
+.font-img{
+  font-size: 32rpx;
+  color: #333333;
+}
+.font-img text{
+  font-size: 26rpx;
+}

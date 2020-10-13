@@ -1,0 +1,136 @@
+<!--pages/package/pages/activeList/activeList.wxml-->
+<view class="searchWrap">
+    <view class="expandbox">
+      <view class="searchdesc expenditem">
+        <image class="searchlogo" src="../../../../img/searchlogo.png"></image>
+        搜索
+      </view>
+      <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+        <image src="../../../../img/expendlogo.png"></image>
+      </view>
+    </view>
+    <view wx:if="{{switchJudge}}">
+
+      <picker class="pickbox" bindchange="bindPickerChange" range-key="label" value="{{formdata.actTypeIndex}}" range="{{actTypeList}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">活动类型</text>
+                <text wx:if="{{actTypeList[formdata.actTypeIndex].id!=''}}">{{actTypeList[formdata.actTypeIndex].label}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <picker class="pickbox" bindchange="bindPickerStatus" range-key="label" value="{{formdata.statusIndex}}" range="{{statusList}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">禁/启用状态</text>
+                <text wx:if="{{statusList[formdata.statusIndex].value!==''}}">{{statusList[formdata.statusIndex].label}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="pickbox">
+        <text class="alignlef selectdate">活动时间</text>
+        <section class="alignlef sectionitem">
+          <picker class="pickertime" mode="date" value="{{formdata.date}}" bindchange="bindDateChange">
+            <view class="picker">
+              <text wx:if="{{formdata.date}}">{{formdata.date}}</text>
+              <text wx:else class="placems">起始时间</text>
+            </view>
+          </picker>
+          <text class="hengxian">至</text>
+          <picker class="pickertime" mode="date" value="{{formdata.date2}}" bindchange="bindDateChange2">
+            <view class="picker">
+              <text wx:if="{{formdata.date2}}">{{formdata.date2}}</text>
+              <text wx:else class="placems">终止时间</text>
+            </view>
+          </picker>
+        </section>
+      </view>
+
+      <view class="searchBtn" bindtap="searchBtn">搜索</view>
+      <view class="reset" bindtap="reset">重置</view>
+    </view>
+  </view>
+
+<view class="wrap">
+  
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox" wx:if="{{item.name!='date'}}">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../../../img/closetj.png"></image>
+            </view>
+          </view>
+
+          <view class="searitembox" wx:else>
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../img/closetj.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+  <block wx:if="{{activedata.length>0}}">
+    <view class="contentbox" wx:for="{{activedata}}" wx:key>
+      <view class="contenttitle">
+        <view class="titleleft">
+          <view class="linebk"></view>
+          {{item.actName}}
+        </view>
+        <view class="activrig">{{item.actTypeName}}</view>
+      </view>
+      <view class="contentitem">
+        <view class="controwBox">
+            <view class="controw">
+            <view>
+               <text>参与次数</text>
+                <text class="daycount">{{item.actPartInCount?item.actPartInCount:'不限制'}}</text>
+              </view>
+            </view>
+            <view class="controw mgtop10">{{item.actBegin}}至{{item.actEnd}}</view>
+        </view>
+        <view class="isgive" bindtap="detail" data-id="{{item.id}}">详情 ></view>
+        
+      </view>
+      <view class="btnbox">
+        <view>
+          <switch checked="{{item.status}}" bindchange="switch1Change" color="#FF6930" data-id="{{item.id}}" data-status="{{item.status}}"/>
+          <text>
+             <text class="switchstatus" wx:if="{{item.status===1}}">已开启</text>
+          <text class="noswitchstatus" wx:if="{{item.status===0}}">未开启</text>
+          </text>
+        </view>
+        <view class="btnitem" bindtap="delete" data-id="{{item.id}}">删除</view>
+        <view class="btnitem" bindtap="activeEdit" data-id="{{item.id}}">修改</view>
+        <view class="btnitem" bindtap="actSet" data-id="{{item.id}}" data-acttypeid="{{item.actTypeId}}">设置</view>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="nodata">暂无数据</view>
+
+</view>
+
+<view class="addCard" bindtap="activeAdd">新增活动</view>

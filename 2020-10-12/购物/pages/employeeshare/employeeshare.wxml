@@ -1,0 +1,25 @@
+<view class="wbox">
+  <view class="employsharebox-t"> 
+    <view class="sharetext mgB20">{{sharetitel}}</view>
+    <image bindtap='previewImg' class="shareimg" mode="widthFix" src="{{shareimage}}"></image>
+  </view>
+  <view class="line"></view>
+  <view class="promptbox-t">
+    <image src="{{global_Data.imgurldata}}employ.png"></image>小贴士
+  </view>
+  <view class="promptbox-b"><text>您可以点击“修改标题”按钮来修改标题。\n 好的标题可以让更多人看到您的分享。</text></view>
+  <button open-type="share" class="sharebtn sharecolor1">分享</button>
+  <view class="sharebtn sharecolor2" bindtap="toggletitle">修改标题</view>
+</view>
+
+<view class="titlebox-bg" wx:if="{{titletype == true}}">
+  <view class="titlebox">
+    <view class="titlebox-t">
+      <textarea  class="titletext" type="text" maxlength="50" auto-height placeholder="请输入标题，最多50个字" placeholder-style="color: #bbbec4;" bindinput="changetitle"></textarea >
+    </view>
+    <view class="titlebox-b">
+      <view class="titlebox-btn titlebox-btn1" bindtap="toggletitle">取消</view>
+      <view class="titlebox-btn titlebox-btn2" bindtap="confirmtitle">确认</view>
+    </view>
+  </view>
+</view>

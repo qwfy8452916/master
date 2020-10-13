@@ -1,0 +1,8 @@
+<view class="inp-box-flex">
+  <view class='form-inputname'>{{forminfo.showName}}<text wx:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text></view>
+  <picker mode="region" class='form-inputtext' bindchange="bindPickerChange" value="{{input_region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      {{input_region[0]}}-{{input_region[1]}}-{{input_region[2]}}
+    </view>
+  </picker>
+</view>

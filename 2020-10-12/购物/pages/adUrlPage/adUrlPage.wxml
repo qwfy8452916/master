@@ -1,0 +1,5 @@
+<view>
+  <view>
+    <web-view src="{{adURL}}"></web-view>
+  </view>
+</view>

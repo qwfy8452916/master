@@ -1,0 +1,39 @@
+<view class="bgfff cardcouponbox">
+  <view class="paddTB20 paddLR302 mgB30 cardcouponbox-t">
+    <view class="cardcouponbox-font1 mgB20">{{shareUserNickName}}赠送给你一张{{voucherdata.vouName}}</view>
+    <view class="flexboxend">
+      <view class="receivebtn receivebtnbg1" data-type="0" bindtap="receivefun">拒绝转赠</view>
+      <view class="receivebtn receivebtnbg2" data-type="1" data-id="{{voucherdata.id}}" bindtap="receivefun">接受转赠</view>
+    </view>
+  </view>
+  <view class="cardcouponbox-b">
+    <view class="paddLR302 flexbox cardcouponbox-b-t mgB20">
+      <image class="cardcouponbox-img" src="{{voucherdata.vouImageUrl}}"></image>
+      <view class="cardcouponbox-b-t-w1">
+        <view class="mgB50 flexboxstart">
+          <view class="cardcouponbox-font3"><block wx:if="{{voucherdata.vouUseScene == 1}}">到店核销</block><block wx:else>线上抵扣</block></view>
+          <view class="cardcouponbox-font4">{{voucherdata.vouName}}</view>
+        </view>
+        <view class="flexbox">
+          <view class="cardcouponbox-font5">¥ {{voucherdata.vouBasicPrice}}</view>
+          <view class="cardcouponbox-font6" wx:if="{{voucherdata.vouUseScene == 2}}">
+            <block wx:if="{{voucherdata.vouDeductibleType == 0}}">可抵扣现金¥ {{voucherdata.vouDeductibleMoney}}元</block>
+            <block wx:else>免费领：{{voucherdata.deductProdName}}</block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{voucherdata.vouUseScene == 1}}">
+      <view class="paddLR302 flexboxstart mgB20 cardcouponbox-font10">
+        剩余次数 :  <text class="textcolor">{{voucherdata.vouVerifiedTotal - voucherdata.vouVerifiedNum}}</text>
+      </view>
+      <view class="paddLR302 flexboxstart mgB20 cardcouponbox-font10">
+        使用地址 :  <text class="textcolor2">{{voucherdata.verifiedAddress}}</text>
+      </view>
+    </block>
+    <view class="paddLR302 cardcouponbox-font7 mgB30">{{voucherdata.vouInstruction}}</view>
+    <view class="flexbox borderT paddLR302">
+      <view class="cardcouponbox-font9">有效期：{{voucherdata.vouStartDate}} ~ {{voucherdata.vouEndDate}}</view>
+    </view>
+  </view>
+</view>

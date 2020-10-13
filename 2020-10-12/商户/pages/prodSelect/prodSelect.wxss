@@ -1,0 +1,79 @@
+/* pages/prodSelect/prodSelect.wxss */
+page{
+  background:#f2f2f5;
+  border-top: 1px solid #e5e5e5;
+}
+
+.wrap{
+  width: 100%;
+  padding: 30rpx 3%;
+  box-sizing: border-box;
+}
+.inputbox{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10rpx;
+}
+.inputitem{
+  font-size: 32rpx;
+  color: #C5C9CF;
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  padding-left: 15rpx;
+  border-radius: 20rpx;
+}
+.searchbox{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 0rpx 20rpx;
+  z-index: 9;
+}
+.searchbox image{
+  width: 100%;
+  height: 100%;
+}
+.proditem{
+  width: 100%;
+  border-radius:20rpx; 
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  background: #fff;
+  font-size: 24rpx;
+  color: #2B2D30;
+  margin-top: 20rpx;
+}
+.proditemActive{
+  background: #83d8d8;
+  color: #fff;
+}
+.prodName{
+  color: #888FA1;
+}
+.prodNameActive{
+  color: #c7ecec;
+}
+.prodContent{
+  margin: 15rpx 0rpx;
+}
+
+.surebtn{
+  font-size:36rpx;
+  color: #fff;
+  background-image:linear-gradient(to right,#F0904D,#ED7142);
+  text-align: center;
+  padding: 30rpx 0rpx;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+

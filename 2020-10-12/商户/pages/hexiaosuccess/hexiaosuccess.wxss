@@ -1,0 +1,38 @@
+/* pages/hexiaosuccess/hexiaosuccess.wxss */
+page{
+  border-top: 1px solid #ddd;
+  background: #f6f6f6;
+}
+.whiteback{
+  background: #fff;
+  width: 100%;
+  padding: 50rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.iconchenggong2{
+  color: #10bbbb;
+  font-size: 140rpx;
+}
+.whiteback_cg{
+  color: #2b2d30;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-top: 10rpx;
+}
+.whiteback_fh{
+  color:#888c8f;
+  font-size:  32rpx;
+  margin-top: 25rpx;
+}
+.whiteback_fh .second{
+  color: #10bbbb;
+  margin-right: 5rpx;
+}
+.whiteback .returnpage{
+ color: #888c8f;
+ font-size: 26rpx;
+ margin-top: 50rpx;
+}
+
+

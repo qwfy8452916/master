@@ -1,0 +1,37 @@
+<swiper autoplay='true' interval='3000' duration='500' display-multiple-items='1' class="bannerbox" style="height:{{imgheights[current]}}rpx;" bindchange="bindchange">
+    <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+    <swiper-item class="swiperitembox">
+        <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+    </swiper-item>
+    </block>
+</swiper>
+<view class="relate" wx:if="{{relateHotels.length != 0}}">
+    <view class="relates">
+        <image src="../../img/relate.png" mode="widthFix" class="back2"/>
+        <navigator wx:for="{{relateHotels}}" wx:key="index" class="relatePiece" url="/pages/login/login?relate={{item.enterCode}}" hover-class="navigator-hover">
+            <image src="{{item.hotelRelationDTO.bannerUrl}}" class="back3"/>
+            <view class="piece2">
+                <view class="title">{{item.hotelRelationDTO.relateHotelName}}</view>
+                <view class="price">
+                    <view class="price1">CNY {{item.hotelRelationDTO.roomPrice}}</view>
+                    <view class="price2">起/晚</view>
+                    <view class="price3">立即抢购</view>
+                </view>
+                <view class="reasons">
+                    <view class="reasonsTitle"> 推荐入住理由：</view>
+                    <view 
+                    class="reasonsTitle"
+                     wx:for="{{item.hotelRelationDTO.description}}"
+                     wx:key="index">
+                     {{item}}
+                    </view>
+                </view>
+                <view class="address">
+                    <view style="margin-right:20px;">地址：{{item.hotelRelationDTO.relateHotelAddress}}</view>
+                    <view style="margin-right:20px;margin-top:8px">订房电话：{{item.hotelRelationDTO.relateHotelBookingPhone}}</view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view wx:else class="none-font">暂无关联酒店</view>

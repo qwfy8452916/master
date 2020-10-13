@@ -1,0 +1,78 @@
+
+<!-- <input wx:if="{{switchJudge}}" value="{{testval}}" bindinput="testinput"></input> -->
+<view class="wrap">
+  <view class="box">
+     <view class="waitTitle"><image src="../../img/waitLogo.png"></image>待办事项</view>
+     <view class="rowbox">
+       <view class="rowboxitem" wx:if="{{pageAuthority['F:MS_CS_OWNSALE_STOREDELIV']}}">
+          <!-- <view class="countnum">5</view> -->
+          <view>店内送</view>
+       </view>
+       <view class="rowboxitem" bindtap="ownDeliveryList" wx:if="{{pageAuthority['F:MS_ORDER_OWNDELIV']}}">
+          <!-- <view class="countnum">12</view> -->
+          <view>自营配送单</view>
+       </view>
+       <view class="rowboxitem" bindtap="ownAfterSale" wx:if="{{pageAuthority['F:MS_CS_OWNSALE']}}">
+          <!-- <view class="countnum">2</view> -->
+          <view>自营售后</view>
+       </view>
+       <view class="rowboxitem" wx:if="{{pageAuthority['F:MS_ORDER_SERVERORDER']}}">
+          <!-- <view class="countnum">1</view> -->
+          <view>客房订单</view>
+       </view>
+     </view>
+  </view>
+
+  <view class="myappbox">
+     <view class="myappTitle">
+       <view>
+          <image src="../../img/myapplogo.png"></image>我的应用
+       </view>
+       <view class="switchbk" bindtap="switchdj">
+         <text class="iconfont icon-wangyou {{switchJudge?'stopen':'stclose'}}"></text>
+       </view>
+     </view>
+     <view class="myrowbox {{switchJudge?'myrowgao':''}}">
+       <view class="myrowboxitem" bindtap="miniba" wx:if="{{tabAuthority['M:MS_CAB_MINI']}}">
+          <image class="applylogo" src="../../img/miniimg.png"></image>
+          <view>迷你吧</view>
+       </view>
+       <view class="myrowboxitem" bindtap="faceServer" wx:if="{{tabAuthority['M:MS_SERVER_FACESERVER']}}">
+          <image class="applylogo" src="../../img/faceimg.png"></image>
+          <view>当面服务</view>
+       </view>
+       <view class="myrowboxitem" bindtap="basicSet" wx:if="{{tabAuthority['M:MS_BASIC_BASICSET']}}">
+          <image class="applylogo" src="../../img/basicimg.png"></image>
+          <view>基础设置</view>
+       </view>
+       <view class="myrowboxitem" bindtap="orderDeal" wx:if="{{tabAuthority['M:MS_ORDER_ORDERDEAL']}}">
+          <image class="applylogo" src="../../img/orderdeal.png"></image>
+          <view>订单处理</view>
+       </view>
+       <view class="myrowboxitem" bindtap="couponManage" wx:if="{{tabAuthority['M:MS_COUPON_COUPON']}}">
+          <image class="applylogo" src="../../img/couponimg.png"></image>
+          <view>优惠券</view>
+       </view>
+       <view class="myrowboxitem" bindtap="cardCoupon" wx:if="{{tabAuthority['M:MS_VOU_CARDCOUPON']}}">
+          <image class="applylogo" src="../../img/cardcoupon.png"></image>
+          <view>卡券</view>
+       </view>
+       <view class="myrowboxitem" bindtap="finance" wx:if="{{tabAuthority['M:MS_FIN_FIN']}}">
+          <image class="applylogo" src="../../img/finance.png"></image>
+          <view>财务</view>
+       </view>
+       <view class="myrowboxitem" bindtap="activeNav" wx:if="{{tabAuthority['M:MS_ACT_ACT']}}">
+          <image class="applylogo" src="../../img/activeimg.png"></image>
+          <view>活动</view>
+       </view>
+       <view class="myrowboxitem" bindtap="shareTotal" wx:if="{{tabAuthority['M:MS_BRANCH_BRANCH']}}">
+          <image class="applylogo" src="../../img/fenxiao.png"></image>
+          <view>分销</view>
+       </view>
+     </view>
+  </view>
+
+
+  <my-tabbar id="tabbar"></my-tabbar>
+
+</view>

@@ -1,0 +1,54 @@
+/* pages/selfTakingEdit/selfTakingEdit.wxss */
+page{
+  background: #f6f6f6;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 100%;
+  padding: 20rpx 3%;
+  box-sizing: border-box;
+}
+.rowbox{
+  background: #fff;
+  width: 100%;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.titlebox{
+  width: 100%;
+  padding: 30rpx 3%;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #2B2D30;
+  border-bottom: 1px solid #e9eaea;
+}
+.titletext{
+  position: relative;
+  display: inline-block;
+}
+.star{
+  color: #FF4F4F;
+  position: absolute;
+  top: -7rpx;
+  right: -15rpx;
+}
+.inputbox{
+  width: 100%;
+  padding: 30rpx 3%;
+  box-sizing: border-box; 
+  font-size: 28rpx;
+}
+.submitbtn{
+  width: 100%;
+  color: #fff;
+  background-image:linear-gradient(to right,#f0904d,#ed7142);
+  text-align: center;
+  padding: 30rpx 0rpx;
+  box-sizing: border-box;
+  border-radius: 25rpx;
+  font-size:36rpx;
+  position: fixed;
+  bottom: 20rpx;
+  left: 0rpx;
+}
+

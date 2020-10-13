@@ -1,0 +1,15 @@
+<!--pages/classifySelect/classifySelect.wxml-->
+<view class="wrap">
+
+  <block wx:if="{{typeData.length>0}}">
+   <view class="funitem {{selectActive[index]?'active':''}}" bindtap="funitem" wx:for="{{typeData}}" data-index="{{index}}">{{item.categoryName}}</view>
+   </block>
+
+   <view wx:else class="notype">暂无分类</view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
+
+
+

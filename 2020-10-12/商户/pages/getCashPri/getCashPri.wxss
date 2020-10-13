@@ -1,0 +1,28 @@
+/* pages/getCashPri/getCashPri.wxss */
+page{border-top: 1px solid #e5e5e5;}
+.tixiantitle{width: 100%;padding: 0 4%;box-sizing: border-box;
+margin-top: 30rpx;font-size: 28rpx;color: #808080;}
+.inputwrap{width: 100%;padding-left: 4%;box-sizing: border-box;
+position: relative;}
+.inputwrap .shuruput{padding: 35rpx 0;border-bottom: 1px solid #e5e5e5;
+font-size: 58rpx;color: #333;padding-left: 55rpx;}
+.inputwrap .danwei{position: absolute;font-size: 58rpx;left: 20rpx;top: 20rpx;}
+
+.beyondje{overflow: hidden;margin-top: 25rpx;font-size: 28rpx;
+width: 100%;padding: 0 4%;box-sizing: border-box;}
+.beyondje .ketixian{color: #999;}
+.beyondje .chaoxian{color: #ff0000;}
+
+.tijiaoniu{width: 85%;height: 70rpx;line-height: 70rpx;text-align: center;
+border-radius: 5rpx;background: #e6e6e6;
+font-size: 30rpx;color: #fff;
+margin:0 auto;margin-top: 55rpx;}
+.tijiaobj{background: #ff9100 !important;}
+
+.ruleswrap{overflow: hidden;width: 100%;padding: 0 4%;
+box-sizing: border-box;margin-top: 45rpx;font-size: 30rpx;
+color: #b3b3b3;}
+.ruleswrap .rulesitem{margin-bottom: 15rpx;}
+
+
+

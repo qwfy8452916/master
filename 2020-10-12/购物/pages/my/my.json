@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的 Mine",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "pop": "../common/pop/pop",
+    "tabbar": "../common/tabbar/tabbar"
+  }
+}

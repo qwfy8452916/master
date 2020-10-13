@@ -1,0 +1,167 @@
+<!--pages/addCard/addCard.wxml-->
+ <form bindsubmit="formSubmit">
+  <view class="wrap">
+
+  <view class="rowbox">
+    <view class="rowtitle">卡券名称<text class="reqred dwright">*</text></view>
+    <view class="wrapput">
+      <input placeholder="请输入卡券名称" name="vouName" placeholder-style="color:#C5C9CF" value="{{form.vouName}}"></input>
+    </view>
+  </view>
+  <view class="rowbox">
+    <view class="rowtitle">基础价格</view>
+    <view class="wrapput">
+      <input placeholder="0" name="vouBasicPrice" placeholder-style="color:#C5C9CF" value="{{form.vouBasicPrice}}" type="digit"></input>
+      <text class="unit">元</text>
+    </view>
+  </view>
+  <view class="rowbox">
+    <view class="rowtitle">允许转赠</view>
+    <view class="wrapput alignrig">
+      <switch name="canGive" name="canGive" checked="{{form.canGive?true:false}}" bindchange="switch1Change" color="#FF6930" />
+    </view>
+  </view>
+  <view class="linebox">
+    <view class="rowtitle">卡券说明</view>
+    <view class="wrapblock">
+      <input placeholder="请输入卡券说明" name="vouInstruction" placeholder-style="color:#C5C9CF" value="{{form.vouInstruction}}"></input>
+    </view>
+  </view>
+  <view class="linebox">
+    <view class="rowtitle">卡券图片</view>
+    <view class="wrapblock" >
+      
+      <view class="wrapimage" wx:if="{{form.vouImagePath.length>0}}">
+        <text class="iconfont iconguanbi" bindtap="closeImg"></text>
+        <image src="{{imgPath}}"></image>
+      </view>
+      <view class="uploadBtn" bindtap="uploadCard" wx:else>
+          <view class="linebor"></view>
+          <view class="rowbor"></view>
+       </view>
+       <input hidden="true" name="vouImagePath" value="{{form.vouImagePath}}"></input>
+    </view>
+  </view>
+
+
+  <picker class="pickbox" bindchange="bindPickerChange" range-key="name" value="{{vouTermIndex}}" range="{{vouTermData}}" name="vouTermType">
+
+    <view class="picker">
+      <text class="alignlef">
+         <text class="pickeritem">使用有效期<text class="required">*</text></text>
+      </text>
+      <text class="alignrig">
+          <text wx:if="{{vouTermData[vouTermIndex].id}}.length>0">{{vouTermData[vouTermIndex].name}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+
+  <view class="rowbox" wx:if="{{form.vouTermType===0}}">
+    <view class="rowtitle">领取后天数</view>
+    <view class="wrapput">
+      <input placeholder="请输入时间间隔" name="vouTermDays" placeholder-style="color:#C5C9CF" value="{{form.vouTermDays}}"></input>
+      <text class="unit">天</text>
+    </view>
+  </view>
+
+  <view class="pickbox" wx:if="{{form.vouTermType===1}}">
+      <text class="alignlef selectdate">固定日期</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" value="{{form.vouTermStartDate}}" bindchange="bindDateChange" name="vouTermStartDate" end="{{form.vouTermEndDate}}">
+          <view class="picker">
+            <text wx:if="{{form.vouTermStartDate}}">{{form.vouTermStartDate}}</text>
+            <text wx:else class="placems">开始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" value="{{form.vouTermEndDate}}" bindchange="bindDateChange2" name="vouTermEndDate" start="{{form.vouTermStartDate}}">
+          <view class="picker">
+            <text wx:if="{{form.vouTermEndDate}}">{{form.vouTermEndDate}}</text>
+            <text wx:else class="placems">过期时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+      <picker class="pickbox" bindchange="bindPickerScene" range-key="name" name="vouUseScene" value="{{sceneIndex}}" range="{{sceneData}}">
+    <view class="picker" name="vouUseScene" value="{{form.vouUseScene}}">
+      <text class="alignlef">
+         <text class="pickeritem">使用场景<text class="requiredcj">*</text></text>
+      </text>
+      <text class="alignrig">
+        <text wx:if="{{sceneData[sceneIndex].id}}">{{sceneData[sceneIndex].name}}</text>
+      <text wx:else class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <view class="linebox" wx:if="{{form.vouUseScene==1}}">
+    <view class="rowtitle">核销地点<text class="reqred">*</text></view>
+    <view class="wrapblock">
+      <input name="vouVerifiedAddress" placeholder="请输入核销地点" value="{{form.vouVerifiedAddress}}" placeholder-style="color:#C5C9CF"></input>
+    </view>
+  </view>
+
+  <view class="rowbox" wx:if="{{form.vouUseScene==1}}">
+    <view class="rowtitle">核销次数<text class="reqredcs">*</text></view>
+    <view class="wrapput">
+      <input placeholder="请输入核销次数" name="vouVerifiedTotal" placeholder-style="color:#C5C9CF" bindinput="nameInput" value="{{form.vouVerifiedTotal}}"></input>
+      <text class="unit">次</text>
+    </view>
+  </view>
+
+  <picker wx:if="{{form.vouUseScene==2}}" class="pickbox" bindchange="bindPickerDeduct" range-key="name" value="{{vouDeductibleTypeIndex}}" range="{{vouDeductibleTypeData}}" name="vouDeductibleType">
+    <view class="picker">
+      <text class="alignlef">
+         <text class="pickeritem">抵扣设置<text class="requiredcj">*</text></text>
+      </text>
+      <text class="alignrig">
+          <text wx:if="{{vouDeductibleTypeData[vouDeductibleTypeIndex].id}}.length>0">{{vouDeductibleTypeData[vouDeductibleTypeIndex].name}}</text>
+      <text wx:else class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <view class="rowbox" wx:if="{{form.vouUseScene==2 && form.vouDeductibleType===0}}">
+    <view class="rowtitle">现金<text class="reqredcs secrig">*</text></view>
+    <view class="wrapput">
+      <input name="vouDeductibleMoney" placeholder="请输入金额" placeholder-style="color:#C5C9CF" value="{{form.vouDeductibleMoney}}"></input>
+      <text class="unit">元</text>
+    </view>
+  </view>
+
+  <picker wx:if="{{form.vouUseScene==2 && form.vouDeductibleType===1}}" class="pickbox" bindchange="bindPickerProd" range-key="prodName" value="{{prodIndex}}" range="{{prodData}}" name="vouDeductibleHotelProdId">
+    <view class="picker">
+      <text class="alignlef">
+         <text class="pickeritem">商品<text class="requiredcj secrig">*</text></text>
+      </text>
+      <text class="alignrig">
+          <text wx:if="{{prodData[prodIndex].id}}">{{prodData[prodIndex].prodName}}</text>
+      <text wx:else class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+  <picker wx:if="{{form.vouUseScene==2 && form.vouDeductibleType===1 && isSupportSpec>0}}" class="pickbox" bindchange="bindPickerSpec" range-key="specName" value="{{specIndex}}" range="{{specData}}" name="vouDeductibleHotelProdSpecId">
+    <view class="picker">
+      <text class="alignlef">
+         <text class="pickeritem">规格<text class="requiredcj secrig">*</text></text>
+      </text>
+      <text class="alignrig">
+          <text wx:if="{{specData[specIndex].id}}">{{specData[specIndex].specName}}</text>
+      <text wx:else class="placems">请选择</text>
+      <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+  </picker>
+
+</view>
+
+<button form-type="submit" class="sureBtn">确定</button>
+</form>

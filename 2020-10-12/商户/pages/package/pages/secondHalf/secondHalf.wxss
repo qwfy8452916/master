@@ -1,0 +1,145 @@
+/* pages/package/pages/secondHalf/secondHalf.wxss */
+page{
+  border-top: 1px solid #e5e5e5;
+  background: #f6f6f6;
+}
+.columBox{
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.title{
+  font-size: 32rpx;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e5e5;
+}
+.titlelef{
+  display: flex;
+  align-items: center;
+}
+.title .lineBak{
+  width: 8rpx;
+  height: 24rpx;
+  border-radius: 4rpx;
+  background: #10BBBB;
+  margin-right: 20rpx;
+}
+.detailBox{
+  width: 100%;
+  padding: 15rpx 0;
+  box-sizing: border-box;
+}
+.rowitem{
+  width: 100%;
+  padding: 8rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #2B2D30;
+  font-size: 28rpx;
+}
+.rowTitle{
+  color: #888FA1;
+  width: 115rpx;
+  margin-right: 25rpx;
+}
+.addBtn{
+  color: #FF6930;
+  padding: 10rpx 0rpx 10rpx 30rpx;
+}
+.disBox{
+  width: 100%;
+  display: table;
+  text-align: center;
+  padding: 10rpx 4%;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.disRow{
+  display: table-row;
+  text-align: center;
+  margin: 20rpx 0rpx;
+  overflow: hidden;
+}
+.disColu{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.inputBox{
+  background: #ececec;
+  width: 100rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 10rpx 0rpx;
+}
+.delstyle{
+  color: #FF6930;
+}
+.switchBox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e9eaea;
+  font-size: 32rpx;
+  color: #888FA1;
+}
+.icontishi1{
+  margin-left: 20rpx;
+}
+.prodBox{
+  background: #fff;
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+.prodContent{
+  width: 100%;
+  overflow: hidden;
+  padding: 20rpx 4%;
+  box-sizing: border-box;
+}
+.prodItem{
+  width: 100%;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  border: 1px solid #e1e2e2;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.prodItem .iconguanbi1{
+  position: absolute;
+  right: 3%;
+  top: 10rpx;
+  color: #d5d5d6;
+  font-size: 40rpx;
+}
+.prodItem .prodTitle{
+  color: #adb1bd;
+  margin-bottom: 10rpx;
+}
+.prodItem .prodDesc{
+  margin-bottom: 10rpx;
+}
+.sureBtn{
+  width: 92%;
+  font-size: 28rpx;
+  color: #fff;
+  background-image: linear-gradient(to right,#f0904d,#ed7142);
+  text-align: center;
+  padding: 30rpx 0rpx;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 35rpx;
+  border-radius: 20rpx;
+}
+

@@ -1,0 +1,133 @@
+/* pages/hexCardTicket/hexCardTicket.wxss */
+page{
+  background: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+.wrap{
+  width: 100%;
+  padding: 20rpx 2.6%;
+  box-sizing: border-box;
+}
+.cardsec{
+  width: 100%;
+  height: 158rpx;
+  overflow: hidden;
+  border-radius: 15rpx;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: #fff;
+}
+.cardsec_pic{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+}
+.cishu{
+  position: absolute;
+  top: 15rpx;
+  font-size: 72rpx;
+}
+.yucishu{
+  position: absolute;
+  top: 100rpx;
+  font-size: 28rpx;
+}
+
+.whitebox{
+  background: #fff;
+  width: 100%;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+.prdbox{
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+  display: flex;
+  justify-content: space-between;
+}
+.prdboxlef{
+  overflow: hidden;
+  vertical-align: top;
+}
+.prodpicbox{
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+  display: inline-block;
+}
+.prodpicbox image{
+  width: 100%;
+  height: 100%;
+}
+.prdbox .proddescbox{
+  display: inline-block;
+  margin-left: 20rpx;
+  vertical-align: top;
+}
+.proddescbox .proddescbox_title{
+  font-size: 28rpx;
+  color: #2B2D30;
+  font-weight: bold;
+}
+.proddescbox .proddescbox_price{
+  font-size: 28rpx;
+  color: #888C8F;
+  margin-top: 40rpx;
+}
+.prdbox .prodhex{
+  font-size: 28rpx;
+  color:#10BBBB;
+  font-weight: bold; 
+}
+
+.carddescbox{
+  width: 100%;
+  background: #fff;
+  font-size:24rpx;
+  color: #888C8F;
+  padding:25rpx 30rpx;
+  box-sizing: border-box;  
+  line-height: 40rpx;
+  border-bottom: 1px solid #e9eaea;
+}
+.lastdate{
+  width: 100%;
+  font-size: 24rpx;
+  color: #888C8F;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.tiptitle{
+  font-size: 28rpx;
+  color: #2B2D30;
+  font-weight: bold;
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.tiptitle .icon2{
+  color: #f3b446;
+  margin-right: 5rpx;
+}
+.tipinfo{
+  font-size: 24rpx;
+  color: #888C8F;
+  padding:0 30rpx;
+  box-sizing: border-box;
+}
+
+.surehx{
+  width: 100%;
+  color: #fff;
+  font-size:36rpx;
+  background: #FF9700;
+  text-align: center;
+  padding:25rpx 0;
+  border-radius: 20rpx;
+  margin-top: 260rpx;
+}

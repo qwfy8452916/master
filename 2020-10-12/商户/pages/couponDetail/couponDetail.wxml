@@ -1,0 +1,386 @@
+<!--pages/couponDetail/couponDetail.wxml-->
+
+<form bindsubmit="formSubmit">
+
+  <view class="wrap">
+
+    <view class="titlebox">
+      <view class="linebak"></view>优惠券信息</view>
+
+    <view class="rowbox noborderbot">
+      <view class="rowtitle">批次名称
+      </view>
+      <view class="wrapput">
+        <input placeholder="请输入优惠券批次名称" disabled name="couponBatchName" placeholder-style="color:#C5C9CF" value="{{addCoupondata.couponBatchName}}"></input>
+      </view>
+    </view>
+
+    <view class="rowbox">
+      <view class="rowtitle">优惠券名称
+      </view>
+      <view class="wrapput">
+        <input placeholder="请输入优惠券名称" disabled name="couponName" placeholder-style="color:#C5C9CF" value="{{addCoupondata.couponName}}"></input>
+      </view>
+    </view>
+
+    <picker disabled class="pickbox" bindchange="bindPickerRange" range-key="name" value="{{rangeIndex}}" range="{{rangeData}}">
+      <view class="picker">
+        <text class="alignlef">
+         <text class="pickeritem">优惠范围</text>
+        <text wx:if="{{rangeData[rangeIndex].id}}">{{rangeData[rangeIndex].name}}</text>
+        <input hidden="true" name="couponRange" value="{{addCoupondata.couponRange}}"></input>
+        </text>
+        <text class="alignrig">
+      <text wx:if="{{!rangeData[rangeIndex].id}}" class="placems">请选择</text>
+        </text>
+      </view>
+    </picker>
+
+    <block wx:if="{{addCoupondata.couponRange==2}}">
+      <picker class="pickbox" bindchange="bindPickerRoom" disabled range-key="name" value="{{roomResourceIndex}}" range="{{roomResourceData}}">
+        <view class="picker">
+          <text class="alignlef">
+         <text class="pickeritem">房源</text>
+          <text wx:if="{{roomResourceData[roomResourceIndex].id!==''}}">{{roomResourceData[roomResourceIndex].name}}</text>
+          <input hidden="true" name="roomResourceRelationFlag" value="{{addCoupondata.batchHotelRelation.roomResourceRelationFlag}}"></input>
+          </text>
+          <text class="alignrig">
+        </text>
+        </view>
+      </picker>
+
+      <block wx:if="{{addCoupondata.batchHotelRelation.roomResourceRelationFlag==1 || addCoupondata.batchHotelRelation.roomResourceRelationFlag==2}}">
+        <view class="rowbox nobotborder">
+          <view class="rowtitle">房源
+          </view>
+          <view class="selectFun" bindtap="switkg" disabled>
+            <text wx:if="{{switchJudge}}">展开</text>
+            <text wx:else>未展开</text>
+            <text class="iconfont icon-wangyou {{switchJudge?'stopen':'stclose'}}"></text>
+          </view>
+        </view>
+
+       <view class="{{switchJudge?'':'wraproom'}}">
+        <view class="prodbox" wx:for="{{selectResource}}" wx:key>
+          <view class="prodrow">
+            <view class="prodtitle">房型名称</view>
+            <view>{{item.roomTypeName}}</view>
+          </view>
+          <view class="prodrow">
+            <view class="prodtitle">房源名称</view>
+            <view>{{item.resourceName}}</view>
+          </view>
+          <view class="prodrow">
+            <view class="prodtitle">房间数量</view>
+            <view>{{item.roomCount}}</view>
+          </view>
+          <view class="prodrow">
+            <view class="prodtitle">基础价格</view>
+            <view>{{item.basicPrice}}</view>
+          </view>
+        </view>
+       </view> 
+      </block>
+    </block>
+
+    <block wx:if="{{addCoupondata.couponRange==1}}">
+      <picker class="pickbox" disabled bindchange="bindPickerFun" range-key="name" value="{{funIndex}}" range="{{funcData}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">功能区</text>
+          <text wx:if="{{funcData[funIndex].id!==''}}">{{funcData[funIndex].name}}</text>
+          <input hidden="true" name="funcRelationFlag" value="{{addCoupondata.batchHotelRelation.funcRelationFlag}}"></input>
+          </text>
+          <text class="alignrig">
+      <text wx:if="{{funcData[funIndex].id===''}}" class="placems"></text>
+          </text>
+        </view>
+      </picker>
+
+      <block wx:if="{{addCoupondata.batchHotelRelation.funcRelationFlag==1 || addCoupondata.batchHotelRelation.funcRelationFlag==2}}">
+        <view class="rowbox nobotborder">
+          <view class="rowtitle">选择功能区
+          </view>
+        </view>
+
+        <view class="funItem" wx:for="{{selectFunData}}" wx:key="index">
+          <!-- <text class="iconfont iconguanbi" bindtap="deleFun" data-index="{{index}}"></text> -->
+          <view class="funName">
+            <view class="funTitle">功能区</view>
+            <view>{{item.funcCnName}}</view>
+          </view>
+          <view class="funName" wx:for="{{item.getTypeData}}" wx:for-item="cell">
+            <view class="funTitle">分类</view>
+            <view>{{cell.categoryName}}</view>
+          </view>
+          <!-- <view class="typebtn" bindtap="typebtn" data-id="{{item.id}}" data-index="{{index}}">指定分类</view> -->
+        </view>
+      </block>
+
+
+      <picker class="pickbox" disabled bindchange="bindPickerprod" range-key="name" value="{{prodIndex}}" range="{{prodData}}">
+        <view class="picker">
+          <text class="alignlef">
+         <text class="pickeritem">商品</text>
+          <text wx:if="{{prodData[prodIndex].id!==''}}">{{prodData[prodIndex].name}}</text>
+          <input hidden="true" name="hotelProdRelationFlag" value="{{addCoupondata.batchHotelRelation.hotelProdRelationFlag}}"></input>
+          </text>
+          <text class="alignrig">
+      <text wx:if="{{prodData[prodIndex].id===''}}" class="placems"></text>
+          </text>
+        </view>
+      </picker>
+
+      <block wx:if="{{addCoupondata.batchHotelRelation.hotelProdRelationFlag==1 || addCoupondata.batchHotelRelation.hotelProdRelationFlag==2}}">
+        <view class="rowbox nobotborder">
+          <view class="rowtitle">选择商品
+          </view>
+          <view class="selectFun" bindtap="switkg" disabled>
+            <text wx:if="{{switchJudge}}">展开</text>
+            <text wx:else>未展开</text>
+            <text class="iconfont icon-wangyou {{switchJudge?'stopen':'stclose'}}"></text>
+          </view>
+        </view>
+
+      <view class="{{switchJudge?'':'wrapprod'}}">
+        <view class="prodbox" wx:for="{{selectprodData}}" wx:key>
+          <view class="prodrow">
+            <view class="prodtitle">商品类型</view>
+            <view>{{item.prodKindName}}</view>
+          </view>
+          <view class="prodrow">
+            <view class="prodtitle">所属组织</view>
+            <view>{{item.prodOwnerOrgName}}</view>
+          </view>
+          <view class="prodblock" wx:if="{{item.prodName}}">
+            <view class="prodtitleblock">商品名称</view>
+            <view>{{item.prodName}}</view>
+          </view>
+          <view class="prodblock">
+            <view class="prodtitleblock">商品显示名称</view>
+            <view>{{item.prodShowName}}</view>
+          </view>
+        </view>
+      </view>
+
+      </block>
+
+    </block>
+
+  </view>
+
+  <view class="wrap">
+    <view class="titlebox">
+      <view class="linebak"></view>使用规则</view>
+
+    <view class="rowgroup">
+      <view class="grouptitle">场景
+      </view>
+      <view>
+      </view>
+    </view>
+
+    <view class="groupbox" wx:if="{{selectScene.length>0}}">
+      <text wx:for="{{selectScene}}" wx:key>{{item.dictName}}、</text>
+    </view>
+
+    <view class="rowgroup">
+      <view class="grouptitle">
+        <view class="fztitle">使用分组</view>
+        <text class="groupValue" wx:if="{{addCoupondata.groupId}}">{{addCoupondata.groupName}}</text>
+      </view>
+      <view>
+      </view>
+    </view>
+
+    <picker class="pickbox noborderbot" disabled bindchange="bindPickerDiscount" range-key="name" value="{{discountIndex}}" range="{{discountWayData}}">
+      <view class="picker" name="discountWay" value="{{addCoupondata.discountWay}}">
+        <text class="alignlef">
+         <text class="pickeritem">优惠方式</text>
+        <text wx:if="{{discountWayData[discountIndex].id}}">{{discountWayData[discountIndex].name}}</text>
+        <input hidden="true" name="discountWay" value="{{addCoupondata.discountWay}}"></input>
+        </text>
+        <text class="alignrig">
+        </text>
+      </view>
+    </picker>
+
+    <block wx:if="{{addCoupondata.discountWay==1}}">
+      <view class="rowbox">
+        <view class="rowtitle">使用门槛
+        </view>
+        <view class="wrapput">
+           满{{addCoupondata.useLimitMoney}}元减{{addCoupondata.reduceMoney}}元
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{addCoupondata.discountWay==2}}">
+      <view class="rowbox noborderbot">
+        <view class="rowtitle">折扣
+        </view>
+        <view class="wrapput useLimitBox">
+          <input class="lineinput" disabled placeholder="请输入折扣" name="couponDiscount" placeholder-style="color:#C5C9CF" value="{{addCoupondata.couponDiscount}}%"></input>
+          <text class="floatrit"></text>
+        </view>
+      </view>
+
+      <view class="rowbox noborderbot">
+        <view class="rowtitle">封顶金额
+        </view>
+        <view class="wrapput useLimitBox">
+          <input class="lineinput" disabled placeholder="请输封顶金额" name="discountMaxMoney" placeholder-style="color:#C5C9CF" value="{{addCoupondata.discountMaxMoney}}元"></input>
+          <text class="floatrit"></text>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle widlength">最低消费金额
+          <!-- <text class="requiredcj rig13">*</text> -->
+        </view>
+        <view class="wrapput useLimitBox">
+          <input class="lineinput" disabled placeholder="请输入最低消费金额" name="discountMinBuyMoney" placeholder-style="color:#C5C9CF" value="{{addCoupondata.discountMinBuyMoney}}元"></input>
+          <text class="floatrit"></text>
+        </view>
+      </view>
+    </block>
+
+    <view class="pickbox">
+      <text class="alignlef selectdate magbot">领取/发放有效期</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" disabled mode="date" name="batchStartTime" value="{{addCoupondata.batchStartTime}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text wx:if="{{addCoupondata.batchStartTime}}">{{addCoupondata.batchStartTime}}</text>
+            <text wx:else class="placems">起始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" disabled mode="date" name="batchEndTime" value="{{addCoupondata.batchEndTime}}" bindchange="bindDateChange2">
+          <view class="picker">
+            <text wx:if="{{addCoupondata.batchEndTime}}">{{addCoupondata.batchEndTime}}</text>
+            <text wx:else class="placems">终止时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+
+    <view class="rowbox" wx:if="{{addCoupondata.couponTermType=='0'}}">
+      <view class="rowtitle">使用有效期</view>
+      <view class="wrapput">
+        <view class="takebox">
+          <picker class="pickbox noborderbot" disabled range-key="name" value="{{afterDayIndex}}" range="{{afterDaydata}}">
+            <view class="picker">
+              <text class="alignlef">
+                    <text wx:if="{{afterDaydata[afterDayIndex].id}}">{{afterDaydata[afterDayIndex].name}}</text>
+              <input hidden="true" name="couponTermAfterDay" value="{{addCoupondata.couponTermAfterDay}}"></input>
+              </text>
+              <text class="alignrig">
+                <text wx:if="{{!afterDaydata[afterDayIndex].id}}" class="placems"></text>
+              </text>
+            </view>
+          </picker>
+        </view>
+        <text class="qistyle">起</text>
+        {{addCoupondata.couponTermDays}}天内有效
+      </view>
+    </view>
+
+    <view class="pickbox" wx:if="{{addCoupondata.couponTermType=='1'}}">
+      <text class="alignlef selectdate">使用有效期</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" disabled mode="date" name="couponTermStartDate" value="{{addCoupondata.couponTermStartDate}}">
+          <view class="picker">
+            <text wx:if="{{addCoupondata.couponTermStartDate}}">{{addCoupondata.couponTermStartDate}}</text>
+            <text wx:else class="placems">起始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" disabled name="couponTermEndDate" value="{{addCoupondata.couponTermEndDate}}">
+          <view class="picker">
+            <text wx:if="{{addCoupondata.couponTermEndDate}}">{{addCoupondata.couponTermEndDate}}</text>
+            <text wx:else class="placems">终止时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+    <view class="rowbox rowboxstart noborderbot">
+      <view class="rowtitle">领取限制</view>
+      <view class="wrapput">
+        <text wx:if="{{addCoupondata.canDraw=='1'}}">可领取</text>
+        <text wx:else>不可领取</text>
+      </view>
+    </view>
+
+    <block wx:if="{{addCoupondata.canDraw=='1'}}">
+      <view class="rowgroup noborderbot" bindtap="selectDrawWays">
+        <view class="grouptitle">领券渠道
+        </view>
+        <view>
+          <view class="placeSelect" wx:if="{{selectDrawWays.length<1}}">请选择</view>
+        </view>
+      </view>
+
+      <view class="groupbox" wx:if="{{selectDrawWays.length>0}}">
+        <text wx:for="{{selectDrawWays}}" wx:key>{{item.dictName}}、</text>
+      </view>
+
+      <view class="rowbox noborderbot">
+        <view class="rowtitle">领取总数量</view>
+        <view class="wrapput useLimitBox">
+          <input class="lineinput" disabled name="drawCountTotal" placeholder-style="color:#C5C9CF" value="{{addCoupondata.drawCountTotal}}张"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle widlength">每人领取数量</view>
+        <view class="wrapput useLimitBox">
+          <input class="lineinput" disabled name="drawCountPerUser" placeholder-style="color:#C5C9CF" value="{{addCoupondata.drawCountPerUser}}张"></input>
+        </view>
+      </view>
+    </block>
+
+    <view class="rowbox noborderbot">
+      <view class="rowtitle">发放限制</view>
+      <view class="wrapput">
+        <text wx:if="{{addCoupondata.canGive=='1'}}">可发放</text>
+        <text wx:else>不可发放</text>
+      </view>
+    </view>
+
+    <block wx:if="{{addCoupondata.canGive=='1'}}">
+      <view class="rowbox noborderbot">
+        <view class="rowtitle">发放总数量</view>
+        <view class="wrapput useLimitBox">
+          <input class="lineinput" placeholder="请输入发放总数量" name="giveCountTotal" placeholder-style="color:#C5C9CF" disabled value="{{addCoupondata.giveCountTotal}}张"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle widlength">每人发放数量</view>
+        <view class="wrapput useLimitBox">
+          <input class="lineinput" placeholder="请输入每人发放数量" name="giveCountPerUser" placeholder-style="color:#C5C9CF" disabled value="{{addCoupondata.giveCountPerUser}}张"></input>
+        </view>
+      </view>
+    </block>
+
+    <view class="rowbox noborderbot">
+      <view class="rowtitle">可售卖</view>
+      <view class="wrapput">
+        <text wx:if="{{addCoupondata.canSell=='1'}}">是</text>
+        <text wx:else>否</text>
+      </view>
+    </view>
+
+    <view class="rowbox">
+      <view class="rowtitle">可发送</view>
+      <view class="wrapput">
+        <text wx:if="{{addCoupondata.canGift=='1'}}">是</text>
+        <text wx:else>否</text>
+      </view>
+    </view>
+
+  </view>
+
+</form>

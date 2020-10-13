@@ -1,0 +1,26 @@
+<!--pages/package/pages/discountProd/discountProd.wxml-->
+<view class="wrap">
+
+<view class="proditem {{selectActive[index]?'proditemActive':''}}" wx:for="{{prodData}}" wx:key bindtap="selectProd" data-index="{{index}}">
+  <view class="rowprod">
+    <view class="prodName {{selectActive[index]?'prodNameActive':''}}">商品名称</view>
+    <view class="prodContent proddesc">{{item.prodName}}</view>
+  </view>
+  <view class="rowprod">
+    <view class="prodName {{selectActive[index]?'prodNameActive':''}}">商品显示名称</view>
+    <view class="prodContent proddesc">{{item.prodShowName}}</view>
+  </view>
+  <view class="rowprod">
+    <view class="prodName {{selectActive[index]?'prodNameActive':''}}">供货价</view>
+    <view class="prodContent proddesc">{{item.prodSupplyPrice}}</view>
+  </view>
+  <view class="rowprod">
+    <view class="prodName {{selectActive[index]?'prodNameActive':''}}">零售价</view>
+    <view class="prodContent proddesc">{{item.prodRetailPrice}}</view>
+  </view>
+  
+</view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>

@@ -1,0 +1,114 @@
+/* pages/redbagDetail/redbagDetail.wxss */
+.redDetail1{
+    width: 94%;
+    height: 180px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 15px auto;
+}
+.redDetail1_1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    height: 34px;
+    font-size: 14px;
+    border-bottom: 1px #F6F6F6 solid;
+}
+.status{
+    color: #0FBBBB;
+}
+.redDetail1_2{
+    padding: 0 15px;
+    height: 95px;
+}
+.redDetail1_2_1{
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 32px;
+    height: 32px;
+    color: #0FBBBB;
+}
+.redDetail1_2_2{
+    display: flex;
+
+}
+.money{
+    font-size: 22px;
+    color: #ED1D1D;
+}
+.amountTitle{
+    font-size: 12px;
+    color: #878B8F;
+}
+.moneyAmount{
+    flex:1;
+    /* height: 40px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.redDetail1_3{
+    padding: 4px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #878B8F;
+    font-size: 12px;
+    border-top: 1px #F6F6F6 solid;
+}
+.orderTime1{
+    margin-top:5px
+}
+.endtime{
+    margin-right: 15px;
+}
+.friendHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 94%;
+    margin: 0 auto;
+}
+.friendtitle{
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.redNum{
+    font-size: 10px;
+}
+.eachRecord{
+    width: 94%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    margin-top: 10px;
+    padding: 0 15px;
+}
+.NameDate{
+    flex: 1;
+    margin-left: 12px;
+}
+.fName{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.fdate{
+    font-size: 12px;
+    color: #878B8F;
+}
+.amount{
+    font-size: 16px;
+    color: #ED1E1E;
+}
+.headIcon{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}

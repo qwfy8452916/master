@@ -1,0 +1,37 @@
+<block wx:for="{{livedlist}}" wx:for-item="item" wx:key="index">
+  <view class="libox">
+    <view class="flexbox libox-t">
+      <image class="history-icon" src="../../img/history-icon1.png"></image>
+      <view class="libox-l">
+        <view class="font-openway">
+          <block wx:if="{{item.openWay == 1}}">扫码进入</block>
+          <block wx:elif="{{item.openWay == 2}}">分享进入</block>
+          <block wx:elif="{{item.openWay == 3}}">直接打开</block>
+          <block wx:elif="{{item.openWay == 4}}">外部链接跳转</block>
+          <block wx:elif="{{item.openWay == 5}}">访问足迹</block>
+        </view>
+      </view>
+    </view>
+    <view class="flexboxend libox-b">
+      <view class="leftlink"></view>
+      <view class="libox-l libox-b-l">
+        <view class="paddAll2020 borderB flexbox">
+          <view class="font-size1">{{item.hotelName}}</view>
+          <view class="font-size2 flexbox" data-code="{{item.cabCode}}" data-id="{{item.id}}" bindtap="openfun">进入小程序 <image src="../../img/history-icon2.png"></image></view>
+        </view>
+        <view class="paddAll2020">
+          <view class="font-size3" wx:if="{{item.cabFloorRoom}}">房间号 {{item.cabFloorRoom}}</view>
+          <view class="font-size3" wx:if="{{item.openWay == 2}}">分享人ID：{{item.sharerId}}<block wx:if="{{item.sharerNickName}}">，{{item.sharerNickName}}</block></view>
+          <view class="font-size3" wx:if="{{item.openWay == 3 || item.openWay == 5}}">原打开方式：
+            <block wx:if="{{item.lastedopenWay == 1}}">扫码进入</block>
+            <block wx:elif="{{item.lastedopenWay == 2}}">分享进入</block>
+            <block wx:elif="{{item.lastedopenWay == 3}}">直接打开</block>
+            <block wx:elif="{{item.lastedopenWay == 4}}">外部链接跳转</block>
+            <block wx:elif="{{item.lastedopenWay == 5}}">访问足迹</block>
+          </view>
+          <view class="font-size4">{{item.createdAtStr}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

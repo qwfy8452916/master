@@ -1,0 +1,60 @@
+<!-- <view class='ordertype'>
+  <view class='ordertype-btn2' style='color: {{indexnum == 0?themecolor.skintone:""}};border-color: {{indexnum == 0?themecolor.skintone:""}};' data-num="0" bindtap='changetype'>未使用</view>
+  <view class='ordertype-btn2' style='color: {{indexnum == 1?themecolor.skintone:""}};border-color: {{indexnum == 1?themecolor.skintone:""}};' data-num="1" bindtap='changetype'>已使用</view>
+  <view class='ordertype-btn2' style='color: {{indexnum == 2?themecolor.skintone:""}};border-color: {{indexnum == 2?themecolor.skintone:""}};' data-num="2" bindtap='changetype'>已过期</view>
+</view> -->
+<view class='ordert'> 
+  <view class="ordertype-btn {{indexnum == 0?'active':''}}" data-num="0" bindtap='changetype'>未使用</view>
+  <view class="ordertype-btn {{indexnum == 1?'active':''}}" data-num="1" bindtap='changetype'>已使用</view>
+  <view class="ordertype-btn {{indexnum == 2?'active':''}}" data-num="2" bindtap='changetype'>已过期</view>
+</view>
+<view class="couponlist">
+  <block wx:if="{{coupon_list.length > 0}}">
+    <block wx:for="{{coupon_list}}" wx:for-item="item" wx:for-index="idx" wx:key="index">
+      <view wx:if="{{item.discountWay == 1}}" class="couponlist-top {{item.couponRange == 1?'bgimg':'bgimg2'}}">
+        <view class="top-left">{{item.couponName}}</view>
+        <view wx:if="{{item.discountWay == 1}}" class="top-right"><view class="right-m">￥</view>{{item.reduceMoney}}</view>
+        <view wx:if="{{item.discountWay == 2}}" class="top-right">{{item.couponDiscount}}<view class="right-m">折</view></view>
+      </view>
+      <view wx:if="{{item.discountWay == 2}}" class="couponlist-top item.couponRange == 1?'bgimg1':'bgimg3'">
+        <view class="top-left">{{item.couponName}}</view>
+        <view wx:if="{{item.discountWay == 1}}" class="top-right"><view class="right-m">￥</view>{{item.reduceMoney}}</view>
+        <view wx:if="{{item.discountWay == 2}}" class="top-right">{{item.couponDiscount}}<view class="right-m">折</view></view>
+      </view>
+      <image class="top-img" mode="widthFix" src="../../img/border.png"></image>
+      <view class="couponlist-bottom">
+        <view wx:if="{{item.discountWay == 1}}" class="bottom-coupon1">{{item.couponRange == 1?'商品':'订房'}}满减券(满{{item.useLimitMoney}}减{{item.reduceMoney}})</view>
+        <view wx:if="{{item.discountWay == 2}}" class="bottom-coupon1">{{item.couponRange == 1?'商品':'订房'}}折扣券<block wx:if="{{item.discountMinBuyMoney == 0 && item.discountMaxMoney == 0}}"></block><block wx:else>({{item.discountMinBuyMoney == 0?'':'满'+item.discountMinBuyMoney+'元可用，'}}{{item.discountMaxMoney == 0?'':'最高减'+item.discountMaxMoney+'元'}})</block></view>
+        <view class="bottom-coupon2">{{item.couponStartDate}} 至 {{item.couponEndDate}}</view>
+        <image class="bottom-img" mode="widthFix" src="../../img/dashed.png"></image>
+        <view class="bottom-hint" data-id="{{item.batchId}}" data-idx="{{idx}}" bindtap="lookexplain">
+          <view class="hint-txt">使用说明</view>
+          <view class="hint-btn"><image class="hint-img {{item.exstate? 'trans':''}}" mode="widthFix" src="../../img/my-icon3.png"></image></view>
+        </view>
+        <view wx:if="{{item.exstate}}" class="direction-use">
+          <view>优惠范围：{{coupon_explain.generalInstructions}}</view>
+          <view>{{coupon_explain.names}}</view>
+        </view>
+      </view>
+      <!-- <view class="couponlist-li {{indexnum == 0?'':'bgcolor'}}">
+        <view class="couponlist-li-l">
+          <view class="font-l1">
+            <block wx:if="{{item.discountWay == 1}}">¥ <text class="font-l3">{{item.reduceMoney}}</text></block>
+            <block wx:else><text class="font-l3">{{item.couponDiscount/10}}折</text></block>
+            {{item.couponName}}
+          </view>
+          <view class="font-l2">满{{item.useLimitMoney}}使用</view>
+          <view class="font-l2">有效期至 {{item.couponEndDate}} 前</view>
+        </view>
+        <view class="couponlist-li-r font-l1"></view>
+      </view> -->
+    </block>
+  </block>
+  <block wx:else>
+    <view class="font-coupon">
+      <block wx:if="{{indexnum == 0}}">暂无未使用优惠券</block>
+      <block wx:elif="{{indexnum == 1}}">暂无已使用优惠券</block>
+      <block wx:elif="{{indexnum == 2}}">暂无已过期优惠券</block>
+    </view>
+  </block>
+</view>

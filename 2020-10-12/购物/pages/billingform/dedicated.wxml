@@ -1,0 +1,63 @@
+<block wx:if="{{type == true}}">
+  <view class="paddAll20 font26">
+    请选择发票类型
+  </view>
+  <view class="paddAll flexbox-around">
+    <view class="viewbtn" data-type="1" bindtap="changetype">电子普通发票</view>
+    <view class="viewbtn viewbtn-active">增值税专用发票</view>
+  </view>
+</block>
+<view class="paddAll20 font26">
+  发票详情
+</view>
+<view class="paddLR03 bgfff">
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">单位名称</view>
+    <input class='inp' type="text" maxlength="50" placeholder-style='color: #bbbec4;' placeholder="请填写单位名称" bindinput='invHeadfun'></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">纳税人识别码</view>
+    <input class='inp' type="number" maxlength="50" placeholder-style='color: #bbbec4;' placeholder="请填写纳税人识别码" bindinput='taxpayerIdfun'></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">注册地址</view>
+    <input class='inp' type="text" maxlength="50" placeholder-style='color: #bbbec4;' placeholder="请填写注册地址" bindinput='registrationAddrfun'></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">注册电话</view>
+    <input class='inp' type="number" maxlength="30" placeholder-style='color: #bbbec4;' placeholder="请填写注册电话" bindinput='registrationMobilefun'></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">开户银行</view>
+    <input class='inp' type="text" maxlength="50" placeholder-style='color: #bbbec4;' placeholder="请填写开户银行" bindinput='bankfun'></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">银行账户</view>
+    <input class='inp' type="number" maxlength="50" placeholder-style='color: #bbbec4;' placeholder="请填写银行账户" bindinput='bankAccountfun'></input>
+  </view>
+  <view class="borderB inpbox bordernone">
+    <view class="minw20 font30 mgR20"><text decode="{{true}}">备&ensp;&ensp;&ensp;&ensp;注</text></view>
+    <textarea class='inp' maxlength="50" auto-height placeholder="请填写备注(50字内)" placeholder-style="color: #bbbec4;" bindinput="remarkfun" />
+  </view>
+</view>
+<view class="paddAll20 font26">
+  收件信息
+</view>
+<view class="paddLR03 bgfff">
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">收票人姓名</view>
+    <input class='inp' type="text" maxlength="10" placeholder-style='color: #bbbec4;' placeholder="请填写收票人姓名" bindinput='addresseeNamefun'></input>
+  </view>
+  <view class="borderB inpbox">
+    <view class="minw20 font30 mgR20">收票人电话</view>
+    <input class='inp' type="number" placeholder-style='color: #bbbec4;' placeholder="请填写收票人电话" bindinput='mobilefun'></input>
+  </view>
+  <view class="borderB inpbox bordernone">
+    <view class="minw20 font30 mgR20">收票人地址</view>
+    <input class='inp' type="text" maxlength="50" placeholder-style='color: #bbbec4;' placeholder="请填写收票人地址" bindinput='addresseeAddrfun'></input>
+  </view>
+</view>
+<view class="paddAll20 font26 font-color3">
+  注：需支付运费10元
+</view>
+<view class="subbtn mgT20" bindtap="subformfun">确定</view>

@@ -1,0 +1,50 @@
+<!--pages/functionList/functionList.wxml-->
+<view class="wrap">
+
+   <view class="funBox" wx:for="{{functionData}}" wx:key="index">
+      <view class="titlebox">
+         <view class="titlef">
+            <view class="sortbox">
+               <text class="sortnum">{{item.sort}}</text>
+               <image src="../../img/sortbak.png"></image>
+            </view>
+            <text class="spec">{{item.funcCnName}}</text><text class="enlisspec">{{item.funcEnName}}</text>
+         </view>
+         <view class="titrig">
+            <view class="circlebak">
+               <image wx:if="{{item.isShow===1}}" src="../../img/circle.png"></image>
+               <image wx:if="{{item.isShow===0}}" src="../../img/circle2.png"></image>
+            </view>
+            <text wx:if="{{item.isShow===0}}" class="noopen">未开放</text>
+            <text wx:if="{{item.isShow===1}}">开放</text>
+         </view>
+      </view>
+      <view class="midbox" bindtap="funcDetail" data-id="{{item.id}}">
+          <view class="midlef">
+              <view class="typeName">{{item.funcTypeName}}</view>
+              <view class="tagbox">
+                 <text class="tagitem" wx:if="{{item.delivWayNames!=null}}">{{item.delivWayNames}}</text>
+                 <!-- <text class="tagitem">快递送</text>
+                 <text class="tagitem">迷你吧</text>
+                 <text class="tagitem">自提取</text> -->
+              </view>
+          </view>
+          <view class="midrig">
+             <text class="iconfont iconwangyou"></text>
+          </view>
+      </view>
+      <view class="btnbox">
+         <view class="{{item.funcType!=7?'buju':''}}">{{item.funcType!=7?item.pageLayoutName:''}}</view>
+         <view class="btnwrap">
+            <view class="btnitem" wx:if="{{authzData['F:MS_BASIC_FUNCTION_DELETE']}}" data-id="{{item.id}}" bindtap="delFun">删除</view>
+            <view class="btnitem" wx:if="{{authzData['F:MS_BASIC_FUNCTION_MODIFY']}}" bindtap="editFunction" data-id="{{item.id}}">编辑</view>
+            <view class="btnitem" wx:if="{{authzData['F:MS_BASIC_FUN_CLASS']}}" data-id="{{item.id}}" bindtap="classifyManage" data-id="{{item.id}}" data-hotelid="{{item.hotelId}}" data-funccnname="{{item.funcCnName}}">分类管理</view>
+         </view>
+      </view>
+   </view>
+
+</view>
+
+<!-- <view class="addfun" bindtap="">新增功能区</view> -->
+
+

@@ -1,0 +1,87 @@
+/* pages/classifyTwo/classifyTwo.wxss */
+
+page{
+  background: #f3f3f5;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 100%;
+  padding: 0rpx 3%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.rowbox{
+  background: #fff;
+  width: 100%;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+.titlebox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #2B2D30;
+  padding: 30rpx 3%;
+  box-sizing: border-box;
+}
+.linebak{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  border-radius: 4rpx;
+  margin-right: 20rpx;
+}
+.rowitem{
+  padding: 25rpx 30rpx;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #e4e4e5;
+  display: flex;
+  align-items: center;
+}
+.rowtitle{
+  width: 150rpx;
+  text-align: left;
+  font-size: 32rpx;
+  color: #888FA1;
+  margin-right: 30rpx;
+  position: relative;
+}
+.star{
+  position: absolute;
+  color: #FF4F4F;
+  top: -5rpx;
+  right: 4rpx;
+}
+.inputbox{
+  width: calc(100% - 180rpx);
+}
+.inputbox input{
+  width: 100%;
+}
+
+
+.showswitch{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.surebtn{
+  width: 96%;
+  text-align: center;
+  color: #fff;
+  font-size:36rpx;
+  background-image: linear-gradient(to right,#F0904D,#ED7142); 
+  padding: 30rpx 0rpx;
+  border-radius: 20rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+
+

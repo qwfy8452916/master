@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的卡券 mycardcoupon",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "pop": "../common/pop/pop"
+  }
+}

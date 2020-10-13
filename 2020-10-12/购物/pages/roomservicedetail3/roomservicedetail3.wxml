@@ -1,0 +1,49 @@
+<block wx:for="{{postdata.rmsvcOrderDetailDTOList}}" wx:for-item="item" wx:key="index">
+  <view class="borderB mgB20 libox">
+    <view class="libox-l">
+      <image class="prodimg" src="{{item.picUrl}}"></image>
+      <view class="prodinfo">
+        <view class="prodinfo-name">{{item.name}}</view>
+        <view class="prodinfo-price" wx:if="{{item.price != '' && item.unit != ''}}">￥{{item.price}}/{{item.unit}}</view>
+      </view>
+    </view>
+    <view class="prodinfo-num">x{{item.count}}</view>
+  </view>
+</block>
+<block wx:if="{{roomService == 2}}">
+  <block wx:if="{{postdata.isNeedNum == 1}}">
+    <view class="bgfff paddAll20 mgB20 prodnumbox">
+      <view class="roomCodetext">选择数量</view>
+      <view class="prodnumbox-r">
+        <block wx:if="{{prodnum > 0}}">
+          <view class="iconbtn" bindtap="lessfun"><image class="iconbtnimg" src="../../img/icon-img2.png"></image></view>
+          <view class="prodnum-font">{{prodnum}}</view>
+        </block>
+        <view class="iconbtn" bindtap="plusfun"><image class="iconbtnimg" src="../../img/icon-img1.png"></image></view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{postdata.isNeedRoomNo == 1}}">
+    <view class="bgfff paddAll20 mgB20 evaluationT roomCodesize">
+      <view class="roomCodetext">房间号<text>*</text></view>
+      <input class="roomCode-inp" type="number" value="{{roomCode}}" placeholder-style='color: #bbbec4;' placeholder="请填写房间号" bindinput='changeroomCode'></input>
+    </view>
+  </block>
+  <block wx:if="{{postdata.isNeedAttachment == 1}}">
+    <view class="paddAll font-img">上传照片 <text>最多3张</text></view>
+    <view class="paddAll mgB20 imglistbox">
+      <block wx:for="{{pjdata}}" wx:for-item="itemimg" wx:key="index">
+        <view class="pjimgwh">
+          <image src="{{itemimg}}"></image>
+          <image class="closebtn" src="../../img/icon-img11.png" data-index="{{index}}" bindtap="closeimg"></image>
+        </view>
+      </block>
+      <view class="pjimgwh" wx:if="{{pjdata.length < 3}}" bindtap='bindChooiceProduct'><image src="../../img/upimg.png"></image></view>
+    </view>
+  </block>
+  <block wx:if="{{postdata.isNeedDescription == 1}}">
+    <textarea class="remarkbox" placeholder-style="color: #bbbec4;line-height: 50rpx;font-size: 28rpx;" placeholder="备注" maxlength="50" bindinput='remarkfun' />
+  </block>
+  <view wx:if="{{subtype == 1}}" class="subbtn" bindtap="subfun">提交</view>
+  <view wx:else class="subbtn subnone">提交</view>
+</block>

@@ -1,0 +1,166 @@
+<!--pages/package/pages/activeAdd/activeAdd.wxml-->
+
+<form bindsubmit="formSubmit">
+  <view class="wrap">
+
+  <view class="rowbox">
+    <view class="rowtitle">活动名称</view>
+    <view class="wrapput">
+      <input placeholder="请输入活动名称" name="actName" placeholder-style="color:#C5C9CF" value="{{spareform.actName}}"></input>
+    </view>
+  </view>
+
+  <picker class="pickbox" bindchange="bindPickerActType" range-key="name" value="{{actTypeIndex}}" range="{{actTypeList}}">
+    <input hidden="true" value="{{spareform.actType}}" name="actType"></input>
+    <view class="picker">
+      <text class="alignlef">
+        <text class="pickeritem">活动类型</text>
+        <text wx:if="{{spareform.actType!==''}}">{{actTypeList[actTypeIndex].name}}</text>
+      </text>
+      <text class="alignrig">        
+          <text wx:if="{{spareform.actType===''}}" class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+      </text>
+     </view>
+   </picker>
+
+   <view class="pickbox">
+      <text class="alignlef selectdate">活动日期</text>
+      <section class="alignlef sectionitem">
+        <picker class="pickertime" mode="date" bindchange="bindDateChange" name="actBegin" end="{{spareform.actBegin}}" value="{{spareform.actBegin}}">
+          <view class="picker">
+            <text wx:if="{{spareform.actBegin}}">{{spareform.actBegin}}</text>
+            <text wx:else class="placems">开始日期</text>
+          </view>
+        </picker>
+        <text class="hengxian">至</text>
+        <picker class="pickertime" mode="date" value="{{spareform.actEnd}}" bindchange="bindDateChange2" name="actEnd" start="{{spareform.actBegin}}">
+          <view class="picker">
+            <text wx:if="{{spareform.actEnd}}">{{spareform.actEnd}}</text>
+            <text wx:else class="placems">结束日期</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerDate" range-key="name" value="{{dateIndex}}" range="{{dateData}}" name="actPartInDateType">
+     <view class="picker">
+      <text class="alignlef">
+        <text class="pickeritem nowrequ">日期选择(非必选)</text>
+        <text wx:if="{{spareform.actPartInDateType!==''}}">{{dateData[dateIndex].name}}</text>
+        <input hidden="true" value="{{spareform.actPartInDateType}}" name="actPartInDateType"></input>
+      </text>
+      <text class="alignrig">     
+          <text wx:if="{{spareform.actPartInDateType===''}}" class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+      </text>
+     </view>
+   </picker>
+
+   <view class="dayBox" wx:if="{{spareform.actPartInDateType==3}}">
+     <view class="dayitem {{dayStyleArry[index]?'choiceitemActive':''}}" wx:for="{{31}}" data-index="{{index}}" data-value="{{index+1}}" bindtap="dayselect" wx:key="index">{{index+1}}</view>
+   </view>
+
+   <view class="weekBox" wx:if="{{spareform.actPartInDateType==1}}">
+     <view class="weekitem {{weekData[index].weekjd?'choiceitemActive':''}}" wx:for="{{weekData}}" data-index="{{index}}" data-value="{{item.id}}" bindtap="weekselect" wx:key="index">{{item.name}}</view>
+   </view>
+
+   <view class="monthBox" wx:if="{{spareform.actPartInDateType==2}}">
+     <view class="monthitem {{monthStyleArry[index]?'choiceitemActive':''}}" wx:for="{{12}}" data-index="{{index}}" data-value="{{index+1}}" bindtap="monthselect" wx:key="index">{{index+1}}月</view>
+   </view>
+
+   <view class="timeBox">
+     <view>时间选择</view>
+     <view class="addTime" bindtap="addTime">+ 添加</view>
+   </view>
+
+   <view class="pickbox pickTime" wx:for="{{timeList}}" wx:key="index">
+      <view class="removeBox" bindtap="removeBox" data-index="{{index}}">
+         <view class="removeItem"></view>
+      </view>
+      <section class="alignlef sectionitem timeleft">
+        <picker class="pickertime" mode="time" value="{{item.startTime}}" bindchange="startTime" end="{{item.endTime}}" data-index="{{index}}">
+          <view class="picker">
+            <text wx:if="{{item.startTime}}">{{item.startTime}}</text>
+            <text wx:else class="placems">开始时间</text>
+          </view>
+        </picker>
+        <text class="hengxian">一</text>
+        <picker class="pickertime" mode="time" value="{{item.endTime}}" bindchange="endTime" start="{{item.startTime}}" data-index="{{index}}">
+          <view class="picker">
+            <text wx:if="{{item.endTime}}">{{item.endTime}}</text>
+            <text wx:else class="placems">结束时间</text>
+          </view>
+        </picker>
+      </section>
+    </view>
+
+    <picker class="pickbox" bindchange="bindPickerCishu" range-key="name" value="{{cishuIndex}}" range="{{cishuData}}">
+    <view class="picker">
+      <text class="alignlef">
+        <text class="pickeritem">参与次数</text>
+        <text wx:if="{{cishuData[cishuIndex].id!==''}}">{{cishuData[cishuIndex].name}}</text>
+        <input hidden="true" value="{{spareform.actPartInCountType}}" name="actPartInCountType"></input>
+      </text>
+      <text class="alignrig">
+          
+          <text wx:if="{{cishuData[cishuIndex].id===''}}" class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+      </text>
+    </view>
+    </picker>
+
+    <view class="rowbox" wx:if="{{spareform.actPartInCountType==1}}">
+      <view class="rowtitle">每类型</view>
+      <view class="wrapput">
+        <input placeholder="请输入次数" name="actPartInCount1" placeholder-style="color:#C5C9CF" value="{{spareform.actPartInCount1}}"></input>
+        <text class="unit">次</text>
+      </view>
+    </view>
+
+    <view class="rowbox" wx:if="{{spareform.actPartInCountType==2}}">
+      <view class="rowtitle">每活动</view>
+      <view class="wrapput">
+        <input placeholder="请输入次数" name="actPartInCount2" placeholder-style="color:#C5C9CF" value="{{spareform.actPartInCount2}}"></input>
+        <text class="unit">次</text>
+      </view>
+    </view>
+
+    <view class="rowbox dateType" wx:if="{{spareform.actPartInCountType==3}}">
+      <view class="rowtitle">每隔</view>
+      <view class="boxright">
+        <view class="dateinput">
+          <input placeholder="请输入时间" name="actPartInCount3" placeholder-style="color:#C5C9CF" value="{{spareform.actPartInCount3}}"></input>
+        </view>
+          <picker class="pickbox pickDate" bindchange="bindPickerDateType" range-key="name" value="{{dateTypeIndex}}" range="{{dateTypeList}}">
+          <view class="picker">
+            <text class="alignlef">
+              <text wx:if="{{dateTypeList[dateTypeIndex].id!==''}}">{{dateTypeList[dateTypeIndex].name}}/次</text>
+            </text>
+            <text class="alignrig">
+            </text>
+          </view>
+          </picker>
+       </view>
+     </view>
+
+    <picker class="pickbox" bindchange="bindPickerLeve" range-key="name" value="{{levelIndex}}" range="{{levelData}}" disabled="{{levelJudge}}">
+      <view class="picker">
+        <text class="alignlef">
+          <text class="pickeritem">级别</text>
+          <text wx:if="{{spareform.actScopeLevel!==''}}">{{levelData[levelIndex].name}}</text>
+          <input hidden="true" value="{{spareform.actScopeLevel}}" name="actScopeLevel"></input>
+        </text>
+        <text class="alignrig"> 
+            <text wx:if="{{spareform.actScopeLevel===''}}" class="placems">请选择</text>
+            <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+      </picker>
+</view>
+
+<button form-type="submit" class="sureBtn">确定</button>
+</form>
+
+
+

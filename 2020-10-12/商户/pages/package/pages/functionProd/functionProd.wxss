@@ -1,0 +1,523 @@
+/* pages/package/pages/functionProd/functionProd.wxss */
+page{
+  background: #f2f2f5;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 100%;
+  padding:20rpx 3%;
+  box-sizing:border-box;
+  padding-bottom: 150rpx;
+} 
+.searchWrap{
+  width: 100%;
+  background:#fff;
+  box-sizing:border-box;
+  overflow: hidden;
+  font-size: 32rpx;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+.expandbox{
+  width: 100%;
+  padding:15rpx 4%; 
+  box-sizing: border-box; 
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  border-bottom: 1px solid #e9eaea;
+}
+.expandbox .expenditem{
+  display: flex;
+  align-items:center;
+}
+.searchlogo{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 15rpx;
+}
+.searchlogoclose{
+  transform: rotate(180deg);
+}
+.expandlogo{
+  width: 42rpx;
+  height: 42rpx;
+  overflow: hidden;
+}
+.expandlogo image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 下拉选择 */
+
+
+.pickbox{
+    padding: 30rpx 4%;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    border-radius:15rpx;
+    border-bottom: 1px solid #e9eaea;
+}
+.pickbox .pickeritem{
+  display: inline-block;
+  width:130rpx;
+  text-align: left;
+  margin-right: 20rpx;
+  color:#888FA1;
+  }
+.alignlef{
+  float: left;
+  }
+.alignrig{
+  float: right;
+}
+.placems{
+   color: #C5C9CF;
+  }
+.iconwangyou{
+  color: #888c8f;
+  font-size: 28rpx;
+}
+
+/* 时间选择 */
+.picker_group{overflow: hidden;vertical-align: middle;
+font-size: 28rpx;clear: both;padding: 30rpx 4% 30rpx 0;
+box-sizing: border-box;}
+.pickertime{display: inline-block;}
+.selectdate{
+  margin-right: 20rpx;
+  font-size: 32rpx;
+  color: #888FA1;
+  }
+.sectionitem{overflow: hidden;display: inline-block;width: (calc(100% - 115rpx))}
+.hengxian{color: #666;margin:0 20rpx;}
+
+/* 下拉选择 */
+
+.rowbox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing:border-box;
+  border-bottom: 1px solid #e9eaea;
+  display: flex;
+  align-items:center;
+  font-size: 32rpx;
+}
+.rowtitle{
+  color:#888FA1;
+  margin-right:30rpx;
+  width: 160rpx;
+}
+.jinebox{
+  width: calc(100% - 240rpx);
+}
+.searchBtn{
+  width: 86%;
+  height:70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-image:linear-gradient(to right,#f0904d,#ed7142); 
+  color: #fff;
+  font-size: 36rpx;
+  border-radius: 30rpx;
+  margin:30rpx auto;
+}
+.reset{
+  font-size: 36rpx;
+  color: #888FA1;
+  text-align: center;
+  padding: 30rpx 0rpx;
+}
+
+/* 内容列表 */
+
+.contentbox{
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  margin-top: 20rpx;
+  border-radius: 25rpx;
+}
+.contenttitle{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30rpx 3%;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  padding-bottom: 0 !important;
+}
+.titleleft{
+  width: 65%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.linebk{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  display: inline-block;
+  border-radius: 10rpx;
+  margin-right:5rpx; 
+}
+.contenttitle .price{
+  color: #10BBBB;
+  width: 35%;
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  text-align: right;
+}
+.contenttitle .proSize{
+  font-size: 24rpx;
+}
+.contentitem{
+  width: 100%;
+  padding:30rpx 3%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea; 
+  font-size: 24rpx;
+  padding-top: 20rpx !important;
+}
+.contentitem .controw{
+  width: 100%;
+  display: flex;
+  font-size: 28rpx;
+  justify-content: space-between;
+  color: #888FA1;
+  padding-left: 15rpx;
+  box-sizing: border-box;
+}
+.couponName{
+  color: #888FA1;
+}
+.controw .isgive{
+  color: #FF4F4F;
+}
+.midbox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+.picBox{
+  width: 150rpx;
+  height: 120rpx;
+  overflow: hidden;
+  border-radius: 4rpx;
+  align-items: top;
+}
+.picBox image{
+  width: 100%;
+  height: 100%;
+}
+.lefBox{
+  width: calc(100% - 170rpx);
+  margin-left: 20rpx;
+  color: #888FA1;
+  font-size: 24rpx;
+}
+.titleDesc{
+  margin-right: 20rpx;
+  margin-left: 15rpx;
+  color: #2B2D30;
+}
+.guicount{
+  color: #2B2D30;
+  margin-top: 10rpx;
+}
+.guicount .spec{
+  display: inline-block;
+  padding-right: 20rpx;
+  margin-right: 20rpx;
+  border-right: 1px solid #d5d5d6;
+}
+.lefBtn{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.lefBtn .lefBtnitem{
+  padding: 5rpx 10rpx;
+  border-radius:4rpx;
+  border: 1px solid #888fa1; 
+  margin-right: 10rpx;
+  font-size: 20rpx;
+}
+.priceBox{
+  width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 24rpx;
+  color: #2B2D30;
+  margin-top: 20rpx;
+}
+.priceItem{
+  margin-right: 40rpx;
+}
+.priceBox .pricesz{
+  color:#FF4F4F; 
+}
+
+
+.mgtop10{
+  margin-top: 10rpx;
+}
+.btnbox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  border-top: 1px solid #e9eaea;
+}
+.inwrapbtn{
+  display:flex;
+  just-content:space-between;
+  width: 100%;
+}
+
+.sortxh{
+  padding:10rpx 25rpx;
+  box-sizing: border-box;
+  color: #FF6930;
+  background:#ffe1d6;
+  border-top-right-radius: 24rpx;
+  border-bottom-right-radius: 24rpx;
+  margin-right: 30rpx;
+}
+.lefbtnbox{
+  display: flex;
+  justify-content: flex-end; 
+  width: 50%;
+}
+.btnbox2{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20rpx 3%;
+  box-sizing: border-box;
+}
+.btnitem{
+  padding: 10rpx 35rpx;
+  box-sizing: border-box;
+  border:1px solid #d5d5d6;
+  color:#2B2D30;
+  font-size: 24rpx; 
+  border-radius: 35rpx;
+  margin-left: 10rpx;
+}
+.fafang{
+  margin: 0rpx;
+  margin-left: 10rpx;
+}
+.switchstatus{
+  color:#FF6930;
+  font-size: 28rpx;
+  margin-left:20rpx; 
+}
+.noswitchstatus{
+  color:#888FA1;
+  font-size: 28rpx;
+  margin-left:20rpx; 
+}
+.nodata{
+  width: 100%;
+  height: 700rpx;
+  background: #fff;
+  color: #2B2D30;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delbtn{
+  margin-right: 2%;
+}
+.editbtn{
+  margin-right: 2%;
+}
+.switchwrap{
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.stopen{
+    display: inline-block;
+    transform: rotate(90deg);
+    position: relative;
+    top: -6rpx;
+  }
+.stclose{
+    display: inline-block;
+    transform: rotate(-90deg);
+    position: relative;
+    top: 8rpx;
+  }
+  .btnbox .icon-wangyou{
+   font-size: 24rpx;
+   margin-left: 5rpx;
+  }
+
+
+/* swtich整体大小 */
+.wx-switch-input{
+  width: 80rpx !important;
+  height: 48rpx !important;
+}
+/* false的样式 */
+.wx-switch-input::before{
+  width: 80rpx !important;
+  height: 48rpx !important;
+}
+/* true的样式 */
+.wx-switch-input::after{
+  width: 45rpx !important;
+  height: 46rpx !important;
+}
+
+.addCard{
+  font-size:36rpx;
+  color: #fff;
+  width: 100%;
+  height:98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;  
+  background-image:linear-gradient(to right,#f0904d,#ed7242);
+}
+
+
+.searchblock{
+  overflow: hidden;
+  width: 100%;
+  margin-top: 72rpx;
+}
+.inlinebox{
+  display: inline-block;
+}
+.searitembox{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 15rpx 30rpx;
+  box-sizing: border-box;
+  border-radius: 25rpx;
+  font-size:28rpx; 
+  margin-bottom: 20rpx;
+}
+.searTitle{
+  color:#797f92; 
+}
+.desc{
+  margin-left: 10rpx;
+  color: #212325;
+}
+.closetjbox{
+  width: 35rpx;
+  height: 35rpx;
+  overflow: hidden;
+  margin-left: 10rpx;
+}
+.closetjbox image{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+.saleDoalog{
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9;
+}
+.saleContent{
+  background: #fff;
+  width: 80%;
+  height:470rpx;
+  position: fixed;
+  top: 200rpx;
+  left: 0;
+  right: 0;
+  margin: auto; 
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  z-index: 10;
+}
+
+.diotitle{
+  text-align: center;
+  margin: 20rpx 0;
+}
+.diarow{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20rpx 0;
+}
+.saleContent .rowtitle{
+  width:155rpx; 
+  text-align: right;
+  margin-right: 10rpx;
+}
+
+.inputbox{
+  width: calc(100% - 190rpx);
+}
+
+.inputbox input,.inputbox2 input{
+  border: 1px solid #d7d7d7;
+  height: 60rpx;
+  line-height: 30rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.inputbox textarea,.inputbox2 textarea{
+  border: 1px solid #d7d7d7;
+  height: 120rpx;
+  line-height: 40rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.diabtnbox{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 25rpx;
+}
+.refusebtn{
+  padding: 10rpx 25rpx;
+  border: 1px solid #bcbcbc;
+  border-radius: 10rpx;
+}
+.adoptbtn{
+  padding: 10rpx 25rpx;
+  border-radius: 10rpx;
+  background: #409eff;
+  color: #fff;
+  margin-left:15rpx; 
+}
+

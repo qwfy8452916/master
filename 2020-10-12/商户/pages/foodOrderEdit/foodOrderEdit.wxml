@@ -1,0 +1,45 @@
+<!--pages/foodOrderEdit/foodOrderEdit.wxml-->
+
+<view class="wrap">
+  <view class="orderBox" wx:for="{{foodData}}" wx:key>
+      <view class="imgTextbox">
+         <view class="imgbox">
+            <image src="{{item.prodLogoUrl}}"></image>
+         </view>
+         <view class="orderdesc">
+            <view>{{item.prodShowName}}</view>
+            <view class="prodSpecs" wx:if="{{item.funcProdSpecId!=0}}">
+               <text class="specsbak">{{item.prodSpecs}}</text>
+            </view>
+         </view>
+      </view>
+      <view class="btnbox">
+         <view class="lefbox">
+            <text class="removebtn" bindtap="removebtn" data-index="{{index}}">移除</text>
+            <view class="jinebox">
+              ￥<input class="inputmoney" bindinput="inputmoney" value="{{item.prodPrice}}" data-index="{{index}}"></input>
+            </view>
+         </view>
+         <view class="rigbox">
+            <view class="reduce" bindtap="reduce" data-index="{{index}}">
+               <image src="../../img/reduce.png"></image>
+            </view>
+            <view class="number">{{item.prodCount}}</view>
+            <view class="plus" bindtap="plus" data-index="{{index}}">
+            <image src="../../img/plus.png"></image></view>
+         </view>
+      </view>
+  </view>
+
+</view>
+
+<view class="botbox">
+  <view class="addprod" bindtap="addProd" data-id="{{detailId}}">
+     <view class="addimg">
+       <image src="../../img/plus.png"></image>
+     </view>添加商品
+  </view>
+  <view class="surebtn" bindtap="surebtn" wx:if="{{authzData['F:MS_ORDER_FOODORDER_MODIFYSUB']}}">确定</view>
+</view>
+
+

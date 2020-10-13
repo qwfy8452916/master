@@ -1,0 +1,141 @@
+<view class="balance-top">
+  <view class="balance-topbox">
+    <view class="balance-topbox-l">
+      <view class="balance-font1">可提现余额(元)</view>
+      <view>{{balanceData}}</view>
+    </view>
+    <view class="balance-topbox-r" bindtap="gowithdraw">去提现 <image class='ye-img' src='../../img/my-bgimg2-1.png'></image></view>
+  </view>
+</view>
+
+
+<view class="amountWrap">
+   <view class="amountitem">
+      <view class="amountmon">{{totalData}}</view>
+      <view>收入总额</view>
+   </view>
+   <view class="amountitem">
+      <view class="amountmon">{{cashtotalData}}</view>
+      <view>提现总额</view>
+   </view>
+   <view class="amountitem" bindtap="waiteEnter">
+      <view class="amountmon">{{waitIncomeData}}</view>
+      <view>待入账金额></view>
+   </view>
+</view>
+
+
+<view class='tablewrap'>
+
+    <view class="detailmx">
+      <text class='detailmx-title'>收支明细</text>
+    </view>
+
+    <view class='hangitem hangitemedit' wx:for="{{detailList}}" wx:for-item="item" wx:key='index'>
+        <view class="hangitemeditlef">
+          <view>
+             <text wx:if="{{item.incomeType==1}}">分享奖励</text>
+             <text wx:if="{{item.incomeType==2}}">管理奖励</text>
+             <text wx:if="{{item.incomeType==3}}">红包</text>
+             <text wx:if="{{item.incomeType==4}}">补货费</text>
+             <text wx:if="{{item.incomeType==5}}">提现</text>
+           
+              <text class="statussty" wx:if="{{item.withdrawStatus==0 && item.incomeType==5}}">
+                  <text>处理中</text>
+              </text>
+              <text class="statussty" wx:if="{{item.withdrawStatus==2 && item.incomeType==5}}">
+                  <text>提现失败</text>
+              </text>
+           </view>
+           <view class="hangitemeditlef_time">
+              <span wx:if="{{item.incomeType==3}}">{{item.redPacketGrantTime}}</span>
+              <span wx:if="{{item.incomeType==4}}">{{item.replenishmentTime}}</span>
+              <span wx:if="{{item.incomeType==5}}">{{item.createdAt}}</span>
+              <span wx:if="{{item.incomeType==1 || item.incomeType==2}}">{{item.settlingTime}}</span>
+           </view>
+        </view>
+        <view class="hangitemeditrig" wx:if="{{item.incomeType!=5}}" bindtap="incomeRecordDetail" data-id="{{item.id}}">
+          <text wx:if="{{item.refundTags!=1}}">+</text>
+        {{item.incomeAmount}}
+         <text class="pointeven">></text>
+        </view>
+        <view class="hangitemeditrig expen" wx:if="{{item.incomeType==5 && item.withdrawStatus==1}}">
+          <text >-</text>
+        {{item.incomeAmount}}<text class="pointeven"></text></view>
+        <view class="hangitemeditrig deltimestatus" wx:if="{{item.incomeType==5 && item.withdrawStatus!=1}}">
+
+        {{item.incomeAmount}}<text class="pointeven"></text></view>
+
+    </view>
+
+</view>
+
+
+
+<!-- 
+<view class="balance-listbox">
+  <view class="paddAll borderB balance-listbox-top">收支明细</view>
+  <block wx:for='{{detailList}}' wx:for-item='item' wx:key="index">
+    <view class="paddAll borderB balance-listbox-li">
+      <view class="listbox-li-l">
+        <view class="li-font1">
+          <block wx:if='{{item.incomeType == 1}}'>分享奖励</block>
+          <block wx:elif='{{item.incomeType == 2}}'>管理奖励</block>
+          <block wx:elif='{{item.incomeType == 3}}'>红包</block>
+
+          <block wx:elif='{{item.incomeType == 5}}'>提现</block> 
+          <text wx:if="{{item.incomeType == 5}}">
+             <text class="li-font3" wx:if="{{item.withdrawStatus == 0}}">处理中</text><text class="li-font4" wx:if="{{item.withdrawStatus == 2}}">提现失败</text>
+          </text>
+        </view>
+        <view class="li-font2">{{item.createdAt}}</view>
+      </view>
+      <view class="listbox-li-r">
+        <text class="font-color1" wx:if="{{item.incomeType != 5}}"><block wx:if="{{item.incomeType != 5 && item.refundTags!=1}}">+</block>{{item.incomeAmount}}</text>
+        
+        
+        <text class="font-color3" wx:if="{{item.incomeType == 5 && item.withdrawStatus == 1}}"><block wx:if="{{item.incomeType != 5}}">+</block><block wx:else>-</block>{{item.incomeAmount}}</text>
+        <text class="font-color4" wx:if="{{item.incomeType == 5 && (item.withdrawStatus == 0 || item.withdrawStatus == 2)}}">{{item.incomeAmount}}</text>
+        <text wx:if="{{item.incomeType != 5}}" class="pointeven" data-id="{{item.id}}" bindtap="incomeRecordDetail">></text><text wx:else class="pointeven"></text>
+      </view>
+    </view>
+
+  </block>
+</view> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <view class="balance-listbox">
+  <view class="paddAll borderB balance-listbox-top">收支明细</view>
+  <block wx:for='{{userbalancedata.finCusIncomeExpenseDTOS}}' wx:for-item='item' wx:key="index">
+    <view class="paddAll borderB balance-listbox-li" bindtap="">
+      <view class="listbox-li-l">
+        <view class="li-font1">
+          <block wx:if='{{item.businessType == 1 || item.businessType == 2}}'>红包</block>
+          <block wx:elif='{{item.businessType == 3}}'>提现</block>
+          <block wx:elif='{{item.businessType == 4}}'>好物分享佣金</block>
+          <block wx:elif='{{item.businessType == 5}}'>订房分享佣金</block> 
+          <text class="li-font3" wx:if="{{item.status == 0}}">处理中</text><text class="li-font4" wx:if="{{item.status == 2}}">提现失败</text>
+        </view>
+        <view class="li-font2">{{item.createdAt}}</view>
+      </view>
+      <view class="listbox-li-r">
+        <text class="font-color1" wx:if="{{item.status == 1}}"><block wx:if="{{item.type == 1}}">+</block><block wx:else>-</block> {{item.amount}}</text>
+        <text class="font-color3" wx:elif="{{item.status == 2}}"><block wx:if="{{item.type == 1}}">+</block><block wx:else>-</block> {{item.amount}}</text>
+        <text class="font-color4" wx:elif="{{item.status == 0}}"><block wx:if="{{item.type == 1}}">+</block><block wx:else>-</block> {{item.amount}}</text>
+        <text wx:if="{{item.status == 1}}" class="pointeven" bindtap="incomeRecordDetail">></text>
+      </view>
+    </view>
+  </block>
+</view> -->

@@ -1,0 +1,247 @@
+/* pages/package/pages/functionProdAdd/functionProdAdd.wxss */
+page{
+  background: #f0f1f4;
+  border-top: 1px solid #e4e4e5;
+}
+.wrap{
+  width: 100%;
+  padding:0rpx 3% 150rpx 3%;
+  box-sizing: border-box;
+}
+.rowbox{
+  background: #fff;
+  width: 100%;
+  border-radius:20rpx;
+  margin-top: 20rpx;
+}
+.rowbox .itembox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e9eaea;
+}
+.rowbox .itemTitle{
+  font-size: 28rpx;
+  color: #888FA1;
+}
+.onetypeBox{
+  width: 100%;
+  /* display: flex; */
+  align-items: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+.onetypeBox:after{
+  content: "";
+  flex: auto;
+}
+.typeitem{
+  padding:10rpx 35rpx;
+  box-sizing: border-box; 
+  color: #888FA1;
+  font-size: 28rpx;
+  border-radius: 24rpx;
+  border:1px solid #d5d5d6;
+  margin-bottom: 30rpx;
+  text-align: center;
+  /* margin-right: 15rpx; */
+}
+.typeitemActive{
+  background: #ffe1d6;
+  color: #ff6930;
+  border: 0 !important;
+}
+.childrenBox{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+.childrenBox::after{
+  content: "";
+  flex: auto;
+}
+.childrenBox .childrenitem{
+   padding:10rpx 35rpx;
+  box-sizing: border-box; 
+  color: #888FA1;
+  font-size: 28rpx;
+  border-radius: 24rpx;
+  border:1px solid #d5d5d6;
+  margin-bottom: 30rpx;
+  text-align: center;
+  margin-right: 15rpx;
+}
+.childrenitemActive{
+  color: #10bbbb;
+  background: #d5f1eb;
+  border: 0;
+}
+.titleBox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #2B2D30;
+  border-bottom: 1px solid #e9eaea;
+}
+.linebak{
+  width: 8rpx;
+  height: 24rpx;
+  background: #10bbbb;
+  border-radius: 4rpx;
+  margin-right: 15rpx;
+}
+.hangBox{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+  font-size: 28rpx;
+  border-bottom: 1px solid #e9eaea;
+}
+.inhangbox{
+  width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: flex-start;
+  line-height: 44rpx;
+}
+.hangBox .hangTitle{
+  width: 130rpx;
+  margin-right: 30rpx;
+  flex-shrink:0;
+  font-size: 28rpx;
+  color: #888FA1;
+}
+.icontishi1{
+  position: absolute;
+  right: 4%;
+  top:30rpx;
+}
+.yihang{
+  width: 100% !important;
+  flex-basis: 100% !important;
+}
+.showName{
+  width: 100% !important;
+  flex-basis: 100% !important;
+  font-size: 24rpx;
+  color: #2B2D30;
+  margin-top: 20rpx;
+}
+.switchClose{
+  width: 100%;
+  background: #fff6f3;
+  color: #FF6930;
+  text-align: center;
+  padding: 20rpx 0rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.openclose{
+  height: 275rpx;
+  overflow: hidden;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.stopen{
+    display: inline-block;
+    transform: rotate(90deg);
+    position: relative;
+    top: -10rpx;
+    font-size: 28rpx;
+    margin-left: 10rpx;
+  }
+.stclose{
+    display: inline-block;
+    transform: rotate(-90deg);
+    position: relative;
+    top: 10rpx;
+    font-size: 28rpx;
+    margin-left: 10rpx;
+  }
+
+
+
+
+/* 下拉选择 */
+
+.pickbox{
+    padding: 30rpx 4%;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e9eaea;
+}
+.pickbox .pickeritem{
+  display: inline-block;
+  width:160rpx;
+  text-align: left;
+  margin-right: 20rpx;
+  color:#888FA1;
+  font-size: 32rpx;
+  }
+.alignlef{
+  float: left;
+  }
+.alignrig{
+  float: right;
+}
+.placems{
+  color:#C5C9CF; 
+  font-size: 28rpx;
+}
+  .placemsall{
+   color: #FF6930;
+  }
+.iconwangyou{
+  color: #888c8f;
+  font-size: 28rpx;
+}
+
+/* 下拉选择 */
+.surebtn{
+  width: 92%;
+  padding: 30rpx 0rpx;
+  box-sizing: border-box;
+  background-image: linear-gradient(to right,#f0904d,#ed7142);
+  color: #FFFFFF;
+  text-align: center;
+  border-radius:20rpx;
+  position: fixed;
+  bottom: 30rpx;
+  right: 0;
+  left: 0;
+  margin: auto;
+  font-size: 36rpx;
+}
+
+.sureBtn{
+  font-size: 36rpx;
+  color: #fff;
+  padding:30rpx 0rpx; 
+  width: 94%;
+  background-image: linear-gradient(to right,#f08f4d,#ed7142);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  border-radius: 20rpx;
+  z-index: 9;
+}
+
+

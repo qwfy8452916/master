@@ -1,0 +1,22 @@
+<block wx:if="{{type}}">
+  <block wx:for="{{evaluatelist}}" wx:for-item="item" wx:key="index">
+    <view class="paddAll mgB20 evaluation">
+      <view class="evaluationT2">
+        <view class="evaluationT">
+          <image class="userimg" src="{{item.avatarUrl != null?item.avatarUrl:'../../img/icon-img10.png'}}"></image>
+          <text class="font-username">{{item.nickName}}</text>
+        </view>
+      </view>
+      <view class="conttent-font">{{item.remarkContent}}</view>
+      <view class="imglist" wx:if="{{item.remarkImageDTOS !=null}}">
+        <block wx:for="{{item.remarkImageDTOS}}" wx:for-item="imgitem" wx:key="index">
+          <image src="{{imgitem.imageUrl}}" mode="aspectFill" data-index="{{index}}" data-imgarr="{{item.remarkImageDTOS}}" bindtap="previewImg"></image>
+        </block>
+      </view>
+      <view class="time-font">{{item.createdAt}}</view>
+    </view>
+  </block>
+</block>
+<block wx:else>
+  <view class="font-null">此商品暂无评价</view>
+</block>

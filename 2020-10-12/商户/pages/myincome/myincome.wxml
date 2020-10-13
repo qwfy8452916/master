@@ -1,0 +1,111 @@
+<!--pages/myincome/myincome.wxml-->
+<!-- <view class='carryrecord'>
+   <text bindtap='linkrecord'><text class='iconfont iconye'></text>提现记录</text>
+</view> -->
+<view class='moneywrap'>
+   <!-- <image class='picbeijing' src="../../img/getcash.png"></image> -->
+   <view class='hangblock'>
+      <view class="hangblock_lef">
+         <view class='danwei'>可提现余额(元)</view>
+         <text class='moneynumber'>{{jine}}</text>
+      </view>
+      <view class="hangblock_rig" bindtap='linkcarry'>
+         <view class="btnbox" wx:if="{{authzData['F:MS_MY_MYACCOUNT_WITHDRAW']}}">
+           <text class="getcashBtn">去提现</text>
+           <text class="iconfont iconwangyou"></text>
+         </view>
+      </view>
+        
+       <!-- <view class='tixianniu' bindtap='linkcarry'>提现</view> -->
+   </view>
+</view>
+
+<view class="amountWrap">
+   <view class="amountitem">
+      <view class="amountmon">{{totalData}}</view>
+      <view>收入总额</view>
+   </view>
+   <view class="amountitem">
+      <view class="amountmon">{{cashTotal}}</view>
+      <view>提现总额</view>
+   </view>
+   <view class="amountitem" bindtap="waiteEnter">
+      <view class="amountmon">{{waitTotalData}}</view>
+      <view>待入账金额></view>
+   </view>
+</view>
+
+<view class='tablewrap'>
+
+    <view class="detailmx">
+      <text class='detailmx-title'>收支明细</text>
+      
+            <!-- <picker
+              class='riqiselect'
+              mode="date"
+              value="{{date}}"
+              start="{{startdate2}}"
+              end="{{startdate}}"
+              bindchange="bindDateChange"
+            >
+            <text class='iconfont iconriqi'></text>
+            <text>{{startdate}}</text>
+            </picker> -->
+    </view>
+
+    <view class='hangitem hangitemedit' wx:for="{{buhuodetail}}" wx:key>
+        <view class="hangitemeditlef">
+          <view>
+             <text wx:if="{{item.incomeType==1}}">分享奖励</text>
+             <text wx:if="{{item.incomeType==2}}">管理奖励</text>
+             <text wx:if="{{item.incomeType==3}}">红包</text>
+             <text wx:if="{{item.incomeType==4}}">补货费</text>
+             <text wx:if="{{item.incomeType==5}}">提现</text>
+             <text wx:if="{{item.incomeType==6}}">最优弹性价提成</text>
+           
+              <text class="statussty" wx:if="{{item.withdrawStatus==0 && item.incomeType==5}}">
+                  <text>处理中...</text>
+              </text>
+              <!-- <text class="statussty" wx:if="{{item.withdrawStatus==1 && item.incomeType==5}}">
+                  <text>成功</text>
+              </text> -->
+              <text class="statusfail" wx:if="{{item.withdrawStatus==2 && item.incomeType==5}}">
+                  <text>提现失败</text>
+              </text>
+           </view>
+           <!-- <view class="hangitemeditlef_time">{{item.replenishmentTime}}</view> -->
+           <view class="hangitemeditlef_time">
+              <span wx:if="{{item.incomeType==3}}">{{item.redPacketGrantTime}}</span>
+              <span wx:if="{{item.incomeType==4}}">{{item.replenishmentTime}}</span>
+              <span wx:if="{{item.incomeType==5}}">{{item.createdAt}}</span>
+              <span wx:if="{{item.incomeType==1 || item.incomeType==2 || item.incomeType==6}}">{{item.settlingTime}}</span>
+           </view>
+        </view>
+        <view class="hangitemeditrig" wx:if="{{item.incomeType!=5}}" bindtap="incomeRecordDetail" data-id="{{item.id}}">
+          <text>+</text>
+        {{item.incomeAmount}}
+         <text class="pointeven">></text>
+        </view>
+        <view class="hangitemeditrig expen" wx:if="{{item.incomeType==5 && item.withdrawStatus==1}}">
+          <text >-</text>
+        {{item.incomeAmount}}<text class="pointeven"></text></view>
+        <view class="hangitemeditrig deltimestatus" wx:if="{{item.incomeType==5 && item.withdrawStatus!=1}}">
+          <!-- <text >-</text> -->
+        {{item.incomeAmount}}<text class="pointeven"></text></view>
+        <!-- <text bindtap="incomeRecordDetail" data-id="{{item.id}}" class="pointeven" wx:if="{{item.incomeType!=5}}">></text> -->
+        <!-- {{item.incomeAmount}}</view><text bindtap="incomeRecordDetail" data-id="{{item.id}}" class="pointeven">></text> -->
+    </view>
+    <!-- <view class='hangitem hangitemedit' wx:for="{{3}}">
+        <view class="hangitemeditlef">
+           <view>补货费<text class="statussty">处理中</text></view>
+           <view class="hangitemeditlef_time">2020-03-12 11:20:15</view>
+        </view>
+        <view class="hangitemeditrig">+0.2</view>
+    </view> -->
+
+    <!-- <view class='hangitem' wx:for="{{buhuodetail}}" wx:key>
+       <text class='datetime'>{{item.replTime}}</text>
+       <text class='floorroom'>{{item.roomFloor}}-{{item.roomCode}}-{{item.latticeCode}}</text>
+       <text class='jine'>+{{item.replAmount}}</text>
+    </view> -->
+</view>

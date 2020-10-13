@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "客房协议价 Reservation",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "rili": "../../component/component",
+    "tabbar": "../common/tabbar/tabbar",
+    "pop": "../common/pop/pop",
+    "redbagact": "../common/redbagact/redbagact",
+    "newcomer": "../common/newcomer/newcomer",
+    "couponbox": "../common/couponbox/couponbox"
+  }
+}

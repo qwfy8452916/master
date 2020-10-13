@@ -1,0 +1,111 @@
+<!--pages/incomeRecordDetail/incomeRecordDetail.wxml-->
+<view class="wrap">
+   <view class="box">
+     <view class="title">
+       <view class="titlecol"></view>
+       订单信息
+     </view>
+     <view class="section">
+        <view class="subTitle">分成身份</view>
+        <view class="subInfo">
+            <text wx:if="{{incomeDetailData.revenueAs==3}}">酒店</text>
+            <text wx:if="{{incomeDetailData.revenueAs==4}}">供应商</text>
+        </view>
+     </view>
+     <view class="region">
+        <view class="regionbox">
+           <view class="regionboxTitle">订单类型</view>
+           <view class="regionboxInfo">{{incomeDetailData.funcName}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">退款标记</view>
+           <view class="regionboxInfo">
+             <text wx:if="{{incomeDetailData.refundTags===0}}">否</text>
+             <text wx:if="{{incomeDetailData.refundTags===1}}">是</text>
+           </view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">订单号</view>
+           <view class="regionboxInfo">{{incomeDetailData.funcName}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">配送单号</view>
+           <view class="regionboxInfo">{{incomeDetailData.delivCode}}</view>
+        </view>
+     </view>
+     <view class="regionRow">
+         <view class="regionRowTitle">楼层房号</view>
+         <view class="regionRowInfo">{{incomeDetailData.roomFloor}}-{{incomeDetailData.roomCode}}</view>
+     </view>
+   </view>
+
+   <view class="box">
+     <view class="title">
+       <view class="titlecol"></view>
+       商品信息
+     </view>
+     <view class="section">
+        <view class="subTitle">商品名称</view>
+        <view class="subInfo">{{incomeDetailData.prodName}}</view>
+     </view>
+     <view class="field">
+        <view class="fieldTitle">商品显示名称</view>
+        <view class="fieldInfo">{{incomeDetailData.prodShowName}}</view>
+     </view>
+     <view class="region">
+        <view class="regionbox">
+           <view class="regionboxTitle">规格</view>
+           <view class="regionboxInfo">{{incomeDetailData.prodSpecs}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">商品数量</view>
+           <view class="regionboxInfo">{{incomeDetailData.prodCount}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">商品金额</view>
+           <view class="regionboxInfo">{{incomeDetailData.prodAmount}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">实付金额</view>
+           <view class="regionboxInfo">{{incomeDetailData.actualPay}}</view>
+        </view>
+     </view>
+   </view>
+
+   <view class="box">
+     <view class="title">
+       <view class="titlecol"></view>
+       入账信息
+     </view>
+     <view class="section">
+        <view class="subTitle">入账金额</view>
+        <view class="subInfo">{{incomeDetailData.revenueAmount}}</view>
+     </view>
+     <view class="region">
+        <view class="regionbox">
+           <view class="regionboxTitle">下单时间</view>
+           <view class="regionboxInfo">{{incomeDetailData.payCompleteTime}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">结算时间</view>
+           <view class="regionboxInfo">{{incomeDetailData.settlingTime}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">顾客ID</view>
+           <view class="regionboxInfo">{{incomeDetailData.customerId}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">昵称</view>
+           <view class="regionboxInfo">{{incomeDetailData.customerName}}</view>
+        </view>
+        <view class="regionbox">
+           <view class="regionboxTitle">联系电话</view>
+           <view class="regionboxInfo">{{incomeDetailData.customerPhone}}</view>
+        </view>
+     </view>
+   </view>
+
+</view>
+
+
+

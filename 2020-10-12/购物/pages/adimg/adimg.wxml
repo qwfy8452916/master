@@ -1,0 +1,1 @@
+<image class="ad-img" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}adimg.jpg"></image>

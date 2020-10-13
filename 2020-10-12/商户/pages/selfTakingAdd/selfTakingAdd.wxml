@@ -1,0 +1,24 @@
+<!--pages/selfTakingAdd/selfTakingAdd.wxml-->
+<view class="wrap">
+<form bindreset="formRest" bindsubmit="formSubmit">
+   <view class="rowbox">
+      <view class="titlebox">
+          <view class="titletext">自提点名称<text class="star">*</text></view>
+        </view>
+      <view class="inputbox">
+         <input maxlength="30" name="pointName" value="{{form.pointName}}" placeholder="请输入自提点名称" placeholder-style="color:#C5C9CF"></input>
+      </view>
+   </view>
+   <view class="rowbox">
+      <view class="titlebox">
+         <view class="titletext">自提点说明<text class="star">*</text></view>
+      </view>
+      <view class="inputbox">
+         <input maxlength="250" placeholder="请输入自提点说明" name="pointInstruction" value="{{form.pointInstruction}}" placeholder-style="color:#C5C9CF"></input>
+      </view>
+   </view>
+   <button class="submitbtn" form-type="submit">确定</button>
+</form>
+</view>
+
+

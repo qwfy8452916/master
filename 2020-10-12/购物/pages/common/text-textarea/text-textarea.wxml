@@ -1,0 +1,4 @@
+<view class="inp-box-flex inp-box-flex2">
+  <view class='form-inputname form-inputname2'>{{forminfo.showName}}<text wx:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text></view>
+  <textarea class="form-textarea" maxlength='255' bindinput="enterValue" placeholder-style="color: #bbbec4;" placeholder="{{forminfo.valuePlaceholder}}" />
+</view>

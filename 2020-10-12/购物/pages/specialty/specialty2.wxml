@@ -1,0 +1,94 @@
+<swiper autoplay='true' interval='3000' duration='500' display-multiple-items='1' class="bannerbox" style="height:{{imgheights[current]}}rpx;" bindchange="bindchange">
+  <!-- <swiper-item class="swiperitembox">
+    <image src="{{hotelAddImagesfirst.imageUrl}}" class="slide-image" mode='widthFix' />
+    <view class='jdinfobox'>
+      <view class='banner-img' bindtap="hotelstoryfun"><image src='../../img/index-img1.png' mode='widthFix'></image></view>
+      <view class='hotelinfobox'>
+        <text class='jd-name' style="margin-top: {{windowHeight > 700?'160rpx':'196rpx'}};">{{hotelinfo.hotelName}}</text>
+        <view style="margin-bottom: 20rpx;">
+          <text wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class='iconfont icon-star_full stars' style='color: {{themecolor.skintone}};'></text>
+        </view>
+        <view class='labellist'>
+            <view class='labelbox' wx:if="{{hotelDecorationYear != ''}}">{{hotelinfo.hotelDecorationYear}}年装修</view>
+            <view class='labelbox' wx:if="{{hotelinfo.isHasPark==1}}">停车位</view>
+            <view class='labelbox' wx:if="{{hotelinfo.hotelStyle != ''}}">{{hotelinfo.hotelStyle}}</view>
+        </view>
+      </view>
+    </view>
+  </swiper-item> -->
+  <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+    <swiper-item class="swiperitembox">
+      <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+    </swiper-item>
+  </block>
+</swiper>
+<view wx:if="{{showlisttype == true}}">
+  <block wx:for="{{alllistdata}}" wx:for-item="item" wx:key="index">
+    <view class="mgT20 bgfff cardcouponbox">
+      <view class="paddAll20 flexboxstart borderB cardcouponbox-top">
+        <view class="linebox"></view>{{item.categoryName}}
+      </view>
+      <scroll-view style="width: 92%;padding: 30rpx 30rpx;" scroll-x>
+        <view class="cardcouponbox-b">
+          <block wx:for="{{item.prods}}" wx:for-item="item2" wx:key="index">
+            <view class="cardcouponbox-b-li" data-funcprodid="{{item2.funcProdId}}" data-categoryid='{{item.categoryId}}' bindtap="details">
+              <image class="cardcouponbox-b-li-img" src="{{item2.prodLogoUrl}}"></image>
+              <view class="cardcouponbox-b-li-font1">
+                <image wx:if='{{item2.actSecDiscountSettingId}}' class="activityiconfont" mode="widthFix" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{item2.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+                {{item2.prodShowName}}
+                <view class="redpack" wx:if="{{item2.isHasRed}}" catchtap='getRules'>
+                  <image src="../../img/hongbao.png" style="width:12px;height:12px"/>
+                </view>
+              </view>
+              <view class="cardcouponbox-b-li-font2">¥ {{item2.prodRetailPrice}} <text class="foodbox-r-li-box-font4" wx:if="{{item2.prodMarketPrice != 0 && item2.prodMarketPrice != item2.prodRetailPrice}}">¥ {{item2.prodMarketPrice}}</text>
+                <!-- <image wx:if="{{item2.isHasRed == 1}}" class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>        -->
+                <image wx:if="{{item2.isHasCoupon == 1}}" class="icon-discounts" catchtap='get_couponlist' data-proddata="{{item2}}" mode="widthFix" src="../../img/couponicon.png"></image>
+              </view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+  </block>
+</view>
+<view wx:else class="none-font">暂未开放，敬请期待</view>
+<!-- <view class="redRule" wx:if="{{ifshowRules}}" catchtouchmove='true'>
+  <view class="redCenter">
+    <view class="redCenter1">
+      <image src="../../img/redRule.png" class="imagebox" style="width:285px" mode="widthFix"/>
+      <view class="ruleBox">
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可多人领取</view>
+            <view class="itemTitle2">下单满{{ruleData.amount}}元即获得现金红包奖励</view>
+          </view>
+        </view>
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/24hour.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">有效期{{ruleData.hour}}小时</view>
+            <view class="itemTitle2">超过{{ruleData.hour}}小时未领取即为失效</view>
+          </view>
+        </view>
+        <view class="ruleboxItem" style="border:none">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可直接提现</view>
+            <view class="itemTitle2">领取成功的红包可直接提现到微信</view>
+          </view>
+        </view>
+        <view bindtap="closeRule" class="iKnow">我懂了！</view>
+      </view>
+    </view>
+    <image bindtap="closeRule" src="../../img/my-btnimg23-1.png" style="width:33px;height:33px;"/>
+  </view>
+</view> -->
+
+<image wx:if="{{adtype == 1}}" class="ad-img" mode="widthFix" style="margin-bottom: 120rpx;" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>

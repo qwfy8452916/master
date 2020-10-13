@@ -1,0 +1,5 @@
+<!--pages/suerForm/suerForm.wxml-->
+<my-form identitydata="{{identitydata}}" forminfo="{{exform}}" id="zujian" bind:myevent="onMyEvent"></my-form>
+<view bindtap="dianji">点击</view>
+
+

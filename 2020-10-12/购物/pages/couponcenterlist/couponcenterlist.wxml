@@ -1,0 +1,15 @@
+<block wx:if="{{listdata.length > 0}}">
+  <block wx:for="{{listdata}}" wx:for-item="item" wx:key="index">
+    <view class="flexbox libox" bindtap="detailfun" data-id="{{item.id}}">
+      <view class="libox-l">
+        <view class="font-name">{{item.actName}}</view>
+        <view class="flexboxstart">
+          <view class="fonttext2 borderR">领用时间  {{item.createdAt}}</view>
+          <view class="fonttext2">领用数量 {{item.gainCount}}</view>
+        </view>
+      </view>
+      <image class="libox-r" src="../../img/my-bgimg2.png"></image>
+    </view>
+  </block>
+</block>
+<view wx:else class="fonttext">您暂无领券记录</view>

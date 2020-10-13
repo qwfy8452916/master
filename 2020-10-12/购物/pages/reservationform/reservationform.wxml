@@ -1,0 +1,202 @@
+<!-- <view class="paddAll borderB">
+  <view class="roomname-font">{{roomdetail.resourceName}}</view>
+  <view class="mgB20 kfinfobox">
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img1.png"></image>
+      <text class="kfinfobox-li-text">{{roomdetail.roomSize}}㎡</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img2.png"></image>
+      <text class="kfinfobox-li-text">可住{{roomdetail.livePeople}}人</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img3.png"></image>
+      <text class="kfinfobox-li-text">{{roomdetail.floor}}层</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img4.png"></image>
+      <text class="kfinfobox-li-text">{{roomdetail.bedTypeName}} {{roomdetail.bedWidth}}米</text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img6.png"></image>
+      <text class="kfinfobox-li-text">
+        <block wx:if="{{roomdetail.windowFlag == 0}}">无窗</block>
+        <block wx:elif="{{roomdetail.windowFlag == 1}}">有窗</block>
+        <block wx:elif="{{roomdetail.windowFlag == 2}}">飘窗</block>
+        <block wx:elif="{{roomdetail.windowFlag == 3}}">落地窗</block>
+      </text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img7.png"></image>
+      <text class="kfinfobox-li-text">
+        <block wx:if="{{roomdetail.breakfastFlag == 0}}">无早餐</block>
+        <block wx:elif="{{roomdetail.breakfastFlag == 1}}">单早</block>
+        <block wx:elif="{{roomdetail.breakfastFlag == 2}}">双早</block>
+      </text>
+    </view>
+    <view class="kfinfobox-li">
+      <image class="kfinfobox-li-img" src="../../img/kfyd-img8.png"></image>
+      <text class="kfinfobox-li-text">
+        <block wx:if="{{roomdetail.bedAddFlag == 0}}">不支持加床</block>
+        <block wx:elif="{{roomdetail.bedAddFlag == 1}}">无偿加床</block>
+        <block wx:elif="{{roomdetail.bedAddFlag == 2}}">有偿加床 {{roomdetail.bedAddPrice}}/张</block>
+      </text>
+    </view>
+  </view>
+</view>
+<block wx:if="{{roomdetail.isHourRoom == 0}}">
+  <view class="timebox borderB">
+    <view class="timebox-w">
+      <text class="font-text">入住时间</text>
+      <text class="font-text2">{{starTime}} {{starweek}}</text>
+    </view>
+    <view class="timebox-w2">
+      <text class="font-textbox">共<text class="font-color1">{{day}}</text>晚</text>
+    </view>
+    <view class="timebox-w">
+      <text class="font-text">离店时间</text>
+      <text class="font-text2">{{endTime}} {{endweek}}</text>
+    </view>
+  </view>
+</block> -->
+<view class="roomsinfo">
+  <view class="roomsinfo1">{{roomdetail.resourceName}}</view>
+  <view class="roomservice">
+    <view class="roomservice1">大/双床</view>
+    <view class="roomservice1">无线WIFI</view>
+    <view class="roomservice1">免费宽带</view>
+    <view class="roomservice1">
+        <block wx:if="{{roomdetail.breakfastFlag == 0}}">无早餐</block>
+        <block wx:elif="{{roomdetail.breakfastFlag == 1}}">单早</block>
+        <block wx:elif="{{roomdetail.breakfastFlag == 2}}">双早</block>
+      </view>
+  </view>
+</view>
+<view wx:if="{{roomdetail.isHourRoom == 0}}" class="roomtime">
+  <view class="roomtime1">{{day}}晚</view>
+  <view class="roomtime2">{{starTime}}（{{starweek}}） 至 {{endTime}}（{{endweek}}）</view>
+</view>
+<block wx:else>
+  <view class="hourlyroom borderB">
+    <view class="font-text2 mgB10">{{roomdetail.starTime}} {{roomdetail.starweek}}</view>
+    <view class="font-text2">可住时段：{{roomdetail.hourRoomStartTime}}-<block wx:if='{{roomdetail.hourRoomEndTime == "00:00"}}'>24:00</block><block wx:else>{{roomdetail.hourRoomEndTime}}</block>,连住{{roomdetail.hourRoomDuration}}小时</view>
+  </view>
+</block>
+<view class="paddAll mgB20 promptbox">
+  <image class="promptbox-img" src="../../img/icon-img14.png"></image>
+  <text class="promptbox-text" wx:if="{{roomdetail.isCancellable == 1}}">此订单{{starTime}} <block wx:if="{{roomdetail.cancelDeadline != null}}"><block wx:if='{{roomdetail.cancelDeadline == "00:00"}}'>24:00</block><block wx:else> {{roomdetail.cancelDeadline}}</block></block>前可免费取消</text>
+  <text class="promptbox-text" wx:else>此订单不可取消</text>
+</view>
+<view class="formbox">
+  <view class="form-li">
+    <text class="form-li-L">房间数<text class="font-color3">*</text></text>
+    <input class="form-li-R" type="number" bindinput="roomnumfun" value="{{roomnum}}" placeholder="请填写房间数"  placeholder-class="font-mr"></input>
+  </view>
+  <view class="form-li mgB20" bindtap="togglecoupon" wx:if="{{coupontype == true}}">
+    <view class="form-li-L">优惠券</view>
+    <view class="couponjh-r">
+      <block wx:if="{{coupon_selected.length>0}}">
+        <block wx:if="{{coupon_selected[0].discountWay == 2}}">满{{coupon_selected[0].discountMinBuyMoney}}打{{(coupon_selected[0].couponDiscount/10)}}折,最高减{{coupon_selected[0].discountMaxMoney}}元</block>
+        <block wx:else>满{{coupon_selected[0].useLimitMoney}}减{{coupon_selected[0].reduceMoney}}</block>
+      </block>
+      <block wx:else>未选择优惠券</block>
+      <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+    </view>
+  </view>
+  <view class="form-li">
+    <text class="form-li-L">联系人<text class="font-color3">*</text></text>
+    <input class="form-li-R" type="text" bindinput="contactfun" placeholder="请输入住客姓名" placeholder-class="font-mr"></input>
+  </view>
+  <view class="form-li">
+    <text class="form-li-L">手机号<text class="font-color3">*</text></text>
+    <input class="form-li-R" type="number" maxlength="11" bindinput="telfun" placeholder="请填写手机号码" placeholder-class="font-mr"></input>
+  </view>
+  <view class="form-li" wx:if="{{roomdetail.isHourRoom == 1}}">
+    <text class="form-li-L">入住时间<text class="font-color3">*</text></text>
+    <picker class="form-li-R" mode="time" value="{{userchecktime}}" start="{{currenttime}}" end="{{deadline}}" bindchange="bindTimeChange">
+      <view class="flexbetween">
+        <!-- <view class="arriveTime">
+          <text class="time">{{userchecktime}}</text>
+          <image src="../../img/toright.png" style="width:14px;" mode="widthFix"/>
+        </view> -->
+        <view>
+          {{userchecktime}} - {{userdeparturetime}}
+        </view>
+        <view class="promptbox" wx:if="{{prompttype}}">
+          <image class="promptbox-img" src="../../img/icon-img14.png"></image>
+          <text class="promptbox-text">入住时间不足{{roomdetail.hourRoomDuration}}小时</text>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="form-li">
+    <text class="form-li-L" style="width:120px">预计到店时间<text class="font-color3">*</text></text>
+    <picker class="form-li-R" mode="time" value="{{arrivalTime}}" bindchange="bindTimeChange1">
+      <view class="flexbetween">
+        <view class="arriveTime">
+          <text class="time">{{arrivalTime}}</text>
+          <image src="../../img/toright.png" style="width:14px;" mode="widthFix"/>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="form-li" style="display:flex;align-items:center">
+    <text class="form-li-L remarklabel" decode="{{true}}">备&nbsp;&nbsp;&nbsp;注</text>
+    <textarea wx:if="{{remarktype}}" class="form-li-R remarkinp" maxlength="255" bindinput="remarkfun" auto-height placeholder="自动变高" placeholder="请填写备注（选填）" placeholder-class="font-mr" value="{{remark}}" />
+  </view>
+</view>
+
+<view class="footbox borderT">
+  <view class="footbox-L">
+    在线付：
+    <view>
+      <view class="font-color3">¥ {{totalPrice_}}</view>
+      <view class="fontsize" wx:if="{{discountmoney > 0}}">已优惠 ¥{{discountmoney}}</view>
+    </view>
+    <view class="font-color2 font-mx" data-mxboxtype="{{mxboxtype}}" bindtap="showmx">明细</view>
+  </view>
+  <view wx:if="{{topaytype == true}}" class="btnbox" style='background: {{themecolor.skintone}};' data-ishourroom="{{roomdetail.isHourRoom}}" bindtap="get_verifyavailableroom">去支付</view>
+  <view wx:else class="btnbox" style='background: #bbbec4;' data-ishourroom="{{roomdetail.isHourRoom}}">已提交</view>
+</view>
+
+<view class="mxbox-bg" wx:if="{{mxboxtype}}" bindtap="hidemx">
+  <view class="paddAll borderB mxbox">
+    <view class="mgB30">
+      <block wx:for="{{roomdetail.priceDetail}}" wx:for-item="item" wx:key="index">
+        <view class="mxbox-li">
+          <text>{{item.priceDateS}} <block wx:if="{{roomdetail.breakfastFlag == 0}}">无早</block><block wx:elif="{{roomdetail.breakfastFlag == 1}}">单早</block><block wx:elif="{{roomdetail.breakfastFlag == 2}}">双早</block></text><text>{{roomnum}} × ¥{{item.price}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="font-total">
+      {{day}}晚，{{roomnum}}间共 <text class="font-color3">¥{{totalPrice_}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 优惠券 -->
+<view class="couponlistbox-bg" wx:if="{{coupontype2 == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择优惠券</view>
+    <scroll-view scroll-y style="height: 80%;">
+      <block wx:for="{{coupon_optional}}" wx:for-item="item" wx:key="index">
+        <view class="select-li" data-index="{{index}}" bindtap="changecoupon">
+          <view class="select-li-l">
+            <view class="select-li-l-name">{{item.couponName}}</view>
+            <view>
+              <block wx:if="{{item.discountWay == 2}}">
+                满{{item.discountMinBuyMoney}}打{{(item.couponDiscount/10)}}折,最高减{{item.discountMaxMoney}}元
+              </block>
+              <block wx:else>
+                满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text>
+              </block>
+            </view>
+          </view>
+          <image wx:if="{{item.selecttype == true}}" src="../../img/success-img2.png" class="icon-img"></image>
+          <image wx:else src="../../img/icon-img7.png" class="icon-img"></image>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" data-type='1' bindtap="togglecoupon">确定</view>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+.popboxbg{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popbox{
+  width: 85%;
+  position: relative;
+  margin-top: -16%;
+}
+.popbox image{
+  display: block;
+  width: 100%;
+}
+.btnbox{
+  position: absolute;
+  z-index: 99;
+  left: 16%;
+  right: 16%;
+  bottom: 14%;
+  font-size: 30rpx;
+  color: #fff;
+  background: #EE1E1E;
+  line-height: 70rpx;
+}
+button{
+    border-radius: 25px;
+}
+button::after{
+  border-radius: 25px;
+}
+.closebtn{
+  position: absolute;
+  z-index: 99;
+  top: 8%;
+  right: 10%;
+  width: 50rpx;
+  height: 50rpx;
+}

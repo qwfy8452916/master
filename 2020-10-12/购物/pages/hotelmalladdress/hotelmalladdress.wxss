@@ -1,0 +1,152 @@
+page{
+  padding-bottom: 90rpx;
+}
+.formview{
+  border-top: 0.5px solid #e5e5e5;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background: #fff;
+}
+.liview{
+  border-bottom: 0.5px solid #e5e5e5;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.formview .liview:last-child{
+  border: none;
+}
+.inpname{
+  font-size: 30rpx;
+  color: #333333;
+  width: 20%;
+}
+.inpval{
+  border: none;
+  background: none;
+  font-size: 30rpx;
+  color: #bbbec4;
+  width: 72%;
+}
+.subbtn{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: none;
+  z-index: 9;
+  border: none;
+  padding: 0;
+  background: #EE1E1E;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+.subbtn::after{
+  border-radius: 0; 
+}
+.placeholder-font{
+  font-size: 30rpx;
+  color: #bbbec4;
+}
+
+.libox{
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.libox-t{
+  padding: 15rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 0.5px solid #e5e5e5;
+}
+.libox-t-l{
+  width: 80%;
+}
+.font-text1{
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 25rpx;
+}
+.font-text2{
+  font-size: 27rpx;
+  color: #999999;
+  margin-bottom: 15rpx;
+}
+.libox-t-l .font-text2:last-child{
+  margin-bottom: 0;
+}
+.libox-t-r{
+  font-size: 27rpx;
+  color: #FF9700;
+  padding: 10rpx 25rpx;
+  border: 0.5px solid #FF9700;
+  border-radius: 2px;
+}
+.libox-b{
+  padding: 20rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.libox-b-l{
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 30rpx;
+  color: #333333;
+}
+.iconimg{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 15rpx;
+}
+.delete{
+  padding: 15rpx 25rpx;
+  text-align: right;
+  font-size: 30rpx;
+  color: #EE1E1E;
+}
+.footbtnbox{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footbtnbox view{
+  flex-grow: 1;
+  width: 50%;
+  background: #EE1E1E;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #fff;
+  border-radius: 0;
+}
+.footbtnbox .bgcolor{
+  background: #F57878;
+}
+.footbtnbox button:first-child{
+  background: #ffc971;
+}
+.iconimg2{
+  display: block;
+  width: 17rpx;
+  height: 30rpx;
+  transform: rotate(90deg);
+}
+.iconimg3{
+  display: block;
+  width: 35rpx;
+  height: 38rpx;
+  margin-right: 10rpx;
+}

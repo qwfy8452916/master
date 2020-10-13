@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "客房服务 Room Service",
+  "usingComponents": {
+    "tabbar": "../common/tabbar/tabbar"
+  },
+  "navigationBarBackgroundColor": "#fff"
+}

@@ -1,0 +1,113 @@
+<!--pages/package/pages/qrCodeDetail/qrCodeDetail.wxml-->
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont'></text>ID</view>
+  <view class='inputwk'>
+    <input class='iteminput' disabled placeholder-class='color:#cecece;' value="{{commoditygai.id}}"></input>
+  </view>
+</view>
+
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont'></text>类型</view>
+  <view class='inputwk'>
+    <input class='iteminput' maxlength='10' disabled placeholder-class='color:#cecece;' value="虚拟码"></input>
+  </view>
+</view>
+
+<view class='hangtiem'>
+   <view class='titlename'><text class='iconfont iconpeiwangWiFimima'></text>进场配置</view>
+   <picker class="pickbox" range-key="settingName" value="{{index}}" range="{{fictitiousdata}}" disabled>
+    <view class="picker">
+      <text class="alignlef" style="text-align:left">
+          <text class="iconfont iconxuanzeleixing"></text>
+          <text wx:if="{{xunicabId}}">{{fictitiousdata[index].settingName}} 
+            </text>
+          <text wx:else class="placems">请选择进场配置</text>
+      </text>
+
+      <text class="alignrig">
+        
+      </text>
+    </view>
+  </picker>
+</view>
+
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont'></text>编码</view>
+  <view class='inputwk'>
+    <input class='iteminput' disabled placeholder-class='color:#cecece;' value="{{commoditygai.cabinetQrcode}}"></input>
+  </view>
+</view>
+
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont iconpeiwangWiFimima'></text>绑定类型</view>
+  <picker class="pickbox" range-key="name" value="{{areaInex}}" range="{{bindAreaData}}" disabled>
+    <view class="picker">
+      <text class="alignlef" style="text-align:left">
+          <text class="iconfont iconxuanzeleixing"></text>
+      <text wx:if="{{bindAreaId || bindAreaId===0}}">{{bindAreaData[areaInex].name}} 
+            </text>
+      <text wx:else class="placems">请选择绑定地点</text>
+      </text>
+
+      <text class="alignrig">
+        
+      </text>
+    </view>
+  </picker>
+</view>
+
+<view class='hangtiem' wx:if="{{bindAreaId!==0 && floorName}}">
+  <view class='titlename'>
+    <text class='iconfont iconlouceng'></text>{{floorName}}</view>
+  <view class='inputwk'>
+    <input class='iteminput' disabled maxlength='10' placeholder='请填写{{floorName}}' placeholder-class='color:#cecece;' value="{{floorval}}"></input>
+  </view>
+</view>
+
+<view class='hangtiem' wx:if="{{bindAreaId!==0 && codeName}}">
+  <view class='titlename'>
+    <text class='iconfont iconfanghao'></text>{{codeName}}</view>
+  <view class='inputwk'>
+    <input class='iteminput' maxlength='10' placeholder='请填写{{codeName}}' placeholder-class='color:#cecece;' disabled value="{{housenumberval}}"></input>
+  </view>
+</view>
+
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont iconwifiwofi'></text>WiFi名称</view>
+
+  <view wx:if="{{isAuthLocation}}" class='inputwk'>
+    <picker value='{{wifiIndex}}' range='{{wifiDataList}}'>
+      <input class='iteminput' disabled='true' value='{{wifiDataList[wifiIndex]}}' placeholder='请选择WiFi名称' placeholder-class='color:#cecece;'></input>
+    </picker>
+  </view>
+
+  <view wx:else class='inputwk'>
+    <input class='iteminput' maxlength='50' placeholder='请填写WiFi名称' placeholder-class='color:#cecece;' disabled value="{{wifiname}}"></input>
+  </view>
+</view>
+
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont iconpeiwangWiFimima'></text>WiFi密码</view>
+  <view class='inputwk'>
+    <input class='iteminput' maxlength='50' placeholder='请填写WiFi密码' placeholder-class='color:#cecece;' disabled value="{{wifipassword}}"></input>
+  </view>
+</view>
+
+<view class='hangtiem'>
+  <view class='titlename'>
+    <text class='iconfont'></text>备注</view>
+  <view class='inputwk'>
+    <textarea class='iteminput textareabox' maxlength='50' placeholder-class='color:#cecece;' disabled value="{{form.remark}}"></textarea>
+  </view>
+</view>
+
+
+
+
+

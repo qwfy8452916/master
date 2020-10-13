@@ -1,0 +1,370 @@
+<block wx:if="{{deliverytype3}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>迷你吧</view>
+    <view class='paddAll hoteladdress'>{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+    <block wx:for="{{deliverylist3}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class="flexboxstart mgB10">
+            <view class="activity-font" wx:if="{{item.actSecDiscountSettingId}}" data-ruleid="{{item.actSecDiscountSettingId}}" bindtap="rulefun">半价活动</view>
+            <view class="redpack" wx:if="{{item.isHasRed}}" catchtap='getRules'>
+              <image src="../../img/hongbao.png" style="width:12px;height:12px;"/>
+            </view>
+          </view>
+          <view class='commodityprice'>
+            ¥{{item.latticeProdAmt}}
+            <view class='commoditynum'>x{{item.prodnum}}</view>
+          </view>
+          <view class='commodityprice' wx:if="{{item.discountPrice && item.discountPrice < item.latticeProdAmt}}">优惠价：¥{{item.discountPrice}}</view>
+        </view>
+        <view class="activity-font2" wx:if="{{item.secDiscountTips}}"><text>活动</text>{{item.secDiscountTips}}</view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum3}}</text>件商品  小计<text class='text-font2'>￥{{total3}}</text>
+    </view>
+  </view>
+</block>
+<block wx:if="{{deliverytype1}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name'>店内送</view>
+    <view class='paddAll hoteladdress' bindtap="roomcodetoggle">{{hotelName}} {{roomFloor}}-{{roomCode}}</view>
+    <block wx:for="{{deliverylist1}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class="spec-font">{{item.specname}}</view>
+          <view class="flexboxstart mgB10">
+            <view class="activity-font" wx:if="{{item.actSecDiscountSettingId}}" data-ruleid="{{item.actSecDiscountSettingId}}" bindtap="rulefun">半价活动</view>
+            <view class="redpack" wx:if="{{item.isHasRed}}" catchtap='getRules'>
+              <image src="../../img/hongbao.png" style="width:12px;height:12px;"/>
+            </view>
+          </view>
+          <view class='commodityprice'>
+            ¥{{item.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.prodnum}}</view>
+          </view>
+          <view class='commodityprice' wx:if="{{item.discountPrice && item.discountPrice < item.prodRetailPrice}}">优惠价：¥{{item.discountPrice}}</view>
+        </view>
+        <view class="activity-font2" wx:if="{{item.secDiscountTips}}"><text>活动</text>{{item.secDiscountTips}}</view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum1}}</text>件商品  小计<text class='text-font2'>￥{{total1}}</text>
+    </view>
+    <view class='remarkbox'>
+        <view class='textarea-font'>留言</view>
+        <view wx:if="{{messtype == 1}}" class="textareabox fontcolor" bindtap="showtext2"><block wx:if="{{remark1 == ''}}">选填(对本交易的补充说明)</block><block wx:else>{{remark1}}</block></view>
+        <textarea wx:else class='textareabox' maxlength='250' placeholder-style='color: #bbbec4;' placeholder='选填(对本交易的补充说明)' data-type='1' bindinput="bindTextAreaBlur" auto-height focus="{{messtype != 1}}" bindblur="confirm2" value="{{remark1}}"  />
+    </view>
+  </view>
+</block>
+<block wx:if="{{deliverytype2}}">
+  <view class='mgB20'>
+    <view class='paddAll hotelmallcar-name flexboxstart'>
+      <view>快递送</view>
+    </view>
+    <view class='paddAll hoteladdress hoteladdress2' bindtap='addressfun'>
+      <view class='font-address' wx:if="{{receipttype}}">请添加收货信息</view>
+      <view class='font-address' wx:else >
+        <view class="mgB10">{{receiptlist.consignee}} {{receiptlist.consigneePhone}}</view>
+        <view><text class="addresstag" wx:if="{{receiptlist.addressTag}}">{{receiptlist.addressTag}}</text> {{receiptlist.address}}</view>
+      </view>
+      <image src='../../img/my-bgimg2.png' class='iconimg' mode='aspectFill'></image>
+    </view>
+    <block wx:for="{{expresslist}}" wx:for-item="item" wx:key="index">
+      <!-- <view class='paddAll hotelmallcar-name borderstyle'>{{item.orgName}}</view> -->
+      <block wx:for='{{item.hshopProducts}}' wx:for-item="item2" wx:key="index">
+        <view class='paddAll listbox'>
+          <view class='listbox-c'>
+            <image src='{{item2.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+          </view>
+          <view class='listbox-r'>
+            <view class='commodityname'>{{item2.prodShowName}}</view>
+            <view class="spec-font">{{item.specname}}</view>
+            <view class="flexboxstart mgB10">
+              <view class="activity-font" wx:if="{{item2.actSecDiscountSettingId}}" data-ruleid="{{item2.actSecDiscountSettingId}}" bindtap="rulefun">半价活动</view>
+              <view class="redpack" wx:if="{{item2.isHasRed}}" catchtap='getRules'>
+                <image src="../../img/hongbao.png" style="width:12px;height:12px;"/>
+              </view>
+            </view>
+            <view class='commodityprice'>
+              ¥{{item2.prodRetailPrice}}
+              <view class='commoditynum'>x{{item2.prodnum}}</view>
+            </view>
+            <view class='commodityprice' wx:if="{{item2.discountPrice && item2.discountPrice < item2.prodRetailPrice}}">优惠价：¥{{item2.discountPrice}}</view>
+          </view>
+          <view class="activity-font2" wx:if="{{item2.secDiscountTips}}"><text>活动</text>{{item2.secDiscountTips}}</view>
+        </view>
+      </block>
+      <view class="paddAll freight">
+        <text>运费</text>
+        <text class="fonts1">
+          <block wx:if="{{lgcId == -1}}">
+            <block wx:if="{{item.totalExpressFee == 0}}">快递包邮</block><block wx:else>¥ {{item.totalExpressFee}}</block>
+          </block>
+          <block wx:else>¥ {{freight}}</block>
+        </text>
+      </view>
+      <view class='footbox-order'>
+        共<text class='text-font1'>{{item.totalProdAmt}}</text>件商品  小计<text class='text-font2'>￥{{item.totalFee}}</text>
+      </view>
+    </block>
+    <view class='remarkbox mgB20' wx:if="{{coupontype2 == false}}">
+      <view class='textarea-font'>留言</view>
+      <view wx:if="{{kdmesstype == 1}}" class="textareabox fontcolor" bindtap="showtext"><block wx:if="{{kdmessage==''}}">选填(对本交易的补充说明,如配送时间等)</block><block wx:else>{{kdmessage}}</block>
+      </view>
+      <textarea wx:else class='textareabox' maxlength='250' auto-height placeholder-style='color: #bbbec4;' placeholder='选填(对本交易的补充说明,如配送时间等)' bindblur="confirm" show-confirm-bar="true" focus="{{kdmesstype != 1}}" value="{{kdmessage}}" />
+    </view>
+  </view>
+</block>
+<block wx:if="{{deliverytype4}}">
+  <view class='mgB20'>
+    <view class='paddAll borderB hotelmallcar-name'>自提取</view>
+    <view class='paddAll hoteladdress' style="border-top: none;">
+      <text style="display: block;width: 100%;margin-bottom: 10rpx;">{{points[0].pointName}}</text>
+      <text style="display: block;width: 100%;">{{points[0].pointInstruction}}</text>
+    </view>
+    <block wx:for="{{deliverylist4}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class="spec-font">{{item.specname}}</view>
+          <view class="flexboxstart mgB10">
+            <view class="activity-font" wx:if="{{item.actSecDiscountSettingId}}" data-ruleid="{{item.actSecDiscountSettingId}}" bindtap="rulefun">半价活动</view>
+            <view class="redpack" wx:if="{{item.isHasRed}}" catchtap='getRules'>
+              <image src="../../img/hongbao.png" style="width:12px;height:12px;"/>
+            </view>
+          </view>
+          <view class='commodityprice'>
+            ¥{{item.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.prodnum}}</view>
+          </view>
+          <view class='commodityprice' wx:if="{{item.discountPrice && item.discountPrice < item.prodRetailPrice}}">优惠价：¥{{item.discountPrice}}</view>
+        </view>
+        <view class="activity-font2" wx:if="{{item.secDiscountTips}}"><text>活动</text>{{item.secDiscountTips}}</view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum5}}</text>件商品  小计<text class='text-font2'>￥{{total5}}</text>
+    </view>
+  </view>
+</block>
+<block wx:if="{{deliverytype5}}">
+  <view class='mgB20'>
+    <view class='paddAll borderB hotelmallcar-name'>
+      电子券 <text class="hotelmallcar-name-text">该商品为电子券商品，下单后可在“我的卡券”中查看。</text>
+    </view>
+    <block wx:for="{{deliverylist5}}" wx:for-item="item" wx:key="index">
+      <view class='paddAll listbox'>
+        <view class='listbox-c'>
+          <image src='{{item.prodLogoUrl}}' class='commodityimg' mode='aspectFill'></image>
+        </view>
+        <view class='listbox-r'>
+          <view class='commodityname'>{{item.prodShowName}}</view>
+          <view class="flexboxstart mgB10">
+            <view class="activity-font" wx:if="{{item.actSecDiscountSettingId}}" data-ruleid="{{item.actSecDiscountSettingId}}" bindtap="rulefun">半价活动</view>
+            <view class="redpack" wx:if="{{item.isHasRed}}" catchtap='getRules'>
+              <image src="../../img/hongbao.png" style="width:12px;height:12px;"/>
+            </view>
+          </view>
+          <view class='commodityprice'>
+            ¥{{item.prodRetailPrice}}
+            <view class='commoditynum'>x{{item.prodnum}}</view>
+          </view>
+          <view class='commodityprice' wx:if="{{item.discountPrice && item.discountPrice < item.prodRetailPrice}}">优惠价：¥{{item.discountPrice}}</view>
+        </view>
+        <view class="activity-font2" wx:if="{{item.secDiscountTips}}"><text>活动</text>{{item.secDiscountTips}}</view>
+      </view>
+    </block>
+    <view class='footbox-order'>
+      共<text class='text-font1'>{{totalnum5}}</text>件商品  小计<text class='text-font2'>￥{{total5}}</text>
+    </view>
+  </view>
+</block>
+<view class='mgB20'>
+  <view class='formbox'>
+    <text class='textW'>联系人</text>
+    <input class='inpbox' type="text" placeholder-style='color: #bbbec4;' placeholder="请填写联系人" bindinput='usernamefun'></input>
+  </view>
+  <view class='formbox'>
+    <text class='textW'>手机号</text>
+    <input class='inpbox' type="number" placeholder-style='color: #bbbec4;' placeholder="请填写手机号" bindinput='telfun'></input>
+  </view>
+</view>
+
+<view class="flexbox paddAll" data-type='0' bindtap="prodvoutoggle" wx:if="{{prodvou.length > 0}}">
+  <view class="font5">免费领用</view>
+  <view class="font8 flexboxstart">
+    <view>{{prodvou_name}}</view>
+    <image src='../../img/my-bgimg2.png' class='iconimg2 mgL20'></image>
+  </view>
+</view>
+<view class="couponjh" bindtap="showcoupon" wx:if="{{coupon_selected.length > 0 || coupon_optional.length > 0 }}">
+  <view class="couponjh-l">优惠券</view>
+  <view class="couponjh-r">
+    <text>
+      <block wx:if="{{coupon_selected.length>0}}">满{{coupon_selected[0].useLimitMoney}}减{{coupon_selected[0].reduceMoney}}</block>
+      <block wx:else>未选择优惠券</block>
+    </text> 
+    <image class="iconimgwh" src="../../img/my-bgimg2.png"></image>
+  </view>
+</view>
+<view class="flexbox paddAll borderT" data-type='0' bindtap="moneyvoutoggle" wx:if="{{moneyvou.length > 0}}">
+  <view class="font5">现金抵扣</view>
+  <view class="font8 flexboxstart">
+    <view>{{moneyvou_name}}</view>
+    <image src='../../img/my-bgimg2.png' class='iconimg2 mgL20'></image>
+  </view>
+</view>
+<block wx:if="{{coupontype2 == false}}">
+  <cover-view class='foottotal' wx:if="{{ deliverytype3 || deliverytype1 || deliverytype2 || deliverytype5 || deliverytype4}}">
+    <cover-view class='costbox'>
+      <cover-view class='cost-font2'>合计:</cover-view>
+      <cover-view class='cost-font3'>￥</cover-view>
+      <cover-view class='cost-font4'>{{lumpsum_Discount}}</cover-view>
+      <cover-view class='cost-font1' wx:if="{{courierfee>0}}">包含运费</cover-view>
+    </cover-view>
+    <cover-view class='settlementbtn' wx:if="{{paytype == true}}" bindtap='delayfun'>支付<cover-view wx:if="{{alllength>0}}">({{alllength}})</cover-view></cover-view>
+    <cover-view class='settlementbtn settlementbtn2' wx:else>支付中···</cover-view>
+  </cover-view>
+</block>
+
+<view class="couponlistbox-bg" wx:if="{{coupontype2 == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择优惠券</view>
+    <view class="font-prod2 mgB20">已选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_selected.length > 0}}">
+        <block wx:for="{{coupon_selected}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="1" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/success-img2.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">请选择优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="font-prod2 mgB20">可选优惠券：</view>
+    <scroll-view scroll-y style="height: 33%;">
+      <block wx:if="{{coupon_optional.length > 0}}">
+        <block wx:for="{{coupon_optional}}" wx:for-item="item" wx:key="index">
+          <view class="select-li" data-index="{{index}}" data-type="2" bindtap="changecoupon">
+            <view class="select-li-l">
+              <view class="select-li-l-name">{{item.couponName}}</view>
+              <view>满{{item.useLimitMoney}}减{{item.reduceMoney}} <text class="Limit" wx:if="{{item.couponLimit==0}}">(唯一券)</text></view>
+            </view>
+            <image src="../../img/icon-img7.png" class="icon-img"></image>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="font-none">暂无可选优惠券</view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" bindtap="showcoupon">确定</view>
+  </view>
+</view>
+
+<!-- 免费领用 -->
+<view class="couponlistbox-bg" wx:if="{{prodvou_type == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择免费领用券</view>
+    <scroll-view scroll-y style="height: 80%;">
+      <block wx:for="{{prodvou}}" wx:for-item="item" wx:key="index">
+        <view class="select-li" data-index="{{index}}" bindtap="changeprodvou">
+          <view class="select-li-l">
+            <view>{{item.vouName}}</view>
+            <view class="select-li-l-name">{{item.vouInstruction}}</view>
+          </view>
+          <image wx:if="{{item.seletype == true}}" src="../../img/success-img2.png" class="icon-img"></image>
+          <image wx:else src="../../img/icon-img7.png" class="icon-img"></image>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" data-type='1' bindtap="prodvoutoggle">确定</view>
+  </view>
+</view>
+<!-- 现金抵扣 -->
+<view class="couponlistbox-bg" wx:if="{{moneyvou_type == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">选择现金抵扣券</view>
+    <scroll-view scroll-y style="height: 80%;">
+      <block wx:for="{{moneyvou}}" wx:for-item="item" wx:key="index">
+        <view class="select-li" data-index="{{index}}" data-vouid="{{item.id}}" data-money="{{item.vouDeductibleMoney}}" bindtap="changemoneyvou">
+          <view class="select-li-l">
+            <view>{{item.vouName}}</view>
+            <view class="select-li-l-name">{{item.vouInstruction}}</view>
+          </view>
+          <image wx:if="{{item.seletype == true}}" src="../../img/success-img2.png" class="icon-img"></image>
+          <image wx:else src="../../img/icon-img7.png" class="icon-img"></image>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="closebtn" data-type='1' bindtap="moneyvoutoggle">确定</view>
+  </view>
+</view>
+
+<view class="couponlistbox-bg" wx:if="{{roomCodetype == true}}">
+  <view class="roomcodebox">
+    <view class="roomcodebox-titel">修改配送目的地</view>
+    <input class="roomcodebox-inp" type="number" value="{{roomCode}}" bindinput="changeroomcode" placeholder="请填写房间号"></input>
+    <view class="flexbox borderT roomcodebox-btn">
+      <view bindtap="roomcodetoggle">取消</view><view bindtap="changeroomcodefun">确定</view>
+    </view>
+  </view>
+</view>
+
+<view class="redRule" wx:if="{{ifshowRules}}" catchtouchmove='true'>
+  <view class="redCenter">
+    <view class="redCenter1">
+      <image src="../../img/redRule.png" class="imagebox" style="width:285px" mode="widthFix"/>
+      <view class="ruleBox">
+        <view class="ruleboxItem">
+          <view class="redIconBox">  
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可多人领取</view>
+            <view class="itemTitle2">下单满{{ruleData.amount}}元即获得现金红包奖励</view>
+          </view>
+        </view>
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/24hour.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">有效期{{ruleData.hour}}小时</view>
+            <view class="itemTitle2">超过{{ruleData.hour}}小时未领取即为失效</view>
+          </view>
+        </view>
+        <view class="ruleboxItem" style="border:none">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可直接提现</view>
+            <view class="itemTitle2">领取成功的红包可直接提现到微信</view>
+          </view>
+        </view>
+        <view bindtap="closeRule" class="iKnow">我懂了！</view>
+      </view>
+    </view>
+    <image bindtap="closeRule" src="../../img/my-btnimg23-1.png" style="width:33px;height:33px;"/>
+  </view>
+</view>

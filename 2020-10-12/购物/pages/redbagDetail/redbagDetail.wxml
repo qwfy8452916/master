@@ -1,0 +1,58 @@
+<!--pages/redbagDetail/redbagDetail.wxml-->
+<view class="redDetail1">
+    <view class="redDetail1_1">
+        <view class="order">
+            订单号：{{redpackData.businessCode}}
+        </view>
+        <view wx:if="{{redpackData.status == 0}}" class="status">未领取</view>
+        <view wx:if="{{redpackData.status == 1}}" class="status">未领完</view>
+        <view wx:if="{{redpackData.status == 3}}" class="status">已失效</view>
+        <view wx:if="{{redpackData.status == 4}}" class="status">已过期</view>
+        <view wx:if="{{redpackData.status == 5}}" class="status">已领完</view>
+    </view>
+    <view class="redDetail1_2">
+        <view class="redDetail1_2_1">
+            <image wx:if="{{redpackData.businessType == 1}}" style="width:12px" mode="widthFix" src="../../img/shopIcon.png" />
+            <text wx:if="{{redpackData.businessType == 1}}" style="margin: 0 6px;">购物红包</text>
+            <image wx:if="{{redpackData.businessType == 2}}" style="width:12px" mode="widthFix" src="../../img/bookRoom.png" />
+            <text wx:if="{{redpackData.businessType == 2}}" style="margin: 0 6px;">订房红包</text>
+            <text>红包ID： {{redpackData.id}}</text>
+        </view>
+        <view class="redDetail1_2_2">
+            <view class="moneyAmount" style="border-right:1px #E9EAEA solid">
+                <text class="money">{{redpackData.totalAmount}}</text>
+                <text class="amountTitle">总金额(元)</text>
+            </view>
+            <view class="moneyAmount">
+                <text class="money">{{redpackData.receviedAmount}}</text>
+                <text class="amountTitle">已领取(元)</text>
+            </view>
+        </view>
+    </view>
+    <view class="redDetail1_3">
+        <view class="orderTime">
+            <text class="endtime">截至时间</text>
+            <text>{{redpackData.deadlineAt}}</text>
+        </view>
+        <view class="orderTime1">
+            <text class="endtime">创建时间</text>
+            <text>{{redpackData.createdAt}}</text>
+        </view>
+    </view>
+</view>
+<view class="friendHead">
+    <view class="friendtitle">
+        领红包好友
+    </view>
+    <view class="redNum">
+        <text>({{redpackData.totalNum}}个红包 / 已领</text><text style="color:#0FBBBB">{{redpackData.receivedNum}}</text><text>个）</text>
+    </view>
+</view>
+<view wx:for="{{redpackRecords}}" wx:key="index" class="eachRecord">
+    <image class="headIcon" src="{{item.receiveCustomAvatarUrl?item.receiveCustomAvatarUrl:'../../img/noActive.png'}}" />
+    <view class="NameDate">
+        <view class="fName">{{item.receiveCustomNickName?item.receiveCustomNickName:'xxx'}}</view>
+        <view class="fdate">{{item.createdAt}}</view>
+    </view>
+    <view class="amount">{{item.receivceAmount}}元</view>
+</view>

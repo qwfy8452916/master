@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "date-time-picker": "/component/date-time-picker/date-time-picker"
+  },
+  "navigationBarTitleText": "单位协议价"
+}

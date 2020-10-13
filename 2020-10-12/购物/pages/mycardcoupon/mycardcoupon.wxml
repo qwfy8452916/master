@@ -1,0 +1,67 @@
+<view class="flexbox mycardcouponbox-t">
+    <view class="mycardcouponbox-t-font1 {{typeindex==0?'mycardcouponbox-t-font1-active':''}}" data-type='0' bindtap="changelisttype"><text>未使用</text></view>
+    <view class="mycardcouponbox-t-font1 {{typeindex==1?'mycardcouponbox-t-font1-active':''}}" data-type='1' bindtap="changelisttype"><text>已使用</text></view>
+    <view class="mycardcouponbox-t-font1 {{typeindex==2?'mycardcouponbox-t-font1-active':''}}" data-type='2' bindtap="changelisttype"><text>已过期</text></view>
+  </view>
+<block wx:if="{{cardcouponlist.length == 0}}">
+  <image class="nodata-icon" mode="widthFix" src='../../img/my-btnimg16.png'></image>
+  <view class="nodata-font">您暂无卡券</view>
+</block>
+<block wx:else>
+  <block wx:for="{{cardcouponlist}}" wx:for-item="item" wx:key="index">
+    <view class="bgfff cardcouponbox">
+      <view class="flexbox borderB paddLR302 mgB30 cardcouponbox-t">
+        <view class="cardcouponbox-font1 cardcouponbox-w1">ID：{{item.id}}</view>
+        <view class="cardcouponbox-font2 cardcouponbox-w2" data-id="{{item.id}}" bindtap="writeofffun" wx:if="{{item.vouUseScene == 1 && typeindex == 0}}"><image src="../../img/my-icon13.png"></image>
+        核销码</view>
+      </view>
+      <view class="cardcouponbox-b">
+        <view class="paddLR302 flexbox cardcouponbox-b-t mgB20">
+          <image class="cardcouponbox-img" src="{{item.vouImageUrl}}"></image>
+          <view class="cardcouponbox-b-t-w1">
+            <view class="mgB50 flexboxstart">
+              <view class="cardcouponbox-font3"><block wx:if="{{item.vouUseScene == 1}}">到店核销</block><block wx:else>线上抵扣</block></view>
+              <view class="cardcouponbox-font4">{{item.vouName}}</view>
+            </view>
+            <view class="flexbox">
+              <view class="cardcouponbox-font5">¥ {{item.vouBasicPrice}}</view>
+              <view class="cardcouponbox-font6" wx:if="{{item.vouUseScene == 2}}">
+                <block wx:if="{{item.vouDeductibleType == 0}}">可抵扣现金¥ {{item.vouDeductibleMoney}}元</block>
+                <block wx:else>免费领：{{item.deductHotelProdName}}</block>
+              </view>
+            </view>
+          </view>
+        </view>
+        <block wx:if="{{item.vouUseScene == 1}}">
+          <view class="paddLR302 flexboxstart mgB20 cardcouponbox-font10">
+            <block wx:if="{{typeindex == 0}}">剩余使用次数: <text class="textcolor">{{item.vouRemainingVerifiedNum}}</text></block>
+            <block wx:elif="{{typeindex == 1}}">已使用次数: <text class="textcolor">{{item.vouVerifiedNum}}</text></block>
+            <block wx:elif="{{typeindex == 2}}">剩余未使用次数: <text class="textcolor">{{item.vouRemainingVerifiedNum}}</text></block>
+          </view>
+          <view class="paddLR302 flexboxstart mgB20 cardcouponbox-font10">
+            使用地址 :  <text class="textcolor2">{{item.verifiedAddress}}</text>
+          </view>
+        </block>
+        <view class="paddLR302 cardcouponbox-font7 mgB30" wx:if="{{item.vouInstruction != ''}}">
+          <view>使用须知：</view>
+          <view wx:for="{{item.vouInstructions}}" wx:for-item="item2" wx:key='index' class="paddL20">{{item2}}</view>
+        </view>
+        <view class="flexbox borderT paddLR302">
+          <view class="cardcouponbox-font9">有效期：{{item.vouStartDate}} ~ {{item.vouEndDate}}</view>
+          <view class="flexbox-around cardcouponbox-font8" wx:if="{{item.canGive == 1 && typeindex == 0}}" data-id="{{item.id}}" data-vouname="{{item.vouName}}" data-vouimageurl="{{item.vouImageUrl}}" bindtap="isLanding"><image src="../../img/my-icon14.png"></image>转赠好友</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>
+<view class="popups flexbox-around2" wx:if="{{popupstype == true}}">
+  <view style="width: 100%;">
+    <view class="cardcouponsharebox">
+      <view class="cardcouponsharebox-font mgB20"><block wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</block><block wx:else>您的好友</block>转赠给您一张{{vouname}}点击获取</view>
+      <image class="cardcouponsharebox-img mgB20" mode="widthFix" src="{{vouimageurl}}"></image>
+      <button open-type="share" class="cardcouponsharebox-btn">确认转赠</button>
+    </view>
+    <view class="closebtn" bindtap="changepopupstype"><image src="../../img/my-btnimg23-1.png"></image></view>
+  </view>
+</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>

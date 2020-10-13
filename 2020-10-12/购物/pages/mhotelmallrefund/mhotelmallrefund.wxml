@@ -1,0 +1,75 @@
+<block wx:if="{{prodinfo.prodStatus == 0}}">
+  <view class="paddAll list-view mgB20">
+    <view wx:if="{{prodinfo.prodHotelProductDTO.prodLogoUrl!=''&&prodinfo.prodHotelProductDTO.prodLogoUrl!=null}}" class="list-view-img"><image src="{{prodinfo.prodHotelProductDTO.prodLogoUrl}}"></image></view>
+    <view wx:else class="list-view-img"><image src="{{prodinfo.prodProductDTO.prodLogoUrl}}"></image></view>
+    <view class="list-viewR">
+      <view class="list-viewR-top">
+        <view wx:if="{{prodinfo.prodHotelProductDTO.prodShowName !='' && prodinfo.prodHotelProductDTO.prodShowName != null}}" class="list-viewR-name">{{prodinfo.prodHotelProductDTO.prodShowName}}</view>
+        <view wx:else class="list-viewR-name">{{prodinfo.prodProductDTO.prodShowName}}</view>
+        <view class="list-viewR-num">x{{prodinfo.prodCount}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="mgB20 font-all">
+    <view class="paddAll flexbox borderB">
+      <text>订单状态</text>
+      <text class="font-color2">待商家确认</text>
+    </view>
+    <view class="paddAll flexbox">
+      <text>退款金额</text><text class="font-color3">￥ {{prodinfo.actualPay}}</text>
+    </view>
+  </view>
+  <view class="formbox">
+    <view class="paddAll flexbox formbox-li">
+      <text>退款说明：</text><textarea auto-height placeholder="请填写退款说明" placeholder-style="color: #bbbec4;" bindinput="reasonfun" />
+    </view>
+  </view>
+  <button wx:if="{{refundsubtype}}" class="submitbtn" bindtap="refundsub">提交</button>
+  <view wx:else class="submitbtn2">已提交</view>
+</block>
+<block wx:else>
+  <view class="paddAll mgB20 refund-top" wx:if="{{prodinfo.prodStatus == 5}}">
+    <text>请等待处理</text>您已成功发起退款申请，请耐心等待处理
+  </view>
+  <block wx:else>
+    <view class="paddAll refund-top2">
+      <image src="../../img/success-img2.png" class="successimg"></image>
+      <text class="font-success">退款成功</text>
+      <text class="font-success2">退款金额原路返回您的账户中</text>
+    </view>
+    <view class="paddAll mgB20 borderT">
+      <view class="font-od flexbox">
+        <text>退款金额</text><text class="font-color3">￥ {{prodinfo.totalAmount}}</text>
+      </view>
+    </view>
+  </block>
+  <view>
+    <view class="paddAll borderB font-tk">退款信息</view>
+    <view class="paddAll list-view mgB20">
+      <view wx:if="{{prodinfo.prodHotelProductDTO.prodLogoUrl!=''&&prodinfo.prodHotelProductDTO.prodLogoUrl!=null}}" class="list-view-img"><image src="{{prodinfo.prodHotelProductDTO.prodLogoUrl}}"></image></view>
+      <view wx:else class="list-view-img"><image src="{{prodinfo.prodProductDTO.prodLogoUrl}}"></image></view>
+      <view class="list-viewR">
+        <view class="list-viewR-top">
+          <view wx:if="{{prodinfo.prodHotelProductDTO.prodShowName!=''&&prodinfo.prodHotelProductDTO.prodShowName!=null}}" class="list-viewR-name">{{prodinfo.prodHotelProductDTO.prodShowName}}</view>
+          <view wx:else class="list-viewR-name">{{prodinfo.prodProductDTO.prodShowName}}</view>
+          <view class="list-viewR-num">x{{prodinfo.prodCount}}</view>
+        </view>
+        <view class="list-viewR-num">￥ {{prodinfo.totalAmount}}</view>
+      </view>
+    </view>
+    <view class="paddAll">
+      <view class="font-od">
+        <text>退款金额</text><text class="font-color3">￥ {{prodinfo.refundAmount}}</text>
+      </view>
+      <view class="font-od">
+        <text>退款说明</text><text>{{prodinfo.rebateState}}</text>
+      </view>
+      <view class="font-od" wx:if="{{prodinfo.prodStatus == 1}}">
+        <text>退款时间</text><text>{{prodinfo.refundTime}}</text>
+      </view>
+    </view>
+    <view class="kfbtn" bindtap="kefun">
+      <image src="../../img/icon-img9.png"></image>联系客服
+    </view>
+  </view>
+</block>

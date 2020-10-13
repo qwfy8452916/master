@@ -1,0 +1,16 @@
+page {
+  border-top: 1px solid #e5e5e5;
+  background: #f6f6f6;
+}
+
+.wrap {
+  width: 100%;
+  padding: 0rpx 3%;
+  box-sizing: border-box;
+  margin-bottom: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200rpx;
+}
+

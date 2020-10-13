@@ -1,0 +1,50 @@
+<!--pages/selfTake/selfTake.wxml-->
+<view class="wrap">
+  <view class="orderinfo">
+     <view class="ordercode">
+       <text class="ordercode_num">订单编号:{{cardDetail.delivCode}}</text>
+       <text class="ordercode_type">自提取</text>
+     </view>
+     <view class="selfinfo">
+        <view>自提地址：{{cardDetail.hotelPickUpPointDTO.pointName}}</view>
+        <view>联系电话：{{cardDetail.contactPhone}}</view>
+     </view>
+  </view>
+
+  <view class="prodwrap">
+     <view class="proditem" wx:for="{{cardDetail.orderDeliveryDetailDTOList}}" wx:key>
+      <view class="proditemlef">
+         <view class="prodpicwrap">
+            <image src="{{item.prodHotelProductDTO.prodLogoUrl}}"></image>
+         </view>
+         <view class="prodmsg">
+            <view class="prodmsg_title">{{item.prodHotelProductDTO.prodShowName}}</view>
+            <view class="prodmsg_specs">{{item.prodSpecs}}</view>
+         </view>
+      </view>
+      <view class="proditemrig">
+         <view class="proditemrig_num">x{{item.prodCount}}</view>
+         <view class="proditemrig_price">￥{{item.prodPrice}}</view>
+      </view>
+     </view>
+     <view class="riqi">{{cardDetail.payCompleteTime}}</view>
+  </view>
+  
+  <view class="tipwrap">
+     <view class="tipwrap_title"><text class="iconfont icon2"></text>提示</view>
+     <view class="tipwrap_desc">核销表示顾客已经领取所有订单商品，核销后不可撤销，请仔细核对商品和数量，并和顾客当面确认无误！</view>
+  </view>
+  <view class="hexiaobtn" bindtap="hexiaobtn">确认核销</view>
+</view>
+
+<view class="backwall" hidden="{{backwalljudge}}">
+   <view class="tiptk">
+      <view class="tiptk_title">提示</view>
+      <view class="tiptk_desc">核销表示顾客已经领取所有订单商品，核销后不可撤销。</view>
+      <view class="tiptk_desc">请仔细核对商品和数量，并和顾客当面确认无误！</view>
+      <view class="btnwrap">
+          <view class="cancelBtn" bindtap="cancelBtn">取消</view>
+          <view class="sureBtn" bindtap="sureBtn">确定</view>
+      </view>
+   </view>
+</view>

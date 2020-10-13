@@ -1,0 +1,138 @@
+<block wx:if="{{mycommunitylist.isCaptain != 1}}">
+  <view class="cpmmunitybox">
+    <view class="flexbox cpmmunitybox-t">
+      <view class="cpmmunitybox-t-font1">您还不是分销管理员</view>
+      <view class="cpmmunitybox-t-r" bindtap="rulefun"><image src="../../img/icon-img18.png"></image>规则说明</view>
+    </view>
+    <view class="cpmmunitybox-t-font2">
+      <text>可以通过如下两种方式之一成为分销管理员\n成为分销管理员后即可获得二级分享奖励</text>
+    </view>
+  </view>
+  <view class="cpmmunitybox">
+    <view class="flexbox cpmmunitybox-t">
+      <view class="cpmmunitybox-t-font1"><image src="../../img/my-icon1.png"></image>方法一</view>
+    </view>
+    <view class="cpmmunitybox-t-font2" bindtap="invitationcodefun">输入邀请码成为分销管理员
+      <!-- <block wx:if="{{mycommunitylist.invitationCode == '' || mycommunitylist.invitationCode == null}}">输入邀请码成为分销管理员</block>
+      <block wx:else>{{mycommunitylist.invitationCode}}</block> -->
+    </view>
+    <view class="cpmmunitybox-btn" bindtap="invitationcodefun">输入邀请码</view>
+  </view>
+  <view class="cpmmunitybox">
+    <view class="flexbox cpmmunitybox-t">
+      <view class="cpmmunitybox-t-font1"><image src="../../img/my-icon1.png"></image>方法二</view>
+    </view>
+    <view class="cpmmunitybox-t-font3">目前已有 <text>{{mycommunitylist.team.length}}</text> 人通过您的链接做了分享，请加油哦</view>
+    <view class="cpmmunitybox-t-font2">超过 6 个人通过您分享的链接打开小程序后再次分享</view>
+  </view>
+</block>
+<block wx:else>
+  <view class="cpmmunitybox">
+    <view class="flexbox cpmmunitybox-t">
+      <view class="cpmmunitybox-t-font1">我的邀请码</view>
+    </view>
+    <view class="flexbox mgB30">
+      <view class="invitationcode-font">{{mycommunitylist.invitationCode}}</view>
+      <view class="copytext" bindtap='copyinvitationcode' data-text="{{mycommunitylist.invitationCode}}">复制邀请码</view>
+    </view>
+    <view class="cpmmunitybox-t-font4">
+      <image src="../../img/my-btnimg22.png"></image>
+      <text>此邀请码发给您分享的目标对象，他们可以通过此邀请码成为分销管理员，这些分销管理员将成为你的下线，您将拥有他们分享奖励的二级奖励。</text>
+    </view>
+  </view>
+  <view class="listbox">
+    <view class="listbox-t borderB paddLR30">下级成员</view>
+    <block wx:if="{{mycommunitylist.team.length == 0}}">
+      <view class="listbox-img"><image mode="widthFix" src="../../img/community-img.png"></image></view>
+    </block>
+    <block wx:else>
+
+      <!-- <block wx:for="{{mycommunitylist.team}}" wx:for-item="item" wx:key="index">
+        <view class="listbox-li borderB paddAll30" bindtap="memberdetilefun">
+          <view class="listbox-li-t mgB20">ID{{item.id}}</view>
+          <view class="listbox-li-c flexbox mgB20">
+            <view class="listbox-li-font1 listbox-li-font-w1">
+              <block wx:if="{{item.userNickName == ''}}">-</block>
+              <block wx:else>{{item.userNickName}}</block>
+            </view>
+            <view class="listbox-li-font1 listbox-li-font-w2">
+              <block wx:if="{{item.userMobile == ''}}">-</block>
+              <block wx:else>{{item.userMobile}}</block>
+            </view>
+            <image class="listbox-li-icon" src="../../img/my-bgimg2.png"></image>
+          </view>
+          <view class="listbox-li-font2">加入时间  {{item.createdAt}}</view>
+        </view>
+      </block> -->
+
+      <view class="shareItem" wx:for="{{mycommunitylist.team}}" wx:key>
+            <view class="item1">
+                <text style="color:#333">ID：{{item.id}} {{item.userNickName}}</text>
+            </view>
+            <view class="item2">
+                <view class="item2_2">
+                    <view class="data1">
+                        <text class="numstyle">{{item.prodSaleCount}}</text>
+                        <text class="numword">售出商品数量</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.orderAmount}}</text>
+                        <text class="numword">订单总额</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.shareBonus}}</text>
+                        <text class="numword">分享奖励总额</text>
+                    </view>
+                    <view class="data1">
+                        <text class="numstyle">{{item.shareManageBonus}}</text>
+                        <text class="numword">管理奖励总额</text>
+                    </view>
+                </view>
+            </view>
+            <view class="item3">
+                <view class="item3_1">
+                     <image style="width:13px;height:13px" src="../../img/share.png" />
+                     <text class="visit">分享次数</text>
+                     <text class="num">{{item.shareCount}}</text>
+                </view>
+                <view class="item3_1">
+                    <image style="width:13px;height:13px" src="../../img/eye.png" />
+                    <text class="visit">分享访问次数</text>
+                    <text class="num">{{item.shareVisitCount}}</text>
+                </view>
+                <view class="item3_1">
+                    <image style="width:13px;height:13px" src="../../img/order.png" />
+                    <text class="visit">订单数量</text>
+                    <text class="num">{{item.orderCount}}</text>
+                </view>
+                <navigator url="{{'/pages/shareRecords/shareRecords?userId='+item.userId}}" hover-class="navigator-hover" class="view">
+                  查看详情
+               </navigator>
+            </view>
+            <view class="item4">
+                加入时间 {{item.createdAt}}
+            </view>
+        </view>
+    </block>
+  </view>
+</block>
+
+<view class="popups" catchtouchmove="return" wx:if="{{ruletype == true}}">
+  <view class="rulebox">
+    <view class="rulebox-font1 mgB30">规则说明</view>
+    <view class="rulebox-font2 mgB50">
+      <text>1、成为分销管理员的两种方式：\na、输入邀请码，即可成为分销管理员;\nb、将该小程序分享出去，超过6人打开小程序并再次分享出去，您就会升级为分销管理员。\n2、成为分销管理员后，当下级成员下单后，您会获得分享奖励。\n3、当成员的下级下单后，您会获得管理奖励。
+      </text>
+    </view>
+    <view class="cpmmunitybox-btn" bindtap="invitationcodefun" bindtap="rulefun">我知道了</view>
+  </view>
+</view>
+<view class="popups" catchtouchmove="return" wx:if="{{invitationcodetype == true}}">
+  <view class="invitationcodebox">
+    <input type="text" class="invitationcode-inp" placeholder="输入邀请码成为分销管理员" placeholder-style="color: #C5C9CF" bindinput="invitationcodeinp"></input>
+    <view class="flexbox invitationcodebox-b">
+      <view class="invitationcodebox-btn" bindtap="invitationcodefun">取消</view>
+      <view class="invitationcodebox-btn" bindtap="subinvitationcodefun">确定</view>
+    </view>
+  </view>
+</view>

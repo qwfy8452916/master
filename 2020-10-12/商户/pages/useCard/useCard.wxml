@@ -1,0 +1,190 @@
+<!--pages/useCard/useCard.wxml-->
+<view class="searchWrap">
+    <view class="expandbox">
+      <view class="searchdesc expenditem">
+        <image class="searchlogo" src="../../img/searchlogo.png"></image>
+        搜索
+      </view>
+      <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+        <image src="../../img/expendlogo.png"></image>
+      </view>
+    </view>
+    <view wx:if="{{switchJudge}}">
+
+      <picker class="pickbox" bindchange="bindPickerCard" range-key="vouName" value="{{cardIndex}}" range="{{cardBatchData}}">
+        <view class="picker">
+          <text class="alignlef">
+              <text class="pickeritem">卡券名称</text>
+              <text wx:if="{{cardBatchData[cardIndex].id}}">{{cardBatchData[cardIndex].vouName}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <picker class="pickbox" bindchange="bindPickerUser" range-key="nickName" value="{{userIndex}}" range="{{cardUserData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">顾客</text>
+                <text wx:if="{{cardUserData[userIndex].id}}">{{cardUserData[userIndex].nickName}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <picker class="pickbox" bindchange="bindPickerChange" range-key="dictName" value="{{index}}" range="{{scenData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">使用场景</text>
+                <text wx:if="{{scenData[index].dictValue}}">{{scenData[index].dictName}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="pickbox">
+        <text class="alignlef selectdate">有效期</text>
+        <section class="alignlef sectionitem">
+          <picker class="pickertime" mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">
+              <text wx:if="{{date}}">{{date}}</text>
+              <text wx:else class="placems">起始时间</text>
+            </view>
+          </picker>
+          <text class="hengxian">至</text>
+          <picker class="pickertime" mode="date" value="{{date2}}" bindchange="bindDateChange2">
+            <view class="picker">
+              <text wx:if="{{date2}}">{{date2}}</text>
+              <text wx:else class="placems">终止时间</text>
+            </view>
+          </picker>
+        </section>
+      </view>
+
+      <view class="searchBtn" bindtap="searchBtn">搜索</view>
+      <view class="reset" bindtap="reset">重置</view>
+    </view>
+  </view>
+
+<view class="wrap">
+
+ <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+    <view>
+    <view class="inlinebox">
+    
+     <view class="searitembox" wx:if="{{item.codeName!='date'}}">
+        <view class="searTitle">{{item.name}}:</view>
+        <view class="desc">{{item.desc}}</view>
+        <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+           <image src="../../img/closetj.png"></image>
+        </view>
+      </view>
+
+      <view class="searitembox" wx:else>
+        <view class="searTitle">{{item.name}}:</view>
+        <view class="desc">{{item.desc}}至{{item.desc2}}</view>
+        <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+           <image src="../../img/closetj.png"></image>
+        </view>
+      </view>
+  </view>
+</view>
+     </block>
+
+</view>
+
+
+  <view class="itembox" wx:for="{{cardData}}" wx:key>
+
+    <view class="contenttitle">
+      <view class="titleleft">
+        <view class="linebk"></view>
+        {{item.cusNickName}}
+      </view>
+      <view class="useStatus">
+        <text class="noUse" wx:if="{{item.isUsed===0}}">未使用</text>
+        <text class="use" wx:if="{{item.isUsed===1}}">已使用</text>
+      </view>
+    </view>
+    <view class="userInfo">
+      <text class="userPhone">{{item.cusPhone}}</text>
+      <text>顾客ID {{item.cusId}}</text>
+    </view>
+
+    <view class="couponBox">
+      <view class="couTitle">
+        <view>
+          <text class="isGive" wx:if="{{item.isGived===1}}">转赠</text> {{item.vouName}}
+        </view>
+        <view>{{item.vouBasicPrice}}</view>
+      </view>
+      <view class="couContent">
+        <block wx:if="{{item.vouUseScene==2}}">
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">线上抵扣</text>
+              <text wx:if="{{item.vouDeductibleType===0}}">现金抵扣￥{{item.vouDeductibleMoney}}</text>
+              <text wx:if="{{item.vouDeductibleType===1}}">商品抵扣{{item.deductHotelProdName}} {{item.deductHotelProdSpecName}}</text>
+            </view>
+            <view>
+              <text wx:if="{{item.canGive===0}}">不可转赠</text>
+              <text wx:if="{{item.canGive===1}}">可转赠</text>
+            </view>
+          </view>
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">有效期</text>
+              <text>{{item.vouStartDate}} 至 {{item.vouEndDate}}</text>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{item.vouUseScene==1}}">
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">到店核销</text>
+              <text>核销次数{{item.vouVerifiedNum}}次，剩余{{item.vouRemainingVerifiedNum}}次</text>
+            </view>
+            <view>
+              <text wx:if="{{item.canGive===1}}">可转赠</text>
+              <text wx:if="{{item.canGive===0}}">不可转赠</text>
+            </view>
+          </view>
+          <view class="hangbox">
+            <view>
+              <text class="hangboxrig">有效期</text>
+              <text>{{item.vouStartDate}} 至 {{item.vouEndDate}}</text>
+            </view>
+          </view>
+          <view class="hangbox" wx:if="{{item.isUsed===1}}">
+            <view>
+              <text class="hangboxrig">使用时间</text>
+              <text>{{item.lastUsedTime}}</text>
+            </view>
+          </view>
+        </block>
+
+      </view>
+    </view>
+    <view class="btnBox">
+      <picker wx:if="{{item.isUsed!=1 && authzData['F:MS_VOU_USERCARD_EXTENDDATE']}}" class="pickertime" mode="date" value="{{extendDate}}" bindchange="bindExtendChange" data-id="{{item.id}}">
+        <view class="btnniu magrig30" >延长有效期</view>
+      </picker>
+      <view class="btnniu magrig30" bindtap="giveRecord" wx:if="{{item.canGive===1}} && authzData['F:MS_VOU_USERCARD_TRANSFER']" data-id="{{item.id}}">转赠记录</view>
+      <view class="btnniu" bindtap="checkDetail" data-id="{{item.id}}" wx:if="{{authzData['F:MS_VOU_USERCARD_DETAIL']}}">详情</view>
+    </view>
+
+  </view>
+
+</view>

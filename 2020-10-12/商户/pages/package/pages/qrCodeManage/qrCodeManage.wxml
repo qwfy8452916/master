@@ -1,0 +1,175 @@
+<!--pages/package/pages/qrCodeManage/qrCodeManage.wxml-->
+<view class="searchWrap">
+    <view class="expandbox">
+      <view class="searchdesc expenditem">
+        <image class="searchlogo" src="../../../../img/searchlogo.png"></image>
+        搜索
+      </view>
+      <view class="expandlogo expenditem {{switchJudge?'':'searchlogoclose'}}" bindtap="switchdj">
+        <image src="../../../../img/expendlogo.png"></image>
+      </view>
+    </view>
+    <view wx:if="{{switchJudge}}">
+
+      <picker class="pickbox" bindchange="bindPickerStatus" range-key="name" value="{{formdata.statusIndex}}" range="{{statusdata}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">柜子状态</text>
+                <text wx:if="{{statusdata[formdata.statusIndex].id}}!==''">{{statusdata[formdata.statusIndex].name}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <picker class="pickbox" bindchange="bindPickerType" range-key="name" value="{{formdata.typeIndex}}" range="{{typedata}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">类型</text>
+                <text wx:if="{{typedata[formdata.typeIndex].id!==''}}">{{typedata[formdata.typeIndex].name}}</text>
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+
+      <view class="rowbox">
+        <view class="rowtitle">房间号</view>
+        <view>
+          <input placeholder="请输入房间号" bindinput="roomCodeInput" value="{{formdata.roomCode}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">物联卡</view>
+        <view>
+          <input placeholder="请输入物联卡" bindinput="iotCardInput" value="{{formdata.iotCard}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">物理编码</view>
+        <view>
+          <input placeholder="请输入物理编码" bindinput="qrCodeInput" value="{{formdata.qrCode}}"></input>
+        </view>
+      </view>
+
+      
+
+      <view class="searchBtn" bindtap="searchBtn">搜索</view>
+      <view class="reset" bindtap="reset">重置</view>
+    </view>
+  </view>
+
+<view class="wrap">
+  
+  <view class="searchblock">
+    <block wx:for="{{searchData}}" wx:key wx:if="{{item.desc}}">
+      <view>
+        <view class="inlinebox">
+
+          <view class="searitembox">
+            <view class="searTitle">{{item.name}}:</view>
+            <view class="desc">{{item.desc}}</view>
+            <view class="closetjbox" bindtap="delTerm" data-index="{{index}}" data-name="{{item.codeName}}">
+              <image src="../../../../img/closetj.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+  <block wx:if="{{cabinetList.length>0}}">
+    <view class="contentbox" wx:for="{{cabinetList}}" wx:key>
+      <view class="contenttitle">
+        <view class="titleleft">柜子ID
+          {{item.id}}
+        </view>
+        <view class="rifht">
+             <text wx:if="{{item.cabinetStatus==1}}">正常</text>
+             <text wx:if="{{item.cabinetStatus==2}}">故障</text>
+          </view>
+      </view>
+
+      <view class="contenttitle">
+        <view class="titleleft enterSettingName">
+           {{item.enterSettingName}}
+        </view>
+        <view class="rifht">
+             <text class="isVisual" wx:if="{{item.isVisual=='0'}}">
+                <text  class="iconfont iconshiti1 defaiconf"></text>
+                <text>实体柜</text>
+             </text>
+             <text class="isVisual iconshiti1red" wx:if="{{item.isVisual=='1'}}">
+                <text  class="iconfont iconshiti1 defaiconf"></text>
+                <text>虚拟码</text>
+             </text>
+              
+          </view>
+      </view>
+
+      <view class="contentitem">
+        <view class="controw">
+          <view>
+            <text class="leftitle">物联卡</text>
+            <text>{{item.cabinetIot}}</text>
+          </view>
+        </view>
+        <view class="controw">
+          <view>
+            <text class="leftitle">物理编码</text>
+            <text>{{item.cabinetQrcode}}</text>
+          </view>
+        </view>
+        <view class="controw">
+          <view>
+            <text class="leftitle">Wifi信息</text>
+            <text>{{item.wifiSsid}} {{item.wifiPassword}}</text>
+          </view>
+        </view>
+        <view class="controw">
+          <view>
+            <text class="leftitle">添加时间</text>
+            <text>{{item.createdAt}}</text>
+          </view>
+        </view>
+
+      </view>
+      <view class="btnbox">
+        
+        <view class="btnitem" bindtap="qrCodeEdit" data-id="{{item.id}}">修改</view>
+        <view class="btnitem" bindtap="qrcode" data-id="{{item.id}}">二维码</view>
+        <view class="btnitem" bindtap="detail" data-id="{{item.id}}">详情</view>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="nodata">暂无数据</view>
+
+</view>
+
+<view class="addCard" bindtap="addQrcode">新增二维码</view>
+
+
+<view class="qrCodeBox" hidden="{{lookQrcode}}">
+   <view class="qrContentBox">
+      <text class="iconfont iconguanbi1" bindtap="closeBtn"></text>
+      <view class="qrTitle">查看二维码</view>
+      <view class="qrpicbox">
+         <view class="qrpicItem" wx:for="{{virtuaQrcodel}}" wx:key="index"> ->
+            <canvas style="width: 96%; height: 350rpx;" canvas-id="myQrcode{{index}}"></canvas>
+            <view>{{item.qrName}}</view>
+         </view>
+      </view>
+   </view>
+</view>

@@ -1,0 +1,18 @@
+<!--pages/package/pages/plateProdSlect/plateProdSlect.wxml-->
+
+<view class="wrap">
+
+   <view class="proditem {{selectActive[index]?'proditemActive':''}}" wx:for="{{prodData}}" wx:key bindtap="selectProd" data-index="{{index}}">
+     <view class="prodName {{selectActive[index]?'prodNameActive':''}}">商品名称</view>
+     <view class="prodContent">{{item.prodName}}</view>
+     <view class="prodName {{selectActive[index]?'prodNameActive':''}}">商品显示名称</view>
+     <view class="prodContent">{{item.prodShowName}}</view>
+   </view>
+   
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
+
+
+
+

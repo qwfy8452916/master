@@ -1,0 +1,301 @@
+<!--pages/package/pages/redEnvelopeDetails/redEnvelopeDetails.wxml-->
+<form bindsubmit="formSubmit">
+<view class="wrap">
+   <view class="contentBox">
+      <view class="titleBox">
+         <view class="titlef"><text class="lineBak"></text>活动明细</view>
+         <view class="titrig" bindtap="rotatechange">{{rotateJudge?'收起':'展开'}} <text class="iconfont icon- {{rotateJudge?'rotate':''}}"></text></view>
+      </view>
+      <view class="conBlock" wx:if="{{rotateJudge}}">
+        <view class="rowBox">
+          <view class="rowTitle">活动名称</view>
+          <view class="rowDesc">{{actName}}</view>
+        </view>
+        <view class="rowBox">
+          <view class="rowTitle">活动类型</view>
+          <view class="rowDesc">{{actType}}</view>
+        </view>
+        <view class="rowBox">
+          <view class="rowTitle">活动时间</view>
+          <view class="rowDesc">{{actBegin}} 至 {{actEnd}}</view>
+        </view>
+        <view class="rowBox">
+          <view class="rowTitle">参与次数</view>
+          <view class="rowDesc">{{actPartInCountType}}</view>
+        </view>
+     </view>
+   </view>
+
+   <view class="contentBox">
+      <view class="titleBox">
+         <view class="titlef"><text class="lineBak"></text>活动设置</view>
+      </view>
+      <view class="conBlock nopadd">
+        <view class="rowBox zdypadd">
+          <view class="rowTitle">最小订单金额</view>
+          <view class="rowDesc">
+             <input type="text" name="minOrderAmount" value="{{formData.minOrderAmount}}" placeholder="请填写金额"></input>元
+          </view>
+        </view>
+        <view class="betwbox">
+           <view>红包数量阶梯</view>
+           <view class="addbtn" bindtap="addbtn">+添加</view>
+        </view>
+        <view class="table">
+           <view class="tabrow theader">
+              <view class="tabcell">
+              </view>
+              <view class="tabcell">最小金额(元)</view>
+              <view class="tabcell">最大金额(元)</view>
+              <view class="tabcell">数量</view>
+           </view>
+           <view class="tabrow" wx:for="{{tableData}}" wx:key="index">
+              <view class="tabcell">
+                <view class="removeBox" bindtap="removeBox" data-index="{{index}}">
+                   <view class="reduce"></view>
+                </view>
+              </view>
+              <view class="tabcell">{{item.minAmount}}</view>
+              <view class="tabcell">{{item.maxAmount}}</view>
+              <view class="tabcell">
+                  <input bindinput="redPacketCount" data-index="{{index}}" value="{{item.redPacketCount}}" class="numbersl"></input>
+              </view>
+           </view>
+        </view>
+     </view>
+   </view>
+
+   <view class="contentBox">
+      <view class="titleBox">
+         <view class="titlef"><text class="lineBak"></text>转发设置</view>
+      </view>
+      <view class="conBlock">
+          <view class="sendtitle">转发提示</view>
+          <view class="textareaBox">
+             <textarea name="shareMsg" value="{{formData.shareMsg}}" row="3"></textarea>
+          </view>
+     </view>
+     
+     <picker class="pickbox" bindchange="bindPickerForward" range-key="name" value="{{forwardIndex}}" range="{{forwardData}}">
+        <view class="picker">
+          <text class="alignlef">
+                <text class="pickeritem">转发预览</text>
+                <input hidden="true" name="shareImgType" value="{{formData.shareImgType}}"></input>
+                <text wx:if="{{forwardData[forwardIndex].id}}!==''">{{forwardData[forwardIndex].name}}</text>
+                
+          <text wx:else class="placems">全部</text>
+          </text>
+          <text class="alignrig">
+                
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="uploadPic" wx:if="{{formData.shareImgType==1}}">
+        <view class="picbox">
+          <view class="showpicbox">
+            <block wx:if="{{formData.shareImgCustomUrl}}">
+              <view class="picitem">
+                <view class="iconbox" bindtap="closePic">
+                  <image src="../../../../img/closepic.png"></image>
+                </view>
+                <image src="{{formData.shareImgCustomUrl}}"></image>
+              </view>
+            </block>
+            <view class="addpic" wx:else bindtap="addfunPic">
+              <view class="hengline"></view>
+              <view class="suline"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="picTip"><text class="iconfont icontishi1"></text>请上传 1 张分享图用于转发分享，尺寸800px*640px，图片 大小不得超过2Mb </view>
+   </view>
+
+   <view class="contentBox">
+      <view class="titleBox">
+         <view class="titlef"><text class="lineBak"></text>海报设置</view>
+      </view>
+      <view class="conBlock nopadd">
+        <view class="rowbox zdypadd switchbox">
+          <view class="rowtitle">海报开关
+          </view>
+          <switch name="posterFlag" bindchange="posterFlag" checked="{{formData.posterFlag}}" color="#ff6930"></switch>
+        </view>
+   
+      <block wx:if="{{formData.posterFlag}}">
+        <view class="uploadPic">
+         <view class="picbox">
+          <view class="showpicbox">
+            <block wx:if="{{formData.posterImgUrl}}">
+              <view class="picitem">
+                <view class="iconbox" bindtap="closePoster">
+                  <image src="../../../../img/closepic.png"></image>
+                </view>
+                <image src="{{formData.posterImgUrl}}"></image>
+              </view>
+            </block>
+            <view class="addpic" wx:else bindtap="addPoster">
+              <view class="hengline"></view>
+              <view class="suline"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+        <view class="rowBox zdypadd">
+          <view class="rowTitle">二维码X轴</view>
+          <view class="rowDesc">
+             <input type="text" name="posterQrX" value="{{formData.posterQrX}}" placeholder="请输入X轴"></input>
+          </view>
+        </view>
+        <view class="rowBox zdypadd">
+          <view class="rowTitle">二维码Y轴</view>
+          <view class="rowDesc">
+             <input type="text" name="posterQrY" value="{{formData.posterQrY}}" placeholder="请输入Y轴"></input>
+          </view>
+        </view>
+        <view class="rowBox zdypadd">
+          <view class="rowTitle">二维码尺寸</view>
+          <view class="rowDesc">
+             <input type="text" name="posterQrPx" value="{{formData.posterQrPx}}" placeholder="请输入尺寸"></input>
+          </view>
+        </view>
+      </block>
+     </view>
+   </view>
+
+
+   <view class="contentBox">
+      <view class="titleBox">
+         <view class="titlef"><text class="lineBak"></text>广告设置</view>
+      </view>
+
+      <view class="rowbox zdypadd switchbox">
+          <view class="rowtitle">广告页开关
+          </view>
+          <switch name="adFlag" bindchange="adFlag" checked="{{formData.adFlag}}" color="#ff6930"></switch>
+        </view>
+
+         <block wx:if="{{formData.adFlag}}">
+          <picker class="pickbox" bindchange="bindPickerallAdPage" range-key="adName" value="{{allAdPageIndex}}" range="{{allAdPageList}}">
+          <view class="picker">
+            <text class="alignlef">
+                  <text class="pickeritem">广告页</text>
+                  <text wx:if="{{allAdPageList[allAdPageIndex].id}}!==''">{{allAdPageList[allAdPageIndex].adName}}</text>
+            <text wx:else class="placems">全部</text>
+            </text>
+            <text class="alignrig">
+            <text class="iconfont iconwangyou"></text>
+            </text>
+          </view>
+         </picker>
+       </block>
+        
+        <view class="rowbox zdypadd switchbox">
+          <view class="rowtitle">广告页后开关
+          </view>
+          <switch name="adLinkFlag" bindchange="adLinkFlag" checked="{{formData.adLinkFlag}}" color="#ff6930"></switch>
+        </view>
+        
+        <block wx:if="{{formData.adLinkFlag}}">
+        <picker class="pickbox" bindchange="bindPickerAllLink" range-key="linkName" value="{{allLinkIndex}}" range="{{allLinkList}}">
+          <view class="picker">
+            <text class="alignlef">
+                  <text class="pickeritem">广告后页</text>
+                  <text wx:if="{{allLinkList[allLinkIndex].id}}!==''">{{allLinkList[allLinkIndex].linkName}}</text>
+            <text wx:else class="placems">全部</text>
+            </text>
+            <text class="alignrig">
+                  
+            <text class="iconfont iconwangyou"></text>
+            </text>
+          </view>
+        </picker>
+      
+
+        <view class="betwbox" wx:if="{{ifHasParam}}">
+           <view>链接参数</view>
+           <view class="addbtn" bindtap="setParams">设置</view>
+        </view>
+      </block>
+   </view>
+
+   <view class="contentBox">
+      <view class="titleBox noBorder">
+         <view class="titlef"><text class="lineBak"></text>分享红包设置</view>
+         <view class="titrig addcolor" bindtap="plateAdd">+添加</view>
+      </view>
+      <view class="plateBox" wx:for="{{modelData}}" wx:key="index">
+        <view class="plateWrap">
+           <view class="platename">{{item.modelName}}</view>
+           <view>
+              <text wx:if="{{item.modelType==1}}">功能区</text>
+              <text wx:if="{{item.modelType==2}}">客房协议价</text>
+           </view>
+        </view>
+        <view class="platerow">
+           <view class="platerowTitle">红包金额来源</view>
+           <view>{{item.redPacketAmountFrom}}</view>
+        </view>
+        <view class="platerow">
+           <view class="platerowTitle">计算类型</view>
+           <view>
+              <text wx:if="{{item.redSetType==1}}">比例</text>
+              <text wx:if="{{item.redSetType==2}}">固定金额</text>
+           </view>
+        </view>
+        <view class="platerow">
+           <view class="platerowTitle">计算基准</view>
+           <view>{{item.bonusBaselineType}}</view>
+        </view>
+        <view class="platerow">
+           <view class="platerowTitle">红包金额</view>
+           <view>{{item.redPacketRate}}元</view>
+        </view>
+        <view class="plateBtnBox">
+           <view class="btnItem" data-id="{{item.id}}">删除</view>
+           <view class="btnItem" data-id="{{item.id}}">修改</view>
+           <view class="btnItem" data-id="{{item.id}}">详情</view>
+        </view>
+     </view>
+   </view>
+
+</view>
+
+<button form-type="submit" class="sureBtn">确定</button>
+
+</form>
+
+<view class="shadowBox" wx:if="{{redShadowfath}}"></view>
+<view class="srredBox" wx:if="{{redShadow}}">
+   <view class="srredBoxTit">添加红包</view>
+   <view class="redinpBox">
+      <view class="redinpBoxTit">红包金额</view>
+      <view>
+        <input class="redAmount" bindinput="redInput" placeholder="请输入红包金额"></input>
+      </view>
+   </view>
+   <view class="redbtnBox">
+       <view class="redbtnItem" bindtap="redbtnCancel">取消</view>
+       <view class="redbtnItem redbtnSure" bindtap="ensureRed">确定</view>
+   </view>
+</view>
+
+
+
+<view class="srredBox" wx:if="{{paramsShadow}}">
+   <view class="srredBoxTit">修改参数</view>
+   <view class="redinpBox" wx:for="{{paramData}}" wx:key="index">
+      <view class="redinpBoxTit">{{item.parameterName}}</view>
+      <view>
+        <input class="redAmount" value="{{modelLink[item.parameterName]}}" bindinput="parsmsInput" data-index="{{item.parameterName}}"></input>
+      </view>
+   </view>
+   <view class="redbtnBox">
+       <view class="redbtnItem" bindtap="paramsCancel">取消</view>
+       <view class="redbtnItem redbtnSure" bindtap="ensureParams">确定</view>
+   </view>
+</view>
+

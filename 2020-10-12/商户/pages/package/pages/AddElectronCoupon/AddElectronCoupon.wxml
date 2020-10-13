@@ -1,0 +1,58 @@
+<!--pages/package/pages/AddElectronCoupon/AddElectronCoupon.wxml-->
+
+<view class="wrap">
+  <view class="titlebox">
+    <view class="linebak"></view>电子券
+  </view>
+
+   <picker class="pickbox" bindchange="bindPickerType" range-key="name" value="{{typeIndex}}" range="{{typeData}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">类型</text>
+              <text wx:if="{{typeData[typeIndex].id}}">{{typeData[typeIndex].name}}</text>
+        
+        </text>
+        <text class="alignrig">
+            <text wx:if="{{!typeData[typeIndex].id}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+  <picker class="pickbox" bindchange="bindPickerCoupon" range-key="couponName" value="{{couponIndex}}" range="{{couponList}}">
+      <view class="picker">
+        <text class="alignlef">
+              <text class="pickeritem">名称</text>
+              <text wx:if="{{couponList[couponIndex].id}}">{{couponList[couponIndex].couponName}}</text>
+        
+        </text>
+        <text class="alignrig">
+                <text wx:if="{{!couponList[couponIndex].id}}" class="placems">请选择</text>
+        <text class="iconfont iconwangyou"></text>
+        </text>
+      </view>
+    </picker>
+
+   
+
+     <view class="rowbox">
+        <view class="rowtitle">数量</view>
+        <view class="putbox">
+          <input placeholder="请输入数量" value="{{eleCouponsData.couponCount}}" bindinput="couponCount"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">排序</view>
+        <view class="putbox">
+          <input placeholder="请输入排序" value="{{eleCouponsData.couponSort}}" bindinput="couponSort"></input>
+        </view>
+      </view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
+
+
+
+

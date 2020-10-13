@@ -1,0 +1,20 @@
+<!--pages/selfTakingList/selfTakingList.wxml-->
+<view class="wrap">
+  <view class="rowbox" wx:for="{{selftakingData}}" wx:key>
+    <view class="titlebox">
+      <view class="linex"></view>
+      <view>{{item.pointName}}</view>
+    </view>
+    <view class="desctext">{{item.pointInstruction}}</view>
+    <view class="funbox">
+      <view wx:if="{{authzData['F:MS_BASICSET_SELFMANAGE_SWITCH']}}">
+        <switch checked="{{item.isActive}}" bindchange="switch1Change" color="#FF6930" data-id="{{item.id}}" />
+        <text wx:if="{{item.isActive==1}}" class="switchstaus">已启用</text>
+        <text wx:else class="noswitchstaus">已禁用</text>
+      </view>
+      <view class="btnitem" bindtap="deleteSelftake" wx:if="{{authzData['F:MS_BASICSET_SELFMANAGE_DELETE']}}" data-id="{{item.id}}">删除</view>
+      <view class="btnitem" bindtap="selfTakingEdit" wx:if="{{authzData['F:MS_BASICSET_SELFMANAGE_MODIFY']}}" data-id="{{item.id}}">修改</view>
+    </view>
+  </view>
+</view>
+<view class="addbtn" bindtap="selfTakingAdd" wx:if="{{authzData['F:MS_BASICSET_SELFMANAGE_ADD']}}">新增自提点</view>

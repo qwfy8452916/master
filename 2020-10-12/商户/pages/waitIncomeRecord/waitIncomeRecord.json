@@ -1,0 +1,5 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText":"待入账记录",
+  "enablePullDownRefresh": true
+}

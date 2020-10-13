@@ -1,0 +1,128 @@
+<block wx:if="{{isshowicon == true}}"><image bindtap="hideiconfun" class="img-my-icon" mode="widthFix" src="../../img/icon-img21.png"></image></block>
+<view class="mybox-w" style="padding-bottom: 120rpx;">
+  <view class="flexbox mgB30 mybox">
+    <view class="flexbox mybox-l">
+      <image wx:if="{{userInfo.avatarUrl == '' || userInfo.avatarUrl == null}}" class='n-userimg-img' mode='widthFix' src="../../img/icon-img10.png"></image>
+      <image wx:else class='n-userimg-img' src="{{userInfo.avatarUrl}}" bindtap="isLanding"></image>
+      <view class="mybox-l-r">
+        <view wx:if="{{userInfo.nickName == '' || userInfo.nickName == null}}" class="mybox-font1 mgB20" bindtap="isLanding">登录</view>
+        <view wx:else class="mybox-font1 mgB20" bindtap="isLanding">{{userInfo.nickName}}</view>
+        <block wx:if="{{userInfo.nickName != '' && userInfo.nickName != null}}">
+          <view class="mybox-l-r-b">
+            <button wx:if="{{memberLevel_val == 0}}" class='go_to_user my-iconimg2' plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber"><image src="../../img/my-btnimg-rz.png"></image></button>
+            <image wx:else class='my-iconimg3-1' src="../../img/my-btnimg-hy.png"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="flexbox mybox-r" data-typenum="6" bindtap='isLanding'>
+      <image class="my-iconimg4" src="../../img/my-icon5.png"></image>我发的红包
+    </view>
+  </view>
+  <view class="flexbox mgB30 borderradius20 mybox-bgcoler">
+    <view class="paddTB15 mybox-view" data-typenum="10" bindtap="myintegral">
+      <view class="mybox-font2">0</view>
+      <view class="mybox-font3">我的积分 <image class='my-iconimg7' src="../../img/my-bgimg2-1.png"></image></view>
+    </view>
+    <view class="paddTB15 mybox-view" data-typenum="8" bindtap="isLanding">
+      <view class="mybox-font2">{{balanceData}}</view>
+      <view class="mybox-font3">我的账户 <image class='my-iconimg7' src="../../img/my-bgimg2-1.png"></image></view>
+    </view>
+    <view class="paddTB15 mybox-view" data-typenum="11" bindtap="isLanding">
+      <view class="mybox-font2">{{cardcouponlength}}</view>
+      <view class="mybox-font3">我的卡券 <image class='my-iconimg7' src="../../img/my-bgimg2-1.png"></image></view>
+    </view>
+    <view class="paddTB15 mybox-view" data-typenum="5" bindtap='isLanding'>
+      <view class="mybox-font2">{{couponsize}}</view>
+      <view class="mybox-font3">我的优惠券 <image class='my-iconimg7' src="../../img/my-bgimg2-1.png"></image></view>
+    </view>
+  </view>
+  <image class="myzj mgB30" mode="widthFix" src="../../img/my-btnimg-zj.png" data-typenum="2" bindtap="isLanding"></image>
+  <view class="flexbox mgB30" wx:if="{{memberLevel_val == 1}}">
+    <view class="flexbox mybox2" data-typenum="12" bindtap='isLanding'>
+      <image class="my-iconimg5" src="../../img/my-btnimg-fx.png"></image>
+      <view class="mybox2-r">
+        <view class="mybox-font4">分销汇总统计</view>
+        <view class="mybox-font5">最新分销数据 <image class="my-iconimg3" src="../../img/my-icon4.png"></image></view>
+      </view>
+    </view>
+    <view class="flexbox mybox2" data-typenum="9" bindtap='isLanding'>
+      <image class="my-iconimg5" src="../../img/my-btnimg-xj.png"></image>
+      <view class="mybox2-r">
+        <view class="mybox-font4">我的下级</view>
+        <view class="mybox-font5">分销下级数据 <image class="my-iconimg3" src="../../img/my-icon4.png"></image></view>
+      </view>
+    </view>
+  </view>
+  <view class="bgfff mgB30 borderradius20">
+    <view class="mybox3-t borderB">我的订单</view>
+    <view class="flexboxstart mgB30 borderradius20">
+      <view class="paddTB15 mybox-view" data-typenum="1" data-typeid="1" bindtap='isLanding'>
+        <image class="my-iconimg8" src="../../img/my-icon11.png"></image>
+        <view class="mybox-font6">商品订单</view>
+      </view>
+      <view class="paddTB15 mybox-view" data-typenum="1" data-typeid="2" bindtap='isLanding'>
+        <image class="my-iconimg8" src="../../img/my-icon9.png"></image>
+        <view class="mybox-font6">客房订单</view>
+      </view>
+      <view class="paddTB15 mybox-view" data-typenum="1" data-typeid="3" bindtap='isLanding' wx:if="{{roomService != 0}}">
+        <image class="my-iconimg8" src="../../img/my-icon8.png"></image>
+        <view class="mybox-font6">客房服务</view>
+      </view>
+    </view>
+  </view>
+  <view class="bgfff borderradius20">
+    <view class="flexboxstart borderradius20" style="flex-wrap: wrap;padding-top: 30rpx;">
+      <view class="paddB30 mybox-view" data-typenum="4" bindtap='isLanding' wx:if="{{oprInvoiceSup == 1 || isInvoice == 1}}">
+        <image class="my-iconimg6" src="../../img/my-btnimg9.png"></image>
+        <view class="mybox-font6">开票管理</view>
+      </view>
+      <view class="paddB30 mybox-view" data-typenum="3" bindtap='isLanding'>
+        <image class="my-iconimg6" src="../../img/my-btnimg7.png"></image>
+        <view class="mybox-font6">退款售后</view>
+      </view>
+      <view class="paddB30 mybox-view" bindtap='business'>
+        <image class="my-iconimg6" src="../../img/my-btnimg8.png"></image>
+        <view class="mybox-font6">商务合作</view>
+      </view>
+      <!-- <view class="paddB30 mybox-view" bindtap='investment'>
+        <image class="my-iconimg6" src="../../img/my-btnimg26.png"></image>
+        <view class="mybox-font6">我要投资</view>
+      </view> -->
+      <view class="paddB30 mybox-view" bindtap='nofun'>
+        <image class="my-iconimg6" src="../../img/my-btnimg-hyzx.png"></image>
+        <view class="mybox-font6">会员中心</view>
+      </view>
+      <view class="paddB30 mybox-view" data-typenum="7" bindtap='isLanding'>
+        <image class="my-iconimg6" src="../../img/my-btnimg-lq.png"></image>
+        <view class="mybox-font6">领券中心</view>
+      </view>
+      <view class="paddB30 mybox-view" data-typenum="13" bindtap='isLanding'>
+        <image class="my-iconimg6" src="../../img/my-btnimg-lq2.png"></image>
+        <view class="mybox-font6">领券记录</view>
+      </view>
+    </view>
+  </view>
+  <view class="enterpise">
+    <view class="enterpise1" wx:if="{{!ifhasInput}}" bindtap="inputCode">单位协议价</view>
+    <view class="enterpise1" wx:else>单位协议价</view>
+    <navigator url="/pages/bindEnterpiseCode/bindEnterpiseCode" class="enterpise2" wx:if="{{ifhasInput && !ifhasBind}}">绑定 <image class='my-iconimg7' src="../../img/my-bgimg2-1.png"></image></navigator>
+    <view wx:if="{{ifhasBind}}">
+      <navigator url="/pages/bindEnterpiseCodeDetail/bindEnterpiseCodeDetail?codeID={{licenseID}}" class="enterpise2" wx:if="{{!ifRootCode}}">{{contractedEnterpriseName}} <image src="../../img/toright.png" mode="widthFix" style="width:14px"/></navigator>
+      <navigator url="/pages/enterpriseManage/enterpriseManage" class="enterpise2" wx:else>{{contractedEnterpriseName}} <image src="../../img/toright.png" mode="widthFix" style="width:14px"/></navigator>
+    </view>
+  </view>
+  <image wx:if="{{adtype == 1}}" class="ad-img" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+</view>
+<view wx:if="{{ifshowCode}}" class="ifshowCode">
+  <view class="ifshowCodeBox">
+    <view class="ifshowCodeBox1">授权码</view>
+    <input type="text" class="codeInput" bindinput="bindKeyInput" placeholder="请输入授权码" placeholder-style="color:#eee"/>
+    <view class="submitBtn">
+      <view class="cancelBtn submitBtns" bindtap="cancelCode" style="margin-right:20px">取消</view>
+      <view class="ensureBtn submitBtns" bindtap="ensureCode">确定</view>
+    </view>
+  </view>
+</view>
+<tabbar funcId="{{funcid}}"></tabbar>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>

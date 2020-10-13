@@ -1,0 +1,45 @@
+<image class="form-img" mode="widthFix" src="{{styledata.picUrl}}"></image>
+<view class="formtitle-bg" wx:if="{{styledata.title || styledata.intro}}">
+  <view class="form-title">{{styledata.title}}</view>
+  <view class="form-font">{{styledata.intro}}</view>
+</view>
+<view class="dynamicform-box">
+  <view class="inp-box-flex mgB20" wx:if="{{styledata.isNeedRoomNo == 1}}">
+    <view class='form-inputname'>房间号<text class="force_text">*</text></view>
+    <input bindinput='changeroomcode' type="number" class='form-inputtext' placeholder="请输入房间号" placeholder-style="color: #bbbec4;" value="{{form_roomcode}}"></input>
+  </view>
+  <block wx:for="{{styledata.styles}}" wx:for-item="items" wx:key="index">
+    <block wx:if="{{items.widget==='TEXT'}}"><!-- 文本框 -->
+      <text-input id="form{{items.id}}" forminfo="{{items}}"></text-input>        
+    </block>
+    <block wx:if="{{items.widget==='TEXTAREA'}}"><!-- 文本域 -->
+      <text-textarea id="form{{items.id}}" forminfo="{{items}}"></text-textarea>        
+    </block>
+    <block wx:if="{{items.widget==='RADIO'}}"><!-- 单选框 -->
+      <text-radio id="form{{items.id}}" forminfo="{{items}}"></text-radio>        
+    </block>
+    <block wx:if="{{items.widget==='DATETIME_SELECT'}}"><!-- 日期选择器 -->
+      <text-data id="form{{items.id}}" forminfo="{{items}}"></text-data>        
+    </block>
+    <block wx:if="{{items.widget==='DATETIME'}}"><!-- 时间选择器 -->
+      <text-time id="form{{items.id}}" forminfo="{{items}}"></text-time>        
+    </block>
+    <block wx:if="{{items.widget==='REGION_SELECT'}}"><!-- 地区选择器 -->
+      <region-picker id="form{{items.id}}" forminfo="{{items}}"></region-picker>
+    </block>
+    <block wx:if="{{items.widget==='INPUT_NUMBER'}}"><!-- 计数器 -->
+      <input-number id="form{{items.id}}" forminfo="{{items}}"></input-number>        
+    </block>
+    <block wx:if="{{items.widget==='SELECT'}}"><!-- 下拉选 -->
+      <text-picker id="form{{items.id}}" forminfo="{{items}}"></text-picker>        
+    </block>
+  </block>
+  <view class="inp-box-flex inp-box-flex2" wx:if="{{styledata.isNeedDescription == 1}}">
+    <view class='form-inputname form-inputname2'>备注</view>
+    <textarea class="form-textarea" maxlength='255' bindinput="remarkfun" placeholder-style="color: #bbbec4;" placeholder="{{styledata.description}}" />
+  </view>
+  <block wx:if="{{roomService == 2}}">
+    <view wx:if="{{subtype == 1}}" class="dynamicform_sub" bindtap="dynamicform">提交</view>
+    <view wx:else class="dynamicform_sub subnone">提交中</view>
+  </block>
+</view>

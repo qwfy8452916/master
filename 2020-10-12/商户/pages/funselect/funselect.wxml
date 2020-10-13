@@ -1,0 +1,9 @@
+<!--pages/funselect/funselect.wxml-->
+<view class="wrap">
+   <view class="funitem {{selectActive[index]?'active':''}}" bindtap="funitem" wx:for="{{funData}}" data-index="{{index}}">{{item.funcCnName}}</view>
+
+</view>
+
+<view class="surebtn" bindtap="surebtn">确定</view>
+
+

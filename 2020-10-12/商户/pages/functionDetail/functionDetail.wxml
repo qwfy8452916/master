@@ -1,0 +1,170 @@
+<!--pages/functionDetail/functionDetail.wxml-->
+<view class="wrap">
+
+   <view class="detailbox">
+      <view class="titlebox">
+         <view class="linebak"></view>基础信息
+      </view>
+      <view class="rowitem">
+         <view class="inrow">
+            <view class="rowtitle">功能区名称</view>
+            <view class="rowinfo">{{functionDetail.funcCnName}}</view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">英文名称</view>
+            <view class="rowinfo">{{functionDetail.funcEnName}}</view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">图标</view>
+            <view class="rowinfo iconbox">
+              <image src="{{functionDetail.funcLogoUrl}}"></image>
+            </view>
+         </view>
+      </view>
+
+      <view class="rowitem">
+         <view class="inrow">
+            <view class="rowtitle">类型</view>
+            <view class="rowinfo">{{functionDetail.funcTypeName}}</view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">代码</view>
+            <view class="rowinfo">{{functionDetail.funcCode}}</view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">是否开放</view>
+            <view class="rowinfo">
+               <text wx:if="{{functionDetail.isShow==1}}">开放</text>
+               <text wx:if="{{functionDetail.isShow==0}}">不开放</text>
+            </view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">排序</view>
+            <view class="rowinfo">{{functionDetail.sort}}</view>
+            <text class="iconfont icontishi1" bindtap="sorttip"></text>
+         </view>
+      </view>
+
+   <block wx:if="{{functionDetail.isShowTop}}">
+      <view class="rowitem">
+         <view class="inrow">
+            <view class="rowtitle">banner图</view>
+            <view class="rowinfo alonerow">
+               <view class="banerbox" wx:for="{{functionDetail.funcBannerImages}}" wx:key="index">
+                  <image src="{{item.imageUrl}}"></image>
+               </view>
+            </view>
+         </view>
+      </view>
+      <view class="rowitem">
+
+       <block wx:if="{{functionDetail.isShowTitle}}">
+         <view class="inrow">
+            <view class="rowtitle">标题位置</view>
+            <view class="rowinfo">
+               <text wx:if="{{functionDetail.titlePosition==1}}">上方</text>
+               <text wx:if="{{functionDetail.titlePosition==2}}">下方</text>
+            </view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">标题名称</view>
+            <view class="rowinfo">{{functionDetail.title}}</view>
+         </view>
+        </block>
+         <view class="inrow">
+            <view class="rowtitle">电话</view>
+            <view class="rowinfo">{{functionDetail.servicePhone}}</view>
+         </view>
+      </view>
+      <view class="rowitem">
+         <view class="inrow">
+            <view class="rowtitle">一键wifi</view>
+            <view class="rowinfo">
+                <text wx:if="{{functionDetail.isShowWifi==1}}">开放</text>
+                <text wx:if="{{functionDetail.isShowWifi==0}}">不开放</text>
+            </view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">文化故事</view>
+            <view class="rowinfo">
+                <text wx:if="{{functionDetail.isShowCulture==1}}">开放</text>
+                <text wx:if="{{functionDetail.isShowCulture==0}}">不开放</text>
+            </view>
+         </view>
+      </view>
+    </block>
+   </view>
+
+   <view class="detailbox padbot" wx:if="{{functionDetail.funcType==4}}">
+      <view class="titlebox">
+         <view class="linebak"></view>功能区结构
+      </view>
+      <view class="rowitem">
+         <view class="inrow">
+            <view class="rowtitle">页面布局</view>
+            <view class="rowinfo">{{functionDetail.pageLayoutName}}</view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">配送方式</view>
+            <view class="rowinfo">{{functionDetail.delivWayNames}}</view>
+         </view>
+      </view>
+      <view class="rowitem" wx:if="{{functionData.pageLayout!=3 && isPickUp}}">
+         <view class="inrow">
+            <view class="rowtitle">自提点</view>
+            <view class="rowinfo">{{functionDetail.pickUpPointNames==null ||functionDetail.pickUpPointNames==''? "无":functionDetail.pickUpPointNames }}</view>
+         </view>
+      </view>
+      <view class="rowitem" wx:if="{{functionDetail.isTimeLimited || functionDetail.isTimeLimitedDeliv}}">
+         <view class="inrow" wx:if="{{functionDetail.isTimeLimited}}">
+            <view class="rowtitle">开放时间</view>
+            <view class="rowinfo">{{functionDetail.openStartTime}}至{{functionDetail.openEndTime}}</view>
+         </view>
+         <view class="inrow" wx:if="{{functionDetail.isTimeLimitedDeliv}}">
+            <view class="rowtitle">送达时间</view>
+            <view class="rowinfo">{{functionDetail.delivLimitDuration}}分钟</view>
+         </view>
+      </view>
+
+      <view class="rowitem">
+         <view class="inrow">
+            <view class="rowtitle">多次下单</view>
+            <view class="rowinfo">
+                <text wx:if="{{functionDetail.isSupportManyTimesOrder==1}}">开通</text>
+                <text wx:if="{{functionDetail.isSupportManyTimesOrder==0}}">不开通</text>
+            </view>
+            <text class="iconfont icontishi1" bindtap="moretip"></text>
+         </view>
+      </view>
+   </view>
+
+   <view class="detailbox padbot" wx:if="{{functionDetail.funcType==2}}">
+      <view class="titlebox">
+         <view class="linebak"></view>功能区结构
+      </view>
+      <view class="rowitem noborderbot">
+         <view class="inrow">
+            <view class="rowtitle">页面布局</view>
+            <view class="rowinfo">
+               <text wx:if="{{functionDetail.bookPageLayout==1}}">横幅</text>
+               <text wx:if="{{functionDetail.bookPageLayout==0}}">传统</text>
+            </view>
+         </view>
+         <view class="inrow">
+            <view class="rowtitle">房源</view>
+            <view class="rowinfo">
+                <text wx:if="{{functionDetail.roomResourcesFlag==1}}">所有可用</text>
+                <text wx:if="{{functionDetail.roomResourcesFlag==0}}">部分可用</text>
+            </view>
+         </view>
+         <view class="partRoom" wx:if="{{functionDetail.roomResourcesFlag==0}}">
+            <text wx:for="{{functionDetail.bookFuncResources}}" wx:key="index">{{item.resourceName}}、</text>
+         </view>
+      </view>
+ 
+   </view>
+
+</view>
+
+
+

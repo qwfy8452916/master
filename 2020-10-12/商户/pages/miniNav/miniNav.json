@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+        "my-tabbar": "../../component/tabbar/tabbar"
+  },
+  "navigationBarTitleText":"迷你吧"
+}

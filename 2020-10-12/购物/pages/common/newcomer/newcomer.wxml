@@ -1,0 +1,107 @@
+<view class="act-bg" wx:if="{{showtype == true}}">
+  <block wx:if="{{newcomertype == 0}}">
+    <view class="newcomer-img" bindtap="openfun"><image mode="widthFix" src="{{actImageUrl}}"></image></view>
+    <view class="closebtn" bindtap="closefun"><image src="../../../img/my-btnimg23.png"></image></view>
+  </block>
+  <block wx:else>
+    <view class="actbox">
+      <view class="actbox-btm">
+        <scroll-view scroll-y style="height: 100%;">
+          <view class="actbox-top-img" wx:if="{{actAdImageUrl != ''}}"><image mode="widthFix" src="{{actAdImageUrl}}"></image></view>
+          <block wx:for="{{listdata}}" wx:for-item="item" wx:for-index="idx" wx:key="index">
+            <block wx:if="{{item.couponType == 1}}">
+              <view class="couponlist">
+                <view wx:if="{{item.couponCouponDTO.discountWay == 1}}" class="couponlist-top {{item.couponCouponDTO.couponRange == 1?'bgimg':'bgimg2'}}">
+                  <view class="top-left">{{item.couponCouponDTO.couponName}}</view>
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 1}}" class="top-right"><view class="right-m">￥</view>{{item.couponCouponDTO.reduceMoney}}</view>
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 2}}" class="top-right">{{item.couponCouponDTO.couponDiscount}}<view class="right-m">折</view></view>
+                </view>
+                <view wx:if="{{item.couponCouponDTO.discountWay == 2}}" class="couponlist-top item.couponCouponDTO.couponRange == 1?'bgimg1':'bgimg3'">
+                  <view class="top-left">{{item.couponCouponDTO.couponName}}</view>
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 1}}" class="top-right"><view class="right-m">￥</view>{{item.couponCouponDTO.reduceMoney}}</view>
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 2}}" class="top-right">{{item.couponCouponDTO.couponDiscount}}<view class="right-m">折</view></view>
+                </view>
+                <view wx:if="{{item.couponCouponDTO.discountWay == 3}}" class="couponlist-top bgimg4">
+                  <view class="top-left">{{item.couponCouponDTO.couponName}}</view>
+                </view>
+                <image class="top-img" mode="widthFix" src="../../../img/border.png"></image>
+                <view class="couponlist-bottom">
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 1}}" class="bottom-coupon1">{{item.couponCouponDTO.couponRange == 1?'商品':'订房'}}满减券(满{{item.couponCouponDTO.useLimitMoney}}减{{item.couponCouponDTO.reduceMoney}})</view>
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 2}}" class="bottom-coupon1">{{item.couponCouponDTO.couponRange == 1?'商品':'订房'}}折扣券(满{{item.couponCouponDTO.discountMinBuyMoney}}元可用，最高减{{item.couponCouponDTO.discountMaxMoney}}元)</view>
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 3}}" class="bottom-coupon1">{{item.couponCouponDTO.couponRangeAndWayShowName}}</view>
+                  <view class="bottom-coupon2">
+                    <view class="w-l">{{item.couponCouponDTO.couponStartDate}} 至 {{item.couponCouponDTO.couponEndDate}}</view>
+                    <view class="w-r" wx:if="item.couponCouponDTO.count > 1">{{item.count}}张</view>
+                  </view>
+                  <image class="bottom-img" mode="widthFix" src="../../../img/dashed.png"></image>
+                  <view wx:if="{{item.couponCouponDTO.discountWay == 3}}" class="bottom-hint">
+                    <view class="hint-txt"></view>
+                    <view class="hint-btn"></view>
+                  </view>
+                  <view wx:else class="bottom-hint" data-id="{{item.couponCouponDTO.batchId}}" data-idx="{{idx}}" bindtap="lookexplain">
+                    <view class="hint-txt">使用说明</view>
+                    <view class="hint-btn"><image class="hint-img {{item.couponCouponDTO.exstate? 'trans':''}}" mode="widthFix" src="../../../img/my-icon3.png"></image></view>
+                  </view>
+                  <view wx:if="{{item.exstate}}" class="direction-use">
+                    <view>优惠范围：{{coupon_explain.generalInstructions}}</view>
+                    <view>
+                      <block wx:for="{{coupon_explain.names}}" wx:for-item="itemcoupon" wx:key="index">{{itemcoupon}}</block>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+            <block wx:else>
+              <view class="bgfff cardcouponbox">
+                <view class="flexbox borderB paddLR302 mgB30 cardcouponbox-t">
+                  <view class="cardcouponbox-font1 cardcouponbox-w1">ID：{{item.vouVoucherDTO.id}}</view>
+                  <view class="cardcouponbox-font2">{{item.count}}张</view>
+                </view>
+                <view class="cardcouponbox-b">
+                  <view class="paddLR302 flexbox cardcouponbox-b-t mgB20">
+                    <image class="cardcouponbox-img" src="{{item.vouVoucherDTO.vouImageUrl}}"></image>
+                    <view class="cardcouponbox-b-t-w1">
+                      <view class="mgB50 flexboxstart">
+                        <view class="cardcouponbox-font3"><block wx:if="{{item.vouVoucherDTO.vouUseScene == 1}}">到店核销</block><block wx:else>线上抵扣</block></view>
+                        <view class="cardcouponbox-font4">{{item.vouVoucherDTO.vouName}}</view>
+                      </view>
+                      <view class="flexbox">
+                        <view class="cardcouponbox-font5">¥ {{item.vouVoucherDTO.vouBasicPrice}}</view>
+                        <view class="cardcouponbox-font6" wx:if="{{item.vouVoucherDTO.vouUseScene == 2}}">
+                          <block wx:if="{{item.vouVoucherDTO.vouDeductibleType == 0}}">可抵扣现金¥ {{item.vouVoucherDTO.vouDeductibleMoney}}元</block>
+                          <block wx:else>免费领：{{item.vouVoucherDTO.deductHotelProdName}}</block>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                  <block wx:if="{{item.vouVoucherDTO.vouUseScene == 1}}">
+                    <view class="paddLR302 flexboxstart mgB20 cardcouponbox-font10">
+                      <block wx:if="{{typeindex == 0}}">剩余使用次数: <text class="textcolor">{{item.vouVoucherDTO.vouRemainingVerifiedNum}}</text></block>
+                      <block wx:elif="{{typeindex == 1}}">已使用次数: <text class="textcolor">{{item.vouVoucherDTO.vouVerifiedNum}}</text></block>
+                      <block wx:elif="{{typeindex == 2}}">剩余未使用次数: <text class="textcolor">{{item.vouVoucherDTO.vouRemainingVerifiedNum}}</text></block>
+                    </view>
+                    <view class="paddLR302 flexboxstart mgB20 cardcouponbox-font10">
+                      使用地址 :  <text class="textcolor2">{{item.vouVoucherDTO.verifiedAddress}}</text>
+                    </view>
+                  </block>
+                  <view class="paddLR302 cardcouponbox-font7 mgB30" wx:if="{{item.vouVoucherDTO.vouInstruction}}">
+                    <view>使用须知：</view>
+                    <view wx:for="{{item.vouInstructions}}" wx:for-item="item2" wx:key='index' class="paddL20">{{item2}}</view>
+                  </view>
+                  <view class="flexbox borderT paddLR302">
+                    <view class="cardcouponbox-font9">有效期：{{item.vouVoucherDTO.vouStartDate}} ~ {{item.vouVoucherDTO.vouEndDate}}</view>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </block>
+        </scroll-view>
+      </view>
+      <view class="font-btm">
+        <view class="arrows-img"><image mode="widthFix" src="../../../img/arrows.png"></image></view>
+        优惠券可在<text>【我的优惠券】</text>查看
+      </view>
+    </view>
+    <view class="closebtn" bindtap="closefun"><image src="../../../img/my-btnimg23.png"></image></view>
+  </block>
+</view>

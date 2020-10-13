@@ -1,0 +1,29 @@
+<!--pages/bindEnterpiseCode/bindEnterpiseCode.wxml-->
+<view class="bindcode">
+    <form bindsubmit="codeSubmit">
+        <view class="userinfo">
+            <view class="valuekey"><span>姓名</span></view>
+            <input name="bindUserName" disabled="{{true}}" value="{{codeData.bindUserName}}" maxlength='20' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>手机号</span></view>
+            <input name="bindUserMobile" disabled="{{true}}" value="{{codeData.bindUserMobile}}" type="number" maxlength='11' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>部门</span></view>
+            <input name="bindUserDept" disabled="{{true}}" value="{{codeData.bindUserDept}}" maxlength='20' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>职位</span></view>
+            <input name="bindUserPosition" disabled="{{true}}" value="{{codeData.bindUserPosition}}" maxlength='20' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>Email</span></view>
+            <input name="bindUserEmail" disabled="{{true}}" value="{{codeData.bindUserEmail}}" maxlength='20' class="txtuser"></input>
+        </view>
+        <view class="userinfo">
+            <view class="valuekey"><span>授权码</span></view>
+            <input name="bindUserPosition" disabled="{{true}}" value="{{codeData.license}}" maxlength='20' class="txtuser"></input>
+        </view>
+    </form>
+</view>

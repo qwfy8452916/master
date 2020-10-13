@@ -1,0 +1,4 @@
+<view class="inp-box-flex">
+  <view class='form-inputname'>{{forminfo.showName}}<text wx:if="{{forminfo.isValueRequired==1}}" class="force_text">*</text></view>
+  <input bindinput='enterValue' type="{{forminfo.valueType == 'INTEGER'?'number':'text'}}" class='form-inputtext' placeholder="{{forminfo.valuePlaceholder}}" placeholder-style="color: #bbbec4;"></input>
+</view>

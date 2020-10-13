@@ -1,0 +1,188 @@
+/* pages/myshare/myshare.wxss */
+page{
+  border-top: 1rpx solid #e5e5e5;
+  background: #f4f4f4;
+}
+.wrap{
+  width: 100%;
+  padding: 30rpx 4%;
+  box-sizing: border-box;
+}
+.iconweixin{
+  color: #24db5a;
+}
+.itembox{
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #2B2D30;  
+  margin-bottom: 20rpx;
+}
+.title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eaeaea;
+  padding: 20rpx 0;
+}
+.title .title_bt{
+  font-size: 32rpx;
+  color: #2B2D30;
+  position: relative;
+}
+
+.title .title_btdx{
+  font-size: 20rpx;
+  color: #82C2F1;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  position: relative;
+}
+.title .title_btdx::before{
+  content: "";
+  width: 20rpx;
+  height: 1rpx;
+  background: #82f1e8;
+  position: absolute;
+  top: 32rpx;
+  left: -26rpx;
+}
+.title .title_btdx::after{
+  content: "";
+  width: 20rpx;
+  height: 1rpx;
+  background: #82f1e8;
+  position: absolute;
+  top: 33rpx;
+  right: -23rpx;
+}
+.shangcti{
+  color:#888FA1;
+  font-size:  24rpx;
+}
+.xieyistyle{
+  color:#edad46 !important;
+}
+.reward{
+  margin-top: 25rpx;
+  font-size: 28rpx;
+  color: #2B2D30;
+}
+.reward .reward_bfb{
+  margin-right:45rpx;
+}
+.sharebox{
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  color: #FF9700;
+  text-align: right;
+  margin-bottom: 20rpx;
+}
+.sharebox .shareitem{
+  margin-right: 40rpx;
+  padding: 15rpx 25rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx;
+  background: #fdf6eb;
+}  
+.iconweixin{
+  margin-right: 10rpx;
+}
+.haibaoshare{
+  display: inline-block;
+}
+.haibaoshare .hbfxtext{
+  display: inline-block;
+}
+.zfpyq{
+  margin-right: 10rpx;
+  width: 46rpx;
+  height: 46rpx;
+  display: inline-block;
+  position: relative;
+  top: 2rpx;
+}
+.zfpyq image{
+  margin-right: 10rpx;
+  width: 100%;
+  height: 100%;
+}
+
+/* 海报弹窗 */
+
+.bkbeijing{
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  width: 100%;
+  height: 100%;
+}
+.wraphaibao{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 70%;
+}
+.iconguanbi{
+  position: absolute;
+  color: #c1c1c1;
+  right: -60rpx;
+  top: 46rpx;
+  font-size: 46rpx;
+  padding: 20rpx;
+}
+.picbox{
+  overflow: hidden; 
+  height: 772rpx;
+  margin-top:100rpx; 
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+}
+
+.picbox .haibaopic{
+  width: 100%; 
+  height: 100%;
+}
+
+.btnpic{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size:32rpx;
+  color: #fff;
+  background:#FEB955; 
+  border-radius:35rpx;
+  margin-top: 40rpx;
+}
+.preview{
+  background: #FE8C55;
+}
+.iconweixinN{
+  font-size: 30px;
+  margin-right: 15rpx;
+}
+.reward-icon{
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+}
+
+
+
+
+
+
+
+
+/* 海报弹窗 */

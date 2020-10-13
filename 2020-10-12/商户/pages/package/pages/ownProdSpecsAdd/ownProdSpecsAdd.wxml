@@ -1,0 +1,107 @@
+<!--pages/package/pages/ownProdSpecsAdd/ownProdSpecsAdd.wxml-->
+
+
+<view class="wrap">
+
+  <form bindsubmit="formSubmit">
+    <view class="contentkbox">
+      <view class="titlebox">
+        <view class="linebak"></view>商品规格
+      </view>
+      <view class="rowbox">
+        <view class="rowtitle">规格名称
+          <text class="star fourStar">*</text>
+        </view>
+        <view class="putbox">
+          <input placeholder="请输入规格名称" name="specName" value="{{prodSpecsData.specName}}" maxlength="50"></input>
+        </view>
+      </view>
+      <view class="rowbox">
+        <view class="rowtitle">显示名称<text class="star fourStar">*</text></view>
+        <view class="putbox">
+          <input placeholder="请输入显示名称" name="showName" value="{{prodSpecsData.showName}}"  maxlength="50"></input>
+        </view>
+      </view>
+
+
+      <view class="rowbox">
+        <view class="rowtitle">供货价
+          <text class="star threeStar">*</text>
+        </view>
+        <view class="putbox">
+          <input placeholder="请输入金额" maxlength="10" name="supplyPrice" value="{{prodSpecsData.supplyPrice}}"></input>
+        </view>
+        <view class="yuanUnit">元</view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">零售价
+          <text class="star threeStar">*</text>
+        </view>
+        <view class="putbox">
+          <input placeholder="请输入金额" maxlength="10" name="retailPrice" value="{{prodSpecsData.retailPrice}}"></input>
+        </view>
+        <view class="yuanUnit">元</view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">划线价
+          <text class="star threeStar">*</text>
+        </view>
+        <view class="putbox">
+          <input placeholder="请输入金额" maxlength="10" name="marketPrice" value="{{prodSpecsData.marketPrice}}"></input>
+        </view>
+        <view class="yuanUnit">元</view>
+      </view>
+
+       <view class="rowbox">
+        <view class="rowtitle">可售数量<text class="star fourStar">*</text>
+        </view>
+        <view class="putbox">
+          <input name="availableSaleQty" value="{{prodSpecsData.availableSaleQty}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">排序
+        </view>
+        <view class="putbox">
+          <input name="sort" value="{{prodSpecsData.sort}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">规格说明
+        </view>
+        <view class="putbox">
+          <input name="specInstruction" value="{{prodSpecsData.specInstruction}}" maxlength="250"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">详情banner</view>
+        <view class="picbox">
+          <view class="showpicbox">
+            <view class="picitem" wx:for="{{prodSpecsData.bannerImageList}}" wx:key="index">
+              <view class="iconbox" bindtap="removeBan" data-index="{{index}}">
+                <image src="../../../../img/closepic.png"></image>
+              </view>
+              <image src="{{item.imageUrl}}"></image>
+            </view>
+            <view class="addpic" bindtap="addfunBanner">
+              <view class="hengline"></view>
+              <view class="suline"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    
+    <button class="surebtn" form-type="submit">确定</button>
+  </form>
+</view>
+
+
+

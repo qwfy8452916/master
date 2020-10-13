@@ -1,0 +1,133 @@
+swiper{
+  min-height: 11.5rem;
+}
+.swiperbox,.swiperitembox{
+  position: relative;
+}
+.jdinfobox{
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.banner-img{
+  width: 31%;
+  margin-left: -10rpx;
+  margin-top: 40rpx;
+  position: absolute;
+  z-index: 3;
+}
+.banner-img image{
+  display: block;
+  width: 100%;
+  height: 55rpx;
+}
+.jd-name{
+  display: block;
+  font-size: 27rpx;
+  color: #fff;
+  margin-top: 196rpx;
+  margin-bottom: 10rpx;
+}
+.stars{
+  font-size: 30rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.labellist{
+  display: flex;
+  justify-content: flex-start;
+}
+.labelbox{
+  font-size: 25rpx;
+  color: #fff;
+  margin-right: 25rpx;
+  background: rgba(255,255,255,0.3);
+  border-radius: 25px;
+  padding: 5rpx 15rpx;
+}
+
+.roomservice-top{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;  
+}
+.roomservice-top .roomservice-top-btn{
+  font-size: 32rpx;
+  color: #333;
+  text-align: center;
+  line-height: 85rpx;
+}
+.roomservice-top  .roomservice-top-btn-active{
+  color: #ff9700;
+  border-bottom: 2px solid #ff9700;
+}
+.banner image{
+  display: block;
+  width: 100%;
+}
+.roomservice-typeul{
+  background: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.roomservice-typeli{
+  width: 33%;
+  text-align: center;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  border: 1rpx solid #e5e5e5;
+  border-left: none;
+  border-top: none;
+}
+.roomservice-typeul .roomservice-typeli:nth-child(3n){
+  width: 33.4%;
+  border-right: none;
+}
+.roomservice-typeli-font{
+  font-size: 28rpx;
+  color: #333333;
+  margin-top: 20rpx;
+}
+.roomservice-typeli-img{
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+}
+.shoppingcart{
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  z-index: 9;
+  background: #fff;
+  border-radius: 50%;
+  right: 3%;
+  bottom: 13%;
+  display: flex;
+  align-items: center;
+  border: 0.5px solid #e5e5e5;
+}
+.shoppingcart .shoppingcart-img{
+  display: block;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
+.shoppingcart-num{
+  position: absolute;
+  top: 0;
+  right: 0rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background: #ee1e1e;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 30rpx;
+  border-radius: 50%;
+}

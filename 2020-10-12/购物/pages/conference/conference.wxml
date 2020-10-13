@@ -1,0 +1,133 @@
+<block wx:if="{{meetingindex == 4}}"></block>
+<block wx:if="{{meetingindex == 1 || meetingindex == 2}}">
+  <view class="signupbox {{(signupdata.status != -1 && signupdata.status != 0)?'':'paddB90'}}">
+    <block wx:for="{{signupdata.detail.actMeetingImageDTOS}}" wx:for-item="item" wx:key="index">
+      <image class="img-size" mode="widthFix" src="{{item.imageUrl}}"></image>
+    </block>
+    <view class="submitbtn submitbtn-1" wx:if="{{signupdata.status != -1 && signupdata.status != 0}}" bindtap="jumpfun">进入酒店主页</view>
+    <block wx:if="{{signupdata.status == 0}}"><view class="submitbtn" bindtap="toggleformbox">报名</view></block>
+    <block wx:if="{{signupdata.status == -1}}"><view class="submitbtn" bindtap="getformdatafun">再次报名</view></block>
+  </view>
+</block>
+<block wx:if="{{meetingindex == 3}}">
+  <block wx:if="{{signupdata.status != 100}}">
+    <view class="signinbox signinbox2">
+      <image wx:if="{{signupdata.status == 3}}" class="popups-img2" src="../../img/success-img3.png"></image>
+      <image wx:if="{{signupdata.status == 0 || signupdata.status == -1 || signupdata.status == 101}}" class="popups-img2" src="../../img/success-img4.png"></image>
+      <image wx:if="{{signupdata.status == 1}}" class="popups-img2" src="../../img/success-img5.png"></image>
+      <view class="popups-font1">
+        <block wx:if="{{signupdata.status == 0 || signupdata.status == 1 || signupdata.status == -1 || signupdata.status == 101}}">签到失败</block>
+        <block wx:if="{{signupdata.status == 3}}">签到成功</block>
+      </view>
+      <view class="popups-font2">
+        <block wx:if="{{signupdata.status == 0 || signupdata.status == 101}}">您未报名</block>
+        <block wx:if="{{signupdata.status == 1}}">报名审核中</block>
+        <block wx:if="{{signupdata.status == -1}}">报名审核未通过，请重新报名</block>
+      </view>
+      <view wx:if="{{signupdata.receiveGiftFlag == 0}}" class="btn-font" bindtap="jumpfun">进入酒店主页</view>
+      <view wx:if="{{signupdata.receiveGiftFlag == 1}}" class="btn-font" bindtap="mycouponfun">查看我的礼包券</view>
+      <block wx:if="{{signupdata.status == 3}}">
+        <block wx:for="{{signupdata.detail.meetingData}}" wx:for-item="item" wx:key="index">
+          <view class="flexbox paddAll2010 borderT">
+            <view class="download-l flexboxstart">
+              <image class="download-icon" src="../../img/download-icon.png"></image>
+              <view class="filename">查看会议资料</view><!-- {{item.fileName}} -->
+            </view>
+            <view wx:if='{{item.fileType == 1}}' class="download-btn" data-url="{{item.imageUrl}}" data-datatype="{{item.fileType}}" bindtap="downloadfun">下载</view>
+            <view wx:if='{{item.fileType == 2}}' data-url="{{item.imageUrl}}" bindtap="openimg" class="download-btn">打开</view>
+          </view>
+        </block>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="signinbox">
+      <image class="formt-img" mode="widthFix" src="../../img/form-t.png"></image>
+      <view class="formB paddB30">
+        <view class="flexboxend borderB paddAll2007">
+          <view class="inpname">姓名<text>*</text></view>
+          <input class="inpbox" type="text" maxlength="10" placeholder="输入姓名" value="{{username}}" bindinput="usernamefun"></input>
+          <image class="clearbtn" src="../../img/icon-img11.png" data-val="1" bindtap="clearfun"></image>
+        </view>
+        <view class="flexboxend borderB paddAll2007">
+          <view class="inpname">手机号<text>*</text></view>
+          <input class="inpbox" type="number" maxlength="11" placeholder="输入手机号" value="{{usertel}}" bindinput="usertelfun"></input>
+          <image class="clearbtn" src="../../img/icon-img11.png" data-val="2" bindtap="clearfun"></image>
+        </view>
+        <view class="flexboxend borderB paddAll2007">
+          <view class="inpname">所在单位</view>
+          <textarea class="inpbox2" maxlength="30" auto-height value="{{organisation}}" placeholder="输入所在单位" bindblur="organisationfun" />
+        </view>
+        <view class="flexboxend borderB paddAll2007">
+          <view class="inpname">备注</view>
+          <textarea class="inpbox2" maxlength="100" auto-height value="{{userremark}}" placeholder="备注" bindblur="userremarkfun" />
+        </view>
+        <view class="submitbtn2 mgT80" catchtap="delayfun">确定</view>
+      </view>
+    </view>
+  </block>
+</block>
+<!-- form -->
+<view class="popups" wx:if="{{isshowform == true}}" catchtouchmove='ture'>
+  <view class="turndown-font" wx:if="{{signupdata.status == -1}}">驳回原因：{{auditRemark}}</view>
+  <view class="formbox">
+    <image class="formt-img" mode="widthFix" src="../../img/form-t.png"></image>
+    <view class="formB">
+      <view class="flexboxend borderB paddAll2007">
+        <view class="inpname">姓名<text>*</text></view>
+        <input class="inpbox" type="text" maxlength="10" placeholder="输入姓名" value="{{username}}" bindinput="usernamefun"></input>
+        <image class="clearbtn" src="../../img/icon-img11.png" data-val="1" bindtap="clearfun"></image>
+      </view>
+      <view class="flexboxend borderB paddAll2007">
+        <view class="inpname">手机号<text>*</text></view>
+        <input class="inpbox" type="number" maxlength="11" placeholder="输入手机号" value="{{usertel}}" bindinput="usertelfun"></input>
+        <image class="clearbtn" src="../../img/icon-img11.png" data-val="2" bindtap="clearfun"></image>
+      </view>
+      <view class="flexboxend borderB paddAll2007">
+        <view class="inpname">所在单位</view>
+        <textarea class="inpbox2" maxlength="30" auto-height value="{{organisation}}" placeholder="输入所在单位" bindblur="organisationfun" />
+      </view>
+      <view class="flexboxend borderB paddAll2007">
+        <view class="inpname">备注</view>
+        <textarea class="inpbox2" maxlength="100" auto-height value="{{userremark}}" placeholder="备注" bindblur="userremarkfun" />
+      </view>
+      <view class="submitbtn2" catchtap="delayfun">确定</view>
+    </view>
+  </view>
+  <image class="close-img" src="../../img/my-btnimg23-1.png" catchtap="toggleformbox"></image>
+</view>
+<!-- popups -->
+<view class="popups" wx:if="{{isshowpopups == true && meetingindex != 3}}" catchtouchmove='ture'>
+  <view class="popups-box">
+    <image wx:if="{{signupdata.status == 101}}" class="popups-img" src="../../img/success-img4.png"></image>
+    <image wx:else class="popups-img" src="../../img/success-img2.png"></image>
+    <view class="popups-font1">
+      <block wx:if="{{signupdata.status == 1}}">您已提交信息, 正在审核中...</block>
+      <block wx:if="{{signupdata.status == 2}}">恭喜您，报名成功</block>
+      <block wx:if="{{signupdata.status == 3}}">您已签到成功</block>
+      <block wx:if="{{signupdata.status == 101}}">很遗憾，报名已截止</block>
+    </view>
+    <view class="popups-font2">
+      <block wx:if="{{signupdata.status == 1}}">我们将尽快审核，请及时关注</block>
+      <block wx:if="{{signupdata.status == 2}}">您已报名成功，请按时出席会议！</block>
+      <block wx:if="{{signupdata.status == 101}}">敬请期待后续会议</block>
+    </view>
+    <view class="submitbtn2" catchtap="jumpfun">进入酒店主页</view>
+  </view>
+  <image class="close-img" src="../../img/my-btnimg23-1.png" catchtap="hiddenpopupsfun"></image>
+</view>
+<!-- 礼包 giftpackage -->
+<block wx:if="{{giftpackage == true}}">
+  <newcomer bind:redirectfun="redirectfun" actImageUrl='{{signupdata.detail.actImageUrl}}' actId="{{signupdata.detail.id}}" actType="1"></newcomer>
+</block>
+<!-- 图片文件 -->
+<view class="fileimgbox" wx:if="{{isshowimg == true}}">
+  <scroll-view scroll-y style="height: 85%;padding-bottom: 120rpx;">
+    <view style="height: 20rpx;"></view>
+    <image class="popups-img3" mode="widthFix" src="{{imgurl}}"></image>
+  </scroll-view>
+  <view class="flexbox filebtnbox borderT">
+    <view class="filebtn filebtn-1" data-url="{{imgurl}}" data-datatype="2" bindtap="downloadfun">保存图片</view>
+    <view class="filebtn filebtn-2" bindtap="openimg">关闭窗口</view>
+  </view>
+</view>

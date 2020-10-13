@@ -1,0 +1,213 @@
+<block wx:if="{{pageLayout == 1}}">
+  <swiper autoplay='true' interval='3000' duration='500' display-multiple-items='1' class="bannerbox" style="height:{{imgheights[current]}}rpx;" bindchange="bindchange">
+    <!-- <swiper-item class="swiperitembox">
+      <image src="{{hotelAddImagesfirst.imageUrl}}" class="slide-image" mode='widthFix' />
+      <view class='jdinfobox'>
+        <view class='banner-img' bindtap="hotelstoryfun"><image src='../../img/index-img1.png' mode='widthFix'></image></view>
+        <view class='hotelinfobox'>
+          <text class='jd-name' style="margin-top: {{windowHeight > 700?'160rpx':'196rpx'}};">{{hotelinfo.hotelName}}</text>
+          <view style="margin-bottom: 20rpx;">
+            <text wx:for="{{hotelStarLevel}}" wx:for-item="i" wx:key='index' class='iconfont icon-star_full stars' style='color: {{themecolor.skintone}};'></text>
+          </view>
+          <view class='labellist'>
+              <view class='labelbox' wx:if="{{hotelDecorationYear != ''}}">{{hotelinfo.hotelDecorationYear}}年装修</view>
+              <view class='labelbox' wx:if="{{hotelinfo.isHasPark==1}}">停车位</view>
+              <view class='labelbox' wx:if="{{hotelinfo.hotelStyle != ''}}">{{hotelinfo.hotelStyle}}</view>
+          </view>
+        </view>
+      </view>
+    </swiper-item> -->
+    <block wx:for="{{bannerImageList}}" wx:for-item="item" wx:key="index">
+      <swiper-item class="swiperitembox">
+        <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" data-id='{{index}}' bindload="imageLoad" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <block wx:if="{{sortlist.length > 1}}">
+    <scroll-view class="hotelbox-l" scroll-x>
+      <block wx:for="{{sortlist}}" wx:for-item="item" wx:key="index">
+        <view class="commoditylist-view2" data-num="{{index}}" data-id="{{item.id}}" bindtap="typechange">
+          <text wx:if="{{sortype == index}}" style="color: {{themecolor.skintone}};border-color: {{themecolor.skintone}};">{{item.categoryName}}</text>
+          <text wx:else>{{item.categoryName}}</text>
+        </view>
+      </block>
+    </scroll-view>
+  </block>
+  <view class="hotelbox-r">
+    <scroll-view class="commoditylist {{commoditylist != ''?'bgfff':''}}" scroll-x wx:if="{{typelist.length > 1}}">
+      <block wx:for="{{typelist}}" wx:for-item="item" wx:key="index">
+        <view class="commoditylist-view" data-id="{{item.id}}" data-num="{{index}}" bindtap='changeType'>
+          <text wx:if="{{typenum==index}}" style="color: #fff;background: {{themecolor.skintone}};border-color: {{themecolor.skintone}};">{{item.categoryName}}</text>
+          <text wx:else>{{item.categoryName}}</text>
+        </view>
+      </block>
+    </scroll-view>
+    <block wx:if="{{commoditylist.length != 0}}">
+      <view class='commodity-list'>
+        <block wx:for="{{commoditylist}}" wx:for-item="item" wx:key="index">
+          <view wx:if="{{item.onShelf != 0}}" class='commodityview mgB20' data-prodcode='{{item.prodCode}}' data-hotelProdId='{{item.hotelProdId}}' data-funcprodid='{{item.funcProdId}}' data-categoryid='{{item.categoryId}}' bindtap='details'>
+            <image src='{{item.prodLogoUrl}}' mode="widthFix" class='commodityimg'></image>
+            <view class='commodityview-btm'>
+              <view class='font-name mgB20'>
+                <image wx:if='{{item.actSecDiscountSettingId}}' class="activityiconfont" mode="widthFix" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{item.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+                {{item.ms_val[0]}}
+                <view class="font-name5" wx:if="{{item.ms_val[1] != nll}}">({{item.ms_val[1]}}</view>
+              </view>
+              <view class='font-price' style="color: {{themecolor.skintone}};">
+                <text>¥ {{item.prodRetailPrice}}</text>
+                <text class="font-hxj" wx:if="{{item.prodMarketPrice > item.prodRetailPrice}}">¥ {{item.prodMarketPrice}}</text>
+                <!-- <view class="redpack" wx:if="{{item.isHasRed}}" catchtap='getRules'>
+                  <image src="../../img/hongbao.png" style="width:12px;height:12px"/>
+                </view> -->
+                <image wx:if="{{item.isHasRed == 1}}" catchtap='getRules' class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>
+                <image wx:if="{{item.isHasCoupon == 1}}" catchtap='get_couponlist' data-proddata="{{item}}" class="icon-discounts" mode="widthFix" src="../../img/couponicon.png"></image>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <image wx:if="{{adtype == 1}}" class="ad-img" style="margin-bottom: 120rpx;" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+    </block>
+    <block wx:else>
+      <view class="font-zw">暂无商品</view>
+      <image wx:if="{{adtype == 1}}" class="ad-img" style="margin-bottom: 120rpx;" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+    </block>
+  </view>
+  <view class='shoppingcart' bindtap='goshopcar'>
+    <image class='shoppingcart-img' src='../../img/shoppingcart.png'></image>
+  </view>
+</block>
+
+<!-- 餐饮 -->
+<block wx:elif="{{pageLayout == 2}}">
+  <include src="specialty1.wxml" />
+</block>
+<!-- 卡券 -->
+<block wx:elif="{{pageLayout == 3}}">
+  <include src="specialty2.wxml" />
+</block>
+<!-- 卡券 -->
+<block wx:elif="{{pageLayout == 4}}">
+  <include src="specialty3.wxml" />
+</block>
+
+<!-- 分享按钮  -->
+<block wx:if="{{pageLayout != 4}}">
+  <view wx:if="{{sharenum == 1 || sharenum == 11}}">
+    <view wx:if="{{sharenum != -1 && pageLayout != 2}}" class="share_btnbox" catchtouchmove="return" style="bottom: {{isIpx?'160rpx':'130rpx'}}">
+      <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+      <view class="link"></view>
+      <image wx:if="{{iscertification == 1}}" mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+      <button class='certification-box2' wx:else plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+        <image mode="widthFix" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+      </button>
+    </view>
+  </view>
+  <view wx:else>
+    <view wx:if="{{sharenum != -1 && pageLayout != 2}}" class="share_btnbox share_btnbox_b" catchtouchmove="return" style="bottom: {{isIpx?'160rpx':'130rpx'}}">
+      <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+    </view>
+  </view>
+</block>
+<tabbar funcId="{{funcId}}"></tabbar>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>
+<block wx:if="{{redPacketShowFlag == 1 && shareObj == 10 && regbagact_type == 0}}">
+  <redbagact imgurldata='{{global_Data.imgurldata}}' shareUserAvatarUrl='{{shareUserAvatarUrl}}' shareUserNickName='{{shareUserNickName}}' redbagtype='{{redbagtype}}' bind:redirectfun="redirectfun"></redbagact>
+</block>
+<block wx:if="{{act_newcomer != '' && act_newcomer.isOpen == 0 && (shareObj != 3 || redPacketShowFlag == 0) && regbagact_type != 0}}">
+  <newcomer actAdImageUrl='{{act_newcomer.curActHotelDTO.actAdImageUrl}}' actImageUrl='{{act_newcomer.curActHotelDTO.actImageUrl}}' actId="{{act_newcomer.id}}"></newcomer>
+</block>
+
+<!-- 营业时间  -->
+<view wx:if="{{isCanOpen == 0}}" class="businesshours" style="bottom: {{isIpx?'140rpx':'100rpx'}};">本店已休息 (明天{{openStartTime}}营业)</view>
+<!-- 分享弹窗 -->
+<view wx:if="{{showtype == 1}}" class="shareboxbg" bindtap="closefun" catchtouchmove="return">
+  <view class="shareway">
+    <view class="share-font1">选择分享方式</view>
+    <view class="shareway-b">
+      <view class="imgbtn" catchtap="sharefun1"><image mode="widthFix" src="../../img/shareimg1.jpg"></image></view>
+      <view class="imgbtn" catchtap="get_poster"><image mode="widthFix" src="../../img/shareimg2.jpg"></image></view>
+    </view>
+  </view>
+</view>
+<!-- 海报分享弹窗 -->
+<view wx:if="{{showtype == 2}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2">
+    <view class="closebtn-img" bindtap="closefun"><image src="../../img/my-btnimg23.png"></image></view>
+    <image class="posterimg" bindtap="previewImg" mode="widthFix" src="{{posterurl}}"></image>
+    <view class="posterbtn posterbtn1" bindtap="saveimg">保存到手机相册</view>
+    <view class="posterbtn posterbtn2" bindtap="previewImg">预览海报长按分享</view>
+  </view>
+</view>
+<!-- 选择是否认证 -->
+<view wx:if="{{showtype == 3}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2 mgT035">
+    <button class='certification-box' plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+      <image class="certification-icon" src="../../img/certification-img1.png"></image>
+      <view class="certification-r">
+        <view class="certification-font1 mgB20">认证分享</view>
+        <view class="certification-font2">可获得通过链接购买的<text>佣金奖励</text>,可在我的账户页面中查看佣金奖励收入</view>
+      </view>
+    </button>
+    <view class="certification-box" bindtap="certificationNo">
+      <image class="certification-icon" src="../../img/certification-img2.png"></image>
+      <view class="certification-r">
+        <view class="certification-font1 mgB20">直接分享</view>
+        <view class="certification-font2">直接分享不享受佣金奖励，但也可以将你喜欢的商品分享给好友</view>
+      </view>
+    </view>
+    <view class="closebtn-icon" bindtap="closefun"><image src="../../img/my-btnimg23-1.png"></image></view>
+  </view>
+</view>
+<!-- 认证表单 -->
+<view wx:if="{{showtype == 4}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway3">
+    <view class="form-certification-font1">认证分享</view>
+    <input class="form-certification-inp" type="text" placeholder="填写您的称呼" placeholder-style="color: #C5C9CF" bindinput="certificationnamefun"></input>
+    <input class="form-certification-inp" type="number" placeholder="填写您的手机号码" placeholder-style="color: #C5C9CF" bindinput="certificationtelfun"></input>
+    <view class="form-certification-font2"><image src="../../img/my-btnimg22.png"></image>为确保佣金奖励正确到达您的账户，请正确填写认证信息</view>
+    <view class="form-certification-sub" bindtap="certificationfun">确定</view>
+  </view>
+  <view class="closebtn-icon" bindtap="closefun"><image src="../../img/my-btnimg23-1.png"></image></view>
+</view>
+
+<view class="redRule" wx:if="{{ifshowRules}}" catchtouchmove='true'>
+  <view class="redCenter">
+    <view class="redCenter1">
+      <image src="../../img/redRule.png" class="imagebox" style="width:285px" mode="widthFix"/>
+      <view class="ruleBox">
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可多人领取</view>
+            <view class="itemTitle2">下单满{{ruleData.amount}}元即获得现金红包奖励</view>
+          </view>
+        </view>
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/24hour.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">有效期{{ruleData.hour}}小时</view>
+            <view class="itemTitle2">超过{{ruleData.hour}}小时未领取即为失效</view>
+          </view>
+        </view>
+        <view class="ruleboxItem" style="border:none">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可直接提现</view>
+            <view class="itemTitle2">领取成功的红包可直接提现到微信</view>
+          </view>
+        </view>
+        <view bindtap="closeRule" class="iKnow">我懂了！</view>
+      </view>
+    </view>
+    <image bindtap="closeRule" src="../../img/my-btnimg23-1.png" style="width:33px;height:33px;"/>
+  </view>
+</view>
+
+<couponbox id="couponlist" couponRange="1" couponlist="{{coupon_list}}"></couponbox>

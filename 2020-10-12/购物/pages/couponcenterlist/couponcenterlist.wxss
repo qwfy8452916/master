@@ -1,0 +1,40 @@
+page{
+  background: #f6f6f6;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.libox{
+  width: 86%;
+  margin: 0 auto 30rpx;
+  background: #ffffff;
+  padding: 20rpx 20rpx;
+  border-radius: 20rpx 20rpx;
+}
+.libox-l{
+  width: 80%;
+}
+.libox-r{
+  display: block;
+  width: 13rpx;
+  height: 26rpx;
+}
+.fonttext{
+  text-align: center;
+  font-size: 32rpx;
+  color: #999999;
+  padding-top: 300rpx;
+}
+.font-name{
+  font-size: 28rpx;
+  color: #2B2D30;
+  margin-bottom: 15rpx;
+}
+.fonttext2{
+  font-size: 24rpx;
+  color: #888FA1;
+}
+.borderR{
+  border-right: 0.1rpx solid #888FA1;
+  margin-right: 20rpx;
+  padding-right: 20rpx;
+}

@@ -1,0 +1,334 @@
+<!--pages/addFunction/addFunction.wxml-->
+<view class="wrap">
+
+  <form bindsubmit="formSubmit">
+    <view class="contentkbox">
+      <view class="titlebox">
+        <view class="linebak"></view>基础信息
+      </view>
+      <view class="rowbox">
+        <view class="rowtitle">功能区名称
+          <text class="star">*</text>
+        </view>
+        <view class="putbox">
+          <input placeholder="请输入功能区名称" name="funcCnName" value="{{functionData.funcCnName}}" maxlength="10"></input>
+        </view>
+      </view>
+      <view class="rowbox">
+        <view class="rowtitle">英文名称</view>
+        <view class="putbox">
+          <input placeholder="请输入功能区英文名称" name="funcEnName" value="{{functionData.funcEnName}}" maxlength="50"></input>
+        </view>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">图标</view>
+        <view class="picbox">
+          <view class="showpicbox">
+            <block wx:if="{{functionData.funcLogoUrl}}">
+              <view class="picitem">
+                <view class="iconbox" bindtap="funIcon">
+                  <image src="../../img/closepic.png"></image>
+                </view>
+                <image src="{{functionData.funcLogoUrl}}"></image>
+              </view>
+            </block>
+            <view class="addpic" wx:else bindtap="addfunIcon">
+              <view class="hengline"></view>
+              <view class="suline"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <picker class="pickbox" bindchange="bindPickerType" range-key="funcTypeName" value="{{funcTypeIndex}}" range="{{funcTypeList}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">类型<text class="requiredcj twoStar">*</text></text>
+          <input hidden="true" name="funcType" value="{{functionData.funcType}}"></input>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{funcTypeList[funcTypeIndex].id}}">{{funcTypeList[funcTypeIndex].funcTypeName}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="rowbox">
+        <view class="rowtitle">代码
+          <text class="star twoStar">*</text>
+        </view>
+        <view class="putbox">
+          <input placeholder="请输入代码" maxlength="10" name="funcCode" value="{{functionData.funcCode}}"></input>
+        </view>
+        <!-- <view class="autosheng">自动生成</view> -->
+      </view>
+
+      <view class="rowbox switchbox">
+        <view class="rowtitle">默认开放
+        </view>
+        <switch name="isShow" checked="{{functionData.isShow}}" color="#ff6930"></switch>
+      </view>
+
+      <view class="rowbox around">
+        <view class="rowtitle">排序
+        </view>
+        <view class="putbox">
+          <input placeholder="0" name="sort" value="{{functionData.sort}}"></input>
+        </view>
+        <text class="iconfont icontishi1" bindtap="sorttip"></text>
+      </view>
+     
+      <view class="rowbox switchbox">
+        <view class="rowtitle">顶部信息</view>
+        <switch checked="{{functionData.isShowTop}}" bindchange="topInfo" name="isShowTop" color="#ff6930"></switch>
+      </view>
+      <block wx:if="{{functionData.isShowTop}}">
+       <view class="rowbox">
+        <view class="rowtitle">banner图
+          <text class="star bannerStar">*</text>
+        </view>
+        <view class="picbox">
+          <view class="showpicbox">
+            <view class="picitem" wx:for="{{bannerList}}" wx:key="index">
+              <view class="iconbox" bindtap="removeBan" data-index="{{index}}">
+                <image src="../../img/closepic.png"></image>
+              </view>
+              <image src="{{item.url}}"></image>
+            </view>
+            <view class="addpic" bindtap="addfunBanner">
+              <view class="hengline"></view>
+              <view class="suline"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="rowbox switchbox">
+        <view class="rowtitle">标题开关</view>
+        <switch checked="{{functionData.isShowTitle}}" bindchange="titleSwitch" name="isShowTitle" color="#ff6930"></switch>
+      </view>
+     <block wx:if="{{functionData.isShowTitle}}">
+      <picker class="pickbox" bindchange="bindPickerTitle" range-key="title" name="vouUseScene" value="{{titleIndex}}" range="{{titlePositionOption}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">标题设置</text>
+          <input name="titlePosition" value="{{functionData.titlePosition}}"></input>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{titlePositionOption[titleIndex].id}}">{{titlePositionOption[titleIndex].title}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="rowbox">
+        <view class="rowtitle">标题名称</view>
+        <view class="putbox">
+          <input placeholder="请填写标题名称" name="title" value="{{functionData.title}}" maxlength="30"></input>
+        </view>
+      </view>
+    </block>
+
+      <view class="rowbox">
+        <view class="rowtitle">电话</view>
+        <view class="putbox">
+          <input placeholder="请填写电话名称" name="servicePhone" value="{{functionData.servicePhone}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox switchbox">
+        <view class="rowtitle">一键wifi开关</view>
+        <switch checked="{{functionData.isShowWifi}}" name="isShowWifi" value="{{functionData.isShowWifi}}" color="#ff6930"></switch>
+      </view>
+      <view class="rowbox switchbox">
+        <view class="rowtitle">文化故事</view>
+        <switch checked="{{functionData.isShowCulture}}" color="#ff6930" name="isShowCulture" value="{{functionData.isShowCulture}}"></switch>
+       </view>
+      </block>
+
+    </view>
+
+    <view class="contentkbox" wx:if="{{functionData.funcType==4}}">
+      <view class="titlebox">
+        <view class="linebak"></view>功能区结构
+      </view>
+
+      <picker class="pickbox" bindchange="bindPickershopLayput" range-key="pageLayoutName" value="{{shopLayoutIndex}}" range="{{shopLayoutData}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">页面布局</text>
+          <input name="pageLayout" value="{{functionData.pageLayout}}"></input>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{shopLayoutData[shopLayoutIndex].id!==''}}">{{shopLayoutData[shopLayoutIndex].pageLayoutName}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+
+
+      <view class="rowbox">
+        <view class="rowtitle">配送方式
+          <text class="star fourStar">*</text>
+        </view>
+        <view class="choice">(可多选)</view>
+        <view class="danhang" wx:if="{{functionData.pageLayout==1}}">
+          <view class="choiceitem {{delivWayList[index].delivejudge?'choiceitemActive':''}}" wx:for="{{delivWayList}}" wx:key="index" bindtap="delive" data-index="{{index}}" wx:if="{{item.id!=3 && item.id!=6 && item.id!=7 && item.id!=8}}">{{item.delivWayName}}</view>
+          <input hidden="true" name="delivWays" value="{{functionData.delivWays}}"></input>
+        </view>
+
+        <view class="danhang" wx:if="{{functionData.pageLayout==2}}">
+          <view class="choiceitem {{delivWayList[index].delivejudge?'choiceitemActive':''}}" wx:for="{{delivWayList}}" wx:key="index" bindtap="delive" data-index="{{index}}" wx:if="{{item.id!=3 && item.id!=5}}">{{item.delivWayName}}</view>
+          <input hidden="true" name="delivWays" value="{{functionData.delivWays}}"></input>
+        </view>
+
+        <view class="danhang" wx:if="{{functionData.pageLayout==3}}">
+          <view class="choiceitem {{delivWayList[index].delivejudge?'choiceitemActive':''}}" wx:for="{{delivWayList}}" wx:key="index" bindtap="delive" data-index="{{index}}" wx:if="{{item.id==5}}">{{item.delivWayName}}</view>
+          <input hidden="true" name="delivWays" value="{{functionData.delivWays}}"></input>
+        </view>
+
+      </view>
+
+      <view class="rowbox" wx:if="{{functionData.pageLayout!=3 && isPickUp}}">
+        <view class="rowtitle">自提点
+          <text class="star threeStar">*</text>
+        </view>
+        <view class="choice">(可多选)</view>
+        <view class="danhang">
+          <view class="zitiitem {{pickUpPointList[index].pickjudge?'zitiitemActive':''}}" wx:for="{{pickUpPointList}}" wx:key="index" bindtap="selfTake" data-index="{{index}}">{{item.pickUpPointName}}</view>
+          <input hidden="true" name="pickUpPointIds" value="{{functionData.pickUpPointIds}}"></input>
+        </view>
+      </view>
+
+      <view class="rowbox switchbox" wx:if="{{isTakeout}}">
+        <view class="rowtitle">限时开放</view>
+        <switch checked="{{functionData.isTimeLimited}}" bindchange="timeLimit" name="isTimeLimited" color="#ff6930" value="{{functionData.isTimeLimited}}"></switch>
+      </view>
+
+      <view class="pickbox" wx:if="{{isTakeout && functionData.isTimeLimited}}">
+        <text class="alignlef selectdate">时间范围<text class="star fourStar">*</text></text>
+        <section class="alignlef sectionitem">
+          <picker class="pickertime" mode="time" value="{{functionData.openStartTime}}" bindchange="bindDateChange" name="openStartTime" end="{{functionData.openEndTime}}">
+            <view class="picker">
+              <text wx:if="{{functionData.openStartTime}}">{{functionData.openStartTime}}</text>
+              <text wx:else class="placems">开始时间</text>
+            </view>
+          </picker>
+          <text class="hengxian">至</text>
+          <picker class="pickertime" mode="time" value="{{functionData.openEndTime}}" bindchange="bindDateChange2" name="openEndTime" start="{{functionData.openStartTime}}">
+            <view class="picker">
+              <text wx:if="{{functionData.openEndTime}}">{{functionData.openEndTime}}</text>
+              <text wx:else class="placems">过期时间</text>
+            </view>
+          </picker>
+        </section>
+      </view>
+
+      <view class="rowbox switchbox" wx:if="{{isTakeout}}">
+        <view class="rowtitle">限时送达</view>
+        <switch checked="{{functionData.isTimeLimitedDeliv}}" bindchange="deliveLimit" name="isTimeLimitedDeliv" value="{{functionData.isTimeLimitedDeliv}}" color="#ff6930"></switch>
+      </view>
+
+      <view class="rowbox" wx:if="{{isTakeout && functionData.isTimeLimitedDeliv}}">
+        <view class="rowtitle">时间间隔
+          <text class="star fourStar">*</text>
+        </view>
+        <view class="putbox">
+          <input placeholder="请输入时间间隔" name="delivLimitDuration" value="{{functionData.delivLimitDuration}}"></input>
+        </view>
+        <view class="danwei">分钟</view>
+      </view>
+
+      <view class="rowbox switchbox">
+        <view class="rowtitle">多次下单
+          <text class="iconfont icontishi1 dingw" bindtap="moretip"></text>
+        </view>
+        <switch checked="{{functionData.isSupportManyTimesOrder}}" name="isSupportManyTimesOrder" value="{{functionData.isSupportManyTimesOrder}}" color="#ff6930"></switch>
+      </view>
+
+    </view>
+
+    <!-- <view class="contentkbox" wx:if="{{false}}">
+      <view class="titlebox">
+        <view class="linebak"></view>功能区结构
+      </view>
+      <view class="rowbox switchbox">
+        <view class="rowtitle">迷你吧开关</view>
+        <switch checked color="#ff6930"></switch>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">迷你吧补货费</view>
+        <view class="putbox">
+          <input placeholder="0"></input>
+        </view>
+        <view class="danwei">元</view>
+      </view>
+
+      <view class="rowbox switchbox">
+        <view class="rowtitle">便利店开关</view>
+        <switch checked color="#ff6930"></switch>
+      </view>
+
+      <view class="rowbox">
+        <view class="rowtitle">便利店补货费</view>
+        <view class="putbox">
+          <input placeholder="0"></input>
+        </view>
+        <view class="danwei">元</view>
+      </view>
+
+    </view> -->
+
+    <view class="contentkbox" wx:if="{{functionData.funcType==2}}">
+      <view class="titlebox">
+        <view class="linebak"></view>功能区结构
+      </view>
+
+      <picker class="pickbox" bindchange="bindPickerLayput" range-key="name" value="{{layoutIndex}}" range="{{pageLayoutData}}">
+        <view class="picker">
+          <text class="alignlef">
+          <text class="pickeritem">页面布局<text class="requiredcj">*</text></text>
+          <input name="bookPageLayout" value="{{functionData.bookPageLayout}}"></input>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{pageLayoutData[layoutIndex].id!==''}}">{{pageLayoutData[layoutIndex].name}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <picker class="pickbox" bindchange="bindPickerRoomFlag" range-key="name" value="{{roomFlagIndex}}" range="{{roomFlagData}}">
+        <view class="picker">
+          <text class="alignlef">
+           <text class="pickeritem">房源</text>
+          <input name="roomResourcesFlag" value="{{functionData.roomResourcesFlag}}"></input>
+          </text>
+          <text class="alignrig">
+          <text wx:if="{{roomFlagData[roomFlagIndex].id}}!==''">{{roomFlagData[roomFlagIndex].name}}</text>
+          <text wx:else class="placems">请选择</text>
+          <text class="iconfont iconwangyou"></text>
+          </text>
+        </view>
+      </picker>
+
+      <view class="rowbox roombox {{roomSwitch?'roomActive':''}}" wx:if="{{functionData.roomResourcesFlag==0}}">
+        <view bindtap="trigggerroom">
+          <text wx:if="{{roomSwitch}}">展开</text>
+          <text wx:else>不展开</text>
+        </view>
+        <view class="roomitem {{bookFuncResourcesOptions[index].roomjudge?'roomitemAvtive':''}}" wx:for="{{bookFuncResourcesOptions}}" wx:key="index" bindtap="selectRoom" data-index="{{index}}">{{item.resourceName}}</view>
+        <input hidden="true" name="bookFuncResourcesArr" value="{{bookFuncResourcesArr}}"></input>
+      </view>
+
+    </view>
+
+    <button wx:if="{{authzData['F:MS_BASIC_FUN_MODIFY_SURE']}}" class="surebtn" form-type="submit">确定</button>
+  </form>
+</view>

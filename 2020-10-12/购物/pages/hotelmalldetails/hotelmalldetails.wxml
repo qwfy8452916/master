@@ -1,0 +1,279 @@
+<swiper indicator-dots='true' indicator-color='rgba(204, 204, 204, 0.8)' indicator-active-color='#ffc000' autoplay='true' interval='3000' duration='500' circular='true' display-multiple-items='1' style="height:{{imgheights[current]}}rpx;" bindchange="bindchange">
+  <block wx:for="{{detailsdata.bannerImageList}}" wx:for-item="item" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" data-id='{{index}}' class="slide-image" mode="widthFix" bindload="imageLoad" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='detailsinfo'>
+  <view class='detailsinfo-top'>
+    <view class='font-price'>
+      <text>¥ {{detailsdata.prodRetailPrice}}</text>
+      <text class="font-hxj" wx:if="{{detailsdata.prodMarketPrice > detailsdata.prodRetailPrice}}">¥ {{detailsdata.prodMarketPrice}}</text>
+      <!-- <image wx:if="{{detailsdata.isHasRed == 1}}" class="icon-discounts" mode="widthFix" src="../../img/redpacket.png"></image>        -->
+      <image wx:if="{{couponlist.length > 0}}" catchtap='get_couponlist' class="icon-discounts" mode="widthFix" src="../../img/couponicon.png"></image>
+    </view>
+    <view class='font-stock' wx:if="{{detailsdata.availableSaleQty >= 100 || detailsdata.availableSaleQty == -999}}">库存充足</view>
+    <view class='font-stock' wx:elif="{{detailsdata.availableSaleQty > 0 && detailsdata.availableSaleQty < 100}}">在售 {{detailsdata.availableSaleQty}}个</view>
+  </view>
+  <view class='font-name-x'>
+    <view style="display: flex;align-items: center;">
+      <image wx:if='{{detailsdata.actSecDiscountSettingId}}' mode="widthFix" class="activityiconfont" hspace="5" vspace="5" src="../../img/activity-icon.png" data-ruleid="{{detailsdata.actSecDiscountSettingId}}" catchtap="rulefun"></image>
+      {{ms_val[0]}}
+      <view class="redpack" style="margin-left:6px" wx:if="{{detailsdata.isHasRed}}" catchtap='getRules'>
+        <image src="../../img/redpacket.png" style="width:24px;height:24px"/>
+      </view>
+    </view>
+    <view class="font-name5" wx:if="{{ms_val[1] != null}}">({{ms_val[1]}}</view>
+  </view>
+  <view class="flexboxstart promptfont mgT20" wx:if="{{detailsdata.prodType == 2}}">
+    <image class="iconimg-w" src="../../img/my-btnimg22.png"></image>该商品为电子券商品，该商品包含卡券和优惠券两种类型，下单后可在“我的卡券”中查看明细
+  </view>
+</view>
+<!-- <view class='deliverybox' wx:if="{{detailsdata.delivWays.length > 0 && detailsdata.prodType != 2}}">   -->
+<view class='deliverybox' wx:if="{{detailsdata.delivWays.length > 0}}">  
+  <view class='deliverybox-name'>支持配送方式</view>
+  <block wx:for="{{detailsdata.delivWays}}" wx:for-item="item" wx:key="index">
+    <view class='deliverybox-type'>
+      <block wx:if="{{item == 1}}">店内送 </block>
+      <block wx:elif="{{item == 2}}">快递送 </block>
+      <block wx:elif="{{item == 3}}">迷你吧 </block>
+      <block wx:elif="{{item == 4}}">自提取 </block>
+      <block wx:elif="{{item == 5}}">电子商品 </block>
+      <block wx:elif="{{item == 6}}">堂食 </block>
+      <block wx:elif="{{item == 7}}">外卖 </block>
+      <block wx:elif="{{item == 8}}">外带 </block>
+    </view>
+  </block>
+</view>
+<view wx:if="{{couponlist.length > 0}}" class="couponbox mgB20" bindtap="showcoupon">
+  <view class="couponboxL">优惠</view>
+  <view class="couponboxC">
+    <view class="coupon-box">
+      <view class="couponboxC-t">满{{couponlist[0].useLimitMoney}}减{{couponlist[0].reduceMoney}}</view>
+    </view>
+  </view>
+  <view class="couponboxR">领券 <image class="iconimgwh" src="../../img/my-bgimg2.png"></image></view>
+</view>
+<block wx:if="{{evaluatelist.length != 0}}">
+  <view class="paddAll borderB font-bttext" bindtap="evaluatefun" style="padding: 20rpx 2%;">
+    <view>商品评价<text class="font-bttext-text">({{pjtotal}})</text></view>
+    <view class="lookall">查看全部 <image class="iconimgwh" src="../../img/my-bgimg2.png"></image></view>
+  </view>
+  <block wx:for="{{evaluatelist}}" wx:for-item="item" wx:key="index"><!-- 评价 -->
+    <view class="paddAll borderB evaluation">
+      <view class="evaluationT">
+        <image class="userimg" src="{{item.avatarUrl != null?item.avatarUrl:'../../img/icon-img10.png'}}"></image>
+        <text class="font-username">{{item.nickName}}</text>
+      </view>
+      <view class="conttent-font contenthide">{{item.remarkContent}}</view>
+    </view>
+  </block>
+</block>
+<view class='detailsinfo-img' style="margin-top: 20rpx;">
+  <view class='font-bt'>商品详情</view>
+  <block wx:for="{{detailsdata.descImageList}}" wx:for-item="item" wx:key="index">
+    <image src="{{item}}" class="detailsimg" mode="widthFix" />
+  </block>
+</view>
+<view class='footbox'>
+  <view class="flexboxstart">
+    <view class="backbtn" bindtap="backfun">首页</view>
+    <view class='buycar' data-typenum="1" bindtap='goshopcar'>
+      <image src='../../img/shoppingcart.png' class='buycarimg' mode='aspectFill'></image>
+    </view>
+  </view>
+  <block wx:if="{{isCanBuy == 1 && detailsdata.delivWays.length > 0}}">
+    <view class='footbox-r'>
+      <block wx:if="{{isCanOpen == 1}}">
+        <view class='joincar' data-delivway="{{detailsdata.delivWay}}" data-typenum="2" bindtap='seletdedelivWay'>加入购物车</view>
+        <view class='buy' data-delivway="{{detailsdata.delivWay}}" data-typenum="3" bindtap='seletdedelivWay'>立即购买</view>
+      </block>
+      <block wx:else>
+        <view class='businesshours'>营业时间：{{openStartTime}}-{{openEndTime}}</view>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='buy bgcolor'>暂不支持购买</view>
+  </block>
+</view>
+<pop id='dialog' bind:redirectfun="redirectfun"></pop>
+<view class="couponlistbox-bg" wx:if="{{coupontype == true}}">
+  <view class="couponlistbox">
+    <view class="font-title">优惠券</view>
+    <view class="font-prod1 mgB30">商品售价 ¥<block wx:if="{{isFree==1}}">0.00 </block><block wx:else>{{detailsdata.prodRetailPrice}}</block>，使用以下优惠 可减 ¥ <text class="font-color3">{{couponlist[0].reduceMoney}}</text></view>
+    <view class="font-prod2 mgB30">领券</view>
+    <scroll-view scroll-y style="height: 60%;">
+      <block wx:for="{{couponlist}}" wx:for-item="item" wx:key="index">
+        <view class="couponlist-li">
+          <view class="couponlist-li-l">
+            <view class="font-l1">¥ <text class="font-l3">{{item.reduceMoney}}</text> {{item.couponName}}</view>
+            <view class="font-l2">满{{item.useLimitMoney}}使用</view>
+            <view wx:if="{{item.couponTermType == 0}}" class="font-l2">领取后{{item.couponTermDays}}天内可用</view>
+            <view wx:else class="font-l2">有效期至 {{item.couponTermEndDate}} 前</view>
+          </view>
+          <view class="couponlist-li-r font-l1" data-id="{{item.id}}" bindtap="receive">立即领取</view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="font-l4">以上价格计算仅为初步预估，不代表最终购买价格</view>
+    <view class="closebtn" bindtap="showcoupon">关闭</view>
+  </view>
+</view>
+
+<!-- 分享按钮  -->
+<block wx:if="{{sharenum == 1 || sharenum == 11}}">
+  <view wx:if="{{sharenum != -1}}" class="share_btnbox2" catchtouchmove="return">
+    <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+    <view class="link"></view>
+    <image wx:if="{{iscertification == 1}}" mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+    <button class='certification-box2' wx:else plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+      <image mode="widthFix" src="{{global_Data.imgurldata}}share-img2-1.png"></image>
+    </button>
+  </view>
+</block>
+<block wx:else>
+  <view wx:if="{{sharenum != -1}}" class="share_btnbox2 share_btnbox_b" catchtouchmove="return">
+    <image mode="widthFix" bindtap="sharefun" src="{{global_Data.imgurldata}}share-img1-1.png"></image>
+  </view>
+</block>
+
+<!-- 分享弹窗 -->
+<view wx:if="{{showtype == 1}}" class="shareboxbg" bindtap="closefun" catchtouchmove="return">
+  <view class="shareway">
+    <view class="share-font1">选择分享方式</view>
+    <view class="shareway-b">
+      <view class="imgbtn" catchtap="sharefun1"><image mode="widthFix" src="../../img/shareimg1.jpg"></image></view>
+      <view class="imgbtn" wx:if="{{sharenum == 10 || sharenum == 11}}" catchtap="get_poster"><image mode="widthFix" src="../../img/shareimg2.jpg"></image></view>
+    </view>
+  </view>
+</view>
+<!-- 海报分享弹窗 -->
+<view wx:if="{{showtype == 2}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2">
+    <view class="closebtn-img" bindtap="closefun"><image src="../../img/my-btnimg23.png"></image></view>
+    <image class="posterimg" bindtap="previewImg" mode="widthFix" src="{{posterurl}}"></image>
+    <view class="posterbtn posterbtn1" bindtap="saveimg">保存到手机相册</view>
+    <view class="posterbtn posterbtn2" bindtap="previewImg">预览海报长按分享</view>
+  </view>
+</view>
+<!-- 选择是否认证 -->
+<view wx:if="{{showtype == 3}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway2 mgT035">
+    <button class='certification-box' plain="true" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">
+      <image class="certification-icon" src="../../img/certification-img1.png"></image>
+      <view class="certification-r">
+        <view class="certification-font1 mgB20">认证分享</view>
+        <view class="certification-font2">可获得通过链接购买的<text>佣金奖励</text>,可在我的账户页面中查看佣金奖励收入</view>
+      </view>
+    </button>
+    <view class="certification-box" bindtap="certificationNo">
+      <image class="certification-icon" src="../../img/certification-img2.png"></image>
+      <view class="certification-r">
+        <view class="certification-font1 mgB20">直接分享</view>
+        <view class="certification-font2">直接分享不享受佣金奖励，但也可以将你喜欢的商品分享给好友</view>
+      </view>
+    </view>
+    <view class="closebtn-icon" bindtap="closefun"><image src="../../img/my-btnimg23-1.png"></image></view>
+  </view>
+</view>
+<!-- 认证表单 -->
+<view wx:if="{{showtype == 4}}" class="shareboxbg" catchtouchmove="return">
+  <view class="shareway3">
+    <view class="form-certification-font1">认证分享</view>
+    <input class="form-certification-inp" type="text" placeholder="填写您的称呼" placeholder-style="color: #C5C9CF" bindinput="certificationnamefun"></input>
+    <input class="form-certification-inp" type="number" placeholder="填写您的手机号码" placeholder-style="color: #C5C9CF" bindinput="certificationtelfun"></input>
+    <view class="form-certification-font2"><image src="../../img/my-btnimg22.png"></image>为确保佣金奖励正确到达您的账户，请正确填写认证信息</view>
+    <view class="form-certification-sub" bindtap="certificationfun">确定</view>
+  </view>
+  <view class="closebtn-icon" bindtap="closefun"><image src="../../img/my-btnimg23-1.png"></image></view>
+</view>
+<!-- 选择规格 -->
+<view class="foodflexbox-bg" catchtouchmove="return" wx:if="{{specificationtype == true}}">
+  <view class="foodflexbox">
+    <view class="foodflexbox-t">
+      <view class="flexbox foodflexbox-t-box1 mgB20">
+        <image class="foodflexbox-t-img" src="{{detailsdata.prodLogoUrl}}"></image>
+        <view class="foodflexbox-t-box1-r">
+          <view class="foodflexbox-t-box-font1">{{spec_prodname}}</view>
+          <view class="flexbox foodflexbox-t-box1-r-b">
+            <view class="foodflexbox-t-box-font2">¥ {{spec_retailprice}}</view>
+            <view class="flexbox foodflexbox-t-box1-r-b-r" wx:if="{{spec_num != 0}}">
+              <image class="numberbtn-icon" src="../../img/icon-img2.png" data-type="1" bindtap="specjoinfun"></image>
+              <view class="foodflexbox-t-box-font3">{{spec_num}}</view>
+              <image class="numberbtn-icon" src="../../img/icon-img1.png" data-type="2" bindtap="specjoinfun"></image>
+            </view>
+            <view wx:else class="font-null">已售罄</view>
+          </view>
+        </view>
+      </view>
+      <view class="foodflexbox-t-box2 mgB20" wx:if="{{speclist.length > 0}}">
+        <view class="specification-font mgB20">规格选择</view>
+        <view class="specification-box">
+          <block wx:for="{{speclist}}" wx:for-item='item' wx:key='index'>
+            <view class="specification-font1 {{spec_typenum == index?'specification-font2':''}}" data-num="{{index}}" bindtap="changespcfun">{{item.showName}}</view>
+          </block>
+        </view>
+      </view>
+      <view class="foodflexbox-t-box2 mgB20">
+        <view class="specification-font mgB20">选择配送方式</view>
+        <view class="specification-box">
+          <block wx:for="{{detailsdata.delivWays}}" wx:for-item='item' wx:key='index'>
+            <view class="specification-font1 {{delivWay_typenum == index?'specification-font2':''}}" data-delivway="{{item}}"  data-num="{{index}}" bindtap="changedelivWayfun">
+              <block wx:if="{{item == 1}}">店内送 </block>
+              <block wx:elif="{{item == 2}}">快递送 </block>
+              <block wx:elif="{{item == 4}}">自提取 </block>
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="foodflexbox-t-box3">{{spec_instruction}}</view>
+    </view>
+    <view class="foodflexbox-b" bindtap="specaddfun">确定</view>
+  </view>
+  <image class="closebtn-icon2" bindtap="spectoggle" src="../../img/my-btnimg23-1.png"></image>
+</view>
+
+<view class="redRule" wx:if="{{ifshowRules}}" catchtouchmove='true'>
+  <view class="redCenter">
+    <view class="redCenter1">
+      <image src="../../img/redRule.png" class="imagebox" style="width:285px" mode="widthFix"/>
+      <view class="ruleBox">
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可多人领取</view>
+            <view class="itemTitle2">下单满{{ruleData.amount}}元即获得现金红包奖励</view>
+          </view>
+        </view>
+        <view class="ruleboxItem">
+          <view class="redIconBox">
+            <image src="../../img/24hour.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">有效期{{ruleData.hour}}小时</view>
+            <view class="itemTitle2">超过{{ruleData.hour}}小时未领取即为失效</view>
+          </view>
+        </view>
+        <view class="ruleboxItem" style="border:none">
+          <view class="redIconBox">
+            <image src="../../img/member.png" class="redIcon"/>
+          </view>
+          <view class="ruleboxItem1">
+            <view class="itemTitle1">可直接提现</view>
+            <view class="itemTitle2">领取成功的红包可直接提现到微信</view>
+          </view>
+        </view>
+        <view bindtap="closeRule" class="iKnow">我懂了！</view>
+      </view>
+    </view>
+    <image bindtap="closeRule" src="../../img/my-btnimg23-1.png" style="width:33px;height:33px;"/>
+  </view>
+</view>
+<image wx:if="{{adtype == 1}}" class="ad-img" mode="widthFix" bindtap="adfun" src="{{global_Data.imgurldata}}ad-img.png"></image>
+
+
+<couponbox id="couponlist" couponRange="1" couponlist="{{coupon_list}}"></couponbox>

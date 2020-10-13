@@ -1,0 +1,122 @@
+/* pages/cardDetail/cardDetail.wxss */
+page{
+  background:#f2f2f5; 
+}
+.wrap{
+  width: 100%;
+  padding: 20rpx 3%;
+  box-sizing: border-box;
+}
+.box{
+  background: #fff;
+  width: 100%;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.title{
+   width: 100%;
+   padding:25rpx 30rpx; 
+   box-sizing: border-box;
+   font-size: 32rpx;
+   color: #2B2D30;
+   display: flex;
+   align-items: center;
+}
+.title .titlecol{
+  display: inline-block;
+  width: 8rpx;
+  height: 30rpx;
+  background: #10bbbb;
+  border-radius: 30rpx;
+  margin-right: 10rpx;
+}
+.section{
+  width: 100%;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 28rpx;
+  border-top: 1px solid #e9eaea;
+}
+.subTitle{
+  margin-right: 40rpx;
+  width: 140rpx;
+  text-align: left;
+  color: #888FA1;
+}
+.subInfo{
+  color: #2B2D30;
+}
+.region{
+  width: 100%;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  border-top: 1px solid #e9eaea;
+}
+.regionbox{
+  display: flex;
+  width: 100%;
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+.regionboxTitle{
+  margin-right: 40rpx;
+  width: 155rpx;
+  text-align: left;
+  color: #888FA1;
+}
+.widdes{
+  width: 375rpx !important;
+}
+.widlen{
+  width: 145rpx !important;
+}
+.regionboxInfo{
+  color: #2B2D30;
+  width: calc(100% - 145rpx);
+}
+.regionRow{
+  width: 100%;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  border-top: 1px solid #e9eaea;
+  display: flex;
+  font-size: 28rpx;
+}
+.regionRowTitle{
+  margin-right: 40rpx;
+  width: 130rpx;
+  text-align: left;
+  color: #888FA1;
+}
+.regionRowInfo{
+  color: #2B2D30;
+}
+.field{
+  width: 100%;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  border-top: 1px solid #e9eaea;
+}
+.field .fieldTitle{
+  text-align: left;
+  color: #888FA1;
+}
+.field .fieldInfo{
+  color: #2B2D30;
+  margin-top: 5rpx;
+}
+.imageBox{
+  width: 200rpx;
+  height: 160rpx;
+  overflow: hidden;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+.imageBox image{
+  width: 100%;
+  height: 100%;
+}
+

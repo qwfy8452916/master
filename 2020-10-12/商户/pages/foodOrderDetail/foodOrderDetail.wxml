@@ -1,0 +1,96 @@
+<!--pages/foodOrderDetail/foodOrderDetail.wxml-->
+
+
+<view class="wrap">
+  <view class="section borradius">
+    <view class="titlebox">
+      <view>
+        <view class="lineblock"></view>订单信息
+      </view>
+      <view>
+        <text class="statuScolor">
+              <text class="waiitStatus" wx:if="{{deliveryDateDetail.orderStatus==0}}">待支付</text>
+              <text wx:if="{{deliveryDateDetail.orderStatus==1}}">已支付</text>
+              <text wx:if="{{deliveryDateDetail.orderStatus==2}}">已取消</text>
+              <text wx:if="{{deliveryDateDetail.orderStatus==3}}">部分退款</text>
+              <text wx:if="{{deliveryDateDetail.orderStatus==4}}">全部退款</text>
+        </text>
+      </view>
+    </view>
+    <view class="inner {{shuzhanJudge?'':'suocontent'}}">
+      <view class="rowbox">
+        <view class="rowboxTitle">订单编号</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.orderCode}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">功能区</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.funcName}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">地址</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.roomFloor}}-{{deliveryDateDetail.roomCode}}</view>
+      </view>
+      <view class="rowbox linebot">
+        <view class="rowboxTitle">用户ID</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.customerId}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">商品数量</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.prodCount}}</view>
+      </view>
+      <view class="rowbox">
+        <view class="rowboxTitle">商品金额</view>
+        <view class="rowboxInfo">{{deliveryDateDetail.totalAmount}}</view>
+      </view>
+     
+    </view>
+  </view>
+  <view class="shuzhan" bindtap="shuzhan">
+    <text wx:if="{{shuzhanJudge}}">收起</text>
+    <text wx:else>展开</text>
+    <text class="iconfont icon-wangyou {{shuzhanJudge?'':'wangyouxz'}}"></text>
+  </view>
+
+  <view class="section">
+    <view class="titlebox">
+      <view>
+        <view class="lineblock"></view>商品信息
+      </view>
+    </view>
+    <view class="inner" wx:for="{{deliveryDateDetail.orderDetailDTOList}}" wx:key>
+      <view class="infobox">
+        <view class="prdimgbox">
+          <image src="{{item.prodProductDTO.prodLogoUrl}}"></image>
+        </view>
+        <view class="contentrig">
+          <view class="contentdesc">{{item.prodProductDTO.prodName}}</view>
+          <text class="prodcount">x{{item.prodCount}}</text>
+          <view class="guigemc" wx:if="{{item.funcProdSpecId!==0}}">{{item.prodSpecs}}</view>
+          <!-- <view class="tagbox">
+            <view class="tagbtn">{{item.prodOrgKindName}}</view>
+            <view class="tagbtn">{{item.prodGenre}}</view>
+          </view> -->
+        </view>
+      </view>
+      <view class="prodprice">￥{{item.prodPrice}}</view>
+      <!-- <view class="betwbox">
+        <view>优惠金额</view>
+        <view class="jinebtw">-￥{{item.couponAmount}}</view>
+      </view>
+      <view class="betwbox">
+        <view>减免金额</view>
+        <view class="jinebtw">-￥{{item.discountAmount}}</view>
+      </view>
+      <view class="betwbox">
+        <view>抵扣金额</view>
+        <view class="jinebtw">-￥{{item.deductAmount}}</view>
+      </view> -->
+      <!-- <view class="prodprice linebot"><text class="actual">实付金额</text>￥{{item.actualPay}}</view> -->
+    </view>
+  </view>
+</view>
+
+
+<view class="btnsub oraginse" wx:if="{{deliveryDateDetail.orderStatus == 0 && deliveryDateDetail.isSupportManyTimesOrder == 1}}" data-id="{{deliveryDateDetail.id}}" bindtap="editOrder">修改订单</view>
+
+
