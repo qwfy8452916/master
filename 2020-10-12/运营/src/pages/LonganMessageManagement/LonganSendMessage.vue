@@ -1,0 +1,361 @@
+<template>
+  <div class="SendMessage">
+    <el-form align="left" :inline="true">
+      <el-form-item label="消息模板code">
+        <el-select v-model="codeval">
+          <el-option
+            filterable
+            placeholder="请选择"
+            v-for="item in MessageList"
+            :label="item.tpTitle"
+            :value="item.tpCode"
+            :key="item.tpCode"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="业务代码">
+        <el-input v-model="businesscode"></el-input>
+      </el-form-item>
+      <el-form-item label="业务消息id">
+        <el-input v-model="buinessId"></el-input>
+      </el-form-item>
+      <el-form-item label="消息状态">
+        <el-select v-model="messageStatus">
+          <el-option
+            v-for="item in messageStatusData"
+            :key="item.dictValue"
+            :value="item.dictValue"
+            :label="item.dictName"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="发送时间">
+        <el-date-picker
+          v-model="dateRange"
+          type="daterange"
+          value-format="yyyy-MM-dd HH:mm:ss"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        ></el-date-picker>
+      </el-form-item>
+      <el-form-item>
+        <el-button @click="search" type="primary">查询</el-button>
+      </el-form-item>
+      <el-form-item>
+        <resetButton @resetFunc="resetFunc" />
+      </el-form-item>
+    </el-form>
+    <el-table :data="sendMsgData" stripe style="width:100%">
+      <el-table-column fixed prop="tpCode" label="消息模板code" align="center"></el-table-column>
+      <el-table-column prop="businessCode" label="业务代码" align="center"></el-table-column>
+      <el-table-column prop="processId" label="业务消息id" align="center"></el-table-column>
+      <el-table-column prop="ctpType" label="消息类型" align="center">
+        <template slot-scope="scope">
+          <span v-if="scope.row.ctpType=='1'">微信服务号模板消息</span>
+          <span v-if="scope.row.ctpType=='2'">微信小程序订阅消息</span>
+          <span v-if="scope.row.ctpType=='3'">短消息</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="content" label="消息内容" align="center">
+        <template slot-scope="scope">
+          <el-button
+            v-if="authzData['F:BO_MSG_SENDMSG_MSGCONTENT']"
+            @click="checkMessage(scope.row.content)"
+            type="text"
+            size="small"
+          >查看</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column prop="status" label="消息状态" align="center">
+        <template slot-scope="scope">
+          <span v-if="scope.row.status=='1'">待处理</span>
+          <span v-if="scope.row.status=='2'">处理失败</span>
+          <span v-if="scope.row.status=='3'">处理成功</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="scheduleAt" label="发送时间" align="center"></el-table-column>
+      <el-table-column prop="receiverVoucher" label="接收人凭证" align="center"></el-table-column>
+      <el-table-column prop="resAt" label="接收时间" align="center"></el-table-column>
+    </el-table>
+    <LonganPagination :pageTotal="pageTotal" @pageFunc="pageFunc" />
+    <el-dialog class="messageone" :visible.sync="showhidemsgone">
+      <div class="msghang">
+        <span class="msg_title">时间：</span>
+        <span>2019-05-12 12:25:24</span>
+      </div>
+      <div class="msghang">
+        <span class="msg_title">内容：</span>
+        <div class="msgcontent">{{Msgcontent}}</div>
+      </div>
+    </el-dialog>
+
+    <!-- <el-dialog class="messagetwo" title="酒店预订成功通知" :visible.sync="showhidemsgtwo">
+           <div class="msgDate">4月27日 16:16</div>
+           <div class="orderbox">
+              <div class="ordertitle">订单号</div>
+              <div class="ordernumber">339208499</div>
+           </div>
+           <div class="msgtwohang">
+               <span class="msgtwohang_title">时间</span><span>2016年12月05日 12:30</span>
+           </div>
+           <div class="msgtwohang">
+               <span class="msgtwohang_title">酒店</span><span>微信大厦</span>
+           </div>
+           <div class="msgtwohang">
+               <span class="msgtwohang_title">地点</span><span>广州海珠路111号</span>
+           </div>
+    </el-dialog>-->
+  </div>
+</template>
+<script>
+import resetButton from "@/components/resetButton";
+import LonganPagination from "@/components/LonganPagination";
+export default {
+  name: "LonganSendMessage",
+  components: {
+    resetButton,
+    LonganPagination,
+  },
+  data() {
+    return {
+      authzData: "",
+      pageSize: 10, //每页显示条数
+      pageTotal: 0, //默认总条数
+      pageNum: 1, //实际当前页码
+      MessageList: [], //模板数据
+      codeval: "", //code
+      businesscode: "", //业务代码
+      buinessId: "", //业务消息id
+      messageStatusData: [], //消息状态数据
+      messageStatus: "", //消息状态
+      dateRange: [], //发送时间
+      Msgcontent: "", //消息内容
+      showhidemsgone: false,
+      showhidemsgtwo: false,
+      sendMsgData: [
+        { name: "1", check: "查看" },
+        { name: "1", check: "查看" },
+      ], //待发送列表数据
+    };
+  },
+  mounted() {
+    this.$control
+      .jurisdiction(this, 3)
+      .then((response) => {
+        this.authzData = response;
+      })
+      .catch((err) => {
+        this.authzData = err;
+      });
+    if (JSON.stringify(this.$store.state.searchList) != "{}") {
+      for (var item in this.$store.state.searchList) {
+        this[item] = this.$store.state.searchList[item];
+      }
+    }
+    this.getMessageStatus();
+    this.SendMsg();
+    this.LonganMessagelist();
+  },
+  methods: {
+    resetFunc() {
+      this.codeval = "";
+      this.businesscode = "";
+      this.buinessId = "";
+      this.messageStatus = "";
+      this.dateRange = [];
+      this.SendMsg();
+    },
+    checkMessage(content) {
+      //  let msgcontent='{'+content+'}';
+      //  msgcontent=JSON.stringify(content)
+      //  console.log(msgcontent)
+      //  this.Msgcontent=JSON.parse(msgcontent)
+      this.Msgcontent = content;
+      this.showhidemsgone = true;
+    },
+
+    //消息模板列表
+    LonganMessagelist() {
+      let that = this;
+      const params = {
+        isPage: false,
+      };
+      this.$api
+        .getMessageList({ params })
+        .then((response) => {
+          const result = response.data;
+          if (result.code == "0") {
+            that.MessageList = result.data;
+          } else {
+            that.$message.error("消息模板列表获取失败！");
+          }
+        })
+        .catch((error) => {
+          that.$alert(error, "警告", {
+            confirmButtonText: "确定",
+          });
+        });
+    },
+
+    search() {
+      this.SendMsg();
+      this.$store.commit("setSearchList", {
+        codeval: this.codeval,
+        businesscode: this.businesscode,
+        buinessId: this.buinessId,
+        messageStatus: this.messageStatus,
+        dateRange: this.dateRange,
+      });
+    },
+
+    //页面跳转
+    current() {
+      this.pageNum = this.currentPage;
+      this.SendMsg();
+    },
+    pageFunc(data) {
+      this.pageSize = data.pageSize;
+      this.pageNum = data.pageNum;
+      this.SendMsg();
+    },
+    SendMsg() {
+      let that = this;
+      let params = {
+        pageNo: this.pageNum,
+        pageSize: this.pageSize,
+        tpCode: that.codeval,
+        businessCode: that.businesscode,
+        processId: that.buinessId,
+        status: that.messageStatus,
+        scheduleStartAt: that.dateRange[0],
+        scheduleEndAt: that.dateRange[1],
+      };
+
+      this.$api
+        .SendMsg({ params })
+        .then((response) => {
+          if (response.data.code == "0") {
+            that.sendMsgData = response.data.data.records;
+            that.pageTotal = response.data.data.total;
+          } else {
+            that.$alert(response.data.msg, "警告", {
+              confirmButtonText: "确定",
+            });
+          }
+        })
+        .catch((error) => {
+          that.$alert(error, "警告", {
+            confirmButtonText: "确定",
+          });
+        });
+    },
+
+    //消息状态
+    getMessageStatus() {
+      let that = this;
+      this.$api
+        .getMessageStatus()
+        .then((response) => {
+          if (response.data.code == "0") {
+            that.messageStatusData = response.data.data;
+            let allObject = {
+              dictName: "全部",
+              dictValue: "",
+            };
+            that.messageStatusData.unshift(allObject);
+          } else {
+            that.$alert(response.data.msg, "警告", {
+              confirmButtonText: "确定",
+            });
+          }
+        })
+        .catch((error) => {
+          that.$alert(error, "警告", {
+            confirmButtonText: "确定",
+          });
+        });
+    },
+  },
+};
+</script>
+
+<style lang="less">
+.SendMessage {
+  .el-dialog__header {
+    text-align: left;
+  }
+  .el-form-item__content {
+    text-align: left;
+  }
+  .el-dialog__footer {
+    text-align: center;
+  }
+  .messageone .el-dialog {
+    width: 35%;
+  }
+  .messagetwo .el-dialog {
+    width: 40%;
+  }
+  .msghang {
+    .msgcontent {
+      width: calc(100% - 50px);
+      display: inline-block;
+    }
+  }
+}
+</style>
+
+<style lang="less" scoped>
+.SendMessage {
+  .pagination {
+    margin-top: 20px;
+  }
+  .el-dialog__header {
+    text-align: left;
+  }
+
+  .messageone {
+    .msghang {
+      text-align: left;
+      clear: both;
+      .msg_title {
+        float: left;
+        display: inline-block;
+        width: 50px;
+        text-align: right;
+        .msgcontent {
+          display: inline-block !important;
+          float: left;
+        }
+      }
+    }
+  }
+}
+.messagetwo {
+  .msgtwohang {
+    margin-bottom: 20px;
+    text-align: left;
+    .msgtwohang_title {
+      margin-right: 10px;
+    }
+  }
+  .msgDate {
+    text-align: left;
+    position: relative;
+    top: -38px;
+    color: #adadad;
+  }
+  .orderbox {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #f9f9f9;
+    .ordertitle {
+      color: #999;
+    }
+    .ordernumber {
+      font-size: 36px;
+    }
+  }
+}
+</style>

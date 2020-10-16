@@ -1,0 +1,256 @@
+<template>
+  <div class="channellist">
+    <el-form :inline="true" align="left" class="searchform">
+      <el-form-item label="渠道名称">
+        <el-input v-model="inquireChannelName"></el-input>
+      </el-form-item>
+      <el-form-item label="openId">
+        <el-input v-model="inquireOpenId"></el-input>
+      </el-form-item>
+      <el-form-item label="用户昵称">
+        <el-input v-model="inquireNickname"></el-input>
+      </el-form-item>
+      <el-form-item label="柜子类型">
+        <el-select
+          v-model="inquireCabType"
+          filterable
+          remote
+          :remote-method="remoteCabType"
+          :loading="loadingC"
+          @focus="getCabTypeList()"
+          placeholder="请选择"
+        >
+          <el-option
+            v-for="item in cabTypeList"
+            :key="item.id"
+            :label="item.typeName"
+            :value="item.id"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="创建时间">
+        <el-date-picker
+          v-model="inquireCreateTime"
+          type="daterange"
+          format="yyyy-MM-dd"
+          value-format="yyyy-MM-dd"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        ></el-date-picker>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="inquire">查&nbsp;&nbsp;询</el-button>
+      </el-form-item>
+      <el-form-item>
+        <resetButton @resetFunc="resetFunc" />
+      </el-form-item>
+    </el-form>
+    <el-table :data="PartnerDataList" border stripe style="width:100%;">
+      <el-table-column fixed prop="channelName" label="渠道名称"></el-table-column>
+      <el-table-column prop="shareCodeTitle" label="分享链接标题" width="120px"></el-table-column>
+      <el-table-column prop="investorOpenId" label="openId" align="center"></el-table-column>
+      <el-table-column prop="investorNickName" label="用户昵称"></el-table-column>
+      <el-table-column prop="createdAt" label="创建时间" width="160px" align="center"></el-table-column>
+      <el-table-column prop="cabTypeName" label="柜子类型"></el-table-column>
+      <el-table-column prop="cabinetQuantity" label="柜子数量"></el-table-column>
+      <el-table-column prop="totalRent" label="租金"></el-table-column>
+      <el-table-column prop="totalServiceFee" label="技术服务费" width="90px" align="center"></el-table-column>
+      <el-table-column prop="couponAmount" label="优惠券金额" width="90px" align="center"></el-table-column>
+      <el-table-column prop="balanceAmount" label="余额支付金额" width="110px" align="center"></el-table-column>
+      <el-table-column prop="actualPayAmount" label="实付金额"></el-table-column>
+      <el-table-column prop="payTime" label="支付时间" width="160px" align="center"></el-table-column>
+    </el-table>
+    <LonganPagination :pageTotal="pageTotal" @pageFunc="pageFunc" />
+  </div>
+</template>
+
+<script>
+import resetButton from "@/components/resetButton";
+import LonganPagination from "@/components/LonganPagination";
+export default {
+  name: "LonganChannelPartner",
+  components: {
+    resetButton,
+    LonganPagination,
+  },
+  data() {
+    return {
+      authzData: "",
+      inquireChannelId: "",
+      inquireShareCode: "",
+      inquireChannelName: "",
+      inquireOpenId: "",
+      inquireNickname: "",
+      inquireCabType: "",
+      cabTypeList: [],
+      loadingC: false,
+      inquireCreateTime: [],
+      PartnerDataList: [],
+      pageTotal: 0,
+      pageSize: 10,
+      pageNum: 1,
+    };
+  },
+  mounted() {
+    this.$control
+      .jurisdiction(this, 3)
+      .then((response) => {
+        this.authzData = response;
+      })
+      .catch((err) => {
+        this.authzData = err;
+      });
+    const channelId = this.$route.params.channelId;
+    if (channelId != undefined) {
+      this.inquireChannelId = channelId;
+    }
+    const sCode = this.$route.params.shareCode;
+    if (sCode != undefined) {
+      this.inquireShareCode = sCode;
+    }
+    if (JSON.stringify(this.$store.state.searchList) != "{}") {
+      for (var item in this.$store.state.searchList) {
+        this[item] = this.$store.state.searchList[item];
+      }
+    }
+    this.getCabTypeList();
+    this.channelPartnerList();
+  },
+  methods: {
+    resetFunc() {
+      this.inquireChannelName = "";
+      this.inquireOpenId = "";
+      this.inquireNickname = "";
+      this.inquireCabType = "";
+      this.inquireCreateTime = [];
+      this.channelPartnerList();
+    },
+    //柜子类型列表
+    getCabTypeList(ctName) {
+      const params = {};
+      this.$api
+        .getCabTypeList(params)
+        .then((response) => {
+          const result = response.data;
+          if (result.code == 0) {
+            if (result.data.length != 0) {
+              this.cabTypeList = result.data.map((item) => {
+                return {
+                  id: item.id,
+                  typeName: item.typeName,
+                };
+              });
+            }
+            const cabTypeAll = {
+              id: "",
+              typeName: "全部",
+            };
+            this.cabTypeList.unshift(cabTypeAll);
+          } else {
+            this.$message.error(result.msg);
+          }
+        })
+        .catch((error) => {
+          this.$alert(error, "警告", {
+            confirmButtonText: "确定",
+          });
+        });
+
+      // this.loadingC = true;
+      // const params = {
+      //     typeName : ctName,
+      //     pageNo: 1,
+      //     pageSize: 50
+      // };
+      // this.$api.getCabTypeList(params)
+      //     .then(response => {
+      //         this.loadingC = false;
+      //         const result = response.data;
+      //         if(result.code == 0){
+      //             this.cabTypeList = result.data.records.map(item => {
+      //                 return{
+      //                     id: item.id,
+      //                     typeName: item.typeName
+      //                 }
+      //             })
+      //             const cabTypeAll = {
+      //                 id: '',
+      //                 typeName : '全部'
+      //             };
+      //             this.cabTypeList.unshift(cabTypeAll);
+      //         }else{
+      //             this.$message.error(result.msg);
+      //         }
+      //     })
+      //     .catch(error => {
+      //         this.$alert(error,"警告",{
+      //             confirmButtonText: "确定"
+      //         })
+      //     })
+    },
+    remoteCabType(val) {
+      this.getCabTypeList(val);
+    },
+    //渠道商合伙人列表
+    channelPartnerList() {
+      if (this.inquireCreateTime == null) {
+        this.inquireCreateTime = [];
+      }
+      const params = {
+        shareCode: this.inquireShareCode,
+        channelName: this.inquireChannelName,
+        openId: this.inquireOpenId,
+        nickName: this.inquireNickname,
+        cabTypeId: this.inquireCabType,
+        investTimeFrom: this.inquireCreateTime[0],
+        investTimeTo: this.inquireCreateTime[1],
+        pageNo: this.pageNum,
+        pageSize: this.pageSize,
+      };
+      // console.log(params);
+      this.$api
+        .channelPartnerList(params)
+        .then((response) => {
+          // console.log(response);
+          const result = response.data;
+          if (result.code == "0") {
+            this.PartnerDataList = result.data.records;
+            this.pageTotal = result.data.total;
+          } else {
+            this.$message.error(result.msg);
+          }
+        })
+        .catch((error) => {
+          this.$alert(error, "警告", {
+            confirmButtonText: "确定",
+          });
+        });
+    },
+    //查询
+    inquire() {
+      this.pageNum = 1;
+      this.channelPartnerList();
+      this.$store.commit("setSearchList", {
+        inquireChannelName: this.inquireChannelName,
+        inquireOpenId: this.inquireOpenId,
+        inquireNickname: this.inquireNickname,
+        inquireCabType: this.inquireCabType,
+        inquireCreateTime: this.inquireCreateTime,
+      });
+    },
+    //分页
+    pageFunc(data) {
+      this.pageSize = data.pageSize;
+      this.pageNum = data.pageNum;
+      this.channelPartnerList();
+    },
+  },
+};
+</script>
+
+<style lang="less" scoped>
+.channellist {
+}
+</style>
+

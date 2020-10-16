@@ -1,0 +1,611 @@
+<template>
+    <div class="hoteladd">
+        <p class="title">修改进场配置</p>
+        <el-form :model="Commoditygai" :rules="rules" ref="Commoditygai" label-width="140px" class="hotelform">
+            <el-form-item label="柜子类型：" prop="cabTypeId">
+                <el-select
+                    :disabled="true"
+                    v-model="Commoditygai.cabTypeId"
+                    :loading="loadingH"
+                    placeholder="请选择">
+                    <el-option
+                        v-for="item in cabTypeList"
+                        :key="item.id"
+                        :label="item.cabTypeName"
+                        :value="item.id">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <!-- <el-form-item label="适用范围：">
+                <el-select :disabled="true" v-model="isAll" placeholder="请选择适用范围">
+                  <el-option :value="1" label="全局"></el-option>
+                  <el-option :value="2" label="酒店"></el-option>
+                </el-select>
+            </el-form-item> -->
+            <!-- <el-form-item label="酒店名称：" prop="hotelId">
+                <el-select
+                    v-model="Commoditygai.hotelId"
+                    filterable
+                    :disabled="true"
+                    remote
+                    :remote-method="remoteHotel"
+                    :loading="loadingH"
+                    @focus="getHotelList()"
+                    @change='getSelectedHotel'
+                    placeholder="请选择">
+                    <el-option
+                        v-for="item in hotelList"
+                        :key="item.id"
+                        :label="item.hotelName"
+                        :value="item.id">
+                    </el-option>
+                </el-select>
+            </el-form-item> -->
+            <el-form-item label="类型默认配置：">
+                <el-switch :disabled="true" v-model="isDefault"></el-switch>
+            </el-form-item>
+            <el-form-item label="进场配置名称：" prop="cabinetName">
+                <el-input v-model.trim="Commoditygai.cabinetName"></el-input>
+            </el-form-item>
+            <!-- <el-form-item label="是否支持迷你吧：" prop="supportMinibar">
+                <el-radio-group v-model="Commoditygai.supportMinibar">
+                    <el-radio label="不支持" name="supportMinibar"></el-radio>
+                    <el-radio label="显示" name="supportMinibar"></el-radio>
+                    <el-radio label="显示+下单" name="supportMinibar"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="是否支持便利店：" prop="supportShop">
+                <el-radio-group v-model="Commoditygai.supportShop">
+                    <el-radio label="不支持" name="supportMinibar"></el-radio>
+                    <el-radio label="显示" name="supportMinibar"></el-radio>
+                    <el-radio label="显示+下单" name="supportMinibar"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="是否支持客房服务：" prop="supportService">
+                <el-radio-group v-model="Commoditygai.supportService">
+                    <el-radio label="不支持" name="supportMinibar"></el-radio>
+                    <el-radio label="显示" name="supportMinibar"></el-radio>
+                    <el-radio label="显示+下单" name="supportMinibar"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label-width="200" label="是否支持客房协议价：" prop="supportRoomBook">
+                <el-radio-group v-model="Commoditygai.supportRoomBook">
+                    <el-radio label="不支持" name="supportMinibar"></el-radio>
+                    <el-radio label="显示+下单" name="supportMinibar"></el-radio>
+                </el-radio-group>
+            </el-form-item> -->
+            <el-form-item label="默认进场：" prop="commonEnterDeviList">
+                <el-checkbox-group v-model="Commoditygai.commonEnterDeviList">
+                    <el-checkbox v-for="item in deviData" :key="item.id" :label="item.dictValue">{{item.dictName}}</el-checkbox>
+                </el-checkbox-group>
+            </el-form-item>
+            <el-form-item label="分享进场：" prop="shareEnterDeviList">
+                <el-checkbox-group v-model="Commoditygai.shareEnterDeviList">
+                    <el-checkbox v-for="item in deviData" :key="item.id" :label="item.dictValue">{{item.dictName}}</el-checkbox>
+                </el-checkbox-group>
+            </el-form-item>
+            <el-form-item label-width="200" label="支持默认开放功能区：" prop="availableFuncSupport">
+                <el-switch @change="getSelectedHotel()" v-model="Commoditygai.availableFuncSupport"></el-switch>
+            </el-form-item>
+            <el-form-item v-if="!Commoditygai.availableFuncSupport" label="功能区：">
+                <div
+                v-for="(item,index) in Commoditygai.areaList"
+                :key="item.id"
+                 class="oneArea">
+                    <span style="margin-right:10px;">{{item.areaName}}</span>
+                    <el-radio-group v-model="item.defaultValue">
+                        <el-radio label="不支持" name="supportMinibar"></el-radio>
+                        <el-radio label="显示" name="supportMinibar"></el-radio>
+                        <el-radio label="显示+下单" name="supportMinibar"></el-radio>
+                    </el-radio-group>
+                    <el-form-item class="spaceSet" v-if="item.defaultValue == '显示+下单'" :prop="'areaList.'+index+'.commonEnterDeviList'" label="默认进场：" :rules="[
+                        { required: true, message: '请选择至少一个默认进场配置',trigger:'blur'}]">
+                        <el-checkbox-group v-model="item.commonEnterDeviList">
+                            <el-checkbox v-for="item in deviData" :key="item.id" :label="item.dictValue">{{item.dictName}}</el-checkbox>
+                        </el-checkbox-group>
+                    </el-form-item>
+                    <el-form-item class="spaceSet" v-if="item.defaultValue == '显示+下单'" label="分享进场：" :prop="'areaList.'+index+'.shareEnterDeviList'" :rules="[
+                        { required: true, message: '请选择至少一个分享进场配置',trigger:'blur'}]">
+                        <el-checkbox-group v-model="item.shareEnterDeviList">
+                            <el-checkbox v-for="item in deviData" :key="item.id" :label="item.dictValue">{{item.dictName}}</el-checkbox>
+                        </el-checkbox-group>
+                    </el-form-item>
+                    <el-form-item class="spaceSet" label="排序" :prop="'areaList.'+index+'.sort'" :rules="rules.sort">
+                        <el-input v-model="item.sort" placeholder="输入排序"></el-input>
+                    </el-form-item>
+                </div>
+                <div style="color:orange" v-if="!Commoditygai.hotelId">选择酒店后展示功能区!</div>
+            </el-form-item>
+            <el-form-item label="默认首页：" prop="defaultHomePage">
+                <el-radio-group v-model="Commoditygai.defaultHomePage">
+                    <!-- <el-radio style="line-height:35px;" :disabled="isMinibarSupported" label="迷你吧"></el-radio>
+                    <el-radio style="line-height:35px;" :disabled="isServiceSupported" label="客房服务"></el-radio>
+                    <el-radio style="line-height:35px;" :disabled="isRoomBookSupported" label="客房协议价"></el-radio> -->
+                    <el-radio style="line-height:35px;" label="我的"></el-radio>
+                    <el-radio
+                    v-for="item in isAreaSupported"
+                    :key="item.id"
+                    style="line-height:35px;"
+                    :disabled="item.isAble"
+                      :label="item.areaName"
+                       name="defaultHomePage"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item>
+                <el-button @click="resetForm('Commoditygai')">取消</el-button>
+                <el-button type="primary" @click="submitForm('Commoditygai')">确定</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+</template>
+
+<script>
+
+export default {
+    name: 'VirtualCabinetChange',
+    data(){
+        var validater2 = (rule,value,callback) => {
+            if(value && !/^-?\d+$/.test(value)){
+                callback(new Error("请输入整数"))
+            }else{
+                callback()
+            }
+        }
+        return{
+            authzData: '',
+            Commoditygai: {
+                hotelId: '',
+                availableFuncSupport:true,
+                cabinetName: '',
+                cabTypeId:'',
+                // supportMinibar: '显示+下单',
+                // supportShop: '显示+下单',
+                // supportService: '显示+下单',
+                // supportRoomBook: '显示+下单',
+                defaultHomePage: '',
+                commonEnterDeviList:[],
+                shareEnterDeviList:[],
+                areaList:[]
+            },
+            cabinetID:'',
+            deviData:[],
+            isDefault:false,
+            isAll:'',
+            loadingH: false,
+            hotelList:[],  //酒店数据
+            cabTypeList:[],  //酒店数据
+            rules: {
+                hotelId: [
+                    {required: true, message: '请选择酒店', trigger: 'change'},
+                ],
+                cabinetName: [
+                    {required: true, message: '请填写进场配置名称', trigger: 'blur'},
+                    {min: 1, max: 20, message: '进场配置名称请保持在20个字符以内', trigger: 'blur'}
+                ],
+                commonEnterDeviList: [
+                    {required: true, message: '请选择至少一个默认进场配置', trigger: 'change'},
+                ],
+                shareEnterDeviList: [
+                    {required: true, message: '请选择至少一个分享进场配置', trigger: 'change'},
+                ],
+                sort: [
+                    {validator:validater2, trigger: 'blur'},
+                ], 
+            },
+            defaultHomePageList:[
+                {
+                    name:'我的',
+                    isAble: false
+                }]
+        }
+    },
+    computed: {
+        // isMinibarSupported(){
+        //     if(this.Commoditygai.supportMinibar == '不支持'){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // },
+        // isServiceSupported(){
+        //     if(this.Commoditygai.supportService == '不支持'){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // },
+        // isRoomBookSupported(){
+        //     if(this.Commoditygai.supportRoomBook == '不支持'){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // },
+        isAreaSupported(){
+            this.Commoditygai.areaList.forEach(item => {
+                if(item.defaultValue == '不支持'){
+                    item.isAble = true;
+                }else{
+                    item.isAble = false;
+                }
+            })
+            return this.Commoditygai.areaList
+        },
+        defaultHomePage(){
+            // this.defaultHomePageList[0].isAble = this.isMinibarSupported;
+            // this.defaultHomePageList[1].isAble = this.isServiceSupported;
+            // this.defaultHomePageList[2].isAble = this.isRoomBookSupported;
+            this.defaultHomePageList.forEach((item, index) => {
+                if(index > 0){
+                    this.defaultHomePageList[index].isAble = this.isAreaSupported[index-1].isAble
+                }
+            })
+            return this.defaultHomePageList
+        }
+    },
+    watch:{
+        defaultHomePage(){
+            this.defaultHomePageList.forEach(item => {
+                if(item.isAble == true && this.Commoditygai.defaultHomePage == item.name){
+                    for(var i=0;i<this.defaultHomePageList.length;i++){
+                        if(this.defaultHomePageList[i].isAble == false){
+                            this.Commoditygai.defaultHomePage = this.defaultHomePageList[i].name;
+                            return false;
+                        }
+                    }
+                }
+            })
+        }
+    },
+    created() {
+        // this.Commoditygai.hotelId = parseInt(localStorage.hotelId);
+        // this.getSelectedHotel(this.Commoditygai.hotelId)
+        // this.getHotelList();
+        this.getDictData()
+        this.getCabTypeList();
+        this.cabinetID = this.$route.query.modifyid;
+        this.getVirtualCabinet(this.$route.query.modifyid);
+        (this.$control.jurisdiction(this,3)).then(response=>{this.authzData=response}).catch(err=>{this.authzData=err})
+    },
+    methods: {
+        getDictData(){
+            let params = {
+                key: 'DEVI',
+                orgId: 0
+            }
+            this.$api.basicDataItems(params).then(response => {
+                if(response.data.code==0){
+                    this.deviData = response.data.data
+                    this.deviData.forEach(item => {
+                        item.dictValue = parseInt(item.dictValue)
+                    })
+                }else{
+                    this.$alert(response.data.msg,"警告",{
+                        confirmButtonText: "确定"
+                    })
+                }
+            })
+            .catch(error => {
+                this.$alert(error,"警告",{
+                    confirmButtonText: "确定"
+                })
+            })
+        },
+        getVirtualCabinet(CabinetId){
+            this.$api.selOneenterCabConf(CabinetId).then(response => {
+                let rule1 = {
+                    0:'不支持',
+                    1:'显示',
+                    2:'显示+下单',
+                }
+                let rule2 = {
+                    // 1:'迷你吧',
+                    // 2:'客房服务',
+                    // 4:'客房协议价',
+                    5:'我的',
+                }
+                if(response.data.code==0){
+                    let fillBackData = response.data.data;
+                    this.Commoditygai.hotelId = fillBackData.hotelId?fillBackData.hotelId:'';
+                    this.Commoditygai.commonEnterDeviList = fillBackData.commonEnterDeviList;
+                    this.Commoditygai.shareEnterDeviList = fillBackData.shareEnterDeviList;
+                    this.Commoditygai.cabTypeId = fillBackData.cabTypeId;
+                    this.isDefault = fillBackData.isDefault?true:false;
+                    this.isAll = fillBackData.hotelId?2:1;
+                    this.Commoditygai.cabinetName = fillBackData.settingName;
+                    this.Commoditygai.availableFuncSupport = fillBackData.availableFuncSupport?true:false;
+                    if(fillBackData.availableFuncSupport){
+                        this.getSelectedHotel(fillBackData)
+                    } else {
+                        this.Commoditygai.areaList = fillBackData.cabEnterSettingFuncAreaDTOS.map(item=>{
+                             this.defaultHomePageList.push({
+                                name: item.funcAreaName,
+                                isAble: true
+                            })
+                            return {
+                                areaName: item.funcAreaName,
+                                id: item.funcAreaId,
+                                sort: item.sort,
+                                mainID: item.id,
+                                defaultValue: rule1[item.flag],
+                                shareEnterDeviList: item.shareEnterDeviList,
+                                commonEnterDeviList: item.commonEnterDeviList
+                            }
+                        })
+                    }
+                    // this.Commoditygai.supportMinibar = rule1[fillBackData.minibar];
+                    // this.Commoditygai.supportRoomBook = rule1[fillBackData.roomBook];
+                    // this.Commoditygai.supportShop = rule1[fillBackData.converienceStore];
+                    // this.Commoditygai.supportService = rule1[fillBackData.roomService];
+                    if(fillBackData.hotelId != 0){
+                        fillBackData.cabEnterSettingFuncAreaDTOS2.forEach(item => {
+                            this.defaultHomePageList.push({
+                                name: item.funcAreaName,
+                                isAble: true
+                            })
+                            this.Commoditygai.areaList.push({
+                                areaName: item.funcAreaName,
+                                id: item.funcAreaId,
+                                mainID: item.id,
+                                sort: item.sort,
+                                defaultValue: '不支持',
+                                shareEnterDeviList: [],
+                                commonEnterDeviList: []
+                            })
+                        })
+                    }
+                    
+                    if(fillBackData.homePage != 3){
+                        this.Commoditygai.defaultHomePage = rule2[fillBackData.homePage];
+                    }else{
+                        var fillterData = ''
+                        if(fillBackData.availableFuncSupport){
+                            fillterData = fillBackData.cabEnterSettingFuncAreaDTOS2
+                        }else{
+                            fillterData = fillBackData.cabEnterSettingFuncAreaDTOS
+                        }
+                        this.Commoditygai.defaultHomePage = fillterData.filter(item=>{
+                            return item.funcAreaId == fillBackData.funcAreaId
+                        })[0].funcAreaName;
+                    }
+                }else{
+                    this.$alert(response.data.msg,"警告",{
+                        confirmButtonText: "确定"
+                    })
+                }
+            })
+            .catch(error => {
+                this.$alert(error,"警告",{
+                    confirmButtonText: "确定"
+                })
+            })
+        },
+        getSelectedHotel(fillBackData){
+            const params = {
+                hotelId: this.Commoditygai.hotelId,
+            }
+            this.$api.hotelFunctionList(params).then(response => {
+                if(response.data.code==0){
+                    let recordsData = response.data.data.records;
+                    let needsData = recordsData.filter(item => {
+                        return item.id != 13 && item.id != 14
+                    })
+                    let fixDefaultHomePageList = [{
+                        name:'我的',
+                        isAble: false
+                    }]
+                    this.Commoditygai.areaList = needsData.map(item=>{
+                        fixDefaultHomePageList.push({
+                            name: item.funcCnName,
+                            isAble: true
+                        })
+                        return {
+                            areaName: item.funcCnName,
+                            id: item.id,
+                            sort:'',
+                            defaultValue:'显示+下单',
+                            commonEnterDeviList:[],
+                            shareEnterDeviList:[],
+                        }
+                    })
+
+                    if(fillBackData){
+                        let rule2 = {
+                            // 1:'迷你吧',
+                            // 2:'客房服务',
+                            // 4:'客房协议价',
+                            5:'我的',
+                        }
+                        if(fillBackData.homePage != 3){
+                            this.Commoditygai.defaultHomePage = rule2[fillBackData.homePage];
+                        }else{
+                            var fillterData = ''
+                            if(fillBackData.availableFuncSupport){
+                                fillterData = fillBackData.cabEnterSettingFuncAreaDTOS2
+                            }else{
+                                fillterData = fillBackData.cabEnterSettingFuncAreaDTOS
+                            }
+                            this.Commoditygai.defaultHomePage = fillterData.filter(item=>{
+                                return item.funcAreaId == fillBackData.funcAreaId
+                            })[0].funcAreaName;
+                        }
+                    }
+
+                    this.defaultHomePageList = fixDefaultHomePageList
+                }else{
+                    this.$alert(response.data.msg,"警告",{
+                        confirmButtonText: "确定"
+                    })
+                }
+            })
+            .catch(error => {
+                this.$alert(error,"警告",{
+                    confirmButtonText: "确定"
+                })
+            })
+        },
+       
+        //确定-柜子
+        submitForm(Commoditygai) {
+            let ruleSupport = {
+                '不支持': 0,
+                '显示': 1,
+                '显示+下单':2
+            }
+            let ruleDefault = {
+                // '迷你吧': 1,
+                // '客房服务': 2,
+                // '客房协议价': 4,
+                '我的': 5,
+            }
+             let params = {
+                hotelId: this.Commoditygai.hotelId,
+                shareEnterDeviList: this.Commoditygai.shareEnterDeviList,
+                commonEnterDeviList: this.Commoditygai.commonEnterDeviList,
+                settingName: this.Commoditygai.cabinetName,
+                cabTypeId: this.Commoditygai.cabTypeId,
+                // converienceStore: ruleSupport[this.Commoditygai.supportShop],
+                // minibar: ruleSupport[this.Commoditygai.supportMinibar],
+                // roomService: ruleSupport[this.Commoditygai.supportService],
+                // roomBook: ruleSupport[this.Commoditygai.supportRoomBook],
+                homePage: ruleDefault[this.Commoditygai.defaultHomePage],
+                availableFuncSupport: this.Commoditygai.availableFuncSupport?1:0
+            }
+            if(!this.Commoditygai.availableFuncSupport){
+                params.cabEnterSettingFuncAreaDTOS = this.Commoditygai.areaList.map(res=>{
+                    return {
+                        flag: ruleSupport[res.defaultValue],
+                        sort: res.sort,
+                        funcAreaId: res.id,
+                        shareEnterDeviList: res.shareEnterDeviList,
+                        commonEnterDeviList: res.commonEnterDeviList
+                    }
+                })
+            }
+            if(ruleDefault[this.Commoditygai.defaultHomePage] == undefined){
+                let areaID = this.Commoditygai.areaList.filter(res => res.areaName == this.Commoditygai.defaultHomePage);
+                params.homePage = 3;
+                params.funcAreaId = areaID[0].id;
+            }
+            this.$refs[Commoditygai].validate((valid) => {
+                if (valid) {
+                    this.$api.changeenterCabConf(params,this.cabinetID)
+                        .then(response => {
+                            if(response.data.code==0){
+                               this.$message.success("操作成功")
+                               this.$router.push({name:'VirtualCabinetConfiguration'});
+                            }else{
+                               this.$alert(response.data.msg,"警告",{
+                                    confirmButtonText: "确定"
+                               })
+                            }
+                        })
+                        .catch(error => {
+                            this.$alert(error,"警告",{
+                                confirmButtonText: "确定"
+                            })
+                        })
+
+                } else {
+                    return false;
+                }
+            });
+        },
+        //取消
+        resetForm(Commoditygai) {
+            this.$router.push({name:'VirtualCabinetConfiguration'});
+        },
+        //柜子列表
+        getCabTypeList(hName){
+            this.loadingH = true;
+            const params = {
+                pageNo:1,
+                pageSize:50,
+                cabTypeName:hName,
+            };
+            this.$api.CabinetType(params)
+                .then(response => {
+                    this.loadingH = false;
+                    const result = response.data;
+                    if(result.code == 0){
+                        this.cabTypeList = result.data.records.map(item => {
+                            return{
+                                id: item.id,
+                                cabTypeName: item.cabTypeName
+                            }
+                        })
+                    }else{
+                        this.$message.error(result.msg);
+                    }
+                })
+                .catch(error => {
+                    this.$alert(error,"警告",{
+                        confirmButtonText: "确定"
+                    })
+                })
+        },
+        //酒店列表
+        getHotelList(hName){
+            this.loadingH = true;
+            const params = {
+                orgAs: 2,
+                pageNo:1,
+                hotelName: hName,
+                pageSize:50
+            };
+            this.$api.hotelList(params)
+                .then(response => {
+                    this.loadingH = false;
+                    const result = response.data;
+                    if(result.code == 0){
+                        this.hotelList = result.data.records.map(item => {
+                            return{
+                                id: item.id,
+                                hotelName: item.hotelName
+                            }
+                        })
+                    }else{
+                        this.$message.error(result.msg);
+                    }
+                })
+                .catch(error => {
+                    this.$alert(error,"警告",{
+                        confirmButtonText: "确定"
+                    })
+                })
+        },
+        remoteHotel(val){
+            this.getHotelList(val);
+        },   
+
+    },
+}
+</script>
+
+
+<style lang="less" scoped>
+.el-select{
+    width: 32%;
+  }
+.hoteladd{
+    text-align: left;
+    .title{
+        font-weight: bold;
+    }
+    .hotelform{
+        width: 50%;
+
+        .btnwrap{margin-left: 35px;}
+        .el-input,.el-select{width: 225px;}
+        .termput{width: 80px;display: inline-block;
+            margin-right: 10px;}
+        .oneArea{
+            .spaceSet{
+                margin-bottom: 25px;
+            }
+        }
+    }
+}
+
+</style>
+
